@@ -1,0 +1,437 @@
+Archive member included because of file (symbol)
+
+c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+                              main.o (__do_copy_data)
+c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
+
+Discarded input sections
+
+ .stabstr       0x00000000        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+LOAD main.o
+LOAD timer1PWM.o
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4\libm.a
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4\libc.a
+LOAD c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x192
+ *(.vectors)
+ .vectors       0x00000000       0x34 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000034                . = ALIGN (0x2)
+                0x00000034                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000034        0x0 linker stubs
+ *(.trampolines*)
+                0x00000034                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000034                __ctors_start = .
+ *(.ctors)
+                0x00000034                __ctors_end = .
+                0x00000034                __dtors_start = .
+ *(.dtors)
+                0x00000034                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000034        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+                0x00000034                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000034        0xc c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000040       0x16 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+                0x00000040                __do_copy_data
+ .init4         0x00000056       0x10 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+                0x00000056                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000066        0x2 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+ *(.init9)
+ *(.text)
+ .text          0x00000068        0x2 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+                0x00000068                __vector_22
+                0x00000068                __vector_1
+                0x00000068                __vector_24
+                0x00000068                __vector_12
+                0x00000068                __bad_interrupt
+                0x00000068                __vector_6
+                0x00000068                __vector_3
+                0x00000068                __vector_23
+                0x00000068                __vector_25
+                0x00000068                __vector_11
+                0x00000068                __vector_13
+                0x00000068                __vector_17
+                0x00000068                __vector_19
+                0x00000068                __vector_7
+                0x00000068                __vector_5
+                0x00000068                __vector_4
+                0x00000068                __vector_9
+                0x00000068                __vector_2
+                0x00000068                __vector_21
+                0x00000068                __vector_15
+                0x00000068                __vector_8
+                0x00000068                __vector_14
+                0x00000068                __vector_10
+                0x00000068                __vector_16
+                0x00000068                __vector_18
+                0x00000068                __vector_20
+ .text          0x0000006a       0x88 main.o
+                0x0000006a                main
+ .text          0x000000f2       0xa0 timer1PWM.o
+                0x00000100                initPWM09
+                0x00000126                setCHB08
+                0x0000017a                setCHA
+                0x00000130                setCHA09
+                0x00000140                setCHB09
+                0x0000010e                initPWM10
+                0x000000f2                initPWM08
+                0x0000011c                setCHA08
+                0x00000184                initPWM
+                0x00000160                setCHB10
+                0x00000150                setCHA10
+                0x00000170                setCHB
+ .text          0x00000192        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+ .text          0x00000192        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+                0x00000192                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00000192        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000192        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+                0x00000192                . = ALIGN (0x2)
+ *(.fini9)
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ *(.fini0)
+                0x00000192                _etext = .
+
+.data           0x00800100        0x0 load address 0x00000192
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+ .data          0x00800100        0x0 main.o
+ .data          0x00800100        0x0 timer1PWM.o
+ .data          0x00800100        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+ .data          0x00800100        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800100                . = ALIGN (0x2)
+                0x00800100                _edata = .
+                0x00800100                PROVIDE (__data_end, .)
+
+.bss            0x00800100        0x0
+                0x00800100                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800100        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+ .bss           0x00800100        0x0 main.o
+ .bss           0x00800100        0x0 timer1PWM.o
+ .bss           0x00800100        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+ .bss           0x00800100        0x0 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+ *(.bss*)
+ *(COMMON)
+                0x00800100                PROVIDE (__bss_end, .)
+                0x00000192                __data_load_start = LOADADDR (.data)
+                0x00000192                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800100        0x0
+                0x00800100                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800100                PROVIDE (__noinit_end, .)
+                0x00800100                _end = .
+                0x00800100                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.stab           0x00000000      0x36c
+ *(.stab)
+ .stab          0x00000000      0x36c c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+
+.stabstr        0x00000000       0x84
+ *(.stabstr)
+ .stabstr       0x00000000       0x84 c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x40
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 timer1PWM.o
+
+.debug_pubnames
+                0x00000000       0xc7
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x1b main.o
+ .debug_pubnames
+                0x0000001b       0xac timer1PWM.o
+
+.debug_info     0x00000000      0x325
+ *(.debug_info)
+ .debug_info    0x00000000       0xc0 main.o
+ .debug_info    0x000000c0      0x265 timer1PWM.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x1a2
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x91 main.o
+ .debug_abbrev  0x00000091      0x111 timer1PWM.o
+
+.debug_line     0x00000000      0x2ca
+ *(.debug_line)
+ .debug_line    0x00000000      0x13b main.o
+ .debug_line    0x0000013b      0x18f timer1PWM.o
+
+.debug_frame    0x00000000       0xf0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x20 main.o
+ .debug_frame   0x00000020       0xd0 timer1PWM.o
+
+.debug_str      0x00000000      0x12e
+ *(.debug_str)
+ .debug_str     0x00000000       0xaa main.o
+                                 0xde (size before relaxing)
+ .debug_str     0x000000aa       0x84 timer1PWM.o
+                                0x140 (size before relaxing)
+
+.debug_loc      0x00000000       0xe0
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x80 main.o
+ .debug_loc     0x00000080       0x60 timer1PWM.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(main.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+__bad_interrupt                                   c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__bss_end                                         c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+__bss_start                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+__data_end                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+__data_load_start                                 c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+__data_start                                      c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+__do_clear_bss                                    c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_clear_bss.o)
+                                                  timer1PWM.o
+                                                  main.o
+__do_copy_data                                    c:/winavr/bin/../lib/gcc/avr/4.1.1/avr4\libgcc.a(_copy_data.o)
+                                                  timer1PWM.o
+                                                  main.o
+__heap_end                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__init                                            c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__stack                                           c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_1                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_10                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_11                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_12                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_13                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_14                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_15                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_16                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_17                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_18                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_19                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_2                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_20                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_21                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_22                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_23                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_24                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_25                                       c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_3                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_4                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_5                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_6                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_7                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_8                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_9                                        c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vector_default                                  c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+__vectors                                         c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+initPWM                                           timer1PWM.o
+                                                  main.o
+initPWM08                                         timer1PWM.o
+initPWM09                                         timer1PWM.o
+initPWM10                                         timer1PWM.o
+main                                              main.o
+                                                  c:/winavr/bin/../lib/gcc/avr/4.1.1/../../../../avr/lib/avr4/crtm48.o
+setCHA                                            timer1PWM.o
+                                                  main.o
+setCHA08                                          timer1PWM.o
+setCHA09                                          timer1PWM.o
+setCHA10                                          timer1PWM.o
+setCHB                                            timer1PWM.o
+                                                  main.o
+setCHB08                                          timer1PWM.o
+setCHB09                                          timer1PWM.o
+setCHB10                                          timer1PWM.o

@@ -1,0 +1,469 @@
+Archive member included because of file (symbol)
+
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+                              Main.o (__do_copy_data)
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+                              Main.o (__do_clear_bss)
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(itoa.o)
+                              Main.o (itoa)
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(strcat.o)
+                              Main.o (strcat)
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+                              C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(itoa.o) (strrev)
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_udivmodhi4.o)
+                              C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(itoa.o) (__udivmodhi4)
+
+Allocating common symbols
+Common symbol       size              file
+
+x                   0x8               Main.o
+prtc                0x1               Main.o
+prtd                0x1               Main.o
+cnt                 0x2               Main.o
+dird                0x1               Main.o
+dirb                0x1               Main.o
+prtb                0x1               Main.o
+prta                0x1               Main.o
+dirc                0x1               Main.o
+s                   0x1               Main.o
+dira                0x1               Main.o
+str                 0x32              Main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+LOAD Main.o
+LOAD avrstdio.o
+LOAD M32io.o
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libm.a
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0xcd0
+ *(.vectors)
+ .vectors       0x00000000       0x54 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+                0x00000054                __ctors_start = .
+ *(.ctors)
+                0x00000054                __ctors_end = .
+                0x00000054                __dtors_start = .
+ *(.dtors)
+                0x00000054                __dtors_end = .
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000054                . = ALIGN (0x2)
+ *(.init0)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000054        0xc C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+ *(.init3)
+ *(.init4)
+ .init4         0x00000060       0x16 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+                0x00000060                __do_copy_data
+ .init4         0x00000076       0x10 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000076                __do_clear_bss
+ *(.init5)
+ *(.init6)
+ *(.init7)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000086        0x4 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+ *(.text)
+ .text          0x0000008a        0x4 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+                0x0000008a                __vector_1
+                0x0000008a                __vector_12
+                0x0000008a                __bad_interrupt
+                0x0000008a                __vector_6
+                0x0000008a                __vector_3
+                0x0000008a                __vector_11
+                0x0000008a                __vector_13
+                0x0000008a                __vector_17
+                0x0000008a                __vector_19
+                0x0000008a                __vector_7
+                0x0000008a                __vector_5
+                0x0000008a                __vector_4
+                0x0000008a                __vector_9
+                0x0000008a                __vector_2
+                0x0000008a                __vector_15
+                0x0000008a                __vector_8
+                0x0000008a                __vector_14
+                0x0000008a                __vector_10
+                0x0000008a                __vector_16
+                0x0000008a                __vector_18
+                0x0000008a                __vector_20
+ .text          0x0000008e       0x8a Main.o
+                0x0000008e                main
+ .text          0x00000118      0x666 avrstdio.o
+                0x00000118                enable_uart
+                0x00000130                uprintf
+                0x00000340                rxb
+                0x00000128                txb
+                0x0000034e                uscanf
+ .text          0x0000077e      0x4aa M32io.o
+                0x000008a8                setIOC
+                0x00000a34                setStateB
+                0x00000ab8                setStateC
+                0x00000bda                getStateB
+                0x00000bc0                getStateA
+                0x000009b0                setStateA
+                0x00000824                setIOB
+                0x00000b3c                setStateD
+                0x000007a0                setIOA
+                0x00000c0e                getStateD
+                0x00000bf4                getStateC
+                0x0000092c                setIOD
+                0x0000077e                initIO
+ .text          0x00000c28       0x4a C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(itoa.o)
+                0x00000c28                itoa
+ .text          0x00000c72       0x16 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(strcat.o)
+                0x00000c72                strcat
+ .text          0x00000c88       0x20 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+                0x00000c88                strrev
+                0x00000ca8                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00000ca8       0x28 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x00000ca8                __udivmodhi4
+                0x00000cd0                . = ALIGN (0x2)
+ *(.fini9)
+ *(.fini8)
+ *(.fini7)
+ *(.fini6)
+ *(.fini5)
+ *(.fini4)
+ *(.fini3)
+ *(.fini2)
+ *(.fini1)
+ *(.fini0)
+                0x00000cd0                _etext = .
+
+.data           0x00800060        0x2 load address 0x00000cd0
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x2 Main.o
+ *(.gnu.linkonce.d*)
+                0x00800062                . = ALIGN (0x2)
+                0x00800062                _edata = .
+                0x00800062                PROVIDE (__data_end, .)
+
+.bss            0x00800062       0x45
+                0x00800062                PROVIDE (__bss_start, .)
+ *(.bss)
+ *(COMMON)
+ COMMON         0x00800062       0x45 Main.o
+                                  0x0 (size before relaxing)
+                0x00800062                x
+                0x0080006a                prtc
+                0x0080006b                prtd
+                0x0080006c                cnt
+                0x0080006e                dird
+                0x0080006f                dirb
+                0x00800070                prtb
+                0x00800071                prta
+                0x00800072                dirc
+                0x00800073                s
+                0x00800074                dira
+                0x00800075                str
+                0x008000a7                PROVIDE (__bss_end, .)
+                0x00000cd0                __data_load_start = LOADADDR (.data)
+                0x00000cd2                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008000a7        0x0
+                0x008000a7                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008000a7                PROVIDE (__noinit_end, .)
+                0x008000a7                _end = .
+                0x008000a7                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x3c
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x14 Main.o
+ .debug_aranges
+                0x00000014       0x14 avrstdio.o
+ .debug_aranges
+                0x00000028       0x14 M32io.o
+
+.debug_pubnames
+                0x00000000      0x1dd
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x7f Main.o
+ .debug_pubnames
+                0x0000007f       0x5d avrstdio.o
+ .debug_pubnames
+                0x000000dc      0x101 M32io.o
+
+.debug_info     0x00000000      0x6a2
+ *(.debug_info)
+ .debug_info    0x00000000      0x1ce Main.o
+ .debug_info    0x000001ce      0x181 avrstdio.o
+ .debug_info    0x0000034f      0x353 M32io.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x280
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0xd2 Main.o
+ .debug_abbrev  0x000000d2      0x103 avrstdio.o
+ .debug_abbrev  0x000001d5       0xab M32io.o
+
+.debug_line     0x00000000      0x52f
+ *(.debug_line)
+ .debug_line    0x00000000      0x167 Main.o
+ .debug_line    0x00000167      0x18c avrstdio.o
+ .debug_line    0x000002f3      0x23c M32io.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x00000000      0x195
+ *(.debug_str)
+ .debug_str     0x00000000       0xd0 Main.o
+                                0x109 (size before relaxing)
+ .debug_str     0x000000d0       0x3a avrstdio.o
+                                 0xe4 (size before relaxing)
+ .debug_str     0x0000010a       0x8b M32io.o
+                                0x154 (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(Main.elf elf32-avr)
+
+Cross Reference Table
+
+Symbol                                            File
+__bad_interrupt                                   C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__bss_end                                         C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+__bss_start                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+__data_end                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+__data_load_start                                 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+__data_start                                      C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+__do_clear_bss                                    C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+                                                  M32io.o
+                                                  avrstdio.o
+                                                  Main.o
+__do_copy_data                                    C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+                                                  M32io.o
+                                                  avrstdio.o
+                                                  Main.o
+__heap_end                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__init                                            C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__stack                                           C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+                                                  Main.o
+__udivmodhi4                                      C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_udivmodhi4.o)
+                                                  C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(itoa.o)
+__vector_1                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_10                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_11                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_12                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_13                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_14                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_15                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_16                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_17                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_18                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_19                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_2                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_20                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_3                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_4                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_5                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_6                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_7                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_8                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_9                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_default                                  C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vectors                                         C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+cnt                                               Main.o
+dira                                              M32io.o
+                                                  Main.o
+dirb                                              M32io.o
+                                                  Main.o
+dirc                                              M32io.o
+                                                  Main.o
+dird                                              M32io.o
+                                                  Main.o
+enable_uart                                       avrstdio.o
+                                                  Main.o
+getStateA                                         M32io.o
+getStateB                                         M32io.o
+getStateC                                         M32io.o
+getStateD                                         M32io.o
+initIO                                            M32io.o
+                                                  Main.o
+itoa                                              C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(itoa.o)
+                                                  Main.o
+main                                              Main.o
+                                                  C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+prta                                              M32io.o
+                                                  Main.o
+prtb                                              M32io.o
+                                                  Main.o
+prtc                                              M32io.o
+                                                  Main.o
+prtd                                              M32io.o
+                                                  Main.o
+rxb                                               avrstdio.o
+s                                                 avrstdio.o
+                                                  Main.o
+setIOA                                            M32io.o
+setIOB                                            M32io.o
+                                                  Main.o
+setIOC                                            M32io.o
+setIOD                                            M32io.o
+                                                  Main.o
+setStateA                                         M32io.o
+setStateB                                         M32io.o
+setStateC                                         M32io.o
+setStateD                                         M32io.o
+str                                               avrstdio.o
+                                                  Main.o
+strcat                                            C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(strcat.o)
+                                                  Main.o
+strrev                                            C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+                                                  C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a(itoa.o)
+txb                                               avrstdio.o
+uprintf                                           avrstdio.o
+                                                  Main.o
+uscanf                                            avrstdio.o
+x                                                 avrstdio.o
+                                                  Main.o

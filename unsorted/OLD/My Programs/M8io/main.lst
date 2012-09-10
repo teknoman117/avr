@@ -1,0 +1,154 @@
+   1               		.file	"main.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	DELAY_US
+  20               	DELAY_US:
+  21               	.LFB5:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 880F      		lsl r24
+  27 0002 991F      		rol r25
+  28               	.LM3:
+  29               	/* #APP */
+  30 0004 0197      		1: sbiw r24,1
+  31 0006 F1F7      		brne 1b
+  32               	/* #NOAPP */
+  33               	/* epilogue: frame size=0 */
+  34 0008 0895      		ret
+  35               	/* epilogue end (size=1) */
+  36               	/* function DELAY_US size 7 (6) */
+  37               	.LFE5:
+  39               	.global	DELAY_MS
+  41               	DELAY_MS:
+  42               	.LFB6:
+  43               	.LM4:
+  44               	/* prologue: frame size=0 */
+  45 000a CF93      		push r28
+  46 000c DF93      		push r29
+  47               	/* prologue end (size=2) */
+  48               	.LM5:
+  49 000e 0097      		sbiw r24,0
+  50 0010 31F0      		breq .L8
+  51 0012 EC01      		movw r28,r24
+  52               	.L6:
+  53               	.LM6:
+  54 0014 88EE      		ldi r24,lo8(1000)
+  55 0016 93E0      		ldi r25,hi8(1000)
+  56 0018 F3DF      		rcall DELAY_US
+  57               	.LM7:
+  58 001a 2197      		sbiw r28,1
+  59 001c D9F7      		brne .L6
+  60               	.L8:
+  61               	/* epilogue: frame size=0 */
+  62 001e DF91      		pop r29
+  63 0020 CF91      		pop r28
+  64 0022 0895      		ret
+  65               	/* epilogue end (size=3) */
+  66               	/* function DELAY_MS size 14 (9) */
+  67               	.LFE6:
+  69               	.global	main_prg
+  71               	main_prg:
+  72               	.LFB4:
+  73               	.LM8:
+  74               	/* prologue: frame size=0 */
+  75               	/* prologue end (size=0) */
+  76               	.LM9:
+  77 0024 60E0      		ldi r22,lo8(0)
+  78 0026 84E0      		ldi r24,lo8(4)
+  79 0028 00D0      		rcall setStateD
+  80               	.L10:
+  81               	.LM10:
+  82 002a 61E0      		ldi r22,lo8(1)
+  83 002c 83E0      		ldi r24,lo8(3)
+  84 002e 00D0      		rcall setStateD
+  85               	.LM11:
+  86 0030 80E9      		ldi r24,lo8(400)
+  87 0032 91E0      		ldi r25,hi8(400)
+  88 0034 EADF      		rcall DELAY_MS
+  89               	.LM12:
+  90 0036 60E0      		ldi r22,lo8(0)
+  91 0038 83E0      		ldi r24,lo8(3)
+  92 003a 00D0      		rcall setStateD
+  93               	.LM13:
+  94 003c 88E5      		ldi r24,lo8(600)
+  95 003e 92E0      		ldi r25,hi8(600)
+  96 0040 E4DF      		rcall DELAY_MS
+  97               	.LM14:
+  98 0042 F3CF      		rjmp .L10
+  99               	/* epilogue: frame size=0 */
+ 100               	/* epilogue: noreturn */
+ 101               	/* epilogue end (size=0) */
+ 102               	/* function main_prg size 16 (16) */
+ 103               	.LFE4:
+ 105               	.global	main
+ 107               	main:
+ 108               	.LFB3:
+ 109               	.LM15:
+ 110               	/* prologue: frame size=0 */
+ 111 0044 C0E0      		ldi r28,lo8(__stack - 0)
+ 112 0046 D0E0      		ldi r29,hi8(__stack - 0)
+ 113 0048 DEBF      		out __SP_H__,r29
+ 114 004a CDBF      		out __SP_L__,r28
+ 115               	/* prologue end (size=4) */
+ 116               	.LM16:
+ 117 004c 00D0      		rcall initIO
+ 118               	.LM17:
+ 119 004e 61E0      		ldi r22,lo8(1)
+ 120 0050 83E0      		ldi r24,lo8(3)
+ 121 0052 00D0      		rcall setIOD
+ 122               	.LM18:
+ 123 0054 61E0      		ldi r22,lo8(1)
+ 124 0056 84E0      		ldi r24,lo8(4)
+ 125 0058 00D0      		rcall setIOD
+ 126               	.LM19:
+ 127 005a E4DF      		rcall main_prg
+ 128               	.LM20:
+ 129 005c 81E0      		ldi r24,lo8(1)
+ 130 005e 90E0      		ldi r25,hi8(1)
+ 131               	/* epilogue: frame size=0 */
+ 132 0060 00C0      		rjmp exit
+ 133               	/* epilogue end (size=1) */
+ 134               	/* function main size 15 (10) */
+ 135               	.LFE3:
+ 137               		.comm prtb,1,1
+ 138               		.comm prtc,1,1
+ 139               		.comm prtd,1,1
+ 140               		.comm dirb,1,1
+ 141               		.comm dirc,1,1
+ 142               		.comm dird,1,1
+ 143               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccMtaaaa.s:20     .text:00000000 DELAY_US
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccMtaaaa.s:41     .text:0000000a DELAY_MS
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccMtaaaa.s:71     .text:00000024 main_prg
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccMtaaaa.s:107    .text:00000044 main
+                            *COM*:00000001 prtb
+                            *COM*:00000001 prtc
+                            *COM*:00000001 prtd
+                            *COM*:00000001 dirb
+                            *COM*:00000001 dirc
+                            *COM*:00000001 dird
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+setStateD
+__stack
+initIO
+setIOD
+exit

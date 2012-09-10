@@ -1,0 +1,379 @@
+Archive member included because of file (symbol)
+
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_exit.o)
+                              M32test.o (exit)
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+                              M32test.o (__do_copy_data)
+C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+                              M32test.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+cnt                 0x2               M32test.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+LOAD M32test.o
+LOAD timer1PWM.o
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libm.a
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5\libc.a
+LOAD C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x286
+ *(.vectors)
+ .vectors       0x00000000       0x54 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+                0x00000054                __ctors_start = .
+ *(.ctors)
+                0x00000054                __ctors_end = .
+                0x00000054                __dtors_start = .
+ *(.dtors)
+                0x00000054                __dtors_end = .
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000054                . = ALIGN (0x2)
+ *(.init0)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000054        0xc C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+ *(.init3)
+ *(.init4)
+ .init4         0x00000060       0x16 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+                0x00000060                __do_copy_data
+ .init4         0x00000076       0x10 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000076                __do_clear_bss
+ *(.init5)
+ *(.init6)
+ *(.init7)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000086        0x4 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+ *(.text)
+ .text          0x0000008a        0x4 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+                0x0000008a                __vector_1
+                0x0000008a                __vector_12
+                0x0000008a                __bad_interrupt
+                0x0000008a                __vector_6
+                0x0000008a                __vector_3
+                0x0000008a                __vector_11
+                0x0000008a                __vector_13
+                0x0000008a                __vector_17
+                0x0000008a                __vector_19
+                0x0000008a                __vector_7
+                0x0000008a                __vector_5
+                0x0000008a                __vector_4
+                0x0000008a                __vector_9
+                0x0000008a                __vector_2
+                0x0000008a                __vector_15
+                0x0000008a                __vector_8
+                0x0000008a                __vector_14
+                0x0000008a                __vector_10
+                0x0000008a                __vector_16
+                0x0000008a                __vector_18
+                0x0000008a                __vector_20
+ .text          0x0000008e       0x52 M32test.o
+                0x0000008e                main
+ .text          0x000000e0      0x1a4 timer1PWM.o
+                0x000000f0                initPWM09
+                0x00000110                setCHB08
+                0x0000010a                setCHA
+                0x0000011c                setCHA09
+                0x0000016e                setCHB09
+                0x000000fa                initPWM10
+                0x000000e0                initPWM08
+                0x00000104                setCHA08
+                0x000000ea                initPWM
+                0x00000222                setCHB10
+                0x000001c0                setCHA10
+                0x00000116                setCHB
+                0x00000284                . = ALIGN (0x2)
+ *(.text.*)
+                0x00000284                . = ALIGN (0x2)
+ *(.fini9)
+ *(.fini8)
+ *(.fini7)
+ *(.fini6)
+ *(.fini5)
+ *(.fini4)
+ *(.fini3)
+ *(.fini2)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000284        0x2 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_exit.o)
+                0x00000286                _etext = .
+
+.data           0x00800060        0x0 load address 0x00000286
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ *(.gnu.linkonce.d*)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
+
+.bss            0x00800060        0x2
+                0x00800060                PROVIDE (__bss_start, .)
+ *(.bss)
+ *(COMMON)
+ COMMON         0x00800060        0x2 M32test.o
+                                  0x0 (size before relaxing)
+                0x00800060                cnt
+                0x00800062                PROVIDE (__bss_end, .)
+                0x00000286                __data_load_start = LOADADDR (.data)
+                0x00000286                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800062        0x0
+                0x00800062                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800062                PROVIDE (__noinit_end, .)
+                0x00800062                _end = .
+                0x00800062                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x28
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x14 M32test.o
+ .debug_aranges
+                0x00000014       0x14 timer1PWM.o
+
+.debug_pubnames
+                0x00000000       0xd7
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x23 M32test.o
+ .debug_pubnames
+                0x00000023       0xb4 timer1PWM.o
+
+.debug_info     0x00000000      0x3a9
+ *(.debug_info)
+ .debug_info    0x00000000      0x174 M32test.o
+ .debug_info    0x00000174      0x235 timer1PWM.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x161
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0xde M32test.o
+ .debug_abbrev  0x000000de       0x83 timer1PWM.o
+
+.debug_line     0x00000000      0x2cd
+ *(.debug_line)
+ .debug_line    0x00000000      0x125 M32test.o
+ .debug_line    0x00000125      0x1a8 timer1PWM.o
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str      0x00000000      0x13b
+ *(.debug_str)
+ .debug_str     0x00000000       0xb7 M32test.o
+                                 0xeb (size before relaxing)
+ .debug_str     0x000000b7       0x84 timer1PWM.o
+                                0x11e (size before relaxing)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(M32test.elf elf32-avr)
+
+Cross Reference Table
+
+Symbol                                            File
+__bad_interrupt                                   C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__bss_end                                         C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+__bss_start                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+__data_end                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+__data_load_start                                 C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+__data_start                                      C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+__do_clear_bss                                    C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_clear_bss.o)
+                                                  timer1PWM.o
+                                                  M32test.o
+__do_copy_data                                    C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_copy_data.o)
+                                                  timer1PWM.o
+                                                  M32test.o
+__heap_end                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__init                                            C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__stack                                           C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+                                                  M32test.o
+__vector_1                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_10                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_11                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_12                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_13                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_14                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_15                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_16                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_17                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_18                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_19                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_2                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_20                                       C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_3                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_4                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_5                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_6                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_7                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_8                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_9                                        C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vector_default                                  C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+__vectors                                         C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+_exit                                             C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_exit.o)
+cnt                                               timer1PWM.o
+                                                  M32test.o
+exit                                              C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/avr5\libgcc.a(_exit.o)
+                                                  M32test.o
+initPWM                                           timer1PWM.o
+initPWM08                                         timer1PWM.o
+initPWM09                                         timer1PWM.o
+initPWM10                                         timer1PWM.o
+                                                  M32test.o
+main                                              M32test.o
+                                                  C:/WinAVRold/bin/../lib/gcc/avr/3.4.3/../../../../avr/lib/avr5/crtm32.o
+setCHA                                            timer1PWM.o
+setCHA08                                          timer1PWM.o
+setCHA09                                          timer1PWM.o
+setCHA10                                          timer1PWM.o
+setCHB                                            timer1PWM.o
+                                                  M32test.o
+setCHB08                                          timer1PWM.o
+setCHB09                                          timer1PWM.o
+setCHB10                                          timer1PWM.o

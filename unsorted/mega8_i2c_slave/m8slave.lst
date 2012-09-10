@@ -1,0 +1,412 @@
+GAS LISTING /tmp/cciUthmI.s 			page 1
+
+
+   1               		.file	"m8slave.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.stabs	"/home/robotdude/Programs/AVR_Projects/mega8_i2c_slave/",100,0,2,.Ltext0
+  10               		.stabs	"m8slave.c",100,0,2,.Ltext0
+  11               		.text
+  12               	.Ltext0:
+  13               		.stabs	"gcc2_compiled.",60,0,0,0
+  14               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  15               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  16               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  17               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  18               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  19               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  20               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  21               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  22               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  23               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  24               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  25               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  26               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  29               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h",130,0,0,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h",130,0,0,0
+  32               		.stabs	"int8_t:t(3,1)=(0,10)",128,0,121,0
+  33               		.stabs	"uint8_t:t(3,2)=(0,11)",128,0,122,0
+  34               		.stabs	"int16_t:t(3,3)=(0,1)",128,0,123,0
+  35               		.stabs	"uint16_t:t(3,4)=(0,4)",128,0,124,0
+  36               		.stabs	"int32_t:t(3,5)=(0,3)",128,0,125,0
+  37               		.stabs	"uint32_t:t(3,6)=(0,5)",128,0,126,0
+  38               		.stabs	"int64_t:t(3,7)=(0,6)",128,0,128,0
+  39               		.stabs	"uint64_t:t(3,8)=(0,7)",128,0,129,0
+  40               		.stabs	"intptr_t:t(3,9)=(3,3)",128,0,142,0
+  41               		.stabs	"uintptr_t:t(3,10)=(3,4)",128,0,147,0
+  42               		.stabs	"int_least8_t:t(3,11)=(3,1)",128,0,159,0
+  43               		.stabs	"uint_least8_t:t(3,12)=(3,2)",128,0,164,0
+  44               		.stabs	"int_least16_t:t(3,13)=(3,3)",128,0,169,0
+  45               		.stabs	"uint_least16_t:t(3,14)=(3,4)",128,0,174,0
+  46               		.stabs	"int_least32_t:t(3,15)=(3,5)",128,0,179,0
+  47               		.stabs	"uint_least32_t:t(3,16)=(3,6)",128,0,184,0
+  48               		.stabs	"int_least64_t:t(3,17)=(3,7)",128,0,192,0
+  49               		.stabs	"uint_least64_t:t(3,18)=(3,8)",128,0,199,0
+  50               		.stabs	"int_fast8_t:t(3,19)=(3,1)",128,0,213,0
+  51               		.stabs	"uint_fast8_t:t(3,20)=(3,2)",128,0,218,0
+  52               		.stabs	"int_fast16_t:t(3,21)=(3,3)",128,0,223,0
+  53               		.stabs	"uint_fast16_t:t(3,22)=(3,4)",128,0,228,0
+  54               		.stabs	"int_fast32_t:t(3,23)=(3,5)",128,0,233,0
+  55               		.stabs	"uint_fast32_t:t(3,24)=(3,6)",128,0,238,0
+  56               		.stabs	"int_fast64_t:t(3,25)=(3,7)",128,0,246,0
+  57               		.stabs	"uint_fast64_t:t(3,26)=(3,8)",128,0,253,0
+GAS LISTING /tmp/cciUthmI.s 			page 2
+
+
+  58               		.stabs	"intmax_t:t(3,27)=(3,7)",128,0,273,0
+  59               		.stabs	"uintmax_t:t(3,28)=(3,8)",128,0,278,0
+  60               		.stabn	162,0,0,0
+  61               		.stabs	"int_farptr_t:t(2,1)=(3,5)",128,0,77,0
+  62               		.stabs	"uint_farptr_t:t(2,2)=(3,6)",128,0,81,0
+  63               		.stabn	162,0,0,0
+  64               		.stabn	162,0,0,0
+  65               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/twi.h",130,0,0,0
+  66               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h",130,0,0,0
+  67               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h",130,0,0,0
+  68               		.stabs	"__fuse_t:t(6,1)=(6,2)=s2low:(0,11),0,8;high:(0,11),8,8;;",128,0,203,0
+  69               		.stabn	162,0,0,0
+  70               		.stabn	162,0,0,0
+  71               		.stabn	162,0,0,0
+  72               		.stabs	"__vector_17:F(0,15)",36,0,34,__vector_17
+  73               	.global	__vector_17
+  74               		.type	__vector_17, @function
+  75               	__vector_17:
+  76               		.stabd	46,0,0
+   1:m8slave.c     **** /*
+   2:m8slave.c     ****  *      m8slave.c
+   3:m8slave.c     ****  *      
+   4:m8slave.c     ****  *      Copyright 2009 Nathaniel Robert Lewis <linux.robotdude@gmail.com>
+   5:m8slave.c     ****  *      
+   6:m8slave.c     ****  *      This program is free software; you can redistribute it and/or modify
+   7:m8slave.c     ****  *      it under the terms of the GNU General Public License as published by
+   8:m8slave.c     ****  *      the Free Software Foundation; either version 2 of the License, or
+   9:m8slave.c     ****  *      (at your option) any later version.
+  10:m8slave.c     ****  *      
+  11:m8slave.c     ****  *      This program is distributed in the hope that it will be useful,
+  12:m8slave.c     ****  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:m8slave.c     ****  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:m8slave.c     ****  *      GNU General Public License for more details.
+  15:m8slave.c     ****  *      
+  16:m8slave.c     ****  *      You should have received a copy of the GNU General Public License
+  17:m8slave.c     ****  *      along with this program; if not, write to the Free Software
+  18:m8slave.c     ****  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  19:m8slave.c     ****  *      MA 02110-1301, USA.
+  20:m8slave.c     ****  */
+  21:m8slave.c     **** #define F_CPU 8000000UL
+  22:m8slave.c     **** 
+  23:m8slave.c     **** #include <util/delay.h>
+  24:m8slave.c     **** #include <util/twi.h>
+  25:m8slave.c     **** #include <avr/io.h>
+  26:m8slave.c     **** #include <avr/interrupt.h>
+  27:m8slave.c     **** #include <stdint.h>
+  28:m8slave.c     **** 
+  29:m8slave.c     **** volatile uint8_t sla = 0;
+  30:m8slave.c     **** volatile uint8_t twst = 0;
+  31:m8slave.c     **** volatile uint8_t reg = 0;
+  32:m8slave.c     **** volatile uint8_t data = 0;
+  33:m8slave.c     **** 
+  34:m8slave.c     **** ISR (TWI_vect) {
+  77               		.stabn	68,0,34,.LM0-.LFBB1
+  78               	.LM0:
+  79               	.LFBB1:
+  80 0000 1F92      		push __zero_reg__
+GAS LISTING /tmp/cciUthmI.s 			page 3
+
+
+  81 0002 0F92      		push r0
+  82 0004 0FB6      		in r0,__SREG__
+  83 0006 0F92      		push r0
+  84 0008 1124      		clr __zero_reg__
+  85 000a 8F93      		push r24
+  86               	/* prologue: Signal */
+  87               	/* frame size = 0 */
+  35:m8slave.c     ****     cli();          //disable interrupts
+  88               		.stabn	68,0,35,.LM1-.LFBB1
+  89               	.LM1:
+  90               	/* #APP */
+  91               	 ;  35 "m8slave.c" 1
+  92 000c F894      		cli
+  93               	 ;  0 "" 2
+  36:m8slave.c     ****     twst = TWSR & 0xF8;
+  94               		.stabn	68,0,36,.LM2-.LFBB1
+  95               	.LM2:
+  96               	/* #NOAPP */
+  97 000e 81B1      		in r24,33-0x20
+  98 0010 887F      		andi r24,lo8(-8)
+  99 0012 8093 0000 		sts twst,r24
+  37:m8slave.c     ****     if(twst == TW_SR_SLA_ACK) {
+ 100               		.stabn	68,0,37,.LM3-.LFBB1
+ 101               	.LM3:
+ 102 0016 8091 0000 		lds r24,twst
+ 103 001a 8036      		cpi r24,lo8(96)
+ 104 001c 01F4      		brne .L2
+  38:m8slave.c     ****         TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWEA);
+ 105               		.stabn	68,0,38,.LM4-.LFBB1
+ 106               	.LM4:
+ 107 001e 84EC      		ldi r24,lo8(-60)
+ 108 0020 86BF      		out 86-0x20,r24
+ 109               	.L3:
+  39:m8slave.c     ****         while (!(TWCR & (1 << TWINT)));
+ 110               		.stabn	68,0,39,.LM5-.LFBB1
+ 111               	.LM5:
+ 112 0022 06B6      		in __tmp_reg__,86-0x20
+ 113 0024 07FE      		sbrs __tmp_reg__,7
+ 114 0026 00C0      		rjmp .L3
+  40:m8slave.c     ****         reg = TWDR;	
+ 115               		.stabn	68,0,40,.LM6-.LFBB1
+ 116               	.LM6:
+ 117 0028 83B1      		in r24,35-0x20
+ 118 002a 8093 0000 		sts reg,r24
+  41:m8slave.c     ****         twst = TWSR & 0xF8;
+ 119               		.stabn	68,0,41,.LM7-.LFBB1
+ 120               	.LM7:
+ 121 002e 81B1      		in r24,33-0x20
+ 122 0030 887F      		andi r24,lo8(-8)
+ 123 0032 8093 0000 		sts twst,r24
+  42:m8slave.c     ****         if(twst != TW_SR_DATA_ACK) {PORTD = 3;}
+ 124               		.stabn	68,0,42,.LM8-.LFBB1
+ 125               	.LM8:
+ 126 0036 8091 0000 		lds r24,twst
+ 127 003a 8038      		cpi r24,lo8(-128)
+ 128 003c 01F0      		breq .L4
+ 129 003e 83E0      		ldi r24,lo8(3)
+GAS LISTING /tmp/cciUthmI.s 			page 4
+
+
+ 130 0040 82BB      		out 50-0x20,r24
+ 131               	.L4:
+  43:m8slave.c     ****         TWCR = (1 << TWINT) |(1 << TWEN) | (1 << TWEA);
+ 132               		.stabn	68,0,43,.LM9-.LFBB1
+ 133               	.LM9:
+ 134 0042 84EC      		ldi r24,lo8(-60)
+ 135 0044 86BF      		out 86-0x20,r24
+ 136               	.L5:
+  44:m8slave.c     ****         while (!(TWCR & (1 << TWINT)));
+ 137               		.stabn	68,0,44,.LM10-.LFBB1
+ 138               	.LM10:
+ 139 0046 06B6      		in __tmp_reg__,86-0x20
+ 140 0048 07FE      		sbrs __tmp_reg__,7
+ 141 004a 00C0      		rjmp .L5
+  45:m8slave.c     ****         data = TWDR;
+ 142               		.stabn	68,0,45,.LM11-.LFBB1
+ 143               	.LM11:
+ 144 004c 83B1      		in r24,35-0x20
+ 145 004e 8093 0000 		sts data,r24
+  46:m8slave.c     ****         twst = TWSR & 0xF8;
+ 146               		.stabn	68,0,46,.LM12-.LFBB1
+ 147               	.LM12:
+ 148 0052 81B1      		in r24,33-0x20
+ 149 0054 887F      		andi r24,lo8(-8)
+ 150 0056 8093 0000 		sts twst,r24
+  47:m8slave.c     ****         if(twst != TW_SR_DATA_ACK) {PORTD = 7;}
+ 151               		.stabn	68,0,47,.LM13-.LFBB1
+ 152               	.LM13:
+ 153 005a 8091 0000 		lds r24,twst
+ 154 005e 8038      		cpi r24,lo8(-128)
+ 155 0060 01F0      		breq .L6
+ 156 0062 87E0      		ldi r24,lo8(7)
+ 157 0064 82BB      		out 50-0x20,r24
+ 158               	.L6:
+  48:m8slave.c     ****         if(reg == 1) {
+ 159               		.stabn	68,0,48,.LM14-.LFBB1
+ 160               	.LM14:
+ 161 0066 8091 0000 		lds r24,reg
+ 162 006a 8130      		cpi r24,lo8(1)
+ 163 006c 01F4      		brne .L7
+  49:m8slave.c     ****             if(data) PORTB |= (1 << PORTB1);
+ 164               		.stabn	68,0,49,.LM15-.LFBB1
+ 165               	.LM15:
+ 166 006e 8091 0000 		lds r24,data
+ 167 0072 8823      		tst r24
+ 168 0074 01F0      		breq .L8
+ 169 0076 C19A      		sbi 56-0x20,1
+ 170 0078 00C0      		rjmp .L7
+ 171               	.L8:
+  50:m8slave.c     ****             else {PORTB &= ~(1 << PORTB1);}
+ 172               		.stabn	68,0,50,.LM16-.LFBB1
+ 173               	.LM16:
+ 174 007a C198      		cbi 56-0x20,1
+ 175               	.L7:
+  51:m8slave.c     ****         }
+  52:m8slave.c     ****         if(reg == 2) {
+ 176               		.stabn	68,0,52,.LM17-.LFBB1
+GAS LISTING /tmp/cciUthmI.s 			page 5
+
+
+ 177               	.LM17:
+ 178 007c 8091 0000 		lds r24,reg
+ 179 0080 8230      		cpi r24,lo8(2)
+ 180 0082 01F4      		brne .L2
+  53:m8slave.c     ****             if(data) PORTB |= (1 << PORTB2);
+ 181               		.stabn	68,0,53,.LM18-.LFBB1
+ 182               	.LM18:
+ 183 0084 8091 0000 		lds r24,data
+ 184 0088 8823      		tst r24
+ 185 008a 01F0      		breq .L9
+ 186 008c C29A      		sbi 56-0x20,2
+ 187 008e 00C0      		rjmp .L2
+ 188               	.L9:
+  54:m8slave.c     ****             else {PORTB &= ~(1 << PORTB2);}
+ 189               		.stabn	68,0,54,.LM19-.LFBB1
+ 190               	.LM19:
+ 191 0090 C298      		cbi 56-0x20,2
+ 192               	.L2:
+  55:m8slave.c     ****         }	
+  56:m8slave.c     ****     }
+  57:m8slave.c     ****     TWCR = (1 << TWINT) | (1 << TWEN) | (1 <<TWEA) | (1 << TWIE); 
+ 193               		.stabn	68,0,57,.LM20-.LFBB1
+ 194               	.LM20:
+ 195 0092 85EC      		ldi r24,lo8(-59)
+ 196 0094 86BF      		out 86-0x20,r24
+  58:m8slave.c     ****     sei();
+ 197               		.stabn	68,0,58,.LM21-.LFBB1
+ 198               	.LM21:
+ 199               	/* #APP */
+ 200               	 ;  58 "m8slave.c" 1
+ 201 0096 7894      		sei
+ 202               	 ;  0 "" 2
+ 203               	/* epilogue start */
+  59:m8slave.c     **** }
+ 204               		.stabn	68,0,59,.LM22-.LFBB1
+ 205               	.LM22:
+ 206               	/* #NOAPP */
+ 207 0098 8F91      		pop r24
+ 208 009a 0F90      		pop r0
+ 209 009c 0FBE      		out __SREG__,r0
+ 210 009e 0F90      		pop r0
+ 211 00a0 1F90      		pop __zero_reg__
+ 212 00a2 1895      		reti
+ 213               		.size	__vector_17, .-__vector_17
+ 214               	.Lscope1:
+ 215               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 216               		.stabd	78,0,0
+ 217               		.stabs	"main:F(0,1)",36,0,61,main
+ 218               	.global	main
+ 219               		.type	main, @function
+ 220               	main:
+ 221               		.stabd	46,0,0
+  60:m8slave.c     **** 
+  61:m8slave.c     **** int main ( void ) {
+ 222               		.stabn	68,0,61,.LM23-.LFBB2
+ 223               	.LM23:
+ 224               	.LFBB2:
+GAS LISTING /tmp/cciUthmI.s 			page 6
+
+
+ 225               	/* prologue: function */
+ 226               	/* frame size = 0 */
+  62:m8slave.c     **** 	DDRB |= (1 << PORTB1) | (1 << PORTB2);
+ 227               		.stabn	68,0,62,.LM24-.LFBB2
+ 228               	.LM24:
+ 229 00a4 87B3      		in r24,55-0x20
+ 230 00a6 8660      		ori r24,lo8(6)
+ 231 00a8 87BB      		out 55-0x20,r24
+  63:m8slave.c     **** 	DDRD = 0xFF;
+ 232               		.stabn	68,0,63,.LM25-.LFBB2
+ 233               	.LM25:
+ 234 00aa 8FEF      		ldi r24,lo8(-1)
+ 235 00ac 81BB      		out 49-0x20,r24
+  64:m8slave.c     **** 	PORTB = 0;
+ 236               		.stabn	68,0,64,.LM26-.LFBB2
+ 237               	.LM26:
+ 238 00ae 18BA      		out 56-0x20,__zero_reg__
+  65:m8slave.c     **** 	PORTD = 0;
+ 239               		.stabn	68,0,65,.LM27-.LFBB2
+ 240               	.LM27:
+ 241 00b0 12BA      		out 50-0x20,__zero_reg__
+  66:m8slave.c     **** 	TWBR = 128;
+ 242               		.stabn	68,0,66,.LM28-.LFBB2
+ 243               	.LM28:
+ 244 00b2 80E8      		ldi r24,lo8(-128)
+ 245 00b4 80B9      		out 32-0x20,r24
+  67:m8slave.c     **** 	TWSR = 0x00;
+ 246               		.stabn	68,0,67,.LM29-.LFBB2
+ 247               	.LM29:
+ 248 00b6 11B8      		out 33-0x20,__zero_reg__
+  68:m8slave.c     **** 	TWAR = 0xca;     //set the slave address for the TWI unit
+ 249               		.stabn	68,0,68,.LM30-.LFBB2
+ 250               	.LM30:
+ 251 00b8 8AEC      		ldi r24,lo8(-54)
+ 252 00ba 82B9      		out 34-0x20,r24
+  69:m8slave.c     **** 	TWCR = (1 << TWEN) | (1 <<TWEA) | (1 << TWIE);  //enable TWI
+ 253               		.stabn	68,0,69,.LM31-.LFBB2
+ 254               	.LM31:
+ 255 00bc 85E4      		ldi r24,lo8(69)
+ 256 00be 86BF      		out 86-0x20,r24
+  70:m8slave.c     **** 	sei();           //enable interrupts
+ 257               		.stabn	68,0,70,.LM32-.LFBB2
+ 258               	.LM32:
+ 259               	/* #APP */
+ 260               	 ;  70 "m8slave.c" 1
+ 261 00c0 7894      		sei
+ 262               	 ;  0 "" 2
+ 263               	/* #NOAPP */
+ 264               	.L14:
+ 265 00c2 00C0      		rjmp .L14
+ 266               		.size	main, .-main
+ 267               	.Lscope2:
+ 268               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 269               		.stabd	78,0,0
+ 270               	.global	sla
+ 271               	.global	sla
+ 272               		.section .bss
+GAS LISTING /tmp/cciUthmI.s 			page 7
+
+
+ 273               		.type	sla, @object
+ 274               		.size	sla, 1
+ 275               	sla:
+ 276 0000 00        		.skip 1,0
+ 277               	.global	twst
+ 278               	.global	twst
+ 279               		.type	twst, @object
+ 280               		.size	twst, 1
+ 281               	twst:
+ 282 0001 00        		.skip 1,0
+ 283               	.global	reg
+ 284               	.global	reg
+ 285               		.type	reg, @object
+ 286               		.size	reg, 1
+ 287               	reg:
+ 288 0002 00        		.skip 1,0
+ 289               	.global	data
+ 290               	.global	data
+ 291               		.type	data, @object
+ 292               		.size	data, 1
+ 293               	data:
+ 294 0003 00        		.skip 1,0
+ 295               		.stabs	"sla:G(0,16)=B(3,2)",32,0,29,0
+ 296               		.stabs	"twst:G(0,16)",32,0,30,0
+ 297               		.stabs	"reg:G(0,16)",32,0,31,0
+ 298               		.stabs	"data:G(0,16)",32,0,32,0
+ 299               		.text
+ 300               		.stabs	"",100,0,0,.Letext0
+ 301               	.Letext0:
+GAS LISTING /tmp/cciUthmI.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 m8slave.c
+     /tmp/cciUthmI.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cciUthmI.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cciUthmI.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cciUthmI.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cciUthmI.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cciUthmI.s:75     .text:0000000000000000 __vector_17
+     /tmp/cciUthmI.s:281    .bss:0000000000000001 twst
+     /tmp/cciUthmI.s:287    .bss:0000000000000002 reg
+     /tmp/cciUthmI.s:293    .bss:0000000000000003 data
+     /tmp/cciUthmI.s:220    .text:00000000000000a4 main
+     /tmp/cciUthmI.s:275    .bss:0000000000000000 sla
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

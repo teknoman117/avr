@@ -1,0 +1,42 @@
+Documentation for i2c.h
+
+Example is included under the i2c directory in the Examples directory
+
+---------------Information-------------------------
+
+This header controls the I2C controller inside the AVR.  The functions allow
+for all the of the kinds of master control EXCEPT for Multi Master control
+
+---------------Definitions-------------------------
+
+I2C_PRESCALER_1       -prescaler of 1
+I2C_PRESCALER_4       -prescaler of 4
+I2C_PRESCALER_16      -prescaler of 16
+I2C_PRESCALER_64      -prescaler of 64
+
+--------------Functions------------------------------
+
+void init_i2c ( uint8_t bitrate, uint8_t prescaler ) - initalize the I2C controller
+    -bitrate - part of the equation to control the bit rate of the I2C controller
+    -prescaler - one of the I2C_PRESCALER definitions defining the prescaler
+    
+int8_t i2c_start ( uint8_t address ) - send a start condition + address
+    -address - the address of the I2C slave with the direction bit (even is write, odd is read)
+        ex) 0xE0 - write address
+        ex) 0xE1 - read address of 0xE0
+    -return codes:
+     -1 - could not connect or device not ready
+     0 - ack received
+
+void i2c_stop ( void ) - generate a stop condition on the I2C bus
+
+int8_t i2c_txb ( uint8_t b ) - write a byte over the I2C bus
+    -b - the byte to be transmitted
+    -return codes:
+     -1 - an error occured, data not acknowledged
+     0 - an ACK acknowledgement
+     1 - a NACK acknowledgement
+     
+uint8_t i2c_rxbAck ( void ) - gets a byte off of the I2C bus, sends an ack to the slave, and returns the byte
+
+uint8_t i2c_rxbNack ( void ) - gets a byte off of the I2C bus, sends an nack to the slave, and returns the byte

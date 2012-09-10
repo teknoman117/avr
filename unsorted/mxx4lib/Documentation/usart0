@@ -1,0 +1,59 @@
+Documentation for usart0.h
+
+Example is included under the usart0 directory in the Examples directory
+
+---------------Information-------------------------
+
+usart0.h is the most basic header to control usart0.  It supports
+transmitting single bytes and strings of bytes. The receive function
+won't catch a byte if its been received before it was called, so there
+is a chance of data loss if one's not careful. The functions for
+reading include single byte reading, multi byte reading, and reading
+until a certain byte is received
+
+---------------Definitions-------------------------
+
+DB8            -the bit combos for a 8 bit data frame
+DB7            -the bit combos for a 7 bit data frame
+DB6            -the bit combos for a 6 bit data frame
+DB5            -the bit combos for a 5 bit data frame
+
+SB1            -the bit combos for 1 stop bit
+SB2            -the bit combos for 2 stop bits
+
+P_N            -the bit combos for no parity
+P_E            -the bit combos for even parity
+P_O            -the bit combos for odd parity
+
+--------------Functions------------------------------
+
+void init_usart0 ( uint16_t ubrr, uint8_t specs ) -- starts the usart with ubrr of ubrr and the settings defined by specs
+    -ubrr - the ubrr value for a desired baud rate, consult the AVR datasheet for some pre determined ones
+    -specs - the specifications for the frame format for the serial port.  They are set by combining the definitions
+      ex) init_usart0( 51, DB8 | P_N | SB1 );  //enable the usart with a ubrr of 51 and a frame format of 8 data bits, no parity, and 1 stop bit
+      ex) init_usart0( 51, DB7 | P_E | SB1 );  //enable the usart with a ubrr of 51 and a frame format of 7 data bits, even parity, and 1 stop bit
+
+void txb_0 ( uint8_t b ) -- transmits byte b over usart0
+
+uint8_t rxb_0 ( void ) -- waits for and returns a byte from usart0
+
+void write_0 ( uint8_t *bytes, uint16_t n ) -- write a string of bytes to usart 0
+    --bytes - the bytes to transmit
+    --n - the number of bytes to transmit
+
+void write_0s ( char *bytes, uint16_t n ) -- write a string of characters to usart 0  (for use with character strings, ex: "Hello")
+    --bytes - the characters to transmit
+    --n - the number of characters to transmit
+
+void read_0 ( uint8_t *bytes, uint16_t n ) -- read a string of bytes from usart 0
+    --bytes - the array to store the bytes in
+    --n - the number of bytes to get
+
+void read_0s ( char *chars, uint16_t n, char stopchar ) -- read a string of characters from usart0
+    --chars - the array to store the string in
+    --n - the maximum amount of characters to get
+    --stopchar - the character to stop receiving on  
+
+    
+
+  

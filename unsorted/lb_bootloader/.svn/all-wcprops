@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/foodloader/!svn/ver/33/releases/0.21
+END
+foodloader.c
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/foodloader/!svn/ver/33/releases/0.21/foodloader.c
+END
+uart.h
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/foodloader/!svn/ver/33/releases/0.21/uart.h
+END
+LICENSE
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/foodloader/!svn/ver/33/releases/0.21/LICENSE
+END
+fuses.txt
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/foodloader/!svn/ver/33/releases/0.21/fuses.txt
+END
+config.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/foodloader/!svn/ver/33/releases/0.21/config.h
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/foodloader/!svn/ver/33/releases/0.21/Makefile
+END
+avr.mk
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/foodloader/!svn/ver/33/releases/0.21/avr.mk
+END

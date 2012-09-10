@@ -1,0 +1,163 @@
+   1               		.file	"PWM.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 00D0      		rcall initPWM
+  27               	.LM3:
+  28 0002 8FEF      		ldi r24,lo8(-1)
+  29 0004 81BB      		out 49-0x20,r24
+  30 0006 81B3      		in r24,49-0x20
+  31 0008 87BB      		out 55-0x20,r24
+  32               	.LVL0:
+  33               	.L2:
+  34               	.LM4:
+  35 000a 8FEF      		ldi r24,lo8(255)
+  36 000c 90E0      		ldi r25,hi8(255)
+  37               	.LVL1:
+  38 000e 00D0      		rcall setCHA
+  39               	.LM5:
+  40 0010 8FEF      		ldi r24,lo8(255)
+  41 0012 90E0      		ldi r25,hi8(255)
+  42 0014 00D0      		rcall setCHB
+  43 0016 20E0      		ldi r18,lo8(0)
+  44 0018 30E0      		ldi r19,hi8(0)
+  45 001a E0E3      		ldi r30,lo8(30000)
+  46 001c F5E7      		ldi r31,hi8(30000)
+  47               	.L3:
+  48               	.LBB10:
+  49               	.LBB11:
+  50               	.LM6:
+  51 001e CF01      		movw r24,r30
+  52               	.LVL2:
+  53               	/* #APP */
+  54 0020 0197      		1: sbiw r24,1
+  55 0022 01F4      		brne 1b
+  56               	/* #NOAPP */
+  57 0024 2F5F      		subi r18,lo8(-(1))
+  58 0026 3F4F      		sbci r19,hi8(-(1))
+  59               	.LBE11:
+  60               	.LBE10:
+  61               	.LM7:
+  62 0028 283C      		cpi r18,200
+  63 002a 3105      		cpc r19,__zero_reg__
+  64 002c 01F4      		brne .L3
+  65               	.LM8:
+  66 002e 80E8      		ldi r24,lo8(128)
+  67 0030 90E0      		ldi r25,hi8(128)
+  68               	.LVL3:
+  69 0032 00D0      		rcall setCHB
+  70 0034 20E0      		ldi r18,lo8(0)
+  71 0036 30E0      		ldi r19,hi8(0)
+  72 0038 E0E3      		ldi r30,lo8(30000)
+  73 003a F5E7      		ldi r31,hi8(30000)
+  74               	.L5:
+  75               	.LBB12:
+  76               	.LBB13:
+  77               	.LM9:
+  78 003c CF01      		movw r24,r30
+  79               	.LVL4:
+  80               	/* #APP */
+  81 003e 0197      		1: sbiw r24,1
+  82 0040 01F4      		brne 1b
+  83               	/* #NOAPP */
+  84 0042 2F5F      		subi r18,lo8(-(1))
+  85 0044 3F4F      		sbci r19,hi8(-(1))
+  86               	.LBE13:
+  87               	.LBE12:
+  88               	.LM10:
+  89 0046 283C      		cpi r18,200
+  90 0048 3105      		cpc r19,__zero_reg__
+  91 004a 01F4      		brne .L5
+  92               	.LM11:
+  93 004c 80E0      		ldi r24,lo8(0)
+  94 004e 90E0      		ldi r25,hi8(0)
+  95               	.LVL5:
+  96 0050 00D0      		rcall setCHA
+  97               	.LM12:
+  98 0052 80E0      		ldi r24,lo8(0)
+  99 0054 90E0      		ldi r25,hi8(0)
+ 100 0056 00D0      		rcall setCHB
+ 101 0058 20E0      		ldi r18,lo8(0)
+ 102 005a 30E0      		ldi r19,hi8(0)
+ 103 005c E0E3      		ldi r30,lo8(30000)
+ 104 005e F5E7      		ldi r31,hi8(30000)
+ 105               	.L7:
+ 106               	.LBB14:
+ 107               	.LBB15:
+ 108               	.LM13:
+ 109 0060 CF01      		movw r24,r30
+ 110               	.LVL6:
+ 111               	/* #APP */
+ 112 0062 0197      		1: sbiw r24,1
+ 113 0064 01F4      		brne 1b
+ 114               	/* #NOAPP */
+ 115 0066 2F5F      		subi r18,lo8(-(1))
+ 116 0068 3F4F      		sbci r19,hi8(-(1))
+ 117               	.LBE15:
+ 118               	.LBE14:
+ 119               	.LM14:
+ 120 006a 283C      		cpi r18,200
+ 121 006c 3105      		cpc r19,__zero_reg__
+ 122 006e 01F4      		brne .L7
+ 123               	.LM15:
+ 124 0070 8FEF      		ldi r24,lo8(255)
+ 125 0072 90E0      		ldi r25,hi8(255)
+ 126               	.LVL7:
+ 127 0074 00D0      		rcall setCHA
+ 128 0076 20E0      		ldi r18,lo8(0)
+ 129 0078 30E0      		ldi r19,hi8(0)
+ 130 007a E0E3      		ldi r30,lo8(30000)
+ 131 007c F5E7      		ldi r31,hi8(30000)
+ 132               	.L9:
+ 133               	.LBB16:
+ 134               	.LBB17:
+ 135               	.LM16:
+ 136 007e CF01      		movw r24,r30
+ 137               	.LVL8:
+ 138               	/* #APP */
+ 139 0080 0197      		1: sbiw r24,1
+ 140 0082 01F4      		brne 1b
+ 141               	/* #NOAPP */
+ 142 0084 2F5F      		subi r18,lo8(-(1))
+ 143 0086 3F4F      		sbci r19,hi8(-(1))
+ 144               	.LBE17:
+ 145               	.LBE16:
+ 146               	.LM17:
+ 147 0088 283C      		cpi r18,200
+ 148 008a 3105      		cpc r19,__zero_reg__
+ 149 008c 01F4      		brne .L9
+ 150 008e 00C0      		rjmp .L2
+ 151               	/* epilogue: frame size=0 */
+ 152               	/* epilogue: noreturn */
+ 153               	/* epilogue end (size=0) */
+ 154               	/* function main size 80 (80) */
+ 155               	.LFE4:
+ 179               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 PWM.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cccRaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cccRaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cccRaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cccRaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cccRaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cccRaaaa.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+initPWM
+setCHA
+setCHB

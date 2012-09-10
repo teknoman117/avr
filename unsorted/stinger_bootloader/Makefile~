@@ -1,0 +1,62 @@
+# Makefile for stinger_bootloader
+
+TARGET = stinger_bootloader
+MCU = atmega32
+F_CPU = 11059200UL
+
+# bootloader section start
+BOOT_SECTION_START = 0x7c00
+
+#programs
+CC = avr-gcc
+OBJCOPY = avr-objcopy
+OBJDUMP = avr-objdump
+AS = avr-as
+CP = cp
+RM = rm -f
+SIZE = avr-size
+
+#flags
+CFLAGS += -DBOOT_SECTION_START=$(BOOT_SECTION_START)
+CFLAGS += -g -Os -finline-limit=800 -mmcu=$(MCU) -DF_CPU=$(F_CPU) -std=gnu99
+CFLAGS += -W -Wchar-subscripts -Wmissing-prototypes
+CFLAGS += -Wmissing-declarations -Wredundant-decls
+CFLAGS += -Wstrict-prototypes -Wshadow -Wbad-function-cast
+CFLAGS += -Winline -Wpointer-arith -Wsign-compare
+CFLAGS += -Wunreachable-code -Wdisabled-optimization
+CFLAGS += -Wcast-align -Wwrite-strings -Wnested-externs -Wundef
+CFLAGS += -Wa,-adhlns=$(basename $@).lst
+CFLAGS += -DDEBUG
+LDFLAGS += -mmcu=$(MCU)
+LDFLAGS += -Wl,--section-start=.text=$(BOOT_SECTION_START)
+
+OBJECTS += $(patsubst %.c,%.o,$(shell echo *.c))
+HEADERS += $(shell echo *.h)
+
+all: $(TARGET).hex $(TARGET).lss launcher
+	@echo "==============================="
+	@echo "compiled for: $(MCU)"
+	@echo -n "bootloader size is: "
+	@$(SIZE) -A $< | grep "\.sec1" | tr -s " " | cut -d" " -f2
+	@echo "==============================="
+
+$(TARGET): $(OBJECTS) $(TARGET).o
+
+%.o: $(HEADERS)
+
+clean:
+	$(RM) *.hex *.eep.hex *.o *.lst *.lss $(TARGET)
+
+%.hex: %
+	$(OBJCOPY) -O ihex -R .eeprom $< $@
+
+%.eep.hex: %
+	$(OBJCOPY) --set-section-flags=.eeprom="alloc,load" --change-section-lma .eeprom=0 -O ihex -j .eeprom $< $@
+
+%.lss: %
+	$(OBJDUMP) -h -S $< > $@
+
+%-size: %.hex
+	$(SIZE) $<
+
+

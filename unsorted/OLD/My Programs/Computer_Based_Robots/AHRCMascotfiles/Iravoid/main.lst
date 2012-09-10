@@ -1,0 +1,149 @@
+   1               		.file	"main.c"
+   2               		.arch atmega48
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 8FEF      		ldi r24,lo8(-1)
+  27 0002 84B9      		out 36-0x20,r24
+  28               	.LM3:
+  29 0004 83E0      		ldi r24,lo8(3)
+  30 0006 8AB9      		out 42-0x20,r24
+  31               	.LM4:
+  32 0008 85B1      		in r24,37-0x20
+  33 000a 8F5F      		subi r24,lo8(-(1))
+  34 000c 85B9      		out 37-0x20,r24
+  35               	.LM5:
+  36 000e 00D0      		rcall initPWM
+  37               	.LVL0:
+  38               	.L2:
+  39               	.LM6:
+  40 0010 89B1      		in r24,41-0x20
+  41               	.LVL1:
+  42 0012 8695      		lsr r24
+  43 0014 8695      		lsr r24
+  44 0016 8695      		lsr r24
+  45 0018 80FF      		sbrs r24,0
+  46 001a 00C0      		rjmp .L3
+  47               	.LM7:
+  48 001c 80E0      		ldi r24,lo8(0)
+  49 001e 90E0      		ldi r25,hi8(0)
+  50 0020 00D0      		rcall setCHA
+  51               	.LVL2:
+  52               	.LM8:
+  53 0022 80E2      		ldi r24,lo8(32)
+  54 0024 90E0      		ldi r25,hi8(32)
+  55 0026 00C0      		rjmp .L17
+  56               	.LVL3:
+  57               	.L3:
+  58               	.LM9:
+  59 0028 89B1      		in r24,41-0x20
+  60 002a 8695      		lsr r24
+  61 002c 8695      		lsr r24
+  62 002e 80FF      		sbrs r24,0
+  63 0030 00C0      		rjmp .L6
+  64               	.LM10:
+  65 0032 80E0      		ldi r24,lo8(0)
+  66 0034 90E0      		ldi r25,hi8(0)
+  67 0036 00D0      		rcall setCHA
+  68               	.LVL4:
+  69               	.LM11:
+  70 0038 80E4      		ldi r24,lo8(64)
+  71 003a 90E0      		ldi r25,hi8(64)
+  72 003c 00C0      		rjmp .L17
+  73               	.LVL5:
+  74               	.L6:
+  75               	.LM12:
+  76 003e 89B1      		in r24,41-0x20
+  77 0040 8295      		swap r24
+  78 0042 8F70      		andi r24,0x0f
+  79 0044 80FF      		sbrs r24,0
+  80 0046 00C0      		rjmp .L8
+  81               	.LM13:
+  82 0048 80E4      		ldi r24,lo8(64)
+  83 004a 90E0      		ldi r25,hi8(64)
+  84 004c 00D0      		rcall setCHA
+  85               	.LVL6:
+  86               	.LM14:
+  87 004e 80E0      		ldi r24,lo8(0)
+  88 0050 90E0      		ldi r25,hi8(0)
+  89 0052 00C0      		rjmp .L17
+  90               	.LVL7:
+  91               	.L8:
+  92               	.LM15:
+  93 0054 8FEF      		ldi r24,lo8(255)
+  94 0056 90E0      		ldi r25,hi8(255)
+  95 0058 00D0      		rcall setCHA
+  96               	.LVL8:
+  97               	.LM16:
+  98 005a 8FEF      		ldi r24,lo8(255)
+  99 005c 90E0      		ldi r25,hi8(255)
+ 100               	.L17:
+ 101 005e 00D0      		rcall setCHB
+ 102               	.LM17:
+ 103 0060 289B      		sbis 37-0x20,0
+ 104 0062 00C0      		rjmp .L10
+ 105 0064 85B1      		in r24,37-0x20
+ 106 0066 8150      		subi r24,lo8(-(-1))
+ 107 0068 00C0      		rjmp .L18
+ 108               	.L10:
+ 109               	.LM18:
+ 110 006a 85B1      		in r24,37-0x20
+ 111 006c 8F5F      		subi r24,lo8(-(1))
+ 112               	.L18:
+ 113 006e 85B9      		out 37-0x20,r24
+ 114 0070 20E0      		ldi r18,lo8(0)
+ 115 0072 30E0      		ldi r19,hi8(0)
+ 116               	.LVL9:
+ 117               	.L14:
+ 118               	.LBB4:
+ 119               	.LBB5:
+ 120               	.LM19:
+ 121 0074 80E3      		ldi r24,lo8(30000)
+ 122 0076 95E7      		ldi r25,hi8(30000)
+ 123               	.LVL10:
+ 124               	/* #APP */
+ 125 0078 0197      		1: sbiw r24,1
+ 126 007a 01F4      		brne 1b
+ 127               	/* #NOAPP */
+ 128               	.LBE5:
+ 129               	.LBE4:
+ 130               	.LM20:
+ 131 007c 2F5F      		subi r18,lo8(-(1))
+ 132 007e 3F4F      		sbci r19,hi8(-(1))
+ 133 0080 2A30      		cpi r18,10
+ 134 0082 3105      		cpc r19,__zero_reg__
+ 135 0084 01F4      		brne .L14
+ 136 0086 00C0      		rjmp .L2
+ 137               	/* epilogue: frame size=0 */
+ 138               	/* epilogue: noreturn */
+ 139               	/* epilogue end (size=0) */
+ 140               	/* function main size 70 (70) */
+ 141               	.LFE4:
+ 165               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccyMaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccyMaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccyMaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccyMaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccyMaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccyMaaaa.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+initPWM
+setCHA
+setCHB

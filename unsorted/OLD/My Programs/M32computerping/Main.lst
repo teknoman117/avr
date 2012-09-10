@@ -1,0 +1,152 @@
+   1               		.file	"Main.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.data
+  19               	.LC0:
+  20 0000 0D00      		.string	"\r"
+  21               		.text
+  22               	.global	main
+  24               	main:
+  25               	.LFB8:
+  26               	.LM1:
+  27               	/* prologue: frame size=20 */
+  28 0000 C0E0      		ldi r28,lo8(__stack - 20)
+  29 0002 D0E0      		ldi r29,hi8(__stack - 20)
+  30 0004 DEBF      		out __SP_H__,r29
+  31 0006 CDBF      		out __SP_L__,r28
+  32               	/* prologue end (size=4) */
+  33               	.LM2:
+  34 0008 0E94 0000 		call initIO
+  35               	.LM3:
+  36 000c 0E94 0000 		call enable_uart
+  37               	.LM4:
+  38 0010 60E0      		ldi r22,lo8(0)
+  39 0012 862F      		mov r24,r22
+  40 0014 0E94 0000 		call setIOB
+  41               	.LM5:
+  42 0018 61E0      		ldi r22,lo8(1)
+  43 001a 85E0      		ldi r24,lo8(5)
+  44 001c 0E94 0000 		call setIOD
+  45               	.LM6:
+  46 0020 61E0      		ldi r22,lo8(1)
+  47 0022 84E0      		ldi r24,lo8(4)
+  48 0024 0E94 0000 		call setIOD
+  49               	.LM7:
+  50 0028 00E0      		ldi r16,lo8(0)
+  51 002a 10E0      		ldi r17,hi8(0)
+  52               	.L2:
+  53               	.LM8:
+  54 002c 083C      		cpi r16,200
+  55 002e 1105      		cpc r17,__zero_reg__
+  56 0030 19F4      		brne .L4
+  57 0032 00E0      		ldi r16,lo8(0)
+  58 0034 10E0      		ldi r17,hi8(0)
+  59 0036 02C0      		rjmp .L5
+  60               	.L4:
+  61               	.LM9:
+  62 0038 0F5F      		subi r16,lo8(-(1))
+  63 003a 1F4F      		sbci r17,hi8(-(1))
+  64               	.L5:
+  65               	.LM10:
+  66 003c 4AE0      		ldi r20,lo8(10)
+  67 003e 50E0      		ldi r21,hi8(10)
+  68 0040 BE01      		movw r22,r28
+  69 0042 6F5F      		subi r22,lo8(-(1))
+  70 0044 7F4F      		sbci r23,hi8(-(1))
+  71 0046 C801      		movw r24,r16
+  72 0048 0E94 0000 		call itoa
+  73               	.LM11:
+  74 004c 60E0      		ldi r22,lo8(.LC0)
+  75 004e 70E0      		ldi r23,hi8(.LC0)
+  76 0050 CE01      		movw r24,r28
+  77 0052 0196      		adiw r24,1
+  78 0054 0E94 0000 		call strcat
+  79               	.LM12:
+  80 0058 CE01      		movw r24,r28
+  81 005a 0196      		adiw r24,1
+  82 005c 0E94 0000 		call uprintf
+  83               	.LM13:
+  84 0060 1092 0000 		sts (cnt)+1,__zero_reg__
+  85 0064 1092 0000 		sts cnt,__zero_reg__
+  86 0068 27EC      		ldi r18,lo8(199)
+  87 006a 30E0      		ldi r19,hi8(199)
+  88               	.L10:
+  89               	.LBB2:
+  90               	.LM14:
+  91 006c 80E3      		ldi r24,lo8(30000)
+  92 006e 95E7      		ldi r25,hi8(30000)
+  93               	.LBB3:
+  94               	.LM15:
+  95               	/* #APP */
+  96 0070 0197      		1: sbiw r24,1
+  97 0072 F1F7      		brne 1b
+  98               	/* #NOAPP */
+  99               	.LBE3:
+ 100               	.LBE2:
+ 101               	.LM16:
+ 102 0074 2150      		subi r18,lo8(-(-1))
+ 103 0076 3040      		sbci r19,hi8(-(-1))
+ 104 0078 37FF      		sbrs r19,7
+ 105 007a F8CF      		rjmp .L10
+ 106 007c 28EC      		ldi r18,lo8(200)
+ 107 007e 30E0      		ldi r19,hi8(200)
+ 108 0080 3093 0000 		sts (cnt)+1,r19
+ 109 0084 2093 0000 		sts cnt,r18
+ 110 0088 D1CF      		rjmp .L2
+ 111               	/* epilogue: frame size=20 */
+ 112               	/* epilogue: noreturn */
+ 113               	/* epilogue end (size=0) */
+ 114               	/* function main size 71 (67) */
+ 115               	.LFE8:
+ 117               		.comm x,8,1
+ 118               		.comm s,1,1
+ 119               		.comm str,50,1
+ 120               		.comm prta,1,1
+ 121               		.comm prtb,1,1
+ 122               		.comm prtc,1,1
+ 123               		.comm prtd,1,1
+ 124               		.comm dira,1,1
+ 125               		.comm dirb,1,1
+ 126               		.comm dirc,1,1
+ 127               		.comm dird,1,1
+ 128               		.comm cnt,2,1
+ 129               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Main.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccIRaaaa.s:24     .text:00000000 main
+                            *COM*:00000002 cnt
+                            *COM*:00000008 x
+                            *COM*:00000001 s
+                            *COM*:00000032 str
+                            *COM*:00000001 prta
+                            *COM*:00000001 prtb
+                            *COM*:00000001 prtc
+                            *COM*:00000001 prtd
+                            *COM*:00000001 dira
+                            *COM*:00000001 dirb
+                            *COM*:00000001 dirc
+                            *COM*:00000001 dird
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack
+initIO
+enable_uart
+setIOB
+setIOD
+itoa
+strcat
+uprintf

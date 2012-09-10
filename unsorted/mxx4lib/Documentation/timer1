@@ -1,0 +1,40 @@
+Documentation for timer1.h
+
+Example is included under the timer1 directory in the Examples directory
+
+---------------Information-------------------------
+
+timer1.h controls timer1 as a timer with a clock source either
+internal with a prescaler or external via the T1 pin
+
+---------------Definitions-------------------------
+
+T1_PRESCALER_1                   -timer1 clock = SystemCLK
+T1_PRESCALER_8                   -timer1 clock = SystemCLK / 8
+T1_PRESCALER_64                  -timer1 clock = SystemCLK / 64
+T1_PRESCALER_256                 -timer1 clock = SystemCLK / 256
+T1_PRESCALER_1024                -timer1 clock = SystemCLK / 1024
+T1_PRESCALER_EXTERNAL_RISING     -timer1 clock = clock on rising edge of T1
+T1_PRESCALER_EXTERNAL_FALLING    -timer1 clock = clock on falling edge of T1
+
+--------------Functions------------------------------
+
+void init_timer1 ( uint8_t prescaler, uint16_t top ) -- initalizes timer1
+    -prescaler - one of the T1_PRESCALER definitions to define the prescaler or clock source
+    -top - the value at which the timer resets at
+
+uint8_t get_timer1 ( void ) -- returns the value of the TCNT1 register, the current value of the timer
+
+void set_timer1 ( uint8_t v ) -- set the value of the TCNT1 register
+   -v - the value to which to set the timer
+
+void reset_timer1 ( void ) -- clears the TCNT1 register, reseting the timer
+
+void enable_interrupt_t1 ( void ) -- enables the Timer 1 Overflow Interrupt and sets the global interrupt flag
+
+void disable_interrupt_t1 ( void ) -- disables the Timer 1 Overflow Interrupt, but does not clear the global interrupt flag
+
+
+    
+
+  

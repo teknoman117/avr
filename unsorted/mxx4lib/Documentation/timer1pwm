@@ -1,0 +1,38 @@
+Documentation for timer1pwm.h
+
+Example is included under the timer1pwm directory in the Examples directory
+
+---------------Information-------------------------
+
+timer1pwm.h configures timer1 to act as an 8/9/10/11/12 bit pwm controller. 
+
+---------------Definitions-------------------------
+
+T1_PRESCALER_1                   -timer1 clock = SystemCLK
+T1_PRESCALER_8                   -timer1 clock = SystemCLK / 8
+T1_PRESCALER_64                  -timer1 clock = SystemCLK / 64
+T1_PRESCALER_256                 -timer1 clock = SystemCLK / 256
+T1_PRESCALER_1024                -timer1 clock = SystemCLK / 1024
+
+T1_PWM_8BIT                      -8 bit PWM
+T1_PWM_9BIT                      -9 bit PWM
+T1_PWM_10BIT                     -10 bit PWM
+T1_PWM_11BIT                     -11 bit PWM
+T1_PWM_12BIT                     -12 bit PWM
+
+--------------Functions------------------------------
+
+void init_timer1_pwm ( uint8_t prescaler, uint16_t top, uint8_t invert ) -- initalizes timer1 for pwm
+    -prescaler - one of the T1_PRESCALER definitions to define the prescaler
+    -top - the top value of the timer when counting for the pwm waveform you can use the T1_PWM definitions for standard types
+    -invert - set to 1 to invert the PWM waveform, 0 for normal
+
+void set_pwm_1a ( uint16_t v ) -- set the PWM Channel 1 A
+    -v - the value to set the ocr0a register to
+
+void set_pwm_1b ( uint16_t v ) -- set the PWM Channel 1 B
+    -v - the value to set the ocr0a register to
+
+    
+
+  

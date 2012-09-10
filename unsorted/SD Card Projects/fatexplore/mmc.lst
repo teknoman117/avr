@@ -1,0 +1,3004 @@
+GAS LISTING /tmp/cc4wGHjh.s 			page 1
+
+
+   1               		.file	"mmc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Projects/AVR_Projects/fatexplore/",100,0,2,.Ltext0
+  11               		.stabs	"mmc.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  34               		.stabs	"int8_t:t(4,1)=(0,10)",128,0,121,0
+  35               		.stabs	"uint8_t:t(4,2)=(0,11)",128,0,122,0
+  36               		.stabs	"int16_t:t(4,3)=(0,1)",128,0,123,0
+  37               		.stabs	"uint16_t:t(4,4)=(0,4)",128,0,124,0
+  38               		.stabs	"int32_t:t(4,5)=(0,3)",128,0,125,0
+  39               		.stabs	"uint32_t:t(4,6)=(0,5)",128,0,126,0
+  40               		.stabs	"int64_t:t(4,7)=(0,6)",128,0,128,0
+  41               		.stabs	"uint64_t:t(4,8)=(0,7)",128,0,129,0
+  42               		.stabs	"intptr_t:t(4,9)=(4,3)",128,0,142,0
+  43               		.stabs	"uintptr_t:t(4,10)=(4,4)",128,0,147,0
+  44               		.stabs	"int_least8_t:t(4,11)=(4,1)",128,0,159,0
+  45               		.stabs	"uint_least8_t:t(4,12)=(4,2)",128,0,164,0
+  46               		.stabs	"int_least16_t:t(4,13)=(4,3)",128,0,169,0
+  47               		.stabs	"uint_least16_t:t(4,14)=(4,4)",128,0,174,0
+  48               		.stabs	"int_least32_t:t(4,15)=(4,5)",128,0,179,0
+  49               		.stabs	"uint_least32_t:t(4,16)=(4,6)",128,0,184,0
+  50               		.stabs	"int_least64_t:t(4,17)=(4,7)",128,0,192,0
+  51               		.stabs	"uint_least64_t:t(4,18)=(4,8)",128,0,199,0
+  52               		.stabs	"int_fast8_t:t(4,19)=(4,1)",128,0,213,0
+  53               		.stabs	"uint_fast8_t:t(4,20)=(4,2)",128,0,218,0
+  54               		.stabs	"int_fast16_t:t(4,21)=(4,3)",128,0,223,0
+  55               		.stabs	"uint_fast16_t:t(4,22)=(4,4)",128,0,228,0
+  56               		.stabs	"int_fast32_t:t(4,23)=(4,5)",128,0,233,0
+  57               		.stabs	"uint_fast32_t:t(4,24)=(4,6)",128,0,238,0
+GAS LISTING /tmp/cc4wGHjh.s 			page 2
+
+
+  58               		.stabs	"int_fast64_t:t(4,25)=(4,7)",128,0,246,0
+  59               		.stabs	"uint_fast64_t:t(4,26)=(4,8)",128,0,253,0
+  60               		.stabs	"intmax_t:t(4,27)=(4,7)",128,0,273,0
+  61               		.stabs	"uintmax_t:t(4,28)=(4,8)",128,0,278,0
+  62               		.stabn	162,0,0,0
+  63               		.stabs	"int_farptr_t:t(3,1)=(4,5)",128,0,77,0
+  64               		.stabs	"uint_farptr_t:t(3,2)=(4,6)",128,0,81,0
+  65               		.stabn	162,0,0,0
+  66               		.stabn	162,0,0,0
+  67               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  68               		.stabs	"__fuse_t:t(5,1)=(5,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219,0
+  69               		.stabn	162,0,0,0
+  70               		.stabn	162,0,0,0
+  71               		.stabs	"diskio.h",130,0,0,0
+  72               		.stabs	"integer.h",130,0,0,0
+  73               		.stabs	"INT:t(7,1)=(0,1)",128,0,12,0
+  74               		.stabs	"UINT:t(7,2)=(0,4)",128,0,13,0
+  75               		.stabs	"CHAR:t(7,3)=(0,10)",128,0,16,0
+  76               		.stabs	"UCHAR:t(7,4)=(0,11)",128,0,17,0
+  77               		.stabs	"BYTE:t(7,5)=(0,11)",128,0,18,0
+  78               		.stabs	"SHORT:t(7,6)=(0,8)",128,0,21,0
+  79               		.stabs	"USHORT:t(7,7)=(0,9)",128,0,22,0
+  80               		.stabs	"WORD:t(7,8)=(0,9)",128,0,23,0
+  81               		.stabs	"WCHAR:t(7,9)=(0,9)",128,0,24,0
+  82               		.stabs	"LONG:t(7,10)=(0,3)",128,0,27,0
+  83               		.stabs	"ULONG:t(7,11)=(0,5)",128,0,28,0
+  84               		.stabs	"DWORD:t(7,12)=(0,5)",128,0,29,0
+  85               		.stabs	" :T(7,13)=@s8;eFALSE:0,TRUE:1,;",128,0,0,0
+  86               		.stabs	"BOOL:t(7,14)=(7,13)",128,0,32,0
+  87               		.stabn	162,0,0,0
+  88               		.stabs	"DSTATUS:t(6,1)=(7,5)",128,0,14,0
+  89               		.stabs	" :T(6,2)=@s8;eRES_OK:0,RES_ERROR:1,RES_WRPRT:2,RES_NOTRDY:3,RES_PARERR:4,;",128,0,0,0
+  90               		.stabs	"DRESULT:t(6,3)=(6,2)",128,0,23,0
+  91               		.stabn	162,0,0,0
+  92               		.stabs	"rcvr_datablock:f(7,14)",36,0,164,rcvr_datablock
+  93               		.stabs	"buff:P(0,16)=*(7,5)",64,0,161,30
+  94               		.stabs	"btr:P(7,2)",64,0,162,22
+  95               		.type	rcvr_datablock, @function
+  96               	rcvr_datablock:
+  97               		.stabd	46,0,0
+   1:mmc.c         **** /*-----------------------------------------------------------------------*/
+   2:mmc.c         **** /* MMCv3/SDv1/SDv2 (in SPI mode) control module  (C)ChaN, 2007           */
+   3:mmc.c         **** /*-----------------------------------------------------------------------*/
+   4:mmc.c         **** /* Only rcvr_spi(), xmit_spi(), disk_timerproc() and some macros         */
+   5:mmc.c         **** /* are platform dependent.                                               */
+   6:mmc.c         **** /*-----------------------------------------------------------------------*/
+   7:mmc.c         **** 
+   8:mmc.c         **** 
+   9:mmc.c         **** #include <avr/io.h>
+  10:mmc.c         **** #include "diskio.h"
+  11:mmc.c         **** 
+  12:mmc.c         **** 
+  13:mmc.c         **** /* Definitions for MMC/SDC command */
+  14:mmc.c         **** #define CMD0	(0x40+0)	/* GO_IDLE_STATE */
+  15:mmc.c         **** #define CMD1	(0x40+1)	/* SEND_OP_COND (MMC) */
+  16:mmc.c         **** #define	ACMD41	(0xC0+41)	/* SEND_OP_COND (SDC) */
+  17:mmc.c         **** #define CMD8	(0x40+8)	/* SEND_IF_COND */
+GAS LISTING /tmp/cc4wGHjh.s 			page 3
+
+
+  18:mmc.c         **** #define CMD9	(0x40+9)	/* SEND_CSD */
+  19:mmc.c         **** #define CMD10	(0x40+10)	/* SEND_CID */
+  20:mmc.c         **** #define CMD12	(0x40+12)	/* STOP_TRANSMISSION */
+  21:mmc.c         **** #define ACMD13	(0xC0+13)	/* SD_STATUS (SDC) */
+  22:mmc.c         **** #define CMD16	(0x40+16)	/* SET_BLOCKLEN */
+  23:mmc.c         **** #define CMD17	(0x40+17)	/* READ_SINGLE_BLOCK */
+  24:mmc.c         **** #define CMD18	(0x40+18)	/* READ_MULTIPLE_BLOCK */
+  25:mmc.c         **** #define CMD23	(0x40+23)	/* SET_BLOCK_COUNT (MMC) */
+  26:mmc.c         **** #define	ACMD23	(0xC0+23)	/* SET_WR_BLK_ERASE_COUNT (SDC) */
+  27:mmc.c         **** #define CMD24	(0x40+24)	/* WRITE_BLOCK */
+  28:mmc.c         **** #define CMD25	(0x40+25)	/* WRITE_MULTIPLE_BLOCK */
+  29:mmc.c         **** #define CMD55	(0x40+55)	/* APP_CMD */
+  30:mmc.c         **** #define CMD58	(0x40+58)	/* READ_OCR */
+  31:mmc.c         **** 
+  32:mmc.c         **** 
+  33:mmc.c         **** /* Port Controls  (Platform dependent) */
+  34:mmc.c         **** #define SELECT()	PORTB &= ~0x10		/* MMC CS = L */
+  35:mmc.c         **** #define	DESELECT()	PORTB |= 0x10		/* MMC CS = H */
+  36:mmc.c         **** 
+  37:mmc.c         **** #define SOCKPORT	PINB			/* Socket contact port */
+  38:mmc.c         **** #define SOCKWP		0x20			/* Write protect switch (PB5) */
+  39:mmc.c         **** #define SOCKINS		0x10			/* Card detect switch (PB4) */
+  40:mmc.c         **** 
+  41:mmc.c         **** #define	FCLK_SLOW()					/* Set slow clock (100k-400k) */
+  42:mmc.c         **** #define	FCLK_FAST()					/* Set fast clock (depends on the CSD) */
+  43:mmc.c         **** 
+  44:mmc.c         **** 
+  45:mmc.c         **** /*--------------------------------------------------------------------------
+  46:mmc.c         **** 
+  47:mmc.c         ****    Module Private Functions
+  48:mmc.c         **** 
+  49:mmc.c         **** ---------------------------------------------------------------------------*/
+  50:mmc.c         **** 
+  51:mmc.c         **** static volatile
+  52:mmc.c         **** DSTATUS Stat = STA_NOINIT;	/* Disk status */
+  53:mmc.c         **** 
+  54:mmc.c         **** static volatile
+  55:mmc.c         **** BYTE Timer1, Timer2;	/* 100Hz decrement timer */
+  56:mmc.c         **** 
+  57:mmc.c         **** static
+  58:mmc.c         **** BYTE CardType;			/* Card type flags */
+  59:mmc.c         **** 
+  60:mmc.c         **** 
+  61:mmc.c         **** /*-----------------------------------------------------------------------*/
+  62:mmc.c         **** /* Transmit a byte to MMC via SPI  (Platform dependent)                  */
+  63:mmc.c         **** /*-----------------------------------------------------------------------*/
+  64:mmc.c         **** 
+  65:mmc.c         **** #define xmit_spi(dat) 	SPDR=(dat); loop_until_bit_is_set(SPSR,SPIF)
+  66:mmc.c         **** 
+  67:mmc.c         **** 
+  68:mmc.c         **** 
+  69:mmc.c         **** /*-----------------------------------------------------------------------*/
+  70:mmc.c         **** /* Receive a byte from MMC via SPI  (Platform dependent)                 */
+  71:mmc.c         **** /*-----------------------------------------------------------------------*/
+  72:mmc.c         **** 
+  73:mmc.c         **** static
+  74:mmc.c         **** BYTE rcvr_spi (void)
+GAS LISTING /tmp/cc4wGHjh.s 			page 4
+
+
+  75:mmc.c         **** {
+  76:mmc.c         **** 	SPDR = 0xFF;
+  77:mmc.c         **** 	loop_until_bit_is_set(SPSR, SPIF);
+  78:mmc.c         **** 	return SPDR;
+  79:mmc.c         **** }
+  80:mmc.c         **** 
+  81:mmc.c         **** /* Alternative macro to receive data fast */
+  82:mmc.c         **** #define rcvr_spi_m(dst)	SPDR=0xFF; loop_until_bit_is_set(SPSR,SPIF); *(dst)=SPDR
+  83:mmc.c         **** 
+  84:mmc.c         **** 
+  85:mmc.c         **** 
+  86:mmc.c         **** /*-----------------------------------------------------------------------*/
+  87:mmc.c         **** /* Wait for card ready                                                   */
+  88:mmc.c         **** /*-----------------------------------------------------------------------*/
+  89:mmc.c         **** 
+  90:mmc.c         **** static
+  91:mmc.c         **** BYTE wait_ready (void)
+  92:mmc.c         **** {
+  93:mmc.c         **** 	BYTE res;
+  94:mmc.c         **** 
+  95:mmc.c         **** 
+  96:mmc.c         **** 	Timer2 = 50;	/* Wait for ready in timeout of 500ms */
+  97:mmc.c         **** 	rcvr_spi();
+  98:mmc.c         **** 	do
+  99:mmc.c         **** 		res = rcvr_spi();
+ 100:mmc.c         **** 	while ((res != 0xFF) && Timer2);
+ 101:mmc.c         **** 
+ 102:mmc.c         **** 	return res;
+ 103:mmc.c         **** }
+ 104:mmc.c         **** 
+ 105:mmc.c         **** 
+ 106:mmc.c         **** 
+ 107:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 108:mmc.c         **** /* Deselect the card and release SPI bus                                 */
+ 109:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 110:mmc.c         **** 
+ 111:mmc.c         **** static
+ 112:mmc.c         **** void release_spi (void)
+ 113:mmc.c         **** {
+ 114:mmc.c         **** 	DESELECT();
+ 115:mmc.c         **** 	rcvr_spi();
+ 116:mmc.c         **** }
+ 117:mmc.c         **** 
+ 118:mmc.c         **** 
+ 119:mmc.c         **** 
+ 120:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 121:mmc.c         **** /* Power Control  (Platform dependent)                                   */
+ 122:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 123:mmc.c         **** /* When the target system does not support socket power control, there   */
+ 124:mmc.c         **** /* is nothing to do in these functions and chk_power always returns 1.   */
+ 125:mmc.c         **** 
+ 126:mmc.c         **** static
+ 127:mmc.c         **** void power_on (void)
+ 128:mmc.c         **** {
+ 129:mmc.c         **** 	for (Timer1 = 3; Timer1; );	/* Wait for 30ms */
+ 130:mmc.c         **** 	PORTB = 0b00110000;
+ 131:mmc.c         **** 	DDRB  = 0b10110000;
+GAS LISTING /tmp/cc4wGHjh.s 			page 5
+
+
+ 132:mmc.c         **** 	SPCR = 0b01010000;			/* Initialize SPI port (Mode 0) */
+ 133:mmc.c         **** 	SPSR = 0b00000001;
+ 134:mmc.c         **** }
+ 135:mmc.c         **** 
+ 136:mmc.c         **** static
+ 137:mmc.c         **** void power_off (void)
+ 138:mmc.c         **** {
+ 139:mmc.c         **** 	SELECT();				/* Wait for card ready */
+ 140:mmc.c         **** 	wait_ready();
+ 141:mmc.c         **** 	release_spi();
+ 142:mmc.c         **** 
+ 143:mmc.c         **** 	SPCR = 0;				/* Disable SPI function */
+ 144:mmc.c         **** 	Stat |= STA_NOINIT;		/* Set STA_NOINIT */
+ 145:mmc.c         **** }
+ 146:mmc.c         **** 
+ 147:mmc.c         **** static
+ 148:mmc.c         **** int chk_power(void)		/* Socket power state: 0=off, 1=on */
+ 149:mmc.c         **** {
+ 150:mmc.c         **** 	return 1;
+ 151:mmc.c         **** }
+ 152:mmc.c         **** 
+ 153:mmc.c         **** 
+ 154:mmc.c         **** 
+ 155:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 156:mmc.c         **** /* Receive a data packet from MMC                                        */
+ 157:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 158:mmc.c         **** 
+ 159:mmc.c         **** static
+ 160:mmc.c         **** BOOL rcvr_datablock (
+ 161:mmc.c         **** 	BYTE *buff,			/* Data buffer to store received data */
+ 162:mmc.c         **** 	UINT btr			/* Byte count (must be multiple of 4) */
+ 163:mmc.c         **** )
+ 164:mmc.c         **** {
+  98               		.stabn	68,0,164,.LM0-.LFBB1
+  99               	.LM0:
+ 100               	.LFBB1:
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103 0000 FC01      		movw r30,r24
+ 165:mmc.c         **** 	BYTE token;
+ 166:mmc.c         **** 
+ 167:mmc.c         **** 
+ 168:mmc.c         **** 	Timer1 = 20;
+ 104               		.stabn	68,0,168,.LM1-.LFBB1
+ 105               	.LM1:
+ 106 0002 84E1      		ldi r24,lo8(20)
+ 107 0004 8093 0000 		sts Timer1,r24
+ 108               	.LBB110:
+ 109               	.LBB111:
+ 110               		.stabn	68,0,76,.LM2-.LFBB1
+ 111               	.LM2:
+ 112 0008 9FEF      		ldi r25,lo8(-1)
+ 113               	.L4:
+ 114 000a 9EBD      		out 78-32,r25
+ 115               	.L2:
+ 116               		.stabn	68,0,77,.LM3-.LFBB1
+ 117               	.LM3:
+GAS LISTING /tmp/cc4wGHjh.s 			page 6
+
+
+ 118 000c 0DB4      		in __tmp_reg__,77-32
+ 119 000e 07FE      		sbrs __tmp_reg__,7
+ 120 0010 00C0      		rjmp .L2
+ 121               		.stabn	68,0,78,.LM4-.LFBB1
+ 122               	.LM4:
+ 123 0012 8EB5      		in r24,78-32
+ 124               	.LBE111:
+ 125               	.LBE110:
+ 169:mmc.c         **** 	do {							/* Wait for data packet in timeout of 200ms */
+ 170:mmc.c         **** 		token = rcvr_spi();
+ 171:mmc.c         **** 	} while ((token == 0xFF) && Timer1);
+ 126               		.stabn	68,0,171,.LM5-.LFBB1
+ 127               	.LM5:
+ 128 0014 8F3F      		cpi r24,lo8(-1)
+ 129 0016 01F4      		brne .L3
+ 130 0018 8091 0000 		lds r24,Timer1
+ 131 001c 8823      		tst r24
+ 132 001e 01F4      		brne .L4
+ 133 0020 00C0      		rjmp .L5
+ 134               	.L3:
+ 172:mmc.c         **** 	if(token != 0xFE) return FALSE;	/* If not valid data token, retutn with error */
+ 135               		.stabn	68,0,172,.LM6-.LFBB1
+ 136               	.LM6:
+ 137 0022 8E3F      		cpi r24,lo8(-2)
+ 138 0024 01F4      		brne .L5
+ 173:mmc.c         **** 
+ 174:mmc.c         **** 	do {							/* Receive the data block into buffer */
+ 175:mmc.c         **** 		rcvr_spi_m(buff++);
+ 139               		.stabn	68,0,175,.LM7-.LFBB1
+ 140               	.LM7:
+ 141 0026 9FEF      		ldi r25,lo8(-1)
+ 142               	.L24:
+ 143 0028 9EBD      		out 78-32,r25
+ 144               	.L6:
+ 145 002a 0DB4      		in __tmp_reg__,77-32
+ 146 002c 07FE      		sbrs __tmp_reg__,7
+ 147 002e 00C0      		rjmp .L6
+ 148 0030 8EB5      		in r24,78-32
+ 149 0032 8083      		st Z,r24
+ 176:mmc.c         **** 		rcvr_spi_m(buff++);
+ 150               		.stabn	68,0,176,.LM8-.LFBB1
+ 151               	.LM8:
+ 152 0034 9EBD      		out 78-32,r25
+ 153               	.L7:
+ 154 0036 0DB4      		in __tmp_reg__,77-32
+ 155 0038 07FE      		sbrs __tmp_reg__,7
+ 156 003a 00C0      		rjmp .L7
+ 157 003c 8EB5      		in r24,78-32
+ 158 003e 8183      		std Z+1,r24
+ 177:mmc.c         **** 		rcvr_spi_m(buff++);
+ 159               		.stabn	68,0,177,.LM9-.LFBB1
+ 160               	.LM9:
+ 161 0040 9EBD      		out 78-32,r25
+ 162               	.L8:
+ 163 0042 0DB4      		in __tmp_reg__,77-32
+ 164 0044 07FE      		sbrs __tmp_reg__,7
+ 165 0046 00C0      		rjmp .L8
+GAS LISTING /tmp/cc4wGHjh.s 			page 7
+
+
+ 166 0048 8EB5      		in r24,78-32
+ 167 004a 8283      		std Z+2,r24
+ 178:mmc.c         **** 		rcvr_spi_m(buff++);
+ 168               		.stabn	68,0,178,.LM10-.LFBB1
+ 169               	.LM10:
+ 170 004c 9EBD      		out 78-32,r25
+ 171               	.L9:
+ 172 004e 0DB4      		in __tmp_reg__,77-32
+ 173 0050 07FE      		sbrs __tmp_reg__,7
+ 174 0052 00C0      		rjmp .L9
+ 175 0054 8EB5      		in r24,78-32
+ 176 0056 8383      		std Z+3,r24
+ 179:mmc.c         **** 	} while (btr -= 4);
+ 177               		.stabn	68,0,179,.LM11-.LFBB1
+ 178               	.LM11:
+ 179 0058 6450      		subi r22,lo8(-(-4))
+ 180 005a 7040      		sbci r23,hi8(-(-4))
+ 181 005c 01F0      		breq .L10
+ 182               		.stabn	68,0,164,.LM12-.LFBB1
+ 183               	.LM12:
+ 184 005e 3496      		adiw r30,4
+ 185 0060 00C0      		rjmp .L24
+ 186               	.L10:
+ 187               	.LBB112:
+ 188               	.LBB113:
+ 189               		.stabn	68,0,76,.LM13-.LFBB1
+ 190               	.LM13:
+ 191 0062 8FEF      		ldi r24,lo8(-1)
+ 192 0064 8EBD      		out 78-32,r24
+ 193               	.L12:
+ 194               		.stabn	68,0,77,.LM14-.LFBB1
+ 195               	.LM14:
+ 196 0066 0DB4      		in __tmp_reg__,77-32
+ 197 0068 07FE      		sbrs __tmp_reg__,7
+ 198 006a 00C0      		rjmp .L12
+ 199               		.stabn	68,0,78,.LM15-.LFBB1
+ 200               	.LM15:
+ 201 006c 8EB5      		in r24,78-32
+ 202               	.LBE113:
+ 203               	.LBE112:
+ 204               	.LBB114:
+ 205               	.LBB115:
+ 206               		.stabn	68,0,76,.LM16-.LFBB1
+ 207               	.LM16:
+ 208 006e 8FEF      		ldi r24,lo8(-1)
+ 209 0070 8EBD      		out 78-32,r24
+ 210               	.L13:
+ 211               		.stabn	68,0,77,.LM17-.LFBB1
+ 212               	.LM17:
+ 213 0072 0DB4      		in __tmp_reg__,77-32
+ 214 0074 07FE      		sbrs __tmp_reg__,7
+ 215 0076 00C0      		rjmp .L13
+ 216               		.stabn	68,0,78,.LM18-.LFBB1
+ 217               	.LM18:
+ 218 0078 8EB5      		in r24,78-32
+ 219 007a 81E0      		ldi r24,lo8(1)
+ 220 007c 0895      		ret
+GAS LISTING /tmp/cc4wGHjh.s 			page 8
+
+
+ 221               	.L5:
+ 180:mmc.c         **** 	rcvr_spi();						/* Discard CRC */
+ 181:mmc.c         **** 	rcvr_spi();
+ 182:mmc.c         **** 
+ 183:mmc.c         **** 	return TRUE;					/* Return with success */
+ 222               		.stabn	68,0,183,.LM19-.LFBB1
+ 223               	.LM19:
+ 224 007e 80E0      		ldi r24,lo8(0)
+ 225               	.LBE115:
+ 226               	.LBE114:
+ 184:mmc.c         **** }
+ 227               		.stabn	68,0,184,.LM20-.LFBB1
+ 228               	.LM20:
+ 229 0080 0895      		ret
+ 230               		.size	rcvr_datablock, .-rcvr_datablock
+ 231               		.stabs	"token:r(7,5)",64,0,165,24
+ 232               		.stabn	192,0,0,.LFBB1-.LFBB1
+ 233               		.stabn	224,0,0,.Lscope1-.LFBB1
+ 234               	.Lscope1:
+ 235               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 236               		.stabd	78,0,0
+ 237               		.stabs	"xmit_datablock:f(7,14)",36,0,198,xmit_datablock
+ 238               		.stabs	"buff:P(0,17)=*(0,18)=k(7,5)",64,0,195,30
+ 239               		.stabs	"token:P(7,5)",64,0,196,22
+ 240               		.type	xmit_datablock, @function
+ 241               	xmit_datablock:
+ 242               		.stabd	46,0,0
+ 185:mmc.c         **** 
+ 186:mmc.c         **** 
+ 187:mmc.c         **** 
+ 188:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 189:mmc.c         **** /* Send a data packet to MMC                                             */
+ 190:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 191:mmc.c         **** 
+ 192:mmc.c         **** #if _READONLY == 0
+ 193:mmc.c         **** static
+ 194:mmc.c         **** BOOL xmit_datablock (
+ 195:mmc.c         **** 	const BYTE *buff,	/* 512 byte data block to be transmitted */
+ 196:mmc.c         **** 	BYTE token			/* Data/Stop token */
+ 197:mmc.c         **** )
+ 198:mmc.c         **** {
+ 243               		.stabn	68,0,198,.LM21-.LFBB2
+ 244               	.LM21:
+ 245               	.LFBB2:
+ 246               	/* prologue: function */
+ 247               	/* frame size = 0 */
+ 248 0082 FC01      		movw r30,r24
+ 249               	.LBB116:
+ 250               	.LBB117:
+ 251               		.stabn	68,0,96,.LM22-.LFBB2
+ 252               	.LM22:
+ 253 0084 82E3      		ldi r24,lo8(50)
+ 254 0086 8093 0000 		sts Timer2,r24
+ 255               	.LBB118:
+ 256               	.LBB119:
+ 257               		.stabn	68,0,76,.LM23-.LFBB2
+ 258               	.LM23:
+GAS LISTING /tmp/cc4wGHjh.s 			page 9
+
+
+ 259 008a 8FEF      		ldi r24,lo8(-1)
+ 260 008c 8EBD      		out 78-32,r24
+ 261               	.L26:
+ 262               		.stabn	68,0,77,.LM24-.LFBB2
+ 263               	.LM24:
+ 264 008e 0DB4      		in __tmp_reg__,77-32
+ 265 0090 07FE      		sbrs __tmp_reg__,7
+ 266 0092 00C0      		rjmp .L26
+ 267               		.stabn	68,0,78,.LM25-.LFBB2
+ 268               	.LM25:
+ 269 0094 8EB5      		in r24,78-32
+ 270               	.LBE119:
+ 271               	.LBE118:
+ 272               	.LBB120:
+ 273               	.LBB121:
+ 274               		.stabn	68,0,76,.LM26-.LFBB2
+ 275               	.LM26:
+ 276 0096 9FEF      		ldi r25,lo8(-1)
+ 277               	.L29:
+ 278 0098 9EBD      		out 78-32,r25
+ 279               	.L27:
+ 280               		.stabn	68,0,77,.LM27-.LFBB2
+ 281               	.LM27:
+ 282 009a 0DB4      		in __tmp_reg__,77-32
+ 283 009c 07FE      		sbrs __tmp_reg__,7
+ 284 009e 00C0      		rjmp .L27
+ 285               		.stabn	68,0,78,.LM28-.LFBB2
+ 286               	.LM28:
+ 287 00a0 8EB5      		in r24,78-32
+ 288               	.LBE121:
+ 289               	.LBE120:
+ 290               		.stabn	68,0,100,.LM29-.LFBB2
+ 291               	.LM29:
+ 292 00a2 8F3F      		cpi r24,lo8(-1)
+ 293 00a4 01F0      		breq .L28
+ 294 00a6 8091 0000 		lds r24,Timer2
+ 295 00aa 8823      		tst r24
+ 296 00ac 01F4      		brne .L29
+ 297 00ae 90E0      		ldi r25,lo8(0)
+ 298 00b0 00C0      		rjmp .L30
+ 299               	.L28:
+ 300               	.LBE117:
+ 301               	.LBE116:
+ 199:mmc.c         **** 	BYTE resp, wc;
+ 200:mmc.c         **** 
+ 201:mmc.c         **** 
+ 202:mmc.c         **** 	if (wait_ready() != 0xFF) return FALSE;
+ 203:mmc.c         **** 
+ 204:mmc.c         **** 	xmit_spi(token);					/* Xmit data token */
+ 302               		.stabn	68,0,204,.LM30-.LFBB2
+ 303               	.LM30:
+ 304 00b2 6EBD      		out 78-32,r22
+ 305               	.L31:
+ 306 00b4 0DB4      		in __tmp_reg__,77-32
+ 307 00b6 07FE      		sbrs __tmp_reg__,7
+ 308 00b8 00C0      		rjmp .L31
+ 205:mmc.c         **** 	if (token != 0xFD) {	/* Is data token */
+GAS LISTING /tmp/cc4wGHjh.s 			page 10
+
+
+ 309               		.stabn	68,0,205,.LM31-.LFBB2
+ 310               	.LM31:
+ 311 00ba 6D3F      		cpi r22,lo8(-3)
+ 312 00bc 01F4      		brne .L32
+ 313 00be 91E0      		ldi r25,lo8(1)
+ 314 00c0 00C0      		rjmp .L30
+ 315               	.L32:
+ 316 00c2 90E0      		ldi r25,lo8(0)
+ 317               	.L36:
+ 206:mmc.c         **** 		wc = 0;
+ 207:mmc.c         **** 		do {							/* Xmit the 512 byte data block to MMC */
+ 208:mmc.c         **** 			xmit_spi(*buff++);
+ 318               		.stabn	68,0,208,.LM32-.LFBB2
+ 319               	.LM32:
+ 320 00c4 8081      		ld r24,Z
+ 321 00c6 8EBD      		out 78-32,r24
+ 322               	.L33:
+ 323 00c8 0DB4      		in __tmp_reg__,77-32
+ 324 00ca 07FE      		sbrs __tmp_reg__,7
+ 325 00cc 00C0      		rjmp .L33
+ 209:mmc.c         **** 			xmit_spi(*buff++);
+ 326               		.stabn	68,0,209,.LM33-.LFBB2
+ 327               	.LM33:
+ 328 00ce 8181      		ldd r24,Z+1
+ 329 00d0 8EBD      		out 78-32,r24
+ 330               	.L34:
+ 331 00d2 0DB4      		in __tmp_reg__,77-32
+ 332 00d4 07FE      		sbrs __tmp_reg__,7
+ 333 00d6 00C0      		rjmp .L34
+ 210:mmc.c         **** 		} while (--wc);
+ 334               		.stabn	68,0,210,.LM34-.LFBB2
+ 335               	.LM34:
+ 336 00d8 9150      		subi r25,lo8(-(-1))
+ 337 00da 01F0      		breq .L35
+ 338               		.stabn	68,0,198,.LM35-.LFBB2
+ 339               	.LM35:
+ 340 00dc 3296      		adiw r30,2
+ 341 00de 00C0      		rjmp .L36
+ 342               	.L35:
+ 211:mmc.c         **** 		xmit_spi(0xFF);					/* CRC (Dummy) */
+ 343               		.stabn	68,0,211,.LM36-.LFBB2
+ 344               	.LM36:
+ 345 00e0 8FEF      		ldi r24,lo8(-1)
+ 346 00e2 8EBD      		out 78-32,r24
+ 347               	.L37:
+ 348 00e4 0DB4      		in __tmp_reg__,77-32
+ 349 00e6 07FE      		sbrs __tmp_reg__,7
+ 350 00e8 00C0      		rjmp .L37
+ 212:mmc.c         **** 		xmit_spi(0xFF);
+ 351               		.stabn	68,0,212,.LM37-.LFBB2
+ 352               	.LM37:
+ 353 00ea 8FEF      		ldi r24,lo8(-1)
+ 354 00ec 8EBD      		out 78-32,r24
+ 355               	.L38:
+ 356 00ee 0DB4      		in __tmp_reg__,77-32
+ 357 00f0 07FE      		sbrs __tmp_reg__,7
+ 358 00f2 00C0      		rjmp .L38
+GAS LISTING /tmp/cc4wGHjh.s 			page 11
+
+
+ 359               	.LBB122:
+ 360               	.LBB123:
+ 361               		.stabn	68,0,76,.LM38-.LFBB2
+ 362               	.LM38:
+ 363 00f4 8FEF      		ldi r24,lo8(-1)
+ 364 00f6 8EBD      		out 78-32,r24
+ 365               	.L39:
+ 366               		.stabn	68,0,77,.LM39-.LFBB2
+ 367               	.LM39:
+ 368 00f8 0DB4      		in __tmp_reg__,77-32
+ 369 00fa 07FE      		sbrs __tmp_reg__,7
+ 370 00fc 00C0      		rjmp .L39
+ 371               		.stabn	68,0,78,.LM40-.LFBB2
+ 372               	.LM40:
+ 373 00fe 8EB5      		in r24,78-32
+ 374 0100 90E0      		ldi r25,lo8(0)
+ 375 0102 8F71      		andi r24,lo8(31)
+ 376 0104 8530      		cpi r24,lo8(5)
+ 377 0106 01F0      		breq .L40
+ 378 0108 91E0      		ldi r25,lo8(1)
+ 379               	.L40:
+ 380 010a 81E0      		ldi r24,lo8(1)
+ 381 010c 9827      		eor r25,r24
+ 382               	.L30:
+ 383               	.LBE123:
+ 384               	.LBE122:
+ 213:mmc.c         **** 		resp = rcvr_spi();				/* Reveive data response */
+ 214:mmc.c         **** 		if ((resp & 0x1F) != 0x05)		/* If not accepted, return with error */
+ 215:mmc.c         **** 			return FALSE;
+ 216:mmc.c         **** 	}
+ 217:mmc.c         **** 
+ 218:mmc.c         **** 	return TRUE;
+ 219:mmc.c         **** }
+ 385               		.stabn	68,0,219,.LM41-.LFBB2
+ 386               	.LM41:
+ 387 010e 892F      		mov r24,r25
+ 388               	/* epilogue start */
+ 389 0110 0895      		ret
+ 390               		.size	xmit_datablock, .-xmit_datablock
+ 391               		.stabs	"resp:r(7,5)",64,0,199,24
+ 392               		.stabs	"wc:r(7,5)",64,0,199,25
+ 393               		.stabn	192,0,0,.LFBB2-.LFBB2
+ 394               		.stabs	"res:r(7,5)",64,0,93,24
+ 395               		.stabn	192,0,0,.LBB117-.LFBB2
+ 396               		.stabn	224,0,0,.LBE117-.LFBB2
+ 397               		.stabn	224,0,0,.Lscope2-.LFBB2
+ 398               	.Lscope2:
+ 399               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 400               		.stabd	78,0,0
+ 401               		.stabs	"send_cmd:f(7,5)",36,0,233,send_cmd
+ 402               		.stabs	"cmd:P(7,5)",64,0,230,13
+ 403               		.stabs	"arg:P(7,12)",64,0,231,14
+ 404               		.type	send_cmd, @function
+ 405               	send_cmd:
+ 406               		.stabd	46,0,0
+ 220:mmc.c         **** #endif /* _READONLY */
+ 221:mmc.c         **** 
+GAS LISTING /tmp/cc4wGHjh.s 			page 12
+
+
+ 222:mmc.c         **** 
+ 223:mmc.c         **** 
+ 224:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 225:mmc.c         **** /* Send a command packet to MMC                                          */
+ 226:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 227:mmc.c         **** 
+ 228:mmc.c         **** static
+ 229:mmc.c         **** BYTE send_cmd (
+ 230:mmc.c         **** 	BYTE cmd,		/* Command byte */
+ 231:mmc.c         **** 	DWORD arg		/* Argument */
+ 232:mmc.c         **** )
+ 233:mmc.c         **** {
+ 407               		.stabn	68,0,233,.LM42-.LFBB3
+ 408               	.LM42:
+ 409               	.LFBB3:
+ 410 0112 DF92      		push r13
+ 411 0114 EF92      		push r14
+ 412 0116 FF92      		push r15
+ 413 0118 0F93      		push r16
+ 414 011a 1F93      		push r17
+ 415               	/* prologue: function */
+ 416               	/* frame size = 0 */
+ 417 011c D82E      		mov r13,r24
+ 418 011e 7A01      		movw r14,r20
+ 419 0120 8B01      		movw r16,r22
+ 234:mmc.c         **** 	BYTE n, res;
+ 235:mmc.c         **** 
+ 236:mmc.c         **** 
+ 237:mmc.c         **** 	if (cmd & 0x80) {	/* ACMD<n> is the command sequense of CMD55-CMD<n> */
+ 420               		.stabn	68,0,237,.LM43-.LFBB3
+ 421               	.LM43:
+ 422 0122 87FF      		sbrs r24,7
+ 423 0124 00C0      		rjmp .L52
+ 238:mmc.c         **** 		cmd &= 0x7F;
+ 239:mmc.c         **** 		res = send_cmd(CMD55, 0);
+ 424               		.stabn	68,0,239,.LM44-.LFBB3
+ 425               	.LM44:
+ 426 0126 87E7      		ldi r24,lo8(119)
+ 427 0128 40E0      		ldi r20,lo8(0)
+ 428 012a 50E0      		ldi r21,hi8(0)
+ 429 012c 60E0      		ldi r22,hlo8(0)
+ 430 012e 70E0      		ldi r23,hhi8(0)
+ 431 0130 0E94 0000 		call send_cmd
+ 240:mmc.c         **** 		if (res > 1) return res;
+ 432               		.stabn	68,0,240,.LM45-.LFBB3
+ 433               	.LM45:
+ 434 0134 8230      		cpi r24,lo8(2)
+ 435 0136 00F0      		brlo .+2
+ 436 0138 00C0      		rjmp .L53
+ 437               		.stabn	68,0,238,.LM46-.LFBB3
+ 438               	.LM46:
+ 439 013a 8FE7      		ldi r24,lo8(127)
+ 440 013c D822      		and r13,r24
+ 441               	.L52:
+ 241:mmc.c         **** 	}
+ 242:mmc.c         **** 
+ 243:mmc.c         **** 	/* Select the card and wait for ready */
+GAS LISTING /tmp/cc4wGHjh.s 			page 13
+
+
+ 244:mmc.c         **** 	DESELECT();
+ 442               		.stabn	68,0,244,.LM47-.LFBB3
+ 443               	.LM47:
+ 444 013e 2C9A      		sbi 37-32,4
+ 245:mmc.c         **** 	SELECT();
+ 445               		.stabn	68,0,245,.LM48-.LFBB3
+ 446               	.LM48:
+ 447 0140 2C98      		cbi 37-32,4
+ 448               	.LBB124:
+ 449               	.LBB125:
+ 450               		.stabn	68,0,96,.LM49-.LFBB3
+ 451               	.LM49:
+ 452 0142 82E3      		ldi r24,lo8(50)
+ 453 0144 8093 0000 		sts Timer2,r24
+ 454               	.LBB126:
+ 455               	.LBB127:
+ 456               		.stabn	68,0,76,.LM50-.LFBB3
+ 457               	.LM50:
+ 458 0148 8FEF      		ldi r24,lo8(-1)
+ 459 014a 8EBD      		out 78-32,r24
+ 460               	.L54:
+ 461               		.stabn	68,0,77,.LM51-.LFBB3
+ 462               	.LM51:
+ 463 014c 0DB4      		in __tmp_reg__,77-32
+ 464 014e 07FE      		sbrs __tmp_reg__,7
+ 465 0150 00C0      		rjmp .L54
+ 466               		.stabn	68,0,78,.LM52-.LFBB3
+ 467               	.LM52:
+ 468 0152 8EB5      		in r24,78-32
+ 469               	.LBE127:
+ 470               	.LBE126:
+ 471               	.LBB128:
+ 472               	.LBB129:
+ 473               		.stabn	68,0,76,.LM53-.LFBB3
+ 474               	.LM53:
+ 475 0154 9FEF      		ldi r25,lo8(-1)
+ 476               	.L57:
+ 477 0156 9EBD      		out 78-32,r25
+ 478               	.L55:
+ 479               		.stabn	68,0,77,.LM54-.LFBB3
+ 480               	.LM54:
+ 481 0158 0DB4      		in __tmp_reg__,77-32
+ 482 015a 07FE      		sbrs __tmp_reg__,7
+ 483 015c 00C0      		rjmp .L55
+ 484               		.stabn	68,0,78,.LM55-.LFBB3
+ 485               	.LM55:
+ 486 015e 8EB5      		in r24,78-32
+ 487               	.LBE129:
+ 488               	.LBE128:
+ 489               		.stabn	68,0,100,.LM56-.LFBB3
+ 490               	.LM56:
+ 491 0160 8F3F      		cpi r24,lo8(-1)
+ 492 0162 01F0      		breq .L56
+ 493 0164 8091 0000 		lds r24,Timer2
+ 494 0168 8823      		tst r24
+ 495 016a 01F4      		brne .L57
+ 496 016c 8FEF      		ldi r24,lo8(-1)
+GAS LISTING /tmp/cc4wGHjh.s 			page 14
+
+
+ 497 016e 00C0      		rjmp .L53
+ 498               	.L56:
+ 499               	.LBE125:
+ 500               	.LBE124:
+ 246:mmc.c         **** 	if (wait_ready() != 0xFF) return 0xFF;
+ 247:mmc.c         **** 
+ 248:mmc.c         **** 	/* Send command packet */
+ 249:mmc.c         **** 	xmit_spi(cmd);						/* Start + Command index */
+ 501               		.stabn	68,0,249,.LM57-.LFBB3
+ 502               	.LM57:
+ 503 0170 DEBC      		out 78-32,r13
+ 504               	.L58:
+ 505 0172 0DB4      		in __tmp_reg__,77-32
+ 506 0174 07FE      		sbrs __tmp_reg__,7
+ 507 0176 00C0      		rjmp .L58
+ 250:mmc.c         **** 	xmit_spi((BYTE)(arg >> 24));		/* Argument[31..24] */
+ 508               		.stabn	68,0,250,.LM58-.LFBB3
+ 509               	.LM58:
+ 510 0178 812F      		mov r24,r17
+ 511 017a 9927      		clr r25
+ 512 017c AA27      		clr r26
+ 513 017e BB27      		clr r27
+ 514 0180 8EBD      		out 78-32,r24
+ 515               	.L59:
+ 516 0182 0DB4      		in __tmp_reg__,77-32
+ 517 0184 07FE      		sbrs __tmp_reg__,7
+ 518 0186 00C0      		rjmp .L59
+ 251:mmc.c         **** 	xmit_spi((BYTE)(arg >> 16));		/* Argument[23..16] */
+ 519               		.stabn	68,0,251,.LM59-.LFBB3
+ 520               	.LM59:
+ 521 0188 C801      		movw r24,r16
+ 522 018a AA27      		clr r26
+ 523 018c BB27      		clr r27
+ 524 018e 8EBD      		out 78-32,r24
+ 525               	.L60:
+ 526 0190 0DB4      		in __tmp_reg__,77-32
+ 527 0192 07FE      		sbrs __tmp_reg__,7
+ 528 0194 00C0      		rjmp .L60
+ 252:mmc.c         **** 	xmit_spi((BYTE)(arg >> 8));			/* Argument[15..8] */
+ 529               		.stabn	68,0,252,.LM60-.LFBB3
+ 530               	.LM60:
+ 531 0196 BB27      		clr r27
+ 532 0198 A12F      		mov r26,r17
+ 533 019a 902F      		mov r25,r16
+ 534 019c 8F2D      		mov r24,r15
+ 535 019e 8EBD      		out 78-32,r24
+ 536               	.L61:
+ 537 01a0 0DB4      		in __tmp_reg__,77-32
+ 538 01a2 07FE      		sbrs __tmp_reg__,7
+ 539 01a4 00C0      		rjmp .L61
+ 253:mmc.c         **** 	xmit_spi((BYTE)arg);				/* Argument[7..0] */
+ 540               		.stabn	68,0,253,.LM61-.LFBB3
+ 541               	.LM61:
+ 542 01a6 EEBC      		out 78-32,r14
+ 543               	.L62:
+ 544 01a8 0DB4      		in __tmp_reg__,77-32
+ 545 01aa 07FE      		sbrs __tmp_reg__,7
+GAS LISTING /tmp/cc4wGHjh.s 			page 15
+
+
+ 546 01ac 00C0      		rjmp .L62
+ 254:mmc.c         **** 	n = 0x01;							/* Dummy CRC + Stop */
+ 255:mmc.c         **** 	if (cmd == CMD0) n = 0x95;			/* Valid CRC for CMD0(0) */
+ 547               		.stabn	68,0,255,.LM62-.LFBB3
+ 548               	.LM62:
+ 549 01ae 80E4      		ldi r24,lo8(64)
+ 550 01b0 D816      		cp r13,r24
+ 551 01b2 01F4      		brne .L63
+ 552 01b4 85E9      		ldi r24,lo8(-107)
+ 553 01b6 00C0      		rjmp .L64
+ 554               	.L63:
+ 256:mmc.c         **** 	if (cmd == CMD8) n = 0x87;			/* Valid CRC for CMD8(0x1AA) */
+ 555               		.stabn	68,0,256,.LM63-.LFBB3
+ 556               	.LM63:
+ 557 01b8 88E4      		ldi r24,lo8(72)
+ 558 01ba D816      		cp r13,r24
+ 559 01bc 01F4      		brne .L65
+ 560 01be 87E8      		ldi r24,lo8(-121)
+ 561 01c0 00C0      		rjmp .L64
+ 562               	.L65:
+ 563 01c2 81E0      		ldi r24,lo8(1)
+ 564               	.L64:
+ 257:mmc.c         **** 	xmit_spi(n);
+ 565               		.stabn	68,0,257,.LM64-.LFBB3
+ 566               	.LM64:
+ 567 01c4 8EBD      		out 78-32,r24
+ 568               	.L66:
+ 569 01c6 0DB4      		in __tmp_reg__,77-32
+ 570 01c8 07FE      		sbrs __tmp_reg__,7
+ 571 01ca 00C0      		rjmp .L66
+ 258:mmc.c         **** 
+ 259:mmc.c         **** 	/* Receive command response */
+ 260:mmc.c         **** 	if (cmd == CMD12) rcvr_spi();		/* Skip a stuff byte when stop reading */
+ 572               		.stabn	68,0,260,.LM65-.LFBB3
+ 573               	.LM65:
+ 574 01cc 8CE4      		ldi r24,lo8(76)
+ 575 01ce D816      		cp r13,r24
+ 576 01d0 01F4      		brne .L85
+ 577               	.L67:
+ 578               	.LBB130:
+ 579               	.LBB131:
+ 580               		.stabn	68,0,76,.LM66-.LFBB3
+ 581               	.LM66:
+ 582 01d2 8FEF      		ldi r24,lo8(-1)
+ 583 01d4 8EBD      		out 78-32,r24
+ 584               	.L69:
+ 585               		.stabn	68,0,77,.LM67-.LFBB3
+ 586               	.LM67:
+ 587 01d6 0DB4      		in __tmp_reg__,77-32
+ 588 01d8 07FE      		sbrs __tmp_reg__,7
+ 589 01da 00C0      		rjmp .L69
+ 590               		.stabn	68,0,78,.LM68-.LFBB3
+ 591               	.LM68:
+ 592 01dc 8EB5      		in r24,78-32
+ 593               	.L85:
+ 594 01de 9AE0      		ldi r25,lo8(10)
+ 595               	.LBE131:
+GAS LISTING /tmp/cc4wGHjh.s 			page 16
+
+
+ 596               	.LBE130:
+ 597               	.LBB132:
+ 598               	.LBB133:
+ 599               		.stabn	68,0,76,.LM69-.LFBB3
+ 600               	.LM69:
+ 601 01e0 2FEF      		ldi r18,lo8(-1)
+ 602               	.L72:
+ 603 01e2 2EBD      		out 78-32,r18
+ 604               	.L70:
+ 605               		.stabn	68,0,77,.LM70-.LFBB3
+ 606               	.LM70:
+ 607 01e4 0DB4      		in __tmp_reg__,77-32
+ 608 01e6 07FE      		sbrs __tmp_reg__,7
+ 609 01e8 00C0      		rjmp .L70
+ 610               		.stabn	68,0,78,.LM71-.LFBB3
+ 611               	.LM71:
+ 612 01ea 8EB5      		in r24,78-32
+ 613               	.LBE133:
+ 614               	.LBE132:
+ 261:mmc.c         **** 	n = 10;								/* Wait for a valid response in timeout of 10 attempts */
+ 262:mmc.c         **** 	do
+ 263:mmc.c         **** 		res = rcvr_spi();
+ 264:mmc.c         **** 	while ((res & 0x80) && --n);
+ 615               		.stabn	68,0,264,.LM72-.LFBB3
+ 616               	.LM72:
+ 617 01ec 87FF      		sbrs r24,7
+ 618 01ee 00C0      		rjmp .L53
+ 619 01f0 9150      		subi r25,lo8(-(-1))
+ 620 01f2 01F4      		brne .L72
+ 621               	.L53:
+ 622               	/* epilogue start */
+ 265:mmc.c         **** 
+ 266:mmc.c         **** 	return res;			/* Return with the response value */
+ 267:mmc.c         **** }
+ 623               		.stabn	68,0,267,.LM73-.LFBB3
+ 624               	.LM73:
+ 625 01f4 1F91      		pop r17
+ 626 01f6 0F91      		pop r16
+ 627 01f8 FF90      		pop r15
+ 628 01fa EF90      		pop r14
+ 629 01fc DF90      		pop r13
+ 630 01fe 0895      		ret
+ 631               		.size	send_cmd, .-send_cmd
+ 632               		.stabs	"n:r(7,5)",64,0,234,24
+ 633               		.stabs	"res:r(7,5)",64,0,234,24
+ 634               		.stabn	192,0,0,.LFBB3-.LFBB3
+ 635               		.stabs	"res:r(7,5)",64,0,93,24
+ 636               		.stabn	192,0,0,.LBB125-.LFBB3
+ 637               		.stabn	224,0,0,.LBE125-.LFBB3
+ 638               		.stabn	224,0,0,.Lscope3-.LFBB3
+ 639               	.Lscope3:
+ 640               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 641               		.stabd	78,0,0
+ 642               		.stabs	"disk_initialize:F(6,1)",36,0,285,disk_initialize
+ 643               		.stabs	"drv:P(7,5)",64,0,283,24
+ 644               	.global	disk_initialize
+ 645               		.type	disk_initialize, @function
+GAS LISTING /tmp/cc4wGHjh.s 			page 17
+
+
+ 646               	disk_initialize:
+ 647               		.stabd	46,0,0
+ 268:mmc.c         **** 
+ 269:mmc.c         **** 
+ 270:mmc.c         **** 
+ 271:mmc.c         **** /*--------------------------------------------------------------------------
+ 272:mmc.c         **** 
+ 273:mmc.c         ****    Public Functions
+ 274:mmc.c         **** 
+ 275:mmc.c         **** ---------------------------------------------------------------------------*/
+ 276:mmc.c         **** 
+ 277:mmc.c         **** 
+ 278:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 279:mmc.c         **** /* Initialize Disk Drive                                                 */
+ 280:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 281:mmc.c         **** 
+ 282:mmc.c         **** DSTATUS disk_initialize (
+ 283:mmc.c         **** 	BYTE drv		/* Physical drive nmuber (0) */
+ 284:mmc.c         **** )
+ 285:mmc.c         **** {
+ 648               		.stabn	68,0,285,.LM74-.LFBB4
+ 649               	.LM74:
+ 650               	.LFBB4:
+ 651 0200 EF92      		push r14
+ 652 0202 FF92      		push r15
+ 653 0204 0F93      		push r16
+ 654 0206 1F93      		push r17
+ 655 0208 DF93      		push r29
+ 656 020a CF93      		push r28
+ 657 020c 00D0      		rcall .
+ 658 020e 00D0      		rcall .
+ 659 0210 CDB7      		in r28,__SP_L__
+ 660 0212 DEB7      		in r29,__SP_H__
+ 661               	/* prologue: function */
+ 662               	/* frame size = 4 */
+ 286:mmc.c         **** 	BYTE n, cmd, ty, ocr[4];
+ 287:mmc.c         **** 
+ 288:mmc.c         **** 
+ 289:mmc.c         **** 	if (drv) return STA_NOINIT;			/* Supports only single drive */
+ 663               		.stabn	68,0,289,.LM75-.LFBB4
+ 664               	.LM75:
+ 665 0214 8823      		tst r24
+ 666 0216 01F0      		breq .L87
+ 667 0218 81E0      		ldi r24,lo8(1)
+ 668 021a 00C0      		rjmp .L88
+ 669               	.L87:
+ 290:mmc.c         **** 	if (Stat & STA_NODISK) return Stat;	/* No card in the socket */
+ 670               		.stabn	68,0,290,.LM76-.LFBB4
+ 671               	.LM76:
+ 672 021c 8091 0000 		lds r24,Stat
+ 673 0220 81FD      		sbrc r24,1
+ 674 0222 00C0      		rjmp .L133
+ 675               	.L89:
+ 676               	.LBB134:
+ 677               	.LBB135:
+ 678               		.stabn	68,0,129,.LM77-.LFBB4
+ 679               	.LM77:
+GAS LISTING /tmp/cc4wGHjh.s 			page 18
+
+
+ 680 0224 83E0      		ldi r24,lo8(3)
+ 681 0226 8093 0000 		sts Timer1,r24
+ 682               	.L90:
+ 683 022a 8091 0000 		lds r24,Timer1
+ 684 022e 8823      		tst r24
+ 685 0230 01F4      		brne .L90
+ 686               		.stabn	68,0,130,.LM78-.LFBB4
+ 687               	.LM78:
+ 688 0232 80E3      		ldi r24,lo8(48)
+ 689 0234 85B9      		out 37-32,r24
+ 690               		.stabn	68,0,131,.LM79-.LFBB4
+ 691               	.LM79:
+ 692 0236 80EB      		ldi r24,lo8(-80)
+ 693 0238 84B9      		out 36-32,r24
+ 694               		.stabn	68,0,132,.LM80-.LFBB4
+ 695               	.LM80:
+ 696 023a 80E5      		ldi r24,lo8(80)
+ 697 023c 8CBD      		out 76-32,r24
+ 698               		.stabn	68,0,133,.LM81-.LFBB4
+ 699               	.LM81:
+ 700 023e 81E0      		ldi r24,lo8(1)
+ 701 0240 8DBD      		out 77-32,r24
+ 702 0242 8AE0      		ldi r24,lo8(10)
+ 703               	.LBE135:
+ 704               	.LBE134:
+ 705               	.LBB136:
+ 706               	.LBB137:
+ 707               		.stabn	68,0,76,.LM82-.LFBB4
+ 708               	.LM82:
+ 709 0244 9FEF      		ldi r25,lo8(-1)
+ 710               	.L92:
+ 711 0246 9EBD      		out 78-32,r25
+ 712               	.L91:
+ 713               		.stabn	68,0,77,.LM83-.LFBB4
+ 714               	.LM83:
+ 715 0248 0DB4      		in __tmp_reg__,77-32
+ 716 024a 07FE      		sbrs __tmp_reg__,7
+ 717 024c 00C0      		rjmp .L91
+ 718               		.stabn	68,0,78,.LM84-.LFBB4
+ 719               	.LM84:
+ 720 024e 2EB5      		in r18,78-32
+ 721               	.LBE137:
+ 722               	.LBE136:
+ 291:mmc.c         **** 
+ 292:mmc.c         **** 	power_on();							/* Force socket power on */
+ 293:mmc.c         **** 	FCLK_SLOW();
+ 294:mmc.c         **** 	for (n = 10; n; n--) rcvr_spi();	/* 80 dummy clocks */
+ 723               		.stabn	68,0,294,.LM85-.LFBB4
+ 724               	.LM85:
+ 725 0250 8150      		subi r24,lo8(-(-1))
+ 726 0252 01F4      		brne .L92
+ 295:mmc.c         **** 
+ 296:mmc.c         **** 	ty = 0;
+ 297:mmc.c         **** 	if (send_cmd(CMD0, 0) == 1) {			/* Enter Idle state */
+ 727               		.stabn	68,0,297,.LM86-.LFBB4
+ 728               	.LM86:
+ 729 0254 80E4      		ldi r24,lo8(64)
+GAS LISTING /tmp/cc4wGHjh.s 			page 19
+
+
+ 730 0256 40E0      		ldi r20,lo8(0)
+ 731 0258 50E0      		ldi r21,hi8(0)
+ 732 025a 60E0      		ldi r22,hlo8(0)
+ 733 025c 70E0      		ldi r23,hhi8(0)
+ 734 025e 0E94 0000 		call send_cmd
+ 735 0262 8130      		cpi r24,lo8(1)
+ 736 0264 01F0      		breq .+2
+ 737 0266 00C0      		rjmp .L93
+ 298:mmc.c         **** 		Timer1 = 100;						/* Initialization timeout of 1000 msec */
+ 738               		.stabn	68,0,298,.LM87-.LFBB4
+ 739               	.LM87:
+ 740 0268 84E6      		ldi r24,lo8(100)
+ 741 026a 8093 0000 		sts Timer1,r24
+ 299:mmc.c         **** 		if (send_cmd(CMD8, 0x1AA) == 1) {	/* SDHC */
+ 742               		.stabn	68,0,299,.LM88-.LFBB4
+ 743               	.LM88:
+ 744 026e 88E4      		ldi r24,lo8(72)
+ 745 0270 4AEA      		ldi r20,lo8(426)
+ 746 0272 51E0      		ldi r21,hi8(426)
+ 747 0274 60E0      		ldi r22,hlo8(426)
+ 748 0276 70E0      		ldi r23,hhi8(426)
+ 749 0278 0E94 0000 		call send_cmd
+ 750 027c 8130      		cpi r24,lo8(1)
+ 751 027e 01F0      		breq .+2
+ 752 0280 00C0      		rjmp .L94
+ 753 0282 7E01      		movw r14,r28
+ 754 0284 0894      		sec
+ 755 0286 E11C      		adc r14,__zero_reg__
+ 756 0288 F11C      		adc r15,__zero_reg__
+ 757 028a 8701      		movw r16,r14
+ 758               	.LBB138:
+ 759               	.LBB139:
+ 760               		.stabn	68,0,76,.LM89-.LFBB4
+ 761               	.LM89:
+ 762 028c 9FEF      		ldi r25,lo8(-1)
+ 763               	.LBE139:
+ 764               	.LBE138:
+ 300:mmc.c         **** 			for (n = 0; n < 4; n++) ocr[n] = rcvr_spi();		/* Get trailing return value of R7 resp */
+ 765               		.stabn	68,0,300,.LM90-.LFBB4
+ 766               	.LM90:
+ 767 028e 9E01      		movw r18,r28
+ 768 0290 2B5F      		subi r18,lo8(-(5))
+ 769 0292 3F4F      		sbci r19,hi8(-(5))
+ 770               	.L96:
+ 771               	.LBB141:
+ 772               	.LBB140:
+ 773               		.stabn	68,0,76,.LM91-.LFBB4
+ 774               	.LM91:
+ 775 0294 9EBD      		out 78-32,r25
+ 776               	.L95:
+ 777               		.stabn	68,0,77,.LM92-.LFBB4
+ 778               	.LM92:
+ 779 0296 0DB4      		in __tmp_reg__,77-32
+ 780 0298 07FE      		sbrs __tmp_reg__,7
+ 781 029a 00C0      		rjmp .L95
+ 782               		.stabn	68,0,78,.LM93-.LFBB4
+ 783               	.LM93:
+GAS LISTING /tmp/cc4wGHjh.s 			page 20
+
+
+ 784 029c 8EB5      		in r24,78-32
+ 785               	.LBE140:
+ 786               	.LBE141:
+ 787               		.stabn	68,0,300,.LM94-.LFBB4
+ 788               	.LM94:
+ 789 029e F801      		movw r30,r16
+ 790 02a0 8193      		st Z+,r24
+ 791 02a2 8F01      		movw r16,r30
+ 792 02a4 E217      		cp r30,r18
+ 793 02a6 F307      		cpc r31,r19
+ 794 02a8 01F4      		brne .L96
+ 301:mmc.c         **** 			if (ocr[2] == 0x01 && ocr[3] == 0xAA) {				/* The card can work at vdd range of 2.7-3.6V */
+ 795               		.stabn	68,0,301,.LM95-.LFBB4
+ 796               	.LM95:
+ 797 02aa 8B81      		ldd r24,Y+3
+ 798 02ac 8130      		cpi r24,lo8(1)
+ 799 02ae 01F0      		breq .+2
+ 800 02b0 00C0      		rjmp .L93
+ 801 02b2 8C81      		ldd r24,Y+4
+ 802 02b4 8A3A      		cpi r24,lo8(-86)
+ 803 02b6 01F0      		breq .+2
+ 804 02b8 00C0      		rjmp .L93
+ 805               	.L116:
+ 302:mmc.c         **** 				while (Timer1 && send_cmd(ACMD41, 1UL << 30));	/* Wait for leaving idle state (ACMD41 with HCS 
+ 806               		.stabn	68,0,302,.LM96-.LFBB4
+ 807               	.LM96:
+ 808 02ba 8091 0000 		lds r24,Timer1
+ 809 02be 8823      		tst r24
+ 810 02c0 01F0      		breq .L97
+ 811 02c2 89EE      		ldi r24,lo8(-23)
+ 812 02c4 40E0      		ldi r20,lo8(1073741824)
+ 813 02c6 50E0      		ldi r21,hi8(1073741824)
+ 814 02c8 60E0      		ldi r22,hlo8(1073741824)
+ 815 02ca 70E4      		ldi r23,hhi8(1073741824)
+ 816 02cc 0E94 0000 		call send_cmd
+ 817 02d0 8823      		tst r24
+ 818 02d2 01F4      		brne .L116
+ 819               	.L97:
+ 303:mmc.c         **** 				if (Timer1 && send_cmd(CMD58, 0) == 0) {		/* Check CCS bit in the OCR */
+ 820               		.stabn	68,0,303,.LM97-.LFBB4
+ 821               	.LM97:
+ 822 02d4 8091 0000 		lds r24,Timer1
+ 823 02d8 8823      		tst r24
+ 824 02da 01F4      		brne .+2
+ 825 02dc 00C0      		rjmp .L93
+ 826 02de 8AE7      		ldi r24,lo8(122)
+ 827 02e0 40E0      		ldi r20,lo8(0)
+ 828 02e2 50E0      		ldi r21,hi8(0)
+ 829 02e4 60E0      		ldi r22,hlo8(0)
+ 830 02e6 70E0      		ldi r23,hhi8(0)
+ 831 02e8 0E94 0000 		call send_cmd
+ 832 02ec 8823      		tst r24
+ 833 02ee 01F4      		brne .L93
+ 834               	.LBB142:
+ 835               	.LBB143:
+ 836               		.stabn	68,0,76,.LM98-.LFBB4
+ 837               	.LM98:
+GAS LISTING /tmp/cc4wGHjh.s 			page 21
+
+
+ 838 02f0 9FEF      		ldi r25,lo8(-1)
+ 839               	.L115:
+ 840 02f2 9EBD      		out 78-32,r25
+ 841               	.L99:
+ 842               		.stabn	68,0,77,.LM99-.LFBB4
+ 843               	.LM99:
+ 844 02f4 0DB4      		in __tmp_reg__,77-32
+ 845 02f6 07FE      		sbrs __tmp_reg__,7
+ 846 02f8 00C0      		rjmp .L99
+ 847               		.stabn	68,0,78,.LM100-.LFBB4
+ 848               	.LM100:
+ 849 02fa 8EB5      		in r24,78-32
+ 850               	.LBE143:
+ 851               	.LBE142:
+ 304:mmc.c         **** 					for (n = 0; n < 4; n++) ocr[n] = rcvr_spi();
+ 852               		.stabn	68,0,304,.LM101-.LFBB4
+ 853               	.LM101:
+ 854 02fc F701      		movw r30,r14
+ 855 02fe 8193      		st Z+,r24
+ 856 0300 7F01      		movw r14,r30
+ 857 0302 E017      		cp r30,r16
+ 858 0304 F107      		cpc r31,r17
+ 859 0306 01F4      		brne .L115
+ 305:mmc.c         **** 					ty = (ocr[0] & 0x40) ? CT_SD2 | CT_BLOCK : CT_SD2;	/* SDv2 */
+ 860               		.stabn	68,0,305,.LM102-.LFBB4
+ 861               	.LM102:
+ 862 0308 8981      		ldd r24,Y+1
+ 863 030a 86FD      		sbrc r24,6
+ 864 030c 00C0      		rjmp .L101
+ 865 030e 14E0      		ldi r17,lo8(4)
+ 866 0310 00C0      		rjmp .L102
+ 867               	.L101:
+ 868 0312 1CE0      		ldi r17,lo8(12)
+ 869 0314 00C0      		rjmp .L102
+ 870               	.L94:
+ 306:mmc.c         **** 				}
+ 307:mmc.c         **** 			}
+ 308:mmc.c         **** 		} else {							/* SDSC or MMC */
+ 309:mmc.c         **** 			if (send_cmd(ACMD41, 0) <= 1) 	{
+ 871               		.stabn	68,0,309,.LM103-.LFBB4
+ 872               	.LM103:
+ 873 0316 89EE      		ldi r24,lo8(-23)
+ 874 0318 40E0      		ldi r20,lo8(0)
+ 875 031a 50E0      		ldi r21,hi8(0)
+ 876 031c 60E0      		ldi r22,hlo8(0)
+ 877 031e 70E0      		ldi r23,hhi8(0)
+ 878 0320 0E94 0000 		call send_cmd
+ 879 0324 8230      		cpi r24,lo8(2)
+ 880 0326 00F0      		brlo .L103
+ 881 0328 01E4      		ldi r16,lo8(65)
+ 882 032a 11E0      		ldi r17,lo8(1)
+ 883 032c 00C0      		rjmp .L117
+ 884               	.L103:
+ 885 032e 09EE      		ldi r16,lo8(-23)
+ 886 0330 12E0      		ldi r17,lo8(2)
+ 887               	.L117:
+ 310:mmc.c         **** 				ty = CT_SD1; cmd = ACMD41;	/* SDv1 */
+GAS LISTING /tmp/cc4wGHjh.s 			page 22
+
+
+ 311:mmc.c         **** 			} else {
+ 312:mmc.c         **** 				ty = CT_MMC; cmd = CMD1;	/* MMCv3 */
+ 313:mmc.c         **** 			}
+ 314:mmc.c         **** 			while (Timer1 && send_cmd(cmd, 0));			/* Wait for leaving idle state */
+ 888               		.stabn	68,0,314,.LM104-.LFBB4
+ 889               	.LM104:
+ 890 0332 8091 0000 		lds r24,Timer1
+ 891 0336 8823      		tst r24
+ 892 0338 01F0      		breq .L105
+ 893 033a 802F      		mov r24,r16
+ 894 033c 40E0      		ldi r20,lo8(0)
+ 895 033e 50E0      		ldi r21,hi8(0)
+ 896 0340 60E0      		ldi r22,hlo8(0)
+ 897 0342 70E0      		ldi r23,hhi8(0)
+ 898 0344 0E94 0000 		call send_cmd
+ 899 0348 8823      		tst r24
+ 900 034a 01F4      		brne .L117
+ 901               	.L105:
+ 315:mmc.c         **** 			if (!Timer1 || send_cmd(CMD16, 512) != 0)	/* Set R/W block length to 512 */
+ 902               		.stabn	68,0,315,.LM105-.LFBB4
+ 903               	.LM105:
+ 904 034c 8091 0000 		lds r24,Timer1
+ 905 0350 8823      		tst r24
+ 906 0352 01F0      		breq .L93
+ 907 0354 80E5      		ldi r24,lo8(80)
+ 908 0356 40E0      		ldi r20,lo8(512)
+ 909 0358 52E0      		ldi r21,hi8(512)
+ 910 035a 60E0      		ldi r22,hlo8(512)
+ 911 035c 70E0      		ldi r23,hhi8(512)
+ 912 035e 0E94 0000 		call send_cmd
+ 913 0362 8111      		cpse r24,__zero_reg__
+ 914               	.L93:
+ 915 0364 10E0      		ldi r17,lo8(0)
+ 916               	.L102:
+ 316:mmc.c         **** 				ty = 0;
+ 317:mmc.c         **** 		}
+ 318:mmc.c         **** 	}
+ 319:mmc.c         **** 	CardType = ty;
+ 917               		.stabn	68,0,319,.LM106-.LFBB4
+ 918               	.LM106:
+ 919 0366 1093 0000 		sts CardType,r17
+ 920               	.LBB144:
+ 921               	.LBB145:
+ 922               		.stabn	68,0,114,.LM107-.LFBB4
+ 923               	.LM107:
+ 924 036a 2C9A      		sbi 37-32,4
+ 925               	.LBB146:
+ 926               	.LBB147:
+ 927               		.stabn	68,0,76,.LM108-.LFBB4
+ 928               	.LM108:
+ 929 036c 8FEF      		ldi r24,lo8(-1)
+ 930 036e 8EBD      		out 78-32,r24
+ 931               	.L106:
+ 932               		.stabn	68,0,77,.LM109-.LFBB4
+ 933               	.LM109:
+ 934 0370 0DB4      		in __tmp_reg__,77-32
+ 935 0372 07FE      		sbrs __tmp_reg__,7
+GAS LISTING /tmp/cc4wGHjh.s 			page 23
+
+
+ 936 0374 00C0      		rjmp .L106
+ 937               		.stabn	68,0,78,.LM110-.LFBB4
+ 938               	.LM110:
+ 939 0376 8EB5      		in r24,78-32
+ 940               	.LBE147:
+ 941               	.LBE146:
+ 942               	.LBE145:
+ 943               	.LBE144:
+ 320:mmc.c         **** 	release_spi();
+ 321:mmc.c         **** 
+ 322:mmc.c         **** 	if (ty) {			/* Initialization succeded */
+ 944               		.stabn	68,0,322,.LM111-.LFBB4
+ 945               	.LM111:
+ 946 0378 1123      		tst r17
+ 947 037a 01F0      		breq .L107
+ 323:mmc.c         **** 		Stat &= ~STA_NOINIT;		/* Clear STA_NOINIT */
+ 948               		.stabn	68,0,323,.LM112-.LFBB4
+ 949               	.LM112:
+ 950 037c 8091 0000 		lds r24,Stat
+ 951 0380 8E7F      		andi r24,lo8(-2)
+ 952 0382 00C0      		rjmp .L132
+ 953               	.L107:
+ 954               	.LBB148:
+ 955               	.LBB149:
+ 956               		.stabn	68,0,139,.LM113-.LFBB4
+ 957               	.LM113:
+ 958 0384 2C98      		cbi 37-32,4
+ 959               	.LBB150:
+ 960               	.LBB151:
+ 961               		.stabn	68,0,96,.LM114-.LFBB4
+ 962               	.LM114:
+ 963 0386 82E3      		ldi r24,lo8(50)
+ 964 0388 8093 0000 		sts Timer2,r24
+ 965               	.LBB152:
+ 966               	.LBB153:
+ 967               		.stabn	68,0,76,.LM115-.LFBB4
+ 968               	.LM115:
+ 969 038c 8FEF      		ldi r24,lo8(-1)
+ 970 038e 8EBD      		out 78-32,r24
+ 971               	.L109:
+ 972               		.stabn	68,0,77,.LM116-.LFBB4
+ 973               	.LM116:
+ 974 0390 0DB4      		in __tmp_reg__,77-32
+ 975 0392 07FE      		sbrs __tmp_reg__,7
+ 976 0394 00C0      		rjmp .L109
+ 977               		.stabn	68,0,78,.LM117-.LFBB4
+ 978               	.LM117:
+ 979 0396 8EB5      		in r24,78-32
+ 980               	.LBE153:
+ 981               	.LBE152:
+ 982               	.LBB154:
+ 983               	.LBB155:
+ 984               		.stabn	68,0,76,.LM118-.LFBB4
+ 985               	.LM118:
+ 986 0398 9FEF      		ldi r25,lo8(-1)
+ 987               	.L112:
+ 988 039a 9EBD      		out 78-32,r25
+GAS LISTING /tmp/cc4wGHjh.s 			page 24
+
+
+ 989               	.L110:
+ 990               		.stabn	68,0,77,.LM119-.LFBB4
+ 991               	.LM119:
+ 992 039c 0DB4      		in __tmp_reg__,77-32
+ 993 039e 07FE      		sbrs __tmp_reg__,7
+ 994 03a0 00C0      		rjmp .L110
+ 995               		.stabn	68,0,78,.LM120-.LFBB4
+ 996               	.LM120:
+ 997 03a2 8EB5      		in r24,78-32
+ 998               	.LBE155:
+ 999               	.LBE154:
+ 1000               		.stabn	68,0,100,.LM121-.LFBB4
+ 1001               	.LM121:
+ 1002 03a4 8F3F      		cpi r24,lo8(-1)
+ 1003 03a6 01F0      		breq .L111
+ 1004 03a8 8091 0000 		lds r24,Timer2
+ 1005 03ac 8823      		tst r24
+ 1006 03ae 01F4      		brne .L112
+ 1007               	.L111:
+ 1008               	.LBE151:
+ 1009               	.LBE150:
+ 1010               	.LBB156:
+ 1011               	.LBB157:
+ 1012               		.stabn	68,0,114,.LM122-.LFBB4
+ 1013               	.LM122:
+ 1014 03b0 2C9A      		sbi 37-32,4
+ 1015               	.LBB158:
+ 1016               	.LBB159:
+ 1017               		.stabn	68,0,76,.LM123-.LFBB4
+ 1018               	.LM123:
+ 1019 03b2 8FEF      		ldi r24,lo8(-1)
+ 1020 03b4 8EBD      		out 78-32,r24
+ 1021               	.L113:
+ 1022               		.stabn	68,0,77,.LM124-.LFBB4
+ 1023               	.LM124:
+ 1024 03b6 0DB4      		in __tmp_reg__,77-32
+ 1025 03b8 07FE      		sbrs __tmp_reg__,7
+ 1026 03ba 00C0      		rjmp .L113
+ 1027               		.stabn	68,0,78,.LM125-.LFBB4
+ 1028               	.LM125:
+ 1029 03bc 8EB5      		in r24,78-32
+ 1030               	.LBE159:
+ 1031               	.LBE158:
+ 1032               	.LBE157:
+ 1033               	.LBE156:
+ 1034               		.stabn	68,0,143,.LM126-.LFBB4
+ 1035               	.LM126:
+ 1036 03be 1CBC      		out 76-32,__zero_reg__
+ 1037               		.stabn	68,0,144,.LM127-.LFBB4
+ 1038               	.LM127:
+ 1039 03c0 8091 0000 		lds r24,Stat
+ 1040 03c4 8160      		ori r24,lo8(1)
+ 1041               	.L132:
+ 1042 03c6 8093 0000 		sts Stat,r24
+ 1043               	.L133:
+ 1044               	.LBE149:
+ 1045               	.LBE148:
+GAS LISTING /tmp/cc4wGHjh.s 			page 25
+
+
+ 324:mmc.c         **** 		FCLK_FAST();
+ 325:mmc.c         **** 	} else {			/* Initialization failed */
+ 326:mmc.c         **** 		power_off();
+ 327:mmc.c         **** 	}
+ 328:mmc.c         **** 
+ 329:mmc.c         **** 	return Stat;
+ 1046               		.stabn	68,0,329,.LM128-.LFBB4
+ 1047               	.LM128:
+ 1048 03ca 8091 0000 		lds r24,Stat
+ 1049               	.L88:
+ 1050               	/* epilogue start */
+ 330:mmc.c         **** }
+ 1051               		.stabn	68,0,330,.LM129-.LFBB4
+ 1052               	.LM129:
+ 1053 03ce 0F90      		pop __tmp_reg__
+ 1054 03d0 0F90      		pop __tmp_reg__
+ 1055 03d2 0F90      		pop __tmp_reg__
+ 1056 03d4 0F90      		pop __tmp_reg__
+ 1057 03d6 CF91      		pop r28
+ 1058 03d8 DF91      		pop r29
+ 1059 03da 1F91      		pop r17
+ 1060 03dc 0F91      		pop r16
+ 1061 03de FF90      		pop r15
+ 1062 03e0 EF90      		pop r14
+ 1063 03e2 0895      		ret
+ 1064               		.size	disk_initialize, .-disk_initialize
+ 1065               		.stabs	"n:r(7,5)",64,0,286,24
+ 1066               		.stabs	"cmd:r(7,5)",64,0,286,16
+ 1067               		.stabs	"ty:r(7,5)",64,0,286,17
+ 1068               		.stabs	"ocr:(0,19)=ar(0,20)=r(0,20);0;0177777;;0;3;(7,5)",128,0,286,1
+ 1069               		.stabn	192,0,0,.LFBB4-.LFBB4
+ 1070               		.stabs	"res:r(7,5)",64,0,93,24
+ 1071               		.stabn	192,0,0,.LBB151-.LFBB4
+ 1072               		.stabn	224,0,0,.LBE151-.LFBB4
+ 1073               		.stabn	224,0,0,.Lscope4-.LFBB4
+ 1074               	.Lscope4:
+ 1075               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 1076               		.stabd	78,0,0
+ 1077               		.stabs	"disk_status:F(6,1)",36,0,341,disk_status
+ 1078               		.stabs	"drv:P(7,5)",64,0,339,24
+ 1079               	.global	disk_status
+ 1080               		.type	disk_status, @function
+ 1081               	disk_status:
+ 1082               		.stabd	46,0,0
+ 331:mmc.c         **** 
+ 332:mmc.c         **** 
+ 333:mmc.c         **** 
+ 334:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 335:mmc.c         **** /* Get Disk Status                                                       */
+ 336:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 337:mmc.c         **** 
+ 338:mmc.c         **** DSTATUS disk_status (
+ 339:mmc.c         **** 	BYTE drv		/* Physical drive nmuber (0) */
+ 340:mmc.c         **** )
+ 341:mmc.c         **** {
+ 1083               		.stabn	68,0,341,.LM130-.LFBB5
+ 1084               	.LM130:
+GAS LISTING /tmp/cc4wGHjh.s 			page 26
+
+
+ 1085               	.LFBB5:
+ 1086               	/* prologue: function */
+ 1087               	/* frame size = 0 */
+ 342:mmc.c         **** 	if (drv) return STA_NOINIT;		/* Supports only single drive */
+ 1088               		.stabn	68,0,342,.LM131-.LFBB5
+ 1089               	.LM131:
+ 1090 03e4 8823      		tst r24
+ 1091 03e6 01F0      		breq .L135
+ 1092 03e8 81E0      		ldi r24,lo8(1)
+ 1093 03ea 0895      		ret
+ 1094               	.L135:
+ 343:mmc.c         **** 	return Stat;
+ 1095               		.stabn	68,0,343,.LM132-.LFBB5
+ 1096               	.LM132:
+ 1097 03ec 8091 0000 		lds r24,Stat
+ 344:mmc.c         **** }
+ 1098               		.stabn	68,0,344,.LM133-.LFBB5
+ 1099               	.LM133:
+ 1100 03f0 0895      		ret
+ 1101               		.size	disk_status, .-disk_status
+ 1102               	.Lscope5:
+ 1103               		.stabs	"",36,0,0,.Lscope5-.LFBB5
+ 1104               		.stabd	78,0,0
+ 1105               		.stabs	"disk_read:F(6,3)",36,0,358,disk_read
+ 1106               		.stabs	"drv:P(7,5)",64,0,353,24
+ 1107               		.stabs	"buff:P(0,16)",64,0,354,28
+ 1108               		.stabs	"sector:P(7,12)",64,0,355,18
+ 1109               		.stabs	"count:P(7,5)",64,0,356,16
+ 1110               	.global	disk_read
+ 1111               		.type	disk_read, @function
+ 1112               	disk_read:
+ 1113               		.stabd	46,0,0
+ 345:mmc.c         **** 
+ 346:mmc.c         **** 
+ 347:mmc.c         **** 
+ 348:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 349:mmc.c         **** /* Read Sector(s)                                                        */
+ 350:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 351:mmc.c         **** 
+ 352:mmc.c         **** DRESULT disk_read (
+ 353:mmc.c         **** 	BYTE drv,			/* Physical drive nmuber (0) */
+ 354:mmc.c         **** 	BYTE *buff,			/* Pointer to the data buffer to store read data */
+ 355:mmc.c         **** 	DWORD sector,		/* Start sector number (LBA) */
+ 356:mmc.c         **** 	BYTE count			/* Sector count (1..255) */
+ 357:mmc.c         **** )
+ 358:mmc.c         **** {
+ 1114               		.stabn	68,0,358,.LM134-.LFBB6
+ 1115               	.LM134:
+ 1116               	.LFBB6:
+ 1117 03f2 0F93      		push r16
+ 1118 03f4 CF93      		push r28
+ 1119 03f6 DF93      		push r29
+ 1120               	/* prologue: function */
+ 1121               	/* frame size = 0 */
+ 1122 03f8 EB01      		movw r28,r22
+ 359:mmc.c         **** 	if (drv || !count) return RES_PARERR;
+ 1123               		.stabn	68,0,359,.LM135-.LFBB6
+GAS LISTING /tmp/cc4wGHjh.s 			page 27
+
+
+ 1124               	.LM135:
+ 1125 03fa 8823      		tst r24
+ 1126 03fc 01F0      		breq .+2
+ 1127 03fe 00C0      		rjmp .L139
+ 1128 0400 0023      		tst r16
+ 1129 0402 01F4      		brne .+2
+ 1130 0404 00C0      		rjmp .L139
+ 360:mmc.c         **** 	if (Stat & STA_NOINIT) return RES_NOTRDY;
+ 1131               		.stabn	68,0,360,.LM136-.LFBB6
+ 1132               	.LM136:
+ 1133 0406 8091 0000 		lds r24,Stat
+ 1134 040a 80FF      		sbrs r24,0
+ 1135 040c 00C0      		rjmp .L140
+ 1136 040e 03E0      		ldi r16,lo8(3)
+ 1137 0410 00C0      		rjmp .L141
+ 1138               	.L140:
+ 361:mmc.c         **** 
+ 362:mmc.c         **** 	if (!(CardType & CT_BLOCK)) sector *= 512;	/* Convert to byte address if needed */
+ 1139               		.stabn	68,0,362,.LM137-.LFBB6
+ 1140               	.LM137:
+ 1141 0412 8091 0000 		lds r24,CardType
+ 1142 0416 83FD      		sbrc r24,3
+ 1143 0418 00C0      		rjmp .L142
+ 1144 041a 69E0      		ldi r22,9
+ 1145 041c 220F      	1:	lsl r18
+ 1146 041e 331F      		rol r19
+ 1147 0420 441F      		rol r20
+ 1148 0422 551F      		rol r21
+ 1149 0424 6A95      		dec r22
+ 1150 0426 01F4      		brne 1b
+ 1151               	.L142:
+ 363:mmc.c         **** 
+ 364:mmc.c         **** 	if (count == 1) {	/* Single block read */
+ 1152               		.stabn	68,0,364,.LM138-.LFBB6
+ 1153               	.LM138:
+ 1154 0428 0130      		cpi r16,lo8(1)
+ 1155 042a 01F4      		brne .L143
+ 365:mmc.c         **** 		if ((send_cmd(CMD17, sector) == 0)	/* READ_SINGLE_BLOCK */
+ 1156               		.stabn	68,0,365,.LM139-.LFBB6
+ 1157               	.LM139:
+ 1158 042c 81E5      		ldi r24,lo8(81)
+ 1159 042e BA01      		movw r22,r20
+ 1160 0430 A901      		movw r20,r18
+ 1161 0432 0E94 0000 		call send_cmd
+ 1162 0436 8823      		tst r24
+ 1163 0438 01F4      		brne .L144
+ 1164 043a CE01      		movw r24,r28
+ 1165 043c 60E0      		ldi r22,lo8(512)
+ 1166 043e 72E0      		ldi r23,hi8(512)
+ 1167 0440 0E94 0000 		call rcvr_datablock
+ 1168 0444 00E0      		ldi r16,lo8(0)
+ 1169 0446 8823      		tst r24
+ 1170 0448 01F4      		brne .L144
+ 1171 044a 01E0      		ldi r16,lo8(1)
+ 1172 044c 00C0      		rjmp .L144
+ 1173               	.L143:
+ 366:mmc.c         **** 			&& rcvr_datablock(buff, 512))
+GAS LISTING /tmp/cc4wGHjh.s 			page 28
+
+
+ 367:mmc.c         **** 			count = 0;
+ 368:mmc.c         **** 	}
+ 369:mmc.c         **** 	else {				/* Multiple block read */
+ 370:mmc.c         **** 		if (send_cmd(CMD18, sector) == 0) {	/* READ_MULTIPLE_BLOCK */
+ 1174               		.stabn	68,0,370,.LM140-.LFBB6
+ 1175               	.LM140:
+ 1176 044e 82E5      		ldi r24,lo8(82)
+ 1177 0450 BA01      		movw r22,r20
+ 1178 0452 A901      		movw r20,r18
+ 1179 0454 0E94 0000 		call send_cmd
+ 1180 0458 8823      		tst r24
+ 1181 045a 01F4      		brne .L144
+ 1182               	.L152:
+ 371:mmc.c         **** 			do {
+ 372:mmc.c         **** 				if (!rcvr_datablock(buff, 512)) break;
+ 1183               		.stabn	68,0,372,.LM141-.LFBB6
+ 1184               	.LM141:
+ 1185 045c CE01      		movw r24,r28
+ 1186 045e 60E0      		ldi r22,lo8(512)
+ 1187 0460 72E0      		ldi r23,hi8(512)
+ 1188 0462 0E94 0000 		call rcvr_datablock
+ 1189 0466 8823      		tst r24
+ 1190 0468 01F0      		breq .L146
+ 373:mmc.c         **** 				buff += 512;
+ 374:mmc.c         **** 			} while (--count);
+ 1191               		.stabn	68,0,374,.LM142-.LFBB6
+ 1192               	.LM142:
+ 1193 046a 0150      		subi r16,lo8(-(-1))
+ 1194 046c 01F0      		breq .L146
+ 1195               		.stabn	68,0,373,.LM143-.LFBB6
+ 1196               	.LM143:
+ 1197 046e C050      		subi r28,lo8(-(512))
+ 1198 0470 DE4F      		sbci r29,hi8(-(512))
+ 1199 0472 00C0      		rjmp .L152
+ 1200               	.L146:
+ 375:mmc.c         **** 			send_cmd(CMD12, 0);				/* STOP_TRANSMISSION */
+ 1201               		.stabn	68,0,375,.LM144-.LFBB6
+ 1202               	.LM144:
+ 1203 0474 8CE4      		ldi r24,lo8(76)
+ 1204 0476 40E0      		ldi r20,lo8(0)
+ 1205 0478 50E0      		ldi r21,hi8(0)
+ 1206 047a 60E0      		ldi r22,hlo8(0)
+ 1207 047c 70E0      		ldi r23,hhi8(0)
+ 1208 047e 0E94 0000 		call send_cmd
+ 1209               	.L144:
+ 1210               	.LBB160:
+ 1211               	.LBB161:
+ 1212               		.stabn	68,0,114,.LM145-.LFBB6
+ 1213               	.LM145:
+ 1214 0482 2C9A      		sbi 37-32,4
+ 1215               	.LBB162:
+ 1216               	.LBB163:
+ 1217               		.stabn	68,0,76,.LM146-.LFBB6
+ 1218               	.LM146:
+ 1219 0484 8FEF      		ldi r24,lo8(-1)
+ 1220 0486 8EBD      		out 78-32,r24
+ 1221               	.L148:
+GAS LISTING /tmp/cc4wGHjh.s 			page 29
+
+
+ 1222               		.stabn	68,0,77,.LM147-.LFBB6
+ 1223               	.LM147:
+ 1224 0488 0DB4      		in __tmp_reg__,77-32
+ 1225 048a 07FE      		sbrs __tmp_reg__,7
+ 1226 048c 00C0      		rjmp .L148
+ 1227               		.stabn	68,0,78,.LM148-.LFBB6
+ 1228               	.LM148:
+ 1229 048e 8EB5      		in r24,78-32
+ 1230               	.LBE163:
+ 1231               	.LBE162:
+ 1232               	.LBE161:
+ 1233               	.LBE160:
+ 376:mmc.c         **** 		}
+ 377:mmc.c         **** 	}
+ 378:mmc.c         **** 	release_spi();
+ 379:mmc.c         **** 
+ 380:mmc.c         **** 	return count ? RES_ERROR : RES_OK;
+ 1234               		.stabn	68,0,380,.LM149-.LFBB6
+ 1235               	.LM149:
+ 1236 0490 0023      		tst r16
+ 1237 0492 01F0      		breq .L141
+ 1238 0494 01E0      		ldi r16,lo8(1)
+ 1239 0496 00C0      		rjmp .L141
+ 1240               	.L139:
+ 1241 0498 04E0      		ldi r16,lo8(4)
+ 1242               	.L141:
+ 381:mmc.c         **** }
+ 1243               		.stabn	68,0,381,.LM150-.LFBB6
+ 1244               	.LM150:
+ 1245 049a 802F      		mov r24,r16
+ 1246               	/* epilogue start */
+ 1247 049c DF91      		pop r29
+ 1248 049e CF91      		pop r28
+ 1249 04a0 0F91      		pop r16
+ 1250 04a2 0895      		ret
+ 1251               		.size	disk_read, .-disk_read
+ 1252               	.Lscope6:
+ 1253               		.stabs	"",36,0,0,.Lscope6-.LFBB6
+ 1254               		.stabd	78,0,0
+ 1255               		.stabs	"disk_write:F(6,3)",36,0,396,disk_write
+ 1256               		.stabs	"drv:P(7,5)",64,0,391,24
+ 1257               		.stabs	"buff:P(0,17)",64,0,392,28
+ 1258               		.stabs	"sector:P(7,12)",64,0,393,12
+ 1259               		.stabs	"count:P(7,5)",64,0,394,16
+ 1260               	.global	disk_write
+ 1261               		.type	disk_write, @function
+ 1262               	disk_write:
+ 1263               		.stabd	46,0,0
+ 382:mmc.c         **** 
+ 383:mmc.c         **** 
+ 384:mmc.c         **** 
+ 385:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 386:mmc.c         **** /* Write Sector(s)                                                       */
+ 387:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 388:mmc.c         **** 
+ 389:mmc.c         **** #if _READONLY == 0
+ 390:mmc.c         **** DRESULT disk_write (
+GAS LISTING /tmp/cc4wGHjh.s 			page 30
+
+
+ 391:mmc.c         **** 	BYTE drv,			/* Physical drive nmuber (0) */
+ 392:mmc.c         **** 	const BYTE *buff,	/* Pointer to the data to be written */
+ 393:mmc.c         **** 	DWORD sector,		/* Start sector number (LBA) */
+ 394:mmc.c         **** 	BYTE count			/* Sector count (1..255) */
+ 395:mmc.c         **** )
+ 396:mmc.c         **** {
+ 1264               		.stabn	68,0,396,.LM151-.LFBB7
+ 1265               	.LM151:
+ 1266               	.LFBB7:
+ 1267 04a4 CF92      		push r12
+ 1268 04a6 DF92      		push r13
+ 1269 04a8 EF92      		push r14
+ 1270 04aa FF92      		push r15
+ 1271 04ac 0F93      		push r16
+ 1272 04ae CF93      		push r28
+ 1273 04b0 DF93      		push r29
+ 1274               	/* prologue: function */
+ 1275               	/* frame size = 0 */
+ 1276 04b2 EB01      		movw r28,r22
+ 1277 04b4 6901      		movw r12,r18
+ 1278 04b6 7A01      		movw r14,r20
+ 397:mmc.c         **** 	if (drv || !count) return RES_PARERR;
+ 1279               		.stabn	68,0,397,.LM152-.LFBB7
+ 1280               	.LM152:
+ 1281 04b8 8823      		tst r24
+ 1282 04ba 01F0      		breq .+2
+ 1283 04bc 00C0      		rjmp .L154
+ 1284 04be 0023      		tst r16
+ 1285 04c0 01F4      		brne .+2
+ 1286 04c2 00C0      		rjmp .L154
+ 398:mmc.c         **** 	if (Stat & STA_NOINIT) return RES_NOTRDY;
+ 1287               		.stabn	68,0,398,.LM153-.LFBB7
+ 1288               	.LM153:
+ 1289 04c4 8091 0000 		lds r24,Stat
+ 1290 04c8 80FF      		sbrs r24,0
+ 1291 04ca 00C0      		rjmp .L155
+ 1292 04cc 03E0      		ldi r16,lo8(3)
+ 1293 04ce 00C0      		rjmp .L156
+ 1294               	.L155:
+ 399:mmc.c         **** 	if (Stat & STA_PROTECT) return RES_WRPRT;
+ 1295               		.stabn	68,0,399,.LM154-.LFBB7
+ 1296               	.LM154:
+ 1297 04d0 8091 0000 		lds r24,Stat
+ 1298 04d4 82FF      		sbrs r24,2
+ 1299 04d6 00C0      		rjmp .L157
+ 1300 04d8 02E0      		ldi r16,lo8(2)
+ 1301 04da 00C0      		rjmp .L156
+ 1302               	.L157:
+ 400:mmc.c         **** 
+ 401:mmc.c         **** 	if (!(CardType & CT_BLOCK)) sector *= 512;	/* Convert to byte address if needed */
+ 1303               		.stabn	68,0,401,.LM155-.LFBB7
+ 1304               	.LM155:
+ 1305 04dc 8091 0000 		lds r24,CardType
+ 1306 04e0 90E0      		ldi r25,lo8(0)
+ 1307 04e2 83FD      		sbrc r24,3
+ 1308 04e4 00C0      		rjmp .L158
+ 1309 04e6 79E0      		ldi r23,9
+GAS LISTING /tmp/cc4wGHjh.s 			page 31
+
+
+ 1310 04e8 CC0C      	1:	lsl r12
+ 1311 04ea DD1C      		rol r13
+ 1312 04ec EE1C      		rol r14
+ 1313 04ee FF1C      		rol r15
+ 1314 04f0 7A95      		dec r23
+ 1315 04f2 01F4      		brne 1b
+ 1316               	.L158:
+ 402:mmc.c         **** 
+ 403:mmc.c         **** 	if (count == 1) {	/* Single block write */
+ 1317               		.stabn	68,0,403,.LM156-.LFBB7
+ 1318               	.LM156:
+ 1319 04f4 0130      		cpi r16,lo8(1)
+ 1320 04f6 01F4      		brne .L159
+ 404:mmc.c         **** 		if ((send_cmd(CMD24, sector) == 0)	/* WRITE_BLOCK */
+ 1321               		.stabn	68,0,404,.LM157-.LFBB7
+ 1322               	.LM157:
+ 1323 04f8 88E5      		ldi r24,lo8(88)
+ 1324 04fa B701      		movw r22,r14
+ 1325 04fc A601      		movw r20,r12
+ 1326 04fe 0E94 0000 		call send_cmd
+ 1327 0502 8823      		tst r24
+ 1328 0504 01F4      		brne .L160
+ 1329 0506 CE01      		movw r24,r28
+ 1330 0508 6EEF      		ldi r22,lo8(-2)
+ 1331 050a 0E94 0000 		call xmit_datablock
+ 1332 050e 00E0      		ldi r16,lo8(0)
+ 1333 0510 00C0      		rjmp .L171
+ 1334               	.L159:
+ 405:mmc.c         **** 			&& xmit_datablock(buff, 0xFE))
+ 406:mmc.c         **** 			count = 0;
+ 407:mmc.c         **** 	}
+ 408:mmc.c         **** 	else {				/* Multiple block write */
+ 409:mmc.c         **** 		if (CardType & CT_SDC) send_cmd(ACMD23, count);
+ 1335               		.stabn	68,0,409,.LM158-.LFBB7
+ 1336               	.LM158:
+ 1337 0512 8670      		andi r24,lo8(6)
+ 1338 0514 9070      		andi r25,hi8(6)
+ 1339 0516 892B      		or r24,r25
+ 1340 0518 01F0      		breq .L162
+ 1341 051a 402F      		mov r20,r16
+ 1342 051c 50E0      		ldi r21,lo8(0)
+ 1343 051e 60E0      		ldi r22,lo8(0)
+ 1344 0520 70E0      		ldi r23,hi8(0)
+ 1345 0522 87ED      		ldi r24,lo8(-41)
+ 1346 0524 0E94 0000 		call send_cmd
+ 1347               	.L162:
+ 410:mmc.c         **** 		if (send_cmd(CMD25, sector) == 0) {	/* WRITE_MULTIPLE_BLOCK */
+ 1348               		.stabn	68,0,410,.LM159-.LFBB7
+ 1349               	.LM159:
+ 1350 0528 89E5      		ldi r24,lo8(89)
+ 1351 052a B701      		movw r22,r14
+ 1352 052c A601      		movw r20,r12
+ 1353 052e 0E94 0000 		call send_cmd
+ 1354 0532 8823      		tst r24
+ 1355 0534 01F4      		brne .L160
+ 1356               	.L169:
+ 411:mmc.c         **** 			do {
+GAS LISTING /tmp/cc4wGHjh.s 			page 32
+
+
+ 412:mmc.c         **** 				if (!xmit_datablock(buff, 0xFC)) break;
+ 1357               		.stabn	68,0,412,.LM160-.LFBB7
+ 1358               	.LM160:
+ 1359 0536 CE01      		movw r24,r28
+ 1360 0538 6CEF      		ldi r22,lo8(-4)
+ 1361 053a 0E94 0000 		call xmit_datablock
+ 1362 053e 8823      		tst r24
+ 1363 0540 01F0      		breq .L163
+ 413:mmc.c         **** 				buff += 512;
+ 414:mmc.c         **** 			} while (--count);
+ 1364               		.stabn	68,0,414,.LM161-.LFBB7
+ 1365               	.LM161:
+ 1366 0542 0150      		subi r16,lo8(-(-1))
+ 1367 0544 01F0      		breq .L163
+ 1368               		.stabn	68,0,413,.LM162-.LFBB7
+ 1369               	.LM162:
+ 1370 0546 C050      		subi r28,lo8(-(512))
+ 1371 0548 DE4F      		sbci r29,hi8(-(512))
+ 1372 054a 00C0      		rjmp .L169
+ 1373               	.L163:
+ 415:mmc.c         **** 			if (!xmit_datablock(0, 0xFD))	/* STOP_TRAN token */
+ 1374               		.stabn	68,0,415,.LM163-.LFBB7
+ 1375               	.LM163:
+ 1376 054c 80E0      		ldi r24,lo8(0)
+ 1377 054e 90E0      		ldi r25,hi8(0)
+ 1378 0550 6DEF      		ldi r22,lo8(-3)
+ 1379 0552 0E94 0000 		call xmit_datablock
+ 1380               	.L171:
+ 1381 0556 8823      		tst r24
+ 1382 0558 01F4      		brne .L160
+ 1383 055a 01E0      		ldi r16,lo8(1)
+ 1384               	.L160:
+ 1385               	.LBB164:
+ 1386               	.LBB165:
+ 1387               		.stabn	68,0,114,.LM164-.LFBB7
+ 1388               	.LM164:
+ 1389 055c 2C9A      		sbi 37-32,4
+ 1390               	.LBB166:
+ 1391               	.LBB167:
+ 1392               		.stabn	68,0,76,.LM165-.LFBB7
+ 1393               	.LM165:
+ 1394 055e 8FEF      		ldi r24,lo8(-1)
+ 1395 0560 8EBD      		out 78-32,r24
+ 1396               	.L165:
+ 1397               		.stabn	68,0,77,.LM166-.LFBB7
+ 1398               	.LM166:
+ 1399 0562 0DB4      		in __tmp_reg__,77-32
+ 1400 0564 07FE      		sbrs __tmp_reg__,7
+ 1401 0566 00C0      		rjmp .L165
+ 1402               		.stabn	68,0,78,.LM167-.LFBB7
+ 1403               	.LM167:
+ 1404 0568 8EB5      		in r24,78-32
+ 1405               	.LBE167:
+ 1406               	.LBE166:
+ 1407               	.LBE165:
+ 1408               	.LBE164:
+ 416:mmc.c         **** 				count = 1;
+GAS LISTING /tmp/cc4wGHjh.s 			page 33
+
+
+ 417:mmc.c         **** 		}
+ 418:mmc.c         **** 	}
+ 419:mmc.c         **** 	release_spi();
+ 420:mmc.c         **** 
+ 421:mmc.c         **** 	return count ? RES_ERROR : RES_OK;
+ 1409               		.stabn	68,0,421,.LM168-.LFBB7
+ 1410               	.LM168:
+ 1411 056a 0023      		tst r16
+ 1412 056c 01F0      		breq .L156
+ 1413 056e 01E0      		ldi r16,lo8(1)
+ 1414 0570 00C0      		rjmp .L156
+ 1415               	.L154:
+ 1416 0572 04E0      		ldi r16,lo8(4)
+ 1417               	.L156:
+ 422:mmc.c         **** }
+ 1418               		.stabn	68,0,422,.LM169-.LFBB7
+ 1419               	.LM169:
+ 1420 0574 802F      		mov r24,r16
+ 1421               	/* epilogue start */
+ 1422 0576 DF91      		pop r29
+ 1423 0578 CF91      		pop r28
+ 1424 057a 0F91      		pop r16
+ 1425 057c FF90      		pop r15
+ 1426 057e EF90      		pop r14
+ 1427 0580 DF90      		pop r13
+ 1428 0582 CF90      		pop r12
+ 1429 0584 0895      		ret
+ 1430               		.size	disk_write, .-disk_write
+ 1431               	.Lscope7:
+ 1432               		.stabs	"",36,0,0,.Lscope7-.LFBB7
+ 1433               		.stabd	78,0,0
+ 1434               		.stabs	"disk_ioctl:F(6,3)",36,0,437,disk_ioctl
+ 1435               		.stabs	"drv:P(7,5)",64,0,433,24
+ 1436               		.stabs	"ctrl:P(7,5)",64,0,434,22
+ 1437               		.stabs	"buff:P(0,21)=*(0,15)",64,0,435,16
+ 1438               	.global	disk_ioctl
+ 1439               		.type	disk_ioctl, @function
+ 1440               	disk_ioctl:
+ 1441               		.stabd	46,0,0
+ 423:mmc.c         **** #endif /* _READONLY == 0 */
+ 424:mmc.c         **** 
+ 425:mmc.c         **** 
+ 426:mmc.c         **** 
+ 427:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 428:mmc.c         **** /* Miscellaneous Functions                                               */
+ 429:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 430:mmc.c         **** 
+ 431:mmc.c         **** #if _USE_IOCTL != 0
+ 432:mmc.c         **** DRESULT disk_ioctl (
+ 433:mmc.c         **** 	BYTE drv,		/* Physical drive nmuber (0) */
+ 434:mmc.c         **** 	BYTE ctrl,		/* Control code */
+ 435:mmc.c         **** 	void *buff		/* Buffer to send/receive control data */
+ 436:mmc.c         **** )
+ 437:mmc.c         **** {
+ 1442               		.stabn	68,0,437,.LM170-.LFBB8
+ 1443               	.LM170:
+ 1444               	.LFBB8:
+GAS LISTING /tmp/cc4wGHjh.s 			page 34
+
+
+ 1445 0586 FF92      		push r15
+ 1446 0588 0F93      		push r16
+ 1447 058a 1F93      		push r17
+ 1448 058c DF93      		push r29
+ 1449 058e CF93      		push r28
+ 1450 0590 CDB7      		in r28,__SP_L__
+ 1451 0592 DEB7      		in r29,__SP_H__
+ 1452 0594 6097      		sbiw r28,16
+ 1453 0596 0FB6      		in __tmp_reg__,__SREG__
+ 1454 0598 F894      		cli
+ 1455 059a DEBF      		out __SP_H__,r29
+ 1456 059c 0FBE      		out __SREG__,__tmp_reg__
+ 1457 059e CDBF      		out __SP_L__,r28
+ 1458               	/* prologue: function */
+ 1459               	/* frame size = 16 */
+ 1460 05a0 8A01      		movw r16,r20
+ 438:mmc.c         **** 	DRESULT res;
+ 439:mmc.c         **** 	BYTE n, csd[16], *ptr = buff;
+ 440:mmc.c         **** 	WORD csize;
+ 441:mmc.c         **** 
+ 442:mmc.c         **** 
+ 443:mmc.c         **** 	if (drv) return RES_PARERR;
+ 1461               		.stabn	68,0,443,.LM171-.LFBB8
+ 1462               	.LM171:
+ 1463 05a2 8823      		tst r24
+ 1464 05a4 01F0      		breq .+2
+ 1465 05a6 00C0      		rjmp .L173
+ 444:mmc.c         **** 
+ 445:mmc.c         **** 	res = RES_ERROR;
+ 446:mmc.c         **** 
+ 447:mmc.c         **** 	if (ctrl == CTRL_POWER) {
+ 1466               		.stabn	68,0,447,.LM172-.LFBB8
+ 1467               	.LM172:
+ 1468 05a8 6430      		cpi r22,lo8(4)
+ 1469 05aa 01F0      		breq .+2
+ 1470 05ac 00C0      		rjmp .L174
+ 448:mmc.c         **** 		switch (*ptr) {
+ 1471               		.stabn	68,0,448,.LM173-.LFBB8
+ 1472               	.LM173:
+ 1473 05ae FA01      		movw r30,r20
+ 1474 05b0 8081      		ld r24,Z
+ 1475 05b2 8130      		cpi r24,lo8(1)
+ 1476 05b4 01F0      		breq .L176
+ 1477 05b6 8130      		cpi r24,lo8(1)
+ 1478 05b8 00F0      		brlo .L175
+ 1479 05ba 8230      		cpi r24,lo8(2)
+ 1480 05bc 01F0      		breq .+2
+ 1481 05be 00C0      		rjmp .L173
+ 1482 05c0 00C0      		rjmp .L238
+ 1483               	.L175:
+ 1484               	.LBB168:
+ 1485               	.LBB169:
+ 1486               		.stabn	68,0,139,.LM174-.LFBB8
+ 1487               	.LM174:
+ 1488 05c2 2C98      		cbi 37-32,4
+ 1489               	.LBB170:
+ 1490               	.LBB171:
+GAS LISTING /tmp/cc4wGHjh.s 			page 35
+
+
+ 1491               		.stabn	68,0,96,.LM175-.LFBB8
+ 1492               	.LM175:
+ 1493 05c4 82E3      		ldi r24,lo8(50)
+ 1494 05c6 8093 0000 		sts Timer2,r24
+ 1495               	.LBB172:
+ 1496               	.LBB173:
+ 1497               		.stabn	68,0,76,.LM176-.LFBB8
+ 1498               	.LM176:
+ 1499 05ca 8FEF      		ldi r24,lo8(-1)
+ 1500 05cc 8EBD      		out 78-32,r24
+ 1501               	.L178:
+ 1502               		.stabn	68,0,77,.LM177-.LFBB8
+ 1503               	.LM177:
+ 1504 05ce 0DB4      		in __tmp_reg__,77-32
+ 1505 05d0 07FE      		sbrs __tmp_reg__,7
+ 1506 05d2 00C0      		rjmp .L178
+ 1507               		.stabn	68,0,78,.LM178-.LFBB8
+ 1508               	.LM178:
+ 1509 05d4 8EB5      		in r24,78-32
+ 1510               	.LBE173:
+ 1511               	.LBE172:
+ 1512               	.LBB174:
+ 1513               	.LBB175:
+ 1514               		.stabn	68,0,76,.LM179-.LFBB8
+ 1515               	.LM179:
+ 1516 05d6 9FEF      		ldi r25,lo8(-1)
+ 1517               	.L181:
+ 1518 05d8 9EBD      		out 78-32,r25
+ 1519               	.L179:
+ 1520               		.stabn	68,0,77,.LM180-.LFBB8
+ 1521               	.LM180:
+ 1522 05da 0DB4      		in __tmp_reg__,77-32
+ 1523 05dc 07FE      		sbrs __tmp_reg__,7
+ 1524 05de 00C0      		rjmp .L179
+ 1525               		.stabn	68,0,78,.LM181-.LFBB8
+ 1526               	.LM181:
+ 1527 05e0 8EB5      		in r24,78-32
+ 1528               	.LBE175:
+ 1529               	.LBE174:
+ 1530               		.stabn	68,0,100,.LM182-.LFBB8
+ 1531               	.LM182:
+ 1532 05e2 8F3F      		cpi r24,lo8(-1)
+ 1533 05e4 01F0      		breq .L180
+ 1534 05e6 8091 0000 		lds r24,Timer2
+ 1535 05ea 8823      		tst r24
+ 1536 05ec 01F4      		brne .L181
+ 1537               	.L180:
+ 1538               	.LBE171:
+ 1539               	.LBE170:
+ 1540               	.LBB176:
+ 1541               	.LBB177:
+ 1542               		.stabn	68,0,114,.LM183-.LFBB8
+ 1543               	.LM183:
+ 1544 05ee 2C9A      		sbi 37-32,4
+ 1545               	.LBB178:
+ 1546               	.LBB179:
+ 1547               		.stabn	68,0,76,.LM184-.LFBB8
+GAS LISTING /tmp/cc4wGHjh.s 			page 36
+
+
+ 1548               	.LM184:
+ 1549 05f0 8FEF      		ldi r24,lo8(-1)
+ 1550 05f2 8EBD      		out 78-32,r24
+ 1551               	.L182:
+ 1552               		.stabn	68,0,77,.LM185-.LFBB8
+ 1553               	.LM185:
+ 1554 05f4 0DB4      		in __tmp_reg__,77-32
+ 1555 05f6 07FE      		sbrs __tmp_reg__,7
+ 1556 05f8 00C0      		rjmp .L182
+ 1557               		.stabn	68,0,78,.LM186-.LFBB8
+ 1558               	.LM186:
+ 1559 05fa 8EB5      		in r24,78-32
+ 1560               	.LBE179:
+ 1561               	.LBE178:
+ 1562               	.LBE177:
+ 1563               	.LBE176:
+ 1564               		.stabn	68,0,143,.LM187-.LFBB8
+ 1565               	.LM187:
+ 1566 05fc 1CBC      		out 76-32,__zero_reg__
+ 1567               		.stabn	68,0,144,.LM188-.LFBB8
+ 1568               	.LM188:
+ 1569 05fe 8091 0000 		lds r24,Stat
+ 1570 0602 8160      		ori r24,lo8(1)
+ 1571 0604 8093 0000 		sts Stat,r24
+ 1572 0608 00C0      		rjmp .L232
+ 1573               	.L176:
+ 1574               	.LBE169:
+ 1575               	.LBE168:
+ 1576               	.LBB180:
+ 1577               	.LBB181:
+ 1578               		.stabn	68,0,129,.LM189-.LFBB8
+ 1579               	.LM189:
+ 1580 060a 83E0      		ldi r24,lo8(3)
+ 1581 060c 8093 0000 		sts Timer1,r24
+ 1582               	.L184:
+ 1583 0610 8091 0000 		lds r24,Timer1
+ 1584 0614 8823      		tst r24
+ 1585 0616 01F4      		brne .L184
+ 1586               		.stabn	68,0,130,.LM190-.LFBB8
+ 1587               	.LM190:
+ 1588 0618 80E3      		ldi r24,lo8(48)
+ 1589 061a 85B9      		out 37-32,r24
+ 1590               		.stabn	68,0,131,.LM191-.LFBB8
+ 1591               	.LM191:
+ 1592 061c 80EB      		ldi r24,lo8(-80)
+ 1593 061e 84B9      		out 36-32,r24
+ 1594               		.stabn	68,0,132,.LM192-.LFBB8
+ 1595               	.LM192:
+ 1596 0620 80E5      		ldi r24,lo8(80)
+ 1597 0622 8CBD      		out 76-32,r24
+ 1598               		.stabn	68,0,133,.LM193-.LFBB8
+ 1599               	.LM193:
+ 1600 0624 81E0      		ldi r24,lo8(1)
+ 1601 0626 8DBD      		out 77-32,r24
+ 1602 0628 00C0      		rjmp .L232
+ 1603               	.L238:
+ 1604               	.LBE181:
+GAS LISTING /tmp/cc4wGHjh.s 			page 37
+
+
+ 1605               	.LBE180:
+ 449:mmc.c         **** 		case 0:		/* Sub control code == 0 (POWER_OFF) */
+ 450:mmc.c         **** 			if (chk_power())
+ 451:mmc.c         **** 				power_off();		/* Power off */
+ 452:mmc.c         **** 			res = RES_OK;
+ 453:mmc.c         **** 			break;
+ 454:mmc.c         **** 		case 1:		/* Sub control code == 1 (POWER_ON) */
+ 455:mmc.c         **** 			power_on();				/* Power on */
+ 456:mmc.c         **** 			res = RES_OK;
+ 457:mmc.c         **** 			break;
+ 458:mmc.c         **** 		case 2:		/* Sub control code == 2 (POWER_GET) */
+ 459:mmc.c         **** 			*(ptr+1) = (BYTE)chk_power();
+ 1606               		.stabn	68,0,459,.LM194-.LFBB8
+ 1607               	.LM194:
+ 1608 062a 81E0      		ldi r24,lo8(1)
+ 1609 062c FA01      		movw r30,r20
+ 1610 062e 8183      		std Z+1,r24
+ 1611               	.L232:
+ 1612 0630 90E0      		ldi r25,lo8(0)
+ 1613 0632 00C0      		rjmp .L183
+ 1614               	.L174:
+ 460:mmc.c         **** 			res = RES_OK;
+ 461:mmc.c         **** 			break;
+ 462:mmc.c         **** 		default :
+ 463:mmc.c         **** 			res = RES_PARERR;
+ 464:mmc.c         **** 		}
+ 465:mmc.c         **** 	}
+ 466:mmc.c         **** 	else {
+ 467:mmc.c         **** 		if (Stat & STA_NOINIT) return RES_NOTRDY;
+ 1615               		.stabn	68,0,467,.LM195-.LFBB8
+ 1616               	.LM195:
+ 1617 0634 8091 0000 		lds r24,Stat
+ 1618 0638 80FF      		sbrs r24,0
+ 1619 063a 00C0      		rjmp .L185
+ 1620 063c 93E0      		ldi r25,lo8(3)
+ 1621 063e 00C0      		rjmp .L183
+ 1622               	.L185:
+ 468:mmc.c         **** 
+ 469:mmc.c         **** 		switch (ctrl) {
+ 1623               		.stabn	68,0,469,.LM196-.LFBB8
+ 1624               	.LM196:
+ 1625 0640 6A30      		cpi r22,lo8(10)
+ 1626 0642 01F4      		brne .+2
+ 1627 0644 00C0      		rjmp .L191
+ 1628 0646 6B30      		cpi r22,lo8(11)
+ 1629 0648 00F4      		brsh .L196
+ 1630 064a 6130      		cpi r22,lo8(1)
+ 1631 064c 01F0      		breq .L188
+ 1632 064e 6130      		cpi r22,lo8(1)
+ 1633 0650 00F0      		brlo .L187
+ 1634 0652 6230      		cpi r22,lo8(2)
+ 1635 0654 01F4      		brne .+2
+ 1636 0656 00C0      		rjmp .L189
+ 1637 0658 6330      		cpi r22,lo8(3)
+ 1638 065a 01F4      		brne .L186
+ 1639 065c 00C0      		rjmp .L239
+ 1640               	.L196:
+GAS LISTING /tmp/cc4wGHjh.s 			page 38
+
+
+ 1641 065e 6C30      		cpi r22,lo8(12)
+ 1642 0660 01F4      		brne .+2
+ 1643 0662 00C0      		rjmp .L193
+ 1644 0664 6C30      		cpi r22,lo8(12)
+ 1645 0666 00F4      		brsh .+2
+ 1646 0668 00C0      		rjmp .L192
+ 1647 066a 6D30      		cpi r22,lo8(13)
+ 1648 066c 01F4      		brne .+2
+ 1649 066e 00C0      		rjmp .L194
+ 1650 0670 6E30      		cpi r22,lo8(14)
+ 1651 0672 01F4      		brne .+2
+ 1652 0674 00C0      		rjmp .L195
+ 1653               	.L186:
+ 1654 0676 94E0      		ldi r25,lo8(4)
+ 1655 0678 00C0      		rjmp .L197
+ 1656               	.L187:
+ 470:mmc.c         **** 		case CTRL_SYNC :		/* Make sure that no pending write process. Do not remove this or written secto
+ 471:mmc.c         **** 			SELECT();
+ 1657               		.stabn	68,0,471,.LM197-.LFBB8
+ 1658               	.LM197:
+ 1659 067a 2C98      		cbi 37-32,4
+ 1660               	.LBB182:
+ 1661               	.LBB183:
+ 1662               		.stabn	68,0,96,.LM198-.LFBB8
+ 1663               	.LM198:
+ 1664 067c 82E3      		ldi r24,lo8(50)
+ 1665 067e 8093 0000 		sts Timer2,r24
+ 1666               	.LBB184:
+ 1667               	.LBB185:
+ 1668               		.stabn	68,0,76,.LM199-.LFBB8
+ 1669               	.LM199:
+ 1670 0682 8FEF      		ldi r24,lo8(-1)
+ 1671 0684 8EBD      		out 78-32,r24
+ 1672               	.L198:
+ 1673               		.stabn	68,0,77,.LM200-.LFBB8
+ 1674               	.LM200:
+ 1675 0686 0DB4      		in __tmp_reg__,77-32
+ 1676 0688 07FE      		sbrs __tmp_reg__,7
+ 1677 068a 00C0      		rjmp .L198
+ 1678               		.stabn	68,0,78,.LM201-.LFBB8
+ 1679               	.LM201:
+ 1680 068c 8EB5      		in r24,78-32
+ 1681               	.LBE185:
+ 1682               	.LBE184:
+ 1683               	.LBB186:
+ 1684               	.LBB187:
+ 1685               		.stabn	68,0,76,.LM202-.LFBB8
+ 1686               	.LM202:
+ 1687 068e 9FEF      		ldi r25,lo8(-1)
+ 1688               	.L201:
+ 1689 0690 9EBD      		out 78-32,r25
+ 1690               	.L199:
+ 1691               		.stabn	68,0,77,.LM203-.LFBB8
+ 1692               	.LM203:
+ 1693 0692 0DB4      		in __tmp_reg__,77-32
+ 1694 0694 07FE      		sbrs __tmp_reg__,7
+ 1695 0696 00C0      		rjmp .L199
+GAS LISTING /tmp/cc4wGHjh.s 			page 39
+
+
+ 1696               		.stabn	68,0,78,.LM204-.LFBB8
+ 1697               	.LM204:
+ 1698 0698 8EB5      		in r24,78-32
+ 1699               	.LBE187:
+ 1700               	.LBE186:
+ 1701               		.stabn	68,0,100,.LM205-.LFBB8
+ 1702               	.LM205:
+ 1703 069a 8F3F      		cpi r24,lo8(-1)
+ 1704 069c 01F4      		brne .+2
+ 1705 069e 00C0      		rjmp .L200
+ 1706 06a0 8091 0000 		lds r24,Timer2
+ 1707 06a4 8823      		tst r24
+ 1708 06a6 01F4      		brne .L201
+ 1709 06a8 00C0      		rjmp .L202
+ 1710               	.L188:
+ 1711               	.LBE183:
+ 1712               	.LBE182:
+ 472:mmc.c         **** 			if (wait_ready() == 0xFF)
+ 473:mmc.c         **** 				res = RES_OK;
+ 474:mmc.c         **** 			break;
+ 475:mmc.c         **** 
+ 476:mmc.c         **** 		case GET_SECTOR_COUNT :	/* Get number of sectors on the disk (DWORD) */
+ 477:mmc.c         **** 			if ((send_cmd(CMD9, 0) == 0) && rcvr_datablock(csd, 16)) {
+ 1713               		.stabn	68,0,477,.LM206-.LFBB8
+ 1714               	.LM206:
+ 1715 06aa 89E4      		ldi r24,lo8(73)
+ 1716 06ac 40E0      		ldi r20,lo8(0)
+ 1717 06ae 50E0      		ldi r21,hi8(0)
+ 1718 06b0 60E0      		ldi r22,hlo8(0)
+ 1719 06b2 70E0      		ldi r23,hhi8(0)
+ 1720 06b4 0E94 0000 		call send_cmd
+ 1721 06b8 8823      		tst r24
+ 1722 06ba 01F0      		breq .+2
+ 1723 06bc 00C0      		rjmp .L202
+ 1724 06be CE01      		movw r24,r28
+ 1725 06c0 0196      		adiw r24,1
+ 1726 06c2 60E1      		ldi r22,lo8(16)
+ 1727 06c4 70E0      		ldi r23,hi8(16)
+ 1728 06c6 0E94 0000 		call rcvr_datablock
+ 1729 06ca 8823      		tst r24
+ 1730 06cc 01F4      		brne .+2
+ 1731 06ce 00C0      		rjmp .L202
+ 478:mmc.c         **** 				if ((csd[0] >> 6) == 1) {	/* SDC ver 2.00 */
+ 1732               		.stabn	68,0,478,.LM207-.LFBB8
+ 1733               	.LM207:
+ 1734 06d0 8981      		ldd r24,Y+1
+ 1735 06d2 8295      		swap r24
+ 1736 06d4 8695      		lsr r24
+ 1737 06d6 8695      		lsr r24
+ 1738 06d8 8370      		andi r24,lo8(3)
+ 1739 06da 7A85      		ldd r23,Y+10
+ 1740 06dc 4985      		ldd r20,Y+9
+ 1741 06de 8130      		cpi r24,lo8(1)
+ 1742 06e0 01F4      		brne .L203
+ 479:mmc.c         **** 					csize = csd[9] + ((WORD)csd[8] << 8) + 1;
+ 480:mmc.c         **** 					*(DWORD*)buff = (DWORD)csize << 10;
+ 1743               		.stabn	68,0,480,.LM208-.LFBB8
+GAS LISTING /tmp/cc4wGHjh.s 			page 40
+
+
+ 1744               	.LM208:
+ 1745 06e2 872F      		mov r24,r23
+ 1746 06e4 90E0      		ldi r25,lo8(0)
+ 1747 06e6 0196      		adiw r24,1
+ 1748 06e8 342F      		mov r19,r20
+ 1749 06ea 20E0      		ldi r18,lo8(0)
+ 1750 06ec 820F      		add r24,r18
+ 1751 06ee 931F      		adc r25,r19
+ 1752 06f0 A0E0      		ldi r26,lo8(0)
+ 1753 06f2 B0E0      		ldi r27,hi8(0)
+ 1754 06f4 2AE0      		ldi r18,10
+ 1755 06f6 880F      	1:	lsl r24
+ 1756 06f8 991F      		rol r25
+ 1757 06fa AA1F      		rol r26
+ 1758 06fc BB1F      		rol r27
+ 1759 06fe 2A95      		dec r18
+ 1760 0700 01F4      		brne 1b
+ 1761 0702 00C0      		rjmp .L234
+ 1762               	.L203:
+ 481:mmc.c         **** 				} else {					/* SDC ver 1.XX or MMC*/
+ 482:mmc.c         **** 					n = (csd[5] & 15) + ((csd[10] & 128) >> 7) + ((csd[9] & 3) << 1) + 2;
+ 483:mmc.c         **** 					csize = (csd[8] >> 6) + ((WORD)csd[7] << 2) + ((WORD)(csd[6] & 3) << 10) + 1;
+ 484:mmc.c         **** 					*(DWORD*)buff = (DWORD)csize << (n - 9);
+ 1763               		.stabn	68,0,484,.LM209-.LFBB8
+ 1764               	.LM209:
+ 1765 0704 4295      		swap r20
+ 1766 0706 4695      		lsr r20
+ 1767 0708 4695      		lsr r20
+ 1768 070a 4370      		andi r20,lo8(3)
+ 1769 070c 2885      		ldd r18,Y+8
+ 1770 070e 30E0      		ldi r19,lo8(0)
+ 1771 0710 220F      		lsl r18
+ 1772 0712 331F      		rol r19
+ 1773 0714 220F      		lsl r18
+ 1774 0716 331F      		rol r19
+ 1775 0718 240F      		add r18,r20
+ 1776 071a 311D      		adc r19,__zero_reg__
+ 1777 071c 2F5F      		subi r18,lo8(-(1))
+ 1778 071e 3F4F      		sbci r19,hi8(-(1))
+ 1779 0720 8F81      		ldd r24,Y+7
+ 1780 0722 90E0      		ldi r25,lo8(0)
+ 1781 0724 8370      		andi r24,lo8(3)
+ 1782 0726 9070      		andi r25,hi8(3)
+ 1783 0728 982F      		mov r25,r24
+ 1784 072a 8827      		clr r24
+ 1785 072c 990F      		lsl r25
+ 1786 072e 990F      		lsl r25
+ 1787 0730 280F      		add r18,r24
+ 1788 0732 391F      		adc r19,r25
+ 1789 0734 40E0      		ldi r20,lo8(0)
+ 1790 0736 50E0      		ldi r21,hi8(0)
+ 1791 0738 8E81      		ldd r24,Y+6
+ 1792 073a 8F70      		andi r24,lo8(15)
+ 1793 073c 6B85      		ldd r22,Y+11
+ 1794 073e 661F      		rol r22
+ 1795 0740 6627      		clr r22
+ 1796 0742 661F      		rol r22
+GAS LISTING /tmp/cc4wGHjh.s 			page 41
+
+
+ 1797 0744 860F      		add r24,r22
+ 1798 0746 8E5F      		subi r24,lo8(-(2))
+ 1799 0748 7370      		andi r23,lo8(3)
+ 1800 074a 770F      		lsl r23
+ 1801 074c 870F      		add r24,r23
+ 1802 074e 90E0      		ldi r25,lo8(0)
+ 1803 0750 0997      		sbiw r24,9
+ 1804 0752 00C0      		rjmp 2f
+ 1805 0754 220F      	1:	lsl r18
+ 1806 0756 331F      		rol r19
+ 1807 0758 441F      		rol r20
+ 1808 075a 551F      		rol r21
+ 1809 075c 8A95      	2:	dec r24
+ 1810 075e 02F4      		brpl 1b
+ 1811 0760 F801      		movw r30,r16
+ 1812 0762 2083      		st Z,r18
+ 1813 0764 3183      		std Z+1,r19
+ 1814 0766 4283      		std Z+2,r20
+ 1815 0768 5383      		std Z+3,r21
+ 1816 076a 00C0      		rjmp .L200
+ 1817               	.L189:
+ 485:mmc.c         **** 				}
+ 486:mmc.c         **** 				res = RES_OK;
+ 487:mmc.c         **** 			}
+ 488:mmc.c         **** 			break;
+ 489:mmc.c         **** 
+ 490:mmc.c         **** 		case GET_SECTOR_SIZE :	/* Get R/W sector size (WORD) */
+ 491:mmc.c         **** 			*(WORD*)buff = 512;
+ 1818               		.stabn	68,0,491,.LM210-.LFBB8
+ 1819               	.LM210:
+ 1820 076c 80E0      		ldi r24,lo8(512)
+ 1821 076e 92E0      		ldi r25,hi8(512)
+ 1822 0770 FA01      		movw r30,r20
+ 1823 0772 9183      		std Z+1,r25
+ 1824 0774 8083      		st Z,r24
+ 1825 0776 00C0      		rjmp .L200
+ 1826               	.L239:
+ 492:mmc.c         **** 			res = RES_OK;
+ 493:mmc.c         **** 			break;
+ 494:mmc.c         **** 
+ 495:mmc.c         **** 		case GET_BLOCK_SIZE :	/* Get erase block size in unit of sector (DWORD) */
+ 496:mmc.c         **** 			if (CardType & CT_SD2) {	/* SDC ver 2.00 */
+ 1827               		.stabn	68,0,496,.LM211-.LFBB8
+ 1828               	.LM211:
+ 1829 0778 8091 0000 		lds r24,CardType
+ 1830 077c F82E      		mov r15,r24
+ 1831 077e 82FF      		sbrs r24,2
+ 1832 0780 00C0      		rjmp .L204
+ 497:mmc.c         **** 				if (send_cmd(ACMD13, 0) == 0) {	/* Read SD status */
+ 1833               		.stabn	68,0,497,.LM212-.LFBB8
+ 1834               	.LM212:
+ 1835 0782 8DEC      		ldi r24,lo8(-51)
+ 1836 0784 40E0      		ldi r20,lo8(0)
+ 1837 0786 50E0      		ldi r21,hi8(0)
+ 1838 0788 60E0      		ldi r22,hlo8(0)
+ 1839 078a 70E0      		ldi r23,hhi8(0)
+ 1840 078c 0E94 0000 		call send_cmd
+GAS LISTING /tmp/cc4wGHjh.s 			page 42
+
+
+ 1841 0790 8823      		tst r24
+ 1842 0792 01F0      		breq .+2
+ 1843 0794 00C0      		rjmp .L202
+ 1844               	.LBB188:
+ 1845               	.LBB189:
+ 1846               		.stabn	68,0,76,.LM213-.LFBB8
+ 1847               	.LM213:
+ 1848 0796 8FEF      		ldi r24,lo8(-1)
+ 1849 0798 8EBD      		out 78-32,r24
+ 1850               	.L205:
+ 1851               		.stabn	68,0,77,.LM214-.LFBB8
+ 1852               	.LM214:
+ 1853 079a 0DB4      		in __tmp_reg__,77-32
+ 1854 079c 07FE      		sbrs __tmp_reg__,7
+ 1855 079e 00C0      		rjmp .L205
+ 1856               		.stabn	68,0,78,.LM215-.LFBB8
+ 1857               	.LM215:
+ 1858 07a0 8EB5      		in r24,78-32
+ 1859               	.LBE189:
+ 1860               	.LBE188:
+ 498:mmc.c         **** 					rcvr_spi();
+ 499:mmc.c         **** 					if (rcvr_datablock(csd, 16)) {				/* Read partial block */
+ 1861               		.stabn	68,0,499,.LM216-.LFBB8
+ 1862               	.LM216:
+ 1863 07a2 CE01      		movw r24,r28
+ 1864 07a4 0196      		adiw r24,1
+ 1865 07a6 60E1      		ldi r22,lo8(16)
+ 1866 07a8 70E0      		ldi r23,hi8(16)
+ 1867 07aa 0E94 0000 		call rcvr_datablock
+ 1868 07ae 8823      		tst r24
+ 1869 07b0 01F4      		brne .+2
+ 1870 07b2 00C0      		rjmp .L202
+ 1871 07b4 80E3      		ldi r24,lo8(48)
+ 1872               	.LBB190:
+ 1873               	.LBB191:
+ 1874               		.stabn	68,0,76,.LM217-.LFBB8
+ 1875               	.LM217:
+ 1876 07b6 9FEF      		ldi r25,lo8(-1)
+ 1877               	.L207:
+ 1878 07b8 9EBD      		out 78-32,r25
+ 1879               	.L206:
+ 1880               		.stabn	68,0,77,.LM218-.LFBB8
+ 1881               	.LM218:
+ 1882 07ba 0DB4      		in __tmp_reg__,77-32
+ 1883 07bc 07FE      		sbrs __tmp_reg__,7
+ 1884 07be 00C0      		rjmp .L206
+ 1885               		.stabn	68,0,78,.LM219-.LFBB8
+ 1886               	.LM219:
+ 1887 07c0 2EB5      		in r18,78-32
+ 1888               	.LBE191:
+ 1889               	.LBE190:
+ 500:mmc.c         **** 						for (n = 64 - 16; n; n--) rcvr_spi();	/* Purge trailing data */
+ 1890               		.stabn	68,0,500,.LM220-.LFBB8
+ 1891               	.LM220:
+ 1892 07c2 8150      		subi r24,lo8(-(-1))
+ 1893 07c4 01F4      		brne .L207
+ 501:mmc.c         **** 						*(DWORD*)buff = 16UL << (csd[10] >> 4);
+GAS LISTING /tmp/cc4wGHjh.s 			page 43
+
+
+ 1894               		.stabn	68,0,501,.LM221-.LFBB8
+ 1895               	.LM221:
+ 1896 07c6 2B85      		ldd r18,Y+11
+ 1897 07c8 2295      		swap r18
+ 1898 07ca 2F70      		andi r18,lo8(15)
+ 1899 07cc 80E1      		ldi r24,lo8(16)
+ 1900 07ce 90E0      		ldi r25,hi8(16)
+ 1901 07d0 A0E0      		ldi r26,hlo8(16)
+ 1902 07d2 B0E0      		ldi r27,hhi8(16)
+ 1903 07d4 00C0      		rjmp 2f
+ 1904 07d6 880F      	1:	lsl r24
+ 1905 07d8 991F      		rol r25
+ 1906 07da AA1F      		rol r26
+ 1907 07dc BB1F      		rol r27
+ 1908 07de 2A95      	2:	dec r18
+ 1909 07e0 02F4      		brpl 1b
+ 1910 07e2 00C0      		rjmp .L234
+ 1911               	.L204:
+ 502:mmc.c         **** 						res = RES_OK;
+ 503:mmc.c         **** 					}
+ 504:mmc.c         **** 				}
+ 505:mmc.c         **** 			} else {					/* SDC ver 1.XX or MMC */
+ 506:mmc.c         **** 				if ((send_cmd(CMD9, 0) == 0) && rcvr_datablock(csd, 16)) {	/* Read CSD */
+ 1912               		.stabn	68,0,506,.LM222-.LFBB8
+ 1913               	.LM222:
+ 1914 07e4 89E4      		ldi r24,lo8(73)
+ 1915 07e6 40E0      		ldi r20,lo8(0)
+ 1916 07e8 50E0      		ldi r21,hi8(0)
+ 1917 07ea 60E0      		ldi r22,hlo8(0)
+ 1918 07ec 70E0      		ldi r23,hhi8(0)
+ 1919 07ee 0E94 0000 		call send_cmd
+ 1920 07f2 8823      		tst r24
+ 1921 07f4 01F0      		breq .+2
+ 1922 07f6 00C0      		rjmp .L202
+ 1923 07f8 CE01      		movw r24,r28
+ 1924 07fa 0196      		adiw r24,1
+ 1925 07fc 60E1      		ldi r22,lo8(16)
+ 1926 07fe 70E0      		ldi r23,hi8(16)
+ 1927 0800 0E94 0000 		call rcvr_datablock
+ 1928 0804 8823      		tst r24
+ 1929 0806 01F4      		brne .+2
+ 1930 0808 00C0      		rjmp .L202
+ 1931 080a 4B85      		ldd r20,Y+11
+ 1932 080c 8C85      		ldd r24,Y+12
+ 507:mmc.c         **** 					if (CardType & CT_SD1) {	/* SDC ver 1.XX */
+ 1933               		.stabn	68,0,507,.LM223-.LFBB8
+ 1934               	.LM223:
+ 1935 080e F1FE      		sbrs r15,1
+ 1936 0810 00C0      		rjmp .L208
+ 508:mmc.c         **** 						*(DWORD*)buff = (((csd[10] & 63) << 1) + ((WORD)(csd[11] & 128) >> 7) + 1) << ((csd[13] >> 6)
+ 1937               		.stabn	68,0,508,.LM224-.LFBB8
+ 1938               	.LM224:
+ 1939 0812 881F      		rol r24
+ 1940 0814 8827      		clr r24
+ 1941 0816 881F      		rol r24
+ 1942 0818 90E0      		ldi r25,lo8(0)
+ 1943 081a 0196      		adiw r24,1
+GAS LISTING /tmp/cc4wGHjh.s 			page 44
+
+
+ 1944 081c 242F      		mov r18,r20
+ 1945 081e 30E0      		ldi r19,lo8(0)
+ 1946 0820 2F73      		andi r18,lo8(63)
+ 1947 0822 3070      		andi r19,hi8(63)
+ 1948 0824 220F      		lsl r18
+ 1949 0826 331F      		rol r19
+ 1950 0828 820F      		add r24,r18
+ 1951 082a 931F      		adc r25,r19
+ 1952 082c 2E85      		ldd r18,Y+14
+ 1953 082e 2295      		swap r18
+ 1954 0830 2695      		lsr r18
+ 1955 0832 2695      		lsr r18
+ 1956 0834 2370      		andi r18,lo8(3)
+ 1957 0836 30E0      		ldi r19,lo8(0)
+ 1958 0838 2150      		subi r18,lo8(-(-1))
+ 1959 083a 3040      		sbci r19,hi8(-(-1))
+ 1960 083c 00C0      		rjmp 2f
+ 1961 083e 880F      	1:	lsl r24
+ 1962 0840 991F      		rol r25
+ 1963 0842 2A95      	2:	dec r18
+ 1964 0844 02F4      		brpl 1b
+ 1965 0846 00C0      		rjmp .L235
+ 1966               	.L208:
+ 509:mmc.c         **** 					} else {					/* MMC */
+ 510:mmc.c         **** 						*(DWORD*)buff = ((WORD)((csd[10] & 124) >> 2) + 1) * (((csd[11] & 3) << 3) + ((csd[11] & 224)
+ 1967               		.stabn	68,0,510,.LM225-.LFBB8
+ 1968               	.LM225:
+ 1969 0848 282F      		mov r18,r24
+ 1970 084a 30E0      		ldi r19,lo8(0)
+ 1971 084c 2370      		andi r18,lo8(3)
+ 1972 084e 3070      		andi r19,hi8(3)
+ 1973 0850 F3E0      		ldi r31,3
+ 1974 0852 220F      	1:	lsl r18
+ 1975 0854 331F      		rol r19
+ 1976 0856 FA95      		dec r31
+ 1977 0858 01F4      		brne 1b
+ 1978 085a 8295      		swap r24
+ 1979 085c 8695      		lsr r24
+ 1980 085e 8770      		andi r24,lo8(7)
+ 1981 0860 280F      		add r18,r24
+ 1982 0862 311D      		adc r19,__zero_reg__
+ 1983 0864 2F5F      		subi r18,lo8(-(1))
+ 1984 0866 3F4F      		sbci r19,hi8(-(1))
+ 1985 0868 842F      		mov r24,r20
+ 1986 086a 90E0      		ldi r25,lo8(0)
+ 1987 086c 8C77      		andi r24,lo8(124)
+ 1988 086e 9070      		andi r25,hi8(124)
+ 1989 0870 9595      		asr r25
+ 1990 0872 8795      		ror r24
+ 1991 0874 9595      		asr r25
+ 1992 0876 8795      		ror r24
+ 1993 0878 0196      		adiw r24,1
+ 1994 087a AC01      		movw r20,r24
+ 1995 087c 249F      		mul r18,r20
+ 1996 087e C001      		movw r24,r0
+ 1997 0880 259F      		mul r18,r21
+ 1998 0882 900D      		add r25,r0
+GAS LISTING /tmp/cc4wGHjh.s 			page 45
+
+
+ 1999 0884 349F      		mul r19,r20
+ 2000 0886 900D      		add r25,r0
+ 2001 0888 1124      		clr r1
+ 2002               	.L235:
+ 2003 088a A0E0      		ldi r26,lo8(0)
+ 2004 088c B0E0      		ldi r27,hi8(0)
+ 2005               	.L234:
+ 2006 088e F801      		movw r30,r16
+ 2007 0890 8083      		st Z,r24
+ 2008 0892 9183      		std Z+1,r25
+ 2009 0894 A283      		std Z+2,r26
+ 2010 0896 B383      		std Z+3,r27
+ 2011 0898 00C0      		rjmp .L200
+ 2012               	.L191:
+ 511:mmc.c         **** 					}
+ 512:mmc.c         **** 					res = RES_OK;
+ 513:mmc.c         **** 				}
+ 514:mmc.c         **** 			}
+ 515:mmc.c         **** 			break;
+ 516:mmc.c         **** 
+ 517:mmc.c         **** 		case MMC_GET_TYPE :		/* Get card type flags (1 byte) */
+ 518:mmc.c         **** 			*ptr = CardType;
+ 2013               		.stabn	68,0,518,.LM226-.LFBB8
+ 2014               	.LM226:
+ 2015 089a 8091 0000 		lds r24,CardType
+ 2016 089e FA01      		movw r30,r20
+ 2017 08a0 8083      		st Z,r24
+ 2018 08a2 00C0      		rjmp .L200
+ 2019               	.L192:
+ 519:mmc.c         **** 			res = RES_OK;
+ 520:mmc.c         **** 			break;
+ 521:mmc.c         **** 
+ 522:mmc.c         **** 		case MMC_GET_CSD :		/* Receive CSD as a data block (16 bytes) */
+ 523:mmc.c         **** 			if (send_cmd(CMD9, 0) == 0		/* READ_CSD */
+ 2020               		.stabn	68,0,523,.LM227-.LFBB8
+ 2021               	.LM227:
+ 2022 08a4 89E4      		ldi r24,lo8(73)
+ 2023 08a6 00C0      		rjmp .L237
+ 2024               	.L193:
+ 524:mmc.c         **** 				&& rcvr_datablock(ptr, 16))
+ 525:mmc.c         **** 				res = RES_OK;
+ 526:mmc.c         **** 			break;
+ 527:mmc.c         **** 
+ 528:mmc.c         **** 		case MMC_GET_CID :		/* Receive CID as a data block (16 bytes) */
+ 529:mmc.c         **** 			if (send_cmd(CMD10, 0) == 0		/* READ_CID */
+ 2025               		.stabn	68,0,529,.LM228-.LFBB8
+ 2026               	.LM228:
+ 2027 08a8 8AE4      		ldi r24,lo8(74)
+ 2028               	.L237:
+ 2029 08aa 40E0      		ldi r20,lo8(0)
+ 2030 08ac 50E0      		ldi r21,hi8(0)
+ 2031 08ae 60E0      		ldi r22,hlo8(0)
+ 2032 08b0 70E0      		ldi r23,hhi8(0)
+ 2033 08b2 0E94 0000 		call send_cmd
+ 2034 08b6 8823      		tst r24
+ 2035 08b8 01F4      		brne .L202
+ 2036 08ba C801      		movw r24,r16
+GAS LISTING /tmp/cc4wGHjh.s 			page 46
+
+
+ 2037 08bc 60E1      		ldi r22,lo8(16)
+ 2038 08be 70E0      		ldi r23,hi8(16)
+ 2039 08c0 00C0      		rjmp .L231
+ 2040               	.L194:
+ 530:mmc.c         **** 				&& rcvr_datablock(ptr, 16))
+ 531:mmc.c         **** 				res = RES_OK;
+ 532:mmc.c         **** 			break;
+ 533:mmc.c         **** 
+ 534:mmc.c         **** 		case MMC_GET_OCR :		/* Receive OCR as an R3 resp (4 bytes) */
+ 535:mmc.c         **** 			if (send_cmd(CMD58, 0) == 0) {	/* READ_OCR */
+ 2041               		.stabn	68,0,535,.LM229-.LFBB8
+ 2042               	.LM229:
+ 2043 08c2 8AE7      		ldi r24,lo8(122)
+ 2044 08c4 40E0      		ldi r20,lo8(0)
+ 2045 08c6 50E0      		ldi r21,hi8(0)
+ 2046 08c8 60E0      		ldi r22,hlo8(0)
+ 2047 08ca 70E0      		ldi r23,hhi8(0)
+ 2048 08cc 0E94 0000 		call send_cmd
+ 2049 08d0 8823      		tst r24
+ 2050 08d2 01F4      		brne .L202
+ 2051 08d4 F801      		movw r30,r16
+ 2052               	.LBB192:
+ 2053               	.LBB193:
+ 2054               		.stabn	68,0,76,.LM230-.LFBB8
+ 2055               	.LM230:
+ 2056 08d6 9FEF      		ldi r25,lo8(-1)
+ 2057               	.LBE193:
+ 2058               	.LBE192:
+ 536:mmc.c         **** 				for (n = 4; n; n--) *ptr++ = rcvr_spi();
+ 2059               		.stabn	68,0,536,.LM231-.LFBB8
+ 2060               	.LM231:
+ 2061 08d8 9801      		movw r18,r16
+ 2062 08da 2D5F      		subi r18,lo8(-(3))
+ 2063 08dc 3F4F      		sbci r19,hi8(-(3))
+ 2064               	.L212:
+ 2065               	.LBB195:
+ 2066               	.LBB194:
+ 2067               		.stabn	68,0,76,.LM232-.LFBB8
+ 2068               	.LM232:
+ 2069 08de 9EBD      		out 78-32,r25
+ 2070               	.L211:
+ 2071               		.stabn	68,0,77,.LM233-.LFBB8
+ 2072               	.LM233:
+ 2073 08e0 0DB4      		in __tmp_reg__,77-32
+ 2074 08e2 07FE      		sbrs __tmp_reg__,7
+ 2075 08e4 00C0      		rjmp .L211
+ 2076               		.stabn	68,0,78,.LM234-.LFBB8
+ 2077               	.LM234:
+ 2078 08e6 8EB5      		in r24,78-32
+ 2079               	.LBE194:
+ 2080               	.LBE195:
+ 2081               		.stabn	68,0,536,.LM235-.LFBB8
+ 2082               	.LM235:
+ 2083 08e8 8083      		st Z,r24
+ 2084 08ea E217      		cp r30,r18
+ 2085 08ec F307      		cpc r31,r19
+ 2086 08ee 01F0      		breq .L200
+GAS LISTING /tmp/cc4wGHjh.s 			page 47
+
+
+ 2087 08f0 3196      		adiw r30,1
+ 2088 08f2 00C0      		rjmp .L212
+ 2089               	.L195:
+ 537:mmc.c         **** 				res = RES_OK;
+ 538:mmc.c         **** 			}
+ 539:mmc.c         **** 			break;
+ 540:mmc.c         **** 
+ 541:mmc.c         **** 		case MMC_GET_SDSTAT :	/* Receive SD statsu as a data block (64 bytes) */
+ 542:mmc.c         **** 			if (send_cmd(ACMD13, 0) == 0) {	/* SD_STATUS */
+ 2090               		.stabn	68,0,542,.LM236-.LFBB8
+ 2091               	.LM236:
+ 2092 08f4 8DEC      		ldi r24,lo8(-51)
+ 2093 08f6 40E0      		ldi r20,lo8(0)
+ 2094 08f8 50E0      		ldi r21,hi8(0)
+ 2095 08fa 60E0      		ldi r22,hlo8(0)
+ 2096 08fc 70E0      		ldi r23,hhi8(0)
+ 2097 08fe 0E94 0000 		call send_cmd
+ 2098 0902 8823      		tst r24
+ 2099 0904 01F4      		brne .L202
+ 2100               	.LBB196:
+ 2101               	.LBB197:
+ 2102               		.stabn	68,0,76,.LM237-.LFBB8
+ 2103               	.LM237:
+ 2104 0906 8FEF      		ldi r24,lo8(-1)
+ 2105 0908 8EBD      		out 78-32,r24
+ 2106               	.L213:
+ 2107               		.stabn	68,0,77,.LM238-.LFBB8
+ 2108               	.LM238:
+ 2109 090a 0DB4      		in __tmp_reg__,77-32
+ 2110 090c 07FE      		sbrs __tmp_reg__,7
+ 2111 090e 00C0      		rjmp .L213
+ 2112               		.stabn	68,0,78,.LM239-.LFBB8
+ 2113               	.LM239:
+ 2114 0910 8EB5      		in r24,78-32
+ 2115               	.LBE197:
+ 2116               	.LBE196:
+ 543:mmc.c         **** 				rcvr_spi();
+ 544:mmc.c         **** 				if (rcvr_datablock(ptr, 64))
+ 2117               		.stabn	68,0,544,.LM240-.LFBB8
+ 2118               	.LM240:
+ 2119 0912 C801      		movw r24,r16
+ 2120 0914 60E4      		ldi r22,lo8(64)
+ 2121 0916 70E0      		ldi r23,hi8(64)
+ 2122               	.L231:
+ 2123 0918 0E94 0000 		call rcvr_datablock
+ 2124 091c 90E0      		ldi r25,lo8(0)
+ 2125 091e 8823      		tst r24
+ 2126 0920 01F4      		brne .L197
+ 2127 0922 00C0      		rjmp .L202
+ 2128               	.L200:
+ 2129 0924 90E0      		ldi r25,lo8(0)
+ 2130 0926 00C0      		rjmp .L197
+ 2131               	.L202:
+ 2132 0928 91E0      		ldi r25,lo8(1)
+ 2133               	.L197:
+ 2134               	.LBB198:
+ 2135               	.LBB199:
+GAS LISTING /tmp/cc4wGHjh.s 			page 48
+
+
+ 2136               		.stabn	68,0,114,.LM241-.LFBB8
+ 2137               	.LM241:
+ 2138 092a 2C9A      		sbi 37-32,4
+ 2139               	.LBB200:
+ 2140               	.LBB201:
+ 2141               		.stabn	68,0,76,.LM242-.LFBB8
+ 2142               	.LM242:
+ 2143 092c 8FEF      		ldi r24,lo8(-1)
+ 2144 092e 8EBD      		out 78-32,r24
+ 2145               	.L215:
+ 2146               		.stabn	68,0,77,.LM243-.LFBB8
+ 2147               	.LM243:
+ 2148 0930 0DB4      		in __tmp_reg__,77-32
+ 2149 0932 07FE      		sbrs __tmp_reg__,7
+ 2150 0934 00C0      		rjmp .L215
+ 2151               		.stabn	68,0,78,.LM244-.LFBB8
+ 2152               	.LM244:
+ 2153 0936 8EB5      		in r24,78-32
+ 2154 0938 00C0      		rjmp .L183
+ 2155               	.L173:
+ 2156 093a 94E0      		ldi r25,lo8(4)
+ 2157               	.L183:
+ 2158               	.LBE201:
+ 2159               	.LBE200:
+ 2160               	.LBE199:
+ 2161               	.LBE198:
+ 545:mmc.c         **** 					res = RES_OK;
+ 546:mmc.c         **** 			}
+ 547:mmc.c         **** 			break;
+ 548:mmc.c         **** 
+ 549:mmc.c         **** 		default:
+ 550:mmc.c         **** 			res = RES_PARERR;
+ 551:mmc.c         **** 		}
+ 552:mmc.c         **** 
+ 553:mmc.c         **** 		release_spi();
+ 554:mmc.c         **** 	}
+ 555:mmc.c         **** 
+ 556:mmc.c         **** 	return res;
+ 557:mmc.c         **** }
+ 2162               		.stabn	68,0,557,.LM245-.LFBB8
+ 2163               	.LM245:
+ 2164 093c 892F      		mov r24,r25
+ 2165               	/* epilogue start */
+ 2166 093e 6096      		adiw r28,16
+ 2167 0940 0FB6      		in __tmp_reg__,__SREG__
+ 2168 0942 F894      		cli
+ 2169 0944 DEBF      		out __SP_H__,r29
+ 2170 0946 0FBE      		out __SREG__,__tmp_reg__
+ 2171 0948 CDBF      		out __SP_L__,r28
+ 2172 094a CF91      		pop r28
+ 2173 094c DF91      		pop r29
+ 2174 094e 1F91      		pop r17
+ 2175 0950 0F91      		pop r16
+ 2176 0952 FF90      		pop r15
+ 2177 0954 0895      		ret
+ 2178               		.size	disk_ioctl, .-disk_ioctl
+ 2179               		.stabs	"res:r(6,3)",64,0,438,25
+GAS LISTING /tmp/cc4wGHjh.s 			page 49
+
+
+ 2180               		.stabs	"csd:(0,22)=ar(0,20);0;15;(7,5)",128,0,439,1
+ 2181               		.stabn	192,0,0,.LFBB8-.LFBB8
+ 2182               		.stabs	"res:r(7,5)",64,0,93,24
+ 2183               		.stabn	192,0,0,.LBB171-.LFBB8
+ 2184               		.stabn	224,0,0,.LBE171-.LFBB8
+ 2185               		.stabs	"res:r(7,5)",64,0,93,24
+ 2186               		.stabn	192,0,0,.LBB183-.LFBB8
+ 2187               		.stabn	224,0,0,.LBE183-.LFBB8
+ 2188               		.stabn	224,0,0,.Lscope8-.LFBB8
+ 2189               	.Lscope8:
+ 2190               		.stabs	"",36,0,0,.Lscope8-.LFBB8
+ 2191               		.stabd	78,0,0
+ 2192               		.stabs	"disk_timerproc:F(0,15)",36,0,567,disk_timerproc
+ 2193               	.global	disk_timerproc
+ 2194               		.type	disk_timerproc, @function
+ 2195               	disk_timerproc:
+ 2196               		.stabd	46,0,0
+ 558:mmc.c         **** #endif /* _USE_IOCTL != 0 */
+ 559:mmc.c         **** 
+ 560:mmc.c         **** 
+ 561:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 562:mmc.c         **** /* Device Timer Interrupt Procedure  (Platform dependent)                */
+ 563:mmc.c         **** /*-----------------------------------------------------------------------*/
+ 564:mmc.c         **** /* This function must be called in period of 10ms                        */
+ 565:mmc.c         **** 
+ 566:mmc.c         **** void disk_timerproc (void)
+ 567:mmc.c         **** {
+ 2197               		.stabn	68,0,567,.LM246-.LFBB9
+ 2198               	.LM246:
+ 2199               	.LFBB9:
+ 2200               	/* prologue: function */
+ 2201               	/* frame size = 0 */
+ 568:mmc.c         ****     BYTE n, s = 0;
+ 569:mmc.c         ****     n = Timer1;    /* 100Hz decrement timer */
+ 2202               		.stabn	68,0,569,.LM247-.LFBB9
+ 2203               	.LM247:
+ 2204 0956 8091 0000 		lds r24,Timer1
+ 570:mmc.c         ****     if (n) Timer1 = --n;
+ 2205               		.stabn	68,0,570,.LM248-.LFBB9
+ 2206               	.LM248:
+ 2207 095a 8823      		tst r24
+ 2208 095c 01F0      		breq .L241
+ 2209 095e 8150      		subi r24,lo8(-(-1))
+ 2210 0960 8093 0000 		sts Timer1,r24
+ 2211               	.L241:
+ 571:mmc.c         ****     n = Timer2;
+ 2212               		.stabn	68,0,571,.LM249-.LFBB9
+ 2213               	.LM249:
+ 2214 0964 8091 0000 		lds r24,Timer2
+ 572:mmc.c         ****     if (n) Timer2 = --n;
+ 2215               		.stabn	68,0,572,.LM250-.LFBB9
+ 2216               	.LM250:
+ 2217 0968 8823      		tst r24
+ 2218 096a 01F0      		breq .L242
+ 2219 096c 8150      		subi r24,lo8(-(-1))
+ 2220 096e 8093 0000 		sts Timer2,r24
+ 2221               	.L242:
+GAS LISTING /tmp/cc4wGHjh.s 			page 50
+
+
+ 573:mmc.c         ****     s &= ~STA_NODISK;
+ 574:mmc.c         ****     s &= ~STA_PROTECT;
+ 575:mmc.c         ****     Stat = s;
+ 2222               		.stabn	68,0,575,.LM251-.LFBB9
+ 2223               	.LM251:
+ 2224 0972 1092 0000 		sts Stat,__zero_reg__
+ 2225               	/* epilogue start */
+ 576:mmc.c         **** } 
+ 2226               		.stabn	68,0,576,.LM252-.LFBB9
+ 2227               	.LM252:
+ 2228 0976 0895      		ret
+ 2229               		.size	disk_timerproc, .-disk_timerproc
+ 2230               		.stabs	"n:r(7,5)",64,0,568,24
+ 2231               		.stabn	192,0,0,.LFBB9-.LFBB9
+ 2232               		.stabn	224,0,0,.Lscope9-.LFBB9
+ 2233               	.Lscope9:
+ 2234               		.stabs	"",36,0,0,.Lscope9-.LFBB9
+ 2235               		.stabd	78,0,0
+ 2236               		.data
+ 2237               		.type	Stat, @object
+ 2238               		.size	Stat, 1
+ 2239               	Stat:
+ 2240 0000 01        		.byte	1
+ 2241               		.lcomm Timer1,1
+ 2242               		.lcomm Timer2,1
+ 2243               		.lcomm CardType,1
+ 2244               		.stabs	"Stat:S(0,23)=B(6,1)",38,0,52,Stat
+ 2245               		.stabs	"Timer1:S(0,24)=B(7,5)",40,0,55,Timer1
+ 2246               		.stabs	"Timer2:S(0,24)",40,0,55,Timer2
+ 2247               		.stabs	"CardType:S(7,5)",40,0,58,CardType
+ 2248               		.text
+ 2249               		.stabs	"",100,0,0,.Letext0
+ 2250               	.Letext0:
+GAS LISTING /tmp/cc4wGHjh.s 			page 51
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 mmc.c
+     /tmp/cc4wGHjh.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cc4wGHjh.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cc4wGHjh.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cc4wGHjh.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/cc4wGHjh.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc4wGHjh.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc4wGHjh.s:96     .text:0000000000000000 rcvr_datablock
+                             .bss:0000000000000000 Timer1
+     /tmp/cc4wGHjh.s:241    .text:0000000000000082 xmit_datablock
+     /tmp/cc4wGHjh.s:2241   .bss:0000000000000001 Timer2
+     /tmp/cc4wGHjh.s:405    .text:0000000000000112 send_cmd
+     /tmp/cc4wGHjh.s:646    .text:0000000000000200 disk_initialize
+     /tmp/cc4wGHjh.s:2239   .data:0000000000000000 Stat
+     /tmp/cc4wGHjh.s:2242   .bss:0000000000000002 CardType
+     /tmp/cc4wGHjh.s:1081   .text:00000000000003e4 disk_status
+     /tmp/cc4wGHjh.s:1112   .text:00000000000003f2 disk_read
+     /tmp/cc4wGHjh.s:1262   .text:00000000000004a4 disk_write
+     /tmp/cc4wGHjh.s:1440   .text:0000000000000586 disk_ioctl
+     /tmp/cc4wGHjh.s:2195   .text:0000000000000956 disk_timerproc
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

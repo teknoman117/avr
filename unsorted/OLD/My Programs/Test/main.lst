@@ -1,0 +1,278 @@
+   1               		.file	"main.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.data
+  19               	.LC0:
+  20 0000 436F 6D6D 		.string	"Command Excepted, Stop\r"
+  20      616E 6420 
+  20      4578 6365 
+  20      7074 6564 
+  20      2C20 5374 
+  21               		.text
+  22               	.global	sp
+  24               	sp:
+  25               	.LFB7:
+  26               	.LM1:
+  27               	/* prologue: frame size=0 */
+  28               	/* prologue end (size=0) */
+  29 0000 80E0      		ldi r24,lo8(.LC0)
+  30 0002 90E0      		ldi r25,hi8(.LC0)
+  31 0004 0E94 0000 		call uprintf
+  32               	/* epilogue: frame size=0 */
+  33 0008 0895      		ret
+  34               	/* epilogue end (size=1) */
+  35               	/* function sp size 5 (4) */
+  36               	.LFE7:
+  38               		.data
+  39               	.LC1:
+  40 0018 436F 6D6D 		.string	"Command Excepted, Right\r"
+  40      616E 6420 
+  40      4578 6365 
+  40      7074 6564 
+  40      2C20 5269 
+  41               		.text
+  42               	.global	r
+  44               	r:
+  45               	.LFB6:
+  46               	.LM2:
+  47               	/* prologue: frame size=0 */
+  48               	/* prologue end (size=0) */
+  49 000a 80E0      		ldi r24,lo8(.LC1)
+  50 000c 90E0      		ldi r25,hi8(.LC1)
+  51 000e 0E94 0000 		call uprintf
+  52               	/* epilogue: frame size=0 */
+  53 0012 0895      		ret
+  54               	/* epilogue end (size=1) */
+  55               	/* function r size 5 (4) */
+  56               	.LFE6:
+  58               		.data
+  59               	.LC2:
+  60 0031 436F 6D6D 		.string	"Command Excepted, Left\r"
+  60      616E 6420 
+  60      4578 6365 
+  60      7074 6564 
+  60      2C20 4C65 
+  61               		.text
+  62               	.global	l
+  64               	l:
+  65               	.LFB5:
+  66               	.LM3:
+  67               	/* prologue: frame size=0 */
+  68               	/* prologue end (size=0) */
+  69 0014 80E0      		ldi r24,lo8(.LC2)
+  70 0016 90E0      		ldi r25,hi8(.LC2)
+  71 0018 0E94 0000 		call uprintf
+  72               	/* epilogue: frame size=0 */
+  73 001c 0895      		ret
+  74               	/* epilogue end (size=1) */
+  75               	/* function l size 5 (4) */
+  76               	.LFE5:
+  78               		.data
+  79               	.LC3:
+  80 0049 436F 6D6D 		.string	"Command Excepted, Backward\r"
+  80      616E 6420 
+  80      4578 6365 
+  80      7074 6564 
+  80      2C20 4261 
+  81               		.text
+  82               	.global	b
+  84               	b:
+  85               	.LFB4:
+  86               	.LM4:
+  87               	/* prologue: frame size=0 */
+  88               	/* prologue end (size=0) */
+  89 001e 80E0      		ldi r24,lo8(.LC3)
+  90 0020 90E0      		ldi r25,hi8(.LC3)
+  91 0022 0E94 0000 		call uprintf
+  92               	/* epilogue: frame size=0 */
+  93 0026 0895      		ret
+  94               	/* epilogue end (size=1) */
+  95               	/* function b size 5 (4) */
+  96               	.LFE4:
+  98               		.data
+  99               	.LC4:
+ 100 0065 436F 6D6D 		.string	"Command Excepted, Forward\r"
+ 100      616E 6420 
+ 100      4578 6365 
+ 100      7074 6564 
+ 100      2C20 466F 
+ 101               		.text
+ 102               	.global	f
+ 104               	f:
+ 105               	.LFB3:
+ 106               	.LM5:
+ 107               	/* prologue: frame size=0 */
+ 108               	/* prologue end (size=0) */
+ 109 0028 80E0      		ldi r24,lo8(.LC4)
+ 110 002a 90E0      		ldi r25,hi8(.LC4)
+ 111 002c 0E94 0000 		call uprintf
+ 112               	/* epilogue: frame size=0 */
+ 113 0030 0895      		ret
+ 114               	/* epilogue end (size=1) */
+ 115               	/* function f size 5 (4) */
+ 116               	.LFE3:
+ 118               		.data
+ 119               	.LC5:
+ 120 0080 4156 5220 		.string	"AVR started, ready to except commands\r"
+ 120      7374 6172 
+ 120      7465 642C 
+ 120      2072 6561 
+ 120      6479 2074 
+ 121               	.LC6:
+ 122 00a7 596F 7520 		.string	"You Entered: "
+ 122      456E 7465 
+ 122      7265 643A 
+ 122      2000 
+ 123               	.LC7:
+ 124 00b5 0D00      		.string	"\r"
+ 125               	.LC8:
+ 126 00b7 466F 7277 		.string	"Forward"
+ 126      6172 6400 
+ 127               	.LC9:
+ 128 00bf 4261 636B 		.string	"Backward"
+ 128      7761 7264 
+ 128      00
+ 129               	.LC10:
+ 130 00c8 4C65 6674 		.string	"Left"
+ 130      00
+ 131               	.LC11:
+ 132 00cd 5269 6768 		.string	"Right"
+ 132      7400 
+ 133               	.LC12:
+ 134 00d3 5374 6F70 		.string	"Stop"
+ 134      00
+ 135               		.text
+ 136               	.global	main
+ 138               	main:
+ 139               	.LFB2:
+ 140               	.LM6:
+ 141               	/* prologue: frame size=0 */
+ 142               	/* prologue end (size=0) */
+ 143               	.LM7:
+ 144 0032 89E1      		ldi r24,lo8(25)
+ 145 0034 90E0      		ldi r25,hi8(25)
+ 146 0036 0E94 0000 		call enable_uart
+ 147               	.LM8:
+ 148 003a 80E0      		ldi r24,lo8(.LC5)
+ 149 003c 90E0      		ldi r25,hi8(.LC5)
+ 150 003e 0E94 0000 		call uprintf
+ 151               	.L28:
+ 152               	.LM9:
+ 153 0042 40E0      		ldi r20,lo8(0)
+ 154 0044 62E3      		ldi r22,lo8(50)
+ 155 0046 80E0      		ldi r24,lo8(inputinfo)
+ 156 0048 90E0      		ldi r25,hi8(inputinfo)
+ 157 004a 0E94 0000 		call uscanf
+ 158               	.LM10:
+ 159 004e 80E0      		ldi r24,lo8(.LC6)
+ 160 0050 90E0      		ldi r25,hi8(.LC6)
+ 161 0052 0E94 0000 		call uprintf
+ 162 0056 80E0      		ldi r24,lo8(inputinfo)
+ 163 0058 90E0      		ldi r25,hi8(inputinfo)
+ 164 005a 0E94 0000 		call uprintf
+ 165 005e 80E0      		ldi r24,lo8(.LC7)
+ 166 0060 90E0      		ldi r25,hi8(.LC7)
+ 167 0062 0E94 0000 		call uprintf
+ 168               	.LM11:
+ 169 0066 47E0      		ldi r20,lo8(7)
+ 170 0068 50E0      		ldi r21,hi8(7)
+ 171 006a 60E0      		ldi r22,lo8(.LC8)
+ 172 006c 70E0      		ldi r23,hi8(.LC8)
+ 173 006e 80E0      		ldi r24,lo8(inputinfo)
+ 174 0070 90E0      		ldi r25,hi8(inputinfo)
+ 175 0072 0E94 0000 		call strncmp
+ 176 0076 892B      		or r24,r25
+ 177 0078 01F4      		brne .L13
+ 178 007a 0E94 0000 		call f
+ 179               	.L13:
+ 180               	.LM12:
+ 181 007e 48E0      		ldi r20,lo8(8)
+ 182 0080 50E0      		ldi r21,hi8(8)
+ 183 0082 60E0      		ldi r22,lo8(.LC9)
+ 184 0084 70E0      		ldi r23,hi8(.LC9)
+ 185 0086 80E0      		ldi r24,lo8(inputinfo)
+ 186 0088 90E0      		ldi r25,hi8(inputinfo)
+ 187 008a 0E94 0000 		call strncmp
+ 188 008e 892B      		or r24,r25
+ 189 0090 01F4      		brne .L15
+ 190 0092 0E94 0000 		call b
+ 191               	.L15:
+ 192               	.LM13:
+ 193 0096 44E0      		ldi r20,lo8(4)
+ 194 0098 50E0      		ldi r21,hi8(4)
+ 195 009a 60E0      		ldi r22,lo8(.LC10)
+ 196 009c 70E0      		ldi r23,hi8(.LC10)
+ 197 009e 80E0      		ldi r24,lo8(inputinfo)
+ 198 00a0 90E0      		ldi r25,hi8(inputinfo)
+ 199 00a2 0E94 0000 		call strncmp
+ 200 00a6 892B      		or r24,r25
+ 201 00a8 01F4      		brne .L17
+ 202 00aa 0E94 0000 		call l
+ 203               	.L17:
+ 204               	.LM14:
+ 205 00ae 45E0      		ldi r20,lo8(5)
+ 206 00b0 50E0      		ldi r21,hi8(5)
+ 207 00b2 60E0      		ldi r22,lo8(.LC11)
+ 208 00b4 70E0      		ldi r23,hi8(.LC11)
+ 209 00b6 80E0      		ldi r24,lo8(inputinfo)
+ 210 00b8 90E0      		ldi r25,hi8(inputinfo)
+ 211 00ba 0E94 0000 		call strncmp
+ 212 00be 892B      		or r24,r25
+ 213 00c0 01F4      		brne .L19
+ 214 00c2 0E94 0000 		call r
+ 215               	.L19:
+ 216               	.LM15:
+ 217 00c6 44E0      		ldi r20,lo8(4)
+ 218 00c8 50E0      		ldi r21,hi8(4)
+ 219 00ca 60E0      		ldi r22,lo8(.LC12)
+ 220 00cc 70E0      		ldi r23,hi8(.LC12)
+ 221 00ce 80E0      		ldi r24,lo8(inputinfo)
+ 222 00d0 90E0      		ldi r25,hi8(inputinfo)
+ 223 00d2 0E94 0000 		call strncmp
+ 224 00d6 892B      		or r24,r25
+ 225 00d8 01F0      		breq .+2
+ 226 00da 00C0      		rjmp .L28
+ 227 00dc 0E94 0000 		call sp
+ 228 00e0 00C0      		rjmp .L28
+ 229               	/* epilogue: frame size=0 */
+ 230               	/* epilogue: noreturn */
+ 231               	/* epilogue end (size=0) */
+ 232               	/* function main size 88 (88) */
+ 233               	.LFE2:
+ 235               		.comm x,8,1
+ 236               		.comm s,1,1
+ 237               		.comm str,50,1
+ 238               		.comm inputinfo,50,1
+ 296               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:24     .text:00000000 sp
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:44     .text:0000000a r
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:64     .text:00000014 l
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:84     .text:0000001e b
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:104    .text:00000028 f
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2Vaaaa.s:138    .text:00000032 main
+                            *COM*:00000032 inputinfo
+                            *COM*:00000008 x
+                            *COM*:00000001 s
+                            *COM*:00000032 str
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+uprintf
+enable_uart
+uscanf
+strncmp

@@ -1,0 +1,1355 @@
+
+sd_bootloader:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007e0  0000f800  0000f800  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .bss          00000010  00800100  0000ffe0  00000854  2**0
+                  ALLOC
+  2 .stab         000020e8  00000000  00000000  00000854  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000f33  00000000  00000000  0000293c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+0000f800 <__vectors>:
+    f800:	0c 94 38 7c 	jmp	0xf870	; 0xf870 <__ctors_end>
+    f804:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f808:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f80c:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f810:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f814:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f818:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f81c:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f820:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f824:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f828:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f82c:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f830:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f834:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f838:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f83c:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f840:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f844:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f848:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f84c:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f850:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f854:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f858:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f85c:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f860:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f864:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f868:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+    f86c:	0c 94 55 7c 	jmp	0xf8aa	; 0xf8aa <__bad_interrupt>
+
+0000f870 <__ctors_end>:
+    f870:	11 24       	eor	r1, r1
+    f872:	1f be       	out	0x3f, r1	; 63
+    f874:	cf ef       	ldi	r28, 0xFF	; 255
+    f876:	d0 e1       	ldi	r29, 0x10	; 16
+    f878:	de bf       	out	0x3e, r29	; 62
+    f87a:	cd bf       	out	0x3d, r28	; 61
+
+0000f87c <__do_copy_data>:
+    f87c:	11 e0       	ldi	r17, 0x01	; 1
+    f87e:	a0 e0       	ldi	r26, 0x00	; 0
+    f880:	b1 e0       	ldi	r27, 0x01	; 1
+    f882:	e0 ee       	ldi	r30, 0xE0	; 224
+    f884:	ff ef       	ldi	r31, 0xFF	; 255
+    f886:	02 c0       	rjmp	.+4      	; 0xf88c <.do_copy_data_start>
+
+0000f888 <.do_copy_data_loop>:
+    f888:	05 90       	lpm	r0, Z+
+    f88a:	0d 92       	st	X+, r0
+
+0000f88c <.do_copy_data_start>:
+    f88c:	a0 30       	cpi	r26, 0x00	; 0
+    f88e:	b1 07       	cpc	r27, r17
+    f890:	d9 f7       	brne	.-10     	; 0xf888 <.do_copy_data_loop>
+
+0000f892 <__do_clear_bss>:
+    f892:	11 e0       	ldi	r17, 0x01	; 1
+    f894:	a0 e0       	ldi	r26, 0x00	; 0
+    f896:	b1 e0       	ldi	r27, 0x01	; 1
+    f898:	01 c0       	rjmp	.+2      	; 0xf89c <.do_clear_bss_start>
+
+0000f89a <.do_clear_bss_loop>:
+    f89a:	1d 92       	st	X+, r1
+
+0000f89c <.do_clear_bss_start>:
+    f89c:	a0 31       	cpi	r26, 0x10	; 16
+    f89e:	b1 07       	cpc	r27, r17
+    f8a0:	e1 f7       	brne	.-8      	; 0xf89a <.do_clear_bss_loop>
+    f8a2:	0e 94 dd 7c 	call	0xf9ba	; 0xf9ba <main>
+    f8a6:	0c 94 ee 7f 	jmp	0xffdc	; 0xffdc <_exit>
+
+0000f8aa <__bad_interrupt>:
+    f8aa:	0c 94 00 7c 	jmp	0xf800	; 0xf800 <__vectors>
+
+0000f8ae <start_application>:
+#define noinline __attribute__((noinline))
+
+/** move interrupt vectors to application section and jump to main program */
+static noinline void start_application(void) {
+    /* reset input pin */
+    START_PORT &= START_MASK;
+    f8ae:	85 b1       	in	r24, 0x05	; 5
+    f8b0:	81 70       	andi	r24, 0x01	; 1
+    f8b2:	85 b9       	out	0x05, r24	; 5
+    /* move interrupt vectors to application section and jump to main program */
+    MCUCR = _BV(IVCE);
+    f8b4:	81 e0       	ldi	r24, 0x01	; 1
+    f8b6:	85 bf       	out	0x35, r24	; 53
+    MCUCR = 0;
+    f8b8:	15 be       	out	0x35, r1	; 53
+    jump_to_application();
+    f8ba:	e0 91 00 01 	lds	r30, 0x0100
+    f8be:	f0 91 01 01 	lds	r31, 0x0101
+    f8c2:	09 95       	icall
+}
+    f8c4:	08 95       	ret
+
+0000f8c6 <uart_get>:
+
+static noinline int uart_get( void ) {
+    f8c6:	20 e0       	ldi	r18, 0x00	; 0
+    f8c8:	30 e0       	ldi	r19, 0x00	; 0
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+    f8ca:	93 e0       	ldi	r25, 0x03	; 3
+    f8cc:	0c c0       	rjmp	.+24     	; 0xf8e6 <uart_get+0x20>
+    uint16_t counter = 0;
+    while( !(UCSR0A & (1<<RXC0))) {
+        if(counter++ > TIMEOUT) return -1;
+    f8ce:	81 e0       	ldi	r24, 0x01	; 1
+    f8d0:	21 30       	cpi	r18, 0x01	; 1
+    f8d2:	38 07       	cpc	r19, r24
+    f8d4:	19 f4       	brne	.+6      	; 0xf8dc <uart_get+0x16>
+    f8d6:	2f ef       	ldi	r18, 0xFF	; 255
+    f8d8:	3f ef       	ldi	r19, 0xFF	; 255
+    f8da:	0d c0       	rjmp	.+26     	; 0xf8f6 <uart_get+0x30>
+    f8dc:	2f 5f       	subi	r18, 0xFF	; 255
+    f8de:	3f 4f       	sbci	r19, 0xFF	; 255
+    f8e0:	89 2f       	mov	r24, r25
+    f8e2:	8a 95       	dec	r24
+    f8e4:	f1 f7       	brne	.-4      	; 0xf8e2 <uart_get+0x1c>
+    jump_to_application();
+}
+
+static noinline int uart_get( void ) {
+    uint16_t counter = 0;
+    while( !(UCSR0A & (1<<RXC0))) {
+    f8e6:	80 91 c0 00 	lds	r24, 0x00C0
+    f8ea:	87 ff       	sbrs	r24, 7
+    f8ec:	f0 cf       	rjmp	.-32     	; 0xf8ce <uart_get+0x8>
+        if(counter++ > TIMEOUT) return -1;
+        _delay_us(1);
+    }
+    return UDR0;
+    f8ee:	80 91 c6 00 	lds	r24, 0x00C6
+    f8f2:	28 2f       	mov	r18, r24
+    f8f4:	30 e0       	ldi	r19, 0x00	; 0
+}
+    f8f6:	c9 01       	movw	r24, r18
+    f8f8:	08 95       	ret
+
+0000f8fa <obtain_slot>:
+
+static noinline int obtain_slot( void ) {  //return a -1 for current slot, num for new
+    f8fa:	0f 93       	push	r16
+    f8fc:	1f 93       	push	r17
+    f8fe:	cf 93       	push	r28
+    f900:	df 93       	push	r29
+    f902:	e2 e0       	ldi	r30, 0x02	; 2
+    f904:	f1 e0       	ldi	r31, 0x01	; 1
+    int slot = -1;
+    uint16_t counter = 0;
+    int ch;
+    for(counter=0;counter<10;counter++) numbuf[counter] = '\0';
+    f906:	11 92       	st	Z+, r1
+    f908:	81 e0       	ldi	r24, 0x01	; 1
+    f90a:	ec 30       	cpi	r30, 0x0C	; 12
+    f90c:	f8 07       	cpc	r31, r24
+    f90e:	d9 f7       	brne	.-10     	; 0xf906 <obtain_slot+0xc>
+    f910:	0f ef       	ldi	r16, 0xFF	; 255
+    f912:	1f ef       	ldi	r17, 0xFF	; 255
+    f914:	c0 e0       	ldi	r28, 0x00	; 0
+    f916:	d0 e0       	ldi	r29, 0x00	; 0
+    counter = 0;
+    while(1) {
+        if((ch = uart_get()) > -1) {
+    f918:	0e 94 63 7c 	call	0xf8c6	; 0xf8c6 <uart_get>
+    f91c:	97 fd       	sbrc	r25, 7
+    f91e:	17 c0       	rjmp	.+46     	; 0xf94e <obtain_slot+0x54>
+            if(ch == '\r') {
+    f920:	8d 30       	cpi	r24, 0x0D	; 13
+    f922:	91 05       	cpc	r25, r1
+    f924:	79 f4       	brne	.+30     	; 0xf944 <obtain_slot+0x4a>
+                slot = atoi(numbuf);
+    f926:	82 e0       	ldi	r24, 0x02	; 2
+    f928:	91 e0       	ldi	r25, 0x01	; 1
+    f92a:	0e 94 c8 7f 	call	0xff90	; 0xff90 <atoi>
+    f92e:	8c 01       	movw	r16, r24
+    f930:	e2 e0       	ldi	r30, 0x02	; 2
+    f932:	f1 e0       	ldi	r31, 0x01	; 1
+                for(counter=0;counter<10;counter++) numbuf[counter] = '\0';
+    f934:	11 92       	st	Z+, r1
+    f936:	81 e0       	ldi	r24, 0x01	; 1
+    f938:	ec 30       	cpi	r30, 0x0C	; 12
+    f93a:	f8 07       	cpc	r31, r24
+    f93c:	d9 f7       	brne	.-10     	; 0xf934 <obtain_slot+0x3a>
+    f93e:	c0 e0       	ldi	r28, 0x00	; 0
+    f940:	d0 e0       	ldi	r29, 0x00	; 0
+    f942:	05 c0       	rjmp	.+10     	; 0xf94e <obtain_slot+0x54>
+                counter = 0;
+            } else {
+                numbuf[counter++] = ch;
+    f944:	fe 01       	movw	r30, r28
+    f946:	ee 5f       	subi	r30, 0xFE	; 254
+    f948:	fe 4f       	sbci	r31, 0xFE	; 254
+    f94a:	80 83       	st	Z, r24
+    f94c:	21 96       	adiw	r28, 0x01	; 1
+            }
+        }
+        if(START_PIN & _BV(START_PINNUM)) break;
+    f94e:	18 9b       	sbis	0x03, 0	; 3
+    f950:	e3 cf       	rjmp	.-58     	; 0xf918 <obtain_slot+0x1e>
+    }
+    return slot;
+}
+    f952:	c8 01       	movw	r24, r16
+    f954:	df 91       	pop	r29
+    f956:	cf 91       	pop	r28
+    f958:	1f 91       	pop	r17
+    f95a:	0f 91       	pop	r16
+    f95c:	08 95       	ret
+
+0000f95e <start_mmc_read>:
+
+static noinline char start_mmc_read(uint32_t address) {
+    f95e:	ef 92       	push	r14
+    f960:	ff 92       	push	r15
+    f962:	0f 93       	push	r16
+    f964:	1f 93       	push	r17
+    f966:	cf 93       	push	r28
+    f968:	df 93       	push	r29
+    f96a:	7b 01       	movw	r14, r22
+    f96c:	8c 01       	movw	r16, r24
+    uint16_t al = address & 0x0000FFFF;
+	uint16_t ah = (address >> 16) & 0x0000FFFF;
+	uint8_t r1 =  mmc_command(0x51, 0xFF, ah, al);
+    f96e:	98 01       	movw	r18, r16
+    f970:	44 27       	eor	r20, r20
+    f972:	55 27       	eor	r21, r21
+    f974:	81 e5       	ldi	r24, 0x51	; 81
+    f976:	6f ef       	ldi	r22, 0xFF	; 255
+    f978:	a9 01       	movw	r20, r18
+    f97a:	97 01       	movw	r18, r14
+    f97c:	0e 94 5c 7e 	call	0xfcb8	; 0xfcb8 <mmc_command>
+    f980:	c0 e0       	ldi	r28, 0x00	; 0
+    f982:	d0 e0       	ldi	r29, 0x00	; 0
+	for (al = 0; al < 50000; al++) {
+		if (r1 == 0) break;
+    f984:	88 23       	and	r24, r24
+    f986:	61 f0       	breq	.+24     	; 0xf9a0 <start_mmc_read+0x42>
+		r1 = spi_transfer(0xFF);
+    f988:	8f ef       	ldi	r24, 0xFF	; 255
+    f98a:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+
+static noinline char start_mmc_read(uint32_t address) {
+    uint16_t al = address & 0x0000FFFF;
+	uint16_t ah = (address >> 16) & 0x0000FFFF;
+	uint8_t r1 =  mmc_command(0x51, 0xFF, ah, al);
+	for (al = 0; al < 50000; al++) {
+    f98e:	21 96       	adiw	r28, 0x01	; 1
+    f990:	93 ec       	ldi	r25, 0xC3	; 195
+    f992:	c0 35       	cpi	r28, 0x50	; 80
+    f994:	d9 07       	cpc	r29, r25
+    f996:	b1 f7       	brne	.-20     	; 0xf984 <start_mmc_read+0x26>
+		if (r1 == 0) break;
+		r1 = spi_transfer(0xFF);
+	}
+	if (r1 != 0) return 1;
+    f998:	88 23       	and	r24, r24
+    f99a:	11 f0       	breq	.+4      	; 0xf9a0 <start_mmc_read+0x42>
+    f99c:	81 e0       	ldi	r24, 0x01	; 1
+    f99e:	06 c0       	rjmp	.+12     	; 0xf9ac <start_mmc_read+0x4e>
+	while(spi_transfer(0xFF) != 0xFE);
+    f9a0:	8f ef       	ldi	r24, 0xFF	; 255
+    f9a2:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    f9a6:	8e 3f       	cpi	r24, 0xFE	; 254
+    f9a8:	d9 f7       	brne	.-10     	; 0xf9a0 <start_mmc_read+0x42>
+    f9aa:	80 e0       	ldi	r24, 0x00	; 0
+	return 0;
+}
+    f9ac:	df 91       	pop	r29
+    f9ae:	cf 91       	pop	r28
+    f9b0:	1f 91       	pop	r17
+    f9b2:	0f 91       	pop	r16
+    f9b4:	ff 90       	pop	r15
+    f9b6:	ef 90       	pop	r14
+    f9b8:	08 95       	ret
+
+0000f9ba <main>:
+
+int main(void) {
+    f9ba:	2f 92       	push	r2
+    f9bc:	3f 92       	push	r3
+    f9be:	4f 92       	push	r4
+    f9c0:	5f 92       	push	r5
+    f9c2:	6f 92       	push	r6
+    f9c4:	7f 92       	push	r7
+    f9c6:	8f 92       	push	r8
+    f9c8:	9f 92       	push	r9
+    f9ca:	af 92       	push	r10
+    f9cc:	bf 92       	push	r11
+    f9ce:	cf 92       	push	r12
+    f9d0:	df 92       	push	r13
+    f9d2:	ef 92       	push	r14
+    f9d4:	ff 92       	push	r15
+    f9d6:	0f 93       	push	r16
+    f9d8:	1f 93       	push	r17
+    f9da:	df 93       	push	r29
+    f9dc:	cf 93       	push	r28
+    f9de:	cd b7       	in	r28, 0x3d	; 61
+    f9e0:	de b7       	in	r29, 0x3e	; 62
+    f9e2:	28 97       	sbiw	r28, 0x08	; 8
+    f9e4:	0f b6       	in	r0, 0x3f	; 63
+    f9e6:	f8 94       	cli
+    f9e8:	de bf       	out	0x3e, r29	; 62
+    f9ea:	0f be       	out	0x3f, r0	; 63
+    f9ec:	cd bf       	out	0x3d, r28	; 61
+#   ifdef HONOR_WATCHDOG_RESET
+    /* if this reset was caused by the watchdog timer, just start the application, else disable the watchdog */
+    if (MCUSR & _BV(WDRF)) jump_to_application();
+    f9ee:	04 b6       	in	r0, 0x34	; 52
+    f9f0:	03 fe       	sbrs	r0, 3
+    f9f2:	06 c0       	rjmp	.+12     	; 0xfa00 <main+0x46>
+    f9f4:	e0 91 00 01 	lds	r30, 0x0100
+    f9f8:	f0 91 01 01 	lds	r31, 0x0101
+    f9fc:	09 95       	icall
+    f9fe:	08 c0       	rjmp	.+16     	; 0xfa10 <main+0x56>
+    else wdt_disable();
+    fa00:	88 e1       	ldi	r24, 0x18	; 24
+    fa02:	0f b6       	in	r0, 0x3f	; 63
+    fa04:	f8 94       	cli
+    fa06:	80 93 60 00 	sts	0x0060, r24
+    fa0a:	10 92 60 00 	sts	0x0060, r1
+    fa0e:	0f be       	out	0x3f, r0	; 63
+#   endif
+
+    /* BUF_T is defined in config.h, according the pagesize */
+    BUF_T buffer_size, i;
+    init_spi( FOSC_2, MODE0, MSBFIRST );       //start SPI
+    fa10:	84 e0       	ldi	r24, 0x04	; 4
+    fa12:	60 e0       	ldi	r22, 0x00	; 0
+    fa14:	40 e0       	ldi	r20, 0x00	; 0
+    fa16:	0e 94 a1 7f 	call	0xff42	; 0xff42 <init_spi>
+	if( !init_mmc() ) jump_to_application();   //init mmc, if fail jump to application
+    fa1a:	0e 94 7e 7f 	call	0xfefc	; 0xfefc <init_mmc>
+    fa1e:	88 23       	and	r24, r24
+    fa20:	29 f4       	brne	.+10     	; 0xfa2c <main+0x72>
+    fa22:	e0 91 00 01 	lds	r30, 0x0100
+    fa26:	f0 91 01 01 	lds	r31, 0x0101
+    fa2a:	09 95       	icall
+    init_usart0( UART_UBRR, DB8 | P_N | SB1 ); //start the usart
+    fa2c:	85 e0       	ldi	r24, 0x05	; 5
+    fa2e:	90 e0       	ldi	r25, 0x00	; 0
+    fa30:	66 e0       	ldi	r22, 0x06	; 6
+    fa32:	0e 94 b6 7f 	call	0xff6c	; 0xff6c <init_usart0>
+    int slot = obtain_slot();                  //obtain the new slot number
+    fa36:	0e 94 7d 7c 	call	0xf8fa	; 0xf8fa <obtain_slot>
+    fa3a:	7c 01       	movw	r14, r24
+    if( slot < 0 ) jump_to_application();      //if current slot, jump to application
+    fa3c:	97 ff       	sbrs	r25, 7
+    fa3e:	05 c0       	rjmp	.+10     	; 0xfa4a <main+0x90>
+    fa40:	e0 91 00 01 	lds	r30, 0x0100
+    fa44:	f0 91 01 01 	lds	r31, 0x0101
+    fa48:	09 95       	icall
+    fa4a:	80 e0       	ldi	r24, 0x00	; 0
+    fa4c:	90 e0       	ldi	r25, 0x00	; 0
+    /* upload new code */
+    /* do a chip erase */
+    for (flash_address = 0; flash_address < BOOT_SECTION_START; flash_address += SPM_PAGESIZE)
+        boot_page_erase_safe(flash_address);
+    fa4e:	23 e0       	ldi	r18, 0x03	; 3
+    fa50:	0b c0       	rjmp	.+22     	; 0xfa68 <main+0xae>
+    fa52:	07 b6       	in	r0, 0x37	; 55
+    fa54:	00 fc       	sbrc	r0, 0
+    fa56:	fd cf       	rjmp	.-6      	; 0xfa52 <main+0x98>
+    fa58:	f9 99       	sbic	0x1f, 1	; 31
+    fa5a:	fe cf       	rjmp	.-4      	; 0xfa58 <main+0x9e>
+    fa5c:	fc 01       	movw	r30, r24
+    fa5e:	20 93 57 00 	sts	0x0057, r18
+    fa62:	e8 95       	spm
+    fa64:	80 50       	subi	r24, 0x00	; 0
+    fa66:	9f 4f       	sbci	r25, 0xFF	; 255
+    init_usart0( UART_UBRR, DB8 | P_N | SB1 ); //start the usart
+    int slot = obtain_slot();                  //obtain the new slot number
+    if( slot < 0 ) jump_to_application();      //if current slot, jump to application
+    /* upload new code */
+    /* do a chip erase */
+    for (flash_address = 0; flash_address < BOOT_SECTION_START; flash_address += SPM_PAGESIZE)
+    fa68:	38 ef       	ldi	r19, 0xF8	; 248
+    fa6a:	80 30       	cpi	r24, 0x00	; 0
+    fa6c:	93 07       	cpc	r25, r19
+    fa6e:	88 f3       	brcs	.-30     	; 0xfa52 <main+0x98>
+    fa70:	90 93 0d 01 	sts	0x010D, r25
+    fa74:	80 93 0c 01 	sts	0x010C, r24
+        boot_page_erase_safe(flash_address);
+    /* get the location and size of the program to be downloaded */
+    int index = slot * 8;
+    fa78:	33 e0       	ldi	r19, 0x03	; 3
+    fa7a:	ee 0c       	add	r14, r14
+    fa7c:	ff 1c       	adc	r15, r15
+    fa7e:	3a 95       	dec	r19
+    fa80:	e1 f7       	brne	.-8      	; 0xfa7a <main+0xc0>
+    uint32_t progsize = 0;
+    fa82:	19 82       	std	Y+1, r1	; 0x01
+    fa84:	1a 82       	std	Y+2, r1	; 0x02
+    fa86:	1b 82       	std	Y+3, r1	; 0x03
+    fa88:	1c 82       	std	Y+4, r1	; 0x04
+    uint32_t progaddr = 0;
+    fa8a:	1d 82       	std	Y+5, r1	; 0x05
+    fa8c:	1e 82       	std	Y+6, r1	; 0x06
+    fa8e:	1f 82       	std	Y+7, r1	; 0x07
+    fa90:	18 86       	std	Y+8, r1	; 0x08
+    mmc_readpartialblock( index, 4, &progsize );
+    fa92:	b7 01       	movw	r22, r14
+    fa94:	88 27       	eor	r24, r24
+    fa96:	77 fd       	sbrc	r23, 7
+    fa98:	80 95       	com	r24
+    fa9a:	98 2f       	mov	r25, r24
+    fa9c:	44 e0       	ldi	r20, 0x04	; 4
+    fa9e:	50 e0       	ldi	r21, 0x00	; 0
+    faa0:	9e 01       	movw	r18, r28
+    faa2:	2f 5f       	subi	r18, 0xFF	; 255
+    faa4:	3f 4f       	sbci	r19, 0xFF	; 255
+    faa6:	0e 94 e1 7e 	call	0xfdc2	; 0xfdc2 <mmc_readpartialblock>
+    mmc_readpartialblock( index+4, 4, &progaddr );
+    faaa:	84 e0       	ldi	r24, 0x04	; 4
+    faac:	90 e0       	ldi	r25, 0x00	; 0
+    faae:	e8 0e       	add	r14, r24
+    fab0:	f9 1e       	adc	r15, r25
+    fab2:	00 27       	eor	r16, r16
+    fab4:	f7 fc       	sbrc	r15, 7
+    fab6:	00 95       	com	r16
+    fab8:	10 2f       	mov	r17, r16
+    faba:	c8 01       	movw	r24, r16
+    fabc:	b7 01       	movw	r22, r14
+    fabe:	44 e0       	ldi	r20, 0x04	; 4
+    fac0:	50 e0       	ldi	r21, 0x00	; 0
+    fac2:	9e 01       	movw	r18, r28
+    fac4:	2b 5f       	subi	r18, 0xFB	; 251
+    fac6:	3f 4f       	sbci	r19, 0xFF	; 255
+    fac8:	0e 94 e1 7e 	call	0xfdc2	; 0xfdc2 <mmc_readpartialblock>
+    uint16_t temp_buffer;
+    uint16_t temp_address = flash_address = 0;
+    facc:	10 92 0d 01 	sts	0x010D, r1
+    fad0:	10 92 0c 01 	sts	0x010C, r1
+    txb_0('p');
+    fad4:	80 e7       	ldi	r24, 0x70	; 112
+    fad6:	0e 94 c0 7f 	call	0xff80	; 0xff80 <txb_0>
+    while(1) {
+        buffer_size = 512;
+        if(buffer_size > BLOCKSIZE) buffer_size = BLOCKSIZE;
+        if(buffer_size > progsize) buffer_size = progsize;
+    fada:	29 81       	ldd	r18, Y+1	; 0x01
+    fadc:	3a 81       	ldd	r19, Y+2	; 0x02
+    fade:	4b 81       	ldd	r20, Y+3	; 0x03
+    fae0:	5c 81       	ldd	r21, Y+4	; 0x04
+    fae2:	2f 3f       	cpi	r18, 0xFF	; 255
+    fae4:	31 05       	cpc	r19, r1
+    fae6:	41 05       	cpc	r20, r1
+    fae8:	51 05       	cpc	r21, r1
+    faea:	21 f0       	breq	.+8      	; 0xfaf4 <main+0x13a>
+    faec:	18 f0       	brcs	.+6      	; 0xfaf4 <main+0x13a>
+    faee:	00 e0       	ldi	r16, 0x00	; 0
+    faf0:	11 e0       	ldi	r17, 0x01	; 1
+    faf2:	01 c0       	rjmp	.+2      	; 0xfaf6 <main+0x13c>
+    faf4:	89 01       	movw	r16, r18
+        progsize -= buffer_size;
+    faf6:	28 01       	movw	r4, r16
+    faf8:	66 24       	eor	r6, r6
+    fafa:	77 24       	eor	r7, r7
+        temp_address = flash_address;
+    fafc:	20 90 0c 01 	lds	r2, 0x010C
+    fb00:	30 90 0d 01 	lds	r3, 0x010D
+        boot_spm_busy_wait();
+    fb04:	07 b6       	in	r0, 0x37	; 55
+    fb06:	00 fc       	sbrc	r0, 0
+    fb08:	fd cf       	rjmp	.-6      	; 0xfb04 <main+0x14a>
+        start_mmc_read(progaddr);
+    fb0a:	6d 81       	ldd	r22, Y+5	; 0x05
+    fb0c:	7e 81       	ldd	r23, Y+6	; 0x06
+    fb0e:	8f 81       	ldd	r24, Y+7	; 0x07
+    fb10:	98 85       	ldd	r25, Y+8	; 0x08
+    txb_0('p');
+    while(1) {
+        buffer_size = 512;
+        if(buffer_size > BLOCKSIZE) buffer_size = BLOCKSIZE;
+        if(buffer_size > progsize) buffer_size = progsize;
+        progsize -= buffer_size;
+    fb12:	24 19       	sub	r18, r4
+    fb14:	35 09       	sbc	r19, r5
+    fb16:	46 09       	sbc	r20, r6
+    fb18:	57 09       	sbc	r21, r7
+    fb1a:	29 83       	std	Y+1, r18	; 0x01
+    fb1c:	3a 83       	std	Y+2, r19	; 0x02
+    fb1e:	4b 83       	std	Y+3, r20	; 0x03
+    fb20:	5c 83       	std	Y+4, r21	; 0x04
+        temp_address = flash_address;
+        boot_spm_busy_wait();
+        start_mmc_read(progaddr);
+    fb22:	0e 94 af 7c 	call	0xf95e	; 0xf95e <start_mmc_read>
+        for (i = 0; i < buffer_size/2; i++) {
+    fb26:	58 01       	movw	r10, r16
+    fb28:	b6 94       	lsr	r11
+    fb2a:	a7 94       	ror	r10
+    fb2c:	61 01       	movw	r12, r2
+    fb2e:	ee 24       	eor	r14, r14
+    fb30:	ff 24       	eor	r15, r15
+    fb32:	1a c0       	rjmp	.+52     	; 0xfb68 <main+0x1ae>
+            /* get data word */
+            temp_buffer = spi_transfer(0xFF) | (spi_transfer(0xFF) << 8);
+    fb34:	8f ef       	ldi	r24, 0xFF	; 255
+    fb36:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fb3a:	08 2f       	mov	r16, r24
+    fb3c:	8f ef       	ldi	r24, 0xFF	; 255
+    fb3e:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+            /* write data to temporary buffer */
+            boot_page_fill(temp_address, temp_buffer);
+    fb42:	98 2e       	mov	r9, r24
+    fb44:	88 24       	eor	r8, r8
+    fb46:	10 e0       	ldi	r17, 0x00	; 0
+    fb48:	08 29       	or	r16, r8
+    fb4a:	19 29       	or	r17, r9
+    fb4c:	91 e0       	ldi	r25, 0x01	; 1
+    fb4e:	08 01       	movw	r0, r16
+    fb50:	f6 01       	movw	r30, r12
+    fb52:	90 93 57 00 	sts	0x0057, r25
+    fb56:	e8 95       	spm
+    fb58:	11 24       	eor	r1, r1
+            /* increment by two, since temp_address is a byte* address, but we are writing words! */
+            temp_address += 2;
+    fb5a:	22 e0       	ldi	r18, 0x02	; 2
+    fb5c:	30 e0       	ldi	r19, 0x00	; 0
+    fb5e:	c2 0e       	add	r12, r18
+    fb60:	d3 1e       	adc	r13, r19
+        if(buffer_size > progsize) buffer_size = progsize;
+        progsize -= buffer_size;
+        temp_address = flash_address;
+        boot_spm_busy_wait();
+        start_mmc_read(progaddr);
+        for (i = 0; i < buffer_size/2; i++) {
+    fb62:	08 94       	sec
+    fb64:	e1 1c       	adc	r14, r1
+    fb66:	f1 1c       	adc	r15, r1
+    fb68:	ea 14       	cp	r14, r10
+    fb6a:	fb 04       	cpc	r15, r11
+    fb6c:	18 f3       	brcs	.-58     	; 0xfb34 <main+0x17a>
+    fb6e:	85 01       	movw	r16, r10
+    fb70:	00 0f       	add	r16, r16
+    fb72:	11 1f       	adc	r17, r17
+    fb74:	02 0d       	add	r16, r2
+    fb76:	13 1d       	adc	r17, r3
+            boot_page_fill(temp_address, temp_buffer);
+            /* increment by two, since temp_address is a byte* address, but we are writing words! */
+            temp_address += 2;
+        }
+        for(;i<256;i++) {
+            spi_transfer(0xFF);
+    fb78:	8f ef       	ldi	r24, 0xFF	; 255
+    fb7a:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+            spi_transfer(0xFF);
+    fb7e:	8f ef       	ldi	r24, 0xFF	; 255
+    fb80:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+            /* write data to temporary buffer */
+            boot_page_fill(temp_address, temp_buffer);
+            /* increment by two, since temp_address is a byte* address, but we are writing words! */
+            temp_address += 2;
+        }
+        for(;i<256;i++) {
+    fb84:	08 94       	sec
+    fb86:	a1 1c       	adc	r10, r1
+    fb88:	b1 1c       	adc	r11, r1
+    fb8a:	3f ef       	ldi	r19, 0xFF	; 255
+    fb8c:	a3 16       	cp	r10, r19
+    fb8e:	b1 04       	cpc	r11, r1
+    fb90:	99 f3       	breq	.-26     	; 0xfb78 <main+0x1be>
+    fb92:	90 f3       	brcs	.-28     	; 0xfb78 <main+0x1be>
+            spi_transfer(0xFF);
+            spi_transfer(0xFF);
+        }
+        spi_transfer(0xFF);
+    fb94:	8f ef       	ldi	r24, 0xFF	; 255
+    fb96:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+        spi_transfer(0xFF);
+    fb9a:	8f ef       	ldi	r24, 0xFF	; 255
+    fb9c:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+        /* after filling the temp buffer, write the page and wait till we're done */
+        boot_page_write_safe(flash_address);
+    fba0:	07 b6       	in	r0, 0x37	; 55
+    fba2:	00 fc       	sbrc	r0, 0
+    fba4:	fd cf       	rjmp	.-6      	; 0xfba0 <main+0x1e6>
+    fba6:	f9 99       	sbic	0x1f, 1	; 31
+    fba8:	fe cf       	rjmp	.-4      	; 0xfba6 <main+0x1ec>
+    fbaa:	80 91 0c 01 	lds	r24, 0x010C
+    fbae:	90 91 0d 01 	lds	r25, 0x010D
+    fbb2:	25 e0       	ldi	r18, 0x05	; 5
+    fbb4:	fc 01       	movw	r30, r24
+    fbb6:	20 93 57 00 	sts	0x0057, r18
+    fbba:	e8 95       	spm
+        boot_spm_busy_wait();
+    fbbc:	07 b6       	in	r0, 0x37	; 55
+    fbbe:	00 fc       	sbrc	r0, 0
+    fbc0:	fd cf       	rjmp	.-6      	; 0xfbbc <main+0x202>
+        /* re-enable application flash section, so we can read it again */
+        boot_rww_enable();
+    fbc2:	31 e1       	ldi	r19, 0x11	; 17
+    fbc4:	30 93 57 00 	sts	0x0057, r19
+    fbc8:	e8 95       	spm
+        /* store next page's address, since we do auto-address-incrementing */
+        flash_address = temp_address;
+    fbca:	10 93 0d 01 	sts	0x010D, r17
+    fbce:	00 93 0c 01 	sts	0x010C, r16
+        progaddr += buffer_size;
+    fbd2:	8d 81       	ldd	r24, Y+5	; 0x05
+    fbd4:	9e 81       	ldd	r25, Y+6	; 0x06
+    fbd6:	af 81       	ldd	r26, Y+7	; 0x07
+    fbd8:	b8 85       	ldd	r27, Y+8	; 0x08
+    fbda:	84 0d       	add	r24, r4
+    fbdc:	95 1d       	adc	r25, r5
+    fbde:	a6 1d       	adc	r26, r6
+    fbe0:	b7 1d       	adc	r27, r7
+    fbe2:	8d 83       	std	Y+5, r24	; 0x05
+    fbe4:	9e 83       	std	Y+6, r25	; 0x06
+    fbe6:	af 83       	std	Y+7, r26	; 0x07
+    fbe8:	b8 87       	std	Y+8, r27	; 0x08
+        if(progsize == 0) break;
+    fbea:	89 81       	ldd	r24, Y+1	; 0x01
+    fbec:	9a 81       	ldd	r25, Y+2	; 0x02
+    fbee:	ab 81       	ldd	r26, Y+3	; 0x03
+    fbf0:	bc 81       	ldd	r27, Y+4	; 0x04
+    fbf2:	00 97       	sbiw	r24, 0x00	; 0
+    fbf4:	a1 05       	cpc	r26, r1
+    fbf6:	b1 05       	cpc	r27, r1
+    fbf8:	09 f0       	breq	.+2      	; 0xfbfc <main+0x242>
+    fbfa:	6f cf       	rjmp	.-290    	; 0xfada <main+0x120>
+    }
+    txb_0('d');
+    fbfc:	84 e6       	ldi	r24, 0x64	; 100
+    fbfe:	0e 94 c0 7f 	call	0xff80	; 0xff80 <txb_0>
+    start_application();
+    fc02:	0e 94 57 7c 	call	0xf8ae	; 0xf8ae <start_application>
+    return 0;
+}
+    fc06:	80 e0       	ldi	r24, 0x00	; 0
+    fc08:	90 e0       	ldi	r25, 0x00	; 0
+    fc0a:	28 96       	adiw	r28, 0x08	; 8
+    fc0c:	0f b6       	in	r0, 0x3f	; 63
+    fc0e:	f8 94       	cli
+    fc10:	de bf       	out	0x3e, r29	; 62
+    fc12:	0f be       	out	0x3f, r0	; 63
+    fc14:	cd bf       	out	0x3d, r28	; 61
+    fc16:	cf 91       	pop	r28
+    fc18:	df 91       	pop	r29
+    fc1a:	1f 91       	pop	r17
+    fc1c:	0f 91       	pop	r16
+    fc1e:	ff 90       	pop	r15
+    fc20:	ef 90       	pop	r14
+    fc22:	df 90       	pop	r13
+    fc24:	cf 90       	pop	r12
+    fc26:	bf 90       	pop	r11
+    fc28:	af 90       	pop	r10
+    fc2a:	9f 90       	pop	r9
+    fc2c:	8f 90       	pop	r8
+    fc2e:	7f 90       	pop	r7
+    fc30:	6f 90       	pop	r6
+    fc32:	5f 90       	pop	r5
+    fc34:	4f 90       	pop	r4
+    fc36:	3f 90       	pop	r3
+    fc38:	2f 90       	pop	r2
+    fc3a:	08 95       	ret
+
+0000fc3c <eeprom_write>:
+/* prototypes */
+void (*jump_to_application)(void) = (void *)0x0000;
+
+char numbuf[10];
+
+/* defines */
+    fc3c:	f9 99       	sbic	0x1f, 1	; 31
+    fc3e:	fe cf       	rjmp	.-4      	; 0xfc3c <eeprom_write>
+#define HIGH(x) ( (uint8_t) (x >> 8) )
+    fc40:	92 bd       	out	0x22, r25	; 34
+    fc42:	81 bd       	out	0x21, r24	; 33
+#define LOW(x)  ( (uint8_t) x )
+    fc44:	60 bd       	out	0x20, r22	; 32
+
+    fc46:	fa 9a       	sbi	0x1f, 2	; 31
+#define noinline __attribute__((noinline))
+    fc48:	f9 9a       	sbi	0x1f, 1	; 31
+
+    fc4a:	08 95       	ret
+
+0000fc4c <eeprom_read>:
+/** move interrupt vectors to application section and jump to main program */
+static noinline void start_application(void) {
+    /* reset input pin */
+    fc4c:	f9 99       	sbic	0x1f, 1	; 31
+    fc4e:	fe cf       	rjmp	.-4      	; 0xfc4c <eeprom_read>
+    START_PORT &= START_MASK;
+    fc50:	92 bd       	out	0x22, r25	; 34
+    fc52:	81 bd       	out	0x21, r24	; 33
+    /* move interrupt vectors to application section and jump to main program */
+    fc54:	f8 9a       	sbi	0x1f, 0	; 31
+    MCUCR = _BV(IVCE);
+    fc56:	80 b5       	in	r24, 0x20	; 32
+    MCUCR = 0;
+    fc58:	08 95       	ret
+
+0000fc5a <eeprom_write_page>:
+    jump_to_application();
+}
+    fc5a:	dc 01       	movw	r26, r24
+    fc5c:	20 e0       	ldi	r18, 0x00	; 0
+    fc5e:	30 e0       	ldi	r19, 0x00	; 0
+    fc60:	10 c0       	rjmp	.+32     	; 0xfc82 <eeprom_write_page+0x28>
+
+static noinline int uart_get( void ) {
+    uint16_t counter = 0;
+    fc62:	fa 01       	movw	r30, r20
+    fc64:	e2 0f       	add	r30, r18
+    fc66:	f3 1f       	adc	r31, r19
+    fc68:	e0 81       	ld	r30, Z
+/* prototypes */
+void (*jump_to_application)(void) = (void *)0x0000;
+
+char numbuf[10];
+
+/* defines */
+    fc6a:	f9 99       	sbic	0x1f, 1	; 31
+    fc6c:	fe cf       	rjmp	.-4      	; 0xfc6a <eeprom_write_page+0x10>
+    fc6e:	c9 01       	movw	r24, r18
+    fc70:	8a 0f       	add	r24, r26
+    fc72:	9b 1f       	adc	r25, r27
+#define HIGH(x) ( (uint8_t) (x >> 8) )
+    fc74:	92 bd       	out	0x22, r25	; 34
+    fc76:	81 bd       	out	0x21, r24	; 33
+#define LOW(x)  ( (uint8_t) x )
+    fc78:	e0 bd       	out	0x20, r30	; 32
+
+    fc7a:	fa 9a       	sbi	0x1f, 2	; 31
+#define noinline __attribute__((noinline))
+    fc7c:	f9 9a       	sbi	0x1f, 1	; 31
+    MCUCR = _BV(IVCE);
+    MCUCR = 0;
+    jump_to_application();
+}
+
+static noinline int uart_get( void ) {
+    fc7e:	2f 5f       	subi	r18, 0xFF	; 255
+    fc80:	3f 4f       	sbci	r19, 0xFF	; 255
+    fc82:	26 17       	cp	r18, r22
+    fc84:	37 07       	cpc	r19, r23
+    fc86:	68 f3       	brcs	.-38     	; 0xfc62 <eeprom_write_page+0x8>
+    uint16_t counter = 0;
+    while( !(UCSR0A & (1<<RXC0))) {
+        if(counter++ > TIMEOUT) return -1;
+    fc88:	08 95       	ret
+
+0000fc8a <eeprom_read_page>:
+        _delay_us(1);
+    }
+    fc8a:	dc 01       	movw	r26, r24
+    fc8c:	20 e0       	ldi	r18, 0x00	; 0
+    fc8e:	30 e0       	ldi	r19, 0x00	; 0
+    fc90:	0f c0       	rjmp	.+30     	; 0xfcb0 <eeprom_read_page+0x26>
+
+#define noinline __attribute__((noinline))
+
+/** move interrupt vectors to application section and jump to main program */
+static noinline void start_application(void) {
+    /* reset input pin */
+    fc92:	f9 99       	sbic	0x1f, 1	; 31
+    fc94:	fe cf       	rjmp	.-4      	; 0xfc92 <eeprom_read_page+0x8>
+    fc96:	c9 01       	movw	r24, r18
+    fc98:	8a 0f       	add	r24, r26
+    fc9a:	9b 1f       	adc	r25, r27
+    START_PORT &= START_MASK;
+    fc9c:	92 bd       	out	0x22, r25	; 34
+    fc9e:	81 bd       	out	0x21, r24	; 33
+    /* move interrupt vectors to application section and jump to main program */
+    fca0:	f8 9a       	sbi	0x1f, 0	; 31
+    MCUCR = _BV(IVCE);
+    fca2:	80 b5       	in	r24, 0x20	; 32
+        if(counter++ > TIMEOUT) return -1;
+        _delay_us(1);
+    }
+    return UDR0;
+}
+
+    fca4:	fa 01       	movw	r30, r20
+    fca6:	e2 0f       	add	r30, r18
+    fca8:	f3 1f       	adc	r31, r19
+    fcaa:	80 83       	st	Z, r24
+    while( !(UCSR0A & (1<<RXC0))) {
+        if(counter++ > TIMEOUT) return -1;
+        _delay_us(1);
+    }
+    return UDR0;
+}
+    fcac:	2f 5f       	subi	r18, 0xFF	; 255
+    fcae:	3f 4f       	sbci	r19, 0xFF	; 255
+    fcb0:	26 17       	cp	r18, r22
+    fcb2:	37 07       	cpc	r19, r23
+    fcb4:	70 f3       	brcs	.-36     	; 0xfc92 <eeprom_read_page+0x8>
+
+static noinline int obtain_slot( void ) {  //return a -1 for current slot, num for new
+    int slot = -1;
+    fcb6:	08 95       	ret
+
+0000fcb8 <mmc_command>:
+
+/** move interrupt vectors to application section and jump to main program */
+static noinline void start_application(void) {
+    /* reset input pin */
+    START_PORT &= START_MASK;
+    /* move interrupt vectors to application section and jump to main program */
+    fcb8:	cf 92       	push	r12
+    fcba:	df 92       	push	r13
+    fcbc:	ef 92       	push	r14
+    fcbe:	ff 92       	push	r15
+    fcc0:	0f 93       	push	r16
+    fcc2:	1f 93       	push	r17
+    fcc4:	08 2f       	mov	r16, r24
+    fcc6:	c6 2e       	mov	r12, r22
+    fcc8:	e4 2e       	mov	r14, r20
+    fcca:	15 2f       	mov	r17, r21
+    fccc:	d2 2e       	mov	r13, r18
+    fcce:	f3 2e       	mov	r15, r19
+    MCUCR = _BV(IVCE);
+    fcd0:	8f ef       	ldi	r24, 0xFF	; 255
+    fcd2:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    MCUCR = 0;
+    fcd6:	80 2f       	mov	r24, r16
+    fcd8:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    jump_to_application();
+    fcdc:	81 2f       	mov	r24, r17
+    fcde:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+}
+    fce2:	8e 2d       	mov	r24, r14
+    fce4:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+
+    fce8:	8f 2d       	mov	r24, r15
+    fcea:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+static noinline int uart_get( void ) {
+    fcee:	8d 2d       	mov	r24, r13
+    fcf0:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    uint16_t counter = 0;
+    fcf4:	8c 2d       	mov	r24, r12
+    fcf6:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    while( !(UCSR0A & (1<<RXC0))) {
+    fcfa:	8f ef       	ldi	r24, 0xFF	; 255
+    fcfc:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+        if(counter++ > TIMEOUT) return -1;
+    fd00:	8f ef       	ldi	r24, 0xFF	; 255
+    fd02:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+        _delay_us(1);
+    fd06:	1f 91       	pop	r17
+    fd08:	0f 91       	pop	r16
+    fd0a:	ff 90       	pop	r15
+    fd0c:	ef 90       	pop	r14
+    fd0e:	df 90       	pop	r13
+    fd10:	cf 90       	pop	r12
+    fd12:	08 95       	ret
+
+0000fd14 <mmc_writeblock>:
+	for (al = 0; al < 50000; al++) {
+		if (r1 == 0) break;
+		r1 = spi_transfer(0xFF);
+	}
+	if (r1 != 0) return 1;
+	while(spi_transfer(0xFF) != 0xFE);
+    fd14:	cf 92       	push	r12
+    fd16:	df 92       	push	r13
+    fd18:	ef 92       	push	r14
+    fd1a:	ff 92       	push	r15
+    fd1c:	0f 93       	push	r16
+    fd1e:	1f 93       	push	r17
+    fd20:	cf 93       	push	r28
+    fd22:	df 93       	push	r29
+    fd24:	7b 01       	movw	r14, r22
+    fd26:	8c 01       	movw	r16, r24
+    fd28:	6a 01       	movw	r12, r20
+	return 0;
+}
+
+int main(void) {
+    fd2a:	98 01       	movw	r18, r16
+    fd2c:	44 27       	eor	r20, r20
+    fd2e:	55 27       	eor	r21, r21
+    fd30:	88 e5       	ldi	r24, 0x58	; 88
+    fd32:	6f ef       	ldi	r22, 0xFF	; 255
+    fd34:	a9 01       	movw	r20, r18
+    fd36:	97 01       	movw	r18, r14
+    fd38:	0e 94 5c 7e 	call	0xfcb8	; 0xfcb8 <mmc_command>
+    fd3c:	c0 e0       	ldi	r28, 0x00	; 0
+    fd3e:	d0 e0       	ldi	r29, 0x00	; 0
+#   ifdef HONOR_WATCHDOG_RESET
+    /* if this reset was caused by the watchdog timer, just start the application, else disable the watchdog */
+    fd40:	88 23       	and	r24, r24
+    fd42:	61 f0       	breq	.+24     	; 0xfd5c <mmc_writeblock+0x48>
+    if (MCUSR & _BV(WDRF)) jump_to_application();
+    fd44:	8f ef       	ldi	r24, 0xFF	; 255
+    fd46:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+	while(spi_transfer(0xFF) != 0xFE);
+	return 0;
+}
+
+int main(void) {
+#   ifdef HONOR_WATCHDOG_RESET
+    fd4a:	21 96       	adiw	r28, 0x01	; 1
+    fd4c:	93 ec       	ldi	r25, 0xC3	; 195
+    fd4e:	c0 35       	cpi	r28, 0x50	; 80
+    fd50:	d9 07       	cpc	r29, r25
+    fd52:	b1 f7       	brne	.-20     	; 0xfd40 <mmc_writeblock+0x2c>
+    /* if this reset was caused by the watchdog timer, just start the application, else disable the watchdog */
+    if (MCUSR & _BV(WDRF)) jump_to_application();
+    else wdt_disable();
+#   endif
+    fd54:	88 23       	and	r24, r24
+    fd56:	11 f0       	breq	.+4      	; 0xfd5c <mmc_writeblock+0x48>
+    fd58:	81 e0       	ldi	r24, 0x01	; 1
+    fd5a:	2a c0       	rjmp	.+84     	; 0xfdb0 <mmc_writeblock+0x9c>
+
+    fd5c:	8f ef       	ldi	r24, 0xFF	; 255
+    fd5e:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    /* BUF_T is defined in config.h, according the pagesize */
+    fd62:	8f ef       	ldi	r24, 0xFF	; 255
+    fd64:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    BUF_T buffer_size, i;
+    fd68:	8e ef       	ldi	r24, 0xFE	; 254
+    fd6a:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fd6e:	c0 e0       	ldi	r28, 0x00	; 0
+    fd70:	d0 e0       	ldi	r29, 0x00	; 0
+    init_spi( FOSC_2, MODE0, MSBFIRST );       //start SPI
+    fd72:	f6 01       	movw	r30, r12
+    fd74:	ec 0f       	add	r30, r28
+    fd76:	fd 1f       	adc	r31, r29
+    fd78:	80 81       	ld	r24, Z
+    fd7a:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fd7e:	21 96       	adiw	r28, 0x01	; 1
+    fd80:	82 e0       	ldi	r24, 0x02	; 2
+    fd82:	c0 30       	cpi	r28, 0x00	; 0
+    fd84:	d8 07       	cpc	r29, r24
+    fd86:	a9 f7       	brne	.-22     	; 0xfd72 <mmc_writeblock+0x5e>
+	if( !init_mmc() ) jump_to_application();   //init mmc, if fail jump to application
+    fd88:	8f ef       	ldi	r24, 0xFF	; 255
+    fd8a:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    init_usart0( UART_UBRR, DB8 | P_N | SB1 ); //start the usart
+    fd8e:	8f ef       	ldi	r24, 0xFF	; 255
+    fd90:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    int slot = obtain_slot();                  //obtain the new slot number
+    fd94:	8f ef       	ldi	r24, 0xFF	; 255
+    fd96:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    if( slot < 0 ) jump_to_application();      //if current slot, jump to application
+    /* upload new code */
+    fd9a:	8f 71       	andi	r24, 0x1F	; 31
+    fd9c:	85 30       	cpi	r24, 0x05	; 5
+    fd9e:	11 f0       	breq	.+4      	; 0xfda4 <mmc_writeblock+0x90>
+    fda0:	82 e0       	ldi	r24, 0x02	; 2
+    fda2:	06 c0       	rjmp	.+12     	; 0xfdb0 <mmc_writeblock+0x9c>
+    /* do a chip erase */
+    fda4:	8f ef       	ldi	r24, 0xFF	; 255
+    fda6:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fdaa:	8f 3f       	cpi	r24, 0xFF	; 255
+    fdac:	d9 f7       	brne	.-10     	; 0xfda4 <mmc_writeblock+0x90>
+    fdae:	80 e0       	ldi	r24, 0x00	; 0
+    for (flash_address = 0; flash_address < BOOT_SECTION_START; flash_address += SPM_PAGESIZE)
+        boot_page_erase_safe(flash_address);
+    fdb0:	df 91       	pop	r29
+    fdb2:	cf 91       	pop	r28
+    fdb4:	1f 91       	pop	r17
+    fdb6:	0f 91       	pop	r16
+    fdb8:	ff 90       	pop	r15
+    fdba:	ef 90       	pop	r14
+    fdbc:	df 90       	pop	r13
+    fdbe:	cf 90       	pop	r12
+    fdc0:	08 95       	ret
+
+0000fdc2 <mmc_readpartialblock>:
+            if(ch == '\r') {
+                slot = atoi(numbuf);
+                for(counter=0;counter<10;counter++) numbuf[counter] = '\0';
+                counter = 0;
+            } else {
+                numbuf[counter++] = ch;
+    fdc2:	af 92       	push	r10
+    fdc4:	bf 92       	push	r11
+    fdc6:	cf 92       	push	r12
+    fdc8:	df 92       	push	r13
+    fdca:	ef 92       	push	r14
+    fdcc:	ff 92       	push	r15
+    fdce:	0f 93       	push	r16
+    fdd0:	1f 93       	push	r17
+    fdd2:	cf 93       	push	r28
+    fdd4:	df 93       	push	r29
+    fdd6:	7b 01       	movw	r14, r22
+    fdd8:	8c 01       	movw	r16, r24
+    fdda:	6a 01       	movw	r12, r20
+    fddc:	59 01       	movw	r10, r18
+            }
+        }
+        if(START_PIN & _BV(START_PINNUM)) break;
+    fdde:	98 01       	movw	r18, r16
+    fde0:	44 27       	eor	r20, r20
+    fde2:	55 27       	eor	r21, r21
+    fde4:	81 e5       	ldi	r24, 0x51	; 81
+    fde6:	6f ef       	ldi	r22, 0xFF	; 255
+    fde8:	a9 01       	movw	r20, r18
+    fdea:	97 01       	movw	r18, r14
+    fdec:	0e 94 5c 7e 	call	0xfcb8	; 0xfcb8 <mmc_command>
+    fdf0:	c0 e0       	ldi	r28, 0x00	; 0
+    fdf2:	d0 e0       	ldi	r29, 0x00	; 0
+    }
+    return slot;
+    fdf4:	88 23       	and	r24, r24
+    fdf6:	61 f0       	breq	.+24     	; 0xfe10 <mmc_readpartialblock+0x4e>
+}
+    fdf8:	8f ef       	ldi	r24, 0xFF	; 255
+    fdfa:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+            } else {
+                numbuf[counter++] = ch;
+            }
+        }
+        if(START_PIN & _BV(START_PINNUM)) break;
+    }
+    fdfe:	21 96       	adiw	r28, 0x01	; 1
+    fe00:	93 ec       	ldi	r25, 0xC3	; 195
+    fe02:	c0 35       	cpi	r28, 0x50	; 80
+    fe04:	d9 07       	cpc	r29, r25
+    fe06:	b1 f7       	brne	.-20     	; 0xfdf4 <mmc_readpartialblock+0x32>
+    return slot;
+}
+
+static noinline char start_mmc_read(uint32_t address) {
+    fe08:	88 23       	and	r24, r24
+    fe0a:	11 f0       	breq	.+4      	; 0xfe10 <mmc_readpartialblock+0x4e>
+    fe0c:	81 e0       	ldi	r24, 0x01	; 1
+    fe0e:	24 c0       	rjmp	.+72     	; 0xfe58 <mmc_readpartialblock+0x96>
+    uint16_t al = address & 0x0000FFFF;
+    fe10:	8f ef       	ldi	r24, 0xFF	; 255
+    fe12:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fe16:	8e 3f       	cpi	r24, 0xFE	; 254
+    fe18:	d9 f7       	brne	.-10     	; 0xfe10 <mmc_readpartialblock+0x4e>
+    fe1a:	c0 e0       	ldi	r28, 0x00	; 0
+    fe1c:	d0 e0       	ldi	r29, 0x00	; 0
+    fe1e:	08 c0       	rjmp	.+16     	; 0xfe30 <mmc_readpartialblock+0x6e>
+	uint16_t ah = (address >> 16) & 0x0000FFFF;
+    fe20:	8f ef       	ldi	r24, 0xFF	; 255
+    fe22:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fe26:	f5 01       	movw	r30, r10
+    fe28:	ec 0f       	add	r30, r28
+    fe2a:	fd 1f       	adc	r31, r29
+    fe2c:	80 83       	st	Z, r24
+    fe2e:	21 96       	adiw	r28, 0x01	; 1
+    fe30:	cc 15       	cp	r28, r12
+    fe32:	dd 05       	cpc	r29, r13
+    fe34:	a8 f3       	brcs	.-22     	; 0xfe20 <mmc_readpartialblock+0x5e>
+    fe36:	e6 01       	movw	r28, r12
+    fe38:	04 c0       	rjmp	.+8      	; 0xfe42 <mmc_readpartialblock+0x80>
+	uint8_t r1 =  mmc_command(0x51, 0xFF, ah, al);
+    fe3a:	8f ef       	ldi	r24, 0xFF	; 255
+    fe3c:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fe40:	21 96       	adiw	r28, 0x01	; 1
+    fe42:	82 e0       	ldi	r24, 0x02	; 2
+    fe44:	c0 30       	cpi	r28, 0x00	; 0
+    fe46:	d8 07       	cpc	r29, r24
+    fe48:	c0 f3       	brcs	.-16     	; 0xfe3a <mmc_readpartialblock+0x78>
+	for (al = 0; al < 50000; al++) {
+    fe4a:	8f ef       	ldi	r24, 0xFF	; 255
+    fe4c:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+		if (r1 == 0) break;
+    fe50:	8f ef       	ldi	r24, 0xFF	; 255
+    fe52:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fe56:	80 e0       	ldi	r24, 0x00	; 0
+		r1 = spi_transfer(0xFF);
+	}
+    fe58:	df 91       	pop	r29
+    fe5a:	cf 91       	pop	r28
+    fe5c:	1f 91       	pop	r17
+    fe5e:	0f 91       	pop	r16
+    fe60:	ff 90       	pop	r15
+    fe62:	ef 90       	pop	r14
+    fe64:	df 90       	pop	r13
+    fe66:	cf 90       	pop	r12
+    fe68:	bf 90       	pop	r11
+    fe6a:	af 90       	pop	r10
+    fe6c:	08 95       	ret
+
+0000fe6e <mmc_readblock>:
+    uint16_t counter = 0;
+    while( !(UCSR0A & (1<<RXC0))) {
+        if(counter++ > TIMEOUT) return -1;
+        _delay_us(1);
+    }
+    return UDR0;
+    fe6e:	cf 92       	push	r12
+    fe70:	df 92       	push	r13
+    fe72:	ef 92       	push	r14
+    fe74:	ff 92       	push	r15
+    fe76:	0f 93       	push	r16
+    fe78:	1f 93       	push	r17
+    fe7a:	cf 93       	push	r28
+    fe7c:	df 93       	push	r29
+    fe7e:	7b 01       	movw	r14, r22
+    fe80:	8c 01       	movw	r16, r24
+    fe82:	6a 01       	movw	r12, r20
+}
+
+static noinline int obtain_slot( void ) {  //return a -1 for current slot, num for new
+    fe84:	9c 01       	movw	r18, r24
+    fe86:	44 27       	eor	r20, r20
+    fe88:	55 27       	eor	r21, r21
+    fe8a:	81 e5       	ldi	r24, 0x51	; 81
+    fe8c:	6f ef       	ldi	r22, 0xFF	; 255
+    fe8e:	a9 01       	movw	r20, r18
+    fe90:	97 01       	movw	r18, r14
+    fe92:	0e 94 5c 7e 	call	0xfcb8	; 0xfcb8 <mmc_command>
+    fe96:	c0 e0       	ldi	r28, 0x00	; 0
+    fe98:	d0 e0       	ldi	r29, 0x00	; 0
+    int slot = -1;
+    uint16_t counter = 0;
+    fe9a:	88 23       	and	r24, r24
+    fe9c:	61 f0       	breq	.+24     	; 0xfeb6 <mmc_readblock+0x48>
+    int ch;
+    fe9e:	8f ef       	ldi	r24, 0xFF	; 255
+    fea0:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    }
+    return UDR0;
+}
+
+static noinline int obtain_slot( void ) {  //return a -1 for current slot, num for new
+    int slot = -1;
+    fea4:	21 96       	adiw	r28, 0x01	; 1
+    fea6:	93 ec       	ldi	r25, 0xC3	; 195
+    fea8:	c0 35       	cpi	r28, 0x50	; 80
+    feaa:	d9 07       	cpc	r29, r25
+    feac:	b1 f7       	brne	.-20     	; 0xfe9a <mmc_readblock+0x2c>
+    uint16_t counter = 0;
+    int ch;
+    for(counter=0;counter<10;counter++) numbuf[counter] = '\0';
+    counter = 0;
+    feae:	88 23       	and	r24, r24
+    feb0:	11 f0       	breq	.+4      	; 0xfeb6 <mmc_readblock+0x48>
+    feb2:	81 e0       	ldi	r24, 0x01	; 1
+    feb4:	1a c0       	rjmp	.+52     	; 0xfeea <mmc_readblock+0x7c>
+    while(1) {
+    feb6:	8f ef       	ldi	r24, 0xFF	; 255
+    feb8:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    febc:	8e 3f       	cpi	r24, 0xFE	; 254
+    febe:	d9 f7       	brne	.-10     	; 0xfeb6 <mmc_readblock+0x48>
+    fec0:	c0 e0       	ldi	r28, 0x00	; 0
+    fec2:	d0 e0       	ldi	r29, 0x00	; 0
+        if((ch = uart_get()) > -1) {
+    fec4:	8f ef       	ldi	r24, 0xFF	; 255
+    fec6:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    feca:	f6 01       	movw	r30, r12
+    fecc:	ec 0f       	add	r30, r28
+    fece:	fd 1f       	adc	r31, r29
+    fed0:	80 83       	st	Z, r24
+    fed2:	21 96       	adiw	r28, 0x01	; 1
+    fed4:	82 e0       	ldi	r24, 0x02	; 2
+    fed6:	c0 30       	cpi	r28, 0x00	; 0
+    fed8:	d8 07       	cpc	r29, r24
+    feda:	a1 f7       	brne	.-24     	; 0xfec4 <mmc_readblock+0x56>
+            if(ch == '\r') {
+    fedc:	8f ef       	ldi	r24, 0xFF	; 255
+    fede:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+                slot = atoi(numbuf);
+    fee2:	8f ef       	ldi	r24, 0xFF	; 255
+    fee4:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    fee8:	80 e0       	ldi	r24, 0x00	; 0
+                for(counter=0;counter<10;counter++) numbuf[counter] = '\0';
+                counter = 0;
+    feea:	df 91       	pop	r29
+    feec:	cf 91       	pop	r28
+    feee:	1f 91       	pop	r17
+    fef0:	0f 91       	pop	r16
+    fef2:	ff 90       	pop	r15
+    fef4:	ef 90       	pop	r14
+    fef6:	df 90       	pop	r13
+    fef8:	cf 90       	pop	r12
+    fefa:	08 95       	ret
+
+0000fefc <init_mmc>:
+/* prototypes */
+void (*jump_to_application)(void) = (void *)0x0000;
+
+char numbuf[10];
+
+/* defines */
+    fefc:	1f 93       	push	r17
+#define HIGH(x) ( (uint8_t) (x >> 8) )
+#define LOW(x)  ( (uint8_t) x )
+    fefe:	2c 9a       	sbi	0x05, 4	; 5
+    ff00:	10 e0       	ldi	r17, 0x00	; 0
+
+    ff02:	8f ef       	ldi	r24, 0xFF	; 255
+    ff04:	0e 94 b0 7f 	call	0xff60	; 0xff60 <spi_transfer>
+    ff08:	1f 5f       	subi	r17, 0xFF	; 255
+    ff0a:	1a 30       	cpi	r17, 0x0A	; 10
+    ff0c:	d1 f7       	brne	.-12     	; 0xff02 <init_mmc+0x6>
+#define noinline __attribute__((noinline))
+    ff0e:	2c 98       	cbi	0x05, 4	; 5
+
+    ff10:	80 e4       	ldi	r24, 0x40	; 64
+    ff12:	65 e9       	ldi	r22, 0x95	; 149
+    ff14:	40 e0       	ldi	r20, 0x00	; 0
+    ff16:	50 e0       	ldi	r21, 0x00	; 0
+    ff18:	20 e0       	ldi	r18, 0x00	; 0
+    ff1a:	30 e0       	ldi	r19, 0x00	; 0
+    ff1c:	0e 94 5c 7e 	call	0xfcb8	; 0xfcb8 <mmc_command>
+    ff20:	81 30       	cpi	r24, 0x01	; 1
+    ff22:	11 f0       	breq	.+4      	; 0xff28 <init_mmc+0x2c>
+    ff24:	80 e0       	ldi	r24, 0x00	; 0
+    ff26:	0b c0       	rjmp	.+22     	; 0xff3e <init_mmc+0x42>
+/** move interrupt vectors to application section and jump to main program */
+    ff28:	81 e4       	ldi	r24, 0x41	; 65
+    ff2a:	6f ef       	ldi	r22, 0xFF	; 255
+    ff2c:	40 e0       	ldi	r20, 0x00	; 0
+    ff2e:	50 e0       	ldi	r21, 0x00	; 0
+    ff30:	20 e0       	ldi	r18, 0x00	; 0
+    ff32:	30 e0       	ldi	r19, 0x00	; 0
+    ff34:	0e 94 5c 7e 	call	0xfcb8	; 0xfcb8 <mmc_command>
+    ff38:	88 23       	and	r24, r24
+    ff3a:	b1 f7       	brne	.-20     	; 0xff28 <init_mmc+0x2c>
+    ff3c:	81 e0       	ldi	r24, 0x01	; 1
+static noinline void start_application(void) {
+    /* reset input pin */
+    ff3e:	1f 91       	pop	r17
+    ff40:	08 95       	ret
+
+0000ff42 <init_spi>:
+
+/* prototypes */
+void (*jump_to_application)(void) = (void *)0x0000;
+
+char numbuf[10];
+
+    ff42:	94 b1       	in	r25, 0x04	; 4
+    ff44:	90 6a       	ori	r25, 0xA0	; 160
+    ff46:	94 b9       	out	0x04, r25	; 4
+/* defines */
+    ff48:	26 98       	cbi	0x04, 6	; 4
+#define HIGH(x) ( (uint8_t) (x >> 8) )
+    ff4a:	98 2f       	mov	r25, r24
+    ff4c:	96 95       	lsr	r25
+    ff4e:	96 95       	lsr	r25
+    ff50:	91 70       	andi	r25, 0x01	; 1
+    ff52:	9d bd       	out	0x2d, r25	; 45
+#define LOW(x)  ( (uint8_t) x )
+    ff54:	60 65       	ori	r22, 0x50	; 80
+    ff56:	64 2b       	or	r22, r20
+    ff58:	83 70       	andi	r24, 0x03	; 3
+    ff5a:	68 2b       	or	r22, r24
+    ff5c:	6c bd       	out	0x2c, r22	; 44
+
+    ff5e:	08 95       	ret
+
+0000ff60 <spi_transfer>:
+#define noinline __attribute__((noinline))
+
+/** move interrupt vectors to application section and jump to main program */
+    ff60:	8e bd       	out	0x2e, r24	; 46
+static noinline void start_application(void) {
+    ff62:	0d b4       	in	r0, 0x2d	; 45
+    ff64:	07 fe       	sbrs	r0, 7
+    ff66:	fd cf       	rjmp	.-6      	; 0xff62 <spi_transfer+0x2>
+    /* reset input pin */
+    ff68:	8e b5       	in	r24, 0x2e	; 46
+    START_PORT &= START_MASK;
+    ff6a:	08 95       	ret
+
+0000ff6c <init_usart0>:
+char numbuf[10];
+
+/* defines */
+#define HIGH(x) ( (uint8_t) (x >> 8) )
+#define LOW(x)  ( (uint8_t) x )
+
+    ff6c:	90 93 c5 00 	sts	0x00C5, r25
+    ff70:	80 93 c4 00 	sts	0x00C4, r24
+#define noinline __attribute__((noinline))
+    ff74:	88 e9       	ldi	r24, 0x98	; 152
+    ff76:	80 93 c1 00 	sts	0x00C1, r24
+
+    ff7a:	60 93 c2 00 	sts	0x00C2, r22
+/** move interrupt vectors to application section and jump to main program */
+    ff7e:	08 95       	ret
+
+0000ff80 <txb_0>:
+static noinline void start_application(void) {
+    ff80:	98 2f       	mov	r25, r24
+    /* reset input pin */
+    ff82:	80 91 c0 00 	lds	r24, 0x00C0
+    ff86:	85 ff       	sbrs	r24, 5
+    ff88:	fc cf       	rjmp	.-8      	; 0xff82 <txb_0+0x2>
+    START_PORT &= START_MASK;
+    ff8a:	90 93 c6 00 	sts	0x00C6, r25
+    /* move interrupt vectors to application section and jump to main program */
+    ff8e:	08 95       	ret
+
+0000ff90 <atoi>:
+    ff90:	fc 01       	movw	r30, r24
+    ff92:	88 27       	eor	r24, r24
+    ff94:	99 27       	eor	r25, r25
+    ff96:	e8 94       	clt
+    ff98:	21 91       	ld	r18, Z+
+    ff9a:	20 32       	cpi	r18, 0x20	; 32
+    ff9c:	e9 f3       	breq	.-6      	; 0xff98 <atoi+0x8>
+    ff9e:	29 30       	cpi	r18, 0x09	; 9
+    ffa0:	10 f0       	brcs	.+4      	; 0xffa6 <atoi+0x16>
+    ffa2:	2e 30       	cpi	r18, 0x0E	; 14
+    ffa4:	c8 f3       	brcs	.-14     	; 0xff98 <atoi+0x8>
+    ffa6:	2b 32       	cpi	r18, 0x2B	; 43
+    ffa8:	41 f0       	breq	.+16     	; 0xffba <atoi+0x2a>
+    ffaa:	2d 32       	cpi	r18, 0x2D	; 45
+    ffac:	39 f4       	brne	.+14     	; 0xffbc <atoi+0x2c>
+    ffae:	68 94       	set
+    ffb0:	04 c0       	rjmp	.+8      	; 0xffba <atoi+0x2a>
+    ffb2:	0e 94 e6 7f 	call	0xffcc	; 0xffcc <__mulhi_const_10>
+    ffb6:	82 0f       	add	r24, r18
+    ffb8:	91 1d       	adc	r25, r1
+    ffba:	21 91       	ld	r18, Z+
+    ffbc:	20 53       	subi	r18, 0x30	; 48
+    ffbe:	2a 30       	cpi	r18, 0x0A	; 10
+    ffc0:	c0 f3       	brcs	.-16     	; 0xffb2 <atoi+0x22>
+    ffc2:	1e f4       	brtc	.+6      	; 0xffca <atoi+0x3a>
+    ffc4:	90 95       	com	r25
+    ffc6:	81 95       	neg	r24
+    ffc8:	9f 4f       	sbci	r25, 0xFF	; 255
+    ffca:	08 95       	ret
+
+0000ffcc <__mulhi_const_10>:
+    ffcc:	7a e0       	ldi	r23, 0x0A	; 10
+    ffce:	97 9f       	mul	r25, r23
+    ffd0:	90 2d       	mov	r25, r0
+    ffd2:	87 9f       	mul	r24, r23
+    ffd4:	80 2d       	mov	r24, r0
+    ffd6:	91 0d       	add	r25, r1
+    ffd8:	11 24       	eor	r1, r1
+    ffda:	08 95       	ret
+
+0000ffdc <_exit>:
+    ffdc:	f8 94       	cli
+
+0000ffde <__stop_program>:
+    ffde:	ff cf       	rjmp	.-2      	; 0xffde <__stop_program>

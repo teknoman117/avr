@@ -1,0 +1,197 @@
+   1               		.file	"main.c"
+   2               		.arch atmega48
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24 0000 AF92      		push r10
+  25 0002 BF92      		push r11
+  26 0004 CF92      		push r12
+  27 0006 DF92      		push r13
+  28 0008 EF92      		push r14
+  29 000a FF92      		push r15
+  30 000c 0F93      		push r16
+  31 000e 1F93      		push r17
+  32               	/* prologue end (size=8) */
+  33               	.LM2:
+  34 0010 8FEF      		ldi r24,lo8(-1)
+  35 0012 84B9      		out 36-0x20,r24
+  36               	.LM3:
+  37 0014 00D0      		rcall initPWM
+  38               	.LM4:
+  39 0016 80E8      		ldi r24,lo8(128)
+  40 0018 90E0      		ldi r25,hi8(128)
+  41 001a 00D0      		rcall setCHA
+  42               	.LM5:
+  43 001c 80E8      		ldi r24,lo8(128)
+  44 001e 90E0      		ldi r25,hi8(128)
+  45 0020 00D0      		rcall setCHB
+  46 0022 20E0      		ldi r18,lo8(0)
+  47 0024 30E0      		ldi r19,hi8(0)
+  48 0026 E0E3      		ldi r30,lo8(30000)
+  49 0028 F5E7      		ldi r31,hi8(30000)
+  50               	.L2:
+  51               	.LBB8:
+  52               	.LBB9:
+  53               	.LM6:
+  54 002a CF01      		movw r24,r30
+  55               	.LVL0:
+  56               	/* #APP */
+  57 002c 0197      		1: sbiw r24,1
+  58 002e 01F4      		brne 1b
+  59               	/* #NOAPP */
+  60 0030 2F5F      		subi r18,lo8(-(1))
+  61 0032 3F4F      		sbci r19,hi8(-(1))
+  62               	.LBE9:
+  63               	.LBE8:
+  64               	.LM7:
+  65 0034 81E0      		ldi r24,hi8(500)
+  66 0036 243F      		cpi r18,lo8(500)
+  67 0038 3807      		cpc r19,r24
+  68               	.LVL1:
+  69 003a 01F4      		brne .L2
+  70 003c 0F2E      		mov __tmp_reg__,r31
+  71 003e F0E0      		ldi r31,lo8(0x43000000)
+  72 0040 AF2E      		mov r10,r31
+  73 0042 F0E0      		ldi r31,hi8(0x43000000)
+  74 0044 BF2E      		mov r11,r31
+  75 0046 F0E0      		ldi r31,hlo8(0x43000000)
+  76 0048 CF2E      		mov r12,r31
+  77 004a F3E4      		ldi r31,hhi8(0x43000000)
+  78 004c DF2E      		mov r13,r31
+  79 004e F02D      		mov r31,__tmp_reg__
+  80               	.LVL2:
+  81 0050 00C0      		rjmp .L17
+  82               	.L5:
+  83               	.LM8:
+  84 0052 20E0      		ldi r18,lo8(0x3f800000)
+  85 0054 30E0      		ldi r19,hi8(0x3f800000)
+  86 0056 40E8      		ldi r20,hlo8(0x3f800000)
+  87 0058 5FE3      		ldi r21,hhi8(0x3f800000)
+  88 005a C601      		movw r24,r12
+  89 005c B501      		movw r22,r10
+  90 005e 00D0      		rcall __addsf3
+  91 0060 5B01      		movw r10,r22
+  92 0062 6C01      		movw r12,r24
+  93               	.LM9:
+  94 0064 00D0      		rcall __fixunssfsi
+  95 0066 7B01      		movw r14,r22
+  96 0068 8C01      		movw r16,r24
+  97 006a CB01      		movw r24,r22
+  98 006c 00D0      		rcall setCHA
+  99               	.LM10:
+ 100 006e C701      		movw r24,r14
+ 101 0070 00D0      		rcall setCHB
+ 102               	.LBB10:
+ 103               	.LBB11:
+ 104               	.LM11:
+ 105 0072 80E3      		ldi r24,lo8(30000)
+ 106 0074 95E7      		ldi r25,hi8(30000)
+ 107 0076 FC01      		movw r30,r24
+ 108               	.LVL3:
+ 109               	/* #APP */
+ 110 0078 3197      		1: sbiw r30,1
+ 111 007a 01F4      		brne 1b
+ 112 007c 0197      		1: sbiw r24,1
+ 113 007e 01F4      		brne 1b
+ 114               	.LVL4:
+ 115               	/* #NOAPP */
+ 116               	.L17:
+ 117               	.LBE11:
+ 118               	.LBE10:
+ 119               	.LM12:
+ 120 0080 20E0      		ldi r18,lo8(0x437f0000)
+ 121 0082 30E0      		ldi r19,hi8(0x437f0000)
+ 122 0084 4FE7      		ldi r20,hlo8(0x437f0000)
+ 123 0086 53E4      		ldi r21,hhi8(0x437f0000)
+ 124 0088 C601      		movw r24,r12
+ 125 008a B501      		movw r22,r10
+ 126 008c 00D0      		rcall __ltsf2
+ 127               	.LVL5:
+ 128 008e 8823      		tst r24
+ 129 0090 04F4      		brge .L15
+ 130 0092 00C0      		rjmp .L5
+ 131               	.L7:
+ 132               	.LM13:
+ 133 0094 20E0      		ldi r18,lo8(0x3f800000)
+ 134 0096 30E0      		ldi r19,hi8(0x3f800000)
+ 135 0098 40E8      		ldi r20,hlo8(0x3f800000)
+ 136 009a 5FE3      		ldi r21,hhi8(0x3f800000)
+ 137 009c C601      		movw r24,r12
+ 138 009e B501      		movw r22,r10
+ 139 00a0 00D0      		rcall __subsf3
+ 140 00a2 5B01      		movw r10,r22
+ 141 00a4 6C01      		movw r12,r24
+ 142               	.LM14:
+ 143 00a6 00D0      		rcall __fixunssfsi
+ 144 00a8 7B01      		movw r14,r22
+ 145 00aa 8C01      		movw r16,r24
+ 146 00ac CB01      		movw r24,r22
+ 147 00ae 00D0      		rcall setCHA
+ 148               	.LM15:
+ 149 00b0 C701      		movw r24,r14
+ 150 00b2 00D0      		rcall setCHB
+ 151               	.LBB12:
+ 152               	.LBB13:
+ 153               	.LM16:
+ 154 00b4 80E3      		ldi r24,lo8(30000)
+ 155 00b6 95E7      		ldi r25,hi8(30000)
+ 156 00b8 FC01      		movw r30,r24
+ 157               	.LVL6:
+ 158               	/* #APP */
+ 159 00ba 3197      		1: sbiw r30,1
+ 160 00bc 01F4      		brne 1b
+ 161 00be 0197      		1: sbiw r24,1
+ 162 00c0 01F4      		brne 1b
+ 163               	.LVL7:
+ 164               	/* #NOAPP */
+ 165               	.L15:
+ 166               	.LBE13:
+ 167               	.LBE12:
+ 168               	.LM17:
+ 169 00c2 20E0      		ldi r18,lo8(0x0)
+ 170 00c4 30E0      		ldi r19,hi8(0x0)
+ 171 00c6 40E0      		ldi r20,hlo8(0x0)
+ 172 00c8 50E0      		ldi r21,hhi8(0x0)
+ 173 00ca C601      		movw r24,r12
+ 174 00cc B501      		movw r22,r10
+ 175 00ce 00D0      		rcall __gtsf2
+ 176               	.LVL8:
+ 177 00d0 1816      		cp __zero_reg__,r24
+ 178 00d2 04F0      		brlt .L7
+ 179 00d4 00C0      		rjmp .L17
+ 180               	/* epilogue: frame size=0 */
+ 181               	/* epilogue: noreturn */
+ 182               	/* epilogue end (size=0) */
+ 183               	/* function main size 118 (110) */
+ 184               	.LFE4:
+ 208               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccYbaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccYbaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccYbaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccYbaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccYbaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccYbaaaa.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+initPWM
+setCHA
+setCHB
+__addsf3
+__fixunssfsi
+__ltsf2
+__subsf3
+__gtsf2

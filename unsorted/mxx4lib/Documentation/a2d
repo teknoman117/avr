@@ -1,0 +1,34 @@
+Documentation for a2d.h
+
+Example is included under the a2d directory in the Examples directory
+
+---------------Information-------------------------
+
+a2d.h controls the AVR Analog to Digital converter and supports switching
+channels and the 10 bit size conversion
+
+ex)
+uint16_t cha = getADC(2);
+
+---------------Definitions-------------------------
+
+ADC_PRESCALE        -defined by the prescaler select macro as one of the following to declare the proper prescaler 
+ADC_PRESCALE_2      -adc clock = SystemCLK/2
+ADC_PRESCALE_4      -adc clock = SystemCLK/4
+ADC_PRESCALE_8      -adc clock = SystemCLK/8
+ADC_PRESCALE_16     -adc clock = SystemCLK/16
+ADC_PRESCALE_32     -adc clock = SystemCLK/32
+ADC_PRESCALE_64     -adc clock = SystemCLK/64
+ADC_PRESCALE_128    -adc clock = SystemCLK/128
+
+Note:  None of these need to be used by the user because a macro
+       decides which prescaler needs to be used for the current
+       CPU frequency
+
+--------------Functions------------------------------
+
+void initADC ( void ) -- initalizes the ADC, needs to be called before any other ADC functions are called
+
+uint16_t getADC ( uint8_t channel ) -returns the value of an ADC channel
+    -channel - the channel to return the value
+

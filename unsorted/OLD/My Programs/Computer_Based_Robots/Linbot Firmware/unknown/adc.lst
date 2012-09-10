@@ -1,0 +1,144 @@
+   1               		.file	"adc.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	initADC
+  20               	initADC:
+  21               	.LFB2:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 86EC      		ldi r24,lo8(-58)
+  27 0002 86B9      		out 38-0x20,r24
+  28               	.L2:
+  29               	.LM3:
+  30 0004 3699      		sbic 38-0x20,6
+  31 0006 00C0      		rjmp .L2
+  32               	/* epilogue: frame size=0 */
+  33 0008 0895      		ret
+  34               	/* epilogue end (size=1) */
+  35               	/* function initADC size 5 (4) */
+  36               	.LFE2:
+  38               	.global	DELAY_US
+  40               	DELAY_US:
+  41               	.LFB5:
+  42               	.LM4:
+  43               	/* prologue: frame size=0 */
+  44               	/* prologue end (size=0) */
+  45               	.LVL0:
+  46               	.LM5:
+  47 000a 9695      		lsr r25
+  48 000c 8795      		ror r24
+  49 000e 9695      		lsr r25
+  50 0010 8795      		ror r24
+  51               	.LVL1:
+  52 0012 9093 0000 		sts (loop_count)+1,r25
+  53 0016 8093 0000 		sts loop_count,r24
+  54               	.LM6:
+  55               	/* #APP */
+  56 001a 0197      		1: sbiw r24,1
+  57 001c 01F4      		brne 1b
+  58               	/* #NOAPP */
+  59 001e 9093 0000 		sts (loop_count)+1,r25
+  60 0022 8093 0000 		sts loop_count,r24
+  61               	/* epilogue: frame size=0 */
+  62 0026 0895      		ret
+  63               	/* epilogue end (size=1) */
+  64               	/* function DELAY_US size 17 (16) */
+  65               	.LFE5:
+  67               	.global	ADC10bit
+  69               	ADC10bit:
+  70               	.LFB4:
+  71               	.LM7:
+  72               	/* prologue: frame size=0 */
+  73               	/* prologue end (size=0) */
+  74               	.LVL2:
+  75               	.LM8:
+  76 0028 8064      		ori r24,lo8(64)
+  77               	.LVL3:
+  78 002a 87B9      		out 39-0x20,r24
+  79               	.LM9:
+  80 002c 80EC      		ldi r24,lo8(-64)
+  81 002e 86B9      		out 38-0x20,r24
+  82               	.LM10:
+  83 0030 80E4      		ldi r24,lo8(64)
+  84 0032 90E0      		ldi r25,hi8(64)
+  85 0034 0E94 0000 		call DELAY_US
+  86               	.L10:
+  87               	.LM11:
+  88 0038 3699      		sbic 38-0x20,6
+  89 003a 00C0      		rjmp .L10
+  90               	.LM12:
+  91 003c 85B1      		in r24,37-0x20
+  92               	.LM13:
+  93 003e 24B1      		in r18,36-0x20
+  94 0040 9927      		clr r25
+  95 0042 982F      		mov r25,r24
+  96 0044 8827      		clr r24
+  97 0046 820F      		add r24,r18
+  98 0048 911D      		adc r25,__zero_reg__
+  99 004a 9093 0000 		sts (convert)+1,r25
+ 100 004e 8093 0000 		sts convert,r24
+ 101               	/* epilogue: frame size=0 */
+ 102 0052 0895      		ret
+ 103               	/* epilogue end (size=1) */
+ 104               	/* function ADC10bit size 22 (21) */
+ 105               	.LFE4:
+ 107               	.global	ADC08bit
+ 109               	ADC08bit:
+ 110               	.LFB3:
+ 111               	.LM14:
+ 112               	/* prologue: frame size=0 */
+ 113               	/* prologue end (size=0) */
+ 114               	.LVL4:
+ 115               	.LM15:
+ 116 0054 8066      		ori r24,lo8(96)
+ 117               	.LVL5:
+ 118 0056 87B9      		out 39-0x20,r24
+ 119               	.LM16:
+ 120 0058 80EC      		ldi r24,lo8(-64)
+ 121 005a 86B9      		out 38-0x20,r24
+ 122               	.LM17:
+ 123 005c 80E4      		ldi r24,lo8(64)
+ 124 005e 90E0      		ldi r25,hi8(64)
+ 125 0060 0E94 0000 		call DELAY_US
+ 126               	.L16:
+ 127               	.LM18:
+ 128 0064 3699      		sbic 38-0x20,6
+ 129 0066 00C0      		rjmp .L16
+ 130               	.LM19:
+ 131 0068 85B1      		in r24,37-0x20
+ 132               	.LM20:
+ 133 006a 9927      		clr r25
+ 134               	/* epilogue: frame size=0 */
+ 135 006c 0895      		ret
+ 136               	/* epilogue end (size=1) */
+ 137               	/* function ADC08bit size 13 (12) */
+ 138               	.LFE3:
+ 140               		.comm convert,2,1
+ 141               		.comm loop_count,2,1
+ 185               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:20     .text:00000000 initADC
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:40     .text:0000000a DELAY_US
+                            *COM*:00000002 loop_count
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:69     .text:00000028 ADC10bit
+                            *COM*:00000002 convert
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccw7aaaa.s:109    .text:00000054 ADC08bit
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

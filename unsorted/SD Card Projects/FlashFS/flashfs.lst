@@ -1,0 +1,598 @@
+GAS LISTING /tmp/ccmPOILa.s 			page 1
+
+
+   1               		.file	"flashfs.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Projects/AVR_Projects/SD Card Projects/FlashFS/",100,0,2,.Ltext0
+  11               		.stabs	"flashfs.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdio.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  33               		.stabs	"int8_t:t(3,1)=(0,10)",128,0,121,0
+  34               		.stabs	"uint8_t:t(3,2)=(0,11)",128,0,122,0
+  35               		.stabs	"int16_t:t(3,3)=(0,1)",128,0,123,0
+  36               		.stabs	"uint16_t:t(3,4)=(0,4)",128,0,124,0
+  37               		.stabs	"int32_t:t(3,5)=(0,3)",128,0,125,0
+  38               		.stabs	"uint32_t:t(3,6)=(0,5)",128,0,126,0
+  39               		.stabs	"int64_t:t(3,7)=(0,6)",128,0,128,0
+  40               		.stabs	"uint64_t:t(3,8)=(0,7)",128,0,129,0
+  41               		.stabs	"intptr_t:t(3,9)=(3,3)",128,0,142,0
+  42               		.stabs	"uintptr_t:t(3,10)=(3,4)",128,0,147,0
+  43               		.stabs	"int_least8_t:t(3,11)=(3,1)",128,0,159,0
+  44               		.stabs	"uint_least8_t:t(3,12)=(3,2)",128,0,164,0
+  45               		.stabs	"int_least16_t:t(3,13)=(3,3)",128,0,169,0
+  46               		.stabs	"uint_least16_t:t(3,14)=(3,4)",128,0,174,0
+  47               		.stabs	"int_least32_t:t(3,15)=(3,5)",128,0,179,0
+  48               		.stabs	"uint_least32_t:t(3,16)=(3,6)",128,0,184,0
+  49               		.stabs	"int_least64_t:t(3,17)=(3,7)",128,0,192,0
+  50               		.stabs	"uint_least64_t:t(3,18)=(3,8)",128,0,199,0
+  51               		.stabs	"int_fast8_t:t(3,19)=(3,1)",128,0,213,0
+  52               		.stabs	"uint_fast8_t:t(3,20)=(3,2)",128,0,218,0
+  53               		.stabs	"int_fast16_t:t(3,21)=(3,3)",128,0,223,0
+  54               		.stabs	"uint_fast16_t:t(3,22)=(3,4)",128,0,228,0
+  55               		.stabs	"int_fast32_t:t(3,23)=(3,5)",128,0,233,0
+  56               		.stabs	"uint_fast32_t:t(3,24)=(3,6)",128,0,238,0
+  57               		.stabs	"int_fast64_t:t(3,25)=(3,7)",128,0,246,0
+GAS LISTING /tmp/ccmPOILa.s 			page 2
+
+
+  58               		.stabs	"uint_fast64_t:t(3,26)=(3,8)",128,0,253,0
+  59               		.stabs	"intmax_t:t(3,27)=(3,7)",128,0,273,0
+  60               		.stabs	"uintmax_t:t(3,28)=(3,8)",128,0,278,0
+  61               		.stabn	162,0,0,0
+  62               		.stabs	"int_farptr_t:t(2,1)=(3,5)",128,0,77,0
+  63               		.stabs	"uint_farptr_t:t(2,2)=(3,6)",128,0,81,0
+  64               		.stabn	162,0,0,0
+  65               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stdarg.h",130,0,0,0
+  66               		.stabs	"__gnuc_va_list:t(4,1)=(4,2)=*(0,15)",128,0,43,0
+  67               		.stabs	"va_list:t(4,3)=(4,1)",128,0,105,0
+  68               		.stabn	162,0,0,0
+  69               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stddef.h",130,0,0,0
+  70               		.stabs	"size_t:t(5,1)=(0,4)",128,0,214,0
+  71               		.stabn	162,0,0,0
+  72               		.stabs	"__file:T(1,1)=s14buf:(1,2)=*(0,2),0,16;unget:(0,11),16,8;flags:(3,2),24,8;size:(0,1),32,16
+  73               		.stabn	162,0,0,0
+  74               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdlib.h",130,0,0,0
+  75               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stddef.h",130,0,0,0
+  76               		.stabs	"wchar_t:t(7,1)=(0,1)",128,0,326,0
+  77               		.stabn	162,0,0,0
+  78               		.stabs	"div_t:t(6,1)=(6,2)=s4quot:(0,1),0,16;rem:(0,1),16,16;;",128,0,71,0
+  79               		.stabs	"ldiv_t:t(6,3)=(6,4)=s8quot:(0,3),0,32;rem:(0,3),32,32;;",128,0,77,0
+  80               		.stabs	"__compar_fn_t:t(6,5)=(6,6)=*(6,7)=f(0,1)",128,0,80,0
+  81               		.stabn	162,0,0,0
+  82               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/alloca.h",130,0,0,0
+  83               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stddef.h",130,0,0,0
+  84               		.stabs	"ptrdiff_t:t(9,1)=(0,1)",128,0,152,0
+  85               		.stabn	162,0,0,0
+  86               		.stabn	162,0,0,0
+  87               		.stabs	"spi.h",130,0,0,0
+  88               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  89               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  90               		.stabs	"__fuse_t:t(12,1)=(12,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219
+  91               		.stabn	162,0,0,0
+  92               		.stabn	162,0,0,0
+  93               		.stabn	162,0,0,0
+  94               		.stabs	"close_flashfile:F(0,15)",36,0,61,close_flashfile
+  95               		.stabs	"f:P(0,16)=*(1,1)",64,0,61,24
+  96               	.global	close_flashfile
+  97               		.type	close_flashfile, @function
+  98               	close_flashfile:
+  99               		.stabd	46,0,0
+   1:flashfs.c     **** #include <stdio.h>
+   2:flashfs.c     **** #include <string.h>
+   3:flashfs.c     **** #include <stdlib.h>
+   4:flashfs.c     **** #include <alloca.h>
+   5:flashfs.c     **** #include "spi.h"
+   6:flashfs.c     **** #include "mmc.h"
+   7:flashfs.c     **** #include "stdusart0.h"
+   8:flashfs.c     **** 
+   9:flashfs.c     **** #define FA_READ 0
+  10:flashfs.c     **** #define FA_WRITE 1
+  11:flashfs.c     **** #define FA_OPEN 0
+  12:flashfs.c     **** #define FA_NEW 2
+  13:flashfs.c     **** 
+  14:flashfs.c     **** uint32_t cpointer = 0;
+  15:flashfs.c     **** uint8_t window[512];
+GAS LISTING /tmp/ccmPOILa.s 			page 3
+
+
+  16:flashfs.c     **** 
+  17:flashfs.c     **** int put_flashfile( char c, FILE* f ) {
+  18:flashfs.c     ****     int *p = &((int*)(f->udata))[1];   //get current address
+  19:flashfs.c     ****     if( f->len > *p + 127 ) {
+  20:flashfs.c     ****         mmc_readblock( *p, window );
+  21:flashfs.c     ****         int cntr;
+  22:flashfs.c     ****         for(cntr=0;cntr<128;cntr++) window[cntr] = f->buf[cntr];
+  23:flashfs.c     ****         mmc_writeblock( *p, window );
+  24:flashfs.c     ****         *p += 128;
+  25:flashfs.c     ****     }
+  26:flashfs.c     ****     f->buf[f->len++ % 128] = c;
+  27:flashfs.c     ****     return 0;
+  28:flashfs.c     **** }
+  29:flashfs.c     **** 
+  30:flashfs.c     **** int get_flashfile( FILE* f ) {
+  31:flashfs.c     ****     int *p = &((int*)(f->udata))[1];   //get current address
+  32:flashfs.c     ****     if( f->len == f->size ) return EOF;
+  33:flashfs.c     ****     if( f->len > *p + 127 ) {
+  34:flashfs.c     ****         mmc_readpartialblock( *p + 128, 128, (uint8_t*)f->buf );
+  35:flashfs.c     ****         *p += 128;
+  36:flashfs.c     ****     }
+  37:flashfs.c     ****     return f->buf[f->len++ % 128];
+  38:flashfs.c     **** }
+  39:flashfs.c     **** 
+  40:flashfs.c     **** FILE* open_flashfile( char* name, char mode ) {
+  41:flashfs.c     ****     FILE* f = (FILE*) alloca(sizeof(FILE));
+  42:flashfs.c     ****     f->udata = alloca(sizeof(int)*2);
+  43:flashfs.c     ****     uint32_t a, b;
+  44:flashfs.c     ****     uint32_t address = 0;
+  45:flashfs.c     ****     int32_t size = 0;
+  46:flashfs.c     ****     uint8_t *c = (uint8_t*) window;
+  47:flashfs.c     ****     for(a=0;a<65536;a+=512) {
+  48:flashfs.c     ****         mmc_readblock( a, window );
+  49:flashfs.c     ****         for(b=0;b<512;b+=32) {
+  50:flashfs.c     ****             address = *(((uint32_t*)(c)));
+  51:flashfs.c     ****             size = *(((int32_t*)(c + 4)));
+  52:flashfs.c     ****             if(!strcmp(((char*)(c+8)), name)) {
+  53:flashfs.c     **** 
+  54:flashfs.c     ****             }
+  55:flashfs.c     ****             c += 32;
+  56:flashfs.c     ****         }
+  57:flashfs.c     ****     }
+  58:flashfs.c     ****     return NULL;
+  59:flashfs.c     **** }
+  60:flashfs.c     **** 
+  61:flashfs.c     **** void close_flashfile( FILE* f ) {
+ 100               		.stabn	68,0,61,.LM0-.LFBB1
+ 101               	.LM0:
+ 102               	.LFBB1:
+ 103               	/* prologue: function */
+ 104               	/* frame size = 0 */
+ 105               	/* epilogue start */
+  62:flashfs.c     **** 
+  63:flashfs.c     **** }
+ 106               		.stabn	68,0,63,.LM1-.LFBB1
+ 107               	.LM1:
+ 108 0000 0895      		ret
+GAS LISTING /tmp/ccmPOILa.s 			page 4
+
+
+ 109               		.size	close_flashfile, .-close_flashfile
+ 110               	.Lscope1:
+ 111               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 112               		.stabd	78,0,0
+ 113               		.stabs	"main:F(0,1)",36,0,65,main
+ 114               	.global	main
+ 115               		.type	main, @function
+ 116               	main:
+ 117               		.stabd	46,0,0
+  64:flashfs.c     **** 
+  65:flashfs.c     **** int main( void ) {
+ 118               		.stabn	68,0,65,.LM2-.LFBB2
+ 119               	.LM2:
+ 120               	.LFBB2:
+ 121               	/* prologue: function */
+ 122               	/* frame size = 0 */
+  66:flashfs.c     **** 
+  67:flashfs.c     ****     return 0;
+  68:flashfs.c     **** }
+ 123               		.stabn	68,0,68,.LM3-.LFBB2
+ 124               	.LM3:
+ 125 0002 80E0      		ldi r24,lo8(0)
+ 126 0004 90E0      		ldi r25,hi8(0)
+ 127               	/* epilogue start */
+ 128 0006 0895      		ret
+ 129               		.size	main, .-main
+ 130               	.Lscope2:
+ 131               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 132               		.stabd	78,0,0
+ 133               		.stabs	"open_flashfile:F(0,16)",36,0,40,open_flashfile
+ 134               		.stabs	"name:P(1,2)",64,0,40,24
+ 135               		.stabs	"mode:P(0,2)",64,0,40,22
+ 136               	.global	open_flashfile
+ 137               		.type	open_flashfile, @function
+ 138               	open_flashfile:
+ 139               		.stabd	46,0,0
+ 140               		.stabn	68,0,40,.LM4-.LFBB3
+ 141               	.LM4:
+ 142               	.LFBB3:
+ 143 0008 CF92      		push r12
+ 144 000a DF92      		push r13
+ 145 000c EF92      		push r14
+ 146 000e FF92      		push r15
+ 147 0010 0F93      		push r16
+ 148 0012 1F93      		push r17
+ 149 0014 DF93      		push r29
+ 150 0016 CF93      		push r28
+ 151 0018 CDB7      		in r28,__SP_L__
+ 152 001a DEB7      		in r29,__SP_H__
+ 153               	/* prologue: function */
+ 154               	/* frame size = 0 */
+ 155               		.stabn	68,0,59,.LM5-.LFBB3
+ 156               	.LM5:
+ 157 001c CDB6      		in r12,__SP_L__
+ 158 001e DEB6      		in r13,__SP_H__
+ 159               		.stabn	68,0,41,.LM6-.LFBB3
+ 160               	.LM6:
+GAS LISTING /tmp/ccmPOILa.s 			page 5
+
+
+ 161 0020 8DB7      		in r24,__SP_L__
+ 162 0022 9EB7      		in r25,__SP_H__
+ 163 0024 0E97      		sbiw r24,14
+ 164 0026 0FB6      		in __tmp_reg__,__SREG__
+ 165 0028 F894      		cli
+ 166 002a 9EBF      		out __SP_H__,r25
+ 167 002c 0FBE      		out __SREG__,__tmp_reg__
+ 168 002e 8DBF      		out __SP_L__,r24
+ 169 0030 EDB7      		in r30,__SP_L__
+ 170 0032 FEB7      		in r31,__SP_H__
+ 171 0034 3196      		adiw r30,1
+ 172               		.stabn	68,0,42,.LM7-.LFBB3
+ 173               	.LM7:
+ 174 0036 00D0      		rcall .
+ 175 0038 00D0      		rcall .
+ 176 003a 8DB7      		in r24,__SP_L__
+ 177 003c 9EB7      		in r25,__SP_H__
+ 178 003e 0196      		adiw r24,1
+ 179 0040 9587      		std Z+13,r25
+ 180 0042 8487      		std Z+12,r24
+ 181 0044 EE24      		clr r14
+ 182 0046 FF24      		clr r15
+ 183 0048 8701      		movw r16,r14
+ 184               	.L6:
+ 185               		.stabn	68,0,48,.LM8-.LFBB3
+ 186               	.LM8:
+ 187 004a C801      		movw r24,r16
+ 188 004c B701      		movw r22,r14
+ 189 004e 40E0      		ldi r20,lo8(window)
+ 190 0050 50E0      		ldi r21,hi8(window)
+ 191 0052 0E94 0000 		call mmc_readblock
+ 192               		.stabn	68,0,47,.LM9-.LFBB3
+ 193               	.LM9:
+ 194 0056 80E0      		ldi r24,lo8(512)
+ 195 0058 92E0      		ldi r25,hi8(512)
+ 196 005a A0E0      		ldi r26,hlo8(512)
+ 197 005c B0E0      		ldi r27,hhi8(512)
+ 198 005e E80E      		add r14,r24
+ 199 0060 F91E      		adc r15,r25
+ 200 0062 0A1F      		adc r16,r26
+ 201 0064 1B1F      		adc r17,r27
+ 202 0066 90E0      		ldi r25,lo8(65536)
+ 203 0068 E916      		cp r14,r25
+ 204 006a 90E0      		ldi r25,hi8(65536)
+ 205 006c F906      		cpc r15,r25
+ 206 006e 91E0      		ldi r25,hlo8(65536)
+ 207 0070 0907      		cpc r16,r25
+ 208 0072 90E0      		ldi r25,hhi8(65536)
+ 209 0074 1907      		cpc r17,r25
+ 210 0076 01F4      		brne .L6
+ 211               		.stabn	68,0,59,.LM10-.LFBB3
+ 212               	.LM10:
+ 213 0078 80E0      		ldi r24,lo8(0)
+ 214 007a 90E0      		ldi r25,hi8(0)
+ 215 007c 0FB6      		in __tmp_reg__,__SREG__
+ 216 007e F894      		cli
+ 217 0080 DEBE      		out __SP_H__,r13
+GAS LISTING /tmp/ccmPOILa.s 			page 6
+
+
+ 218 0082 0FBE      		out __SREG__,__tmp_reg__
+ 219 0084 CDBE      		out __SP_L__,r12
+ 220               	/* epilogue start */
+ 221 0086 CF91      		pop r28
+ 222 0088 DF91      		pop r29
+ 223 008a 1F91      		pop r17
+ 224 008c 0F91      		pop r16
+ 225 008e FF90      		pop r15
+ 226 0090 EF90      		pop r14
+ 227 0092 DF90      		pop r13
+ 228 0094 CF90      		pop r12
+ 229 0096 0895      		ret
+ 230               		.size	open_flashfile, .-open_flashfile
+ 231               		.stabs	"a:r(3,6)",64,0,43,14
+ 232               		.stabn	192,0,0,.LFBB3-.LFBB3
+ 233               		.stabn	224,0,0,.Lscope3-.LFBB3
+ 234               	.Lscope3:
+ 235               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 236               		.stabd	78,0,0
+ 237               		.stabs	"get_flashfile:F(0,1)",36,0,30,get_flashfile
+ 238               		.stabs	"f:P(0,16)",64,0,30,28
+ 239               	.global	get_flashfile
+ 240               		.type	get_flashfile, @function
+ 241               	get_flashfile:
+ 242               		.stabd	46,0,0
+ 243               		.stabn	68,0,30,.LM11-.LFBB4
+ 244               	.LM11:
+ 245               	.LFBB4:
+ 246 0098 0F93      		push r16
+ 247 009a 1F93      		push r17
+ 248 009c CF93      		push r28
+ 249 009e DF93      		push r29
+ 250               	/* prologue: function */
+ 251               	/* frame size = 0 */
+ 252 00a0 EC01      		movw r28,r24
+ 253               		.stabn	68,0,31,.LM12-.LFBB4
+ 254               	.LM12:
+ 255 00a2 0C85      		ldd r16,Y+12
+ 256 00a4 1D85      		ldd r17,Y+13
+ 257               		.stabn	68,0,32,.LM13-.LFBB4
+ 258               	.LM13:
+ 259 00a6 4E81      		ldd r20,Y+6
+ 260 00a8 5F81      		ldd r21,Y+7
+ 261 00aa 8C81      		ldd r24,Y+4
+ 262 00ac 9D81      		ldd r25,Y+5
+ 263 00ae 4817      		cp r20,r24
+ 264 00b0 5907      		cpc r21,r25
+ 265 00b2 01F4      		brne .L10
+ 266 00b4 4FEF      		ldi r20,lo8(-1)
+ 267 00b6 5FEF      		ldi r21,hi8(-1)
+ 268 00b8 00C0      		rjmp .L11
+ 269               	.L10:
+ 270               		.stabn	68,0,33,.LM14-.LFBB4
+ 271               	.LM14:
+ 272 00ba F801      		movw r30,r16
+ 273 00bc 2281      		ldd r18,Z+2
+ 274 00be 3381      		ldd r19,Z+3
+GAS LISTING /tmp/ccmPOILa.s 			page 7
+
+
+ 275 00c0 C901      		movw r24,r18
+ 276 00c2 8158      		subi r24,lo8(-(127))
+ 277 00c4 9F4F      		sbci r25,hi8(-(127))
+ 278 00c6 8417      		cp r24,r20
+ 279 00c8 9507      		cpc r25,r21
+ 280 00ca 04F4      		brge .L12
+ 281               		.stabn	68,0,34,.LM15-.LFBB4
+ 282               	.LM15:
+ 283 00cc 2058      		subi r18,lo8(-(128))
+ 284 00ce 3F4F      		sbci r19,hi8(-(128))
+ 285 00d0 B901      		movw r22,r18
+ 286 00d2 8827      		clr r24
+ 287 00d4 77FD      		sbrc r23,7
+ 288 00d6 8095      		com r24
+ 289 00d8 982F      		mov r25,r24
+ 290 00da 2881      		ld r18,Y
+ 291 00dc 3981      		ldd r19,Y+1
+ 292 00de 40E8      		ldi r20,lo8(128)
+ 293 00e0 50E0      		ldi r21,hi8(128)
+ 294 00e2 0E94 0000 		call mmc_readpartialblock
+ 295               		.stabn	68,0,35,.LM16-.LFBB4
+ 296               	.LM16:
+ 297 00e6 F801      		movw r30,r16
+ 298 00e8 8281      		ldd r24,Z+2
+ 299 00ea 9381      		ldd r25,Z+3
+ 300 00ec 8058      		subi r24,lo8(-(128))
+ 301 00ee 9F4F      		sbci r25,hi8(-(128))
+ 302 00f0 9383      		std Z+3,r25
+ 303 00f2 8283      		std Z+2,r24
+ 304               	.L12:
+ 305               		.stabn	68,0,37,.LM17-.LFBB4
+ 306               	.LM17:
+ 307 00f4 2E81      		ldd r18,Y+6
+ 308 00f6 3F81      		ldd r19,Y+7
+ 309 00f8 C901      		movw r24,r18
+ 310 00fa 60E8      		ldi r22,lo8(128)
+ 311 00fc 70E0      		ldi r23,hi8(128)
+ 312 00fe 0E94 0000 		call __divmodhi4
+ 313 0102 E881      		ld r30,Y
+ 314 0104 F981      		ldd r31,Y+1
+ 315 0106 E80F      		add r30,r24
+ 316 0108 F91F      		adc r31,r25
+ 317 010a 8081      		ld r24,Z
+ 318 010c 482F      		mov r20,r24
+ 319 010e 50E0      		ldi r21,lo8(0)
+ 320 0110 2F5F      		subi r18,lo8(-(1))
+ 321 0112 3F4F      		sbci r19,hi8(-(1))
+ 322 0114 3F83      		std Y+7,r19
+ 323 0116 2E83      		std Y+6,r18
+ 324               	.L11:
+ 325               		.stabn	68,0,38,.LM18-.LFBB4
+ 326               	.LM18:
+ 327 0118 CA01      		movw r24,r20
+ 328               	/* epilogue start */
+ 329 011a DF91      		pop r29
+ 330 011c CF91      		pop r28
+ 331 011e 1F91      		pop r17
+GAS LISTING /tmp/ccmPOILa.s 			page 8
+
+
+ 332 0120 0F91      		pop r16
+ 333 0122 0895      		ret
+ 334               		.size	get_flashfile, .-get_flashfile
+ 335               	.Lscope4:
+ 336               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 337               		.stabd	78,0,0
+ 338               		.stabs	"put_flashfile:F(0,1)",36,0,17,put_flashfile
+ 339               		.stabs	"c:P(0,2)",64,0,17,15
+ 340               		.stabs	"f:P(0,16)",64,0,17,28
+ 341               	.global	put_flashfile
+ 342               		.type	put_flashfile, @function
+ 343               	put_flashfile:
+ 344               		.stabd	46,0,0
+ 345               		.stabn	68,0,17,.LM19-.LFBB5
+ 346               	.LM19:
+ 347               	.LFBB5:
+ 348 0124 FF92      		push r15
+ 349 0126 0F93      		push r16
+ 350 0128 1F93      		push r17
+ 351 012a CF93      		push r28
+ 352 012c DF93      		push r29
+ 353               	/* prologue: function */
+ 354               	/* frame size = 0 */
+ 355 012e F82E      		mov r15,r24
+ 356 0130 EB01      		movw r28,r22
+ 357               		.stabn	68,0,18,.LM20-.LFBB5
+ 358               	.LM20:
+ 359 0132 0C85      		ldd r16,Y+12
+ 360 0134 1D85      		ldd r17,Y+13
+ 361               		.stabn	68,0,19,.LM21-.LFBB5
+ 362               	.LM21:
+ 363 0136 F801      		movw r30,r16
+ 364 0138 4281      		ldd r20,Z+2
+ 365 013a 5381      		ldd r21,Z+3
+ 366 013c 9A01      		movw r18,r20
+ 367 013e 2158      		subi r18,lo8(-(127))
+ 368 0140 3F4F      		sbci r19,hi8(-(127))
+ 369 0142 8E81      		ldd r24,Y+6
+ 370 0144 9F81      		ldd r25,Y+7
+ 371 0146 2817      		cp r18,r24
+ 372 0148 3907      		cpc r19,r25
+ 373 014a 04F4      		brge .L15
+ 374               	.LBB2:
+ 375               		.stabn	68,0,20,.LM22-.LFBB5
+ 376               	.LM22:
+ 377 014c BA01      		movw r22,r20
+ 378 014e 8827      		clr r24
+ 379 0150 77FD      		sbrc r23,7
+ 380 0152 8095      		com r24
+ 381 0154 982F      		mov r25,r24
+ 382 0156 40E0      		ldi r20,lo8(window)
+ 383 0158 50E0      		ldi r21,hi8(window)
+ 384 015a 0E94 0000 		call mmc_readblock
+ 385 015e 20E0      		ldi r18,lo8(0)
+ 386 0160 30E0      		ldi r19,hi8(0)
+ 387               	.L16:
+ 388               		.stabn	68,0,22,.LM23-.LFBB5
+GAS LISTING /tmp/ccmPOILa.s 			page 9
+
+
+ 389               	.LM23:
+ 390 0162 F901      		movw r30,r18
+ 391 0164 E050      		subi r30,lo8(-(window))
+ 392 0166 F040      		sbci r31,hi8(-(window))
+ 393 0168 A881      		ld r26,Y
+ 394 016a B981      		ldd r27,Y+1
+ 395 016c A20F      		add r26,r18
+ 396 016e B31F      		adc r27,r19
+ 397 0170 8C91      		ld r24,X
+ 398 0172 8083      		st Z,r24
+ 399 0174 2F5F      		subi r18,lo8(-(1))
+ 400 0176 3F4F      		sbci r19,hi8(-(1))
+ 401 0178 2038      		cpi r18,128
+ 402 017a 3105      		cpc r19,__zero_reg__
+ 403 017c 01F4      		brne .L16
+ 404               		.stabn	68,0,23,.LM24-.LFBB5
+ 405               	.LM24:
+ 406 017e F801      		movw r30,r16
+ 407 0180 6281      		ldd r22,Z+2
+ 408 0182 7381      		ldd r23,Z+3
+ 409 0184 8827      		clr r24
+ 410 0186 77FD      		sbrc r23,7
+ 411 0188 8095      		com r24
+ 412 018a 982F      		mov r25,r24
+ 413 018c 40E0      		ldi r20,lo8(window)
+ 414 018e 50E0      		ldi r21,hi8(window)
+ 415 0190 0E94 0000 		call mmc_writeblock
+ 416               		.stabn	68,0,24,.LM25-.LFBB5
+ 417               	.LM25:
+ 418 0194 F801      		movw r30,r16
+ 419 0196 8281      		ldd r24,Z+2
+ 420 0198 9381      		ldd r25,Z+3
+ 421 019a 8058      		subi r24,lo8(-(128))
+ 422 019c 9F4F      		sbci r25,hi8(-(128))
+ 423 019e 9383      		std Z+3,r25
+ 424 01a0 8283      		std Z+2,r24
+ 425               	.L15:
+ 426               	.LBE2:
+ 427               		.stabn	68,0,26,.LM26-.LFBB5
+ 428               	.LM26:
+ 429 01a2 2E81      		ldd r18,Y+6
+ 430 01a4 3F81      		ldd r19,Y+7
+ 431 01a6 C901      		movw r24,r18
+ 432 01a8 60E8      		ldi r22,lo8(128)
+ 433 01aa 70E0      		ldi r23,hi8(128)
+ 434 01ac 0E94 0000 		call __divmodhi4
+ 435 01b0 E881      		ld r30,Y
+ 436 01b2 F981      		ldd r31,Y+1
+ 437 01b4 E80F      		add r30,r24
+ 438 01b6 F91F      		adc r31,r25
+ 439 01b8 F082      		st Z,r15
+ 440 01ba 2F5F      		subi r18,lo8(-(1))
+ 441 01bc 3F4F      		sbci r19,hi8(-(1))
+ 442 01be 3F83      		std Y+7,r19
+ 443 01c0 2E83      		std Y+6,r18
+ 444               		.stabn	68,0,28,.LM27-.LFBB5
+ 445               	.LM27:
+GAS LISTING /tmp/ccmPOILa.s 			page 10
+
+
+ 446 01c2 80E0      		ldi r24,lo8(0)
+ 447 01c4 90E0      		ldi r25,hi8(0)
+ 448               	/* epilogue start */
+ 449 01c6 DF91      		pop r29
+ 450 01c8 CF91      		pop r28
+ 451 01ca 1F91      		pop r17
+ 452 01cc 0F91      		pop r16
+ 453 01ce FF90      		pop r15
+ 454 01d0 0895      		ret
+ 455               		.size	put_flashfile, .-put_flashfile
+ 456               		.stabs	"cntr:r(0,1)",64,0,21,18
+ 457               		.stabn	192,0,0,.LBB2-.LFBB5
+ 458               		.stabn	224,0,0,.LBE2-.LFBB5
+ 459               	.Lscope5:
+ 460               		.stabs	"",36,0,0,.Lscope5-.LFBB5
+ 461               		.stabd	78,0,0
+ 462               	.global	cpointer
+ 463               	.global	cpointer
+ 464               		.section .bss
+ 465               		.type	cpointer, @object
+ 466               		.size	cpointer, 4
+ 467               	cpointer:
+ 468 0000 0000 0000 		.skip 4,0
+ 469               		.comm window,512,1
+ 470               		.stabs	"cpointer:G(3,6)",32,0,14,0
+ 471               		.stabs	"window:G(0,17)=ar(0,18)=r(0,18);0;0177777;;0;511;(3,2)",32,0,15,0
+ 472               		.text
+ 473               		.stabs	"",100,0,0,.Letext0
+ 474               	.Letext0:
+GAS LISTING /tmp/ccmPOILa.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 flashfs.c
+     /tmp/ccmPOILa.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccmPOILa.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccmPOILa.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccmPOILa.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccmPOILa.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccmPOILa.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccmPOILa.s:98     .text:0000000000000000 close_flashfile
+     /tmp/ccmPOILa.s:116    .text:0000000000000002 main
+     /tmp/ccmPOILa.s:138    .text:0000000000000008 open_flashfile
+                            *COM*:0000000000000200 window
+     /tmp/ccmPOILa.s:241    .text:0000000000000098 get_flashfile
+     /tmp/ccmPOILa.s:343    .text:0000000000000124 put_flashfile
+     /tmp/ccmPOILa.s:467    .bss:0000000000000000 cpointer
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+mmc_readblock
+mmc_readpartialblock
+__divmodhi4
+mmc_writeblock

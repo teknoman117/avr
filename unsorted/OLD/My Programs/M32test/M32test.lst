@@ -1,0 +1,113 @@
+   1               		.file	"M32test.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB6:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24 0000 C0E0      		ldi r28,lo8(__stack - 0)
+  25 0002 D0E0      		ldi r29,hi8(__stack - 0)
+  26 0004 DEBF      		out __SP_H__,r29
+  27 0006 CDBF      		out __SP_L__,r28
+  28               	/* prologue end (size=4) */
+  29               	.LM2:
+  30 0008 8FEF      		ldi r24,lo8(-1)
+  31 000a 84BB      		out 52-0x20,r24
+  32               	.LM3:
+  33 000c 81BB      		out 49-0x20,r24
+  34               	.LM4:
+  35 000e 81E0      		ldi r24,lo8(1)
+  36 0010 85BB      		out 53-0x20,r24
+  37               	.LM5:
+  38 0012 0E94 0000 		call initPWM10
+  39               	.LM6:
+  40 0016 80E4      		ldi r24,lo8(64)
+  41 0018 82BB      		out 50-0x20,r24
+  42               	.LM7:
+  43 001a C0E0      		ldi r28,lo8(0)
+  44 001c D0E0      		ldi r29,hi8(0)
+  45               	.L13:
+  46               	.LM8:
+  47 001e CE01      		movw r24,r28
+  48 0020 0E94 0000 		call setCHB
+  49               	.LBB2:
+  50               	.LBB3:
+  51               	.LM9:
+  52 0024 80E4      		ldi r24,lo8(-25536)
+  53 0026 9CE9      		ldi r25,hi8(-25536)
+  54               	.LBB4:
+  55               	.LBB5:
+  56               	.LM10:
+  57               	/* #APP */
+  58 0028 0197      		1: sbiw r24,1
+  59 002a F1F7      		brne 1b
+  60               	/* #NOAPP */
+  61               	.LBE5:
+  62               	.LBE4:
+  63               	.LBE3:
+  64               	.LBE2:
+  65               	.LM11:
+  66 002c 2196      		adiw r28,1
+  67 002e 83E0      		ldi r24,hi8(1023)
+  68 0030 CF3F      		cpi r28,lo8(1023)
+  69 0032 D807      		cpc r29,r24
+  70 0034 A0F3      		brlo .L13
+  71 0036 CFEF      		ldi r28,lo8(1023)
+  72 0038 D3E0      		ldi r29,hi8(1023)
+  73               	.L25:
+  74               	.LM12:
+  75 003a CE01      		movw r24,r28
+  76 003c 0E94 0000 		call setCHB
+  77               	.LBB6:
+  78               	.LBB7:
+  79               	.LM13:
+  80 0040 80E4      		ldi r24,lo8(-25536)
+  81 0042 9CE9      		ldi r25,hi8(-25536)
+  82               	.LBB8:
+  83               	.LBB9:
+  84               	.LM14:
+  85               	/* #APP */
+  86 0044 0197      		1: sbiw r24,1
+  87 0046 F1F7      		brne 1b
+  88               	/* #NOAPP */
+  89               	.LBE9:
+  90               	.LBE8:
+  91               	.LBE7:
+  92               	.LBE6:
+  93               	.LM15:
+  94 0048 2197      		sbiw r28,1
+  95 004a B9F7      		brne .L25
+  96               	.LM16:
+  97 004c CE01      		movw r24,r28
+  98               	/* epilogue: frame size=0 */
+  99 004e 0C94 0000 		jmp exit
+ 100               	/* epilogue end (size=2) */
+ 101               	/* function main size 46 (40) */
+ 102               	.LFE6:
+ 104               		.comm cnt,2,1
+ 105               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 M32test.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccWIaaaa.s:20     .text:00000000 main
+                            *COM*:00000002 cnt
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack
+initPWM10
+setCHB
+exit

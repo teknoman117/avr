@@ -1,0 +1,639 @@
+   1               		.file	"M32io2.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	SetDir
+  20               	SetDir:
+  21               	.LFB2:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LVL0:
+  26               	.LM2:
+  27 0000 8234      		cpi r24,lo8(66)
+  28 0002 01F4      		brne .+2
+  29 0004 00C0      		rjmp .L4
+  30               	.LM3:
+  31 0006 8334      		cpi r24,lo8(67)
+  32 0008 00F4      		brsh .L7
+  33 000a 8134      		cpi r24,lo8(65)
+  34 000c 01F0      		breq .+2
+  35 000e 00C0      		rjmp .L28
+  36 0010 00C0      		rjmp .L3
+  37               	.L7:
+  38 0012 8334      		cpi r24,lo8(67)
+  39 0014 01F4      		brne .+2
+  40 0016 00C0      		rjmp .L5
+  41 0018 8434      		cpi r24,lo8(68)
+  42 001a 01F0      		breq .+2
+  43 001c 00C0      		rjmp .L28
+  44 001e 00C0      		rjmp .L6
+  45               	.L3:
+  46               	.LM4:
+  47 0020 4934      		cpi r20,lo8(73)
+  48 0022 01F4      		brne .L8
+  49               	.LM5:
+  50 0024 8AB3      		in r24,58-0x20
+  51               	.LVL1:
+  52 0026 7727      		clr r23
+  53               	.LVL2:
+  54 0028 9927      		clr r25
+  55 002a 062E      		mov r0,r22
+  56 002c 00C0      		rjmp 2f
+  57 002e 9595      	1:	asr r25
+  58 0030 8795      		ror r24
+  59 0032 0A94      	2:	dec r0
+  60 0034 02F4      		brpl 1b
+  61 0036 80FF      		sbrs r24,0
+  62 0038 00C0      		rjmp .L28
+  63 003a 2AB3      		in r18,58-0x20
+  64 003c 81E0      		ldi r24,lo8(1)
+  65 003e 90E0      		ldi r25,hi8(1)
+  66 0040 00C0      		rjmp 2f
+  67 0042 880F      	1:	lsl r24
+  68 0044 991F      		rol r25
+  69 0046 6A95      	2:	dec r22
+  70 0048 02F4      		brpl 1b
+  71 004a 281B      		sub r18,r24
+  72 004c 00C0      		rjmp .L29
+  73               	.LVL3:
+  74               	.L8:
+  75               	.LM6:
+  76 004e 4F34      		cpi r20,lo8(79)
+  77 0050 01F0      		breq .+2
+  78 0052 00C0      		rjmp .L28
+  79               	.LM7:
+  80 0054 8AB3      		in r24,58-0x20
+  81               	.LVL4:
+  82 0056 7727      		clr r23
+  83               	.LVL5:
+  84 0058 9927      		clr r25
+  85 005a 062E      		mov r0,r22
+  86 005c 00C0      		rjmp 2f
+  87 005e 9595      	1:	asr r25
+  88 0060 8795      		ror r24
+  89 0062 0A94      	2:	dec r0
+  90 0064 02F4      		brpl 1b
+  91 0066 80FD      		sbrc r24,0
+  92 0068 00C0      		rjmp .L28
+  93 006a 2AB3      		in r18,58-0x20
+  94 006c 81E0      		ldi r24,lo8(1)
+  95 006e 90E0      		ldi r25,hi8(1)
+  96 0070 00C0      		rjmp 2f
+  97 0072 880F      	1:	lsl r24
+  98 0074 991F      		rol r25
+  99 0076 6A95      	2:	dec r22
+ 100 0078 02F4      		brpl 1b
+ 101 007a 280F      		add r18,r24
+ 102               	.L29:
+ 103 007c 2ABB      		out 58-0x20,r18
+ 104 007e 0895      		ret
+ 105               	.LVL6:
+ 106               	.L4:
+ 107               	.LM8:
+ 108 0080 4934      		cpi r20,lo8(73)
+ 109 0082 01F4      		brne .L13
+ 110               	.LM9:
+ 111 0084 87B3      		in r24,55-0x20
+ 112               	.LVL7:
+ 113 0086 7727      		clr r23
+ 114               	.LVL8:
+ 115 0088 9927      		clr r25
+ 116 008a 062E      		mov r0,r22
+ 117 008c 00C0      		rjmp 2f
+ 118 008e 9595      	1:	asr r25
+ 119 0090 8795      		ror r24
+ 120 0092 0A94      	2:	dec r0
+ 121 0094 02F4      		brpl 1b
+ 122 0096 80FF      		sbrs r24,0
+ 123 0098 00C0      		rjmp .L28
+ 124 009a 27B3      		in r18,55-0x20
+ 125 009c 81E0      		ldi r24,lo8(1)
+ 126 009e 90E0      		ldi r25,hi8(1)
+ 127 00a0 00C0      		rjmp 2f
+ 128 00a2 880F      	1:	lsl r24
+ 129 00a4 991F      		rol r25
+ 130 00a6 6A95      	2:	dec r22
+ 131 00a8 02F4      		brpl 1b
+ 132 00aa 281B      		sub r18,r24
+ 133 00ac 00C0      		rjmp .L31
+ 134               	.LVL9:
+ 135               	.L13:
+ 136               	.LM10:
+ 137 00ae 4F34      		cpi r20,lo8(79)
+ 138 00b0 01F0      		breq .+2
+ 139 00b2 00C0      		rjmp .L28
+ 140               	.LM11:
+ 141 00b4 87B3      		in r24,55-0x20
+ 142               	.LVL10:
+ 143 00b6 7727      		clr r23
+ 144               	.LVL11:
+ 145 00b8 9927      		clr r25
+ 146 00ba 062E      		mov r0,r22
+ 147 00bc 00C0      		rjmp 2f
+ 148 00be 9595      	1:	asr r25
+ 149 00c0 8795      		ror r24
+ 150 00c2 0A94      	2:	dec r0
+ 151 00c4 02F4      		brpl 1b
+ 152 00c6 80FD      		sbrc r24,0
+ 153 00c8 00C0      		rjmp .L28
+ 154 00ca 27B3      		in r18,55-0x20
+ 155 00cc 81E0      		ldi r24,lo8(1)
+ 156 00ce 90E0      		ldi r25,hi8(1)
+ 157 00d0 00C0      		rjmp 2f
+ 158 00d2 880F      	1:	lsl r24
+ 159 00d4 991F      		rol r25
+ 160 00d6 6A95      	2:	dec r22
+ 161 00d8 02F4      		brpl 1b
+ 162 00da 280F      		add r18,r24
+ 163               	.L31:
+ 164 00dc 27BB      		out 55-0x20,r18
+ 165 00de 0895      		ret
+ 166               	.LVL12:
+ 167               	.L5:
+ 168               	.LM12:
+ 169 00e0 4934      		cpi r20,lo8(73)
+ 170 00e2 01F4      		brne .L18
+ 171               	.LM13:
+ 172 00e4 84B3      		in r24,52-0x20
+ 173               	.LVL13:
+ 174 00e6 7727      		clr r23
+ 175               	.LVL14:
+ 176 00e8 9927      		clr r25
+ 177 00ea 062E      		mov r0,r22
+ 178 00ec 00C0      		rjmp 2f
+ 179 00ee 9595      	1:	asr r25
+ 180 00f0 8795      		ror r24
+ 181 00f2 0A94      	2:	dec r0
+ 182 00f4 02F4      		brpl 1b
+ 183 00f6 80FF      		sbrs r24,0
+ 184 00f8 00C0      		rjmp .L28
+ 185 00fa 24B3      		in r18,52-0x20
+ 186 00fc 81E0      		ldi r24,lo8(1)
+ 187 00fe 90E0      		ldi r25,hi8(1)
+ 188 0100 00C0      		rjmp 2f
+ 189 0102 880F      	1:	lsl r24
+ 190 0104 991F      		rol r25
+ 191 0106 6A95      	2:	dec r22
+ 192 0108 02F4      		brpl 1b
+ 193 010a 281B      		sub r18,r24
+ 194 010c 00C0      		rjmp .L30
+ 195               	.LVL15:
+ 196               	.L18:
+ 197               	.LM14:
+ 198 010e 4F34      		cpi r20,lo8(79)
+ 199 0110 01F0      		breq .+2
+ 200 0112 00C0      		rjmp .L28
+ 201               	.LM15:
+ 202 0114 84B3      		in r24,52-0x20
+ 203               	.LVL16:
+ 204 0116 7727      		clr r23
+ 205               	.LVL17:
+ 206 0118 9927      		clr r25
+ 207 011a 062E      		mov r0,r22
+ 208 011c 00C0      		rjmp 2f
+ 209 011e 9595      	1:	asr r25
+ 210 0120 8795      		ror r24
+ 211 0122 0A94      	2:	dec r0
+ 212 0124 02F4      		brpl 1b
+ 213 0126 80FD      		sbrc r24,0
+ 214 0128 00C0      		rjmp .L28
+ 215 012a 24B3      		in r18,52-0x20
+ 216 012c 81E0      		ldi r24,lo8(1)
+ 217 012e 90E0      		ldi r25,hi8(1)
+ 218 0130 00C0      		rjmp 2f
+ 219 0132 880F      	1:	lsl r24
+ 220 0134 991F      		rol r25
+ 221 0136 6A95      	2:	dec r22
+ 222 0138 02F4      		brpl 1b
+ 223 013a 280F      		add r18,r24
+ 224               	.L30:
+ 225 013c 24BB      		out 52-0x20,r18
+ 226 013e 0895      		ret
+ 227               	.LVL18:
+ 228               	.L6:
+ 229               	.LM16:
+ 230 0140 4934      		cpi r20,lo8(73)
+ 231 0142 01F4      		brne .L23
+ 232               	.LM17:
+ 233 0144 81B3      		in r24,49-0x20
+ 234               	.LVL19:
+ 235 0146 7727      		clr r23
+ 236               	.LVL20:
+ 237 0148 9927      		clr r25
+ 238 014a 062E      		mov r0,r22
+ 239 014c 00C0      		rjmp 2f
+ 240 014e 9595      	1:	asr r25
+ 241 0150 8795      		ror r24
+ 242 0152 0A94      	2:	dec r0
+ 243 0154 02F4      		brpl 1b
+ 244 0156 80FF      		sbrs r24,0
+ 245 0158 00C0      		rjmp .L28
+ 246 015a 21B3      		in r18,49-0x20
+ 247 015c 81E0      		ldi r24,lo8(1)
+ 248 015e 90E0      		ldi r25,hi8(1)
+ 249 0160 00C0      		rjmp 2f
+ 250 0162 880F      	1:	lsl r24
+ 251 0164 991F      		rol r25
+ 252 0166 6A95      	2:	dec r22
+ 253 0168 02F4      		brpl 1b
+ 254 016a 281B      		sub r18,r24
+ 255 016c 21BB      		out 49-0x20,r18
+ 256 016e 0895      		ret
+ 257               	.LVL21:
+ 258               	.L23:
+ 259               	.LM18:
+ 260 0170 4F34      		cpi r20,lo8(79)
+ 261 0172 01F4      		brne .L28
+ 262               	.LM19:
+ 263 0174 81B3      		in r24,49-0x20
+ 264               	.LVL22:
+ 265 0176 7727      		clr r23
+ 266               	.LVL23:
+ 267 0178 9927      		clr r25
+ 268 017a 062E      		mov r0,r22
+ 269 017c 00C0      		rjmp 2f
+ 270 017e 9595      	1:	asr r25
+ 271 0180 8795      		ror r24
+ 272 0182 0A94      	2:	dec r0
+ 273 0184 02F4      		brpl 1b
+ 274 0186 80FD      		sbrc r24,0
+ 275 0188 00C0      		rjmp .L28
+ 276 018a 21B3      		in r18,49-0x20
+ 277 018c 81E0      		ldi r24,lo8(1)
+ 278 018e 90E0      		ldi r25,hi8(1)
+ 279 0190 00C0      		rjmp 2f
+ 280 0192 880F      	1:	lsl r24
+ 281 0194 991F      		rol r25
+ 282 0196 6A95      	2:	dec r22
+ 283 0198 02F4      		brpl 1b
+ 284 019a 280F      		add r18,r24
+ 285 019c 21BB      		out 49-0x20,r18
+ 286               	.LVL24:
+ 287               	.L28:
+ 288 019e 0895      		ret
+ 289               	/* epilogue: frame size=0 */
+ 290               	/* epilogue: noreturn */
+ 291               	/* epilogue end (size=0) */
+ 292               	/* function SetDir size 215 (215) */
+ 293               	.LFE2:
+ 295               	.global	SetPin
+ 297               	SetPin:
+ 298               	.LFB3:
+ 299               	.LM20:
+ 300               	/* prologue: frame size=0 */
+ 301               	/* prologue end (size=0) */
+ 302               	.LVL25:
+ 303               	.LM21:
+ 304 01a0 8234      		cpi r24,lo8(66)
+ 305 01a2 01F4      		brne .+2
+ 306 01a4 00C0      		rjmp .L35
+ 307               	.LM22:
+ 308 01a6 8334      		cpi r24,lo8(67)
+ 309 01a8 00F4      		brsh .L38
+ 310 01aa 8134      		cpi r24,lo8(65)
+ 311 01ac 01F0      		breq .+2
+ 312 01ae 00C0      		rjmp .L59
+ 313 01b0 00C0      		rjmp .L34
+ 314               	.L38:
+ 315 01b2 8334      		cpi r24,lo8(67)
+ 316 01b4 01F4      		brne .+2
+ 317 01b6 00C0      		rjmp .L36
+ 318 01b8 8434      		cpi r24,lo8(68)
+ 319 01ba 01F0      		breq .+2
+ 320 01bc 00C0      		rjmp .L59
+ 321 01be 00C0      		rjmp .L37
+ 322               	.L34:
+ 323               	.LM23:
+ 324 01c0 4423      		tst r20
+ 325 01c2 01F4      		brne .L39
+ 326               	.LM24:
+ 327 01c4 8BB3      		in r24,59-0x20
+ 328               	.LVL26:
+ 329 01c6 7727      		clr r23
+ 330               	.LVL27:
+ 331 01c8 9927      		clr r25
+ 332 01ca 062E      		mov r0,r22
+ 333 01cc 00C0      		rjmp 2f
+ 334 01ce 9595      	1:	asr r25
+ 335 01d0 8795      		ror r24
+ 336 01d2 0A94      	2:	dec r0
+ 337 01d4 02F4      		brpl 1b
+ 338 01d6 80FF      		sbrs r24,0
+ 339 01d8 00C0      		rjmp .L59
+ 340 01da 2BB3      		in r18,59-0x20
+ 341 01dc 81E0      		ldi r24,lo8(1)
+ 342 01de 90E0      		ldi r25,hi8(1)
+ 343 01e0 00C0      		rjmp 2f
+ 344 01e2 880F      	1:	lsl r24
+ 345 01e4 991F      		rol r25
+ 346 01e6 6A95      	2:	dec r22
+ 347 01e8 02F4      		brpl 1b
+ 348 01ea 281B      		sub r18,r24
+ 349 01ec 00C0      		rjmp .L60
+ 350               	.LVL28:
+ 351               	.L39:
+ 352               	.LM25:
+ 353 01ee 4130      		cpi r20,lo8(1)
+ 354 01f0 01F0      		breq .+2
+ 355 01f2 00C0      		rjmp .L59
+ 356               	.LM26:
+ 357 01f4 8BB3      		in r24,59-0x20
+ 358               	.LVL29:
+ 359 01f6 7727      		clr r23
+ 360               	.LVL30:
+ 361 01f8 9927      		clr r25
+ 362 01fa 062E      		mov r0,r22
+ 363 01fc 00C0      		rjmp 2f
+ 364 01fe 9595      	1:	asr r25
+ 365 0200 8795      		ror r24
+ 366 0202 0A94      	2:	dec r0
+ 367 0204 02F4      		brpl 1b
+ 368 0206 80FD      		sbrc r24,0
+ 369 0208 00C0      		rjmp .L59
+ 370 020a 2BB3      		in r18,59-0x20
+ 371 020c 81E0      		ldi r24,lo8(1)
+ 372 020e 90E0      		ldi r25,hi8(1)
+ 373 0210 00C0      		rjmp 2f
+ 374 0212 880F      	1:	lsl r24
+ 375 0214 991F      		rol r25
+ 376 0216 6A95      	2:	dec r22
+ 377 0218 02F4      		brpl 1b
+ 378 021a 280F      		add r18,r24
+ 379               	.L60:
+ 380 021c 2BBB      		out 59-0x20,r18
+ 381 021e 0895      		ret
+ 382               	.LVL31:
+ 383               	.L35:
+ 384               	.LM27:
+ 385 0220 4130      		cpi r20,lo8(1)
+ 386 0222 01F4      		brne .L44
+ 387               	.LM28:
+ 388 0224 88B3      		in r24,56-0x20
+ 389               	.LVL32:
+ 390 0226 7727      		clr r23
+ 391               	.LVL33:
+ 392 0228 9927      		clr r25
+ 393 022a 062E      		mov r0,r22
+ 394 022c 00C0      		rjmp 2f
+ 395 022e 9595      	1:	asr r25
+ 396 0230 8795      		ror r24
+ 397 0232 0A94      	2:	dec r0
+ 398 0234 02F4      		brpl 1b
+ 399 0236 80FF      		sbrs r24,0
+ 400 0238 00C0      		rjmp .L59
+ 401 023a 28B3      		in r18,56-0x20
+ 402 023c 81E0      		ldi r24,lo8(1)
+ 403 023e 90E0      		ldi r25,hi8(1)
+ 404 0240 00C0      		rjmp 2f
+ 405 0242 880F      	1:	lsl r24
+ 406 0244 991F      		rol r25
+ 407 0246 6A95      	2:	dec r22
+ 408 0248 02F4      		brpl 1b
+ 409 024a 281B      		sub r18,r24
+ 410 024c 00C0      		rjmp .L62
+ 411               	.LVL34:
+ 412               	.L44:
+ 413               	.LM29:
+ 414 024e 4423      		tst r20
+ 415 0250 01F0      		breq .+2
+ 416 0252 00C0      		rjmp .L59
+ 417               	.LM30:
+ 418 0254 88B3      		in r24,56-0x20
+ 419               	.LVL35:
+ 420 0256 7727      		clr r23
+ 421               	.LVL36:
+ 422 0258 9927      		clr r25
+ 423 025a 062E      		mov r0,r22
+ 424 025c 00C0      		rjmp 2f
+ 425 025e 9595      	1:	asr r25
+ 426 0260 8795      		ror r24
+ 427 0262 0A94      	2:	dec r0
+ 428 0264 02F4      		brpl 1b
+ 429 0266 80FD      		sbrc r24,0
+ 430 0268 00C0      		rjmp .L59
+ 431 026a 28B3      		in r18,56-0x20
+ 432 026c 81E0      		ldi r24,lo8(1)
+ 433 026e 90E0      		ldi r25,hi8(1)
+ 434 0270 00C0      		rjmp 2f
+ 435 0272 880F      	1:	lsl r24
+ 436 0274 991F      		rol r25
+ 437 0276 6A95      	2:	dec r22
+ 438 0278 02F4      		brpl 1b
+ 439 027a 280F      		add r18,r24
+ 440               	.L62:
+ 441 027c 28BB      		out 56-0x20,r18
+ 442 027e 0895      		ret
+ 443               	.LVL37:
+ 444               	.L36:
+ 445               	.LM31:
+ 446 0280 4130      		cpi r20,lo8(1)
+ 447 0282 01F4      		brne .L49
+ 448               	.LM32:
+ 449 0284 85B3      		in r24,53-0x20
+ 450               	.LVL38:
+ 451 0286 7727      		clr r23
+ 452               	.LVL39:
+ 453 0288 9927      		clr r25
+ 454 028a 062E      		mov r0,r22
+ 455 028c 00C0      		rjmp 2f
+ 456 028e 9595      	1:	asr r25
+ 457 0290 8795      		ror r24
+ 458 0292 0A94      	2:	dec r0
+ 459 0294 02F4      		brpl 1b
+ 460 0296 80FF      		sbrs r24,0
+ 461 0298 00C0      		rjmp .L59
+ 462 029a 25B3      		in r18,53-0x20
+ 463 029c 81E0      		ldi r24,lo8(1)
+ 464 029e 90E0      		ldi r25,hi8(1)
+ 465 02a0 00C0      		rjmp 2f
+ 466 02a2 880F      	1:	lsl r24
+ 467 02a4 991F      		rol r25
+ 468 02a6 6A95      	2:	dec r22
+ 469 02a8 02F4      		brpl 1b
+ 470 02aa 281B      		sub r18,r24
+ 471 02ac 00C0      		rjmp .L61
+ 472               	.LVL40:
+ 473               	.L49:
+ 474               	.LM33:
+ 475 02ae 4423      		tst r20
+ 476 02b0 01F0      		breq .+2
+ 477 02b2 00C0      		rjmp .L59
+ 478               	.LM34:
+ 479 02b4 85B3      		in r24,53-0x20
+ 480               	.LVL41:
+ 481 02b6 7727      		clr r23
+ 482               	.LVL42:
+ 483 02b8 9927      		clr r25
+ 484 02ba 062E      		mov r0,r22
+ 485 02bc 00C0      		rjmp 2f
+ 486 02be 9595      	1:	asr r25
+ 487 02c0 8795      		ror r24
+ 488 02c2 0A94      	2:	dec r0
+ 489 02c4 02F4      		brpl 1b
+ 490 02c6 80FD      		sbrc r24,0
+ 491 02c8 00C0      		rjmp .L59
+ 492 02ca 25B3      		in r18,53-0x20
+ 493 02cc 81E0      		ldi r24,lo8(1)
+ 494 02ce 90E0      		ldi r25,hi8(1)
+ 495 02d0 00C0      		rjmp 2f
+ 496 02d2 880F      	1:	lsl r24
+ 497 02d4 991F      		rol r25
+ 498 02d6 6A95      	2:	dec r22
+ 499 02d8 02F4      		brpl 1b
+ 500 02da 280F      		add r18,r24
+ 501               	.L61:
+ 502 02dc 25BB      		out 53-0x20,r18
+ 503 02de 0895      		ret
+ 504               	.LVL43:
+ 505               	.L37:
+ 506               	.LM35:
+ 507 02e0 4130      		cpi r20,lo8(1)
+ 508 02e2 01F4      		brne .L54
+ 509               	.LM36:
+ 510 02e4 82B3      		in r24,50-0x20
+ 511               	.LVL44:
+ 512 02e6 7727      		clr r23
+ 513               	.LVL45:
+ 514 02e8 9927      		clr r25
+ 515 02ea 062E      		mov r0,r22
+ 516 02ec 00C0      		rjmp 2f
+ 517 02ee 9595      	1:	asr r25
+ 518 02f0 8795      		ror r24
+ 519 02f2 0A94      	2:	dec r0
+ 520 02f4 02F4      		brpl 1b
+ 521 02f6 80FF      		sbrs r24,0
+ 522 02f8 00C0      		rjmp .L59
+ 523 02fa 22B3      		in r18,50-0x20
+ 524 02fc 81E0      		ldi r24,lo8(1)
+ 525 02fe 90E0      		ldi r25,hi8(1)
+ 526 0300 00C0      		rjmp 2f
+ 527 0302 880F      	1:	lsl r24
+ 528 0304 991F      		rol r25
+ 529 0306 6A95      	2:	dec r22
+ 530 0308 02F4      		brpl 1b
+ 531 030a 281B      		sub r18,r24
+ 532 030c 22BB      		out 50-0x20,r18
+ 533 030e 0895      		ret
+ 534               	.LVL46:
+ 535               	.L54:
+ 536               	.LM37:
+ 537 0310 4423      		tst r20
+ 538 0312 01F4      		brne .L59
+ 539               	.LM38:
+ 540 0314 82B3      		in r24,50-0x20
+ 541               	.LVL47:
+ 542 0316 7727      		clr r23
+ 543               	.LVL48:
+ 544 0318 9927      		clr r25
+ 545 031a 062E      		mov r0,r22
+ 546 031c 00C0      		rjmp 2f
+ 547 031e 9595      	1:	asr r25
+ 548 0320 8795      		ror r24
+ 549 0322 0A94      	2:	dec r0
+ 550 0324 02F4      		brpl 1b
+ 551 0326 80FD      		sbrc r24,0
+ 552 0328 00C0      		rjmp .L59
+ 553 032a 22B3      		in r18,50-0x20
+ 554 032c 81E0      		ldi r24,lo8(1)
+ 555 032e 90E0      		ldi r25,hi8(1)
+ 556 0330 00C0      		rjmp 2f
+ 557 0332 880F      	1:	lsl r24
+ 558 0334 991F      		rol r25
+ 559 0336 6A95      	2:	dec r22
+ 560 0338 02F4      		brpl 1b
+ 561 033a 280F      		add r18,r24
+ 562 033c 22BB      		out 50-0x20,r18
+ 563               	.LVL49:
+ 564               	.L59:
+ 565 033e 0895      		ret
+ 566               	/* epilogue: frame size=0 */
+ 567               	/* epilogue: noreturn */
+ 568               	/* epilogue end (size=0) */
+ 569               	/* function SetPin size 215 (215) */
+ 570               	.LFE3:
+ 572               	.global	GetPin
+ 574               	GetPin:
+ 575               	.LFB4:
+ 576               	.LM39:
+ 577               	/* prologue: frame size=0 */
+ 578               	/* prologue end (size=0) */
+ 579               	.LVL50:
+ 580               	.LM40:
+ 581 0340 8234      		cpi r24,lo8(66)
+ 582 0342 01F0      		breq .L66
+ 583               	.LM41:
+ 584 0344 8334      		cpi r24,lo8(67)
+ 585 0346 00F4      		brsh .L69
+ 586 0348 8134      		cpi r24,lo8(65)
+ 587 034a 01F4      		brne .L64
+ 588 034c 00C0      		rjmp .L65
+ 589               	.L69:
+ 590 034e 8334      		cpi r24,lo8(67)
+ 591 0350 01F0      		breq .L67
+ 592 0352 8434      		cpi r24,lo8(68)
+ 593 0354 01F4      		brne .L64
+ 594 0356 00C0      		rjmp .L68
+ 595               	.L65:
+ 596               	.LM42:
+ 597 0358 89B3      		in r24,57-0x20
+ 598               	.LVL51:
+ 599 035a 00C0      		rjmp .L72
+ 600               	.LVL52:
+ 601               	.L66:
+ 602               	.LM43:
+ 603 035c 86B3      		in r24,54-0x20
+ 604               	.LVL53:
+ 605 035e 00C0      		rjmp .L72
+ 606               	.LVL54:
+ 607               	.L67:
+ 608               	.LM44:
+ 609 0360 83B3      		in r24,51-0x20
+ 610               	.LVL55:
+ 611 0362 00C0      		rjmp .L72
+ 612               	.LVL56:
+ 613               	.L68:
+ 614               	.LM45:
+ 615 0364 80B3      		in r24,48-0x20
+ 616               	.LVL57:
+ 617               	.L72:
+ 618 0366 9927      		clr r25
+ 619 0368 00C0      		rjmp 2f
+ 620 036a 9595      	1:	asr r25
+ 621 036c 8795      		ror r24
+ 622 036e 6A95      	2:	dec r22
+ 623 0370 02F4      		brpl 1b
+ 624 0372 8170      		andi r24,lo8(1)
+ 625 0374 9070      		andi r25,hi8(1)
+ 626 0376 0895      		ret
+ 627               	.LVL58:
+ 628               	.L64:
+ 629               	.LVL59:
+ 630               	.LM46:
+ 631 0378 0895      		ret
+ 632               	/* epilogue: frame size=0 */
+ 633               	/* epilogue: noreturn */
+ 634               	/* epilogue end (size=0) */
+ 635               	/* function GetPin size 30 (30) */
+ 636               	.LFE4:
+ 674               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 M32io2.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4Waaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4Waaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4Waaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4Waaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4Waaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4Waaaa.s:20     .text:00000000 SetDir
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4Waaaa.s:297    .text:000001a0 SetPin
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4Waaaa.s:574    .text:00000340 GetPin
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

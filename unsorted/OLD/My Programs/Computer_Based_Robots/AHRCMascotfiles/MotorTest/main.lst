@@ -1,0 +1,265 @@
+   1               		.file	"main.c"
+   2               		.arch atmega48
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 8FEF      		ldi r24,lo8(-1)
+  27 0002 84B9      		out 36-0x20,r24
+  28               	.LM3:
+  29 0004 00D0      		rcall initPWM
+  30               	.LVL0:
+  31               	.L2:
+  32               	.LM4:
+  33 0006 8FEF      		ldi r24,lo8(255)
+  34 0008 90E0      		ldi r25,hi8(255)
+  35               	.LVL1:
+  36 000a 00D0      		rcall setCHA
+  37               	.LVL2:
+  38               	.LM5:
+  39 000c 8FEF      		ldi r24,lo8(255)
+  40 000e 90E0      		ldi r25,hi8(255)
+  41 0010 00D0      		rcall setCHB
+  42               	.LM6:
+  43 0012 289B      		sbis 37-0x20,0
+  44 0014 00C0      		rjmp .L3
+  45 0016 85B1      		in r24,37-0x20
+  46 0018 8150      		subi r24,lo8(-(-1))
+  47 001a 00C0      		rjmp .L38
+  48               	.L3:
+  49               	.LM7:
+  50 001c 85B1      		in r24,37-0x20
+  51 001e 8F5F      		subi r24,lo8(-(1))
+  52               	.L38:
+  53 0020 85B9      		out 37-0x20,r24
+  54 0022 20E0      		ldi r18,lo8(0)
+  55 0024 30E0      		ldi r19,hi8(0)
+  56               	.LVL3:
+  57               	.L23:
+  58               	.LBB12:
+  59               	.LBB13:
+  60               	.LM8:
+  61 0026 80E3      		ldi r24,lo8(30000)
+  62 0028 95E7      		ldi r25,hi8(30000)
+  63               	.LVL4:
+  64               	/* #APP */
+  65 002a 0197      		1: sbiw r24,1
+  66 002c 01F4      		brne 1b
+  67               	/* #NOAPP */
+  68               	.LBE13:
+  69               	.LBE12:
+  70               	.LM9:
+  71 002e 2F5F      		subi r18,lo8(-(1))
+  72 0030 3F4F      		sbci r19,hi8(-(1))
+  73 0032 283C      		cpi r18,200
+  74 0034 3105      		cpc r19,__zero_reg__
+  75 0036 01F4      		brne .L23
+  76               	.LM10:
+  77 0038 80E0      		ldi r24,lo8(0)
+  78 003a 90E0      		ldi r25,hi8(0)
+  79               	.LVL5:
+  80 003c 00D0      		rcall setCHA
+  81               	.LVL6:
+  82               	.LM11:
+  83 003e 8FEF      		ldi r24,lo8(255)
+  84 0040 90E0      		ldi r25,hi8(255)
+  85 0042 00D0      		rcall setCHB
+  86               	.LM12:
+  87 0044 289B      		sbis 37-0x20,0
+  88 0046 00C0      		rjmp .L7
+  89 0048 85B1      		in r24,37-0x20
+  90 004a 8150      		subi r24,lo8(-(-1))
+  91 004c 00C0      		rjmp .L39
+  92               	.L7:
+  93               	.LM13:
+  94 004e 85B1      		in r24,37-0x20
+  95 0050 8F5F      		subi r24,lo8(-(1))
+  96               	.L39:
+  97 0052 85B9      		out 37-0x20,r24
+  98 0054 20E0      		ldi r18,lo8(0)
+  99 0056 30E0      		ldi r19,hi8(0)
+ 100               	.LVL7:
+ 101               	.L24:
+ 102               	.LBB14:
+ 103               	.LBB15:
+ 104               	.LM14:
+ 105 0058 80E3      		ldi r24,lo8(30000)
+ 106 005a 95E7      		ldi r25,hi8(30000)
+ 107               	.LVL8:
+ 108               	/* #APP */
+ 109 005c 0197      		1: sbiw r24,1
+ 110 005e 01F4      		brne 1b
+ 111               	/* #NOAPP */
+ 112               	.LBE15:
+ 113               	.LBE14:
+ 114               	.LM15:
+ 115 0060 2F5F      		subi r18,lo8(-(1))
+ 116 0062 3F4F      		sbci r19,hi8(-(1))
+ 117 0064 283C      		cpi r18,200
+ 118 0066 3105      		cpc r19,__zero_reg__
+ 119 0068 01F4      		brne .L24
+ 120               	.LM16:
+ 121 006a 80E0      		ldi r24,lo8(0)
+ 122 006c 90E0      		ldi r25,hi8(0)
+ 123               	.LVL9:
+ 124 006e 00D0      		rcall setCHB
+ 125               	.LVL10:
+ 126               	.LM17:
+ 127 0070 8FEF      		ldi r24,lo8(255)
+ 128 0072 90E0      		ldi r25,hi8(255)
+ 129 0074 00D0      		rcall setCHA
+ 130               	.LM18:
+ 131 0076 289B      		sbis 37-0x20,0
+ 132 0078 00C0      		rjmp .L11
+ 133 007a 85B1      		in r24,37-0x20
+ 134 007c 8150      		subi r24,lo8(-(-1))
+ 135 007e 00C0      		rjmp .L40
+ 136               	.L11:
+ 137               	.LM19:
+ 138 0080 85B1      		in r24,37-0x20
+ 139 0082 8F5F      		subi r24,lo8(-(1))
+ 140               	.L40:
+ 141 0084 85B9      		out 37-0x20,r24
+ 142 0086 20E0      		ldi r18,lo8(0)
+ 143 0088 30E0      		ldi r19,hi8(0)
+ 144               	.LVL11:
+ 145               	.L25:
+ 146               	.LBB16:
+ 147               	.LBB17:
+ 148               	.LM20:
+ 149 008a 80E3      		ldi r24,lo8(30000)
+ 150 008c 95E7      		ldi r25,hi8(30000)
+ 151               	.LVL12:
+ 152               	/* #APP */
+ 153 008e 0197      		1: sbiw r24,1
+ 154 0090 01F4      		brne 1b
+ 155               	/* #NOAPP */
+ 156               	.LBE17:
+ 157               	.LBE16:
+ 158               	.LM21:
+ 159 0092 2F5F      		subi r18,lo8(-(1))
+ 160 0094 3F4F      		sbci r19,hi8(-(1))
+ 161 0096 283C      		cpi r18,200
+ 162 0098 3105      		cpc r19,__zero_reg__
+ 163 009a 01F4      		brne .L25
+ 164               	.LM22:
+ 165 009c 80E0      		ldi r24,lo8(0)
+ 166 009e 90E0      		ldi r25,hi8(0)
+ 167               	.LVL13:
+ 168 00a0 00D0      		rcall setCHB
+ 169               	.LVL14:
+ 170               	.LM23:
+ 171 00a2 80E0      		ldi r24,lo8(0)
+ 172 00a4 90E0      		ldi r25,hi8(0)
+ 173 00a6 00D0      		rcall setCHA
+ 174               	.LM24:
+ 175 00a8 289B      		sbis 37-0x20,0
+ 176 00aa 00C0      		rjmp .L15
+ 177 00ac 85B1      		in r24,37-0x20
+ 178 00ae 8150      		subi r24,lo8(-(-1))
+ 179 00b0 00C0      		rjmp .L41
+ 180               	.L15:
+ 181               	.LM25:
+ 182 00b2 85B1      		in r24,37-0x20
+ 183 00b4 8F5F      		subi r24,lo8(-(1))
+ 184               	.L41:
+ 185 00b6 85B9      		out 37-0x20,r24
+ 186 00b8 20E0      		ldi r18,lo8(0)
+ 187 00ba 30E0      		ldi r19,hi8(0)
+ 188               	.LVL15:
+ 189               	.L26:
+ 190               	.LBB18:
+ 191               	.LBB19:
+ 192               	.LM26:
+ 193 00bc 80E3      		ldi r24,lo8(30000)
+ 194 00be 95E7      		ldi r25,hi8(30000)
+ 195               	.LVL16:
+ 196               	/* #APP */
+ 197 00c0 0197      		1: sbiw r24,1
+ 198 00c2 01F4      		brne 1b
+ 199               	/* #NOAPP */
+ 200               	.LBE19:
+ 201               	.LBE18:
+ 202               	.LM27:
+ 203 00c4 2F5F      		subi r18,lo8(-(1))
+ 204 00c6 3F4F      		sbci r19,hi8(-(1))
+ 205 00c8 283C      		cpi r18,200
+ 206 00ca 3105      		cpc r19,__zero_reg__
+ 207 00cc 01F4      		brne .L26
+ 208               	.LM28:
+ 209 00ce 80E8      		ldi r24,lo8(128)
+ 210 00d0 90E0      		ldi r25,hi8(128)
+ 211               	.LVL17:
+ 212 00d2 00D0      		rcall setCHB
+ 213               	.LVL18:
+ 214               	.LM29:
+ 215 00d4 80E8      		ldi r24,lo8(128)
+ 216 00d6 90E0      		ldi r25,hi8(128)
+ 217 00d8 00D0      		rcall setCHA
+ 218               	.LM30:
+ 219 00da 289B      		sbis 37-0x20,0
+ 220 00dc 00C0      		rjmp .L19
+ 221 00de 85B1      		in r24,37-0x20
+ 222 00e0 8150      		subi r24,lo8(-(-1))
+ 223 00e2 00C0      		rjmp .L42
+ 224               	.L19:
+ 225               	.LM31:
+ 226 00e4 85B1      		in r24,37-0x20
+ 227 00e6 8F5F      		subi r24,lo8(-(1))
+ 228               	.L42:
+ 229 00e8 85B9      		out 37-0x20,r24
+ 230 00ea 20E0      		ldi r18,lo8(0)
+ 231 00ec 30E0      		ldi r19,hi8(0)
+ 232               	.LVL19:
+ 233               	.L27:
+ 234               	.LBB20:
+ 235               	.LBB21:
+ 236               	.LM32:
+ 237 00ee 80E3      		ldi r24,lo8(30000)
+ 238 00f0 95E7      		ldi r25,hi8(30000)
+ 239               	.LVL20:
+ 240               	/* #APP */
+ 241 00f2 0197      		1: sbiw r24,1
+ 242 00f4 01F4      		brne 1b
+ 243               	/* #NOAPP */
+ 244               	.LBE21:
+ 245               	.LBE20:
+ 246               	.LM33:
+ 247 00f6 2F5F      		subi r18,lo8(-(1))
+ 248 00f8 3F4F      		sbci r19,hi8(-(1))
+ 249 00fa 283C      		cpi r18,200
+ 250 00fc 3105      		cpc r19,__zero_reg__
+ 251 00fe 01F4      		brne .L27
+ 252 0100 00C0      		rjmp .L2
+ 253               	/* epilogue: frame size=0 */
+ 254               	/* epilogue: noreturn */
+ 255               	/* epilogue end (size=0) */
+ 256               	/* function main size 139 (139) */
+ 257               	.LFE4:
+ 281               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccIXaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccIXaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccIXaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccIXaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccIXaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccIXaaaa.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+initPWM
+setCHA
+setCHB

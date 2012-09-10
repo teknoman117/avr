@@ -1,0 +1,1319 @@
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 1
+
+
+   1               		.file	"Executive.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.section	.debug_abbrev,"",@progbits
+  11               	.Ldebug_abbrev0:
+  12               		.section	.debug_info,"",@progbits
+  13               	.Ldebug_info0:
+  14               		.section	.debug_line,"",@progbits
+  15               	.Ldebug_line0:
+  16               		.text
+  17               	.Ltext0:
+  18               	.global	Exec_writeEventFifo
+  19               		.type	Exec_writeEventFifo, @function
+  20               	Exec_writeEventFifo:
+  21               	.LFB6:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LVL0:
+  26               	.LM2:
+  27               	/* #APP */
+  28 0000 F894      		cli
+  29               	.LM3:
+  30               	/* #NOAPP */
+  31 0002 9091 0000 		lds r25,Exec_eventFifoHead
+  32 0006 E0E0      		ldi r30,lo8(Exec_eventFifo)
+  33 0008 F0E0      		ldi r31,hi8(Exec_eventFifo)
+  34 000a E90F      		add r30,r25
+  35 000c F11D      		adc r31,__zero_reg__
+  36 000e 8083      		st Z,r24
+  37               	.LM4:
+  38 0010 9F5F      		subi r25,lo8(-(1))
+  39 0012 9770      		andi r25,lo8(7)
+  40 0014 9093 0000 		sts Exec_eventFifoHead,r25
+  41               	.LM5:
+  42               	/* #APP */
+  43 0018 7894      		sei
+  44               	/* #NOAPP */
+  45               	/* epilogue: frame size=0 */
+  46 001a 0895      		ret
+  47               	/* epilogue end (size=1) */
+  48               	/* function Exec_writeEventFifo size 16 (15) */
+  49               	.LFE6:
+  50               		.size	Exec_writeEventFifo, .-Exec_writeEventFifo
+  51               	.global	Exec_run
+  52               		.type	Exec_run, @function
+  53               	Exec_run:
+  54               	.LFB4:
+  55               	.LM6:
+  56               	/* prologue: frame size=0 */
+  57               	/* prologue end (size=0) */
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 2
+
+
+  58               	.LVL1:
+  59               	.L30:
+  60               	.LM7:
+  61 001c 8091 0000 		lds r24,fastEventBitmask
+  62 0020 8823      		tst r24
+  63 0022 01F0      		breq .L6
+  64               	.LM8:
+  65 0024 80FF      		sbrs r24,0
+  66 0026 00C0      		rjmp .L8
+  67               	.LM9:
+  68               	/* #APP */
+  69 0028 F894      		cli
+  70               	.LM10:
+  71               	/* #NOAPP */
+  72 002a 8E7F      		andi r24,lo8(-2)
+  73 002c 8093 0000 		sts fastEventBitmask,r24
+  74               	.LM11:
+  75               	/* #APP */
+  76 0030 7894      		sei
+  77               	.LM12:
+  78               	/* #NOAPP */
+  79 0032 00D0      		rcall FrameMgr_processLine
+  80               	.LVL2:
+  81               	.LM13:
+  82 0034 00D0      		rcall UIMgr_transmitPendingData
+  83               	.LVL3:
+  84               	.L8:
+  85               	.LM14:
+  86 0036 8091 0000 		lds r24,fastEventBitmask
+  87 003a 81FF      		sbrs r24,1
+  88 003c 00C0      		rjmp .L6
+  89               	.LM15:
+  90               	/* #APP */
+  91 003e F894      		cli
+  92               	.LM16:
+  93               	/* #NOAPP */
+  94 0040 8D7F      		andi r24,lo8(-3)
+  95 0042 8093 0000 		sts fastEventBitmask,r24
+  96               	.LM17:
+  97               	/* #APP */
+  98 0046 7894      		sei
+  99               	.LM18:
+ 100               	/* #NOAPP */
+ 101 0048 00D0      		rcall FrameMgr_acquireLine
+ 102               	.LVL4:
+ 103               	.L6:
+ 104               	.LM19:
+ 105 004a 2091 0000 		lds r18,Exec_eventFifoTail
+ 106 004e 8091 0000 		lds r24,Exec_eventFifoHead
+ 107 0052 8217      		cp r24,r18
+ 108 0054 01F0      		breq .L30
+ 109               	.LBB4:
+ 110               	.LBB5:
+ 111               	.LM20:
+ 112               	/* #APP */
+ 113 0056 F894      		cli
+ 114               	.LM21:
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 3
+
+
+ 115               	/* #NOAPP */
+ 116 0058 E22F      		mov r30,r18
+ 117 005a FF27      		clr r31
+ 118 005c E050      		subi r30,lo8(-(Exec_eventFifo))
+ 119 005e F040      		sbci r31,hi8(-(Exec_eventFifo))
+ 120 0060 9081      		ld r25,Z
+ 121               	.LM22:
+ 122 0062 822F      		mov r24,r18
+ 123 0064 8F5F      		subi r24,lo8(-(1))
+ 124 0066 8770      		andi r24,lo8(7)
+ 125 0068 8093 0000 		sts Exec_eventFifoTail,r24
+ 126               	.LM23:
+ 127               	/* #APP */
+ 128 006c 7894      		sei
+ 129               	/* #NOAPP */
+ 130               	.LBE5:
+ 131               	.LBE4:
+ 132               	.LM24:
+ 133 006e 892F      		mov r24,r25
+ 134 0070 9927      		clr r25
+ 135 0072 8031      		cpi r24,lo8(16)
+ 136 0074 01F0      		breq .L16
+ 137               	.LVL5:
+ 138 0076 8131      		cpi r24,lo8(17)
+ 139 0078 00F4      		brsh .L21
+ 140 007a 8230      		cpi r24,lo8(2)
+ 141 007c 01F0      		breq .L13
+ 142 007e 8330      		cpi r24,lo8(3)
+ 143 0080 00F4      		brsh .L22
+ 144 0082 8130      		cpi r24,lo8(1)
+ 145 0084 01F4      		brne .L30
+ 146 0086 00C0      		rjmp .L12
+ 147               	.L22:
+ 148 0088 8430      		cpi r24,lo8(4)
+ 149 008a 01F0      		breq .L14
+ 150 008c 8830      		cpi r24,lo8(8)
+ 151 008e 01F0      		breq .+2
+ 152 0090 00C0      		rjmp .L30
+ 153 0092 00C0      		rjmp .L15
+ 154               	.L21:
+ 155 0094 8038      		cpi r24,lo8(-128)
+ 156 0096 01F0      		breq .L18
+ 157 0098 8138      		cpi r24,lo8(-127)
+ 158 009a 00F4      		brsh .L23
+ 159 009c 8032      		cpi r24,lo8(32)
+ 160 009e 01F0      		breq .+2
+ 161 00a0 00C0      		rjmp .L30
+ 162 00a2 00C0      		rjmp .L17
+ 163               	.L23:
+ 164 00a4 8138      		cpi r24,lo8(-127)
+ 165 00a6 01F0      		breq .L19
+ 166 00a8 8039      		cpi r24,lo8(-112)
+ 167 00aa 01F0      		breq .+2
+ 168 00ac 00C0      		rjmp .L30
+ 169 00ae 00C0      		rjmp .L20
+ 170               	.L13:
+ 171               	.LM25:
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 4
+
+
+ 172 00b0 82E0      		ldi r24,lo8(2)
+ 173               	.LVL6:
+ 174 00b2 00D0      		rcall FrameMgr_dispatchEvent
+ 175               	.LVL7:
+ 176 00b4 00C0      		rjmp .L30
+ 177               	.LVL8:
+ 178               	.L18:
+ 179               	.LM26:
+ 180 00b6 80E8      		ldi r24,lo8(-128)
+ 181               	.LVL9:
+ 182 00b8 00D0      		rcall FrameMgr_dispatchEvent
+ 183               	.LVL10:
+ 184 00ba 00C0      		rjmp .L30
+ 185               	.LVL11:
+ 186               	.L19:
+ 187               	.LM27:
+ 188 00bc 81E8      		ldi r24,lo8(-127)
+ 189               	.LVL12:
+ 190 00be 00D0      		rcall FrameMgr_dispatchEvent
+ 191               	.LVL13:
+ 192 00c0 00C0      		rjmp .L30
+ 193               	.LVL14:
+ 194               	.L16:
+ 195               	.LM28:
+ 196 00c2 80E1      		ldi r24,lo8(16)
+ 197               	.LVL15:
+ 198 00c4 00D0      		rcall FrameMgr_dispatchEvent
+ 199               	.LVL16:
+ 200               	.LM29:
+ 201 00c6 80E1      		ldi r24,lo8(16)
+ 202 00c8 00D0      		rcall UIMgr_dispatchEvent
+ 203 00ca 00C0      		rjmp .L30
+ 204               	.LVL17:
+ 205               	.L17:
+ 206               	.LM30:
+ 207 00cc 80E2      		ldi r24,lo8(32)
+ 208               	.LVL18:
+ 209 00ce 00D0      		rcall FrameMgr_dispatchEvent
+ 210               	.LVL19:
+ 211 00d0 00C0      		rjmp .L30
+ 212               	.LVL20:
+ 213               	.L15:
+ 214               	.LM31:
+ 215 00d2 88E0      		ldi r24,lo8(8)
+ 216               	.LVL21:
+ 217 00d4 00D0      		rcall FrameMgr_dispatchEvent
+ 218               	.LVL22:
+ 219 00d6 00C0      		rjmp .L30
+ 220               	.LVL23:
+ 221               	.L14:
+ 222               	.LM32:
+ 223 00d8 84E0      		ldi r24,lo8(4)
+ 224               	.LVL24:
+ 225 00da 00D0      		rcall FrameMgr_dispatchEvent
+ 226               	.LVL25:
+ 227 00dc 00C0      		rjmp .L30
+ 228               	.LVL26:
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 5
+
+
+ 229               	.L12:
+ 230               	.LM33:
+ 231 00de 81E0      		ldi r24,lo8(1)
+ 232               	.LVL27:
+ 233 00e0 00D0      		rcall UIMgr_dispatchEvent
+ 234               	.LVL28:
+ 235               	.LM34:
+ 236 00e2 81E0      		ldi r24,lo8(1)
+ 237 00e4 00D0      		rcall FrameMgr_dispatchEvent
+ 238 00e6 00C0      		rjmp .L30
+ 239               	.LVL29:
+ 240               	.L20:
+ 241               	.LM35:
+ 242 00e8 80E9      		ldi r24,lo8(-112)
+ 243               	.LVL30:
+ 244 00ea 00D0      		rcall UIMgr_dispatchEvent
+ 245               	.LVL31:
+ 246 00ec 00C0      		rjmp .L30
+ 247               	/* epilogue: frame size=0 */
+ 248               	/* epilogue: noreturn */
+ 249               	/* epilogue end (size=0) */
+ 250               	/* function Exec_run size 111 (111) */
+ 251               	.LFE4:
+ 252               		.size	Exec_run, .-Exec_run
+ 253               	.global	Exec_eventFifoHead
+ 254               	.global	Exec_eventFifoHead
+ 255               		.section .bss
+ 256               		.type	Exec_eventFifoHead, @object
+ 257               		.size	Exec_eventFifoHead, 1
+ 258               	Exec_eventFifoHead:
+ 259 0000 00        		.skip 1,0
+ 260               	.global	Exec_eventFifoTail
+ 261               	.global	Exec_eventFifoTail
+ 262               		.type	Exec_eventFifoTail, @object
+ 263               		.size	Exec_eventFifoTail, 1
+ 264               	Exec_eventFifoTail:
+ 265 0001 00        		.skip 1,0
+ 266               	.global	fastEventBitmask
+ 267               	.global	fastEventBitmask
+ 268               		.type	fastEventBitmask, @object
+ 269               		.size	fastEventBitmask, 1
+ 270               	fastEventBitmask:
+ 271 0002 00        		.skip 1,0
+ 272               		.comm Exec_eventFifo,8,1
+ 273               		.section	.debug_frame,"",@progbits
+ 274               	.Lframe0:
+ 275 0000 0C00 0000 		.long	.LECIE0-.LSCIE0
+ 276               	.LSCIE0:
+ 277 0004 FFFF FFFF 		.long	0xffffffff
+ 278 0008 01        		.byte	0x1
+ 279 0009 00        		.string	""
+ 280 000a 01        		.uleb128 0x1
+ 281 000b 7F        		.sleb128 -1
+ 282 000c 24        		.byte	0x24
+ 283 000d 0C        		.byte	0xc
+ 284 000e 20        		.uleb128 0x20
+ 285 000f 00        		.uleb128 0x0
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 6
+
+
+ 286               	.LECIE0:
+ 287               	.LSFDE0:
+ 288 0010 0C00 0000 		.long	.LEFDE0-.LASFDE0
+ 289               	.LASFDE0:
+ 290 0014 0000 0000 		.long	.Lframe0
+ 291 0018 0000 0000 		.long	.LFB6
+ 292 001c 1C00 0000 		.long	.LFE6-.LFB6
+ 293               	.LEFDE0:
+ 294               	.LSFDE2:
+ 295 0020 0C00 0000 		.long	.LEFDE2-.LASFDE2
+ 296               	.LASFDE2:
+ 297 0024 0000 0000 		.long	.Lframe0
+ 298 0028 0000 0000 		.long	.LFB4
+ 299 002c D200 0000 		.long	.LFE4-.LFB4
+ 300               	.LEFDE2:
+ 301               		.text
+ 302               	.Letext0:
+ 303               		.section	.debug_line
+ 304 0000 EB01 0000 		.long	.LELT0-.LSLT0
+ 305               	.LSLT0:
+ 306 0004 0200      		.word	0x2
+ 307 0006 BB00 0000 		.long	.LELTP0-.LASLTP0
+ 308               	.LASLTP0:
+ 309 000a 01        		.byte	0x1
+ 310 000b 01        		.byte	0x1
+ 311 000c F6        		.byte	0xf6
+ 312 000d F5        		.byte	0xf5
+ 313 000e 0A        		.byte	0xa
+ 314 000f 00        		.byte	0x0
+ 315 0010 01        		.byte	0x1
+ 316 0011 01        		.byte	0x1
+ 317 0012 01        		.byte	0x1
+ 318 0013 01        		.byte	0x1
+ 319 0014 00        		.byte	0x0
+ 320 0015 00        		.byte	0x0
+ 321 0016 00        		.byte	0x0
+ 322 0017 01        		.byte	0x1
+ 323 0018 633A 2F77 		.ascii	"c:/winavr/bin/../avr/include"
+ 323      696E 6176 
+ 323      722F 6269 
+ 323      6E2F 2E2E 
+ 323      2F61 7672 
+ 324 0034 00        		.byte	0
+ 325 0035 633A 5C77 		.ascii	"c:\\winavr\\bin\\../lib/gcc/avr/4.1.1/include"
+ 325      696E 6176 
+ 325      725C 6269 
+ 325      6E5C 2E2E 
+ 325      2F6C 6962 
+ 326 005f 00        		.byte	0
+ 327 0060 00        		.byte	0x0
+ 328 0061 7374 6464 		.string	"stddef.h"
+ 328      6566 2E68 
+ 328      00
+ 329 006a 02        		.uleb128 0x2
+ 330 006b 00        		.uleb128 0x0
+ 331 006c 00        		.uleb128 0x0
+ 332 006d 7374 646C 		.string	"stdlib.h"
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 7
+
+
+ 332      6962 2E68 
+ 332      00
+ 333 0076 01        		.uleb128 0x1
+ 334 0077 00        		.uleb128 0x0
+ 335 0078 00        		.uleb128 0x0
+ 336 0079 7374 6469 		.string	"stdint.h"
+ 336      6E74 2E68 
+ 336      00
+ 337 0082 01        		.uleb128 0x1
+ 338 0083 00        		.uleb128 0x0
+ 339 0084 00        		.uleb128 0x0
+ 340 0085 696E 7474 		.string	"inttypes.h"
+ 340      7970 6573 
+ 340      2E68 00
+ 341 0090 01        		.uleb128 0x1
+ 342 0091 00        		.uleb128 0x0
+ 343 0092 00        		.uleb128 0x0
+ 344 0093 436F 6D6D 		.string	"CommonDefs.h"
+ 344      6F6E 4465 
+ 344      6673 2E68 
+ 344      00
+ 345 00a0 00        		.uleb128 0x0
+ 346 00a1 00        		.uleb128 0x0
+ 347 00a2 00        		.uleb128 0x0
+ 348 00a3 4932 4349 		.string	"I2CInterface.h"
+ 348      6E74 6572 
+ 348      6661 6365 
+ 348      2E68 00
+ 349 00b2 00        		.uleb128 0x0
+ 350 00b3 00        		.uleb128 0x0
+ 351 00b4 00        		.uleb128 0x0
+ 352 00b5 4578 6563 		.string	"Executive.c"
+ 352      7574 6976 
+ 352      652E 6300 
+ 353 00c1 00        		.uleb128 0x0
+ 354 00c2 00        		.uleb128 0x0
+ 355 00c3 00        		.uleb128 0x0
+ 356 00c4 00        		.byte	0x0
+ 357               	.LELTP0:
+ 358 00c5 00        		.byte	0x0
+ 359 00c6 05        		.uleb128 0x5
+ 360 00c7 02        		.byte	0x2
+ 361 00c8 0000 0000 		.long	.LM1
+ 362 00cc 04        		.byte	0x4
+ 363 00cd 07        		.uleb128 0x7
+ 364 00ce E3        		.byte	0xe3
+ 365 00cf 00        		.byte	0x0
+ 366 00d0 05        		.uleb128 0x5
+ 367 00d1 02        		.byte	0x2
+ 368 00d2 0000 0000 		.long	.LM2
+ 369 00d6 17        		.byte	0x17
+ 370 00d7 00        		.byte	0x0
+ 371 00d8 05        		.uleb128 0x5
+ 372 00d9 02        		.byte	0x2
+ 373 00da 0000 0000 		.long	.LM3
+ 374 00de 15        		.byte	0x15
+ 375 00df 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 8
+
+
+ 376 00e0 05        		.uleb128 0x5
+ 377 00e1 02        		.byte	0x2
+ 378 00e2 0000 0000 		.long	.LM4
+ 379 00e6 18        		.byte	0x18
+ 380 00e7 00        		.byte	0x0
+ 381 00e8 05        		.uleb128 0x5
+ 382 00e9 02        		.byte	0x2
+ 383 00ea 0000 0000 		.long	.LM5
+ 384 00ee 15        		.byte	0x15
+ 385 00ef 00        		.byte	0x0
+ 386 00f0 05        		.uleb128 0x5
+ 387 00f1 02        		.byte	0x2
+ 388 00f2 0000 0000 		.long	.LM6
+ 389 00f6 03        		.byte	0x3
+ 390 00f7 817F      		.sleb128 -127
+ 391 00f9 01        		.byte	0x1
+ 392 00fa 00        		.byte	0x0
+ 393 00fb 05        		.uleb128 0x5
+ 394 00fc 02        		.byte	0x2
+ 395 00fd 0000 0000 		.long	.LM7
+ 396 0101 19        		.byte	0x19
+ 397 0102 00        		.byte	0x0
+ 398 0103 05        		.uleb128 0x5
+ 399 0104 02        		.byte	0x2
+ 400 0105 0000 0000 		.long	.LM8
+ 401 0109 19        		.byte	0x19
+ 402 010a 00        		.byte	0x0
+ 403 010b 05        		.uleb128 0x5
+ 404 010c 02        		.byte	0x2
+ 405 010d 0000 0000 		.long	.LM9
+ 406 0111 16        		.byte	0x16
+ 407 0112 00        		.byte	0x0
+ 408 0113 05        		.uleb128 0x5
+ 409 0114 02        		.byte	0x2
+ 410 0115 0000 0000 		.long	.LM10
+ 411 0119 15        		.byte	0x15
+ 412 011a 00        		.byte	0x0
+ 413 011b 05        		.uleb128 0x5
+ 414 011c 02        		.byte	0x2
+ 415 011d 0000 0000 		.long	.LM11
+ 416 0121 15        		.byte	0x15
+ 417 0122 00        		.byte	0x0
+ 418 0123 05        		.uleb128 0x5
+ 419 0124 02        		.byte	0x2
+ 420 0125 0000 0000 		.long	.LM12
+ 421 0129 15        		.byte	0x15
+ 422 012a 00        		.byte	0x0
+ 423 012b 05        		.uleb128 0x5
+ 424 012c 02        		.byte	0x2
+ 425 012d 0000 0000 		.long	.LM13
+ 426 0131 18        		.byte	0x18
+ 427 0132 00        		.byte	0x0
+ 428 0133 05        		.uleb128 0x5
+ 429 0134 02        		.byte	0x2
+ 430 0135 0000 0000 		.long	.LM14
+ 431 0139 1B        		.byte	0x1b
+ 432 013a 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 9
+
+
+ 433 013b 05        		.uleb128 0x5
+ 434 013c 02        		.byte	0x2
+ 435 013d 0000 0000 		.long	.LM15
+ 436 0141 16        		.byte	0x16
+ 437 0142 00        		.byte	0x0
+ 438 0143 05        		.uleb128 0x5
+ 439 0144 02        		.byte	0x2
+ 440 0145 0000 0000 		.long	.LM16
+ 441 0149 15        		.byte	0x15
+ 442 014a 00        		.byte	0x0
+ 443 014b 05        		.uleb128 0x5
+ 444 014c 02        		.byte	0x2
+ 445 014d 0000 0000 		.long	.LM17
+ 446 0151 15        		.byte	0x15
+ 447 0152 00        		.byte	0x0
+ 448 0153 05        		.uleb128 0x5
+ 449 0154 02        		.byte	0x2
+ 450 0155 0000 0000 		.long	.LM18
+ 451 0159 15        		.byte	0x15
+ 452 015a 00        		.byte	0x0
+ 453 015b 05        		.uleb128 0x5
+ 454 015c 02        		.byte	0x2
+ 455 015d 0000 0000 		.long	.LM19
+ 456 0161 18        		.byte	0x18
+ 457 0162 00        		.byte	0x0
+ 458 0163 05        		.uleb128 0x5
+ 459 0164 02        		.byte	0x2
+ 460 0165 0000 0000 		.long	.LM20
+ 461 0169 54        		.byte	0x54
+ 462 016a 00        		.byte	0x0
+ 463 016b 05        		.uleb128 0x5
+ 464 016c 02        		.byte	0x2
+ 465 016d 0000 0000 		.long	.LM21
+ 466 0171 16        		.byte	0x16
+ 467 0172 00        		.byte	0x0
+ 468 0173 05        		.uleb128 0x5
+ 469 0174 02        		.byte	0x2
+ 470 0175 0000 0000 		.long	.LM22
+ 471 0179 16        		.byte	0x16
+ 472 017a 00        		.byte	0x0
+ 473 017b 05        		.uleb128 0x5
+ 474 017c 02        		.byte	0x2
+ 475 017d 0000 0000 		.long	.LM23
+ 476 0181 15        		.byte	0x15
+ 477 0182 00        		.byte	0x0
+ 478 0183 05        		.uleb128 0x5
+ 479 0184 02        		.byte	0x2
+ 480 0185 0000 0000 		.long	.LM24
+ 481 0189 03        		.byte	0x3
+ 482 018a BE7F      		.sleb128 -66
+ 483 018c 01        		.byte	0x1
+ 484 018d 00        		.byte	0x0
+ 485 018e 05        		.uleb128 0x5
+ 486 018f 02        		.byte	0x2
+ 487 0190 0000 0000 		.long	.LM25
+ 488 0194 17        		.byte	0x17
+ 489 0195 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 10
+
+
+ 490 0196 05        		.uleb128 0x5
+ 491 0197 02        		.byte	0x2
+ 492 0198 0000 0000 		.long	.LM26
+ 493 019c 18        		.byte	0x18
+ 494 019d 00        		.byte	0x0
+ 495 019e 05        		.uleb128 0x5
+ 496 019f 02        		.byte	0x2
+ 497 01a0 0000 0000 		.long	.LM27
+ 498 01a4 18        		.byte	0x18
+ 499 01a5 00        		.byte	0x0
+ 500 01a6 05        		.uleb128 0x5
+ 501 01a7 02        		.byte	0x2
+ 502 01a8 0000 0000 		.long	.LM28
+ 503 01ac 18        		.byte	0x18
+ 504 01ad 00        		.byte	0x0
+ 505 01ae 05        		.uleb128 0x5
+ 506 01af 02        		.byte	0x2
+ 507 01b0 0000 0000 		.long	.LM29
+ 508 01b4 15        		.byte	0x15
+ 509 01b5 00        		.byte	0x0
+ 510 01b6 05        		.uleb128 0x5
+ 511 01b7 02        		.byte	0x2
+ 512 01b8 0000 0000 		.long	.LM30
+ 513 01bc 18        		.byte	0x18
+ 514 01bd 00        		.byte	0x0
+ 515 01be 05        		.uleb128 0x5
+ 516 01bf 02        		.byte	0x2
+ 517 01c0 0000 0000 		.long	.LM31
+ 518 01c4 18        		.byte	0x18
+ 519 01c5 00        		.byte	0x0
+ 520 01c6 05        		.uleb128 0x5
+ 521 01c7 02        		.byte	0x2
+ 522 01c8 0000 0000 		.long	.LM32
+ 523 01cc 18        		.byte	0x18
+ 524 01cd 00        		.byte	0x0
+ 525 01ce 05        		.uleb128 0x5
+ 526 01cf 02        		.byte	0x2
+ 527 01d0 0000 0000 		.long	.LM33
+ 528 01d4 18        		.byte	0x18
+ 529 01d5 00        		.byte	0x0
+ 530 01d6 05        		.uleb128 0x5
+ 531 01d7 02        		.byte	0x2
+ 532 01d8 0000 0000 		.long	.LM34
+ 533 01dc 15        		.byte	0x15
+ 534 01dd 00        		.byte	0x0
+ 535 01de 05        		.uleb128 0x5
+ 536 01df 02        		.byte	0x2
+ 537 01e0 0000 0000 		.long	.LM35
+ 538 01e4 18        		.byte	0x18
+ 539 01e5 00        		.byte	0x0
+ 540 01e6 05        		.uleb128 0x5
+ 541 01e7 02        		.byte	0x2
+ 542 01e8 0000 0000 		.long	.Letext0
+ 543 01ec 00        		.byte	0x0
+ 544 01ed 01        		.uleb128 0x1
+ 545 01ee 01        		.byte	0x1
+ 546               	.LELT0:
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 11
+
+
+ 547 01ef 1900 0000 		.section	.debug_loc,"",@progbits
+ 547      0200 1300 
+ 547      0000 0101 
+ 547      FB0E 0D00 
+ 547      0101 0101 
+ 548               	.Ldebug_loc0:
+ 549               	.LLST2:
+ 550 0000 1C00 0000 		.long	.LVL1-.Ltext0
+ 551 0004 3400 0000 		.long	.LVL2-.Ltext0
+ 552 0008 0100      		.word	0x1
+ 553 000a 69        		.byte	0x69
+ 554 000b 3600 0000 		.long	.LVL3-.Ltext0
+ 555 000f 4A00 0000 		.long	.LVL4-.Ltext0
+ 556 0013 0100      		.word	0x1
+ 557 0015 69        		.byte	0x69
+ 558 0016 4A00 0000 		.long	.LVL4-.Ltext0
+ 559 001a 7600 0000 		.long	.LVL5-.Ltext0
+ 560 001e 0100      		.word	0x1
+ 561 0020 69        		.byte	0x69
+ 562 0021 7600 0000 		.long	.LVL5-.Ltext0
+ 563 0025 B200 0000 		.long	.LVL6-.Ltext0
+ 564 0029 0600      		.word	0x6
+ 565 002b 68        		.byte	0x68
+ 566 002c 93        		.byte	0x93
+ 567 002d 01        		.uleb128 0x1
+ 568 002e 69        		.byte	0x69
+ 569 002f 93        		.byte	0x93
+ 570 0030 01        		.uleb128 0x1
+ 571 0031 B200 0000 		.long	.LVL6-.Ltext0
+ 572 0035 B400 0000 		.long	.LVL7-.Ltext0
+ 573 0039 0100      		.word	0x1
+ 574 003b 69        		.byte	0x69
+ 575 003c B600 0000 		.long	.LVL8-.Ltext0
+ 576 0040 B800 0000 		.long	.LVL9-.Ltext0
+ 577 0044 0600      		.word	0x6
+ 578 0046 68        		.byte	0x68
+ 579 0047 93        		.byte	0x93
+ 580 0048 01        		.uleb128 0x1
+ 581 0049 69        		.byte	0x69
+ 582 004a 93        		.byte	0x93
+ 583 004b 01        		.uleb128 0x1
+ 584 004c B800 0000 		.long	.LVL9-.Ltext0
+ 585 0050 BA00 0000 		.long	.LVL10-.Ltext0
+ 586 0054 0100      		.word	0x1
+ 587 0056 69        		.byte	0x69
+ 588 0057 BC00 0000 		.long	.LVL11-.Ltext0
+ 589 005b BE00 0000 		.long	.LVL12-.Ltext0
+ 590 005f 0600      		.word	0x6
+ 591 0061 68        		.byte	0x68
+ 592 0062 93        		.byte	0x93
+ 593 0063 01        		.uleb128 0x1
+ 594 0064 69        		.byte	0x69
+ 595 0065 93        		.byte	0x93
+ 596 0066 01        		.uleb128 0x1
+ 597 0067 BE00 0000 		.long	.LVL12-.Ltext0
+ 598 006b C000 0000 		.long	.LVL13-.Ltext0
+ 599 006f 0100      		.word	0x1
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 12
+
+
+ 600 0071 69        		.byte	0x69
+ 601 0072 C200 0000 		.long	.LVL14-.Ltext0
+ 602 0076 C400 0000 		.long	.LVL15-.Ltext0
+ 603 007a 0600      		.word	0x6
+ 604 007c 68        		.byte	0x68
+ 605 007d 93        		.byte	0x93
+ 606 007e 01        		.uleb128 0x1
+ 607 007f 69        		.byte	0x69
+ 608 0080 93        		.byte	0x93
+ 609 0081 01        		.uleb128 0x1
+ 610 0082 C400 0000 		.long	.LVL15-.Ltext0
+ 611 0086 C600 0000 		.long	.LVL16-.Ltext0
+ 612 008a 0100      		.word	0x1
+ 613 008c 69        		.byte	0x69
+ 614 008d CC00 0000 		.long	.LVL17-.Ltext0
+ 615 0091 CE00 0000 		.long	.LVL18-.Ltext0
+ 616 0095 0600      		.word	0x6
+ 617 0097 68        		.byte	0x68
+ 618 0098 93        		.byte	0x93
+ 619 0099 01        		.uleb128 0x1
+ 620 009a 69        		.byte	0x69
+ 621 009b 93        		.byte	0x93
+ 622 009c 01        		.uleb128 0x1
+ 623 009d CE00 0000 		.long	.LVL18-.Ltext0
+ 624 00a1 D000 0000 		.long	.LVL19-.Ltext0
+ 625 00a5 0100      		.word	0x1
+ 626 00a7 69        		.byte	0x69
+ 627 00a8 D200 0000 		.long	.LVL20-.Ltext0
+ 628 00ac D400 0000 		.long	.LVL21-.Ltext0
+ 629 00b0 0600      		.word	0x6
+ 630 00b2 68        		.byte	0x68
+ 631 00b3 93        		.byte	0x93
+ 632 00b4 01        		.uleb128 0x1
+ 633 00b5 69        		.byte	0x69
+ 634 00b6 93        		.byte	0x93
+ 635 00b7 01        		.uleb128 0x1
+ 636 00b8 D400 0000 		.long	.LVL21-.Ltext0
+ 637 00bc D600 0000 		.long	.LVL22-.Ltext0
+ 638 00c0 0100      		.word	0x1
+ 639 00c2 69        		.byte	0x69
+ 640 00c3 D800 0000 		.long	.LVL23-.Ltext0
+ 641 00c7 DA00 0000 		.long	.LVL24-.Ltext0
+ 642 00cb 0600      		.word	0x6
+ 643 00cd 68        		.byte	0x68
+ 644 00ce 93        		.byte	0x93
+ 645 00cf 01        		.uleb128 0x1
+ 646 00d0 69        		.byte	0x69
+ 647 00d1 93        		.byte	0x93
+ 648 00d2 01        		.uleb128 0x1
+ 649 00d3 DA00 0000 		.long	.LVL24-.Ltext0
+ 650 00d7 DC00 0000 		.long	.LVL25-.Ltext0
+ 651 00db 0100      		.word	0x1
+ 652 00dd 69        		.byte	0x69
+ 653 00de DE00 0000 		.long	.LVL26-.Ltext0
+ 654 00e2 E000 0000 		.long	.LVL27-.Ltext0
+ 655 00e6 0600      		.word	0x6
+ 656 00e8 68        		.byte	0x68
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 13
+
+
+ 657 00e9 93        		.byte	0x93
+ 658 00ea 01        		.uleb128 0x1
+ 659 00eb 69        		.byte	0x69
+ 660 00ec 93        		.byte	0x93
+ 661 00ed 01        		.uleb128 0x1
+ 662 00ee E000 0000 		.long	.LVL27-.Ltext0
+ 663 00f2 E200 0000 		.long	.LVL28-.Ltext0
+ 664 00f6 0100      		.word	0x1
+ 665 00f8 69        		.byte	0x69
+ 666 00f9 E800 0000 		.long	.LVL29-.Ltext0
+ 667 00fd EA00 0000 		.long	.LVL30-.Ltext0
+ 668 0101 0600      		.word	0x6
+ 669 0103 68        		.byte	0x68
+ 670 0104 93        		.byte	0x93
+ 671 0105 01        		.uleb128 0x1
+ 672 0106 69        		.byte	0x69
+ 673 0107 93        		.byte	0x93
+ 674 0108 01        		.uleb128 0x1
+ 675 0109 EA00 0000 		.long	.LVL30-.Ltext0
+ 676 010d EC00 0000 		.long	.LVL31-.Ltext0
+ 677 0111 0100      		.word	0x1
+ 678 0113 69        		.byte	0x69
+ 679 0114 0000 0000 		.long	0x0
+ 680 0118 0000 0000 		.long	0x0
+ 681               		.section	.debug_info
+ 682 0000 5E01 0000 		.long	0x15e
+ 683 0004 0200      		.word	0x2
+ 684 0006 0000 0000 		.long	.Ldebug_abbrev0
+ 685 000a 04        		.byte	0x4
+ 686 000b 01        		.uleb128 0x1
+ 687 000c 0000 0000 		.long	.Ldebug_line0
+ 688 0010 0000 0000 		.long	.Letext0
+ 689 0014 0000 0000 		.long	.Ltext0
+ 690 0018 0000 0000 		.long	.LASF17
+ 691 001c 01        		.byte	0x1
+ 692 001d 0000 0000 		.long	.LASF18
+ 693 0021 0000 0000 		.long	.LASF19
+ 694 0025 02        		.uleb128 0x2
+ 695 0026 0000 0000 		.long	.LASF0
+ 696 002a 02        		.byte	0x2
+ 697 002b 07        		.byte	0x7
+ 698 002c 03        		.uleb128 0x3
+ 699 002d 696E 7400 		.string	"int"
+ 700 0031 02        		.byte	0x2
+ 701 0032 05        		.byte	0x5
+ 702 0033 02        		.uleb128 0x2
+ 703 0034 0000 0000 		.long	.LASF1
+ 704 0038 04        		.byte	0x4
+ 705 0039 05        		.byte	0x5
+ 706 003a 02        		.uleb128 0x2
+ 707 003b 0000 0000 		.long	.LASF2
+ 708 003f 01        		.byte	0x1
+ 709 0040 06        		.byte	0x6
+ 710 0041 02        		.uleb128 0x2
+ 711 0042 0000 0000 		.long	.LASF3
+ 712 0046 01        		.byte	0x1
+ 713 0047 08        		.byte	0x8
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 14
+
+
+ 714 0048 02        		.uleb128 0x2
+ 715 0049 0000 0000 		.long	.LASF4
+ 716 004d 04        		.byte	0x4
+ 717 004e 07        		.byte	0x7
+ 718 004f 02        		.uleb128 0x2
+ 719 0050 0000 0000 		.long	.LASF5
+ 720 0054 08        		.byte	0x8
+ 721 0055 05        		.byte	0x5
+ 722 0056 02        		.uleb128 0x2
+ 723 0057 0000 0000 		.long	.LASF6
+ 724 005b 08        		.byte	0x8
+ 725 005c 07        		.byte	0x7
+ 726 005d 04        		.uleb128 0x4
+ 727 005e 8E00 0000 		.long	0x8e
+ 728 0062 01        		.byte	0x1
+ 729 0063 0000 0000 		.long	.LASF10
+ 730 0067 07        		.byte	0x7
+ 731 0068 D0        		.byte	0xd0
+ 732 0069 01        		.byte	0x1
+ 733 006a 0000 0000 		.long	.LFB6
+ 734 006e 0000 0000 		.long	.LFE6
+ 735 0072 02        		.byte	0x2
+ 736 0073 90        		.byte	0x90
+ 737 0074 20        		.uleb128 0x20
+ 738 0075 05        		.uleb128 0x5
+ 739 0076 0000 0000 		.long	.LASF20
+ 740 007a 07        		.byte	0x7
+ 741 007b CF        		.byte	0xcf
+ 742 007c 4100 0000 		.long	0x41
+ 743 0080 01        		.byte	0x1
+ 744 0081 68        		.byte	0x68
+ 745 0082 06        		.uleb128 0x6
+ 746 0083 0000 0000 		.long	.LASF7
+ 747 0087 07        		.byte	0x7
+ 748 0088 D1        		.byte	0xd1
+ 749 0089 4100 0000 		.long	0x41
+ 750 008d 00        		.byte	0x0
+ 751 008e 07        		.uleb128 0x7
+ 752 008f B600 0000 		.long	0xb6
+ 753 0093 0000 0000 		.long	.LASF21
+ 754 0097 07        		.byte	0x7
+ 755 0098 BA        		.byte	0xba
+ 756 0099 01        		.byte	0x1
+ 757 009a 4100 0000 		.long	0x41
+ 758 009e 01        		.byte	0x1
+ 759 009f 06        		.uleb128 0x6
+ 760 00a0 0000 0000 		.long	.LASF8
+ 761 00a4 07        		.byte	0x7
+ 762 00a5 BB        		.byte	0xbb
+ 763 00a6 4100 0000 		.long	0x41
+ 764 00aa 06        		.uleb128 0x6
+ 765 00ab 0000 0000 		.long	.LASF9
+ 766 00af 07        		.byte	0x7
+ 767 00b0 BB        		.byte	0xbb
+ 768 00b1 4100 0000 		.long	0x41
+ 769 00b5 00        		.byte	0x0
+ 770 00b6 04        		.uleb128 0x4
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 15
+
+
+ 771 00b7 0201 0000 		.long	0x102
+ 772 00bb 01        		.byte	0x1
+ 773 00bc 0000 0000 		.long	.LASF11
+ 774 00c0 07        		.byte	0x7
+ 775 00c1 5A        		.byte	0x5a
+ 776 00c2 01        		.byte	0x1
+ 777 00c3 0000 0000 		.long	.LFB4
+ 778 00c7 0000 0000 		.long	.LFE4
+ 779 00cb 02        		.byte	0x2
+ 780 00cc 90        		.byte	0x90
+ 781 00cd 20        		.uleb128 0x20
+ 782 00ce 06        		.uleb128 0x6
+ 783 00cf 0000 0000 		.long	.LASF12
+ 784 00d3 07        		.byte	0x7
+ 785 00d4 5B        		.byte	0x5b
+ 786 00d5 4100 0000 		.long	0x41
+ 787 00d9 08        		.uleb128 0x8
+ 788 00da 8E00 0000 		.long	0x8e
+ 789 00de 0000 0000 		.long	.LBB4
+ 790 00e2 0000 0000 		.long	.LBE4
+ 791 00e6 07        		.byte	0x7
+ 792 00e7 7F        		.byte	0x7f
+ 793 00e8 09        		.uleb128 0x9
+ 794 00e9 0000 0000 		.long	.LBB5
+ 795 00ed 0000 0000 		.long	.LBE5
+ 796 00f1 0A        		.uleb128 0xa
+ 797 00f2 9F00 0000 		.long	0x9f
+ 798 00f6 0000 0000 		.long	.LLST2
+ 799 00fa 0B        		.uleb128 0xb
+ 800 00fb AA00 0000 		.long	0xaa
+ 801 00ff 00        		.byte	0x0
+ 802 0100 00        		.byte	0x0
+ 803 0101 00        		.byte	0x0
+ 804 0102 0C        		.uleb128 0xc
+ 805 0103 0000 0000 		.long	.LASF13
+ 806 0107 07        		.byte	0x7
+ 807 0108 4A        		.byte	0x4a
+ 808 0109 4100 0000 		.long	0x41
+ 809 010d 01        		.byte	0x1
+ 810 010e 05        		.byte	0x5
+ 811 010f 03        		.byte	0x3
+ 812 0110 0000 0000 		.long	fastEventBitmask
+ 813 0114 0D        		.uleb128 0xd
+ 814 0115 2401 0000 		.long	0x124
+ 815 0119 4100 0000 		.long	0x41
+ 816 011d 0E        		.uleb128 0xe
+ 817 011e 2401 0000 		.long	0x124
+ 818 0122 07        		.byte	0x7
+ 819 0123 00        		.byte	0x0
+ 820 0124 02        		.uleb128 0x2
+ 821 0125 0000 0000 		.long	.LASF0
+ 822 0129 02        		.byte	0x2
+ 823 012a 07        		.byte	0x7
+ 824 012b 0C        		.uleb128 0xc
+ 825 012c 0000 0000 		.long	.LASF14
+ 826 0130 07        		.byte	0x7
+ 827 0131 3F        		.byte	0x3f
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 16
+
+
+ 828 0132 1401 0000 		.long	0x114
+ 829 0136 01        		.byte	0x1
+ 830 0137 05        		.byte	0x5
+ 831 0138 03        		.byte	0x3
+ 832 0139 0000 0000 		.long	Exec_eventFifo
+ 833 013d 0C        		.uleb128 0xc
+ 834 013e 0000 0000 		.long	.LASF15
+ 835 0142 07        		.byte	0x7
+ 836 0143 40        		.byte	0x40
+ 837 0144 4100 0000 		.long	0x41
+ 838 0148 01        		.byte	0x1
+ 839 0149 05        		.byte	0x5
+ 840 014a 03        		.byte	0x3
+ 841 014b 0000 0000 		.long	Exec_eventFifoHead
+ 842 014f 0C        		.uleb128 0xc
+ 843 0150 0000 0000 		.long	.LASF16
+ 844 0154 07        		.byte	0x7
+ 845 0155 41        		.byte	0x41
+ 846 0156 4100 0000 		.long	0x41
+ 847 015a 01        		.byte	0x1
+ 848 015b 05        		.byte	0x5
+ 849 015c 03        		.byte	0x3
+ 850 015d 0000 0000 		.long	Exec_eventFifoTail
+ 851 0161 00        		.byte	0x0
+ 852               		.section	.debug_abbrev
+ 853 0000 01        		.uleb128 0x1
+ 854 0001 11        		.uleb128 0x11
+ 855 0002 01        		.byte	0x1
+ 856 0003 10        		.uleb128 0x10
+ 857 0004 06        		.uleb128 0x6
+ 858 0005 12        		.uleb128 0x12
+ 859 0006 01        		.uleb128 0x1
+ 860 0007 11        		.uleb128 0x11
+ 861 0008 01        		.uleb128 0x1
+ 862 0009 25        		.uleb128 0x25
+ 863 000a 0E        		.uleb128 0xe
+ 864 000b 13        		.uleb128 0x13
+ 865 000c 0B        		.uleb128 0xb
+ 866 000d 03        		.uleb128 0x3
+ 867 000e 0E        		.uleb128 0xe
+ 868 000f 1B        		.uleb128 0x1b
+ 869 0010 0E        		.uleb128 0xe
+ 870 0011 00        		.byte	0x0
+ 871 0012 00        		.byte	0x0
+ 872 0013 02        		.uleb128 0x2
+ 873 0014 24        		.uleb128 0x24
+ 874 0015 00        		.byte	0x0
+ 875 0016 03        		.uleb128 0x3
+ 876 0017 0E        		.uleb128 0xe
+ 877 0018 0B        		.uleb128 0xb
+ 878 0019 0B        		.uleb128 0xb
+ 879 001a 3E        		.uleb128 0x3e
+ 880 001b 0B        		.uleb128 0xb
+ 881 001c 00        		.byte	0x0
+ 882 001d 00        		.byte	0x0
+ 883 001e 03        		.uleb128 0x3
+ 884 001f 24        		.uleb128 0x24
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 17
+
+
+ 885 0020 00        		.byte	0x0
+ 886 0021 03        		.uleb128 0x3
+ 887 0022 08        		.uleb128 0x8
+ 888 0023 0B        		.uleb128 0xb
+ 889 0024 0B        		.uleb128 0xb
+ 890 0025 3E        		.uleb128 0x3e
+ 891 0026 0B        		.uleb128 0xb
+ 892 0027 00        		.byte	0x0
+ 893 0028 00        		.byte	0x0
+ 894 0029 04        		.uleb128 0x4
+ 895 002a 2E        		.uleb128 0x2e
+ 896 002b 01        		.byte	0x1
+ 897 002c 01        		.uleb128 0x1
+ 898 002d 13        		.uleb128 0x13
+ 899 002e 3F        		.uleb128 0x3f
+ 900 002f 0C        		.uleb128 0xc
+ 901 0030 03        		.uleb128 0x3
+ 902 0031 0E        		.uleb128 0xe
+ 903 0032 3A        		.uleb128 0x3a
+ 904 0033 0B        		.uleb128 0xb
+ 905 0034 3B        		.uleb128 0x3b
+ 906 0035 0B        		.uleb128 0xb
+ 907 0036 27        		.uleb128 0x27
+ 908 0037 0C        		.uleb128 0xc
+ 909 0038 11        		.uleb128 0x11
+ 910 0039 01        		.uleb128 0x1
+ 911 003a 12        		.uleb128 0x12
+ 912 003b 01        		.uleb128 0x1
+ 913 003c 40        		.uleb128 0x40
+ 914 003d 0A        		.uleb128 0xa
+ 915 003e 00        		.byte	0x0
+ 916 003f 00        		.byte	0x0
+ 917 0040 05        		.uleb128 0x5
+ 918 0041 05        		.uleb128 0x5
+ 919 0042 00        		.byte	0x0
+ 920 0043 03        		.uleb128 0x3
+ 921 0044 0E        		.uleb128 0xe
+ 922 0045 3A        		.uleb128 0x3a
+ 923 0046 0B        		.uleb128 0xb
+ 924 0047 3B        		.uleb128 0x3b
+ 925 0048 0B        		.uleb128 0xb
+ 926 0049 49        		.uleb128 0x49
+ 927 004a 13        		.uleb128 0x13
+ 928 004b 02        		.uleb128 0x2
+ 929 004c 0A        		.uleb128 0xa
+ 930 004d 00        		.byte	0x0
+ 931 004e 00        		.byte	0x0
+ 932 004f 06        		.uleb128 0x6
+ 933 0050 34        		.uleb128 0x34
+ 934 0051 00        		.byte	0x0
+ 935 0052 03        		.uleb128 0x3
+ 936 0053 0E        		.uleb128 0xe
+ 937 0054 3A        		.uleb128 0x3a
+ 938 0055 0B        		.uleb128 0xb
+ 939 0056 3B        		.uleb128 0x3b
+ 940 0057 0B        		.uleb128 0xb
+ 941 0058 49        		.uleb128 0x49
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 18
+
+
+ 942 0059 13        		.uleb128 0x13
+ 943 005a 00        		.byte	0x0
+ 944 005b 00        		.byte	0x0
+ 945 005c 07        		.uleb128 0x7
+ 946 005d 2E        		.uleb128 0x2e
+ 947 005e 01        		.byte	0x1
+ 948 005f 01        		.uleb128 0x1
+ 949 0060 13        		.uleb128 0x13
+ 950 0061 03        		.uleb128 0x3
+ 951 0062 0E        		.uleb128 0xe
+ 952 0063 3A        		.uleb128 0x3a
+ 953 0064 0B        		.uleb128 0xb
+ 954 0065 3B        		.uleb128 0x3b
+ 955 0066 0B        		.uleb128 0xb
+ 956 0067 27        		.uleb128 0x27
+ 957 0068 0C        		.uleb128 0xc
+ 958 0069 49        		.uleb128 0x49
+ 959 006a 13        		.uleb128 0x13
+ 960 006b 20        		.uleb128 0x20
+ 961 006c 0B        		.uleb128 0xb
+ 962 006d 00        		.byte	0x0
+ 963 006e 00        		.byte	0x0
+ 964 006f 08        		.uleb128 0x8
+ 965 0070 1D        		.uleb128 0x1d
+ 966 0071 01        		.byte	0x1
+ 967 0072 31        		.uleb128 0x31
+ 968 0073 13        		.uleb128 0x13
+ 969 0074 11        		.uleb128 0x11
+ 970 0075 01        		.uleb128 0x1
+ 971 0076 12        		.uleb128 0x12
+ 972 0077 01        		.uleb128 0x1
+ 973 0078 58        		.uleb128 0x58
+ 974 0079 0B        		.uleb128 0xb
+ 975 007a 59        		.uleb128 0x59
+ 976 007b 0B        		.uleb128 0xb
+ 977 007c 00        		.byte	0x0
+ 978 007d 00        		.byte	0x0
+ 979 007e 09        		.uleb128 0x9
+ 980 007f 0B        		.uleb128 0xb
+ 981 0080 01        		.byte	0x1
+ 982 0081 11        		.uleb128 0x11
+ 983 0082 01        		.uleb128 0x1
+ 984 0083 12        		.uleb128 0x12
+ 985 0084 01        		.uleb128 0x1
+ 986 0085 00        		.byte	0x0
+ 987 0086 00        		.byte	0x0
+ 988 0087 0A        		.uleb128 0xa
+ 989 0088 34        		.uleb128 0x34
+ 990 0089 00        		.byte	0x0
+ 991 008a 31        		.uleb128 0x31
+ 992 008b 13        		.uleb128 0x13
+ 993 008c 02        		.uleb128 0x2
+ 994 008d 06        		.uleb128 0x6
+ 995 008e 00        		.byte	0x0
+ 996 008f 00        		.byte	0x0
+ 997 0090 0B        		.uleb128 0xb
+ 998 0091 34        		.uleb128 0x34
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 19
+
+
+ 999 0092 00        		.byte	0x0
+ 1000 0093 31        		.uleb128 0x31
+ 1001 0094 13        		.uleb128 0x13
+ 1002 0095 00        		.byte	0x0
+ 1003 0096 00        		.byte	0x0
+ 1004 0097 0C        		.uleb128 0xc
+ 1005 0098 34        		.uleb128 0x34
+ 1006 0099 00        		.byte	0x0
+ 1007 009a 03        		.uleb128 0x3
+ 1008 009b 0E        		.uleb128 0xe
+ 1009 009c 3A        		.uleb128 0x3a
+ 1010 009d 0B        		.uleb128 0xb
+ 1011 009e 3B        		.uleb128 0x3b
+ 1012 009f 0B        		.uleb128 0xb
+ 1013 00a0 49        		.uleb128 0x49
+ 1014 00a1 13        		.uleb128 0x13
+ 1015 00a2 3F        		.uleb128 0x3f
+ 1016 00a3 0C        		.uleb128 0xc
+ 1017 00a4 02        		.uleb128 0x2
+ 1018 00a5 0A        		.uleb128 0xa
+ 1019 00a6 00        		.byte	0x0
+ 1020 00a7 00        		.byte	0x0
+ 1021 00a8 0D        		.uleb128 0xd
+ 1022 00a9 01        		.uleb128 0x1
+ 1023 00aa 01        		.byte	0x1
+ 1024 00ab 01        		.uleb128 0x1
+ 1025 00ac 13        		.uleb128 0x13
+ 1026 00ad 49        		.uleb128 0x49
+ 1027 00ae 13        		.uleb128 0x13
+ 1028 00af 00        		.byte	0x0
+ 1029 00b0 00        		.byte	0x0
+ 1030 00b1 0E        		.uleb128 0xe
+ 1031 00b2 21        		.uleb128 0x21
+ 1032 00b3 00        		.byte	0x0
+ 1033 00b4 49        		.uleb128 0x49
+ 1034 00b5 13        		.uleb128 0x13
+ 1035 00b6 2F        		.uleb128 0x2f
+ 1036 00b7 0B        		.uleb128 0xb
+ 1037 00b8 00        		.byte	0x0
+ 1038 00b9 00        		.byte	0x0
+ 1039 00ba 00        		.byte	0x0
+ 1040               		.section	.debug_pubnames,"",@progbits
+ 1041 0000 8900 0000 		.long	0x89
+ 1042 0004 0200      		.word	0x2
+ 1043 0006 0000 0000 		.long	.Ldebug_info0
+ 1044 000a 6201 0000 		.long	0x162
+ 1045 000e 5D00 0000 		.long	0x5d
+ 1046 0012 4578 6563 		.string	"Exec_writeEventFifo"
+ 1046      5F77 7269 
+ 1046      7465 4576 
+ 1046      656E 7446 
+ 1046      6966 6F00 
+ 1047 0026 B600 0000 		.long	0xb6
+ 1048 002a 4578 6563 		.string	"Exec_run"
+ 1048      5F72 756E 
+ 1048      00
+ 1049 0033 0201 0000 		.long	0x102
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 20
+
+
+ 1050 0037 6661 7374 		.string	"fastEventBitmask"
+ 1050      4576 656E 
+ 1050      7442 6974 
+ 1050      6D61 736B 
+ 1050      00
+ 1051 0048 2B01 0000 		.long	0x12b
+ 1052 004c 4578 6563 		.string	"Exec_eventFifo"
+ 1052      5F65 7665 
+ 1052      6E74 4669 
+ 1052      666F 00
+ 1053 005b 3D01 0000 		.long	0x13d
+ 1054 005f 4578 6563 		.string	"Exec_eventFifoHead"
+ 1054      5F65 7665 
+ 1054      6E74 4669 
+ 1054      666F 4865 
+ 1054      6164 00
+ 1055 0072 4F01 0000 		.long	0x14f
+ 1056 0076 4578 6563 		.string	"Exec_eventFifoTail"
+ 1056      5F65 7665 
+ 1056      6E74 4669 
+ 1056      666F 5461 
+ 1056      696C 00
+ 1057 0089 0000 0000 		.long	0x0
+ 1058               		.section	.debug_aranges,"",@progbits
+ 1059 0000 1C00 0000 		.long	0x1c
+ 1060 0004 0200      		.word	0x2
+ 1061 0006 0000 0000 		.long	.Ldebug_info0
+ 1062 000a 04        		.byte	0x4
+ 1063 000b 00        		.byte	0x0
+ 1064 000c 0000      		.word	0x0
+ 1065 000e 0000      		.word	0x0
+ 1066 0010 0000 0000 		.long	.Ltext0
+ 1067 0014 EE00 0000 		.long	.Letext0-.Ltext0
+ 1068 0018 0000 0000 		.long	0x0
+ 1069 001c 0000 0000 		.long	0x0
+ 1070               		.section	.debug_str,"MS",@progbits,1
+ 1071               	.LASF14:
+ 1072 0000 4578 6563 		.string	"Exec_eventFifo"
+ 1072      5F65 7665 
+ 1072      6E74 4669 
+ 1072      666F 00
+ 1073               	.LASF16:
+ 1074 000f 4578 6563 		.string	"Exec_eventFifoTail"
+ 1074      5F65 7665 
+ 1074      6E74 4669 
+ 1074      666F 5461 
+ 1074      696C 00
+ 1075               	.LASF19:
+ 1076 0022 433A 5C44 		.string	"C:\\Documents and Settings\\michael\\Desktop\\AVRcam_rel_1_4"
+ 1076      6F63 756D 
+ 1076      656E 7473 
+ 1076      2061 6E64 
+ 1076      2053 6574 
+ 1077               	.LASF10:
+ 1078 005b 4578 6563 		.string	"Exec_writeEventFifo"
+ 1078      5F77 7269 
+ 1078      7465 4576 
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 21
+
+
+ 1078      656E 7446 
+ 1078      6966 6F00 
+ 1079               	.LASF3:
+ 1080 006f 756E 7369 		.string	"unsigned char"
+ 1080      676E 6564 
+ 1080      2063 6861 
+ 1080      7200 
+ 1081               	.LASF13:
+ 1082 007d 6661 7374 		.string	"fastEventBitmask"
+ 1082      4576 656E 
+ 1082      7442 6974 
+ 1082      6D61 736B 
+ 1082      00
+ 1083               	.LASF18:
+ 1084 008e 4578 6563 		.string	"Executive.c"
+ 1084      7574 6976 
+ 1084      652E 6300 
+ 1085               	.LASF8:
+ 1086 009a 6461 7461 		.string	"dataByte"
+ 1086      4279 7465 
+ 1086      00
+ 1087               	.LASF4:
+ 1088 00a3 6C6F 6E67 		.string	"long unsigned int"
+ 1088      2075 6E73 
+ 1088      6967 6E65 
+ 1088      6420 696E 
+ 1088      7400 
+ 1089               	.LASF20:
+ 1090 00b5 6576 656E 		.string	"event"
+ 1090      7400 
+ 1091               	.LASF21:
+ 1092 00bb 4578 6563 		.string	"Exec_readEventFifo"
+ 1092      5F72 6561 
+ 1092      6445 7665 
+ 1092      6E74 4669 
+ 1092      666F 00
+ 1093               	.LASF0:
+ 1094 00ce 756E 7369 		.string	"unsigned int"
+ 1094      676E 6564 
+ 1094      2069 6E74 
+ 1094      00
+ 1095               	.LASF11:
+ 1096 00db 4578 6563 		.string	"Exec_run"
+ 1096      5F72 756E 
+ 1096      00
+ 1097               	.LASF6:
+ 1098 00e4 6C6F 6E67 		.string	"long long unsigned int"
+ 1098      206C 6F6E 
+ 1098      6720 756E 
+ 1098      7369 676E 
+ 1098      6564 2069 
+ 1099               	.LASF12:
+ 1100 00fb 6576 656E 		.string	"eventGenerated"
+ 1100      7447 656E 
+ 1100      6572 6174 
+ 1100      6564 00
+ 1101               	.LASF5:
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 22
+
+
+ 1102 010a 6C6F 6E67 		.string	"long long int"
+ 1102      206C 6F6E 
+ 1102      6720 696E 
+ 1102      7400 
+ 1103               	.LASF17:
+ 1104 0118 474E 5520 		.string	"GNU C 4.1.1 (WinAVR 20070122)"
+ 1104      4320 342E 
+ 1104      312E 3120 
+ 1104      2857 696E 
+ 1104      4156 5220 
+ 1105               	.LASF15:
+ 1106 0136 4578 6563 		.string	"Exec_eventFifoHead"
+ 1106      5F65 7665 
+ 1106      6E74 4669 
+ 1106      666F 4865 
+ 1106      6164 00
+ 1107               	.LASF7:
+ 1108 0149 746D 7048 		.string	"tmpHead"
+ 1108      6561 6400 
+ 1109               	.LASF1:
+ 1110 0151 6C6F 6E67 		.string	"long int"
+ 1110      2069 6E74 
+ 1110      00
+ 1111               	.LASF9:
+ 1112 015a 746D 7054 		.string	"tmpTail"
+ 1112      6169 6C00 
+ 1113               	.LASF2:
+ 1114 0162 7369 676E 		.string	"signed char"
+ 1114      6564 2063 
+ 1114      6861 7200 
+ 1115               	/* File "Executive.c": code  127 = 0x007f ( 126), prologues   0, epilogues   1 */
+GAS LISTING C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Executive.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:20     .text:00000000 Exec_writeEventFifo
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:258    .bss:00000000 Exec_eventFifoHead
+                            *COM*:00000008 Exec_eventFifo
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:53     .text:0000001c Exec_run
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:270    .bss:00000002 fastEventBitmask
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccOKaaaa.s:264    .bss:00000001 Exec_eventFifoTail
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+FrameMgr_processLine
+UIMgr_transmitPendingData
+FrameMgr_acquireLine
+FrameMgr_dispatchEvent
+UIMgr_dispatchEvent

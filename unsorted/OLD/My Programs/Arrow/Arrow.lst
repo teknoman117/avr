@@ -1,0 +1,291 @@
+
+Arrow.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000134  00000000  00000000  00000094  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000134  000001c8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00800060  00000134  000001c8  2**0
+                  ALLOC
+  3 .noinit       00000000  00800060  00800060  000001c8  2**0
+                  CONTENTS
+  4 .eeprom       00000000  00810000  00810000  000001c8  2**0
+                  CONTENTS
+  5 .debug_aranges 00000014  00000000  00000000  000001c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 0000001b  00000000  00000000  000001dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000172  00000000  00000000  000001f7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 0000009c  00000000  00000000  00000369  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000001d0  00000000  00000000  00000405  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000008f  00000000  00000000  000005d5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54
+   4:	0c 94 45 00 	jmp	0x8a
+   8:	0c 94 45 00 	jmp	0x8a
+   c:	0c 94 45 00 	jmp	0x8a
+  10:	0c 94 45 00 	jmp	0x8a
+  14:	0c 94 45 00 	jmp	0x8a
+  18:	0c 94 45 00 	jmp	0x8a
+  1c:	0c 94 45 00 	jmp	0x8a
+  20:	0c 94 45 00 	jmp	0x8a
+  24:	0c 94 45 00 	jmp	0x8a
+  28:	0c 94 45 00 	jmp	0x8a
+  2c:	0c 94 45 00 	jmp	0x8a
+  30:	0c 94 45 00 	jmp	0x8a
+  34:	0c 94 45 00 	jmp	0x8a
+  38:	0c 94 45 00 	jmp	0x8a
+  3c:	0c 94 45 00 	jmp	0x8a
+  40:	0c 94 45 00 	jmp	0x8a
+  44:	0c 94 45 00 	jmp	0x8a
+  48:	0c 94 45 00 	jmp	0x8a
+  4c:	0c 94 45 00 	jmp	0x8a
+  50:	0c 94 45 00 	jmp	0x8a
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e4 e3       	ldi	r30, 0x34	; 52
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70
+
+0000006c <.do_copy_data_loop>:
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+
+00000070 <.do_copy_data_start>:
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a0 36       	cpi	r26, 0x60	; 96
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e
+  86:	0c 94 47 00 	jmp	0x8e
+
+0000008a <__bad_interrupt>:
+  8a:	0c 94 00 00 	jmp	0x0
+
+0000008e <main>:
+
+#define time 30000
+       
+main (void)
+{
+  8e:	cf e5       	ldi	r28, 0x5F	; 95
+  90:	d8 e0       	ldi	r29, 0x08	; 8
+  92:	de bf       	out	0x3e, r29	; 62
+  94:	cd bf       	out	0x3d, r28	; 61
+  unsigned char counter;
+  DDRB = 255;
+  96:	8f ef       	ldi	r24, 0xFF	; 255
+  98:	87 bb       	out	0x17, r24	; 23
+  9a:	51 e8       	ldi	r21, 0x81	; 129
+  9c:	62 e4       	ldi	r22, 0x42	; 66
+  9e:	34 e2       	ldi	r19, 0x24	; 36
+  a0:	48 e1       	ldi	r20, 0x18	; 24
+  while (1)
+  {
+    PORTB = 129;
+  a2:	58 bb       	out	0x18, r21	; 24
+	counter = 0;
+  a4:	20 e0       	ldi	r18, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  a6:	80 e3       	ldi	r24, 0x30	; 48
+  a8:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+  aa:	01 97       	sbiw	r24, 0x01	; 1
+  ac:	f1 f7       	brne	.-4      	; 0xaa
+    while (counter != 10)
+	{
+      _delay_loop_2(time);
+ 	  counter++;
+  ae:	2f 5f       	subi	r18, 0xFF	; 255
+  b0:	2a 30       	cpi	r18, 0x0A	; 10
+  b2:	c9 f7       	brne	.-14     	; 0xa6
+	}
+    PORTB = 66;
+  b4:	68 bb       	out	0x18, r22	; 24
+	counter = 0;
+  b6:	20 e0       	ldi	r18, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  b8:	80 e3       	ldi	r24, 0x30	; 48
+  ba:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+  bc:	01 97       	sbiw	r24, 0x01	; 1
+  be:	f1 f7       	brne	.-4      	; 0xbc
+    while (counter != 10)
+	{
+      _delay_loop_2(time);
+ 	  counter++;
+  c0:	2f 5f       	subi	r18, 0xFF	; 255
+  c2:	2a 30       	cpi	r18, 0x0A	; 10
+  c4:	c9 f7       	brne	.-14     	; 0xb8
+	}
+    PORTB = 36;
+  c6:	38 bb       	out	0x18, r19	; 24
+	counter = 0;
+  c8:	20 e0       	ldi	r18, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  ca:	80 e3       	ldi	r24, 0x30	; 48
+  cc:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+  ce:	01 97       	sbiw	r24, 0x01	; 1
+  d0:	f1 f7       	brne	.-4      	; 0xce
+    while (counter != 10)
+	{
+      _delay_loop_2(time);
+ 	  counter++;
+  d2:	2f 5f       	subi	r18, 0xFF	; 255
+  d4:	2a 30       	cpi	r18, 0x0A	; 10
+  d6:	c9 f7       	brne	.-14     	; 0xca
+	}
+    PORTB = 24;
+  d8:	48 bb       	out	0x18, r20	; 24
+	counter = 0;
+  da:	20 e0       	ldi	r18, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  dc:	80 e3       	ldi	r24, 0x30	; 48
+  de:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+  e0:	01 97       	sbiw	r24, 0x01	; 1
+  e2:	f1 f7       	brne	.-4      	; 0xe0
+    while (counter != 10)
+	{
+      _delay_loop_2(time);
+ 	  counter++;
+  e4:	2f 5f       	subi	r18, 0xFF	; 255
+  e6:	2a 30       	cpi	r18, 0x0A	; 10
+  e8:	c9 f7       	brne	.-14     	; 0xdc
+	}
+    PORTB = 24;
+  ea:	48 bb       	out	0x18, r20	; 24
+	counter = 0;
+  ec:	20 e0       	ldi	r18, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  ee:	80 e3       	ldi	r24, 0x30	; 48
+  f0:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+  f2:	01 97       	sbiw	r24, 0x01	; 1
+  f4:	f1 f7       	brne	.-4      	; 0xf2
+    while (counter != 10)
+	{
+      _delay_loop_2(time);
+ 	  counter++;
+  f6:	2f 5f       	subi	r18, 0xFF	; 255
+  f8:	2a 30       	cpi	r18, 0x0A	; 10
+  fa:	c9 f7       	brne	.-14     	; 0xee
+	}
+    PORTB = 36;
+  fc:	38 bb       	out	0x18, r19	; 24
+	counter = 0;
+  fe:	20 e0       	ldi	r18, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+ 100:	80 e3       	ldi	r24, 0x30	; 48
+ 102:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+ 104:	01 97       	sbiw	r24, 0x01	; 1
+ 106:	f1 f7       	brne	.-4      	; 0x104
+    while (counter != 10)
+	{
+      _delay_loop_2(time);
+ 	  counter++;
+ 108:	2f 5f       	subi	r18, 0xFF	; 255
+ 10a:	2a 30       	cpi	r18, 0x0A	; 10
+ 10c:	c9 f7       	brne	.-14     	; 0x100
+	}
+    PORTB = 66;
+ 10e:	68 bb       	out	0x18, r22	; 24
+	counter = 0;
+ 110:	20 e0       	ldi	r18, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+ 112:	80 e3       	ldi	r24, 0x30	; 48
+ 114:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+ 116:	01 97       	sbiw	r24, 0x01	; 1
+ 118:	f1 f7       	brne	.-4      	; 0x116
+    while (counter != 10)
+	{
+      _delay_loop_2(time);
+ 	  counter++;
+ 11a:	2f 5f       	subi	r18, 0xFF	; 255
+ 11c:	2a 30       	cpi	r18, 0x0A	; 10
+ 11e:	c9 f7       	brne	.-14     	; 0x112
+	}
+    PORTB = 129;
+ 120:	58 bb       	out	0x18, r21	; 24
+	counter = 0;
+ 122:	20 e0       	ldi	r18, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+ 124:	80 e3       	ldi	r24, 0x30	; 48
+ 126:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+ 128:	01 97       	sbiw	r24, 0x01	; 1
+ 12a:	f1 f7       	brne	.-4      	; 0x128
+    while (counter != 10)
+	{
+      _delay_loop_2(time);
+ 	  counter++;
+ 12c:	2f 5f       	subi	r18, 0xFF	; 255
+ 12e:	2a 30       	cpi	r18, 0x0A	; 10
+ 130:	c9 f7       	brne	.-14     	; 0x124
+ 132:	b7 cf       	rjmp	.-146    	; 0xa2

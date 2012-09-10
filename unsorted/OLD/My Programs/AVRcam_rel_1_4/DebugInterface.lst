@@ -1,0 +1,251 @@
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccm4aaaa.s 			page 1
+
+
+   1               		.file	"DebugInterface.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"C:\\WinAVR\\AVRcam_dev_1_3_2/",100,0,0,.Ltext0
+  11               		.stabs	"DebugInterface.c",100,0,0,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,0,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,0,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);0020000000000;0017777777777;",128,0,0,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0000000000000;0000000177777;",128,0,0,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0000000000000;0037777777777;",128,0,0,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,0,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0000000000000;01777777777777777777777;",128,0,0,
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,0,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0000000000000;0000000177777;",128,0,0,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,0,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,0,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,0,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,0,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,0,0
+  29               		.stabs	"complex int:t(0,15)=s4real:(0,1),0,16;imag:(0,1),16,16;;",128,0,0,0
+  30               		.stabs	"complex float:t(0,16)=R3;8;0;",128,0,0,0
+  31               		.stabs	"complex double:t(0,17)=R3;8;0;",128,0,0,0
+  32               		.stabs	"complex long double:t(0,18)=R3;8;0;",128,0,0,0
+  33               		.stabs	"__builtin_va_list:t(0,19)=*(0,20)=(0,20)",128,0,0,0
+  34               		.stabs	"_Bool:t(0,21)=@s8;-16;",128,0,0,0
+  35               		.stabs	"DebugInterface.c",130,0,0,0
+  36               		.stabs	"CommonDefs.h",130,0,0,0
+  37               		.stabs	"C:/WinAVR/avr/include/avr/interrupt.h",130,0,0,0
+  38               		.stabs	"C:/WinAVR/avr/include/avr/io.h",130,0,0,0
+  39               		.stabs	"C:/WinAVR/avr/include/avr/sfr_defs.h",130,0,0,0
+  40               		.stabn	162,0,0,0
+  41               		.stabs	"C:/WinAVR/avr/include/avr/iom8.h",130,0,0,0
+  42               		.stabn	162,0,0,0
+  43               		.stabn	162,0,0,0
+  44               		.stabn	162,0,0,0
+  45               		.stabs	"bool_t:t(2,1)=(0,11)",128,0,56,0
+  46               		.stabn	162,0,0,0
+  47               		.stabs	"UartInterface.h",130,0,0,0
+  48               		.stabn	162,0,0,0
+  49               		.stabs	"Utility.h",130,0,0,0
+  50               		.stabn	162,0,0,0
+  51               		.stabs	"DebugInt_init:F(0,20)",36,0,71,DebugInt_init
+  52               	.global	DebugInt_init
+  53               		.type	DebugInt_init, @function
+  54               	DebugInt_init:
+   1:DebugInterface.c **** /*
+   2:DebugInterface.c ****     Copyright (C) 2004    John Orlando
+   3:DebugInterface.c ****     
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccm4aaaa.s 			page 2
+
+
+   4:DebugInterface.c ****    AVRcam: a small real-time image processing engine.
+   5:DebugInterface.c **** 
+   6:DebugInterface.c ****     This program is free software; you can redistribute it and/or
+   7:DebugInterface.c ****     modify it under the terms of the GNU General Public
+   8:DebugInterface.c ****     License as published by the Free Software Foundation; either
+   9:DebugInterface.c ****     version 2 of the License, or (at your option) any later version.
+  10:DebugInterface.c **** 
+  11:DebugInterface.c ****     This program is distributed in the hope that it will be useful,
+  12:DebugInterface.c ****     but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:DebugInterface.c ****     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  14:DebugInterface.c ****     General Public License for more details.
+  15:DebugInterface.c **** 
+  16:DebugInterface.c ****     You should have received a copy of the GNU General Public
+  17:DebugInterface.c ****     License along with this program; if not, write to the Free Software
+  18:DebugInterface.c ****     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  19:DebugInterface.c **** 
+  20:DebugInterface.c ****    For more information on the AVRcam, please contact:
+  21:DebugInterface.c **** 
+  22:DebugInterface.c ****    john@jrobot.net
+  23:DebugInterface.c **** 
+  24:DebugInterface.c ****    or go to www.jrobot.net for more details regarding the system.
+  25:DebugInterface.c **** */
+  26:DebugInterface.c **** /***********************************************************
+  27:DebugInterface.c **** 	Module Name: DebugInterface.c
+  28:DebugInterface.c **** 	Module Date: 04/15/2004
+  29:DebugInterface.c **** 	Module Auth: John Orlando
+  30:DebugInterface.c **** 	
+  31:DebugInterface.c **** 	Description: This module is responsible for providing a
+  32:DebugInterface.c **** 	debug interface to the system.  Currently, the only
+  33:DebugInterface.c **** 	debugging that is available is through the on-board
+  34:DebugInterface.c **** 	UART (which is used by the main application as well) in
+  35:DebugInterface.c **** 	addition to the LED hooked up at PORTD bit 6.
+  36:DebugInterface.c ****     
+  37:DebugInterface.c ****     Revision History:
+  38:DebugInterface.c ****     Date        Rel Ver.    Notes
+  39:DebugInterface.c ****     4/10/2004      0.1     Module created
+  40:DebugInterface.c ****     6/30/2004      1.0     Initial release for Circuit Cellar
+  41:DebugInterface.c ****                            contest.
+  42:DebugInterface.c **** ***********************************************************/
+  43:DebugInterface.c **** 
+  44:DebugInterface.c **** /*	Includes */
+  45:DebugInterface.c **** #include "CommonDefs.h"
+  46:DebugInterface.c **** #include "UartInterface.h"
+  47:DebugInterface.c **** #include "Utility.h"
+  48:DebugInterface.c **** 
+  49:DebugInterface.c **** /*  Local Variables */
+  50:DebugInterface.c **** 
+  51:DebugInterface.c **** /* 	Local Structures and Typedefs */
+  52:DebugInterface.c **** 
+  53:DebugInterface.c **** /*  Extern Variables */
+  54:DebugInterface.c **** 
+  55:DebugInterface.c **** /*  Definitions */
+  56:DebugInterface.c **** 
+  57:DebugInterface.c **** /***********************************************************
+  58:DebugInterface.c **** 	Function Name: DebugInt_init
+  59:DebugInterface.c **** 	Function Description: This function is responsible for
+  60:DebugInterface.c **** 	initializing the debug module.  It sets up the debug LED
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccm4aaaa.s 			page 3
+
+
+  61:DebugInterface.c **** 	as well as any other debugging that will be done.  The 
+  62:DebugInterface.c ****     LED blinks four times, which indicates to the user
+  63:DebugInterface.c ****     that the system is available for re-programming if 
+  64:DebugInterface.c ****     necessary.  This works because the data lines on the
+  65:DebugInterface.c ****     OV6620 are still tri-stated at this point, but won't
+  66:DebugInterface.c ****     be for long after this function returns.
+  67:DebugInterface.c **** 	Inputs:  none
+  68:DebugInterface.c **** 	Outputs: none
+  69:DebugInterface.c **** ***********************************************************/	
+  70:DebugInterface.c **** void DebugInt_init(void)
+  71:DebugInterface.c **** {
+  55               		.stabn 68,0,71,.LM1-DebugInt_init
+  56               	.LM1:
+  57               	/* prologue: frame size=0 */
+  58 0000 1F93      		push r17
+  59               	/* prologue end (size=1) */
+  72:DebugInterface.c **** 	/* set PortD pin6 for output */
+  73:DebugInterface.c **** 	DDRD  |= 0x40;
+  60               		.stabn 68,0,73,.LM2-DebugInt_init
+  61               	.LM2:
+  62 0002 8E9A      		sbi 49-0x20,6
+  74:DebugInterface.c **** 	/* turn on LED */
+  75:DebugInterface.c **** 	PORTD |= 0x40;
+  63               		.stabn 68,0,75,.LM3-DebugInt_init
+  64               	.LM3:
+  65 0004 969A      		sbi 50-0x20,6
+  76:DebugInterface.c ****     Utility_delay(500);
+  66               		.stabn 68,0,76,.LM4-DebugInt_init
+  67               	.LM4:
+  68 0006 84EF      		ldi r24,lo8(500)
+  69 0008 91E0      		ldi r25,hi8(500)
+  70 000a 00D0      		rcall Utility_delay
+  77:DebugInterface.c ****     PORTD &= 0xBF;
+  71               		.stabn 68,0,77,.LM5-DebugInt_init
+  72               	.LM5:
+  73 000c 1FEB      		ldi r17,lo8(-65)
+  74 000e 82B3      		in r24,50-0x20
+  75 0010 8123      		and r24,r17
+  76 0012 82BB      		out 50-0x20,r24
+  78:DebugInterface.c ****     Utility_delay(500);
+  77               		.stabn 68,0,78,.LM6-DebugInt_init
+  78               	.LM6:
+  79 0014 84EF      		ldi r24,lo8(500)
+  80 0016 91E0      		ldi r25,hi8(500)
+  81 0018 00D0      		rcall Utility_delay
+  79:DebugInterface.c ****     PORTD |= 0x40;
+  82               		.stabn 68,0,79,.LM7-DebugInt_init
+  83               	.LM7:
+  84 001a 969A      		sbi 50-0x20,6
+  80:DebugInterface.c ****     Utility_delay(500);
+  85               		.stabn 68,0,80,.LM8-DebugInt_init
+  86               	.LM8:
+  87 001c 84EF      		ldi r24,lo8(500)
+  88 001e 91E0      		ldi r25,hi8(500)
+  89 0020 00D0      		rcall Utility_delay
+  81:DebugInterface.c ****     PORTD &= 0xBF;
+  90               		.stabn 68,0,81,.LM9-DebugInt_init
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccm4aaaa.s 			page 4
+
+
+  91               	.LM9:
+  92 0022 82B3      		in r24,50-0x20
+  93 0024 8123      		and r24,r17
+  94 0026 82BB      		out 50-0x20,r24
+  82:DebugInterface.c ****     Utility_delay(500);
+  95               		.stabn 68,0,82,.LM10-DebugInt_init
+  96               	.LM10:
+  97 0028 84EF      		ldi r24,lo8(500)
+  98 002a 91E0      		ldi r25,hi8(500)
+  99 002c 00D0      		rcall Utility_delay
+  83:DebugInterface.c ****     PORTD |= 0x40;
+ 100               		.stabn 68,0,83,.LM11-DebugInt_init
+ 101               	.LM11:
+ 102 002e 969A      		sbi 50-0x20,6
+  84:DebugInterface.c ****     Utility_delay(500);
+ 103               		.stabn 68,0,84,.LM12-DebugInt_init
+ 104               	.LM12:
+ 105 0030 84EF      		ldi r24,lo8(500)
+ 106 0032 91E0      		ldi r25,hi8(500)
+ 107 0034 00D0      		rcall Utility_delay
+  85:DebugInterface.c ****     PORTD &= 0xBF;
+ 108               		.stabn 68,0,85,.LM13-DebugInt_init
+ 109               	.LM13:
+ 110 0036 82B3      		in r24,50-0x20
+ 111 0038 8123      		and r24,r17
+ 112 003a 82BB      		out 50-0x20,r24
+  86:DebugInterface.c ****     Utility_delay(500);
+ 113               		.stabn 68,0,86,.LM14-DebugInt_init
+ 114               	.LM14:
+ 115 003c 84EF      		ldi r24,lo8(500)
+ 116 003e 91E0      		ldi r25,hi8(500)
+ 117 0040 00D0      		rcall Utility_delay
+  87:DebugInterface.c ****     PORTD |= 0x40;
+ 118               		.stabn 68,0,87,.LM15-DebugInt_init
+ 119               	.LM15:
+ 120 0042 969A      		sbi 50-0x20,6
+  88:DebugInterface.c **** }
+ 121               		.stabn 68,0,88,.LM16-DebugInt_init
+ 122               	.LM16:
+ 123               	/* epilogue: frame size=0 */
+ 124 0044 1F91      		pop r17
+ 125 0046 0895      		ret
+ 126               	/* epilogue end (size=2) */
+ 127               	/* function DebugInt_init size 36 (33) */
+ 128               		.size	DebugInt_init, .-DebugInt_init
+ 129               	.Lscope0:
+ 130               		.stabs	"",36,0,0,.Lscope0-DebugInt_init
+ 131               		.text
+ 132               		.stabs "",100,0,0,Letext
+ 133               	Letext:
+ 134               	/* File "DebugInterface.c": code   36 = 0x0024 (  33), prologues   1, epilogues   2 */
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccm4aaaa.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 DebugInterface.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\John\LOCALS~1\Temp/ccm4aaaa.s:54     .text:00000000 DebugInt_init
+C:\DOCUME~1\John\LOCALS~1\Temp/ccm4aaaa.s:133    .text:00000048 Letext
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+Utility_delay

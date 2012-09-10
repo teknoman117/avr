@@ -1,0 +1,469 @@
+Archive member included because of file (symbol)
+
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_exit.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o (exit)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_copy_data.o)
+                              servo_ctl_t2.o (__do_copy_data)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_clear_bss.o)
+                              servo_ctl_t2.o (__do_clear_bss)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fixunssfsi.o)
+                              servo_ctl_t2.o (__fixunssfsi)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fixunssfsi.o) (__subsf3)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_mul_sf.o)
+                              servo_ctl_t2.o (__mulsf3)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_div_sf.o)
+                              servo_ctl_t2.o (__divsf3)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_ge_sf.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fixunssfsi.o) (__gesf2)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_si_to_sf.o)
+                              servo_ctl_t2.o (__floatsisf)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_sf_to_si.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fixunssfsi.o) (__fixsfsi)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_thenan_sf.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o) (__thenan_sf)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_prologue.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o) (__prologue_saves__)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_epilogue.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o) (__epilogue_restores__)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_pack_sf.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o) (__pack_f)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_unpack_sf.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o) (__unpack_f)
+/opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fpcmp_parts_sf.o)
+                              /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_ge_sf.o) (__fpcmp_parts_f)
+
+Allocating common symbols
+Common symbol       size              file
+
+uval                0x1               servo_ctl_t2.o
+ticks               0x4               servo_ctl_t2.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x0000000000000000 0x0000000000020000 xr
+data             0x0000000000800060 0x000000000000ffa0 rw !x
+eeprom           0x0000000000810000 0x0000000000010000 rw !x
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+LOAD /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/libm.a
+LOAD servo_ctl_t2.o
+LOAD /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a
+LOAD /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/libc.a
+LOAD /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x0000000000000000     0x114a
+ *(.vectors)
+ .vectors       0x0000000000000000       0x70 /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+                0x0000000000000000                __vectors
+                0x0000000000000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x0000000000000070                . = ALIGN (0x2)
+                0x0000000000000070                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000000000000070        0x0 linker stubs
+ *(.trampolines*)
+                0x0000000000000070                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000000000000070                __ctors_start = .
+ *(.ctors)
+                0x0000000000000070                __ctors_end = .
+                0x0000000000000070                __dtors_start = .
+ *(.dtors)
+                0x0000000000000070                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x0000000000000070        0x0 /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+                0x0000000000000070                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000000000000070        0xc /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000000000000007c       0x16 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_copy_data.o)
+                0x000000000000007c                __do_copy_data
+ .init4         0x0000000000000092       0x10 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_clear_bss.o)
+                0x0000000000000092                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000000000000a2        0x8 /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+ *(.init9)
+ *(.text)
+ .text          0x00000000000000aa        0x4 /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+                0x00000000000000aa                __vector_22
+                0x00000000000000aa                __vector_1
+                0x00000000000000aa                __vector_24
+                0x00000000000000aa                __vector_12
+                0x00000000000000aa                __bad_interrupt
+                0x00000000000000aa                __vector_6
+                0x00000000000000aa                __vector_3
+                0x00000000000000aa                __vector_23
+                0x00000000000000aa                __vector_25
+                0x00000000000000aa                __vector_11
+                0x00000000000000aa                __vector_13
+                0x00000000000000aa                __vector_17
+                0x00000000000000aa                __vector_19
+                0x00000000000000aa                __vector_7
+                0x00000000000000aa                __vector_27
+                0x00000000000000aa                __vector_5
+                0x00000000000000aa                __vector_4
+                0x00000000000000aa                __vector_9
+                0x00000000000000aa                __vector_2
+                0x00000000000000aa                __vector_21
+                0x00000000000000aa                __vector_15
+                0x00000000000000aa                __vector_8
+                0x00000000000000aa                __vector_26
+                0x00000000000000aa                __vector_14
+                0x00000000000000aa                __vector_10
+                0x00000000000000aa                __vector_16
+                0x00000000000000aa                __vector_18
+                0x00000000000000aa                __vector_20
+ .text          0x00000000000000ae      0x2e8 servo_ctl_t2.o
+                0x0000000000000288                setAngleT2B
+                0x0000000000000148                enableServosT2
+                0x000000000000017a                disableServoT2B
+                0x00000000000000ae                set8
+                0x00000000000000c6                clear8
+                0x000000000000018c                setAngleT2A
+                0x0000000000000384                main
+                0x0000000000000168                disableServoT2A
+                0x0000000000000120                enableServoT2B
+                0x000000000000020a                setSpeedT2A
+                0x00000000000000e0                get8
+                0x0000000000000306                setSpeedT2B
+                0x00000000000000f8                enableServoT2A
+ .text          0x0000000000000396        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_exit.o)
+ .text          0x0000000000000396        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_copy_data.o)
+ .text          0x0000000000000396        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_clear_bss.o)
+ .text          0x0000000000000396       0x4c /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fixunssfsi.o)
+                0x0000000000000396                __fixunssfsi
+ .text          0x00000000000003e2      0x316 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o)
+                0x000000000000063c                __subsf3
+                0x000000000000069e                __addsf3
+ .text          0x00000000000006f8      0x23c /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_mul_sf.o)
+                0x00000000000006f8                __mulsf3
+ .text          0x0000000000000934      0x174 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_div_sf.o)
+                0x0000000000000934                __divsf3
+ .text          0x0000000000000aa8       0x6c /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_ge_sf.o)
+                0x0000000000000aa8                __gesf2
+ .text          0x0000000000000b14       0xd2 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_si_to_sf.o)
+                0x0000000000000b14                __floatsisf
+ .text          0x0000000000000be6       0xa0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_sf_to_si.o)
+                0x0000000000000be6                __fixsfsi
+ .text          0x0000000000000c86        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_thenan_sf.o)
+ .text          0x0000000000000c86        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_prologue.o)
+ .text          0x0000000000000c86        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_epilogue.o)
+ .text          0x0000000000000c86      0x244 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_pack_sf.o)
+                0x0000000000000c86                __pack_f
+ .text          0x0000000000000eca      0x13e /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_unpack_sf.o)
+                0x0000000000000eca                __unpack_f
+ .text          0x0000000000001008       0xd2 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fpcmp_parts_sf.o)
+                0x0000000000001008                __fpcmp_parts_f
+                0x00000000000010da                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00000000000010da        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x00000000000010da        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000000010da        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000000010da       0x38 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_prologue.o)
+                0x00000000000010da                __prologue_saves__
+ .text.libgcc   0x0000000000001112       0x36 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_epilogue.o)
+                0x0000000000001112                __epilogue_restores__
+                0x0000000000001148                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000000000001148        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_exit.o)
+                0x0000000000001148                exit
+                0x0000000000001148                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000000000001148        0x2 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_exit.o)
+ *(.fini0)
+                0x000000000000114a                _etext = .
+
+.data           0x0000000000800100        0x8 load address 0x000000000000114a
+                0x0000000000800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+ .data          0x0000000000800100        0x0 servo_ctl_t2.o
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_exit.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_copy_data.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_clear_bss.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fixunssfsi.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_mul_sf.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_div_sf.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_ge_sf.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_si_to_sf.o)
+ .data          0x0000000000800100        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_sf_to_si.o)
+ .data          0x0000000000800100        0x8 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_thenan_sf.o)
+                0x0000000000800100                __thenan_sf
+ .data          0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_prologue.o)
+ .data          0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_epilogue.o)
+ .data          0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_pack_sf.o)
+ .data          0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_unpack_sf.o)
+ .data          0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fpcmp_parts_sf.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x0000000000800108                . = ALIGN (0x2)
+                0x0000000000800108                _edata = .
+                0x0000000000800108                PROVIDE (__data_end, .)
+
+.bss            0x0000000000800108        0x5 load address 0x0000000000001152
+                0x0000000000800108                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+ .bss           0x0000000000800108        0x0 servo_ctl_t2.o
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_exit.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_copy_data.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fixunssfsi.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_mul_sf.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_div_sf.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_ge_sf.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_si_to_sf.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_sf_to_si.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_thenan_sf.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_prologue.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_epilogue.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_pack_sf.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_unpack_sf.o)
+ .bss           0x0000000000800108        0x0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fpcmp_parts_sf.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x0000000000800108        0x5 servo_ctl_t2.o
+                0x0000000000800108                uval
+                0x0000000000800109                ticks
+                0x000000000080010d                PROVIDE (__bss_end, .)
+                0x000000000000114a                __data_load_start = LOADADDR (.data)
+                0x0000000000001152                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x000000000080010d        0x0
+                0x000000000080010d                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x000000000080010d                PROVIDE (__noinit_end, .)
+                0x000000000080010d                _end = .
+                0x000000000080010d                PROVIDE (__heap_start, .)
+
+.eeprom         0x0000000000810000        0x0
+ *(.eeprom*)
+                0x0000000000810000                __eeprom_end = .
+
+.stab           0x0000000000000000     0x3018
+ *(.stab)
+ .stab          0x0000000000000000      0x378 /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+ .stab          0x0000000000000378      0x90c servo_ctl_t2.o
+                                        0x918 (size before relaxing)
+ .stab          0x0000000000000c84      0x2d0 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fixunssfsi.o)
+                                        0x2dc (size before relaxing)
+ .stab          0x0000000000000f54      0x720 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_addsub_sf.o)
+                                        0x75c (size before relaxing)
+ .stab          0x0000000000001674      0x54c /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_mul_sf.o)
+                                        0x678 (size before relaxing)
+ .stab          0x0000000000001bc0      0x3b4 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_div_sf.o)
+                                        0x4e0 (size before relaxing)
+ .stab          0x0000000000001f74      0x228 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_ge_sf.o)
+                                        0x354 (size before relaxing)
+ .stab          0x000000000000219c      0x24c /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_si_to_sf.o)
+                                        0x378 (size before relaxing)
+ .stab          0x00000000000023e8      0x240 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_sf_to_si.o)
+                                        0x36c (size before relaxing)
+ .stab          0x0000000000002628      0x12c /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_thenan_sf.o)
+                                        0x258 (size before relaxing)
+ .stab          0x0000000000002754      0x3b4 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_pack_sf.o)
+                                        0x4e0 (size before relaxing)
+ .stab          0x0000000000002b08      0x27c /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_unpack_sf.o)
+                                        0x3a8 (size before relaxing)
+ .stab          0x0000000000002d84      0x294 /opt/cross/lib64/gcc/avr/4.1.3/avr5/libgcc.a(_fpcmp_parts_sf.o)
+                                        0x3c0 (size before relaxing)
+
+.stabstr        0x0000000000000000     0x66f9
+ *(.stabstr)
+ .stabstr       0x0000000000000000     0x66f9 /opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/lib/avr5/crtm644.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(servo_ctl_t2.out elf32-avr)
+LOAD linker stubs

@@ -1,0 +1,507 @@
+GAS LISTING /tmp/cci6iU2K.s 			page 1
+
+
+   1               		.file	"timer2ctc_test.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.stabs	"/home/robotdude/Programs/AVR_Projects/mxx4lib/Examples/timer2ctc/",100,0,2,.Ltext0
+  10               		.stabs	"timer2ctc_test.c",100,0,2,.Ltext0
+  11               		.text
+  12               	.Ltext0:
+  13               		.stabs	"gcc2_compiled.",60,0,0,0
+  14               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  15               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  16               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  17               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  18               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  19               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  20               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  21               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  22               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  23               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  24               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  25               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  26               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  29               		.stabs	"../../timer2ctc.h",130,0,0,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h",130,0,0,0
+  34               		.stabs	"int8_t:t(5,1)=(0,10)",128,0,121,0
+  35               		.stabs	"uint8_t:t(5,2)=(0,11)",128,0,122,0
+  36               		.stabs	"int16_t:t(5,3)=(0,1)",128,0,123,0
+  37               		.stabs	"uint16_t:t(5,4)=(0,4)",128,0,124,0
+  38               		.stabs	"int32_t:t(5,5)=(0,3)",128,0,125,0
+  39               		.stabs	"uint32_t:t(5,6)=(0,5)",128,0,126,0
+  40               		.stabs	"int64_t:t(5,7)=(0,6)",128,0,128,0
+  41               		.stabs	"uint64_t:t(5,8)=(0,7)",128,0,129,0
+  42               		.stabs	"intptr_t:t(5,9)=(5,3)",128,0,142,0
+  43               		.stabs	"uintptr_t:t(5,10)=(5,4)",128,0,147,0
+  44               		.stabs	"int_least8_t:t(5,11)=(5,1)",128,0,159,0
+  45               		.stabs	"uint_least8_t:t(5,12)=(5,2)",128,0,164,0
+  46               		.stabs	"int_least16_t:t(5,13)=(5,3)",128,0,169,0
+  47               		.stabs	"uint_least16_t:t(5,14)=(5,4)",128,0,174,0
+  48               		.stabs	"int_least32_t:t(5,15)=(5,5)",128,0,179,0
+  49               		.stabs	"uint_least32_t:t(5,16)=(5,6)",128,0,184,0
+  50               		.stabs	"int_least64_t:t(5,17)=(5,7)",128,0,192,0
+  51               		.stabs	"uint_least64_t:t(5,18)=(5,8)",128,0,199,0
+  52               		.stabs	"int_fast8_t:t(5,19)=(5,1)",128,0,213,0
+  53               		.stabs	"uint_fast8_t:t(5,20)=(5,2)",128,0,218,0
+  54               		.stabs	"int_fast16_t:t(5,21)=(5,3)",128,0,223,0
+  55               		.stabs	"uint_fast16_t:t(5,22)=(5,4)",128,0,228,0
+  56               		.stabs	"int_fast32_t:t(5,23)=(5,5)",128,0,233,0
+  57               		.stabs	"uint_fast32_t:t(5,24)=(5,6)",128,0,238,0
+GAS LISTING /tmp/cci6iU2K.s 			page 2
+
+
+  58               		.stabs	"int_fast64_t:t(5,25)=(5,7)",128,0,246,0
+  59               		.stabs	"uint_fast64_t:t(5,26)=(5,8)",128,0,253,0
+  60               		.stabs	"intmax_t:t(5,27)=(5,7)",128,0,273,0
+  61               		.stabs	"uintmax_t:t(5,28)=(5,8)",128,0,278,0
+  62               		.stabn	162,0,0,0
+  63               		.stabs	"int_farptr_t:t(4,1)=(5,5)",128,0,77,0
+  64               		.stabs	"uint_farptr_t:t(4,2)=(5,6)",128,0,81,0
+  65               		.stabn	162,0,0,0
+  66               		.stabn	162,0,0,0
+  67               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h",130,0,0,0
+  68               		.stabs	"__fuse_t:t(6,1)=(6,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,195,0
+  69               		.stabn	162,0,0,0
+  70               		.stabn	162,0,0,0
+  71               		.stabn	162,0,0,0
+  72               		.stabs	"init_timer2_ctc:F(0,15)",36,0,51,init_timer2_ctc
+  73               		.stabs	"prescaler:P(5,2)",64,0,51,25
+  74               		.stabs	"pinfunca:P(5,2)",64,0,51,22
+  75               		.stabs	"pinfuncb:P(5,2)",64,0,51,20
+  76               		.stabs	"clksource:P(5,2)",64,0,51,18
+  77               	.global	init_timer2_ctc
+  78               		.type	init_timer2_ctc, @function
+  79               	init_timer2_ctc:
+  80               		.stabd	46,0,0
+  81               		.stabs	"../../timer2ctc.h",132,0,0,.Ltext1
+  82               	.Ltext1:
+   1:../../timer2ctc.h **** /*
+   2:../../timer2ctc.h ****  *      timer2ctc.h
+   3:../../timer2ctc.h ****  *      
+   4:../../timer2ctc.h ****  *      Copyright 2009 Nathaniel Robert Lewis <linux.robotdude@gmail.com>
+   5:../../timer2ctc.h ****  *      
+   6:../../timer2ctc.h ****  *      This program is free software; you can redistribute it and/or modify
+   7:../../timer2ctc.h ****  *      it under the terms of the GNU General Public License as published by
+   8:../../timer2ctc.h ****  *      the Free Software Foundation; either version 2 of the License, or
+   9:../../timer2ctc.h ****  *      (at your option) any later version.
+  10:../../timer2ctc.h ****  *      
+  11:../../timer2ctc.h ****  *      This program is distributed in the hope that it will be useful,
+  12:../../timer2ctc.h ****  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:../../timer2ctc.h ****  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:../../timer2ctc.h ****  *      GNU General Public License for more details.
+  15:../../timer2ctc.h ****  *      
+  16:../../timer2ctc.h ****  *      You should have received a copy of the GNU General Public License
+  17:../../timer2ctc.h ****  *      along with this program; if not, write to the Free Software
+  18:../../timer2ctc.h ****  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  19:../../timer2ctc.h ****  *      MA 02110-1301, USA.
+  20:../../timer2ctc.h ****  * 
+  21:../../timer2ctc.h ****  *      This header controls timer 2 under ctc settings
+  22:../../timer2ctc.h ****  * 
+  23:../../timer2ctc.h ****  */
+  24:../../timer2ctc.h **** 
+  25:../../timer2ctc.h **** #ifndef _TIMER_CTC_2
+  26:../../timer2ctc.h **** #define _TIMER_CTC_2 1
+  27:../../timer2ctc.h **** 
+  28:../../timer2ctc.h **** #include <avr/io.h>
+  29:../../timer2ctc.h **** #include <avr/interrupt.h>
+  30:../../timer2ctc.h **** #include <stdint.h>
+  31:../../timer2ctc.h **** 
+  32:../../timer2ctc.h **** //timer 2 prescalers
+GAS LISTING /tmp/cci6iU2K.s 			page 3
+
+
+  33:../../timer2ctc.h **** #define T2_PRESCALER_1 (1 << CS20)   // t2clock/1
+  34:../../timer2ctc.h **** #define T2_PRESCALER_8 (1 << CS21)   // t2clock/8
+  35:../../timer2ctc.h **** #define T2_PRESCALER_32 (1 << CS21) | (1 << CS20) // t2clock/32
+  36:../../timer2ctc.h **** #define T2_PRESCALER_64 (1 << CS22)  // t2clock/64
+  37:../../timer2ctc.h **** #define T2_PRESCALER_128 (1 << CS22) | (1 << CS20)// t2clock/128
+  38:../../timer2ctc.h **** #define T2_PRESCALER_256 (1 << CS22) | (1 << CS21)// t2clock/256
+  39:../../timer2ctc.h **** #define T2_PRESCALER_1024 (1 << CS22) | (1 << CS21) | (1 << CS20) // t2clock/1024
+  40:../../timer2ctc.h **** 
+  41:../../timer2ctc.h **** //timer 2 clock sources
+  42:../../timer2ctc.h **** #define T2_SOURCE_INTERNAL 0
+  43:../../timer2ctc.h **** #define T2_SOURCE_EXTERNAL 1
+  44:../../timer2ctc.h **** 
+  45:../../timer2ctc.h **** //pin functions for ctc on timer 2
+  46:../../timer2ctc.h **** #define PIN_DISCONNECT 0                                  //disconnect pin from timer
+  47:../../timer2ctc.h **** #define PIN_TOGGLE 1                                      //toggle pin on compare match
+  48:../../timer2ctc.h **** #define PIN_CLEAR 2                                       //clear (set to 0) pin on compare match 
+  49:../../timer2ctc.h **** #define PIN_SET 3                                         //set (set to 1) pin on compare match
+  50:../../timer2ctc.h **** 
+  51:../../timer2ctc.h **** void init_timer2_ctc ( uint8_t prescaler, uint8_t pinfunca, uint8_t pinfuncb, uint8_t clksource ) {
+  83               		.stabn	68,0,51,.LM0-.LFBB1
+  84               	.LM0:
+  85               	.LFBB1:
+  86               	/* prologue: function */
+  87               	/* frame size = 0 */
+  88 0000 982F      		mov r25,r24
+  52:../../timer2ctc.h **** 	if(clksource) {          //if an external clock is used:
+  89               		.stabn	68,0,52,.LM1-.LFBB1
+  90               	.LM1:
+  91 0002 2223      		tst r18
+  92 0004 01F0      		breq .L2
+  53:../../timer2ctc.h **** 		DDRC &= ~(1 << PORTC6);//input the clock pin
+  93               		.stabn	68,0,53,.LM2-.LFBB1
+  94               	.LM2:
+  95 0006 3E98      		cbi 39-0x20,6
+  54:../../timer2ctc.h **** 		ASSR |= (1 << EXCLK); //tell timer 2 to use an external clock not external crystal
+  96               		.stabn	68,0,54,.LM3-.LFBB1
+  97               	.LM3:
+  98 0008 8091 B600 		lds r24,182
+  99 000c 8064      		ori r24,lo8(64)
+ 100 000e 8093 B600 		sts 182,r24
+  55:../../timer2ctc.h **** 		ASSR |= (1 << AS2);   //tell timer 2 to use an external clock source
+ 101               		.stabn	68,0,55,.LM4-.LFBB1
+ 102               	.LM4:
+ 103 0012 8091 B600 		lds r24,182
+ 104 0016 8062      		ori r24,lo8(32)
+ 105 0018 8093 B600 		sts 182,r24
+ 106               	.L2:
+  56:../../timer2ctc.h **** 	}
+  57:../../timer2ctc.h **** 	if(pinfunca > 0) {DDRD |= (1 << PORTD7);} //if ocr2a is used, set its pin as an output
+ 107               		.stabn	68,0,57,.LM5-.LFBB1
+ 108               	.LM5:
+ 109 001c 6111      		cpse r22,__zero_reg__
+ 110 001e 579A      		sbi 42-0x20,7
+ 111               	.L3:
+  58:../../timer2ctc.h **** 	if(pinfuncb > 0) {DDRD |= (1 << PORTD6);} //if ocr2b is used, set its pin as an output
+ 112               		.stabn	68,0,58,.LM6-.LFBB1
+ 113               	.LM6:
+GAS LISTING /tmp/cci6iU2K.s 			page 4
+
+
+ 114 0020 4111      		cpse r20,__zero_reg__
+ 115 0022 569A      		sbi 42-0x20,6
+ 116               	.L4:
+  59:../../timer2ctc.h **** 	OCR2A = 0;           //clear the output compare registers for timer 2
+ 117               		.stabn	68,0,59,.LM7-.LFBB1
+ 118               	.LM7:
+ 119 0024 1092 B300 		sts 179,__zero_reg__
+  60:../../timer2ctc.h **** 	OCR2B = 0;
+ 120               		.stabn	68,0,60,.LM8-.LFBB1
+ 121               	.LM8:
+ 122 0028 1092 B400 		sts 180,__zero_reg__
+  61:../../timer2ctc.h **** 	TCCR2A = ((pinfunca << 6) & 0xC0) | ((pinfuncb << 4) & 0x30) | (1 << WGM21);//set the mode of the 
+ 123               		.stabn	68,0,61,.LM9-.LFBB1
+ 124               	.LM9:
+ 125 002c 6295      		swap r22
+ 126 002e 660F      		lsl r22
+ 127 0030 660F      		lsl r22
+ 128 0032 607C      		andi r22,0xc0
+ 129 0034 6260      		ori r22,lo8(2)
+ 130 0036 4295      		swap r20
+ 131 0038 407F      		andi r20,0xf0
+ 132 003a 4073      		andi r20,lo8(48)
+ 133 003c 642B      		or r22,r20
+ 134 003e 6093 B000 		sts 176,r22
+  62:../../timer2ctc.h **** 	TCCR2B = prescaler & 0x07; //set the prescaler and mask non prescaler bits
+ 135               		.stabn	68,0,62,.LM10-.LFBB1
+ 136               	.LM10:
+ 137 0042 9770      		andi r25,lo8(7)
+ 138 0044 9093 B100 		sts 177,r25
+ 139               	/* epilogue start */
+  63:../../timer2ctc.h **** }
+ 140               		.stabn	68,0,63,.LM11-.LFBB1
+ 141               	.LM11:
+ 142 0048 0895      		ret
+ 143               		.size	init_timer2_ctc, .-init_timer2_ctc
+ 144               	.Lscope1:
+ 145               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 146               		.stabd	78,0,0
+ 147               		.stabs	"set_ocr2a:F(0,15)",36,0,65,set_ocr2a
+ 148               		.stabs	"v:P(5,2)",64,0,65,24
+ 149               	.global	set_ocr2a
+ 150               		.type	set_ocr2a, @function
+ 151               	set_ocr2a:
+ 152               		.stabd	46,0,0
+  64:../../timer2ctc.h **** 
+  65:../../timer2ctc.h **** void set_ocr2a ( uint8_t v ) {
+ 153               		.stabn	68,0,65,.LM12-.LFBB2
+ 154               	.LM12:
+ 155               	.LFBB2:
+ 156               	/* prologue: function */
+ 157               	/* frame size = 0 */
+  66:../../timer2ctc.h **** 	OCR2A = v;                       //set the output compare register 2a
+ 158               		.stabn	68,0,66,.LM13-.LFBB2
+ 159               	.LM13:
+ 160 004a 8093 B300 		sts 179,r24
+ 161               	/* epilogue start */
+  67:../../timer2ctc.h **** }
+GAS LISTING /tmp/cci6iU2K.s 			page 5
+
+
+ 162               		.stabn	68,0,67,.LM14-.LFBB2
+ 163               	.LM14:
+ 164 004e 0895      		ret
+ 165               		.size	set_ocr2a, .-set_ocr2a
+ 166               	.Lscope2:
+ 167               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 168               		.stabd	78,0,0
+ 169               		.stabs	"set_ocr2b:F(0,15)",36,0,69,set_ocr2b
+ 170               		.stabs	"v:P(5,2)",64,0,69,24
+ 171               	.global	set_ocr2b
+ 172               		.type	set_ocr2b, @function
+ 173               	set_ocr2b:
+ 174               		.stabd	46,0,0
+  68:../../timer2ctc.h **** 
+  69:../../timer2ctc.h **** void set_ocr2b ( uint8_t v ) {
+ 175               		.stabn	68,0,69,.LM15-.LFBB3
+ 176               	.LM15:
+ 177               	.LFBB3:
+ 178               	/* prologue: function */
+ 179               	/* frame size = 0 */
+  70:../../timer2ctc.h **** 	OCR2B = v;                       //set the output compare register 2b
+ 180               		.stabn	68,0,70,.LM16-.LFBB3
+ 181               	.LM16:
+ 182 0050 8093 B400 		sts 180,r24
+ 183               	/* epilogue start */
+  71:../../timer2ctc.h **** }
+ 184               		.stabn	68,0,71,.LM17-.LFBB3
+ 185               	.LM17:
+ 186 0054 0895      		ret
+ 187               		.size	set_ocr2b, .-set_ocr2b
+ 188               	.Lscope3:
+ 189               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 190               		.stabd	78,0,0
+ 191               		.stabs	"enable_interrupt_t2a:F(0,15)",36,0,73,enable_interrupt_t2a
+ 192               	.global	enable_interrupt_t2a
+ 193               		.type	enable_interrupt_t2a, @function
+ 194               	enable_interrupt_t2a:
+ 195               		.stabd	46,0,0
+  72:../../timer2ctc.h **** 
+  73:../../timer2ctc.h **** void enable_interrupt_t2a ( void ) {
+ 196               		.stabn	68,0,73,.LM18-.LFBB4
+ 197               	.LM18:
+ 198               	.LFBB4:
+ 199               	/* prologue: function */
+ 200               	/* frame size = 0 */
+  74:../../timer2ctc.h **** 	TIMSK2 = (1 << OCIE2A);            //set the timer output compare interrupt enable 2a bit
+ 201               		.stabn	68,0,74,.LM19-.LFBB4
+ 202               	.LM19:
+ 203 0056 82E0      		ldi r24,lo8(2)
+ 204 0058 8093 7000 		sts 112,r24
+  75:../../timer2ctc.h **** 	sei();                            //set the global interrupt flag
+ 205               		.stabn	68,0,75,.LM20-.LFBB4
+ 206               	.LM20:
+ 207               	/* #APP */
+ 208               	 ;  75 "../../timer2ctc.h" 1
+ 209 005c 7894      		sei
+ 210               	 ;  0 "" 2
+GAS LISTING /tmp/cci6iU2K.s 			page 6
+
+
+ 211               	/* epilogue start */
+  76:../../timer2ctc.h **** }
+ 212               		.stabn	68,0,76,.LM21-.LFBB4
+ 213               	.LM21:
+ 214               	/* #NOAPP */
+ 215 005e 0895      		ret
+ 216               		.size	enable_interrupt_t2a, .-enable_interrupt_t2a
+ 217               	.Lscope4:
+ 218               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 219               		.stabd	78,0,0
+ 220               		.stabs	"enable_interrupt_t2b:F(0,15)",36,0,78,enable_interrupt_t2b
+ 221               	.global	enable_interrupt_t2b
+ 222               		.type	enable_interrupt_t2b, @function
+ 223               	enable_interrupt_t2b:
+ 224               		.stabd	46,0,0
+  77:../../timer2ctc.h **** 
+  78:../../timer2ctc.h **** void enable_interrupt_t2b ( void ) {
+ 225               		.stabn	68,0,78,.LM22-.LFBB5
+ 226               	.LM22:
+ 227               	.LFBB5:
+ 228               	/* prologue: function */
+ 229               	/* frame size = 0 */
+  79:../../timer2ctc.h **** 	TIMSK2 = (1 << OCIE2B);            //set the timer output compare interrupt enable 2b bit
+ 230               		.stabn	68,0,79,.LM23-.LFBB5
+ 231               	.LM23:
+ 232 0060 84E0      		ldi r24,lo8(4)
+ 233 0062 8093 7000 		sts 112,r24
+  80:../../timer2ctc.h **** 	sei();                            //set the global interrupt flag
+ 234               		.stabn	68,0,80,.LM24-.LFBB5
+ 235               	.LM24:
+ 236               	/* #APP */
+ 237               	 ;  80 "../../timer2ctc.h" 1
+ 238 0066 7894      		sei
+ 239               	 ;  0 "" 2
+ 240               	/* epilogue start */
+  81:../../timer2ctc.h **** }
+ 241               		.stabn	68,0,81,.LM25-.LFBB5
+ 242               	.LM25:
+ 243               	/* #NOAPP */
+ 244 0068 0895      		ret
+ 245               		.size	enable_interrupt_t2b, .-enable_interrupt_t2b
+ 246               	.Lscope5:
+ 247               		.stabs	"",36,0,0,.Lscope5-.LFBB5
+ 248               		.stabd	78,0,0
+ 249               		.stabs	"disable_interrupt_t2a:F(0,15)",36,0,83,disable_interrupt_t2a
+ 250               	.global	disable_interrupt_t2a
+ 251               		.type	disable_interrupt_t2a, @function
+ 252               	disable_interrupt_t2a:
+ 253               		.stabd	46,0,0
+  82:../../timer2ctc.h **** 
+  83:../../timer2ctc.h **** void disable_interrupt_t2a ( void ) {
+ 254               		.stabn	68,0,83,.LM26-.LFBB6
+ 255               	.LM26:
+ 256               	.LFBB6:
+ 257               	/* prologue: function */
+ 258               	/* frame size = 0 */
+  84:../../timer2ctc.h **** 	TIMSK2 &= ~(1 << OCIE2A);           //clear the timer output compare interrupt enable 2a bit
+GAS LISTING /tmp/cci6iU2K.s 			page 7
+
+
+ 259               		.stabn	68,0,84,.LM27-.LFBB6
+ 260               	.LM27:
+ 261 006a E0E7      		ldi r30,lo8(112)
+ 262 006c F0E0      		ldi r31,hi8(112)
+ 263 006e 8081      		ld r24,Z
+ 264 0070 8D7F      		andi r24,lo8(-3)
+ 265 0072 8083      		st Z,r24
+ 266               	/* epilogue start */
+  85:../../timer2ctc.h **** }
+ 267               		.stabn	68,0,85,.LM28-.LFBB6
+ 268               	.LM28:
+ 269 0074 0895      		ret
+ 270               		.size	disable_interrupt_t2a, .-disable_interrupt_t2a
+ 271               	.Lscope6:
+ 272               		.stabs	"",36,0,0,.Lscope6-.LFBB6
+ 273               		.stabd	78,0,0
+ 274               		.stabs	"disable_interrupt_t2b:F(0,15)",36,0,87,disable_interrupt_t2b
+ 275               	.global	disable_interrupt_t2b
+ 276               		.type	disable_interrupt_t2b, @function
+ 277               	disable_interrupt_t2b:
+ 278               		.stabd	46,0,0
+  86:../../timer2ctc.h **** 
+  87:../../timer2ctc.h **** void disable_interrupt_t2b ( void ) {
+ 279               		.stabn	68,0,87,.LM29-.LFBB7
+ 280               	.LM29:
+ 281               	.LFBB7:
+ 282               	/* prologue: function */
+ 283               	/* frame size = 0 */
+  88:../../timer2ctc.h **** 	TIMSK2 &= ~(1 << OCIE2B);           //clear the timer output compare interrupt enable 2b bit
+ 284               		.stabn	68,0,88,.LM30-.LFBB7
+ 285               	.LM30:
+ 286 0076 E0E7      		ldi r30,lo8(112)
+ 287 0078 F0E0      		ldi r31,hi8(112)
+ 288 007a 8081      		ld r24,Z
+ 289 007c 8B7F      		andi r24,lo8(-5)
+ 290 007e 8083      		st Z,r24
+ 291               	/* epilogue start */
+  89:../../timer2ctc.h **** }
+ 292               		.stabn	68,0,89,.LM31-.LFBB7
+ 293               	.LM31:
+ 294 0080 0895      		ret
+ 295               		.size	disable_interrupt_t2b, .-disable_interrupt_t2b
+ 296               	.Lscope7:
+ 297               		.stabs	"",36,0,0,.Lscope7-.LFBB7
+ 298               		.stabd	78,0,0
+ 299               		.stabs	"main:F(0,1)",36,0,33,main
+ 300               	.global	main
+ 301               		.type	main, @function
+ 302               	main:
+ 303               		.stabd	46,0,0
+ 304               		.stabs	"timer2ctc_test.c",132,0,0,.Ltext2
+ 305               	.Ltext2:
+   1:timer2ctc_test.c **** /*
+   2:timer2ctc_test.c ****  *      timer2ctc_test.c
+   3:timer2ctc_test.c ****  *      
+   4:timer2ctc_test.c ****  *      Copyright 2009 Nathaniel Robert Lewis <linux.robotdude@gmail.com>
+   5:timer2ctc_test.c ****  *      
+GAS LISTING /tmp/cci6iU2K.s 			page 8
+
+
+   6:timer2ctc_test.c ****  *      This program is free software; you can redistribute it and/or modify
+   7:timer2ctc_test.c ****  *      it under the terms of the GNU General Public License as published by
+   8:timer2ctc_test.c ****  *      the Free Software Foundation; either version 2 of the License, or
+   9:timer2ctc_test.c ****  *      (at your option) any later version.
+  10:timer2ctc_test.c ****  *      
+  11:timer2ctc_test.c ****  *      This program is distributed in the hope that it will be useful,
+  12:timer2ctc_test.c ****  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:timer2ctc_test.c ****  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:timer2ctc_test.c ****  *      GNU General Public License for more details.
+  15:timer2ctc_test.c ****  *      
+  16:timer2ctc_test.c ****  *      You should have received a copy of the GNU General Public License
+  17:timer2ctc_test.c ****  *      along with this program; if not, write to the Free Software
+  18:timer2ctc_test.c ****  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  19:timer2ctc_test.c ****  *      MA 02110-1301, USA.
+  20:timer2ctc_test.c ****  * 
+  21:timer2ctc_test.c ****  *      This program tests the timer2ctc header by changing the state of
+  22:timer2ctc_test.c ****  *      and led when the a button connected to TOSC1 has been pressed 16 times.
+  23:timer2ctc_test.c ****  *      The timer then resets, and waits for another 16 presses.  This is because
+  24:timer2ctc_test.c ****  *      the required timer clocks is 2 and a prescaler of 8 is specified.
+  25:timer2ctc_test.c ****  *      2*8=16
+  26:timer2ctc_test.c ****  * 
+  27:timer2ctc_test.c ****  */
+  28:timer2ctc_test.c **** 
+  29:timer2ctc_test.c **** #define F_CPU 16000000UL
+  30:timer2ctc_test.c **** 
+  31:timer2ctc_test.c **** #include <timer2ctc.h>
+  32:timer2ctc_test.c **** 
+  33:timer2ctc_test.c **** int main ( void ) {
+ 306               		.stabn	68,0,33,.LM32-.LFBB8
+ 307               	.LM32:
+ 308               	.LFBB8:
+ 309               	/* prologue: function */
+ 310               	/* frame size = 0 */
+  34:timer2ctc_test.c **** 	init_timer2_ctc(T2_PRESCALER_1024, PIN_TOGGLE, PIN_DISCONNECT, T2_SOURCE_INTERNAL); //set up timer
+ 311               		.stabn	68,0,34,.LM33-.LFBB8
+ 312               	.LM33:
+ 313 0082 20E0      		ldi r18,lo8(0)
+ 314 0084 40E0      		ldi r20,lo8(0)
+ 315 0086 61E0      		ldi r22,lo8(1)
+ 316 0088 87E0      		ldi r24,lo8(7)
+ 317 008a 0E94 0000 		call init_timer2_ctc
+ 318               	.LBB4:
+ 319               	.LBB5:
+ 320               		.stabs	"../../timer2ctc.h",132,0,0,.Ltext3
+ 321               	.Ltext3:
+ 322               		.stabn	68,0,66,.LM34-.LFBB8
+ 323               	.LM34:
+ 324 008e 8FEF      		ldi r24,lo8(-1)
+ 325 0090 8093 B300 		sts 179,r24
+ 326               	.L19:
+ 327 0094 00C0      		rjmp .L19
+ 328               	.LBE5:
+ 329               	.LBE4:
+ 330               		.size	main, .-main
+ 331               	.Lscope8:
+ 332               		.stabs	"",36,0,0,.Lscope8-.LFBB8
+ 333               		.stabd	78,0,0
+GAS LISTING /tmp/cci6iU2K.s 			page 9
+
+
+ 334               		.stabs	"",100,0,0,.Letext0
+ 335               	.Letext0:
+GAS LISTING /tmp/cci6iU2K.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 timer2ctc_test.c
+     /tmp/cci6iU2K.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cci6iU2K.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cci6iU2K.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cci6iU2K.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cci6iU2K.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cci6iU2K.s:79     .text:0000000000000000 init_timer2_ctc
+     /tmp/cci6iU2K.s:151    .text:000000000000004a set_ocr2a
+     /tmp/cci6iU2K.s:173    .text:0000000000000050 set_ocr2b
+     /tmp/cci6iU2K.s:194    .text:0000000000000056 enable_interrupt_t2a
+     /tmp/cci6iU2K.s:223    .text:0000000000000060 enable_interrupt_t2b
+     /tmp/cci6iU2K.s:252    .text:000000000000006a disable_interrupt_t2a
+     /tmp/cci6iU2K.s:277    .text:0000000000000076 disable_interrupt_t2b
+     /tmp/cci6iU2K.s:302    .text:0000000000000082 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

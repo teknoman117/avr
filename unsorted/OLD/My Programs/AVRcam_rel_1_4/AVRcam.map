@@ -1,0 +1,585 @@
+Archive member included because of file (symbol)
+
+C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_exit.o)
+                              Main.o (exit)
+C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_copy_data.o)
+                              CamInterface.o (__do_copy_data)
+C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_clear_bss.o)
+                              CamInterface.o (__do_clear_bss)
+C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(atoi.o)
+                              UIMgr.o (atoi)
+C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_rb.o)
+                              UIMgr.o (eeprom_read_byte)
+C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_rblk.o)
+                              CamInterface.o (eeprom_read_block)
+C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_wb.o)
+                              UIMgr.o (eeprom_write_byte)
+C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(mul10.o)
+                              C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(atoi.o) (__mulhi_const_10)
+
+Allocating common symbols
+Common symbol       size              file
+
+previousLineBuffer  0xb0              CamInterface.o
+UIMgr_rxFifo        0x20              UIMgr.o
+currentLineBuffer   0xb0              CamInterface.o
+Exec_eventFifo      0x8               Executive.o
+CamConfig_txFifo    0x10              CamConfig.o
+UIMgr_txFifo        0x40              UIMgr.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+LOAD CamInterface.o
+LOAD Main.o
+LOAD Executive.o
+LOAD FrameMgr.o
+LOAD UIMgr.o
+LOAD UartInterface.o
+LOAD I2CInterface.o
+LOAD CamConfig.o
+LOAD Utility.o
+LOAD DebugInterface.o
+LOAD CamInterfaceAsm.o
+Address of section .noinit set to 0x800300
+LOAD C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libm.a
+LOAD C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a
+LOAD C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a
+LOAD C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x109e
+ *(.vectors)
+ .vectors       0x00000000       0x26 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+                0x00000000                __vectors
+                0x00000026                __ctors_start = .
+ *(.ctors)
+                0x00000026                __ctors_end = .
+                0x00000026                __dtors_start = .
+ *(.dtors)
+                0x00000026                __dtors_end = .
+ *(.progmem.gcc*)
+ .progmem.gcc_sw_table
+                0x00000026       0xa2 I2CInterface.o
+ *(.progmem*)
+                0x000000c8                . = ALIGN (0x2)
+ *(.init0)
+ *(.init1)
+ *(.init2)
+ .init2         0x000000c8        0xc C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+ *(.init3)
+ *(.init4)
+ .init4         0x000000d4       0x16 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_copy_data.o)
+                0x000000d4                __do_copy_data
+ .init4         0x000000ea       0x10 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_clear_bss.o)
+                0x000000ea                __do_clear_bss
+ *(.init5)
+ *(.init6)
+ *(.init7)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000fa        0x2 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+ *(.text)
+ .text          0x000000fc        0x2 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+                0x000000fc                __vector_12
+                0x000000fc                __bad_interrupt
+                0x000000fc                __vector_6
+                0x000000fc                __vector_3
+                0x000000fc                __vector_13
+                0x000000fc                __vector_7
+                0x000000fc                __vector_5
+                0x000000fc                __vector_4
+                0x000000fc                __vector_9
+                0x000000fc                __vector_15
+                0x000000fc                __vector_14
+                0x000000fc                __vector_10
+                0x000000fc                __vector_16
+                0x000000fc                __vector_18
+ .text          0x000000fe       0x60 CamInterface.o
+                0x000000fe                CamInt_init
+                0x0000015c                CamInt_resetCam
+ .text          0x0000015e       0x26 Main.o
+                0x0000015e                main
+ .text          0x00000184       0xf0 Executive.o
+                0x00000252                Exec_writeEventFifo
+                0x00000184                Exec_run
+ .text          0x00000274      0x428 FrameMgr.o
+                0x000002f8                FrameMgr_acquireFrame
+                0x0000032e                FrameMgr_acquireLine
+                0x00000282                FrameMgr_dispatchEvent
+                0x0000050c                FrameMgr_processFrame
+                0x00000274                FrameMgr_init
+                0x00000392                FrameMgr_processLine
+ .text          0x0000069c      0x4b0 UIMgr.o
+                0x00000ac4                UIMgr_flushTxBuffer
+                0x00000b2a                UIMgr_writeTxFifo
+                0x00000710                UIMgr_processReceivedData
+                0x0000069c                UIMgr_init
+                0x00000a6e                UIMgr_writeBufferToTxFifo
+                0x00000aa0                UIMgr_txBuffer
+                0x000006fc                UIMgr_transmitPendingData
+                0x000006d2                UIMgr_dispatchEvent
+ .text          0x00000b4c       0x78 UartInterface.o
+                0x00000b4c                UartInt_init
+                0x00000b68                __vector_11
+                0x00000b60                UartInt_txByte
+ .text          0x00000bc4      0x1a2 I2CInterface.o
+                0x00000c38                I2CInt_isI2cBusy
+                0x00000c04                I2CInt_readData
+                0x00000c4a                __vector_17
+                0x00000bc4                I2CInt_init
+                0x00000bcc                I2CInt_writeData
+ .text          0x00000d66       0xe0 CamConfig.o
+                0x00000d66                CamConfig_init
+                0x00000dee                CamConfig_writeTxFifo
+                0x00000d92                CamConfig_sendFifoCmds
+                0x00000d88                CamConfig_setCamReg
+ .text          0x00000e46       0x76 Utility.o
+                0x00000e46                Utility_delay
+ .text          0x00000ebc       0x48 DebugInterface.o
+                0x00000ebc                DebugInt_init
+ .text          0x00000f04       0xe8 CamInterfaceAsm.o
+                0x00000fd8                __vector_1
+                0x00000f98                CamIntAsm_acquireDumpLine
+                0x00000fea                __vector_default
+                0x00000fda                __vector_2
+                0x00000f92                CamIntAsm_waitForNewDumpFrame
+                0x00000f04                CamIntAsm_waitForNewTrackingFrame
+                0x00000f0a                CamIntAsm_acquireTrackingLine
+                0x00000fdc                __vector_8
+ .text          0x00000fec       0x58 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(atoi.o)
+                0x00000fec                atoi
+ .text          0x00001044       0x10 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_rb.o)
+                0x00001044                eeprom_read_byte
+ .text          0x00001054       0x22 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_rblk.o)
+                0x00001054                eeprom_read_block
+ .text          0x00001076       0x16 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_wb.o)
+                0x00001076                eeprom_write_byte
+ .text          0x0000108c       0x10 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(mul10.o)
+                0x0000108c                __mulhi_const_10
+                0x0000109c                . = ALIGN (0x2)
+ *(.text.*)
+                0x0000109c                . = ALIGN (0x2)
+ *(.fini9)
+ *(.fini8)
+ *(.fini7)
+ *(.fini6)
+ *(.fini5)
+ *(.fini4)
+ *(.fini3)
+ *(.fini2)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000109c        0x2 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_exit.o)
+                0x0000109e                _etext = .
+
+.data           0x00800060       0x10 load address 0x0000109e
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x2 FrameMgr.o
+ .data          0x00800062        0xe UIMgr.o
+ *(.gnu.linkonce.d*)
+                0x00800070                . = ALIGN (0x2)
+                0x00800070                _edata = .
+                0x00800070                PROVIDE (__data_end, .)
+
+.bss            0x00800070      0x274
+                0x00800070                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800070        0x3 Executive.o
+                0x00800071                Exec_eventFifoTail
+                0x00800072                fastEventBitmask
+                0x00800070                Exec_eventFifoHead
+ .bss           0x00800073       0x45 FrameMgr.o
+ .bss           0x008000b8       0x4b UIMgr.o
+                0x008000b9                UIMgr_rxFifoTail
+                0x008000bb                UIMgr_txFifoTail
+                0x008000ba                UIMgr_txFifoHead
+                0x008000b8                UIMgr_rxFifoHead
+ .bss           0x00800103        0x7 I2CInterface.o
+ .bss           0x0080010a        0x2 CamConfig.o
+                0x0080010a                CamConfig_txFifoHead
+                0x0080010b                CamConfig_txFifoTail
+ *(COMMON)
+ COMMON         0x0080010c      0x160 CamInterface.o
+                                  0x0 (size before relaxing)
+                0x0080010c                previousLineBuffer
+                0x008001bc                currentLineBuffer
+ COMMON         0x0080026c        0x8 Executive.o
+                                  0x0 (size before relaxing)
+                0x0080026c                Exec_eventFifo
+ COMMON         0x00800274       0x60 UIMgr.o
+                                  0x0 (size before relaxing)
+                0x00800274                UIMgr_rxFifo
+                0x00800294                UIMgr_txFifo
+ COMMON         0x008002d4       0x10 CamConfig.o
+                                  0x0 (size before relaxing)
+                0x008002d4                CamConfig_txFifo
+                0x008002e4                PROVIDE (__bss_end, .)
+                0x0000109e                __data_load_start = LOADADDR (.data)
+                0x000010ae                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800300       0x30
+                0x00800300                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+ .noinit        0x00800300       0x30 CamInterface.o
+                0x00800300                colorMap
+                0x00800330                PROVIDE (__noinit_end, .)
+                0x00800330                _end = .
+                0x00800330                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0 load address 0x000010ae
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.stab           0x00000000     0x3f30
+ *(.stab)
+ .stab          0x00000000      0x51c CamInterface.o
+ .stab          0x0000051c      0x318 Main.o
+                                0x3fc (size before relaxing)
+ .stab          0x00000834      0x4bc Executive.o
+                                0x5dc (size before relaxing)
+ .stab          0x00000cf0      0xce4 FrameMgr.o
+                                0xe1c (size before relaxing)
+ .stab          0x000019d4      0xe4c UIMgr.o
+                               0x1014 (size before relaxing)
+ .stab          0x00002820      0x300 UartInterface.o
+                                0x390 (size before relaxing)
+ .stab          0x00002b20      0x5a0 I2CInterface.o
+                                0x624 (size before relaxing)
+ .stab          0x000030c0      0x48c CamConfig.o
+                                0x510 (size before relaxing)
+ .stab          0x0000354c      0x21c Utility.o
+                                0x270 (size before relaxing)
+ .stab          0x00003768      0x258 DebugInterface.o
+                                0x2c4 (size before relaxing)
+ .stab          0x000039c0      0x570 CamInterfaceAsm.o
+                                0x57c (size before relaxing)
+
+.stabstr        0x00000000     0x181e
+ *(.stabstr)
+ .stabstr       0x00000000     0x181e CamInterface.o
+                                  0x0 (size before relaxing)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(AVRcam.elf elf32-avr)
+
+Cross Reference Table
+
+Symbol                                            File
+CamConfig_init                                    CamConfig.o
+                                                  Main.o
+CamConfig_sendFifoCmds                            CamConfig.o
+                                                  UIMgr.o
+                                                  FrameMgr.o
+CamConfig_setCamReg                               CamConfig.o
+                                                  UIMgr.o
+                                                  FrameMgr.o
+CamConfig_txFifo                                  CamConfig.o
+CamConfig_txFifoHead                              CamConfig.o
+CamConfig_txFifoTail                              CamConfig.o
+CamConfig_writeTxFifo                             CamConfig.o
+CamIntAsm_acquireDumpLine                         CamInterfaceAsm.o
+                                                  FrameMgr.o
+CamIntAsm_acquireTrackingLine                     CamInterfaceAsm.o
+                                                  FrameMgr.o
+CamIntAsm_waitForNewDumpFrame                     CamInterfaceAsm.o
+CamIntAsm_waitForNewTrackingFrame                 CamInterfaceAsm.o
+CamInt_init                                       CamInterface.o
+                                                  Main.o
+CamInt_resetCam                                   CamInterface.o
+                                                  UIMgr.o
+DebugInt_init                                     DebugInterface.o
+                                                  Main.o
+Exec_eventFifo                                    UartInterface.o
+                                                  Executive.o
+Exec_eventFifoHead                                Executive.o
+                                                  UartInterface.o
+Exec_eventFifoTail                                Executive.o
+Exec_run                                          Executive.o
+                                                  Main.o
+Exec_writeEventFifo                               Executive.o
+                                                  UIMgr.o
+                                                  FrameMgr.o
+FrameMgr_acquireFrame                             FrameMgr.o
+FrameMgr_acquireLine                              FrameMgr.o
+                                                  Executive.o
+FrameMgr_dispatchEvent                            FrameMgr.o
+                                                  Executive.o
+FrameMgr_init                                     FrameMgr.o
+                                                  Main.o
+FrameMgr_processFrame                             FrameMgr.o
+FrameMgr_processLine                              FrameMgr.o
+                                                  Executive.o
+I2CInt_init                                       I2CInterface.o
+                                                  Main.o
+I2CInt_isI2cBusy                                  I2CInterface.o
+                                                  CamConfig.o
+I2CInt_readData                                   I2CInterface.o
+I2CInt_writeData                                  I2CInterface.o
+                                                  CamConfig.o
+UIMgr_dispatchEvent                               UIMgr.o
+                                                  Executive.o
+UIMgr_flushTxBuffer                               UIMgr.o
+UIMgr_init                                        UIMgr.o
+                                                  Main.o
+UIMgr_processReceivedData                         UIMgr.o
+UIMgr_rxFifo                                      UartInterface.o
+                                                  UIMgr.o
+UIMgr_rxFifoHead                                  UIMgr.o
+                                                  UartInterface.o
+UIMgr_rxFifoTail                                  UIMgr.o
+UIMgr_transmitPendingData                         UIMgr.o
+                                                  Executive.o
+UIMgr_txBuffer                                    UIMgr.o
+UIMgr_txFifo                                      UIMgr.o
+UIMgr_txFifoHead                                  UIMgr.o
+UIMgr_txFifoTail                                  UIMgr.o
+UIMgr_writeBufferToTxFifo                         UIMgr.o
+UIMgr_writeTxFifo                                 UIMgr.o
+                                                  FrameMgr.o
+UartInt_init                                      UartInterface.o
+                                                  Main.o
+UartInt_txByte                                    UartInterface.o
+                                                  UIMgr.o
+                                                  FrameMgr.o
+Utility_delay                                     Utility.o
+                                                  DebugInterface.o
+                                                  CamConfig.o
+                                                  UIMgr.o
+                                                  FrameMgr.o
+                                                  Main.o
+__bad_interrupt                                   C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__bss_end                                         C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_clear_bss.o)
+__bss_start                                       C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_clear_bss.o)
+__data_end                                        C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_copy_data.o)
+__data_load_start                                 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_copy_data.o)
+__data_start                                      C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_copy_data.o)
+__do_clear_bss                                    C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_clear_bss.o)
+                                                  DebugInterface.o
+                                                  Utility.o
+                                                  CamConfig.o
+                                                  I2CInterface.o
+                                                  UartInterface.o
+                                                  UIMgr.o
+                                                  FrameMgr.o
+                                                  Executive.o
+                                                  Main.o
+                                                  CamInterface.o
+__do_copy_data                                    C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_copy_data.o)
+                                                  DebugInterface.o
+                                                  Utility.o
+                                                  CamConfig.o
+                                                  I2CInterface.o
+                                                  UartInterface.o
+                                                  UIMgr.o
+                                                  FrameMgr.o
+                                                  Executive.o
+                                                  Main.o
+                                                  CamInterface.o
+__heap_end                                        C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__init                                            C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__mulhi_const_10                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(mul10.o)
+                                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(atoi.o)
+__stack                                           C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+                                                  Main.o
+__vector_1                                        CamInterfaceAsm.o
+                                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_10                                       C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_11                                       UartInterface.o
+                                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_12                                       C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_13                                       C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_14                                       C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_15                                       C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_16                                       C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_17                                       I2CInterface.o
+                                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_18                                       C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_2                                        CamInterfaceAsm.o
+                                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_3                                        C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_4                                        C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_5                                        C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_6                                        C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_7                                        C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_8                                        CamInterfaceAsm.o
+                                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vector_9                                        C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+                                                  CamInterfaceAsm.o
+__vector_default                                  CamInterfaceAsm.o
+                                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+__vectors                                         C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+_exit                                             C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_exit.o)
+atoi                                              C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(atoi.o)
+                                                  UIMgr.o
+colorMap                                          CamInterface.o
+                                                  UIMgr.o
+                                                  FrameMgr.o
+currentLineBuffer                                 FrameMgr.o
+                                                  CamInterface.o
+eeprom_read_block                                 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_rblk.o)
+                                                  CamInterface.o
+eeprom_read_byte                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_rb.o)
+                                                  UIMgr.o
+eeprom_write_byte                                 C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\libc.a(ee_wb.o)
+                                                  UIMgr.o
+exit                                              C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\avr4\libgcc.a(_exit.o)
+                                                  Main.o
+fastEventBitmask                                  Executive.o
+                                                  CamInterfaceAsm.o
+                                                  FrameMgr.o
+main                                              Main.o
+                                                  C:\WinAVR\bin\..\lib\gcc-lib\avr\3.3.1\..\..\..\..\avr\lib\avr4\crtm8.o
+previousLineBuffer                                FrameMgr.o
+                                                  CamInterface.o

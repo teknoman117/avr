@@ -1,0 +1,19 @@
+#####         Target Specific Details          #####
+#####     Customize these for your project     #####
+
+# Name of target controller 
+# (e.g. 'at90s8515', see the available avr-gcc mmcu 
+# options for possible values)
+MCU=at90s8515
+
+# Name of our project
+# (use a single word, e.g. 'myproject')
+PROJECTNAME=helloavr
+
+# Source files
+# List C/C++/Assembly source files:
+# (list all files to compile, eg 'a.c b.cpp as.S')
+# Use .cc, .cpp or .C suffix for C++ files, use .S 
+# (NOT .s !!!) for assembly source code files.
+PRJSRC=kr.c
+

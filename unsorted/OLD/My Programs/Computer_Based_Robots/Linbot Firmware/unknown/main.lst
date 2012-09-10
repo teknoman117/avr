@@ -1,0 +1,1047 @@
+   1               		.file	"main.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.data
+  19               	.LC0:
+  20 0000 436F 6D6D 		.string	"Command Excepted\r"
+  20      616E 6420 
+  20      4578 6365 
+  20      7074 6564 
+  20      0D00 
+  21               	.LC1:
+  22 0012 0D00      		.string	"\r"
+  23               		.text
+  24               	.global	enc
+  26               	enc:
+  27               	.LFB20:
+  28               	.LM1:
+  29               	/* prologue: frame size=0 */
+  30               	/* prologue end (size=0) */
+  31               	.LM2:
+  32 0000 80E0      		ldi r24,lo8(.LC0)
+  33 0002 90E0      		ldi r25,hi8(.LC0)
+  34 0004 0E94 0000 		call uprintf
+  35               	.LM3:
+  36 0008 80E0      		ldi r24,lo8(dumb)
+  37 000a 90E0      		ldi r25,hi8(dumb)
+  38 000c 0E94 0000 		call uprintf
+  39               	.LM4:
+  40 0010 80E0      		ldi r24,lo8(.LC1)
+  41 0012 90E0      		ldi r25,hi8(.LC1)
+  42 0014 0E94 0000 		call uprintf
+  43               	/* epilogue: frame size=0 */
+  44 0018 0895      		ret
+  45               	/* epilogue end (size=1) */
+  46               	/* function enc size 13 (12) */
+  47               	.LFE20:
+  49               	.global	Stop
+  51               	Stop:
+  52               	.LFB14:
+  53               	.LM5:
+  54               	/* prologue: frame size=0 */
+  55               	/* prologue end (size=0) */
+  56               	.LM6:
+  57 001a 80E0      		ldi r24,lo8(.LC0)
+  58 001c 90E0      		ldi r25,hi8(.LC0)
+  59 001e 0E94 0000 		call uprintf
+  60               	.LM7:
+  61 0022 80E0      		ldi r24,lo8(0)
+  62 0024 0E94 0000 		call setDirL
+  63               	.LM8:
+  64 0028 80E0      		ldi r24,lo8(0)
+  65 002a 0E94 0000 		call setDirR
+  66               	.LM9:
+  67 002e 40E0      		ldi r20,lo8(0)
+  68 0030 60E0      		ldi r22,lo8(0)
+  69 0032 82E4      		ldi r24,lo8(66)
+  70 0034 0E94 0000 		call SetPin
+  71               	.LM10:
+  72 0038 40E0      		ldi r20,lo8(0)
+  73 003a 61E0      		ldi r22,lo8(1)
+  74 003c 82E4      		ldi r24,lo8(66)
+  75 003e 0E94 0000 		call SetPin
+  76               	.LM11:
+  77 0042 40E0      		ldi r20,lo8(0)
+  78 0044 62E0      		ldi r22,lo8(2)
+  79 0046 82E4      		ldi r24,lo8(66)
+  80 0048 0E94 0000 		call SetPin
+  81               	.LM12:
+  82 004c 40E0      		ldi r20,lo8(0)
+  83 004e 63E0      		ldi r22,lo8(3)
+  84 0050 82E4      		ldi r24,lo8(66)
+  85 0052 0E94 0000 		call SetPin
+  86               	.LM13:
+  87 0056 80E0      		ldi r24,lo8(0)
+  88 0058 90E0      		ldi r25,hi8(0)
+  89 005a 0E94 0000 		call setCHA10
+  90               	.LM14:
+  91 005e 80E0      		ldi r24,lo8(0)
+  92 0060 90E0      		ldi r25,hi8(0)
+  93 0062 0E94 0000 		call setCHB10
+  94               	/* epilogue: frame size=0 */
+  95 0066 0895      		ret
+  96               	/* epilogue end (size=1) */
+  97               	/* function Stop size 39 (38) */
+  98               	.LFE14:
+ 100               	.global	ExtractNum
+ 102               	ExtractNum:
+ 103               	.LFB7:
+ 104               	.LM15:
+ 105               	/* prologue: frame size=50 */
+ 106 0068 0F93      		push r16
+ 107 006a 1F93      		push r17
+ 108 006c CF93      		push r28
+ 109 006e DF93      		push r29
+ 110 0070 CDB7      		in r28,__SP_L__
+ 111 0072 DEB7      		in r29,__SP_H__
+ 112 0074 E297      		sbiw r28,50
+ 113 0076 0FB6      		in __tmp_reg__,__SREG__
+ 114 0078 F894      		cli
+ 115 007a DEBF      		out __SP_H__,r29
+ 116 007c 0FBE      		out __SREG__,__tmp_reg__
+ 117 007e CDBF      		out __SP_L__,r28
+ 118               	/* prologue end (size=12) */
+ 119               	.LVL0:
+ 120               	.LM16:
+ 121 0080 8093 0000 		sts cnt,r24
+ 122               	.LM17:
+ 123 0084 60E0      		ldi r22,lo8(ReceiveStr)
+ 124 0086 70E0      		ldi r23,hi8(ReceiveStr)
+ 125 0088 8E01      		movw r16,r28
+ 126 008a 0F5F      		subi r16,lo8(-(1))
+ 127 008c 1F4F      		sbci r17,hi8(-(1))
+ 128 008e C801      		movw r24,r16
+ 129               	.LVL1:
+ 130 0090 0E94 0000 		call strcpy
+ 131               	.LM18:
+ 132 0094 3091 0000 		lds r19,cnt
+ 133 0098 20E0      		ldi r18,lo8(0)
+ 134               	.LVL2:
+ 135 009a C801      		movw r24,r16
+ 136 009c 40E2      		ldi r20,lo8(32)
+ 137 009e 00C0      		rjmp .L6
+ 138               	.L7:
+ 139               	.LM19:
+ 140 00a0 FC01      		movw r30,r24
+ 141 00a2 E20F      		add r30,r18
+ 142 00a4 F11D      		adc r31,__zero_reg__
+ 143 00a6 4083      		st Z,r20
+ 144 00a8 2F5F      		subi r18,lo8(-(1))
+ 145               	.L6:
+ 146 00aa 2317      		cp r18,r19
+ 147 00ac 01F4      		brne .L7
+ 148               	.LM20:
+ 149 00ae 0E94 0000 		call atoi
+ 150               	.LVL3:
+ 151               	/* epilogue: frame size=50 */
+ 152 00b2 E296      		adiw r28,50
+ 153 00b4 0FB6      		in __tmp_reg__,__SREG__
+ 154 00b6 F894      		cli
+ 155 00b8 DEBF      		out __SP_H__,r29
+ 156 00ba 0FBE      		out __SREG__,__tmp_reg__
+ 157 00bc CDBF      		out __SP_L__,r28
+ 158 00be DF91      		pop r29
+ 159 00c0 CF91      		pop r28
+ 160 00c2 1F91      		pop r17
+ 161 00c4 0F91      		pop r16
+ 162 00c6 0895      		ret
+ 163               	/* epilogue end (size=11) */
+ 164               	/* function ExtractNum size 48 (25) */
+ 165               	.LFE7:
+ 167               	.global	bmp
+ 169               	bmp:
+ 170               	.LFB19:
+ 171               	.LM21:
+ 172               	/* prologue: frame size=0 */
+ 173               	/* prologue end (size=0) */
+ 174               	.LM22:
+ 175 00c8 80E0      		ldi r24,lo8(.LC0)
+ 176 00ca 90E0      		ldi r25,hi8(.LC0)
+ 177 00cc 0E94 0000 		call uprintf
+ 178               	.LM23:
+ 179 00d0 83E0      		ldi r24,lo8(3)
+ 180 00d2 0E94 0000 		call ExtractNum
+ 181 00d6 0097      		sbiw r24,0
+ 182 00d8 01F0      		breq .L12
+ 183               	.LM24:
+ 184 00da 0197      		sbiw r24,1
+ 185 00dc 01F4      		brne .L11
+ 186 00de 00C0      		rjmp .L13
+ 187               	.L12:
+ 188               	.LM25:
+ 189 00e0 64E0      		ldi r22,lo8(4)
+ 190 00e2 00C0      		rjmp .L15
+ 191               	.L13:
+ 192               	.LM26:
+ 193 00e4 65E0      		ldi r22,lo8(5)
+ 194               	.L15:
+ 195 00e6 82E4      		ldi r24,lo8(66)
+ 196 00e8 0E94 0000 		call GetPin
+ 197 00ec 4AE0      		ldi r20,lo8(10)
+ 198 00ee 50E0      		ldi r21,hi8(10)
+ 199 00f0 60E0      		ldi r22,lo8(dumb)
+ 200 00f2 70E0      		ldi r23,hi8(dumb)
+ 201 00f4 9927      		clr r25
+ 202 00f6 0E94 0000 		call itoa
+ 203               	.L11:
+ 204               	.LM27:
+ 205 00fa 80E0      		ldi r24,lo8(dumb)
+ 206 00fc 90E0      		ldi r25,hi8(dumb)
+ 207 00fe 0E94 0000 		call uprintf
+ 208               	.LM28:
+ 209 0102 80E0      		ldi r24,lo8(.LC1)
+ 210 0104 90E0      		ldi r25,hi8(.LC1)
+ 211 0106 0E94 0000 		call uprintf
+ 212               	/* epilogue: frame size=0 */
+ 213 010a 0895      		ret
+ 214               	/* epilogue end (size=1) */
+ 215               	/* function bmp size 35 (34) */
+ 216               	.LFE19:
+ 218               	.global	snr
+ 220               	snr:
+ 221               	.LFB18:
+ 222               	.LM29:
+ 223               	/* prologue: frame size=0 */
+ 224               	/* prologue end (size=0) */
+ 225               	.LM30:
+ 226 010c 80E0      		ldi r24,lo8(.LC0)
+ 227 010e 90E0      		ldi r25,hi8(.LC0)
+ 228 0110 0E94 0000 		call uprintf
+ 229               	.LM31:
+ 230 0114 83E0      		ldi r24,lo8(3)
+ 231 0116 0E94 0000 		call ExtractNum
+ 232 011a 8130      		cpi r24,1
+ 233 011c 9105      		cpc r25,__zero_reg__
+ 234 011e 01F0      		breq .L19
+ 235               	.LM32:
+ 236 0120 8130      		cpi r24,1
+ 237 0122 9105      		cpc r25,__zero_reg__
+ 238 0124 00F0      		brlo .L18
+ 239 0126 0297      		sbiw r24,2
+ 240 0128 01F4      		brne .L17
+ 241 012a 00C0      		rjmp .L20
+ 242               	.L18:
+ 243               	.LM33:
+ 244 012c 82EE      		ldi r24,lo8(-30)
+ 245 012e 00C0      		rjmp .L22
+ 246               	.L19:
+ 247               	.LM34:
+ 248 0130 84EE      		ldi r24,lo8(-28)
+ 249 0132 00C0      		rjmp .L22
+ 250               	.L20:
+ 251               	.LM35:
+ 252 0134 86EE      		ldi r24,lo8(-26)
+ 253               	.L22:
+ 254 0136 0E94 0000 		call getCM
+ 255 013a 4AE0      		ldi r20,lo8(10)
+ 256 013c 50E0      		ldi r21,hi8(10)
+ 257 013e 60E0      		ldi r22,lo8(dumb)
+ 258 0140 70E0      		ldi r23,hi8(dumb)
+ 259 0142 0E94 0000 		call itoa
+ 260               	.L17:
+ 261               	.LM36:
+ 262 0146 80E0      		ldi r24,lo8(dumb)
+ 263 0148 90E0      		ldi r25,hi8(dumb)
+ 264 014a 0E94 0000 		call uprintf
+ 265               	.LM37:
+ 266 014e 80E0      		ldi r24,lo8(.LC1)
+ 267 0150 90E0      		ldi r25,hi8(.LC1)
+ 268 0152 0E94 0000 		call uprintf
+ 269               	/* epilogue: frame size=0 */
+ 270 0156 0895      		ret
+ 271               	/* epilogue end (size=1) */
+ 272               	/* function snr size 39 (38) */
+ 273               	.LFE18:
+ 275               	.global	lgh
+ 277               	lgh:
+ 278               	.LFB17:
+ 279               	.LM38:
+ 280               	/* prologue: frame size=0 */
+ 281 0158 0F93      		push r16
+ 282 015a 1F93      		push r17
+ 283               	/* prologue end (size=2) */
+ 284               	.LM39:
+ 285 015c 80E0      		ldi r24,lo8(.LC0)
+ 286 015e 90E0      		ldi r25,hi8(.LC0)
+ 287 0160 0E94 0000 		call uprintf
+ 288               	.LM40:
+ 289 0164 83E0      		ldi r24,lo8(3)
+ 290 0166 0E94 0000 		call ExtractNum
+ 291 016a 0E94 0000 		call ADC08bit
+ 292               	.LM41:
+ 293 016e 00E0      		ldi r16,lo8(dumb)
+ 294 0170 10E0      		ldi r17,hi8(dumb)
+ 295 0172 4AE0      		ldi r20,lo8(10)
+ 296 0174 50E0      		ldi r21,hi8(10)
+ 297 0176 B801      		movw r22,r16
+ 298 0178 9927      		clr r25
+ 299 017a 0E94 0000 		call itoa
+ 300               	.LM42:
+ 301 017e C801      		movw r24,r16
+ 302 0180 0E94 0000 		call uprintf
+ 303               	.LM43:
+ 304 0184 80E0      		ldi r24,lo8(.LC1)
+ 305 0186 90E0      		ldi r25,hi8(.LC1)
+ 306 0188 0E94 0000 		call uprintf
+ 307               	/* epilogue: frame size=0 */
+ 308 018c 1F91      		pop r17
+ 309 018e 0F91      		pop r16
+ 310 0190 0895      		ret
+ 311               	/* epilogue end (size=3) */
+ 312               	/* function lgh size 29 (24) */
+ 313               	.LFE17:
+ 315               	.global	pservop
+ 317               	pservop:
+ 318               	.LFB16:
+ 319               	.LM44:
+ 320               	/* prologue: frame size=0 */
+ 321               	/* prologue end (size=0) */
+ 322               	.LM45:
+ 323 0192 80E0      		ldi r24,lo8(.LC0)
+ 324 0194 90E0      		ldi r25,hi8(.LC0)
+ 325 0196 0E94 0000 		call uprintf
+ 326               	.LM46:
+ 327 019a 87E0      		ldi r24,lo8(7)
+ 328 019c 0E94 0000 		call ExtractNum
+ 329 01a0 0E94 0000 		call setservo2
+ 330               	/* epilogue: frame size=0 */
+ 331 01a4 0895      		ret
+ 332               	/* epilogue end (size=1) */
+ 333               	/* function pservop size 10 (9) */
+ 334               	.LFE16:
+ 336               	.global	tservop
+ 338               	tservop:
+ 339               	.LFB15:
+ 340               	.LM47:
+ 341               	/* prologue: frame size=0 */
+ 342               	/* prologue end (size=0) */
+ 343               	.LM48:
+ 344 01a6 80E0      		ldi r24,lo8(.LC0)
+ 345 01a8 90E0      		ldi r25,hi8(.LC0)
+ 346 01aa 0E94 0000 		call uprintf
+ 347               	.LM49:
+ 348 01ae 87E0      		ldi r24,lo8(7)
+ 349 01b0 0E94 0000 		call ExtractNum
+ 350 01b4 0E94 0000 		call setservo1
+ 351               	/* epilogue: frame size=0 */
+ 352 01b8 0895      		ret
+ 353               	/* epilogue end (size=1) */
+ 354               	/* function tservop size 10 (9) */
+ 355               	.LFE15:
+ 357               	.global	TurnR
+ 359               	TurnR:
+ 360               	.LFB13:
+ 361               	.LM50:
+ 362               	/* prologue: frame size=0 */
+ 363               	/* prologue end (size=0) */
+ 364               	.LM51:
+ 365 01ba 80E0      		ldi r24,lo8(.LC0)
+ 366 01bc 90E0      		ldi r25,hi8(.LC0)
+ 367 01be 0E94 0000 		call uprintf
+ 368               	.LM52:
+ 369 01c2 81E0      		ldi r24,lo8(1)
+ 370 01c4 0E94 0000 		call setDirL
+ 371               	.LM53:
+ 372 01c8 80E0      		ldi r24,lo8(0)
+ 373 01ca 0E94 0000 		call setDirR
+ 374               	.LM54:
+ 375 01ce 41E0      		ldi r20,lo8(1)
+ 376 01d0 60E0      		ldi r22,lo8(0)
+ 377 01d2 82E4      		ldi r24,lo8(66)
+ 378 01d4 0E94 0000 		call SetPin
+ 379               	.LM55:
+ 380 01d8 40E0      		ldi r20,lo8(0)
+ 381 01da 61E0      		ldi r22,lo8(1)
+ 382 01dc 82E4      		ldi r24,lo8(66)
+ 383 01de 0E94 0000 		call SetPin
+ 384               	.LM56:
+ 385 01e2 40E0      		ldi r20,lo8(0)
+ 386 01e4 62E0      		ldi r22,lo8(2)
+ 387 01e6 82E4      		ldi r24,lo8(66)
+ 388 01e8 0E94 0000 		call SetPin
+ 389               	.LM57:
+ 390 01ec 40E0      		ldi r20,lo8(0)
+ 391 01ee 63E0      		ldi r22,lo8(3)
+ 392 01f0 82E4      		ldi r24,lo8(66)
+ 393 01f2 0E94 0000 		call SetPin
+ 394               	.LM58:
+ 395 01f6 85E0      		ldi r24,lo8(5)
+ 396 01f8 0E94 0000 		call ExtractNum
+ 397 01fc 0E94 0000 		call setCHA10
+ 398               	.LM59:
+ 399 0200 85E0      		ldi r24,lo8(5)
+ 400 0202 0E94 0000 		call ExtractNum
+ 401 0206 0E94 0000 		call setCHB10
+ 402               	/* epilogue: frame size=0 */
+ 403 020a 0895      		ret
+ 404               	/* epilogue end (size=1) */
+ 405               	/* function TurnR size 41 (40) */
+ 406               	.LFE13:
+ 408               	.global	TurnL
+ 410               	TurnL:
+ 411               	.LFB12:
+ 412               	.LM60:
+ 413               	/* prologue: frame size=0 */
+ 414               	/* prologue end (size=0) */
+ 415               	.LM61:
+ 416 020c 80E0      		ldi r24,lo8(.LC0)
+ 417 020e 90E0      		ldi r25,hi8(.LC0)
+ 418 0210 0E94 0000 		call uprintf
+ 419               	.LM62:
+ 420 0214 80E0      		ldi r24,lo8(0)
+ 421 0216 0E94 0000 		call setDirL
+ 422               	.LM63:
+ 423 021a 81E0      		ldi r24,lo8(1)
+ 424 021c 0E94 0000 		call setDirR
+ 425               	.LM64:
+ 426 0220 40E0      		ldi r20,lo8(0)
+ 427 0222 60E0      		ldi r22,lo8(0)
+ 428 0224 82E4      		ldi r24,lo8(66)
+ 429 0226 0E94 0000 		call SetPin
+ 430               	.LM65:
+ 431 022a 40E0      		ldi r20,lo8(0)
+ 432 022c 61E0      		ldi r22,lo8(1)
+ 433 022e 82E4      		ldi r24,lo8(66)
+ 434 0230 0E94 0000 		call SetPin
+ 435               	.LM66:
+ 436 0234 41E0      		ldi r20,lo8(1)
+ 437 0236 62E0      		ldi r22,lo8(2)
+ 438 0238 82E4      		ldi r24,lo8(66)
+ 439 023a 0E94 0000 		call SetPin
+ 440               	.LM67:
+ 441 023e 40E0      		ldi r20,lo8(0)
+ 442 0240 63E0      		ldi r22,lo8(3)
+ 443 0242 82E4      		ldi r24,lo8(66)
+ 444 0244 0E94 0000 		call SetPin
+ 445               	.LM68:
+ 446 0248 85E0      		ldi r24,lo8(5)
+ 447 024a 0E94 0000 		call ExtractNum
+ 448 024e 0E94 0000 		call setCHA10
+ 449               	.LM69:
+ 450 0252 85E0      		ldi r24,lo8(5)
+ 451 0254 0E94 0000 		call ExtractNum
+ 452 0258 0E94 0000 		call setCHB10
+ 453               	/* epilogue: frame size=0 */
+ 454 025c 0895      		ret
+ 455               	/* epilogue end (size=1) */
+ 456               	/* function TurnL size 41 (40) */
+ 457               	.LFE12:
+ 459               	.global	SpinR
+ 461               	SpinR:
+ 462               	.LFB11:
+ 463               	.LM70:
+ 464               	/* prologue: frame size=0 */
+ 465               	/* prologue end (size=0) */
+ 466               	.LM71:
+ 467 025e 80E0      		ldi r24,lo8(.LC0)
+ 468 0260 90E0      		ldi r25,hi8(.LC0)
+ 469 0262 0E94 0000 		call uprintf
+ 470               	.LM72:
+ 471 0266 81E0      		ldi r24,lo8(1)
+ 472 0268 0E94 0000 		call setDirL
+ 473               	.LM73:
+ 474 026c 8FEF      		ldi r24,lo8(-1)
+ 475 026e 0E94 0000 		call setDirR
+ 476               	.LM74:
+ 477 0272 41E0      		ldi r20,lo8(1)
+ 478 0274 60E0      		ldi r22,lo8(0)
+ 479 0276 82E4      		ldi r24,lo8(66)
+ 480 0278 0E94 0000 		call SetPin
+ 481               	.LM75:
+ 482 027c 40E0      		ldi r20,lo8(0)
+ 483 027e 61E0      		ldi r22,lo8(1)
+ 484 0280 82E4      		ldi r24,lo8(66)
+ 485 0282 0E94 0000 		call SetPin
+ 486               	.LM76:
+ 487 0286 40E0      		ldi r20,lo8(0)
+ 488 0288 62E0      		ldi r22,lo8(2)
+ 489 028a 82E4      		ldi r24,lo8(66)
+ 490 028c 0E94 0000 		call SetPin
+ 491               	.LM77:
+ 492 0290 41E0      		ldi r20,lo8(1)
+ 493 0292 63E0      		ldi r22,lo8(3)
+ 494 0294 82E4      		ldi r24,lo8(66)
+ 495 0296 0E94 0000 		call SetPin
+ 496               	.LM78:
+ 497 029a 85E0      		ldi r24,lo8(5)
+ 498 029c 0E94 0000 		call ExtractNum
+ 499 02a0 0E94 0000 		call setCHA10
+ 500               	.LM79:
+ 501 02a4 85E0      		ldi r24,lo8(5)
+ 502 02a6 0E94 0000 		call ExtractNum
+ 503 02aa 0E94 0000 		call setCHB10
+ 504               	/* epilogue: frame size=0 */
+ 505 02ae 0895      		ret
+ 506               	/* epilogue end (size=1) */
+ 507               	/* function SpinR size 41 (40) */
+ 508               	.LFE11:
+ 510               	.global	SpinL
+ 512               	SpinL:
+ 513               	.LFB10:
+ 514               	.LM80:
+ 515               	/* prologue: frame size=0 */
+ 516               	/* prologue end (size=0) */
+ 517               	.LM81:
+ 518 02b0 80E0      		ldi r24,lo8(.LC0)
+ 519 02b2 90E0      		ldi r25,hi8(.LC0)
+ 520 02b4 0E94 0000 		call uprintf
+ 521               	.LM82:
+ 522 02b8 8FEF      		ldi r24,lo8(-1)
+ 523 02ba 0E94 0000 		call setDirL
+ 524               	.LM83:
+ 525 02be 81E0      		ldi r24,lo8(1)
+ 526 02c0 0E94 0000 		call setDirR
+ 527               	.LM84:
+ 528 02c4 40E0      		ldi r20,lo8(0)
+ 529 02c6 60E0      		ldi r22,lo8(0)
+ 530 02c8 82E4      		ldi r24,lo8(66)
+ 531 02ca 0E94 0000 		call SetPin
+ 532               	.LM85:
+ 533 02ce 41E0      		ldi r20,lo8(1)
+ 534 02d0 61E0      		ldi r22,lo8(1)
+ 535 02d2 82E4      		ldi r24,lo8(66)
+ 536 02d4 0E94 0000 		call SetPin
+ 537               	.LM86:
+ 538 02d8 41E0      		ldi r20,lo8(1)
+ 539 02da 62E0      		ldi r22,lo8(2)
+ 540 02dc 82E4      		ldi r24,lo8(66)
+ 541 02de 0E94 0000 		call SetPin
+ 542               	.LM87:
+ 543 02e2 40E0      		ldi r20,lo8(0)
+ 544 02e4 63E0      		ldi r22,lo8(3)
+ 545 02e6 82E4      		ldi r24,lo8(66)
+ 546 02e8 0E94 0000 		call SetPin
+ 547               	.LM88:
+ 548 02ec 85E0      		ldi r24,lo8(5)
+ 549 02ee 0E94 0000 		call ExtractNum
+ 550 02f2 0E94 0000 		call setCHA10
+ 551               	.LM89:
+ 552 02f6 85E0      		ldi r24,lo8(5)
+ 553 02f8 0E94 0000 		call ExtractNum
+ 554 02fc 0E94 0000 		call setCHB10
+ 555               	/* epilogue: frame size=0 */
+ 556 0300 0895      		ret
+ 557               	/* epilogue end (size=1) */
+ 558               	/* function SpinL size 41 (40) */
+ 559               	.LFE10:
+ 561               	.global	Backward
+ 563               	Backward:
+ 564               	.LFB9:
+ 565               	.LM90:
+ 566               	/* prologue: frame size=0 */
+ 567               	/* prologue end (size=0) */
+ 568               	.LM91:
+ 569 0302 80E0      		ldi r24,lo8(.LC0)
+ 570 0304 90E0      		ldi r25,hi8(.LC0)
+ 571 0306 0E94 0000 		call uprintf
+ 572               	.LM92:
+ 573 030a 8FEF      		ldi r24,lo8(-1)
+ 574 030c 0E94 0000 		call setDirL
+ 575               	.LM93:
+ 576 0310 8FEF      		ldi r24,lo8(-1)
+ 577 0312 0E94 0000 		call setDirR
+ 578               	.LM94:
+ 579 0316 40E0      		ldi r20,lo8(0)
+ 580 0318 60E0      		ldi r22,lo8(0)
+ 581 031a 82E4      		ldi r24,lo8(66)
+ 582 031c 0E94 0000 		call SetPin
+ 583               	.LM95:
+ 584 0320 41E0      		ldi r20,lo8(1)
+ 585 0322 61E0      		ldi r22,lo8(1)
+ 586 0324 82E4      		ldi r24,lo8(66)
+ 587 0326 0E94 0000 		call SetPin
+ 588               	.LM96:
+ 589 032a 40E0      		ldi r20,lo8(0)
+ 590 032c 62E0      		ldi r22,lo8(2)
+ 591 032e 82E4      		ldi r24,lo8(66)
+ 592 0330 0E94 0000 		call SetPin
+ 593               	.LM97:
+ 594 0334 41E0      		ldi r20,lo8(1)
+ 595 0336 63E0      		ldi r22,lo8(3)
+ 596 0338 82E4      		ldi r24,lo8(66)
+ 597 033a 0E94 0000 		call SetPin
+ 598               	.LM98:
+ 599 033e 88E0      		ldi r24,lo8(8)
+ 600 0340 0E94 0000 		call ExtractNum
+ 601 0344 0E94 0000 		call setCHA10
+ 602               	.LM99:
+ 603 0348 88E0      		ldi r24,lo8(8)
+ 604 034a 0E94 0000 		call ExtractNum
+ 605 034e 0E94 0000 		call setCHB10
+ 606               	/* epilogue: frame size=0 */
+ 607 0352 0895      		ret
+ 608               	/* epilogue end (size=1) */
+ 609               	/* function Backward size 41 (40) */
+ 610               	.LFE9:
+ 612               	.global	Forward
+ 614               	Forward:
+ 615               	.LFB8:
+ 616               	.LM100:
+ 617               	/* prologue: frame size=0 */
+ 618               	/* prologue end (size=0) */
+ 619               	.LM101:
+ 620 0354 80E0      		ldi r24,lo8(.LC0)
+ 621 0356 90E0      		ldi r25,hi8(.LC0)
+ 622 0358 0E94 0000 		call uprintf
+ 623               	.LM102:
+ 624 035c 81E0      		ldi r24,lo8(1)
+ 625 035e 0E94 0000 		call setDirL
+ 626               	.LM103:
+ 627 0362 81E0      		ldi r24,lo8(1)
+ 628 0364 0E94 0000 		call setDirR
+ 629               	.LM104:
+ 630 0368 41E0      		ldi r20,lo8(1)
+ 631 036a 60E0      		ldi r22,lo8(0)
+ 632 036c 82E4      		ldi r24,lo8(66)
+ 633 036e 0E94 0000 		call SetPin
+ 634               	.LM105:
+ 635 0372 40E0      		ldi r20,lo8(0)
+ 636 0374 61E0      		ldi r22,lo8(1)
+ 637 0376 82E4      		ldi r24,lo8(66)
+ 638 0378 0E94 0000 		call SetPin
+ 639               	.LM106:
+ 640 037c 41E0      		ldi r20,lo8(1)
+ 641 037e 62E0      		ldi r22,lo8(2)
+ 642 0380 82E4      		ldi r24,lo8(66)
+ 643 0382 0E94 0000 		call SetPin
+ 644               	.LM107:
+ 645 0386 40E0      		ldi r20,lo8(0)
+ 646 0388 63E0      		ldi r22,lo8(3)
+ 647 038a 82E4      		ldi r24,lo8(66)
+ 648 038c 0E94 0000 		call SetPin
+ 649               	.LM108:
+ 650 0390 87E0      		ldi r24,lo8(7)
+ 651 0392 0E94 0000 		call ExtractNum
+ 652 0396 0E94 0000 		call setCHA10
+ 653               	.LM109:
+ 654 039a 87E0      		ldi r24,lo8(7)
+ 655 039c 0E94 0000 		call ExtractNum
+ 656 03a0 0E94 0000 		call setCHB10
+ 657               	/* epilogue: frame size=0 */
+ 658 03a4 0895      		ret
+ 659               	/* epilogue end (size=1) */
+ 660               	/* function Forward size 41 (40) */
+ 661               	.LFE8:
+ 663               		.data
+ 664               	.LC2:
+ 665 0014 5479 7065 		.string	"Type INIT <enter> to begin\r"
+ 665      2049 4E49 
+ 665      5420 3C65 
+ 665      6E74 6572 
+ 665      3E20 746F 
+ 666               	.LC3:
+ 667 0030 494E 4954 		.string	"INIT"
+ 667      00
+ 668               	.LC4:
+ 669 0035 466F 7277 		.string	"Forward"
+ 669      6172 6400 
+ 670               	.LC5:
+ 671 003d 4261 636B 		.string	"Backward"
+ 671      7761 7264 
+ 671      00
+ 672               	.LC6:
+ 673 0046 5370 696E 		.string	"SpinL"
+ 673      4C00 
+ 674               	.LC7:
+ 675 004c 5370 696E 		.string	"SpinR"
+ 675      5200 
+ 676               	.LC8:
+ 677 0052 5475 726E 		.string	"TurnL"
+ 677      4C00 
+ 678               	.LC9:
+ 679 0058 5475 726E 		.string	"TurnR"
+ 679      5200 
+ 680               	.LC10:
+ 681 005e 5374 6F70 		.string	"Stop"
+ 681      00
+ 682               	.LC11:
+ 683 0063 5473 6572 		.string	"Tservop"
+ 683      766F 7000 
+ 684               	.LC12:
+ 685 006b 5073 6572 		.string	"Pservop"
+ 685      766F 7000 
+ 686               	.LC13:
+ 687 0073 4C47 4800 		.string	"LGH"
+ 688               	.LC14:
+ 689 0077 534E 5200 		.string	"SNR"
+ 690               	.LC15:
+ 691 007b 424D 5000 		.string	"BMP"
+ 692               	.LC16:
+ 693 007f 454E 4300 		.string	"ENC"
+ 694               	.LC17:
+ 695 0083 4449 5341 		.string	"DISABLE"
+ 695      424C 4500 
+ 696               	.LC18:
+ 697 008b 4469 7361 		.string	"Disaled\r"
+ 697      6C65 640D 
+ 697      00
+ 698               		.text
+ 699               	.global	main
+ 701               	main:
+ 702               	.LFB6:
+ 703               	.LM110:
+ 704               	/* prologue: frame size=0 */
+ 705               	/* prologue end (size=0) */
+ 706               	.LM111:
+ 707 03a6 89E1      		ldi r24,lo8(25)
+ 708 03a8 90E0      		ldi r25,hi8(25)
+ 709 03aa 0E94 0000 		call enable_uart
+ 710               	.LM112:
+ 711 03ae 0E94 0000 		call initENC
+ 712               	.LM113:
+ 713 03b2 40E0      		ldi r20,lo8(0)
+ 714 03b4 50E0      		ldi r21,hi8(0)
+ 715 03b6 60E0      		ldi r22,lo8(0)
+ 716 03b8 70E0      		ldi r23,hi8(0)
+ 717 03ba 81E7      		ldi r24,lo8(625)
+ 718 03bc 92E0      		ldi r25,hi8(625)
+ 719 03be 0E94 0000 		call initservos
+ 720               	.LM114:
+ 721 03c2 0E94 0000 		call initPWM10
+ 722               	.LM115:
+ 723 03c6 0E94 0000 		call initADC
+ 724               	.LM116:
+ 725 03ca 0E94 0000 		call initcommsunit
+ 726               	.LM117:
+ 727 03ce 4FE4      		ldi r20,lo8(79)
+ 728 03d0 60E0      		ldi r22,lo8(0)
+ 729 03d2 82E4      		ldi r24,lo8(66)
+ 730 03d4 0E94 0000 		call SetDir
+ 731               	.LM118:
+ 732 03d8 4FE4      		ldi r20,lo8(79)
+ 733 03da 61E0      		ldi r22,lo8(1)
+ 734 03dc 82E4      		ldi r24,lo8(66)
+ 735 03de 0E94 0000 		call SetDir
+ 736               	.LM119:
+ 737 03e2 4FE4      		ldi r20,lo8(79)
+ 738 03e4 62E0      		ldi r22,lo8(2)
+ 739 03e6 82E4      		ldi r24,lo8(66)
+ 740 03e8 0E94 0000 		call SetDir
+ 741               	.LM120:
+ 742 03ec 4FE4      		ldi r20,lo8(79)
+ 743 03ee 63E0      		ldi r22,lo8(3)
+ 744 03f0 82E4      		ldi r24,lo8(66)
+ 745 03f2 0E94 0000 		call SetDir
+ 746               	.LM121:
+ 747 03f6 49E4      		ldi r20,lo8(73)
+ 748 03f8 64E0      		ldi r22,lo8(4)
+ 749 03fa 82E4      		ldi r24,lo8(66)
+ 750 03fc 0E94 0000 		call SetDir
+ 751               	.LM122:
+ 752 0400 49E4      		ldi r20,lo8(73)
+ 753 0402 65E0      		ldi r22,lo8(5)
+ 754 0404 82E4      		ldi r24,lo8(66)
+ 755 0406 0E94 0000 		call SetDir
+ 756               	.LM123:
+ 757 040a 80E0      		ldi r24,lo8(.LC2)
+ 758 040c 90E0      		ldi r25,hi8(.LC2)
+ 759 040e 0E94 0000 		call uprintf
+ 760 0412 00C0      		rjmp .L42
+ 761               	.L43:
+ 762               	.LM124:
+ 763 0414 40E0      		ldi r20,lo8(0)
+ 764 0416 6AE0      		ldi r22,lo8(10)
+ 765 0418 80E0      		ldi r24,lo8(dumb)
+ 766 041a 90E0      		ldi r25,hi8(dumb)
+ 767 041c 0E94 0000 		call uscanf
+ 768               	.L42:
+ 769               	.LM125:
+ 770 0420 44E0      		ldi r20,lo8(4)
+ 771 0422 50E0      		ldi r21,hi8(4)
+ 772 0424 60E0      		ldi r22,lo8(.LC3)
+ 773 0426 70E0      		ldi r23,hi8(.LC3)
+ 774 0428 80E0      		ldi r24,lo8(dumb)
+ 775 042a 90E0      		ldi r25,hi8(dumb)
+ 776 042c 0E94 0000 		call strncmp
+ 777 0430 0197      		sbiw r24,1
+ 778 0432 01F0      		breq .L43
+ 779               	.LM126:
+ 780 0434 81E0      		ldi r24,lo8(1)
+ 781 0436 8093 0000 		sts op,r24
+ 782               	.L45:
+ 783               	.LM127:
+ 784 043a 40E0      		ldi r20,lo8(0)
+ 785 043c 62E3      		ldi r22,lo8(50)
+ 786 043e 80E0      		ldi r24,lo8(ReceiveStr)
+ 787 0440 90E0      		ldi r25,hi8(ReceiveStr)
+ 788 0442 0E94 0000 		call uscanf
+ 789               	.LM128:
+ 790 0446 47E0      		ldi r20,lo8(7)
+ 791 0448 50E0      		ldi r21,hi8(7)
+ 792 044a 60E0      		ldi r22,lo8(.LC4)
+ 793 044c 70E0      		ldi r23,hi8(.LC4)
+ 794 044e 80E0      		ldi r24,lo8(ReceiveStr)
+ 795 0450 90E0      		ldi r25,hi8(ReceiveStr)
+ 796 0452 0E94 0000 		call strncmp
+ 797 0456 892B      		or r24,r25
+ 798 0458 01F4      		brne .L46
+ 799 045a 0E94 0000 		call Forward
+ 800               	.L46:
+ 801               	.LM129:
+ 802 045e 48E0      		ldi r20,lo8(8)
+ 803 0460 50E0      		ldi r21,hi8(8)
+ 804 0462 60E0      		ldi r22,lo8(.LC5)
+ 805 0464 70E0      		ldi r23,hi8(.LC5)
+ 806 0466 80E0      		ldi r24,lo8(ReceiveStr)
+ 807 0468 90E0      		ldi r25,hi8(ReceiveStr)
+ 808 046a 0E94 0000 		call strncmp
+ 809 046e 892B      		or r24,r25
+ 810 0470 01F4      		brne .L48
+ 811 0472 0E94 0000 		call Backward
+ 812               	.L48:
+ 813               	.LM130:
+ 814 0476 45E0      		ldi r20,lo8(5)
+ 815 0478 50E0      		ldi r21,hi8(5)
+ 816 047a 60E0      		ldi r22,lo8(.LC6)
+ 817 047c 70E0      		ldi r23,hi8(.LC6)
+ 818 047e 80E0      		ldi r24,lo8(ReceiveStr)
+ 819 0480 90E0      		ldi r25,hi8(ReceiveStr)
+ 820 0482 0E94 0000 		call strncmp
+ 821 0486 892B      		or r24,r25
+ 822 0488 01F4      		brne .L50
+ 823 048a 0E94 0000 		call SpinL
+ 824               	.L50:
+ 825               	.LM131:
+ 826 048e 45E0      		ldi r20,lo8(5)
+ 827 0490 50E0      		ldi r21,hi8(5)
+ 828 0492 60E0      		ldi r22,lo8(.LC7)
+ 829 0494 70E0      		ldi r23,hi8(.LC7)
+ 830 0496 80E0      		ldi r24,lo8(ReceiveStr)
+ 831 0498 90E0      		ldi r25,hi8(ReceiveStr)
+ 832 049a 0E94 0000 		call strncmp
+ 833 049e 892B      		or r24,r25
+ 834 04a0 01F4      		brne .L52
+ 835 04a2 0E94 0000 		call SpinR
+ 836               	.L52:
+ 837               	.LM132:
+ 838 04a6 45E0      		ldi r20,lo8(5)
+ 839 04a8 50E0      		ldi r21,hi8(5)
+ 840 04aa 60E0      		ldi r22,lo8(.LC8)
+ 841 04ac 70E0      		ldi r23,hi8(.LC8)
+ 842 04ae 80E0      		ldi r24,lo8(ReceiveStr)
+ 843 04b0 90E0      		ldi r25,hi8(ReceiveStr)
+ 844 04b2 0E94 0000 		call strncmp
+ 845 04b6 892B      		or r24,r25
+ 846 04b8 01F4      		brne .L54
+ 847 04ba 0E94 0000 		call TurnL
+ 848               	.L54:
+ 849               	.LM133:
+ 850 04be 45E0      		ldi r20,lo8(5)
+ 851 04c0 50E0      		ldi r21,hi8(5)
+ 852 04c2 60E0      		ldi r22,lo8(.LC9)
+ 853 04c4 70E0      		ldi r23,hi8(.LC9)
+ 854 04c6 80E0      		ldi r24,lo8(ReceiveStr)
+ 855 04c8 90E0      		ldi r25,hi8(ReceiveStr)
+ 856 04ca 0E94 0000 		call strncmp
+ 857 04ce 892B      		or r24,r25
+ 858 04d0 01F4      		brne .L56
+ 859 04d2 0E94 0000 		call TurnR
+ 860               	.L56:
+ 861               	.LM134:
+ 862 04d6 44E0      		ldi r20,lo8(4)
+ 863 04d8 50E0      		ldi r21,hi8(4)
+ 864 04da 60E0      		ldi r22,lo8(.LC10)
+ 865 04dc 70E0      		ldi r23,hi8(.LC10)
+ 866 04de 80E0      		ldi r24,lo8(ReceiveStr)
+ 867 04e0 90E0      		ldi r25,hi8(ReceiveStr)
+ 868 04e2 0E94 0000 		call strncmp
+ 869 04e6 892B      		or r24,r25
+ 870 04e8 01F4      		brne .L58
+ 871 04ea 0E94 0000 		call Stop
+ 872               	.L58:
+ 873               	.LM135:
+ 874 04ee 47E0      		ldi r20,lo8(7)
+ 875 04f0 50E0      		ldi r21,hi8(7)
+ 876 04f2 60E0      		ldi r22,lo8(.LC11)
+ 877 04f4 70E0      		ldi r23,hi8(.LC11)
+ 878 04f6 80E0      		ldi r24,lo8(ReceiveStr)
+ 879 04f8 90E0      		ldi r25,hi8(ReceiveStr)
+ 880 04fa 0E94 0000 		call strncmp
+ 881 04fe 892B      		or r24,r25
+ 882 0500 01F4      		brne .L60
+ 883 0502 0E94 0000 		call tservop
+ 884               	.L60:
+ 885               	.LM136:
+ 886 0506 47E0      		ldi r20,lo8(7)
+ 887 0508 50E0      		ldi r21,hi8(7)
+ 888 050a 60E0      		ldi r22,lo8(.LC12)
+ 889 050c 70E0      		ldi r23,hi8(.LC12)
+ 890 050e 80E0      		ldi r24,lo8(ReceiveStr)
+ 891 0510 90E0      		ldi r25,hi8(ReceiveStr)
+ 892 0512 0E94 0000 		call strncmp
+ 893 0516 892B      		or r24,r25
+ 894 0518 01F4      		brne .L62
+ 895 051a 0E94 0000 		call pservop
+ 896               	.L62:
+ 897               	.LM137:
+ 898 051e 43E0      		ldi r20,lo8(3)
+ 899 0520 50E0      		ldi r21,hi8(3)
+ 900 0522 60E0      		ldi r22,lo8(.LC13)
+ 901 0524 70E0      		ldi r23,hi8(.LC13)
+ 902 0526 80E0      		ldi r24,lo8(ReceiveStr)
+ 903 0528 90E0      		ldi r25,hi8(ReceiveStr)
+ 904 052a 0E94 0000 		call strncmp
+ 905 052e 892B      		or r24,r25
+ 906 0530 01F4      		brne .L64
+ 907 0532 0E94 0000 		call lgh
+ 908               	.L64:
+ 909               	.LM138:
+ 910 0536 43E0      		ldi r20,lo8(3)
+ 911 0538 50E0      		ldi r21,hi8(3)
+ 912 053a 60E0      		ldi r22,lo8(.LC14)
+ 913 053c 70E0      		ldi r23,hi8(.LC14)
+ 914 053e 80E0      		ldi r24,lo8(ReceiveStr)
+ 915 0540 90E0      		ldi r25,hi8(ReceiveStr)
+ 916 0542 0E94 0000 		call strncmp
+ 917 0546 892B      		or r24,r25
+ 918 0548 01F4      		brne .L66
+ 919 054a 0E94 0000 		call snr
+ 920               	.L66:
+ 921               	.LM139:
+ 922 054e 43E0      		ldi r20,lo8(3)
+ 923 0550 50E0      		ldi r21,hi8(3)
+ 924 0552 60E0      		ldi r22,lo8(.LC15)
+ 925 0554 70E0      		ldi r23,hi8(.LC15)
+ 926 0556 80E0      		ldi r24,lo8(ReceiveStr)
+ 927 0558 90E0      		ldi r25,hi8(ReceiveStr)
+ 928 055a 0E94 0000 		call strncmp
+ 929 055e 892B      		or r24,r25
+ 930 0560 01F4      		brne .L68
+ 931 0562 0E94 0000 		call bmp
+ 932               	.L68:
+ 933               	.LM140:
+ 934 0566 43E0      		ldi r20,lo8(3)
+ 935 0568 50E0      		ldi r21,hi8(3)
+ 936 056a 60E0      		ldi r22,lo8(.LC16)
+ 937 056c 70E0      		ldi r23,hi8(.LC16)
+ 938 056e 80E0      		ldi r24,lo8(ReceiveStr)
+ 939 0570 90E0      		ldi r25,hi8(ReceiveStr)
+ 940 0572 0E94 0000 		call strncmp
+ 941 0576 892B      		or r24,r25
+ 942 0578 01F4      		brne .L70
+ 943 057a 0E94 0000 		call enc
+ 944               	.L70:
+ 945               	.LM141:
+ 946 057e 47E0      		ldi r20,lo8(7)
+ 947 0580 50E0      		ldi r21,hi8(7)
+ 948 0582 60E0      		ldi r22,lo8(.LC17)
+ 949 0584 70E0      		ldi r23,hi8(.LC17)
+ 950 0586 80E0      		ldi r24,lo8(ReceiveStr)
+ 951 0588 90E0      		ldi r25,hi8(ReceiveStr)
+ 952 058a 0E94 0000 		call strncmp
+ 953 058e 892B      		or r24,r25
+ 954 0590 01F4      		brne .L72
+ 955 0592 1092 0000 		sts op,__zero_reg__
+ 956 0596 00C0      		rjmp .L74
+ 957               	.L72:
+ 958               	.LM142:
+ 959 0598 8091 0000 		lds r24,op
+ 960 059c 8130      		cpi r24,lo8(1)
+ 961 059e 01F4      		brne .+2
+ 962 05a0 00C0      		rjmp .L45
+ 963               	.L74:
+ 964               	.LM143:
+ 965 05a2 80E0      		ldi r24,lo8(.LC18)
+ 966 05a4 90E0      		ldi r25,hi8(.LC18)
+ 967 05a6 0E94 0000 		call uprintf
+ 968               	.L75:
+ 969 05aa 00C0      		rjmp .L75
+ 970               	/* epilogue: frame size=0 */
+ 971               	/* epilogue: noreturn */
+ 972               	/* epilogue end (size=0) */
+ 973               	/* function main size 260 (260) */
+ 974               	.LFE6:
+ 976               	.global	cnt
+ 977               	.global	cnt
+ 978               		.section .bss
+ 981               	cnt:
+ 982 0000 00        		.skip 1,0
+ 983               	.global	op
+ 984               		.data
+ 987               	op:
+ 988 0094 01        		.byte	1
+ 989               		.comm x,8,1
+ 990               		.comm s,1,1
+ 991               		.comm str,50,1
+ 992               		.comm cntL,8,1
+ 993               		.comm cntR,8,1
+ 994               		.comm dirL,1,1
+ 995               		.comm dirR,1,1
+ 996               		.comm dis,2,1
+ 997               		.comm wit,4,1
+ 998               		.comm convert,2,1
+ 999               		.comm loop_count,2,1
+ 1000               		.comm dumb,20,1
+ 1001               		.comm ReceiveStr,50,1
+ 1122               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:26     .text:00000000 enc
+                            *COM*:00000014 dumb
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:51     .text:0000001a Stop
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:102    .text:00000068 ExtractNum
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:981    .bss:00000000 cnt
+                            *COM*:00000032 ReceiveStr
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:169    .text:000000c8 bmp
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:220    .text:0000010c snr
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:277    .text:00000158 lgh
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:317    .text:00000192 pservop
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:338    .text:000001a6 tservop
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:359    .text:000001ba TurnR
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:410    .text:0000020c TurnL
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:461    .text:0000025e SpinR
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:512    .text:000002b0 SpinL
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:563    .text:00000302 Backward
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:614    .text:00000354 Forward
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:701    .text:000003a6 main
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc4caaaa.s:987    .data:00000094 op
+                            *COM*:00000008 x
+                            *COM*:00000001 s
+                            *COM*:00000032 str
+                            *COM*:00000008 cntL
+                            *COM*:00000008 cntR
+                            *COM*:00000001 dirL
+                            *COM*:00000001 dirR
+                            *COM*:00000002 dis
+                            *COM*:00000004 wit
+                            *COM*:00000002 convert
+                            *COM*:00000002 loop_count
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+uprintf
+setDirL
+setDirR
+SetPin
+setCHA10
+setCHB10
+strcpy
+atoi
+GetPin
+itoa
+getCM
+ADC08bit
+setservo2
+setservo1
+enable_uart
+initENC
+initservos
+initPWM10
+initADC
+initcommsunit
+SetDir
+uscanf
+strncmp

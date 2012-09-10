@@ -1,0 +1,50 @@
+Documentation for timer0ctc.h
+
+Example is included under the timer0ctc directory in the Examples directory
+
+---------------Information-------------------------
+
+timer0ctc.h controls timer0 as a timer in ctc mode with a clock source either
+internal with a prescaler or external via the T0 pin. CTC mode allows for 
+(a) pin(s) to have their state modified when the timer reaches its 
+corresponding register's value
+
+---------------Definitions-------------------------
+
+T0_PRESCALER_1                   -timer0 clock = SystemCLK
+T0_PRESCALER_8                   -timer0 clock = SystemCLK / 8
+T0_PRESCALER_64                  -timer0 clock = SystemCLK / 64
+T0_PRESCALER_256                 -timer0 clock = SystemCLK / 256
+T0_PRESCALER_1024                -timer0 clock = SystemCLK / 1024
+T0_PRESCALER_EXTERNAL_RISING     -timer0 clock = clock on rising edge of T0
+T0_PRESCALER_EXTERNAL_FALLING    -timer0 clock = clock on falling edge of T0
+
+PIN_DISCONNECT                   -disconnects the pin from timer0, allowing to be used as a normal IO pin
+PIN_TOGGLE                       -toggle the pin on compare match
+PIN_CLEAR                        -set the pin to 0 on compare match
+PIN_SET                          -set the pin to 1 on compare match
+
+--------------Functions------------------------------
+
+void init_timer0_ctc ( uint8_t prescaler, uint8_t pinfunca, uint8_t pinfuncb ) -- initalizes timer0
+    -prescaler - one of the T0_PRESCALER definitions to define the prescaler or clock source
+    -pinfunca - one of the PIN definitions that tells what channel A does when its register is matched by the timer
+    -pinfuncb - one of the PIN definitions that tells what channel B does when its register is matched by the timer
+
+void set_ocr0a ( uint8_t v ) -- set the Output Compare Register 0 A
+    -v - the value to set the ocr0a register to
+
+void set_ocr0b ( uint8_t v ) -- set the Output Compare Register 0 B
+    -v - the value to set the ocr0a register to
+
+void enable_interrupt_t0a ( void ) -- enables the Output Compare 0 Interrupt A and sets the global interrupt flag
+
+void disable_interrupt_t0a ( void ) -- disables the Output Compare 0 Interrupt A, but does not clear the global interrupt flag
+
+void enable_interrupt_t0b ( void ) -- enables the Output Compare 0 Interrupt B and sets the global interrupt flag
+
+void disable_interrupt_t0b ( void ) -- disables the Output Compare 0 Interrupt B, but does not clear the global interrupt flag
+
+    
+
+  

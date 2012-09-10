@@ -1,0 +1,44 @@
+March 1st, 2009 - The ATmegaxx4 (ATmega164, ATmega324, ATmega644) version is mostly complete!
+
+It supports:
+  A2D converter
+  Analog Comparator w/ multiplexing
+  Internal EEPROM reading and writing + multi byte reads and writes
+  USART0:
+      non-buffered reading and writing (basic)
+      non-buffered reading and writing + interface to stdio library (moderate)
+      interrupt driven, buffered usart control (writes not buffered) (advanced)
+  Timers 0, 1, and 2:
+      Normal Timer operation with prescalers and external clock support w/ overflow interrupt enable
+      Clear Timer on Compare match with prescalers and external clock support w/ compare match interrupt enable
+      Fast Pwm with prescalers
+Not Supporting:
+   JTAG
+   I2C
+   SPI
+  (coming soon though)
+
+April 24th, 2009 The second version of the library is available!
+
+Added support to:
+  Hardware I2C master
+  Hardware I2C slave - fully interrupt driven so it will run in the background while your program does what it needs.  
+                       Access is achieved by reading and writing to the i2c_buffer[] array with the element number 
+                       being the register
+					   
+Date to be determined The third version of the library is available!
+  ----I2C Improvements----
+    -16 bit register reception in I2C slave header
+    -“Listeners” for i2c slave activity
+    -Bitbanging I2C master
+    -New I2C master functions
+  ----Serial Port Improvements----
+    -Bitbanging Serial Transmitter & Receiver
+  ----Servos----
+    -Hardware servo control on timers 1 & 2
+    -Interrupt driven servo control, up to 8.
+  ----Audio----
+    -Speakjet Driver Library using bitbanging
+    -Audio Library for Timer 1
+  ----General----
+    -Function Pointers assigned to interrupts

@@ -1,0 +1,212 @@
+GAS LISTING /tmp/ccstbAMm.s 			page 1
+
+
+   1               		.file	"spi.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Projects/AVR_Projects/SD Card Projects/FlashFS/",100,0,2,.Ltext0
+  11               		.stabs	"spi.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"spi.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  34               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  35               		.stabs	"int8_t:t(5,1)=(0,10)",128,0,121,0
+  36               		.stabs	"uint8_t:t(5,2)=(0,11)",128,0,122,0
+  37               		.stabs	"int16_t:t(5,3)=(0,1)",128,0,123,0
+  38               		.stabs	"uint16_t:t(5,4)=(0,4)",128,0,124,0
+  39               		.stabs	"int32_t:t(5,5)=(0,3)",128,0,125,0
+  40               		.stabs	"uint32_t:t(5,6)=(0,5)",128,0,126,0
+  41               		.stabs	"int64_t:t(5,7)=(0,6)",128,0,128,0
+  42               		.stabs	"uint64_t:t(5,8)=(0,7)",128,0,129,0
+  43               		.stabs	"intptr_t:t(5,9)=(5,3)",128,0,142,0
+  44               		.stabs	"uintptr_t:t(5,10)=(5,4)",128,0,147,0
+  45               		.stabs	"int_least8_t:t(5,11)=(5,1)",128,0,159,0
+  46               		.stabs	"uint_least8_t:t(5,12)=(5,2)",128,0,164,0
+  47               		.stabs	"int_least16_t:t(5,13)=(5,3)",128,0,169,0
+  48               		.stabs	"uint_least16_t:t(5,14)=(5,4)",128,0,174,0
+  49               		.stabs	"int_least32_t:t(5,15)=(5,5)",128,0,179,0
+  50               		.stabs	"uint_least32_t:t(5,16)=(5,6)",128,0,184,0
+  51               		.stabs	"int_least64_t:t(5,17)=(5,7)",128,0,192,0
+  52               		.stabs	"uint_least64_t:t(5,18)=(5,8)",128,0,199,0
+  53               		.stabs	"int_fast8_t:t(5,19)=(5,1)",128,0,213,0
+  54               		.stabs	"uint_fast8_t:t(5,20)=(5,2)",128,0,218,0
+  55               		.stabs	"int_fast16_t:t(5,21)=(5,3)",128,0,223,0
+  56               		.stabs	"uint_fast16_t:t(5,22)=(5,4)",128,0,228,0
+  57               		.stabs	"int_fast32_t:t(5,23)=(5,5)",128,0,233,0
+GAS LISTING /tmp/ccstbAMm.s 			page 2
+
+
+  58               		.stabs	"uint_fast32_t:t(5,24)=(5,6)",128,0,238,0
+  59               		.stabs	"int_fast64_t:t(5,25)=(5,7)",128,0,246,0
+  60               		.stabs	"uint_fast64_t:t(5,26)=(5,8)",128,0,253,0
+  61               		.stabs	"intmax_t:t(5,27)=(5,7)",128,0,273,0
+  62               		.stabs	"uintmax_t:t(5,28)=(5,8)",128,0,278,0
+  63               		.stabn	162,0,0,0
+  64               		.stabs	"int_farptr_t:t(4,1)=(5,5)",128,0,77,0
+  65               		.stabs	"uint_farptr_t:t(4,2)=(5,6)",128,0,81,0
+  66               		.stabn	162,0,0,0
+  67               		.stabn	162,0,0,0
+  68               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  69               		.stabs	"__fuse_t:t(6,1)=(6,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219,0
+  70               		.stabn	162,0,0,0
+  71               		.stabn	162,0,0,0
+  72               		.stabn	162,0,0,0
+  73               		.stabs	"init_spi:F(0,15)",36,0,24,init_spi
+  74               		.stabs	"speed:P(5,2)",64,0,24,24
+  75               		.stabs	"mode:P(5,2)",64,0,24,22
+  76               		.stabs	"dtype:P(5,2)",64,0,24,20
+  77               	.global	init_spi
+  78               		.type	init_spi, @function
+  79               	init_spi:
+  80               		.stabd	46,0,0
+   1:spi.c         **** /*
+   2:spi.c         ****  *      spi.c
+   3:spi.c         ****  *      
+   4:spi.c         ****  *      Copyright 2009 Nathaniel Robert Lewis <linux.robotdude@gmail.com>
+   5:spi.c         ****  *      
+   6:spi.c         ****  *      This program is free software; you can redistribute it and/or modify
+   7:spi.c         ****  *      it under the terms of the GNU General Public License as published by
+   8:spi.c         ****  *      the Free Software Foundation; either version 2 of the License, or
+   9:spi.c         ****  *      (at your option) any later version.
+  10:spi.c         ****  *      
+  11:spi.c         ****  *      This program is distributed in the hope that it will be useful,
+  12:spi.c         ****  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:spi.c         ****  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:spi.c         ****  *      GNU General Public License for more details.
+  15:spi.c         ****  *      
+  16:spi.c         ****  *      You should have received a copy of the GNU General Public License
+  17:spi.c         ****  *      along with this program; if not, write to the Free Software
+  18:spi.c         ****  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  19:spi.c         ****  *      MA 02110-1301, USA.
+  20:spi.c         ****  */
+  21:spi.c         **** 
+  22:spi.c         **** #include "spi.h"
+  23:spi.c         **** 
+  24:spi.c         **** void init_spi ( uint8_t speed, uint8_t mode, uint8_t dtype ) {
+  81               		.stabn	68,0,24,.LM0-.LFBB1
+  82               	.LM0:
+  83               	.LFBB1:
+  84               	/* prologue: function */
+  85               	/* frame size = 0 */
+  25:spi.c         **** 	DDRB |= (1 << PORTB5) | (1 << PORTB7);//set MOSI and SCK as outputs
+  86               		.stabn	68,0,25,.LM1-.LFBB1
+  87               	.LM1:
+  88 0000 94B1      		in r25,36-32
+  89 0002 906A      		ori r25,lo8(-96)
+GAS LISTING /tmp/ccstbAMm.s 			page 3
+
+
+  90 0004 94B9      		out 36-32,r25
+  26:spi.c         **** 	DDRB &= ~(1 << PORTB6);               //set MISO as an input
+  91               		.stabn	68,0,26,.LM2-.LFBB1
+  92               	.LM2:
+  93 0006 2698      		cbi 36-32,6
+  27:spi.c         **** 	SPSR = (speed >> 2) & 0x01;
+  94               		.stabn	68,0,27,.LM3-.LFBB1
+  95               	.LM3:
+  96 0008 982F      		mov r25,r24
+  97 000a 9695      		lsr r25
+  98 000c 9695      		lsr r25
+  99 000e 9170      		andi r25,lo8(1)
+ 100 0010 9DBD      		out 77-32,r25
+  28:spi.c         **** 	SPCR = (1 << SPE) | (1 << MSTR) | mode | dtype | (speed & 0x03); //setup the spi controller	
+ 101               		.stabn	68,0,28,.LM4-.LFBB1
+ 102               	.LM4:
+ 103 0012 6065      		ori r22,lo8(80)
+ 104 0014 642B      		or r22,r20
+ 105 0016 8370      		andi r24,lo8(3)
+ 106 0018 682B      		or r22,r24
+ 107 001a 6CBD      		out 76-32,r22
+ 108               	/* epilogue start */
+  29:spi.c         **** }
+ 109               		.stabn	68,0,29,.LM5-.LFBB1
+ 110               	.LM5:
+ 111 001c 0895      		ret
+ 112               		.size	init_spi, .-init_spi
+ 113               	.Lscope1:
+ 114               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 115               		.stabd	78,0,0
+ 116               		.stabs	"spi_transfer:F(5,2)",36,0,31,spi_transfer
+ 117               		.stabs	"b:P(5,2)",64,0,31,24
+ 118               	.global	spi_transfer
+ 119               		.type	spi_transfer, @function
+ 120               	spi_transfer:
+ 121               		.stabd	46,0,0
+  30:spi.c         **** 
+  31:spi.c         **** uint8_t spi_transfer ( uint8_t b ) {
+ 122               		.stabn	68,0,31,.LM6-.LFBB2
+ 123               	.LM6:
+ 124               	.LFBB2:
+ 125               	/* prologue: function */
+ 126               	/* frame size = 0 */
+  32:spi.c         ****     SPDR = b;                             //set the data byte and start the transfer
+ 127               		.stabn	68,0,32,.LM7-.LFBB2
+ 128               	.LM7:
+ 129 001e 8EBD      		out 78-32,r24
+ 130               	.L4:
+  33:spi.c         **** 	while (!(SPSR & ( 1 << SPIF)));       //wait for the transfer to complete
+ 131               		.stabn	68,0,33,.LM8-.LFBB2
+ 132               	.LM8:
+ 133 0020 0DB4      		in __tmp_reg__,77-32
+ 134 0022 07FE      		sbrs __tmp_reg__,7
+ 135 0024 00C0      		rjmp .L4
+  34:spi.c         **** 	return SPDR;                          //return received data
+ 136               		.stabn	68,0,34,.LM9-.LFBB2
+ 137               	.LM9:
+GAS LISTING /tmp/ccstbAMm.s 			page 4
+
+
+ 138 0026 8EB5      		in r24,78-32
+ 139               	/* epilogue start */
+  35:spi.c         **** } 
+ 140               		.stabn	68,0,35,.LM10-.LFBB2
+ 141               	.LM10:
+ 142 0028 0895      		ret
+ 143               		.size	spi_transfer, .-spi_transfer
+ 144               	.Lscope2:
+ 145               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 146               		.stabd	78,0,0
+ 147               		.stabs	"",100,0,0,.Letext0
+ 148               	.Letext0:
+GAS LISTING /tmp/ccstbAMm.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 spi.c
+     /tmp/ccstbAMm.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccstbAMm.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccstbAMm.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccstbAMm.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccstbAMm.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccstbAMm.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccstbAMm.s:79     .text:0000000000000000 init_spi
+     /tmp/ccstbAMm.s:120    .text:000000000000001e spi_transfer
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

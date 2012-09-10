@@ -1,0 +1,70 @@
+   1               		.file	"timer1PWM.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	initPWM
+  20               	initPWM:
+  21               	.LFB2:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 81EA      		ldi r24,lo8(-95)
+  27 0002 8FBD      		out 79-0x20,r24
+  28               	.LM3:
+  29 0004 89E0      		ldi r24,lo8(9)
+  30 0006 8EBD      		out 78-0x20,r24
+  31               	/* epilogue: frame size=0 */
+  32 0008 0895      		ret
+  33               	/* epilogue end (size=1) */
+  34               	/* function initPWM size 5 (4) */
+  35               	.LFE2:
+  37               	.global	setCHA
+  39               	setCHA:
+  40               	.LFB3:
+  41               	.LM4:
+  42               	/* prologue: frame size=0 */
+  43               	/* prologue end (size=0) */
+  44               	.LM5:
+  45 000a 9BBD      		out (74)+1-0x20,r25
+  46 000c 8ABD      		out 74-0x20,r24
+  47               	/* epilogue: frame size=0 */
+  48 000e 0895      		ret
+  49               	/* epilogue end (size=1) */
+  50               	/* function setCHA size 3 (2) */
+  51               	.LFE3:
+  53               	.global	setCHB
+  55               	setCHB:
+  56               	.LFB4:
+  57               	.LM6:
+  58               	/* prologue: frame size=0 */
+  59               	/* prologue end (size=0) */
+  60               	.LM7:
+  61 0010 99BD      		out (72)+1-0x20,r25
+  62 0012 88BD      		out 72-0x20,r24
+  63               	/* epilogue: frame size=0 */
+  64 0014 0895      		ret
+  65               	/* epilogue end (size=1) */
+  66               	/* function setCHB size 3 (2) */
+  67               	.LFE4:
+  69               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer1PWM.c
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc0eaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc0eaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc0eaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc0eaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc0eaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc0eaaaa.s:20     .text:00000000 initPWM
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc0eaaaa.s:39     .text:0000000a setCHA
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc0eaaaa.s:55     .text:00000010 setCHB
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

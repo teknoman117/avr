@@ -1,0 +1,835 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000512  00000000  00000000  00000094  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000512  000005a6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000a  00800060  00800060  000005a6  2**0
+                  ALLOC
+  3 .noinit       00000000  0080006a  0080006a  000005a6  2**0
+                  CONTENTS
+  4 .eeprom       00000000  00810000  00810000  000005a6  2**0
+                  CONTENTS
+  5 .stab         0000036c  00000000  00000000  000005a8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  6 .stabstr      00000084  00000000  00000000  00000914  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_aranges 0000003c  00000000  00000000  00000998  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_pubnames 0000017d  00000000  00000000  000009d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_info   000004a3  00000000  00000000  00000b51  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_abbrev 000001a4  00000000  00000000  00000ff4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_line   0000034f  00000000  00000000  00001198  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_str    00000158  00000000  00000000  000014e7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	4a c0       	rjmp	.+148    	; 0x98 <__vector_1>
+   4:	85 c0       	rjmp	.+266    	; 0x110 <__vector_2>
+   6:	29 c0       	rjmp	.+82     	; 0x5a <__bad_interrupt>
+   8:	28 c0       	rjmp	.+80     	; 0x5a <__bad_interrupt>
+   a:	27 c0       	rjmp	.+78     	; 0x5a <__bad_interrupt>
+   c:	26 c0       	rjmp	.+76     	; 0x5a <__bad_interrupt>
+   e:	25 c0       	rjmp	.+74     	; 0x5a <__bad_interrupt>
+  10:	24 c0       	rjmp	.+72     	; 0x5a <__bad_interrupt>
+  12:	23 c0       	rjmp	.+70     	; 0x5a <__bad_interrupt>
+  14:	22 c0       	rjmp	.+68     	; 0x5a <__bad_interrupt>
+  16:	21 c0       	rjmp	.+66     	; 0x5a <__bad_interrupt>
+  18:	20 c0       	rjmp	.+64     	; 0x5a <__bad_interrupt>
+  1a:	1f c0       	rjmp	.+62     	; 0x5a <__bad_interrupt>
+  1c:	1e c0       	rjmp	.+60     	; 0x5a <__bad_interrupt>
+  1e:	1d c0       	rjmp	.+58     	; 0x5a <__bad_interrupt>
+  20:	1c c0       	rjmp	.+56     	; 0x5a <__bad_interrupt>
+  22:	1b c0       	rjmp	.+54     	; 0x5a <__bad_interrupt>
+  24:	1a c0       	rjmp	.+52     	; 0x5a <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 e1       	ldi	r30, 0x12	; 18
+  3a:	f5 e0       	ldi	r31, 0x05	; 5
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <.do_copy_data_start>
+
+0000003e <.do_copy_data_loop>:
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+
+00000042 <.do_copy_data_start>:
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <.do_copy_data_loop>
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	aa 36       	cpi	r26, 0x6A	; 106
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	01 c0       	rjmp	.+2      	; 0x5c <main>
+
+0000005a <__bad_interrupt>:
+  5a:	d2 cf       	rjmp	.-92     	; 0x0 <__vectors>
+
+0000005c <main>:
+
+uint16_t Lcnt;
+uint16_t Rcnt;
+
+int main() {
+  5c:	cf e5       	ldi	r28, 0x5F	; 95
+  5e:	d4 e0       	ldi	r29, 0x04	; 4
+  60:	de bf       	out	0x3e, r29	; 62
+  62:	cd bf       	out	0x3d, r28	; 61
+  initPWM();
+  64:	4b d2       	rcall	.+1174   	; 0x4fc <initPWM>
+  initIO();
+  66:	90 d0       	rcall	.+288    	; 0x188 <initIO>
+  setIOB(1,O);
+  68:	61 e0       	ldi	r22, 0x01	; 1
+  6a:	86 2f       	mov	r24, r22
+  6c:	9a d0       	rcall	.+308    	; 0x1a2 <setIOB>
+  setIOB(2,O);
+  6e:	61 e0       	ldi	r22, 0x01	; 1
+  70:	82 e0       	ldi	r24, 0x02	; 2
+  72:	97 d0       	rcall	.+302    	; 0x1a2 <setIOB>
+  MCUCR = MCUCR + ((1<<ISC11) + (1<<ISC01));
+  74:	85 b7       	in	r24, 0x35	; 53
+  76:	86 5f       	subi	r24, 0xF6	; 246
+  78:	85 bf       	out	0x35, r24	; 53
+  GICR = GICR + ((1<<INT0) + (1<<INT1)); 
+  7a:	8b b7       	in	r24, 0x3b	; 59
+  7c:	80 54       	subi	r24, 0x40	; 64
+  7e:	8b bf       	out	0x3b, r24	; 59
+  sei();
+  80:	78 94       	sei
+  while(1) {
+    setCHA(Lcnt);
+  82:	80 91 62 00 	lds	r24, 0x0062
+  86:	90 91 63 00 	lds	r25, 0x0063
+  8a:	3d d2       	rcall	.+1146   	; 0x506 <setCHA>
+    setCHB(Rcnt);
+  8c:	80 91 68 00 	lds	r24, 0x0068
+  90:	90 91 69 00 	lds	r25, 0x0069
+  94:	3b d2       	rcall	.+1142   	; 0x50c <setCHB>
+  96:	f5 cf       	rjmp	.-22     	; 0x82 <main+0x26>
+
+00000098 <__vector_1>:
+  }
+  return 0;
+}  
+    
+SIGNAL(SIG_INTERRUPT0) {
+  98:	1f 92       	push	r1
+  9a:	0f 92       	push	r0
+  9c:	0f b6       	in	r0, 0x3f	; 63
+  9e:	0f 92       	push	r0
+  a0:	11 24       	eor	r1, r1
+  a2:	2f 93       	push	r18
+  a4:	3f 93       	push	r19
+  a6:	4f 93       	push	r20
+  a8:	5f 93       	push	r21
+  aa:	6f 93       	push	r22
+  ac:	7f 93       	push	r23
+  ae:	8f 93       	push	r24
+  b0:	9f 93       	push	r25
+  b2:	af 93       	push	r26
+  b4:	bf 93       	push	r27
+  b6:	ef 93       	push	r30
+  b8:	ff 93       	push	r31
+  if(getStateB(0) == 1){Lcnt++;}
+  ba:	80 e0       	ldi	r24, 0x00	; 0
+  bc:	f8 d1       	rcall	.+1008   	; 0x4ae <getStateB>
+  be:	81 30       	cpi	r24, 0x01	; 1
+  c0:	49 f4       	brne	.+18     	; 0xd4 <__vector_1+0x3c>
+  c2:	80 91 62 00 	lds	r24, 0x0062
+  c6:	90 91 63 00 	lds	r25, 0x0063
+  ca:	01 96       	adiw	r24, 0x01	; 1
+  cc:	90 93 63 00 	sts	0x0063, r25
+  d0:	80 93 62 00 	sts	0x0062, r24
+  if(getStateB(0) == 0){Lcnt--;}
+  d4:	80 e0       	ldi	r24, 0x00	; 0
+  d6:	eb d1       	rcall	.+982    	; 0x4ae <getStateB>
+  d8:	88 23       	and	r24, r24
+  da:	49 f4       	brne	.+18     	; 0xee <__vector_1+0x56>
+  dc:	80 91 62 00 	lds	r24, 0x0062
+  e0:	90 91 63 00 	lds	r25, 0x0063
+  e4:	01 97       	sbiw	r24, 0x01	; 1
+  e6:	90 93 63 00 	sts	0x0063, r25
+  ea:	80 93 62 00 	sts	0x0062, r24
+  ee:	ff 91       	pop	r31
+  f0:	ef 91       	pop	r30
+  f2:	bf 91       	pop	r27
+  f4:	af 91       	pop	r26
+  f6:	9f 91       	pop	r25
+  f8:	8f 91       	pop	r24
+  fa:	7f 91       	pop	r23
+  fc:	6f 91       	pop	r22
+  fe:	5f 91       	pop	r21
+ 100:	4f 91       	pop	r20
+ 102:	3f 91       	pop	r19
+ 104:	2f 91       	pop	r18
+ 106:	0f 90       	pop	r0
+ 108:	0f be       	out	0x3f, r0	; 63
+ 10a:	0f 90       	pop	r0
+ 10c:	1f 90       	pop	r1
+ 10e:	18 95       	reti
+
+00000110 <__vector_2>:
+  //setStateB(1,1);
+}
+
+SIGNAL(SIG_INTERRUPT1) {
+ 110:	1f 92       	push	r1
+ 112:	0f 92       	push	r0
+ 114:	0f b6       	in	r0, 0x3f	; 63
+ 116:	0f 92       	push	r0
+ 118:	11 24       	eor	r1, r1
+ 11a:	2f 93       	push	r18
+ 11c:	3f 93       	push	r19
+ 11e:	4f 93       	push	r20
+ 120:	5f 93       	push	r21
+ 122:	6f 93       	push	r22
+ 124:	7f 93       	push	r23
+ 126:	8f 93       	push	r24
+ 128:	9f 93       	push	r25
+ 12a:	af 93       	push	r26
+ 12c:	bf 93       	push	r27
+ 12e:	ef 93       	push	r30
+ 130:	ff 93       	push	r31
+  if(getStateB(5) == 1){Rcnt++;}
+ 132:	85 e0       	ldi	r24, 0x05	; 5
+ 134:	bc d1       	rcall	.+888    	; 0x4ae <getStateB>
+ 136:	81 30       	cpi	r24, 0x01	; 1
+ 138:	49 f4       	brne	.+18     	; 0x14c <__vector_2+0x3c>
+ 13a:	80 91 68 00 	lds	r24, 0x0068
+ 13e:	90 91 69 00 	lds	r25, 0x0069
+ 142:	01 96       	adiw	r24, 0x01	; 1
+ 144:	90 93 69 00 	sts	0x0069, r25
+ 148:	80 93 68 00 	sts	0x0068, r24
+  if(getStateB(5) == 0){Rcnt--;}
+ 14c:	85 e0       	ldi	r24, 0x05	; 5
+ 14e:	af d1       	rcall	.+862    	; 0x4ae <getStateB>
+ 150:	88 23       	and	r24, r24
+ 152:	49 f4       	brne	.+18     	; 0x166 <__vector_2+0x56>
+ 154:	80 91 68 00 	lds	r24, 0x0068
+ 158:	90 91 69 00 	lds	r25, 0x0069
+ 15c:	01 97       	sbiw	r24, 0x01	; 1
+ 15e:	90 93 69 00 	sts	0x0069, r25
+ 162:	80 93 68 00 	sts	0x0068, r24
+ 166:	ff 91       	pop	r31
+ 168:	ef 91       	pop	r30
+ 16a:	bf 91       	pop	r27
+ 16c:	af 91       	pop	r26
+ 16e:	9f 91       	pop	r25
+ 170:	8f 91       	pop	r24
+ 172:	7f 91       	pop	r23
+ 174:	6f 91       	pop	r22
+ 176:	5f 91       	pop	r21
+ 178:	4f 91       	pop	r20
+ 17a:	3f 91       	pop	r19
+ 17c:	2f 91       	pop	r18
+ 17e:	0f 90       	pop	r0
+ 180:	0f be       	out	0x3f, r0	; 63
+ 182:	0f 90       	pop	r0
+ 184:	1f 90       	pop	r1
+ 186:	18 95       	reti
+
+00000188 <initIO>:
+#include "M8io.h"
+
+void  initIO ( void )
+{
+  prtb = 0;
+ 188:	10 92 66 00 	sts	0x0066, r1
+  prtc = 0;
+ 18c:	10 92 60 00 	sts	0x0060, r1
+  prtd = 0;
+ 190:	10 92 61 00 	sts	0x0061, r1
+  dirb = 0;
+ 194:	10 92 65 00 	sts	0x0065, r1
+  dirc = 0;
+ 198:	10 92 67 00 	sts	0x0067, r1
+  dird = 0;
+ 19c:	10 92 64 00 	sts	0x0064, r1
+ 1a0:	08 95       	ret
+
+000001a2 <setIOB>:
+}
+
+void  setIOB(uint8_t pin , uint8_t direction)
+{
+ 1a2:	58 2f       	mov	r21, r24
+  switch (direction)
+ 1a4:	26 2f       	mov	r18, r22
+ 1a6:	33 27       	eor	r19, r19
+ 1a8:	21 15       	cp	r18, r1
+ 1aa:	31 05       	cpc	r19, r1
+ 1ac:	f9 f0       	breq	.+62     	; 0x1ec <setIOB+0x4a>
+ 1ae:	21 30       	cpi	r18, 0x01	; 1
+ 1b0:	31 05       	cpc	r19, r1
+ 1b2:	b9 f5       	brne	.+110    	; 0x222 <setIOB+0x80>
+  {
+    case O:
+	if(((dirb >> pin) & 0x01) == 0){DDRB = DDRB + (1 << pin);dirb = dirb + (1 << pin);}
+ 1b4:	60 91 65 00 	lds	r22, 0x0065
+ 1b8:	86 2f       	mov	r24, r22
+ 1ba:	99 27       	eor	r25, r25
+ 1bc:	45 2f       	mov	r20, r21
+ 1be:	55 27       	eor	r21, r21
+ 1c0:	04 2e       	mov	r0, r20
+ 1c2:	02 c0       	rjmp	.+4      	; 0x1c8 <setIOB+0x26>
+ 1c4:	95 95       	asr	r25
+ 1c6:	87 95       	ror	r24
+ 1c8:	0a 94       	dec	r0
+ 1ca:	e2 f7       	brpl	.-8      	; 0x1c4 <setIOB+0x22>
+ 1cc:	82 27       	eor	r24, r18
+ 1ce:	93 27       	eor	r25, r19
+ 1d0:	80 ff       	sbrs	r24, 0
+ 1d2:	27 c0       	rjmp	.+78     	; 0x222 <setIOB+0x80>
+ 1d4:	02 c0       	rjmp	.+4      	; 0x1da <setIOB+0x38>
+ 1d6:	22 0f       	add	r18, r18
+ 1d8:	33 1f       	adc	r19, r19
+ 1da:	4a 95       	dec	r20
+ 1dc:	e2 f7       	brpl	.-8      	; 0x1d6 <setIOB+0x34>
+ 1de:	87 b3       	in	r24, 0x17	; 23
+ 1e0:	82 0f       	add	r24, r18
+ 1e2:	87 bb       	out	0x17, r24	; 23
+ 1e4:	62 0f       	add	r22, r18
+ 1e6:	60 93 65 00 	sts	0x0065, r22
+	break;
+ 1ea:	08 95       	ret
+	
+	case I:
+	if(((dirb >> pin) & 0x01) == 1){DDRB = DDRB - (1 << pin);dirb = dirb - (1 << pin);}
+ 1ec:	40 91 65 00 	lds	r20, 0x0065
+ 1f0:	84 2f       	mov	r24, r20
+ 1f2:	99 27       	eor	r25, r25
+ 1f4:	25 2f       	mov	r18, r21
+ 1f6:	33 27       	eor	r19, r19
+ 1f8:	02 2e       	mov	r0, r18
+ 1fa:	02 c0       	rjmp	.+4      	; 0x200 <setIOB+0x5e>
+ 1fc:	95 95       	asr	r25
+ 1fe:	87 95       	ror	r24
+ 200:	0a 94       	dec	r0
+ 202:	e2 f7       	brpl	.-8      	; 0x1fc <setIOB+0x5a>
+ 204:	80 ff       	sbrs	r24, 0
+ 206:	0d c0       	rjmp	.+26     	; 0x222 <setIOB+0x80>
+ 208:	81 e0       	ldi	r24, 0x01	; 1
+ 20a:	90 e0       	ldi	r25, 0x00	; 0
+ 20c:	02 c0       	rjmp	.+4      	; 0x212 <setIOB+0x70>
+ 20e:	88 0f       	add	r24, r24
+ 210:	99 1f       	adc	r25, r25
+ 212:	2a 95       	dec	r18
+ 214:	e2 f7       	brpl	.-8      	; 0x20e <setIOB+0x6c>
+ 216:	27 b3       	in	r18, 0x17	; 23
+ 218:	28 1b       	sub	r18, r24
+ 21a:	27 bb       	out	0x17, r18	; 23
+ 21c:	48 1b       	sub	r20, r24
+ 21e:	40 93 65 00 	sts	0x0065, r20
+ 222:	08 95       	ret
+
+00000224 <setIOC>:
+	break;
+  }
+}
+
+void  setIOC(uint8_t pin , uint8_t direction)
+{
+ 224:	58 2f       	mov	r21, r24
+  switch (direction)
+ 226:	26 2f       	mov	r18, r22
+ 228:	33 27       	eor	r19, r19
+ 22a:	21 15       	cp	r18, r1
+ 22c:	31 05       	cpc	r19, r1
+ 22e:	f9 f0       	breq	.+62     	; 0x26e <setIOC+0x4a>
+ 230:	21 30       	cpi	r18, 0x01	; 1
+ 232:	31 05       	cpc	r19, r1
+ 234:	b9 f5       	brne	.+110    	; 0x2a4 <setIOC+0x80>
+  {
+    case O:
+	if(((dirc >> pin) & 0x01) == 0){DDRC = DDRC + (1 << pin);dirc = dirc + (1 << pin);}
+ 236:	60 91 67 00 	lds	r22, 0x0067
+ 23a:	86 2f       	mov	r24, r22
+ 23c:	99 27       	eor	r25, r25
+ 23e:	45 2f       	mov	r20, r21
+ 240:	55 27       	eor	r21, r21
+ 242:	04 2e       	mov	r0, r20
+ 244:	02 c0       	rjmp	.+4      	; 0x24a <setIOC+0x26>
+ 246:	95 95       	asr	r25
+ 248:	87 95       	ror	r24
+ 24a:	0a 94       	dec	r0
+ 24c:	e2 f7       	brpl	.-8      	; 0x246 <setIOC+0x22>
+ 24e:	82 27       	eor	r24, r18
+ 250:	93 27       	eor	r25, r19
+ 252:	80 ff       	sbrs	r24, 0
+ 254:	27 c0       	rjmp	.+78     	; 0x2a4 <setIOC+0x80>
+ 256:	02 c0       	rjmp	.+4      	; 0x25c <setIOC+0x38>
+ 258:	22 0f       	add	r18, r18
+ 25a:	33 1f       	adc	r19, r19
+ 25c:	4a 95       	dec	r20
+ 25e:	e2 f7       	brpl	.-8      	; 0x258 <setIOC+0x34>
+ 260:	84 b3       	in	r24, 0x14	; 20
+ 262:	82 0f       	add	r24, r18
+ 264:	84 bb       	out	0x14, r24	; 20
+ 266:	62 0f       	add	r22, r18
+ 268:	60 93 67 00 	sts	0x0067, r22
+	break;
+ 26c:	08 95       	ret
+	
+	case I:
+	if(((dirc >> pin) & 0x01) == 1){DDRC = DDRC - (1 << pin);dirc = dirc - (1 << pin);}
+ 26e:	40 91 67 00 	lds	r20, 0x0067
+ 272:	84 2f       	mov	r24, r20
+ 274:	99 27       	eor	r25, r25
+ 276:	25 2f       	mov	r18, r21
+ 278:	33 27       	eor	r19, r19
+ 27a:	02 2e       	mov	r0, r18
+ 27c:	02 c0       	rjmp	.+4      	; 0x282 <setIOC+0x5e>
+ 27e:	95 95       	asr	r25
+ 280:	87 95       	ror	r24
+ 282:	0a 94       	dec	r0
+ 284:	e2 f7       	brpl	.-8      	; 0x27e <setIOC+0x5a>
+ 286:	80 ff       	sbrs	r24, 0
+ 288:	0d c0       	rjmp	.+26     	; 0x2a4 <setIOC+0x80>
+ 28a:	81 e0       	ldi	r24, 0x01	; 1
+ 28c:	90 e0       	ldi	r25, 0x00	; 0
+ 28e:	02 c0       	rjmp	.+4      	; 0x294 <setIOC+0x70>
+ 290:	88 0f       	add	r24, r24
+ 292:	99 1f       	adc	r25, r25
+ 294:	2a 95       	dec	r18
+ 296:	e2 f7       	brpl	.-8      	; 0x290 <setIOC+0x6c>
+ 298:	24 b3       	in	r18, 0x14	; 20
+ 29a:	28 1b       	sub	r18, r24
+ 29c:	24 bb       	out	0x14, r18	; 20
+ 29e:	48 1b       	sub	r20, r24
+ 2a0:	40 93 67 00 	sts	0x0067, r20
+ 2a4:	08 95       	ret
+
+000002a6 <setIOD>:
+	break;
+  }
+}
+
+void  setIOD(uint8_t pin , uint8_t direction)
+{
+ 2a6:	58 2f       	mov	r21, r24
+  switch (direction)
+ 2a8:	26 2f       	mov	r18, r22
+ 2aa:	33 27       	eor	r19, r19
+ 2ac:	21 15       	cp	r18, r1
+ 2ae:	31 05       	cpc	r19, r1
+ 2b0:	f9 f0       	breq	.+62     	; 0x2f0 <setIOD+0x4a>
+ 2b2:	21 30       	cpi	r18, 0x01	; 1
+ 2b4:	31 05       	cpc	r19, r1
+ 2b6:	b9 f5       	brne	.+110    	; 0x326 <setIOD+0x80>
+  {
+    case O:
+	if(((dird >> pin) & 0x01) == 0){DDRD = DDRD + (1 << pin);dird = dird + (1 << pin);}
+ 2b8:	60 91 64 00 	lds	r22, 0x0064
+ 2bc:	86 2f       	mov	r24, r22
+ 2be:	99 27       	eor	r25, r25
+ 2c0:	45 2f       	mov	r20, r21
+ 2c2:	55 27       	eor	r21, r21
+ 2c4:	04 2e       	mov	r0, r20
+ 2c6:	02 c0       	rjmp	.+4      	; 0x2cc <setIOD+0x26>
+ 2c8:	95 95       	asr	r25
+ 2ca:	87 95       	ror	r24
+ 2cc:	0a 94       	dec	r0
+ 2ce:	e2 f7       	brpl	.-8      	; 0x2c8 <setIOD+0x22>
+ 2d0:	82 27       	eor	r24, r18
+ 2d2:	93 27       	eor	r25, r19
+ 2d4:	80 ff       	sbrs	r24, 0
+ 2d6:	27 c0       	rjmp	.+78     	; 0x326 <setIOD+0x80>
+ 2d8:	02 c0       	rjmp	.+4      	; 0x2de <setIOD+0x38>
+ 2da:	22 0f       	add	r18, r18
+ 2dc:	33 1f       	adc	r19, r19
+ 2de:	4a 95       	dec	r20
+ 2e0:	e2 f7       	brpl	.-8      	; 0x2da <setIOD+0x34>
+ 2e2:	81 b3       	in	r24, 0x11	; 17
+ 2e4:	82 0f       	add	r24, r18
+ 2e6:	81 bb       	out	0x11, r24	; 17
+ 2e8:	62 0f       	add	r22, r18
+ 2ea:	60 93 64 00 	sts	0x0064, r22
+	break;
+ 2ee:	08 95       	ret
+	
+	case I:
+	if(((dird >> pin) & 0x01) == 1){DDRD = DDRD - (1 << pin);dird = dird - (1 << pin);}
+ 2f0:	40 91 64 00 	lds	r20, 0x0064
+ 2f4:	84 2f       	mov	r24, r20
+ 2f6:	99 27       	eor	r25, r25
+ 2f8:	25 2f       	mov	r18, r21
+ 2fa:	33 27       	eor	r19, r19
+ 2fc:	02 2e       	mov	r0, r18
+ 2fe:	02 c0       	rjmp	.+4      	; 0x304 <setIOD+0x5e>
+ 300:	95 95       	asr	r25
+ 302:	87 95       	ror	r24
+ 304:	0a 94       	dec	r0
+ 306:	e2 f7       	brpl	.-8      	; 0x300 <setIOD+0x5a>
+ 308:	80 ff       	sbrs	r24, 0
+ 30a:	0d c0       	rjmp	.+26     	; 0x326 <setIOD+0x80>
+ 30c:	81 e0       	ldi	r24, 0x01	; 1
+ 30e:	90 e0       	ldi	r25, 0x00	; 0
+ 310:	02 c0       	rjmp	.+4      	; 0x316 <setIOD+0x70>
+ 312:	88 0f       	add	r24, r24
+ 314:	99 1f       	adc	r25, r25
+ 316:	2a 95       	dec	r18
+ 318:	e2 f7       	brpl	.-8      	; 0x312 <setIOD+0x6c>
+ 31a:	21 b3       	in	r18, 0x11	; 17
+ 31c:	28 1b       	sub	r18, r24
+ 31e:	21 bb       	out	0x11, r18	; 17
+ 320:	48 1b       	sub	r20, r24
+ 322:	40 93 64 00 	sts	0x0064, r20
+ 326:	08 95       	ret
+
+00000328 <setStateB>:
+	break;
+  }
+}
+
+void  setStateB(uint8_t pin , uint8_t state)
+{
+ 328:	58 2f       	mov	r21, r24
+  switch (state)
+ 32a:	26 2f       	mov	r18, r22
+ 32c:	33 27       	eor	r19, r19
+ 32e:	21 15       	cp	r18, r1
+ 330:	31 05       	cpc	r19, r1
+ 332:	f9 f0       	breq	.+62     	; 0x372 <setStateB+0x4a>
+ 334:	21 30       	cpi	r18, 0x01	; 1
+ 336:	31 05       	cpc	r19, r1
+ 338:	b9 f5       	brne	.+110    	; 0x3a8 <setStateB+0x80>
+  {
+    case 1:
+	if(((prtb >> pin) & 0x01) == 0){PORTB = PORTB + (1 << pin);prtb = prtb + (1 << pin);}
+ 33a:	60 91 66 00 	lds	r22, 0x0066
+ 33e:	86 2f       	mov	r24, r22
+ 340:	99 27       	eor	r25, r25
+ 342:	45 2f       	mov	r20, r21
+ 344:	55 27       	eor	r21, r21
+ 346:	04 2e       	mov	r0, r20
+ 348:	02 c0       	rjmp	.+4      	; 0x34e <setStateB+0x26>
+ 34a:	95 95       	asr	r25
+ 34c:	87 95       	ror	r24
+ 34e:	0a 94       	dec	r0
+ 350:	e2 f7       	brpl	.-8      	; 0x34a <setStateB+0x22>
+ 352:	82 27       	eor	r24, r18
+ 354:	93 27       	eor	r25, r19
+ 356:	80 ff       	sbrs	r24, 0
+ 358:	27 c0       	rjmp	.+78     	; 0x3a8 <setStateB+0x80>
+ 35a:	02 c0       	rjmp	.+4      	; 0x360 <setStateB+0x38>
+ 35c:	22 0f       	add	r18, r18
+ 35e:	33 1f       	adc	r19, r19
+ 360:	4a 95       	dec	r20
+ 362:	e2 f7       	brpl	.-8      	; 0x35c <setStateB+0x34>
+ 364:	88 b3       	in	r24, 0x18	; 24
+ 366:	82 0f       	add	r24, r18
+ 368:	88 bb       	out	0x18, r24	; 24
+ 36a:	62 0f       	add	r22, r18
+ 36c:	60 93 66 00 	sts	0x0066, r22
+	break;
+ 370:	08 95       	ret
+	
+	case 0:
+	if(((prtb >> pin) & 0x01) == 1){PORTB = PORTB - (1 << pin);prtb = prtb - (1 << pin);}
+ 372:	40 91 66 00 	lds	r20, 0x0066
+ 376:	84 2f       	mov	r24, r20
+ 378:	99 27       	eor	r25, r25
+ 37a:	25 2f       	mov	r18, r21
+ 37c:	33 27       	eor	r19, r19
+ 37e:	02 2e       	mov	r0, r18
+ 380:	02 c0       	rjmp	.+4      	; 0x386 <setStateB+0x5e>
+ 382:	95 95       	asr	r25
+ 384:	87 95       	ror	r24
+ 386:	0a 94       	dec	r0
+ 388:	e2 f7       	brpl	.-8      	; 0x382 <setStateB+0x5a>
+ 38a:	80 ff       	sbrs	r24, 0
+ 38c:	0d c0       	rjmp	.+26     	; 0x3a8 <setStateB+0x80>
+ 38e:	81 e0       	ldi	r24, 0x01	; 1
+ 390:	90 e0       	ldi	r25, 0x00	; 0
+ 392:	02 c0       	rjmp	.+4      	; 0x398 <setStateB+0x70>
+ 394:	88 0f       	add	r24, r24
+ 396:	99 1f       	adc	r25, r25
+ 398:	2a 95       	dec	r18
+ 39a:	e2 f7       	brpl	.-8      	; 0x394 <setStateB+0x6c>
+ 39c:	28 b3       	in	r18, 0x18	; 24
+ 39e:	28 1b       	sub	r18, r24
+ 3a0:	28 bb       	out	0x18, r18	; 24
+ 3a2:	48 1b       	sub	r20, r24
+ 3a4:	40 93 66 00 	sts	0x0066, r20
+ 3a8:	08 95       	ret
+
+000003aa <setStateC>:
+	break;
+  }
+}
+
+void  setStateC(uint8_t pin , uint8_t state)
+{
+ 3aa:	58 2f       	mov	r21, r24
+  switch (state)
+ 3ac:	26 2f       	mov	r18, r22
+ 3ae:	33 27       	eor	r19, r19
+ 3b0:	21 15       	cp	r18, r1
+ 3b2:	31 05       	cpc	r19, r1
+ 3b4:	f9 f0       	breq	.+62     	; 0x3f4 <setStateC+0x4a>
+ 3b6:	21 30       	cpi	r18, 0x01	; 1
+ 3b8:	31 05       	cpc	r19, r1
+ 3ba:	b9 f5       	brne	.+110    	; 0x42a <setStateC+0x80>
+  {
+    case 1:
+	if(((prtc >> pin) & 0x01) == 0){PORTC = PORTC + (1 << pin);prtc = prtc + (1 << pin);}
+ 3bc:	60 91 60 00 	lds	r22, 0x0060
+ 3c0:	86 2f       	mov	r24, r22
+ 3c2:	99 27       	eor	r25, r25
+ 3c4:	45 2f       	mov	r20, r21
+ 3c6:	55 27       	eor	r21, r21
+ 3c8:	04 2e       	mov	r0, r20
+ 3ca:	02 c0       	rjmp	.+4      	; 0x3d0 <setStateC+0x26>
+ 3cc:	95 95       	asr	r25
+ 3ce:	87 95       	ror	r24
+ 3d0:	0a 94       	dec	r0
+ 3d2:	e2 f7       	brpl	.-8      	; 0x3cc <setStateC+0x22>
+ 3d4:	82 27       	eor	r24, r18
+ 3d6:	93 27       	eor	r25, r19
+ 3d8:	80 ff       	sbrs	r24, 0
+ 3da:	27 c0       	rjmp	.+78     	; 0x42a <setStateC+0x80>
+ 3dc:	02 c0       	rjmp	.+4      	; 0x3e2 <setStateC+0x38>
+ 3de:	22 0f       	add	r18, r18
+ 3e0:	33 1f       	adc	r19, r19
+ 3e2:	4a 95       	dec	r20
+ 3e4:	e2 f7       	brpl	.-8      	; 0x3de <setStateC+0x34>
+ 3e6:	85 b3       	in	r24, 0x15	; 21
+ 3e8:	82 0f       	add	r24, r18
+ 3ea:	85 bb       	out	0x15, r24	; 21
+ 3ec:	62 0f       	add	r22, r18
+ 3ee:	60 93 60 00 	sts	0x0060, r22
+	break;
+ 3f2:	08 95       	ret
+	
+	case 0:
+	if(((prtc >> pin) & 0x01) == 1){PORTC = PORTC - (1 << pin);prtc = prtc - (1 << pin);}
+ 3f4:	40 91 60 00 	lds	r20, 0x0060
+ 3f8:	84 2f       	mov	r24, r20
+ 3fa:	99 27       	eor	r25, r25
+ 3fc:	25 2f       	mov	r18, r21
+ 3fe:	33 27       	eor	r19, r19
+ 400:	02 2e       	mov	r0, r18
+ 402:	02 c0       	rjmp	.+4      	; 0x408 <setStateC+0x5e>
+ 404:	95 95       	asr	r25
+ 406:	87 95       	ror	r24
+ 408:	0a 94       	dec	r0
+ 40a:	e2 f7       	brpl	.-8      	; 0x404 <setStateC+0x5a>
+ 40c:	80 ff       	sbrs	r24, 0
+ 40e:	0d c0       	rjmp	.+26     	; 0x42a <setStateC+0x80>
+ 410:	81 e0       	ldi	r24, 0x01	; 1
+ 412:	90 e0       	ldi	r25, 0x00	; 0
+ 414:	02 c0       	rjmp	.+4      	; 0x41a <setStateC+0x70>
+ 416:	88 0f       	add	r24, r24
+ 418:	99 1f       	adc	r25, r25
+ 41a:	2a 95       	dec	r18
+ 41c:	e2 f7       	brpl	.-8      	; 0x416 <setStateC+0x6c>
+ 41e:	25 b3       	in	r18, 0x15	; 21
+ 420:	28 1b       	sub	r18, r24
+ 422:	25 bb       	out	0x15, r18	; 21
+ 424:	48 1b       	sub	r20, r24
+ 426:	40 93 60 00 	sts	0x0060, r20
+ 42a:	08 95       	ret
+
+0000042c <setStateD>:
+	break;
+  }
+}
+
+void  setStateD(uint8_t pin , uint8_t state)
+{
+ 42c:	58 2f       	mov	r21, r24
+  switch (state)
+ 42e:	26 2f       	mov	r18, r22
+ 430:	33 27       	eor	r19, r19
+ 432:	21 15       	cp	r18, r1
+ 434:	31 05       	cpc	r19, r1
+ 436:	f9 f0       	breq	.+62     	; 0x476 <__stack+0x17>
+ 438:	21 30       	cpi	r18, 0x01	; 1
+ 43a:	31 05       	cpc	r19, r1
+ 43c:	b9 f5       	brne	.+110    	; 0x4ac <__stack+0x4d>
+  {
+    case 1:
+	if(((prtd >> pin) & 0x01) == 0){PORTD = PORTD + (1 << pin);prtd = prtd + (1 << pin);}
+ 43e:	60 91 61 00 	lds	r22, 0x0061
+ 442:	86 2f       	mov	r24, r22
+ 444:	99 27       	eor	r25, r25
+ 446:	45 2f       	mov	r20, r21
+ 448:	55 27       	eor	r21, r21
+ 44a:	04 2e       	mov	r0, r20
+ 44c:	02 c0       	rjmp	.+4      	; 0x452 <setStateD+0x26>
+ 44e:	95 95       	asr	r25
+ 450:	87 95       	ror	r24
+ 452:	0a 94       	dec	r0
+ 454:	e2 f7       	brpl	.-8      	; 0x44e <setStateD+0x22>
+ 456:	82 27       	eor	r24, r18
+ 458:	93 27       	eor	r25, r19
+ 45a:	80 ff       	sbrs	r24, 0
+ 45c:	27 c0       	rjmp	.+78     	; 0x4ac <__stack+0x4d>
+ 45e:	02 c0       	rjmp	.+4      	; 0x464 <__stack+0x5>
+ 460:	22 0f       	add	r18, r18
+ 462:	33 1f       	adc	r19, r19
+ 464:	4a 95       	dec	r20
+ 466:	e2 f7       	brpl	.-8      	; 0x460 <__stack+0x1>
+ 468:	82 b3       	in	r24, 0x12	; 18
+ 46a:	82 0f       	add	r24, r18
+ 46c:	82 bb       	out	0x12, r24	; 18
+ 46e:	62 0f       	add	r22, r18
+ 470:	60 93 61 00 	sts	0x0061, r22
+	break;
+ 474:	08 95       	ret
+	
+	case 0:
+	if(((prtd >> pin) & 0x01) == 1){PORTD = PORTD - (1 << pin);prtd = prtd - (1 << pin);}
+ 476:	40 91 61 00 	lds	r20, 0x0061
+ 47a:	84 2f       	mov	r24, r20
+ 47c:	99 27       	eor	r25, r25
+ 47e:	25 2f       	mov	r18, r21
+ 480:	33 27       	eor	r19, r19
+ 482:	02 2e       	mov	r0, r18
+ 484:	02 c0       	rjmp	.+4      	; 0x48a <__stack+0x2b>
+ 486:	95 95       	asr	r25
+ 488:	87 95       	ror	r24
+ 48a:	0a 94       	dec	r0
+ 48c:	e2 f7       	brpl	.-8      	; 0x486 <__stack+0x27>
+ 48e:	80 ff       	sbrs	r24, 0
+ 490:	0d c0       	rjmp	.+26     	; 0x4ac <__stack+0x4d>
+ 492:	81 e0       	ldi	r24, 0x01	; 1
+ 494:	90 e0       	ldi	r25, 0x00	; 0
+ 496:	02 c0       	rjmp	.+4      	; 0x49c <__stack+0x3d>
+ 498:	88 0f       	add	r24, r24
+ 49a:	99 1f       	adc	r25, r25
+ 49c:	2a 95       	dec	r18
+ 49e:	e2 f7       	brpl	.-8      	; 0x498 <__stack+0x39>
+ 4a0:	22 b3       	in	r18, 0x12	; 18
+ 4a2:	28 1b       	sub	r18, r24
+ 4a4:	22 bb       	out	0x12, r18	; 18
+ 4a6:	48 1b       	sub	r20, r24
+ 4a8:	40 93 61 00 	sts	0x0061, r20
+ 4ac:	08 95       	ret
+
+000004ae <getStateB>:
+	break;
+  }
+}
+
+uint8_t  getStateB(uint8_t pin)
+{
+  return ((PINB >> pin) & 0x01);
+ 4ae:	96 b3       	in	r25, 0x16	; 22
+ 4b0:	29 2f       	mov	r18, r25
+ 4b2:	33 27       	eor	r19, r19
+ 4b4:	02 c0       	rjmp	.+4      	; 0x4ba <getStateB+0xc>
+ 4b6:	35 95       	asr	r19
+ 4b8:	27 95       	ror	r18
+ 4ba:	8a 95       	dec	r24
+ 4bc:	e2 f7       	brpl	.-8      	; 0x4b6 <getStateB+0x8>
+ 4be:	82 2f       	mov	r24, r18
+ 4c0:	99 27       	eor	r25, r25
+}
+ 4c2:	81 70       	andi	r24, 0x01	; 1
+ 4c4:	90 70       	andi	r25, 0x00	; 0
+ 4c6:	08 95       	ret
+
+000004c8 <getStateC>:
+
+uint8_t  getStateC(uint8_t pin)
+{
+  return ((PINC >> pin) & 0x01);
+ 4c8:	93 b3       	in	r25, 0x13	; 19
+ 4ca:	29 2f       	mov	r18, r25
+ 4cc:	33 27       	eor	r19, r19
+ 4ce:	02 c0       	rjmp	.+4      	; 0x4d4 <getStateC+0xc>
+ 4d0:	35 95       	asr	r19
+ 4d2:	27 95       	ror	r18
+ 4d4:	8a 95       	dec	r24
+ 4d6:	e2 f7       	brpl	.-8      	; 0x4d0 <getStateC+0x8>
+ 4d8:	82 2f       	mov	r24, r18
+ 4da:	99 27       	eor	r25, r25
+}
+ 4dc:	81 70       	andi	r24, 0x01	; 1
+ 4de:	90 70       	andi	r25, 0x00	; 0
+ 4e0:	08 95       	ret
+
+000004e2 <getStateD>:
+
+uint8_t  getStateD(uint8_t pin)
+{
+  return ((PIND >> pin) & 0x01);
+ 4e2:	90 b3       	in	r25, 0x10	; 16
+ 4e4:	29 2f       	mov	r18, r25
+ 4e6:	33 27       	eor	r19, r19
+ 4e8:	02 c0       	rjmp	.+4      	; 0x4ee <getStateD+0xc>
+ 4ea:	35 95       	asr	r19
+ 4ec:	27 95       	ror	r18
+ 4ee:	8a 95       	dec	r24
+ 4f0:	e2 f7       	brpl	.-8      	; 0x4ea <getStateD+0x8>
+ 4f2:	82 2f       	mov	r24, r18
+ 4f4:	99 27       	eor	r25, r25
+}
+ 4f6:	81 70       	andi	r24, 0x01	; 1
+ 4f8:	90 70       	andi	r25, 0x00	; 0
+ 4fa:	08 95       	ret
+
+000004fc <initPWM>:
+#include "timer1PWM.h"
+
+void initPWM( void )
+{
+  TCCR1A = ( 1 << WGM10 ) | ( 1 << COM1A1 ) | ( 1 << COM1B1 );
+ 4fc:	81 ea       	ldi	r24, 0xA1	; 161
+ 4fe:	8f bd       	out	0x2f, r24	; 47
+  TCCR1B = ( 1 << CS10  ) | ( 1 << WGM12  );
+ 500:	89 e0       	ldi	r24, 0x09	; 9
+ 502:	8e bd       	out	0x2e, r24	; 46
+ 504:	08 95       	ret
+
+00000506 <setCHA>:
+}
+
+void setCHA( uint16_t valueA )
+{
+  OCR1A = valueA;
+ 506:	9b bd       	out	0x2b, r25	; 43
+ 508:	8a bd       	out	0x2a, r24	; 42
+ 50a:	08 95       	ret
+
+0000050c <setCHB>:
+}
+
+void setCHB( uint16_t valueB )
+{
+  OCR1B = valueB;
+ 50c:	99 bd       	out	0x29, r25	; 41
+ 50e:	88 bd       	out	0x28, r24	; 40
+ 510:	08 95       	ret

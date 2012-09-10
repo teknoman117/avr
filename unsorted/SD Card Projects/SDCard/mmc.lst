@@ -1,0 +1,587 @@
+GAS LISTING /tmp/ccyi1q6L.s 			page 1
+
+
+   1               		.file	"mmc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Projects/AVR_Projects/SDCard/",100,0,2,.Ltext0
+  11               		.stabs	"mmc.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  34               		.stabs	"int8_t:t(4,1)=(0,10)",128,0,121,0
+  35               		.stabs	"uint8_t:t(4,2)=(0,11)",128,0,122,0
+  36               		.stabs	"int16_t:t(4,3)=(0,1)",128,0,123,0
+  37               		.stabs	"uint16_t:t(4,4)=(0,4)",128,0,124,0
+  38               		.stabs	"int32_t:t(4,5)=(0,3)",128,0,125,0
+  39               		.stabs	"uint32_t:t(4,6)=(0,5)",128,0,126,0
+  40               		.stabs	"int64_t:t(4,7)=(0,6)",128,0,128,0
+  41               		.stabs	"uint64_t:t(4,8)=(0,7)",128,0,129,0
+  42               		.stabs	"intptr_t:t(4,9)=(4,3)",128,0,142,0
+  43               		.stabs	"uintptr_t:t(4,10)=(4,4)",128,0,147,0
+  44               		.stabs	"int_least8_t:t(4,11)=(4,1)",128,0,159,0
+  45               		.stabs	"uint_least8_t:t(4,12)=(4,2)",128,0,164,0
+  46               		.stabs	"int_least16_t:t(4,13)=(4,3)",128,0,169,0
+  47               		.stabs	"uint_least16_t:t(4,14)=(4,4)",128,0,174,0
+  48               		.stabs	"int_least32_t:t(4,15)=(4,5)",128,0,179,0
+  49               		.stabs	"uint_least32_t:t(4,16)=(4,6)",128,0,184,0
+  50               		.stabs	"int_least64_t:t(4,17)=(4,7)",128,0,192,0
+  51               		.stabs	"uint_least64_t:t(4,18)=(4,8)",128,0,199,0
+  52               		.stabs	"int_fast8_t:t(4,19)=(4,1)",128,0,213,0
+  53               		.stabs	"uint_fast8_t:t(4,20)=(4,2)",128,0,218,0
+  54               		.stabs	"int_fast16_t:t(4,21)=(4,3)",128,0,223,0
+  55               		.stabs	"uint_fast16_t:t(4,22)=(4,4)",128,0,228,0
+  56               		.stabs	"int_fast32_t:t(4,23)=(4,5)",128,0,233,0
+  57               		.stabs	"uint_fast32_t:t(4,24)=(4,6)",128,0,238,0
+GAS LISTING /tmp/ccyi1q6L.s 			page 2
+
+
+  58               		.stabs	"int_fast64_t:t(4,25)=(4,7)",128,0,246,0
+  59               		.stabs	"uint_fast64_t:t(4,26)=(4,8)",128,0,253,0
+  60               		.stabs	"intmax_t:t(4,27)=(4,7)",128,0,273,0
+  61               		.stabs	"uintmax_t:t(4,28)=(4,8)",128,0,278,0
+  62               		.stabn	162,0,0,0
+  63               		.stabs	"int_farptr_t:t(3,1)=(4,5)",128,0,77,0
+  64               		.stabs	"uint_farptr_t:t(3,2)=(4,6)",128,0,81,0
+  65               		.stabn	162,0,0,0
+  66               		.stabn	162,0,0,0
+  67               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  68               		.stabs	"__fuse_t:t(5,1)=(5,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219,0
+  69               		.stabn	162,0,0,0
+  70               		.stabn	162,0,0,0
+  71               		.stabs	"mmc_command:F(4,2)",36,0,36,mmc_command
+  72               		.stabs	"befF:P(4,2)",64,0,36,16
+  73               		.stabs	"befH:P(4,2)",64,0,36,12
+  74               	.global	mmc_command
+  75               		.type	mmc_command, @function
+  76               	mmc_command:
+  77               		.stabd	46,0,0
+   1:mmc.c         **** /*
+   2:mmc.c         ****  *      mmc.c
+   3:mmc.c         ****  *      
+   4:mmc.c         ****  *      Copyright 2009 Nathaniel Robert Lewis <linux.robotdude@gmail.com>
+   5:mmc.c         ****  *      
+   6:mmc.c         ****  *      This program is free software; you can redistribute it and/or modify
+   7:mmc.c         ****  *      it under the terms of the GNU General Public License as published by
+   8:mmc.c         ****  *      the Free Software Foundation; either version 2 of the License, or
+   9:mmc.c         ****  *      (at your option) any later version.
+  10:mmc.c         ****  *      
+  11:mmc.c         ****  *      This program is distributed in the hope that it will be useful,
+  12:mmc.c         ****  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:mmc.c         ****  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:mmc.c         ****  *      GNU General Public License for more details.
+  15:mmc.c         ****  *      
+  16:mmc.c         ****  *      You should have received a copy of the GNU General Public License
+  17:mmc.c         ****  *      along with this program; if not, write to the Free Software
+  18:mmc.c         ****  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  19:mmc.c         ****  *      MA 02110-1301, USA.
+  20:mmc.c         ****  */
+  21:mmc.c         **** 
+  22:mmc.c         **** #include <avr/io.h> 
+  23:mmc.c         **** #include "mmc.h"
+  24:mmc.c         **** #include "spi.h"
+  25:mmc.c         **** 
+  26:mmc.c         **** char init_mmc ( void ) {
+  27:mmc.c         **** 	char i;
+  28:mmc.c         **** 	PORTB |= (1 << PORTB4);
+  29:mmc.c         **** 	for(i=0; i < 10; i++) spi_transfer(0xFF); // send 10*8=80 clock pulses
+  30:mmc.c         **** 	PORTB &= ~(1 << PORTB4);          // enable MMC
+  31:mmc.c         **** 	if (mmc_command(0x40,0x95,0,0) != 1) return 0; // reset MMC
+  32:mmc.c         **** 	while( mmc_command(0x41,0xFF,0,0) != 0 );
+  33:mmc.c         **** 	return 1;
+  34:mmc.c         **** }
+  35:mmc.c         **** 
+  36:mmc.c         **** uint8_t mmc_command( uint8_t befF, uint8_t befH, uint16_t AdrH, uint16_t AdrL ) {
+  78               		.stabn	68,0,36,.LM0-.LFBB1
+GAS LISTING /tmp/ccyi1q6L.s 			page 3
+
+
+  79               	.LM0:
+  80               	.LFBB1:
+  81 0000 CF92      		push r12
+  82 0002 DF92      		push r13
+  83 0004 EF92      		push r14
+  84 0006 FF92      		push r15
+  85 0008 0F93      		push r16
+  86 000a 1F93      		push r17
+  87               	/* prologue: function */
+  88               	/* frame size = 0 */
+  89 000c 082F      		mov r16,r24
+  90 000e C62E      		mov r12,r22
+  91 0010 E42E      		mov r14,r20
+  92 0012 152F      		mov r17,r21
+  93 0014 D22E      		mov r13,r18
+  94 0016 F32E      		mov r15,r19
+  37:mmc.c         **** 	spi_transfer(0xFF);
+  95               		.stabn	68,0,37,.LM1-.LFBB1
+  96               	.LM1:
+  97 0018 8FEF      		ldi r24,lo8(-1)
+  98 001a 0E94 0000 		call spi_transfer
+  38:mmc.c         **** 	spi_transfer(befF);
+  99               		.stabn	68,0,38,.LM2-.LFBB1
+ 100               	.LM2:
+ 101 001e 802F      		mov r24,r16
+ 102 0020 0E94 0000 		call spi_transfer
+  39:mmc.c         **** 	spi_transfer((uint8_t)(AdrH >> 8));
+ 103               		.stabn	68,0,39,.LM3-.LFBB1
+ 104               	.LM3:
+ 105 0024 812F      		mov r24,r17
+ 106 0026 0E94 0000 		call spi_transfer
+  40:mmc.c         **** 	spi_transfer((uint8_t)AdrH);
+ 107               		.stabn	68,0,40,.LM4-.LFBB1
+ 108               	.LM4:
+ 109 002a 8E2D      		mov r24,r14
+ 110 002c 0E94 0000 		call spi_transfer
+  41:mmc.c         **** 	spi_transfer((uint8_t)(AdrL >> 8));
+ 111               		.stabn	68,0,41,.LM5-.LFBB1
+ 112               	.LM5:
+ 113 0030 8F2D      		mov r24,r15
+ 114 0032 0E94 0000 		call spi_transfer
+  42:mmc.c         **** 	spi_transfer((uint8_t)AdrL);
+ 115               		.stabn	68,0,42,.LM6-.LFBB1
+ 116               	.LM6:
+ 117 0036 8D2D      		mov r24,r13
+ 118 0038 0E94 0000 		call spi_transfer
+  43:mmc.c         **** 	spi_transfer(befH);
+ 119               		.stabn	68,0,43,.LM7-.LFBB1
+ 120               	.LM7:
+ 121 003c 8C2D      		mov r24,r12
+ 122 003e 0E94 0000 		call spi_transfer
+  44:mmc.c         **** 	spi_transfer(0xFF);
+ 123               		.stabn	68,0,44,.LM8-.LFBB1
+ 124               	.LM8:
+ 125 0042 8FEF      		ldi r24,lo8(-1)
+ 126 0044 0E94 0000 		call spi_transfer
+  45:mmc.c         **** 	return spi_transfer(0xFF);	// return the last received character
+GAS LISTING /tmp/ccyi1q6L.s 			page 4
+
+
+ 127               		.stabn	68,0,45,.LM9-.LFBB1
+ 128               	.LM9:
+ 129 0048 8FEF      		ldi r24,lo8(-1)
+ 130 004a 0E94 0000 		call spi_transfer
+ 131               	/* epilogue start */
+  46:mmc.c         **** }
+ 132               		.stabn	68,0,46,.LM10-.LFBB1
+ 133               	.LM10:
+ 134 004e 1F91      		pop r17
+ 135 0050 0F91      		pop r16
+ 136 0052 FF90      		pop r15
+ 137 0054 EF90      		pop r14
+ 138 0056 DF90      		pop r13
+ 139 0058 CF90      		pop r12
+ 140 005a 0895      		ret
+ 141               		.size	mmc_command, .-mmc_command
+ 142               	.Lscope1:
+ 143               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 144               		.stabd	78,0,0
+ 145               		.stabs	"mmc_writeblock:F(0,2)",36,0,64,mmc_writeblock
+ 146               		.stabs	"address:P(4,6)",64,0,64,14
+ 147               		.stabs	"sector:P(0,16)=*(4,2)",64,0,64,12
+ 148               	.global	mmc_writeblock
+ 149               		.type	mmc_writeblock, @function
+ 150               	mmc_writeblock:
+ 151               		.stabd	46,0,0
+  47:mmc.c         **** 
+  48:mmc.c         **** char mmc_readblock( uint32_t address, uint8_t *sector ) {
+  49:mmc.c         **** 	uint16_t al = address & 0x0000FFFF;
+  50:mmc.c         **** 	uint16_t ah = (address >> 16) & 0x0000FFFF;
+  51:mmc.c         **** 	uint8_t r1 =  mmc_command(0x51, 0xFF, ah, al);
+  52:mmc.c         **** 	for (al = 0; al < 50000; al++) {
+  53:mmc.c         **** 		if (r1 == 0) break;
+  54:mmc.c         **** 		r1 = spi_transfer(0xFF);
+  55:mmc.c         **** 	}
+  56:mmc.c         **** 	if (r1 != 0) return 1;
+  57:mmc.c         **** 	while(spi_transfer(0xFF) != 0xFE);
+  58:mmc.c         **** 	for(al=0; al < 512; al++) sector[al] = spi_transfer(0xFF);
+  59:mmc.c         **** 	spi_transfer(0xFF);
+  60:mmc.c         **** 	spi_transfer(0xFF);
+  61:mmc.c         **** 	return 0;
+  62:mmc.c         **** }
+  63:mmc.c         **** 
+  64:mmc.c         **** char mmc_writeblock( uint32_t address, uint8_t *sector ) {
+ 152               		.stabn	68,0,64,.LM11-.LFBB2
+ 153               	.LM11:
+ 154               	.LFBB2:
+ 155 005c CF92      		push r12
+ 156 005e DF92      		push r13
+ 157 0060 EF92      		push r14
+ 158 0062 FF92      		push r15
+ 159 0064 0F93      		push r16
+ 160 0066 1F93      		push r17
+ 161 0068 CF93      		push r28
+ 162 006a DF93      		push r29
+ 163               	/* prologue: function */
+ 164               	/* frame size = 0 */
+GAS LISTING /tmp/ccyi1q6L.s 			page 5
+
+
+ 165 006c 7B01      		movw r14,r22
+ 166 006e 8C01      		movw r16,r24
+ 167 0070 6A01      		movw r12,r20
+  65:mmc.c         **** 	uint8_t c;
+  66:mmc.c         **** 	uint16_t al = address & 0x0000FFFF;
+  67:mmc.c         **** 	uint16_t ah = (address >> 16) & 0x0000FFFF;
+  68:mmc.c         **** 	uint8_t r1 =  mmc_command(0x58, 0xFF, ah, al);
+ 168               		.stabn	68,0,68,.LM12-.LFBB2
+ 169               	.LM12:
+ 170 0072 9801      		movw r18,r16
+ 171 0074 4427      		clr r20
+ 172 0076 5527      		clr r21
+ 173 0078 88E5      		ldi r24,lo8(88)
+ 174 007a 6FEF      		ldi r22,lo8(-1)
+ 175 007c A901      		movw r20,r18
+ 176 007e 9701      		movw r18,r14
+ 177 0080 0E94 0000 		call mmc_command
+ 178 0084 C0E0      		ldi r28,lo8(0)
+ 179 0086 D0E0      		ldi r29,hi8(0)
+ 180               	.L5:
+  69:mmc.c         **** 	for (al = 0; al < 50000; al++) {
+  70:mmc.c         **** 		if (r1 == 0) break;
+ 181               		.stabn	68,0,70,.LM13-.LFBB2
+ 182               	.LM13:
+ 183 0088 8823      		tst r24
+ 184 008a 01F0      		breq .L4
+  71:mmc.c         **** 		r1 = spi_transfer(0xFF);
+ 185               		.stabn	68,0,71,.LM14-.LFBB2
+ 186               	.LM14:
+ 187 008c 8FEF      		ldi r24,lo8(-1)
+ 188 008e 0E94 0000 		call spi_transfer
+ 189               		.stabn	68,0,69,.LM15-.LFBB2
+ 190               	.LM15:
+ 191 0092 2196      		adiw r28,1
+ 192 0094 93EC      		ldi r25,hi8(-15536)
+ 193 0096 C035      		cpi r28,lo8(-15536)
+ 194 0098 D907      		cpc r29,r25
+ 195 009a 01F4      		brne .L5
+  72:mmc.c         **** 	}
+  73:mmc.c         **** 	if (r1 != 0) return 1;
+ 196               		.stabn	68,0,73,.LM16-.LFBB2
+ 197               	.LM16:
+ 198 009c 8823      		tst r24
+ 199 009e 01F0      		breq .L4
+ 200 00a0 81E0      		ldi r24,lo8(1)
+ 201 00a2 00C0      		rjmp .L6
+ 202               	.L4:
+  74:mmc.c         **** 	spi_transfer(0xFF);
+ 203               		.stabn	68,0,74,.LM17-.LFBB2
+ 204               	.LM17:
+ 205 00a4 8FEF      		ldi r24,lo8(-1)
+ 206 00a6 0E94 0000 		call spi_transfer
+  75:mmc.c         **** 	spi_transfer(0xFF);
+ 207               		.stabn	68,0,75,.LM18-.LFBB2
+ 208               	.LM18:
+ 209 00aa 8FEF      		ldi r24,lo8(-1)
+ 210 00ac 0E94 0000 		call spi_transfer
+GAS LISTING /tmp/ccyi1q6L.s 			page 6
+
+
+  76:mmc.c         **** 	spi_transfer(0xFE);
+ 211               		.stabn	68,0,76,.LM19-.LFBB2
+ 212               	.LM19:
+ 213 00b0 8EEF      		ldi r24,lo8(-2)
+ 214 00b2 0E94 0000 		call spi_transfer
+ 215 00b6 C0E0      		ldi r28,lo8(0)
+ 216 00b8 D0E0      		ldi r29,hi8(0)
+ 217               	.L7:
+  77:mmc.c         **** 	for (al=0;al<512;al++) spi_transfer( sector[al] );
+ 218               		.stabn	68,0,77,.LM20-.LFBB2
+ 219               	.LM20:
+ 220 00ba F601      		movw r30,r12
+ 221 00bc EC0F      		add r30,r28
+ 222 00be FD1F      		adc r31,r29
+ 223 00c0 8081      		ld r24,Z
+ 224 00c2 0E94 0000 		call spi_transfer
+ 225 00c6 2196      		adiw r28,1
+ 226 00c8 82E0      		ldi r24,hi8(512)
+ 227 00ca C030      		cpi r28,lo8(512)
+ 228 00cc D807      		cpc r29,r24
+ 229 00ce 01F4      		brne .L7
+  78:mmc.c         **** 	spi_transfer(0xFF);
+ 230               		.stabn	68,0,78,.LM21-.LFBB2
+ 231               	.LM21:
+ 232 00d0 8FEF      		ldi r24,lo8(-1)
+ 233 00d2 0E94 0000 		call spi_transfer
+  79:mmc.c         **** 	spi_transfer(0xFF);
+ 234               		.stabn	68,0,79,.LM22-.LFBB2
+ 235               	.LM22:
+ 236 00d6 8FEF      		ldi r24,lo8(-1)
+ 237 00d8 0E94 0000 		call spi_transfer
+  80:mmc.c         **** 	c = spi_transfer(0xFF);
+ 238               		.stabn	68,0,80,.LM23-.LFBB2
+ 239               	.LM23:
+ 240 00dc 8FEF      		ldi r24,lo8(-1)
+ 241 00de 0E94 0000 		call spi_transfer
+  81:mmc.c         **** 	c &= 0x1F; 
+  82:mmc.c         **** 	if (c != 0x05) return 2;
+ 242               		.stabn	68,0,82,.LM24-.LFBB2
+ 243               	.LM24:
+ 244 00e2 8F71      		andi r24,lo8(31)
+ 245 00e4 8530      		cpi r24,lo8(5)
+ 246 00e6 01F0      		breq .L10
+ 247 00e8 82E0      		ldi r24,lo8(2)
+ 248 00ea 00C0      		rjmp .L6
+ 249               	.L10:
+  83:mmc.c         **** 	while(spi_transfer(0xFF) != 0xFF);
+ 250               		.stabn	68,0,83,.LM25-.LFBB2
+ 251               	.LM25:
+ 252 00ec 8FEF      		ldi r24,lo8(-1)
+ 253 00ee 0E94 0000 		call spi_transfer
+ 254 00f2 8F3F      		cpi r24,lo8(-1)
+ 255 00f4 01F4      		brne .L10
+ 256 00f6 80E0      		ldi r24,lo8(0)
+ 257               	.L6:
+ 258               	/* epilogue start */
+  84:mmc.c         **** 	return 0;
+GAS LISTING /tmp/ccyi1q6L.s 			page 7
+
+
+  85:mmc.c         **** }...
+ 259               		.stabn	68,0,85,.LM26-.LFBB2
+ 260               	.LM26:
+ 261 00f8 DF91      		pop r29
+ 262 00fa CF91      		pop r28
+ 263 00fc 1F91      		pop r17
+ 264 00fe 0F91      		pop r16
+ 265 0100 FF90      		pop r15
+ 266 0102 EF90      		pop r14
+ 267 0104 DF90      		pop r13
+ 268 0106 CF90      		pop r12
+ 269 0108 0895      		ret
+ 270               		.size	mmc_writeblock, .-mmc_writeblock
+ 271               		.stabs	"r1:r(4,2)",64,0,68,24
+ 272               		.stabn	192,0,0,.LFBB2-.LFBB2
+ 273               		.stabn	224,0,0,.Lscope2-.LFBB2
+ 274               	.Lscope2:
+ 275               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 276               		.stabd	78,0,0
+ 277               		.stabs	"mmc_readblock:F(0,2)",36,0,48,mmc_readblock
+ 278               		.stabs	"address:P(4,6)",64,0,48,14
+ 279               		.stabs	"sector:P(0,16)",64,0,48,12
+ 280               	.global	mmc_readblock
+ 281               		.type	mmc_readblock, @function
+ 282               	mmc_readblock:
+ 283               		.stabd	46,0,0
+ 284               		.stabn	68,0,48,.LM27-.LFBB3
+ 285               	.LM27:
+ 286               	.LFBB3:
+ 287 010a CF92      		push r12
+ 288 010c DF92      		push r13
+ 289 010e EF92      		push r14
+ 290 0110 FF92      		push r15
+ 291 0112 0F93      		push r16
+ 292 0114 1F93      		push r17
+ 293 0116 CF93      		push r28
+ 294 0118 DF93      		push r29
+ 295               	/* prologue: function */
+ 296               	/* frame size = 0 */
+ 297 011a 7B01      		movw r14,r22
+ 298 011c 8C01      		movw r16,r24
+ 299 011e 6A01      		movw r12,r20
+ 300               		.stabn	68,0,51,.LM28-.LFBB3
+ 301               	.LM28:
+ 302 0120 9801      		movw r18,r16
+ 303 0122 4427      		clr r20
+ 304 0124 5527      		clr r21
+ 305 0126 81E5      		ldi r24,lo8(81)
+ 306 0128 6FEF      		ldi r22,lo8(-1)
+ 307 012a A901      		movw r20,r18
+ 308 012c 9701      		movw r18,r14
+ 309 012e 0E94 0000 		call mmc_command
+ 310 0132 C0E0      		ldi r28,lo8(0)
+ 311 0134 D0E0      		ldi r29,hi8(0)
+ 312               	.L16:
+ 313               		.stabn	68,0,53,.LM29-.LFBB3
+ 314               	.LM29:
+GAS LISTING /tmp/ccyi1q6L.s 			page 8
+
+
+ 315 0136 8823      		tst r24
+ 316 0138 01F0      		breq .L20
+ 317               		.stabn	68,0,54,.LM30-.LFBB3
+ 318               	.LM30:
+ 319 013a 8FEF      		ldi r24,lo8(-1)
+ 320 013c 0E94 0000 		call spi_transfer
+ 321               		.stabn	68,0,52,.LM31-.LFBB3
+ 322               	.LM31:
+ 323 0140 2196      		adiw r28,1
+ 324 0142 93EC      		ldi r25,hi8(-15536)
+ 325 0144 C035      		cpi r28,lo8(-15536)
+ 326 0146 D907      		cpc r29,r25
+ 327 0148 01F4      		brne .L16
+ 328               		.stabn	68,0,56,.LM32-.LFBB3
+ 329               	.LM32:
+ 330 014a 8823      		tst r24
+ 331 014c 01F0      		breq .L20
+ 332 014e 81E0      		ldi r24,lo8(1)
+ 333 0150 00C0      		rjmp .L17
+ 334               	.L20:
+ 335               		.stabn	68,0,57,.LM33-.LFBB3
+ 336               	.LM33:
+ 337 0152 8FEF      		ldi r24,lo8(-1)
+ 338 0154 0E94 0000 		call spi_transfer
+ 339 0158 8E3F      		cpi r24,lo8(-2)
+ 340 015a 01F4      		brne .L20
+ 341 015c C0E0      		ldi r28,lo8(0)
+ 342 015e D0E0      		ldi r29,hi8(0)
+ 343               	.L18:
+ 344               		.stabn	68,0,58,.LM34-.LFBB3
+ 345               	.LM34:
+ 346 0160 8FEF      		ldi r24,lo8(-1)
+ 347 0162 0E94 0000 		call spi_transfer
+ 348 0166 F601      		movw r30,r12
+ 349 0168 EC0F      		add r30,r28
+ 350 016a FD1F      		adc r31,r29
+ 351 016c 8083      		st Z,r24
+ 352 016e 2196      		adiw r28,1
+ 353 0170 82E0      		ldi r24,hi8(512)
+ 354 0172 C030      		cpi r28,lo8(512)
+ 355 0174 D807      		cpc r29,r24
+ 356 0176 01F4      		brne .L18
+ 357               		.stabn	68,0,59,.LM35-.LFBB3
+ 358               	.LM35:
+ 359 0178 8FEF      		ldi r24,lo8(-1)
+ 360 017a 0E94 0000 		call spi_transfer
+ 361               		.stabn	68,0,60,.LM36-.LFBB3
+ 362               	.LM36:
+ 363 017e 8FEF      		ldi r24,lo8(-1)
+ 364 0180 0E94 0000 		call spi_transfer
+ 365 0184 80E0      		ldi r24,lo8(0)
+ 366               	.L17:
+ 367               	/* epilogue start */
+ 368               		.stabn	68,0,62,.LM37-.LFBB3
+ 369               	.LM37:
+ 370 0186 DF91      		pop r29
+ 371 0188 CF91      		pop r28
+GAS LISTING /tmp/ccyi1q6L.s 			page 9
+
+
+ 372 018a 1F91      		pop r17
+ 373 018c 0F91      		pop r16
+ 374 018e FF90      		pop r15
+ 375 0190 EF90      		pop r14
+ 376 0192 DF90      		pop r13
+ 377 0194 CF90      		pop r12
+ 378 0196 0895      		ret
+ 379               		.size	mmc_readblock, .-mmc_readblock
+ 380               		.stabs	"r1:r(4,2)",64,0,51,24
+ 381               		.stabn	192,0,0,.LFBB3-.LFBB3
+ 382               		.stabn	224,0,0,.Lscope3-.LFBB3
+ 383               	.Lscope3:
+ 384               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 385               		.stabd	78,0,0
+ 386               		.stabs	"init_mmc:F(0,2)",36,0,26,init_mmc
+ 387               	.global	init_mmc
+ 388               		.type	init_mmc, @function
+ 389               	init_mmc:
+ 390               		.stabd	46,0,0
+ 391               		.stabn	68,0,26,.LM38-.LFBB4
+ 392               	.LM38:
+ 393               	.LFBB4:
+ 394 0198 1F93      		push r17
+ 395               	/* prologue: function */
+ 396               	/* frame size = 0 */
+ 397               		.stabn	68,0,28,.LM39-.LFBB4
+ 398               	.LM39:
+ 399 019a 2C9A      		sbi 37-32,4
+ 400 019c 10E0      		ldi r17,lo8(0)
+ 401               	.L25:
+ 402               		.stabn	68,0,29,.LM40-.LFBB4
+ 403               	.LM40:
+ 404 019e 8FEF      		ldi r24,lo8(-1)
+ 405 01a0 0E94 0000 		call spi_transfer
+ 406 01a4 1F5F      		subi r17,lo8(-(1))
+ 407 01a6 1A30      		cpi r17,lo8(10)
+ 408 01a8 01F4      		brne .L25
+ 409               		.stabn	68,0,30,.LM41-.LFBB4
+ 410               	.LM41:
+ 411 01aa 2C98      		cbi 37-32,4
+ 412               		.stabn	68,0,31,.LM42-.LFBB4
+ 413               	.LM42:
+ 414 01ac 80E4      		ldi r24,lo8(64)
+ 415 01ae 65E9      		ldi r22,lo8(-107)
+ 416 01b0 40E0      		ldi r20,lo8(0)
+ 417 01b2 50E0      		ldi r21,hi8(0)
+ 418 01b4 20E0      		ldi r18,lo8(0)
+ 419 01b6 30E0      		ldi r19,hi8(0)
+ 420 01b8 0E94 0000 		call mmc_command
+ 421 01bc 8130      		cpi r24,lo8(1)
+ 422 01be 01F0      		breq .L29
+ 423 01c0 80E0      		ldi r24,lo8(0)
+ 424 01c2 00C0      		rjmp .L27
+ 425               	.L29:
+ 426               		.stabn	68,0,32,.LM43-.LFBB4
+ 427               	.LM43:
+ 428 01c4 81E4      		ldi r24,lo8(65)
+GAS LISTING /tmp/ccyi1q6L.s 			page 10
+
+
+ 429 01c6 6FEF      		ldi r22,lo8(-1)
+ 430 01c8 40E0      		ldi r20,lo8(0)
+ 431 01ca 50E0      		ldi r21,hi8(0)
+ 432 01cc 20E0      		ldi r18,lo8(0)
+ 433 01ce 30E0      		ldi r19,hi8(0)
+ 434 01d0 0E94 0000 		call mmc_command
+ 435 01d4 8823      		tst r24
+ 436 01d6 01F4      		brne .L29
+ 437 01d8 81E0      		ldi r24,lo8(1)
+ 438               	.L27:
+ 439               	/* epilogue start */
+ 440               		.stabn	68,0,34,.LM44-.LFBB4
+ 441               	.LM44:
+ 442 01da 1F91      		pop r17
+ 443 01dc 0895      		ret
+ 444               		.size	init_mmc, .-init_mmc
+ 445               		.stabs	"i:r(0,2)",64,0,27,17
+ 446               		.stabn	192,0,0,.LFBB4-.LFBB4
+ 447               		.stabn	224,0,0,.Lscope4-.LFBB4
+ 448               	.Lscope4:
+ 449               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 450               		.stabd	78,0,0
+ 451               		.stabs	"",100,0,0,.Letext0
+ 452               	.Letext0:
+GAS LISTING /tmp/ccyi1q6L.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 mmc.c
+     /tmp/ccyi1q6L.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccyi1q6L.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccyi1q6L.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccyi1q6L.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccyi1q6L.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccyi1q6L.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccyi1q6L.s:76     .text:0000000000000000 mmc_command
+     /tmp/ccyi1q6L.s:150    .text:000000000000005c mmc_writeblock
+     /tmp/ccyi1q6L.s:282    .text:000000000000010a mmc_readblock
+     /tmp/ccyi1q6L.s:389    .text:0000000000000198 init_mmc
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+spi_transfer

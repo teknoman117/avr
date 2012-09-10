@@ -1,0 +1,116 @@
+   1               		.file	"Main.c"
+   2               		.arch atmega48
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.data
+  19               	.LC0:
+  20 0000 7331 00   		.string	"s1"
+  21               	.LC1:
+  22 0003 7332 00   		.string	"s2"
+  23               	.LC2:
+  24 0006 00        		.string	""
+  25               		.text
+  26               	.global	main
+  28               	main:
+  29               	.LFB4:
+  30               	.LM1:
+  31               	/* prologue: frame size=100 */
+  32 0000 0F93      		push r16
+  33 0002 1F93      		push r17
+  34 0004 CF93      		push r28
+  35 0006 DF93      		push r29
+  36 0008 CDB7      		in r28,__SP_L__
+  37 000a DEB7      		in r29,__SP_H__
+  38 000c C456      		subi r28,lo8(100)
+  39 000e D040      		sbci r29,hi8(100)
+  40 0010 0FB6      		in __tmp_reg__,__SREG__
+  41 0012 F894      		cli
+  42 0014 DEBF      		out __SP_H__,r29
+  43 0016 0FBE      		out __SREG__,__tmp_reg__
+  44 0018 CDBF      		out __SP_L__,r28
+  45               	/* prologue end (size=13) */
+  46               	.LM2:
+  47 001a 8FEF      		ldi r24,lo8(-1)
+  48 001c 84B9      		out 36-0x20,r24
+  49 001e 84B1      		in r24,36-0x20
+  50 0020 87B9      		out 39-0x20,r24
+  51 0022 87B1      		in r24,39-0x20
+  52 0024 8AB9      		out 42-0x20,r24
+  53               	.LM3:
+  54 0026 00D0      		rcall enable_uart
+  55               	.L2:
+  56               	.LM4:
+  57 0028 40E0      		ldi r20,lo8(0)
+  58 002a 6FE5      		ldi r22,lo8(95)
+  59 002c 8E01      		movw r16,r28
+  60 002e 0F5F      		subi r16,lo8(-(1))
+  61 0030 1F4F      		sbci r17,hi8(-(1))
+  62 0032 C801      		movw r24,r16
+  63 0034 00D0      		rcall uscanf
+  64               	.LM5:
+  65 0036 42E0      		ldi r20,lo8(2)
+  66 0038 50E0      		ldi r21,hi8(2)
+  67 003a 60E0      		ldi r22,lo8(.LC0)
+  68 003c 70E0      		ldi r23,hi8(.LC0)
+  69 003e C801      		movw r24,r16
+  70 0040 00D0      		rcall strncmp
+  71 0042 892B      		or r24,r25
+  72 0044 01F4      		brne .L3
+  73 0046 8FEF      		ldi r24,lo8(-1)
+  74 0048 88B9      		out 40-0x20,r24
+  75 004a 88B1      		in r24,40-0x20
+  76 004c 85B9      		out 37-0x20,r24
+  77               	.L3:
+  78               	.LM6:
+  79 004e 42E0      		ldi r20,lo8(2)
+  80 0050 50E0      		ldi r21,hi8(2)
+  81 0052 60E0      		ldi r22,lo8(.LC1)
+  82 0054 70E0      		ldi r23,hi8(.LC1)
+  83 0056 C801      		movw r24,r16
+  84 0058 00D0      		rcall strncmp
+  85 005a 892B      		or r24,r25
+  86 005c 01F4      		brne .L5
+  87 005e 18B8      		out 40-0x20,__zero_reg__
+  88 0060 88B1      		in r24,40-0x20
+  89 0062 85B9      		out 37-0x20,r24
+  90               	.L5:
+  91               	.LM7:
+  92 0064 60E0      		ldi r22,lo8(.LC2)
+  93 0066 70E0      		ldi r23,hi8(.LC2)
+  94 0068 C801      		movw r24,r16
+  95 006a 00D0      		rcall strcpy
+  96 006c 00C0      		rjmp .L2
+  97               	/* epilogue: frame size=100 */
+  98               	/* epilogue: noreturn */
+  99               	/* epilogue end (size=0) */
+ 100               	/* function main size 55 (42) */
+ 101               	.LFE4:
+ 103               		.comm x,8,1
+ 104               		.comm s,1,1
+ 105               		.comm str,50,1
+ 128               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc29aaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc29aaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc29aaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc29aaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc29aaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc29aaaa.s:28     .text:00000000 main
+                            *COM*:00000008 x
+                            *COM*:00000001 s
+                            *COM*:00000032 str
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+enable_uart
+uscanf
+strncmp
+strcpy

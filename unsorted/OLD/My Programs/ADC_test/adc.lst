@@ -1,0 +1,145 @@
+   1               		.file	"adc.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	initADC
+  20               	initADC:
+  21               	.LFB3:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 86EC      		ldi r24,lo8(-58)
+  27 0002 86B9      		out 38-0x20,r24
+  28               	.L2:
+  29               	.LM3:
+  30 0004 3699      		sbic 38-0x20,6
+  31 0006 FECF      		rjmp .L2
+  32               	/* epilogue: frame size=0 */
+  33 0008 0895      		ret
+  34               	/* epilogue end (size=1) */
+  35               	/* function initADC size 5 (4) */
+  36               	.LFE3:
+  38               	.global	DELAY_US
+  40               	DELAY_US:
+  41               	.LFB6:
+  42               	.LM4:
+  43               	/* prologue: frame size=0 */
+  44               	/* prologue end (size=0) */
+  45               	.LM5:
+  46 000a 9695      		lsr r25
+  47 000c 8795      		ror r24
+  48 000e 9695      		lsr r25
+  49 0010 8795      		ror r24
+  50 0012 9093 0000 		sts (loop_count)+1,r25
+  51 0016 8093 0000 		sts loop_count,r24
+  52               	.LM6:
+  53               	/* #APP */
+  54 001a 0197      		1: sbiw r24,1
+  55 001c F1F7      		brne 1b
+  56               	/* #NOAPP */
+  57 001e 9093 0000 		sts (loop_count)+1,r25
+  58 0022 8093 0000 		sts loop_count,r24
+  59               	/* epilogue: frame size=0 */
+  60 0026 0895      		ret
+  61               	/* epilogue end (size=1) */
+  62               	/* function DELAY_US size 17 (16) */
+  63               	.LFE6:
+  65               	.global	ADC08bit
+  67               	ADC08bit:
+  68               	.LFB4:
+  69               	.LM7:
+  70               	/* prologue: frame size=0 */
+  71               	/* prologue end (size=0) */
+  72               	.LM8:
+  73 0028 8066      		ori r24,lo8(96)
+  74 002a 87B9      		out 39-0x20,r24
+  75               	.LM9:
+  76 002c 80EC      		ldi r24,lo8(-64)
+  77 002e 86B9      		out 38-0x20,r24
+  78               	.LM10:
+  79 0030 80E4      		ldi r24,lo8(64)
+  80 0032 90E0      		ldi r25,hi8(64)
+  81 0034 0E94 0000 		call DELAY_US
+  82               	.L7:
+  83               	.LM11:
+  84 0038 3699      		sbic 38-0x20,6
+  85 003a FECF      		rjmp .L7
+  86               	.LM12:
+  87 003c 85B1      		in r24,37-0x20
+  88               	.LM13:
+  89 003e 9927      		clr r25
+  90               	/* epilogue: frame size=0 */
+  91 0040 0895      		ret
+  92               	/* epilogue end (size=1) */
+  93               	/* function ADC08bit size 13 (12) */
+  94               	.LFE4:
+  96               	.global	ADC10bit
+  98               	ADC10bit:
+  99               	.LFB5:
+ 100               	.LM14:
+ 101               	/* prologue: frame size=0 */
+ 102               	/* prologue end (size=0) */
+ 103               	.LM15:
+ 104 0042 8066      		ori r24,lo8(96)
+ 105 0044 87B9      		out 39-0x20,r24
+ 106               	.LM16:
+ 107 0046 80EC      		ldi r24,lo8(-64)
+ 108 0048 86B9      		out 38-0x20,r24
+ 109               	.LM17:
+ 110 004a 80E4      		ldi r24,lo8(64)
+ 111 004c 90E0      		ldi r25,hi8(64)
+ 112 004e 0E94 0000 		call DELAY_US
+ 113               	.L11:
+ 114               	.LM18:
+ 115 0052 3699      		sbic 38-0x20,6
+ 116 0054 FECF      		rjmp .L11
+ 117               	.LM19:
+ 118 0056 85B1      		in r24,37-0x20
+ 119 0058 9927      		clr r25
+ 120               	.LM20:
+ 121 005a 880F      		lsl r24
+ 122 005c 991F      		rol r25
+ 123 005e 880F      		lsl r24
+ 124 0060 991F      		rol r25
+ 125               	.LM21:
+ 126 0062 24B1      		in r18,36-0x20
+ 127 0064 2295      		swap r18
+ 128 0066 2695      		lsr r18
+ 129 0068 2695      		lsr r18
+ 130 006a 2370      		andi r18,0x3
+ 131 006c 820F      		add r24,r18
+ 132 006e 911D      		adc r25,__zero_reg__
+ 133 0070 9093 0000 		sts (convert)+1,r25
+ 134 0074 8093 0000 		sts convert,r24
+ 135               	/* epilogue: frame size=0 */
+ 136 0078 0895      		ret
+ 137               	/* epilogue end (size=1) */
+ 138               	/* function ADC10bit size 28 (27) */
+ 139               	.LFE5:
+ 141               		.comm convert,2,1
+ 142               		.comm loop_count,2,1
+ 143               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 adc.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccSqaaaa.s:20     .text:00000000 initADC
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccSqaaaa.s:40     .text:0000000a DELAY_US
+                            *COM*:00000002 loop_count
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccSqaaaa.s:67     .text:00000028 ADC08bit
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccSqaaaa.s:98     .text:00000042 ADC10bit
+                            *COM*:00000002 convert
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

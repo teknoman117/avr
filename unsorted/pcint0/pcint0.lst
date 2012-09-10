@@ -1,0 +1,179 @@
+GAS LISTING /tmp/cc6mfAw6.s 			page 1
+
+
+   1               		.file	"pcint0.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.stabs	"/home/robotdude/Programs/AVR_Projects/pcint0/",100,0,2,.Ltext0
+  10               		.stabs	"pcint0.c",100,0,2,.Ltext0
+  11               		.text
+  12               	.Ltext0:
+  13               		.stabs	"gcc2_compiled.",60,0,0,0
+  14               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  15               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  16               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  17               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  18               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  19               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  20               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  21               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  22               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  23               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  24               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  25               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  26               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  29               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h",130,0,0,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h",130,0,0,0
+  33               		.stabs	"int8_t:t(4,1)=(0,10)",128,0,121,0
+  34               		.stabs	"uint8_t:t(4,2)=(0,11)",128,0,122,0
+  35               		.stabs	"int16_t:t(4,3)=(0,1)",128,0,123,0
+  36               		.stabs	"uint16_t:t(4,4)=(0,4)",128,0,124,0
+  37               		.stabs	"int32_t:t(4,5)=(0,3)",128,0,125,0
+  38               		.stabs	"uint32_t:t(4,6)=(0,5)",128,0,126,0
+  39               		.stabs	"int64_t:t(4,7)=(0,6)",128,0,128,0
+  40               		.stabs	"uint64_t:t(4,8)=(0,7)",128,0,129,0
+  41               		.stabs	"intptr_t:t(4,9)=(4,3)",128,0,142,0
+  42               		.stabs	"uintptr_t:t(4,10)=(4,4)",128,0,147,0
+  43               		.stabs	"int_least8_t:t(4,11)=(4,1)",128,0,159,0
+  44               		.stabs	"uint_least8_t:t(4,12)=(4,2)",128,0,164,0
+  45               		.stabs	"int_least16_t:t(4,13)=(4,3)",128,0,169,0
+  46               		.stabs	"uint_least16_t:t(4,14)=(4,4)",128,0,174,0
+  47               		.stabs	"int_least32_t:t(4,15)=(4,5)",128,0,179,0
+  48               		.stabs	"uint_least32_t:t(4,16)=(4,6)",128,0,184,0
+  49               		.stabs	"int_least64_t:t(4,17)=(4,7)",128,0,192,0
+  50               		.stabs	"uint_least64_t:t(4,18)=(4,8)",128,0,199,0
+  51               		.stabs	"int_fast8_t:t(4,19)=(4,1)",128,0,213,0
+  52               		.stabs	"uint_fast8_t:t(4,20)=(4,2)",128,0,218,0
+  53               		.stabs	"int_fast16_t:t(4,21)=(4,3)",128,0,223,0
+  54               		.stabs	"uint_fast16_t:t(4,22)=(4,4)",128,0,228,0
+  55               		.stabs	"int_fast32_t:t(4,23)=(4,5)",128,0,233,0
+  56               		.stabs	"uint_fast32_t:t(4,24)=(4,6)",128,0,238,0
+  57               		.stabs	"int_fast64_t:t(4,25)=(4,7)",128,0,246,0
+GAS LISTING /tmp/cc6mfAw6.s 			page 2
+
+
+  58               		.stabs	"uint_fast64_t:t(4,26)=(4,8)",128,0,253,0
+  59               		.stabs	"intmax_t:t(4,27)=(4,7)",128,0,273,0
+  60               		.stabs	"uintmax_t:t(4,28)=(4,8)",128,0,278,0
+  61               		.stabn	162,0,0,0
+  62               		.stabs	"int_farptr_t:t(3,1)=(4,5)",128,0,77,0
+  63               		.stabs	"uint_farptr_t:t(3,2)=(4,6)",128,0,81,0
+  64               		.stabn	162,0,0,0
+  65               		.stabn	162,0,0,0
+  66               		.stabs	"/usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h",130,0,0,0
+  67               		.stabs	"__fuse_t:t(5,1)=(5,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,195,0
+  68               		.stabn	162,0,0,0
+  69               		.stabn	162,0,0,0
+  70               		.stabs	"__vector_4:F(0,15)",36,0,4,__vector_4
+  71               	.global	__vector_4
+  72               		.type	__vector_4, @function
+  73               	__vector_4:
+  74               		.stabd	46,0,0
+   1:pcint0.c      **** #include <avr/io.h>
+   2:pcint0.c      **** #include <avr/interrupt.h>
+   3:pcint0.c      **** 
+   4:pcint0.c      **** ISR (PCINT0_vect) {          //if the PCINT interrupt on PORTA is raised
+  75               		.stabn	68,0,4,.LM0-.LFBB1
+  76               	.LM0:
+  77               	.LFBB1:
+  78 0000 1F92      		push __zero_reg__
+  79 0002 0F92      		push r0
+  80 0004 0FB6      		in r0,__SREG__
+  81 0006 0F92      		push r0
+  82 0008 1124      		clr __zero_reg__
+  83 000a 8F93      		push r24
+  84               	/* prologue: Signal */
+  85               	/* frame size = 0 */
+   5:pcint0.c      ****     PORTB = PINA;            //set portb to the input from porta
+  86               		.stabn	68,0,5,.LM1-.LFBB1
+  87               	.LM1:
+  88 000c 80B1      		in r24,32-0x20
+  89 000e 85B9      		out 37-0x20,r24
+  90               	/* epilogue start */
+   6:pcint0.c      **** }
+  91               		.stabn	68,0,6,.LM2-.LFBB1
+  92               	.LM2:
+  93 0010 8F91      		pop r24
+  94 0012 0F90      		pop r0
+  95 0014 0FBE      		out __SREG__,r0
+  96 0016 0F90      		pop r0
+  97 0018 1F90      		pop __zero_reg__
+  98 001a 1895      		reti
+  99               		.size	__vector_4, .-__vector_4
+ 100               	.Lscope1:
+ 101               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 102               		.stabd	78,0,0
+ 103               		.stabs	"main:F(0,1)",36,0,8,main
+ 104               	.global	main
+ 105               		.type	main, @function
+ 106               	main:
+ 107               		.stabd	46,0,0
+   7:pcint0.c      **** 
+GAS LISTING /tmp/cc6mfAw6.s 			page 3
+
+
+   8:pcint0.c      **** int main ( void ) {
+ 108               		.stabn	68,0,8,.LM3-.LFBB2
+ 109               	.LM3:
+ 110               	.LFBB2:
+ 111               	/* prologue: function */
+ 112               	/* frame size = 0 */
+   9:pcint0.c      ****     DDRA = 0x00;            //set all porta pins to inputs
+ 113               		.stabn	68,0,9,.LM4-.LFBB2
+ 114               	.LM4:
+ 115 001c 11B8      		out 33-0x20,__zero_reg__
+  10:pcint0.c      ****     DDRB = 0xff;             //set all portb pins to outputs
+ 116               		.stabn	68,0,10,.LM5-.LFBB2
+ 117               	.LM5:
+ 118 001e 9FEF      		ldi r25,lo8(-1)
+ 119 0020 94B9      		out 36-0x20,r25
+  11:pcint0.c      ****     PCICR = (1 << PCIE0);    //enable the pcint0 interrupt
+ 120               		.stabn	68,0,11,.LM6-.LFBB2
+ 121               	.LM6:
+ 122 0022 81E0      		ldi r24,lo8(1)
+ 123 0024 8093 6800 		sts 104,r24
+  12:pcint0.c      ****     PCMSK0 = 0xFF;           //let any porta pin change raise pcint0
+ 124               		.stabn	68,0,12,.LM7-.LFBB2
+ 125               	.LM7:
+ 126 0028 9093 6B00 		sts 107,r25
+  13:pcint0.c      ****     sei();                   //turn on interrupts
+ 127               		.stabn	68,0,13,.LM8-.LFBB2
+ 128               	.LM8:
+ 129               	/* #APP */
+ 130               	 ;  13 "pcint0.c" 1
+ 131 002c 7894      		sei
+ 132               	 ;  0 "" 2
+ 133               	/* #NOAPP */
+ 134               	.L4:
+ 135 002e 00C0      		rjmp .L4
+ 136               		.size	main, .-main
+ 137               	.Lscope2:
+ 138               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 139               		.stabd	78,0,0
+ 140               		.stabs	"",100,0,0,.Letext0
+ 141               	.Letext0:
+GAS LISTING /tmp/cc6mfAw6.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 pcint0.c
+     /tmp/cc6mfAw6.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cc6mfAw6.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cc6mfAw6.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cc6mfAw6.s:5      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc6mfAw6.s:6      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc6mfAw6.s:73     .text:0000000000000000 __vector_4
+     /tmp/cc6mfAw6.s:106    .text:000000000000001c main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

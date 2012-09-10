@@ -1,0 +1,280 @@
+GAS LISTING /tmp/ccULwLRt.s 			page 1
+
+
+   1               		.file	"main.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/nathaniel/AVR_stuff/projects/helloavr/",100,0,2,.Ltext0
+  11               		.stabs	"main.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,0,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,0,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,0,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,0,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,0,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,0,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,0,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,0,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,0,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,0,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,0,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,0,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,0,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,0,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,0,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.1.0/../../../../avr/include/avr/io.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.1.0/../../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.1.0/../../../../avr/include/inttypes.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.1.0/../../../../avr/include/stdint.h",130,0,0,0
+  34               		.stabs	"int8_t:t(4,1)=(0,10)",128,0,116,0
+  35               		.stabs	"uint8_t:t(4,2)=(0,11)",128,0,117,0
+  36               		.stabs	"int16_t:t(4,3)=(0,1)",128,0,118,0
+  37               		.stabs	"uint16_t:t(4,4)=(0,4)",128,0,119,0
+  38               		.stabs	"int32_t:t(4,5)=(0,3)",128,0,120,0
+  39               		.stabs	"uint32_t:t(4,6)=(0,5)",128,0,121,0
+  40               		.stabs	"int64_t:t(4,7)=(0,6)",128,0,122,0
+  41               		.stabs	"uint64_t:t(4,8)=(0,7)",128,0,123,0
+  42               		.stabs	"intptr_t:t(4,9)=(4,3)",128,0,135,0
+  43               		.stabs	"uintptr_t:t(4,10)=(4,4)",128,0,140,0
+  44               		.stabs	"int_least8_t:t(4,11)=(4,1)",128,0,152,0
+  45               		.stabs	"uint_least8_t:t(4,12)=(4,2)",128,0,157,0
+  46               		.stabs	"int_least16_t:t(4,13)=(4,3)",128,0,162,0
+  47               		.stabs	"uint_least16_t:t(4,14)=(4,4)",128,0,167,0
+  48               		.stabs	"int_least32_t:t(4,15)=(4,5)",128,0,172,0
+  49               		.stabs	"uint_least32_t:t(4,16)=(4,6)",128,0,177,0
+  50               		.stabs	"int_least64_t:t(4,17)=(4,7)",128,0,182,0
+  51               		.stabs	"uint_least64_t:t(4,18)=(4,8)",128,0,187,0
+  52               		.stabs	"int_fast8_t:t(4,19)=(4,1)",128,0,200,0
+  53               		.stabs	"uint_fast8_t:t(4,20)=(4,2)",128,0,205,0
+  54               		.stabs	"int_fast16_t:t(4,21)=(4,3)",128,0,210,0
+  55               		.stabs	"uint_fast16_t:t(4,22)=(4,4)",128,0,215,0
+  56               		.stabs	"int_fast32_t:t(4,23)=(4,5)",128,0,220,0
+  57               		.stabs	"uint_fast32_t:t(4,24)=(4,6)",128,0,225,0
+GAS LISTING /tmp/ccULwLRt.s 			page 2
+
+
+  58               		.stabs	"int_fast64_t:t(4,25)=(4,7)",128,0,230,0
+  59               		.stabs	"uint_fast64_t:t(4,26)=(4,8)",128,0,235,0
+  60               		.stabs	"intmax_t:t(4,27)=(4,7)",128,0,249,0
+  61               		.stabs	"uintmax_t:t(4,28)=(4,8)",128,0,254,0
+  62               		.stabn	162,0,0,0
+  63               		.stabs	"int_farptr_t:t(3,1)=(4,5)",128,0,76,0
+  64               		.stabs	"uint_farptr_t:t(3,2)=(4,6)",128,0,80,0
+  65               		.stabn	162,0,0,0
+  66               		.stabn	162,0,0,0
+  67               		.stabn	162,0,0,0
+  68               		.stabs	" :T(0,16)=@s8;eUP:0,DOWN:1,;",128,0,0,0
+  69               		.stabs	"busywait:F(0,15)",36,0,78,busywait
+  70               		.stabs	"numLoops:P(4,4)",64,0,77,24
+  71               	.global	busywait
+  72               		.type	busywait, @function
+  73               	busywait:
+  74               		.stabd	46,0,0
+   1:main.c        **** /*
+   2:main.c        **** ####################################################
+   3:main.c        **** ####                   kr.c                     ####
+   4:main.c        **** ####    Copyright (C) 2004 Patrick Deegan       ####
+   5:main.c        **** ####              Psychogenic Inc               ####
+   6:main.c        **** ####            All Rights Reserved             ####
+   7:main.c        **** ####                                            ####
+   8:main.c        **** ####                                            ####
+   9:main.c        **** #### This program is free software; you can     ####
+  10:main.c        **** #### redistribute it and/or modify it under the ####
+  11:main.c        **** #### terms of the GNU General Public License as ####
+  12:main.c        **** #### published by the Free Software Foundation; ####
+  13:main.c        **** #### either version 2 of the License, or (at    ####
+  14:main.c        **** #### your option) any later version.            ####
+  15:main.c        **** ####                                            ####
+  16:main.c        **** #### This program is distributed in the hope    ####
+  17:main.c        **** #### that it will be useful,but WITHOUT ANY     ####
+  18:main.c        **** #### WARRANTY; without even the implied         ####
+  19:main.c        **** #### warranty of MERCHANTABILITY or FITNESS     ####
+  20:main.c        **** #### FOR A PARTICULAR PURPOSE.  See the GNU     ####
+  21:main.c        **** #### General Public License for more details.   ####
+  22:main.c        **** ####                                            ####
+  23:main.c        **** ####################################################
+  24:main.c        **** */
+  25:main.c        **** #include <avr/io.h>
+  26:main.c        **** 
+  27:main.c        **** #define MYCLOCKSPEED	4000000
+  28:main.c        **** #define MYCYCLESPERSECOND 	0.5
+  29:main.c        **** 
+  30:main.c        **** #define SCALERVAL ( (MYCLOCKSPEED) / \
+  31:main.c        **** 		    (33267*8* MYCYCLESPERSECOND));
+  32:main.c        **** 
+  33:main.c        **** void busywait(uint16_t numLoops);
+  34:main.c        **** 
+  35:main.c        **** void main (void)
+  36:main.c        **** {
+  37:main.c        **** 	volatile enum {UP, DOWN} direction = UP;	
+  38:main.c        **** 	unsigned char currentValue = 0x01;
+  39:main.c        **** 	
+  40:main.c        **** 	uint16_t waitLoops = (uint16_t) SCALERVAL;
+GAS LISTING /tmp/ccULwLRt.s 			page 3
+
+
+  41:main.c        **** 	
+  42:main.c        **** 	/**** I/O Init ****/
+  43:main.c        **** 	/* use all pins on port B for output */
+  44:main.c        **** 	DDRB = 0xFF;
+  45:main.c        **** 
+  46:main.c        **** 	PORTB = 0xFF; /* all lights off */
+  47:main.c        **** 	
+  48:main.c        **** 	/* loop forever, main never exits*/
+  49:main.c        **** 	for (;;) {
+  50:main.c        **** 		busywait(waitLoops);
+  51:main.c        **** 		
+  52:main.c        **** 		if (direction == UP)
+  53:main.c        **** 		{
+  54:main.c        **** 			if (currentValue < 128)
+  55:main.c        **** 			{
+  56:main.c        **** 				currentValue = 
+  57:main.c        **** 				    currentValue<<1;
+  58:main.c        **** 			} else {
+  59:main.c        **** 				direction = DOWN;
+  60:main.c        **** 			}
+  61:main.c        **** 		} else {
+  62:main.c        **** 			if (currentValue < 2)
+  63:main.c        **** 			{
+  64:main.c        **** 				direction = UP;
+  65:main.c        **** 			} else {
+  66:main.c        **** 				currentValue = 
+  67:main.c        **** 				    currentValue>>1;
+  68:main.c        **** 			}
+  69:main.c        **** 		}
+  70:main.c        **** 		
+  71:main.c        **** 		PORTB = ~currentValue;
+  72:main.c        **** 	}
+  73:main.c        **** 	
+  74:main.c        **** }
+  75:main.c        **** 
+  76:main.c        **** /* busy wait, inneficient but simple */
+  77:main.c        **** void busywait(uint16_t numLoops)
+  78:main.c        **** {
+  75               		.stabn	68,0,78,.LM0-busywait
+  76               	.LM0:
+  77               	/* prologue: frame size=0 */
+  78               	/* prologue end (size=0) */
+  79               	/* epilogue: frame size=0 */
+  80 0000 0895      		ret
+  81               	/* epilogue end (size=1) */
+  82               	/* function busywait size 1 (0) */
+  83               		.size	busywait, .-busywait
+  84               	.Lscope0:
+  85               		.stabs	"",36,0,0,.Lscope0-busywait
+  86               		.stabd	78,0,0
+  87               		.stabs	"main:F(0,15)",36,0,36,main
+  88               	.global	main
+  89               		.type	main, @function
+  90               	main:
+  91               		.stabd	46,0,0
+  92               		.stabn	68,0,36,.LM1-main
+  93               	.LM1:
+GAS LISTING /tmp/ccULwLRt.s 			page 4
+
+
+  94               	/* prologue: frame size=1 */
+  95 0002 C0E0      		ldi r28,lo8(__stack - 1)
+  96 0004 D0E0      		ldi r29,hi8(__stack - 1)
+  97 0006 DEBF      		out __SP_H__,r29
+  98 0008 CDBF      		out __SP_L__,r28
+  99               	/* prologue end (size=4) */
+ 100               		.stabn	68,0,37,.LM2-main
+ 101               	.LM2:
+ 102 000a 1982      		std Y+1,__zero_reg__
+ 103               		.stabn	68,0,44,.LM3-main
+ 104               	.LM3:
+ 105 000c 8FEF      		ldi r24,lo8(-1)
+ 106 000e 87BB      		out 55-0x20,r24
+ 107               		.stabn	68,0,46,.LM4-main
+ 108               	.LM4:
+ 109 0010 88BB      		out 56-0x20,r24
+ 110 0012 11E0      		ldi r17,lo8(1)
+ 111               	.L4:
+ 112               		.stabn	68,0,50,.LM5-main
+ 113               	.LM5:
+ 114 0014 8EE1      		ldi r24,lo8(30)
+ 115 0016 90E0      		ldi r25,hi8(30)
+ 116 0018 0E94 0000 		call busywait
+ 117               		.stabn	68,0,52,.LM6-main
+ 118               	.LM6:
+ 119 001c 8981      		ldd r24,Y+1
+ 120 001e 8823      		tst r24
+ 121 0020 39F4      		brne .L5
+ 122               		.stabn	68,0,54,.LM7-main
+ 123               	.LM7:
+ 124 0022 17FD      		sbrc r17,7
+ 125 0024 02C0      		rjmp .L7
+ 126               		.stabn	68,0,56,.LM8-main
+ 127               	.LM8:
+ 128 0026 110F      		lsl r17
+ 129 0028 08C0      		rjmp .L9
+ 130               	.L7:
+ 131               		.stabn	68,0,59,.LM9-main
+ 132               	.LM9:
+ 133 002a 81E0      		ldi r24,lo8(1)
+ 134 002c 8983      		std Y+1,r24
+ 135 002e 05C0      		rjmp .L9
+ 136               	.L5:
+ 137               		.stabn	68,0,62,.LM10-main
+ 138               	.LM10:
+ 139 0030 1230      		cpi r17,lo8(2)
+ 140 0032 10F4      		brsh .L10
+ 141               		.stabn	68,0,64,.LM11-main
+ 142               	.LM11:
+ 143 0034 1982      		std Y+1,__zero_reg__
+ 144 0036 01C0      		rjmp .L9
+ 145               	.L10:
+ 146               		.stabn	68,0,66,.LM12-main
+ 147               	.LM12:
+ 148 0038 1695      		lsr r17
+ 149               	.L9:
+ 150               		.stabn	68,0,71,.LM13-main
+GAS LISTING /tmp/ccULwLRt.s 			page 5
+
+
+ 151               	.LM13:
+ 152 003a 812F      		mov r24,r17
+ 153 003c 8095      		com r24
+ 154 003e 88BB      		out 56-0x20,r24
+ 155 0040 E9CF      		rjmp .L4
+ 156               	/* epilogue: frame size=1 */
+ 157               	/* epilogue: noreturn */
+ 158               	/* epilogue end (size=0) */
+ 159               	/* function main size 32 (28) */
+ 160               		.size	main, .-main
+ 161               		.stabs	"direction:(0,17)=B(0,16)",128,0,37,1
+ 162               		.stabs	"currentValue:r(0,11)",64,0,38,17
+ 163               		.stabn	192,0,0,main-main
+ 164               		.stabn	224,0,0,.Lscope1-main
+ 165               	.Lscope1:
+ 166               		.stabs	"",36,0,0,.Lscope1-main
+ 167               		.stabd	78,0,0
+ 168               		.stabs	"",100,0,0,.Letext0
+ 169               	.Letext0:
+ 170               	/* File "main.c": code   33 = 0x0021 (  28), prologues   4, epilogues   1 */
+GAS LISTING /tmp/ccULwLRt.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+     /tmp/ccULwLRt.s:3      *ABS*:0000003f __SREG__
+     /tmp/ccULwLRt.s:4      *ABS*:0000003e __SP_H__
+     /tmp/ccULwLRt.s:5      *ABS*:0000003d __SP_L__
+     /tmp/ccULwLRt.s:6      *ABS*:00000000 __tmp_reg__
+     /tmp/ccULwLRt.s:7      *ABS*:00000001 __zero_reg__
+     /tmp/ccULwLRt.s:73     .text:00000000 busywait
+     /tmp/ccULwLRt.s:90     .text:00000002 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack

@@ -1,0 +1,578 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+                              motors.o (__fixunssfsi)
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+                              motors.o (__floatsisf)
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_merge.o)
+                              c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o) (__fp_merge)
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+                              c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o) (__fp_split1)
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_zero.o)
+                              c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o) (__fp_zero)
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+                              c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o) (__fp_nan)
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+                              c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o (exit)
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+                              IR_drive.o (__do_copy_data)
+c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+                              IR_drive.o (__do_clear_bss)
+
+Discarded input sections
+
+ .stabstr       0x00000000        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+LOAD IR_drive.o
+LOAD timer1pwm.o
+LOAD motors.o
+LOAD c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a
+LOAD c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a
+LOAD c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libc.a
+LOAD c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x4f6
+ *(.vectors)
+ .vectors       0x00000000       0x34 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000034                . = ALIGN (0x2)
+                0x00000034                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000034        0x0 linker stubs
+ *(.trampolines*)
+                0x00000034                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000034                __ctors_start = .
+ *(.ctors)
+                0x00000034                __ctors_end = .
+                0x00000034                __dtors_start = .
+ *(.dtors)
+                0x00000034                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000034        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+                0x00000034                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000034        0xc c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000040       0x16 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+                0x00000040                __do_copy_data
+ .init4         0x00000056       0x10 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+                0x00000056                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000066        0x4 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+ *(.init9)
+ *(.text)
+ .text          0x0000006a        0x2 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+                0x0000006a                __vector_22
+                0x0000006a                __vector_1
+                0x0000006a                __vector_24
+                0x0000006a                __vector_12
+                0x0000006a                __bad_interrupt
+                0x0000006a                __vector_6
+                0x0000006a                __vector_3
+                0x0000006a                __vector_23
+                0x0000006a                __vector_25
+                0x0000006a                __vector_11
+                0x0000006a                __vector_13
+                0x0000006a                __vector_17
+                0x0000006a                __vector_19
+                0x0000006a                __vector_7
+                0x0000006a                __vector_5
+                0x0000006a                __vector_4
+                0x0000006a                __vector_9
+                0x0000006a                __vector_2
+                0x0000006a                __vector_21
+                0x0000006a                __vector_15
+                0x0000006a                __vector_8
+                0x0000006a                __vector_14
+                0x0000006a                __vector_10
+                0x0000006a                __vector_16
+                0x0000006a                __vector_18
+                0x0000006a                __vector_20
+ .text          0x0000006c       0xd4 IR_drive.o
+                0x0000006c                main
+ .text          0x00000140       0xa0 timer1pwm.o
+                0x0000014e                initPWM09
+                0x00000174                setCHB08
+                0x000001c8                setCHA
+                0x0000017e                setCHA09
+                0x0000018e                setCHB09
+                0x0000015c                initPWM10
+                0x00000140                initPWM08
+                0x0000016a                setCHA08
+                0x000001d2                initPWM
+                0x000001ae                setCHB10
+                0x0000019e                setCHA10
+                0x000001be                setCHB
+ .text          0x000001e0      0x22a motors.o
+                0x00000330                rgh
+                0x00000250                blft
+                0x000003ce                fwd
+                0x000001ea                whatDir
+                0x00000406                initMotors
+                0x00000212                brgh
+                0x000002e8                slft
+                0x00000380                bwd
+                0x00000292                srgh
+                0x000001f4                stop
+                0x00000358                lft
+                0x000001e0                isMoving
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_merge.o)
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_zero.o)
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+ .text          0x0000040a        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+                0x0000040a                . = ALIGN (0x2)
+ *(.text.*)
+ .text.fplib    0x0000040a       0x36 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+                0x0000040a                __fixsfsi
+                0x00000430                __fp_lneg
+                0x0000040a                __fixunssfsi
+ .text.fplib    0x00000440       0x18 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+                0x00000444                __floatsisf
+                0x00000440                __floatunssisf
+ .text.fplib    0x00000458       0x3a c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_merge.o)
+                0x00000462                __fp_merge
+ .text.fplib    0x00000492       0x52 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+                0x00000492                __fp_split3
+                0x00000498                __fp_split2
+                0x000004aa                __fp_split1
+                0x000004c6                __fp_split_a
+ .text.fplib    0x000004e4        0xa c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_zero.o)
+                0x000004e4                __fp_zero
+                0x000004ea                __fp_zerox
+ .text.fplib    0x000004ee        0x6 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+                0x000004ee                __fp_nanERANGE
+                0x000004ee                __fp_nan
+                0x000004ee                __fp_nanEDOM
+                0x000004ee                __fp_nanx
+ .text.libgcc   0x000004f4        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+ .text.libgcc   0x000004f4        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+ .text.libgcc   0x000004f4        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+                0x000004f4                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000004f4        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+                0x000004f4                exit
+                0x000004f4                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000004f4        0x2 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+ *(.fini0)
+                0x000004f6                _etext = .
+
+.data           0x00800100        0x0 load address 0x000004f6
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+ .data          0x00800100        0x0 IR_drive.o
+ .data          0x00800100        0x0 timer1pwm.o
+ .data          0x00800100        0x0 motors.o
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_merge.o)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_zero.o)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+ .data          0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800100                . = ALIGN (0x2)
+                0x00800100                _edata = .
+                0x00800100                PROVIDE (__data_end, .)
+
+.bss            0x00800100        0x4
+                0x00800100                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800100        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+ .bss           0x00800100        0x0 IR_drive.o
+ .bss           0x00800100        0x0 timer1pwm.o
+ .bss           0x00800100        0x4 motors.o
+                0x00800100                mv
+                0x00800102                dir
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_merge.o)
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_zero.o)
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+ .bss           0x00800104        0x0 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+ *(.bss*)
+ *(COMMON)
+                0x00800104                PROVIDE (__bss_end, .)
+                0x000004f6                __data_load_start = LOADADDR (.data)
+                0x000004f6                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800104        0x0
+                0x00800104                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800104                PROVIDE (__noinit_end, .)
+                0x00800104                _end = .
+                0x00800104                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.stab           0x00000000      0x378
+ *(.stab)
+ .stab          0x00000000      0x378 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+
+.stabstr        0x00000000       0x71
+ *(.stabstr)
+ .stabstr       0x00000000       0x71 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x60
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 IR_drive.o
+ .debug_aranges
+                0x00000020       0x20 timer1pwm.o
+ .debug_aranges
+                0x00000040       0x20 motors.o
+
+.debug_pubnames
+                0x00000000      0x15d
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x1b IR_drive.o
+ .debug_pubnames
+                0x0000001b       0xac timer1pwm.o
+ .debug_pubnames
+                0x000000c7       0x96 motors.o
+
+.debug_info     0x00000000      0x5c6
+ *(.debug_info)
+ .debug_info    0x00000000      0x13d IR_drive.o
+ .debug_info    0x0000013d      0x265 timer1pwm.o
+ .debug_info    0x000003a2      0x224 motors.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x27c
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0xba IR_drive.o
+ .debug_abbrev  0x000000ba      0x111 timer1pwm.o
+ .debug_abbrev  0x000001cb       0xb1 motors.o
+
+.debug_line     0x00000000      0x52e
+ *(.debug_line)
+ .debug_line    0x00000000      0x16b IR_drive.o
+ .debug_line    0x0000016b      0x198 timer1pwm.o
+ .debug_line    0x00000303      0x22b motors.o
+
+.debug_frame    0x00000000      0x1c0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x20 IR_drive.o
+ .debug_frame   0x00000020       0xd0 timer1pwm.o
+ .debug_frame   0x000000f0       0xd0 motors.o
+
+.debug_str      0x00000000      0x1a6
+ *(.debug_str)
+ .debug_str     0x00000000       0xdc IR_drive.o
+                                0x110 (size before relaxing)
+ .debug_str     0x000000dc       0x84 timer1pwm.o
+                                0x160 (size before relaxing)
+ .debug_str     0x00000160       0x46 motors.o
+                                0x119 (size before relaxing)
+
+.debug_loc      0x00000000      0x1ff
+ *(.debug_loc)
+ .debug_loc     0x00000000       0xfc IR_drive.o
+ .debug_loc     0x000000fc       0x60 timer1pwm.o
+ .debug_loc     0x0000015c       0xa3 motors.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(IR_drive.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+__bad_interrupt                                   c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__bss_end                                         c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+__bss_start                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+__data_end                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+__data_load_start                                 c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+__data_start                                      c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+__do_clear_bss                                    c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_clear_bss.o)
+                                                  motors.o
+                                                  timer1pwm.o
+                                                  IR_drive.o
+__do_copy_data                                    c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_copy_data.o)
+                                                  motors.o
+                                                  timer1pwm.o
+                                                  IR_drive.o
+__fixsfsi                                         c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+__fixunssfsi                                      c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+                                                  motors.o
+__floatsisf                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+                                                  motors.o
+__floatunssisf                                    c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+__fp_lneg                                         c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+                                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+__fp_merge                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_merge.o)
+                                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(floatsisf.o)
+__fp_nan                                          c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+                                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+__fp_nanEDOM                                      c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+__fp_nanERANGE                                    c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+__fp_nanx                                         c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_nan.o)
+__fp_split1                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+                                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+__fp_split2                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+__fp_split3                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+__fp_split_a                                      c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_split.o)
+__fp_zero                                         c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_zero.o)
+                                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_merge.o)
+                                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fixsfsi.o)
+__fp_zerox                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4\libm.a(fp_zero.o)
+__heap_end                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__init                                            c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__stack                                           c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_1                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_10                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_11                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_12                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_13                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_14                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_15                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_16                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_17                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_18                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_19                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_2                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_20                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_21                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_22                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_23                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_24                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_25                                       c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_3                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_4                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_5                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_6                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_7                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_8                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_9                                        c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vector_default                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+__vectors                                         c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+_exit                                             c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+blft                                              motors.o
+                                                  IR_drive.o
+brgh                                              motors.o
+                                                  IR_drive.o
+bwd                                               motors.o
+                                                  IR_drive.o
+dir                                               motors.o
+exit                                              c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/avr4\libgcc.a(_exit.o)
+                                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+fwd                                               motors.o
+                                                  IR_drive.o
+initMotors                                        motors.o
+                                                  IR_drive.o
+initPWM                                           timer1pwm.o
+                                                  motors.o
+initPWM08                                         timer1pwm.o
+initPWM09                                         timer1pwm.o
+initPWM10                                         timer1pwm.o
+isMoving                                          motors.o
+lft                                               motors.o
+main                                              IR_drive.o
+                                                  c:/winavr-20070525/bin/../lib/gcc/avr/4.1.2/../../../../avr/lib/avr4/crtm48.o
+mv                                                motors.o
+rgh                                               motors.o
+setCHA                                            timer1pwm.o
+                                                  motors.o
+setCHA08                                          timer1pwm.o
+setCHA09                                          timer1pwm.o
+setCHA10                                          timer1pwm.o
+setCHB                                            timer1pwm.o
+                                                  motors.o
+setCHB08                                          timer1pwm.o
+setCHB09                                          timer1pwm.o
+setCHB10                                          timer1pwm.o
+slft                                              motors.o
+                                                  IR_drive.o
+srgh                                              motors.o
+stop                                              motors.o
+                                                  IR_drive.o
+whatDir                                           motors.o

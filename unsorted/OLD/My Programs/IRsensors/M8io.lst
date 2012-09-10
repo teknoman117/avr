@@ -1,0 +1,616 @@
+   1               		.file	"M8io.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	initIO
+  20               	initIO:
+  21               	.LFB3:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 1092 0000 		sts prtb,__zero_reg__
+  27               	.LM3:
+  28 0004 1092 0000 		sts prtc,__zero_reg__
+  29               	.LM4:
+  30 0008 1092 0000 		sts prtd,__zero_reg__
+  31               	.LM5:
+  32 000c 1092 0000 		sts dirb,__zero_reg__
+  33               	.LM6:
+  34 0010 1092 0000 		sts dirc,__zero_reg__
+  35               	.LM7:
+  36 0014 1092 0000 		sts dird,__zero_reg__
+  37               	/* epilogue: frame size=0 */
+  38 0018 0895      		ret
+  39               	/* epilogue end (size=1) */
+  40               	/* function initIO size 13 (12) */
+  41               	.LFE3:
+  43               	.global	setIOB
+  45               	setIOB:
+  46               	.LFB4:
+  47               	.LM8:
+  48               	/* prologue: frame size=0 */
+  49               	/* prologue end (size=0) */
+  50 001a 582F      		mov r21,r24
+  51               	.LM9:
+  52 001c 262F      		mov r18,r22
+  53 001e 3327      		clr r19
+  54 0020 2115      		cp r18,__zero_reg__
+  55 0022 3105      		cpc r19,__zero_reg__
+  56 0024 F9F0      		breq .L6
+  57               	.LM10:
+  58 0026 2130      		cpi r18,1
+  59 0028 3105      		cpc r19,__zero_reg__
+  60 002a B9F5      		brne .L2
+  61               	.LM11:
+  62 002c 6091 0000 		lds r22,dirb
+  63 0030 862F      		mov r24,r22
+  64 0032 9927      		clr r25
+  65 0034 452F      		mov r20,r21
+  66 0036 5527      		clr r21
+  67 0038 042E      		mov r0,r20
+  68 003a 02C0      		rjmp 2f
+  69 003c 9595      	1:	asr r25
+  70 003e 8795      		ror r24
+  71 0040 0A94      	2:	dec r0
+  72 0042 E2F7      		brpl 1b
+  73 0044 8227      		eor r24,r18
+  74 0046 9327      		eor r25,r19
+  75 0048 80FF      		sbrs r24,0
+  76 004a 27C0      		rjmp .L2
+  77 004c 02C0      		rjmp 2f
+  78 004e 220F      	1:	lsl r18
+  79 0050 331F      		rol r19
+  80 0052 4A95      	2:	dec r20
+  81 0054 E2F7      		brpl 1b
+  82 0056 87B3      		in r24,55-0x20
+  83 0058 820F      		add r24,r18
+  84 005a 87BB      		out 55-0x20,r24
+  85 005c 620F      		add r22,r18
+  86 005e 6093 0000 		sts dirb,r22
+  87               	.LM12:
+  88 0062 0895      		ret
+  89               	.L6:
+  90               	.LM13:
+  91 0064 4091 0000 		lds r20,dirb
+  92 0068 842F      		mov r24,r20
+  93 006a 9927      		clr r25
+  94 006c 252F      		mov r18,r21
+  95 006e 3327      		clr r19
+  96 0070 022E      		mov r0,r18
+  97 0072 02C0      		rjmp 2f
+  98 0074 9595      	1:	asr r25
+  99 0076 8795      		ror r24
+ 100 0078 0A94      	2:	dec r0
+ 101 007a E2F7      		brpl 1b
+ 102 007c 80FF      		sbrs r24,0
+ 103 007e 0DC0      		rjmp .L2
+ 104 0080 81E0      		ldi r24,lo8(1)
+ 105 0082 90E0      		ldi r25,hi8(1)
+ 106 0084 02C0      		rjmp 2f
+ 107 0086 880F      	1:	lsl r24
+ 108 0088 991F      		rol r25
+ 109 008a 2A95      	2:	dec r18
+ 110 008c E2F7      		brpl 1b
+ 111 008e 27B3      		in r18,55-0x20
+ 112 0090 281B      		sub r18,r24
+ 113 0092 27BB      		out 55-0x20,r18
+ 114 0094 481B      		sub r20,r24
+ 115 0096 4093 0000 		sts dirb,r20
+ 116               	.L2:
+ 117 009a 0895      		ret
+ 118               	/* epilogue: frame size=0 */
+ 119 009c 0895      		ret
+ 120               	/* epilogue end (size=1) */
+ 121               	/* function setIOB size 68 (67) */
+ 122               	.LFE4:
+ 124               	.global	setIOC
+ 126               	setIOC:
+ 127               	.LFB5:
+ 128               	.LM14:
+ 129               	/* prologue: frame size=0 */
+ 130               	/* prologue end (size=0) */
+ 131 009e 582F      		mov r21,r24
+ 132               	.LM15:
+ 133 00a0 262F      		mov r18,r22
+ 134 00a2 3327      		clr r19
+ 135 00a4 2115      		cp r18,__zero_reg__
+ 136 00a6 3105      		cpc r19,__zero_reg__
+ 137 00a8 F9F0      		breq .L12
+ 138               	.LM16:
+ 139 00aa 2130      		cpi r18,1
+ 140 00ac 3105      		cpc r19,__zero_reg__
+ 141 00ae B9F5      		brne .L8
+ 142               	.LM17:
+ 143 00b0 6091 0000 		lds r22,dirc
+ 144 00b4 862F      		mov r24,r22
+ 145 00b6 9927      		clr r25
+ 146 00b8 452F      		mov r20,r21
+ 147 00ba 5527      		clr r21
+ 148 00bc 042E      		mov r0,r20
+ 149 00be 02C0      		rjmp 2f
+ 150 00c0 9595      	1:	asr r25
+ 151 00c2 8795      		ror r24
+ 152 00c4 0A94      	2:	dec r0
+ 153 00c6 E2F7      		brpl 1b
+ 154 00c8 8227      		eor r24,r18
+ 155 00ca 9327      		eor r25,r19
+ 156 00cc 80FF      		sbrs r24,0
+ 157 00ce 27C0      		rjmp .L8
+ 158 00d0 02C0      		rjmp 2f
+ 159 00d2 220F      	1:	lsl r18
+ 160 00d4 331F      		rol r19
+ 161 00d6 4A95      	2:	dec r20
+ 162 00d8 E2F7      		brpl 1b
+ 163 00da 84B3      		in r24,52-0x20
+ 164 00dc 820F      		add r24,r18
+ 165 00de 84BB      		out 52-0x20,r24
+ 166 00e0 620F      		add r22,r18
+ 167 00e2 6093 0000 		sts dirc,r22
+ 168               	.LM18:
+ 169 00e6 0895      		ret
+ 170               	.L12:
+ 171               	.LM19:
+ 172 00e8 4091 0000 		lds r20,dirc
+ 173 00ec 842F      		mov r24,r20
+ 174 00ee 9927      		clr r25
+ 175 00f0 252F      		mov r18,r21
+ 176 00f2 3327      		clr r19
+ 177 00f4 022E      		mov r0,r18
+ 178 00f6 02C0      		rjmp 2f
+ 179 00f8 9595      	1:	asr r25
+ 180 00fa 8795      		ror r24
+ 181 00fc 0A94      	2:	dec r0
+ 182 00fe E2F7      		brpl 1b
+ 183 0100 80FF      		sbrs r24,0
+ 184 0102 0DC0      		rjmp .L8
+ 185 0104 81E0      		ldi r24,lo8(1)
+ 186 0106 90E0      		ldi r25,hi8(1)
+ 187 0108 02C0      		rjmp 2f
+ 188 010a 880F      	1:	lsl r24
+ 189 010c 991F      		rol r25
+ 190 010e 2A95      	2:	dec r18
+ 191 0110 E2F7      		brpl 1b
+ 192 0112 24B3      		in r18,52-0x20
+ 193 0114 281B      		sub r18,r24
+ 194 0116 24BB      		out 52-0x20,r18
+ 195 0118 481B      		sub r20,r24
+ 196 011a 4093 0000 		sts dirc,r20
+ 197               	.L8:
+ 198 011e 0895      		ret
+ 199               	/* epilogue: frame size=0 */
+ 200 0120 0895      		ret
+ 201               	/* epilogue end (size=1) */
+ 202               	/* function setIOC size 68 (67) */
+ 203               	.LFE5:
+ 205               	.global	setIOD
+ 207               	setIOD:
+ 208               	.LFB6:
+ 209               	.LM20:
+ 210               	/* prologue: frame size=0 */
+ 211               	/* prologue end (size=0) */
+ 212 0122 582F      		mov r21,r24
+ 213               	.LM21:
+ 214 0124 262F      		mov r18,r22
+ 215 0126 3327      		clr r19
+ 216 0128 2115      		cp r18,__zero_reg__
+ 217 012a 3105      		cpc r19,__zero_reg__
+ 218 012c F9F0      		breq .L18
+ 219               	.LM22:
+ 220 012e 2130      		cpi r18,1
+ 221 0130 3105      		cpc r19,__zero_reg__
+ 222 0132 B9F5      		brne .L14
+ 223               	.LM23:
+ 224 0134 6091 0000 		lds r22,dird
+ 225 0138 862F      		mov r24,r22
+ 226 013a 9927      		clr r25
+ 227 013c 452F      		mov r20,r21
+ 228 013e 5527      		clr r21
+ 229 0140 042E      		mov r0,r20
+ 230 0142 02C0      		rjmp 2f
+ 231 0144 9595      	1:	asr r25
+ 232 0146 8795      		ror r24
+ 233 0148 0A94      	2:	dec r0
+ 234 014a E2F7      		brpl 1b
+ 235 014c 8227      		eor r24,r18
+ 236 014e 9327      		eor r25,r19
+ 237 0150 80FF      		sbrs r24,0
+ 238 0152 27C0      		rjmp .L14
+ 239 0154 02C0      		rjmp 2f
+ 240 0156 220F      	1:	lsl r18
+ 241 0158 331F      		rol r19
+ 242 015a 4A95      	2:	dec r20
+ 243 015c E2F7      		brpl 1b
+ 244 015e 81B3      		in r24,49-0x20
+ 245 0160 820F      		add r24,r18
+ 246 0162 81BB      		out 49-0x20,r24
+ 247 0164 620F      		add r22,r18
+ 248 0166 6093 0000 		sts dird,r22
+ 249               	.LM24:
+ 250 016a 0895      		ret
+ 251               	.L18:
+ 252               	.LM25:
+ 253 016c 4091 0000 		lds r20,dird
+ 254 0170 842F      		mov r24,r20
+ 255 0172 9927      		clr r25
+ 256 0174 252F      		mov r18,r21
+ 257 0176 3327      		clr r19
+ 258 0178 022E      		mov r0,r18
+ 259 017a 02C0      		rjmp 2f
+ 260 017c 9595      	1:	asr r25
+ 261 017e 8795      		ror r24
+ 262 0180 0A94      	2:	dec r0
+ 263 0182 E2F7      		brpl 1b
+ 264 0184 80FF      		sbrs r24,0
+ 265 0186 0DC0      		rjmp .L14
+ 266 0188 81E0      		ldi r24,lo8(1)
+ 267 018a 90E0      		ldi r25,hi8(1)
+ 268 018c 02C0      		rjmp 2f
+ 269 018e 880F      	1:	lsl r24
+ 270 0190 991F      		rol r25
+ 271 0192 2A95      	2:	dec r18
+ 272 0194 E2F7      		brpl 1b
+ 273 0196 21B3      		in r18,49-0x20
+ 274 0198 281B      		sub r18,r24
+ 275 019a 21BB      		out 49-0x20,r18
+ 276 019c 481B      		sub r20,r24
+ 277 019e 4093 0000 		sts dird,r20
+ 278               	.L14:
+ 279 01a2 0895      		ret
+ 280               	/* epilogue: frame size=0 */
+ 281 01a4 0895      		ret
+ 282               	/* epilogue end (size=1) */
+ 283               	/* function setIOD size 68 (67) */
+ 284               	.LFE6:
+ 286               	.global	setStateB
+ 288               	setStateB:
+ 289               	.LFB7:
+ 290               	.LM26:
+ 291               	/* prologue: frame size=0 */
+ 292               	/* prologue end (size=0) */
+ 293 01a6 582F      		mov r21,r24
+ 294               	.LM27:
+ 295 01a8 262F      		mov r18,r22
+ 296 01aa 3327      		clr r19
+ 297 01ac 2115      		cp r18,__zero_reg__
+ 298 01ae 3105      		cpc r19,__zero_reg__
+ 299 01b0 F9F0      		breq .L24
+ 300               	.LM28:
+ 301 01b2 2130      		cpi r18,1
+ 302 01b4 3105      		cpc r19,__zero_reg__
+ 303 01b6 B9F5      		brne .L20
+ 304               	.LM29:
+ 305 01b8 6091 0000 		lds r22,prtb
+ 306 01bc 862F      		mov r24,r22
+ 307 01be 9927      		clr r25
+ 308 01c0 452F      		mov r20,r21
+ 309 01c2 5527      		clr r21
+ 310 01c4 042E      		mov r0,r20
+ 311 01c6 02C0      		rjmp 2f
+ 312 01c8 9595      	1:	asr r25
+ 313 01ca 8795      		ror r24
+ 314 01cc 0A94      	2:	dec r0
+ 315 01ce E2F7      		brpl 1b
+ 316 01d0 8227      		eor r24,r18
+ 317 01d2 9327      		eor r25,r19
+ 318 01d4 80FF      		sbrs r24,0
+ 319 01d6 27C0      		rjmp .L20
+ 320 01d8 02C0      		rjmp 2f
+ 321 01da 220F      	1:	lsl r18
+ 322 01dc 331F      		rol r19
+ 323 01de 4A95      	2:	dec r20
+ 324 01e0 E2F7      		brpl 1b
+ 325 01e2 88B3      		in r24,56-0x20
+ 326 01e4 820F      		add r24,r18
+ 327 01e6 88BB      		out 56-0x20,r24
+ 328 01e8 620F      		add r22,r18
+ 329 01ea 6093 0000 		sts prtb,r22
+ 330               	.LM30:
+ 331 01ee 0895      		ret
+ 332               	.L24:
+ 333               	.LM31:
+ 334 01f0 4091 0000 		lds r20,prtb
+ 335 01f4 842F      		mov r24,r20
+ 336 01f6 9927      		clr r25
+ 337 01f8 252F      		mov r18,r21
+ 338 01fa 3327      		clr r19
+ 339 01fc 022E      		mov r0,r18
+ 340 01fe 02C0      		rjmp 2f
+ 341 0200 9595      	1:	asr r25
+ 342 0202 8795      		ror r24
+ 343 0204 0A94      	2:	dec r0
+ 344 0206 E2F7      		brpl 1b
+ 345 0208 80FF      		sbrs r24,0
+ 346 020a 0DC0      		rjmp .L20
+ 347 020c 81E0      		ldi r24,lo8(1)
+ 348 020e 90E0      		ldi r25,hi8(1)
+ 349 0210 02C0      		rjmp 2f
+ 350 0212 880F      	1:	lsl r24
+ 351 0214 991F      		rol r25
+ 352 0216 2A95      	2:	dec r18
+ 353 0218 E2F7      		brpl 1b
+ 354 021a 28B3      		in r18,56-0x20
+ 355 021c 281B      		sub r18,r24
+ 356 021e 28BB      		out 56-0x20,r18
+ 357 0220 481B      		sub r20,r24
+ 358 0222 4093 0000 		sts prtb,r20
+ 359               	.L20:
+ 360 0226 0895      		ret
+ 361               	/* epilogue: frame size=0 */
+ 362 0228 0895      		ret
+ 363               	/* epilogue end (size=1) */
+ 364               	/* function setStateB size 68 (67) */
+ 365               	.LFE7:
+ 367               	.global	setStateC
+ 369               	setStateC:
+ 370               	.LFB8:
+ 371               	.LM32:
+ 372               	/* prologue: frame size=0 */
+ 373               	/* prologue end (size=0) */
+ 374 022a 582F      		mov r21,r24
+ 375               	.LM33:
+ 376 022c 262F      		mov r18,r22
+ 377 022e 3327      		clr r19
+ 378 0230 2115      		cp r18,__zero_reg__
+ 379 0232 3105      		cpc r19,__zero_reg__
+ 380 0234 F9F0      		breq .L30
+ 381               	.LM34:
+ 382 0236 2130      		cpi r18,1
+ 383 0238 3105      		cpc r19,__zero_reg__
+ 384 023a B9F5      		brne .L26
+ 385               	.LM35:
+ 386 023c 6091 0000 		lds r22,prtc
+ 387 0240 862F      		mov r24,r22
+ 388 0242 9927      		clr r25
+ 389 0244 452F      		mov r20,r21
+ 390 0246 5527      		clr r21
+ 391 0248 042E      		mov r0,r20
+ 392 024a 02C0      		rjmp 2f
+ 393 024c 9595      	1:	asr r25
+ 394 024e 8795      		ror r24
+ 395 0250 0A94      	2:	dec r0
+ 396 0252 E2F7      		brpl 1b
+ 397 0254 8227      		eor r24,r18
+ 398 0256 9327      		eor r25,r19
+ 399 0258 80FF      		sbrs r24,0
+ 400 025a 27C0      		rjmp .L26
+ 401 025c 02C0      		rjmp 2f
+ 402 025e 220F      	1:	lsl r18
+ 403 0260 331F      		rol r19
+ 404 0262 4A95      	2:	dec r20
+ 405 0264 E2F7      		brpl 1b
+ 406 0266 85B3      		in r24,53-0x20
+ 407 0268 820F      		add r24,r18
+ 408 026a 85BB      		out 53-0x20,r24
+ 409 026c 620F      		add r22,r18
+ 410 026e 6093 0000 		sts prtc,r22
+ 411               	.LM36:
+ 412 0272 0895      		ret
+ 413               	.L30:
+ 414               	.LM37:
+ 415 0274 4091 0000 		lds r20,prtc
+ 416 0278 842F      		mov r24,r20
+ 417 027a 9927      		clr r25
+ 418 027c 252F      		mov r18,r21
+ 419 027e 3327      		clr r19
+ 420 0280 022E      		mov r0,r18
+ 421 0282 02C0      		rjmp 2f
+ 422 0284 9595      	1:	asr r25
+ 423 0286 8795      		ror r24
+ 424 0288 0A94      	2:	dec r0
+ 425 028a E2F7      		brpl 1b
+ 426 028c 80FF      		sbrs r24,0
+ 427 028e 0DC0      		rjmp .L26
+ 428 0290 81E0      		ldi r24,lo8(1)
+ 429 0292 90E0      		ldi r25,hi8(1)
+ 430 0294 02C0      		rjmp 2f
+ 431 0296 880F      	1:	lsl r24
+ 432 0298 991F      		rol r25
+ 433 029a 2A95      	2:	dec r18
+ 434 029c E2F7      		brpl 1b
+ 435 029e 25B3      		in r18,53-0x20
+ 436 02a0 281B      		sub r18,r24
+ 437 02a2 25BB      		out 53-0x20,r18
+ 438 02a4 481B      		sub r20,r24
+ 439 02a6 4093 0000 		sts prtc,r20
+ 440               	.L26:
+ 441 02aa 0895      		ret
+ 442               	/* epilogue: frame size=0 */
+ 443 02ac 0895      		ret
+ 444               	/* epilogue end (size=1) */
+ 445               	/* function setStateC size 68 (67) */
+ 446               	.LFE8:
+ 448               	.global	setStateD
+ 450               	setStateD:
+ 451               	.LFB9:
+ 452               	.LM38:
+ 453               	/* prologue: frame size=0 */
+ 454               	/* prologue end (size=0) */
+ 455 02ae 582F      		mov r21,r24
+ 456               	.LM39:
+ 457 02b0 262F      		mov r18,r22
+ 458 02b2 3327      		clr r19
+ 459 02b4 2115      		cp r18,__zero_reg__
+ 460 02b6 3105      		cpc r19,__zero_reg__
+ 461 02b8 F9F0      		breq .L36
+ 462               	.LM40:
+ 463 02ba 2130      		cpi r18,1
+ 464 02bc 3105      		cpc r19,__zero_reg__
+ 465 02be B9F5      		brne .L32
+ 466               	.LM41:
+ 467 02c0 6091 0000 		lds r22,prtd
+ 468 02c4 862F      		mov r24,r22
+ 469 02c6 9927      		clr r25
+ 470 02c8 452F      		mov r20,r21
+ 471 02ca 5527      		clr r21
+ 472 02cc 042E      		mov r0,r20
+ 473 02ce 02C0      		rjmp 2f
+ 474 02d0 9595      	1:	asr r25
+ 475 02d2 8795      		ror r24
+ 476 02d4 0A94      	2:	dec r0
+ 477 02d6 E2F7      		brpl 1b
+ 478 02d8 8227      		eor r24,r18
+ 479 02da 9327      		eor r25,r19
+ 480 02dc 80FF      		sbrs r24,0
+ 481 02de 27C0      		rjmp .L32
+ 482 02e0 02C0      		rjmp 2f
+ 483 02e2 220F      	1:	lsl r18
+ 484 02e4 331F      		rol r19
+ 485 02e6 4A95      	2:	dec r20
+ 486 02e8 E2F7      		brpl 1b
+ 487 02ea 82B3      		in r24,50-0x20
+ 488 02ec 820F      		add r24,r18
+ 489 02ee 82BB      		out 50-0x20,r24
+ 490 02f0 620F      		add r22,r18
+ 491 02f2 6093 0000 		sts prtd,r22
+ 492               	.LM42:
+ 493 02f6 0895      		ret
+ 494               	.L36:
+ 495               	.LM43:
+ 496 02f8 4091 0000 		lds r20,prtd
+ 497 02fc 842F      		mov r24,r20
+ 498 02fe 9927      		clr r25
+ 499 0300 252F      		mov r18,r21
+ 500 0302 3327      		clr r19
+ 501 0304 022E      		mov r0,r18
+ 502 0306 02C0      		rjmp 2f
+ 503 0308 9595      	1:	asr r25
+ 504 030a 8795      		ror r24
+ 505 030c 0A94      	2:	dec r0
+ 506 030e E2F7      		brpl 1b
+ 507 0310 80FF      		sbrs r24,0
+ 508 0312 0DC0      		rjmp .L32
+ 509 0314 81E0      		ldi r24,lo8(1)
+ 510 0316 90E0      		ldi r25,hi8(1)
+ 511 0318 02C0      		rjmp 2f
+ 512 031a 880F      	1:	lsl r24
+ 513 031c 991F      		rol r25
+ 514 031e 2A95      	2:	dec r18
+ 515 0320 E2F7      		brpl 1b
+ 516 0322 22B3      		in r18,50-0x20
+ 517 0324 281B      		sub r18,r24
+ 518 0326 22BB      		out 50-0x20,r18
+ 519 0328 481B      		sub r20,r24
+ 520 032a 4093 0000 		sts prtd,r20
+ 521               	.L32:
+ 522 032e 0895      		ret
+ 523               	/* epilogue: frame size=0 */
+ 524 0330 0895      		ret
+ 525               	/* epilogue end (size=1) */
+ 526               	/* function setStateD size 68 (67) */
+ 527               	.LFE9:
+ 529               	.global	getStateB
+ 531               	getStateB:
+ 532               	.LFB10:
+ 533               	.LM44:
+ 534               	/* prologue: frame size=0 */
+ 535               	/* prologue end (size=0) */
+ 536               	.LM45:
+ 537 0332 96B3      		in r25,54-0x20
+ 538 0334 292F      		mov r18,r25
+ 539 0336 3327      		clr r19
+ 540 0338 02C0      		rjmp 2f
+ 541 033a 3595      	1:	asr r19
+ 542 033c 2795      		ror r18
+ 543 033e 8A95      	2:	dec r24
+ 544 0340 E2F7      		brpl 1b
+ 545 0342 822F      		mov r24,r18
+ 546 0344 9927      		clr r25
+ 547               	.LM46:
+ 548 0346 8170      		andi r24,lo8(1)
+ 549 0348 9070      		andi r25,hi8(1)
+ 550               	/* epilogue: frame size=0 */
+ 551 034a 0895      		ret
+ 552               	/* epilogue end (size=1) */
+ 553               	/* function getStateB size 14 (13) */
+ 554               	.LFE10:
+ 556               	.global	getStateC
+ 558               	getStateC:
+ 559               	.LFB11:
+ 560               	.LM47:
+ 561               	/* prologue: frame size=0 */
+ 562               	/* prologue end (size=0) */
+ 563               	.LM48:
+ 564 034c 93B3      		in r25,51-0x20
+ 565 034e 292F      		mov r18,r25
+ 566 0350 3327      		clr r19
+ 567 0352 02C0      		rjmp 2f
+ 568 0354 3595      	1:	asr r19
+ 569 0356 2795      		ror r18
+ 570 0358 8A95      	2:	dec r24
+ 571 035a E2F7      		brpl 1b
+ 572 035c 822F      		mov r24,r18
+ 573 035e 9927      		clr r25
+ 574               	.LM49:
+ 575 0360 8170      		andi r24,lo8(1)
+ 576 0362 9070      		andi r25,hi8(1)
+ 577               	/* epilogue: frame size=0 */
+ 578 0364 0895      		ret
+ 579               	/* epilogue end (size=1) */
+ 580               	/* function getStateC size 14 (13) */
+ 581               	.LFE11:
+ 583               	.global	getStateD
+ 585               	getStateD:
+ 586               	.LFB12:
+ 587               	.LM50:
+ 588               	/* prologue: frame size=0 */
+ 589               	/* prologue end (size=0) */
+ 590               	.LM51:
+ 591 0366 90B3      		in r25,48-0x20
+ 592 0368 292F      		mov r18,r25
+ 593 036a 3327      		clr r19
+ 594 036c 02C0      		rjmp 2f
+ 595 036e 3595      	1:	asr r19
+ 596 0370 2795      		ror r18
+ 597 0372 8A95      	2:	dec r24
+ 598 0374 E2F7      		brpl 1b
+ 599 0376 822F      		mov r24,r18
+ 600 0378 9927      		clr r25
+ 601               	.LM52:
+ 602 037a 8170      		andi r24,lo8(1)
+ 603 037c 9070      		andi r25,hi8(1)
+ 604               	/* epilogue: frame size=0 */
+ 605 037e 0895      		ret
+ 606               	/* epilogue end (size=1) */
+ 607               	/* function getStateD size 14 (13) */
+ 608               	.LFE12:
+ 610               		.comm prtb,1,1
+ 611               		.comm prtc,1,1
+ 612               		.comm prtd,1,1
+ 613               		.comm dirb,1,1
+ 614               		.comm dirc,1,1
+ 615               		.comm dird,1,1
+ 616               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 M8io.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:20     .text:00000000 initIO
+                            *COM*:00000001 prtb
+                            *COM*:00000001 prtc
+                            *COM*:00000001 prtd
+                            *COM*:00000001 dirb
+                            *COM*:00000001 dirc
+                            *COM*:00000001 dird
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:45     .text:0000001a setIOB
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:126    .text:0000009e setIOC
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:207    .text:00000122 setIOD
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:288    .text:000001a6 setStateB
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:369    .text:0000022a setStateC
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:450    .text:000002ae setStateD
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:531    .text:00000332 getStateB
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:558    .text:0000034c getStateC
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cc4Oaaaa.s:585    .text:00000366 getStateD
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

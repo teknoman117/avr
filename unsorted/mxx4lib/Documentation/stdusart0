@@ -1,0 +1,44 @@
+Documentation for stdusart0.h
+
+Example is included under the usart0 directory in the Examples directory
+
+---------------Information-------------------------
+
+stdusart0.h controls usart 0 in a cool way.  It has a 1 byte write and 1 byte read
+function, but it initalizes the stdio library to use them so the printf() and 
+scanf() commands can be used
+ex)
+printf("Hello World!\r");  //print hello world
+
+ex)
+scanf("%s", &name);   //store a string in name from usart0
+---------------Definitions-------------------------
+
+DB8            -the bit combos for a 8 bit data frame
+DB7            -the bit combos for a 7 bit data frame
+DB6            -the bit combos for a 6 bit data frame
+DB5            -the bit combos for a 5 bit data frame
+
+SB1            -the bit combos for 1 stop bit
+SB2            -the bit combos for 2 stop bits
+
+P_N            -the bit combos for no parity
+P_E            -the bit combos for even parity
+P_O            -the bit combos for odd parity
+
+--------------Functions------------------------------
+
+void init_stdusart0 ( uint16_t ubrr, uint8_t specs ) -- starts the usart with ubrr of ubrr and the settings defined by specs
+    -ubrr - the ubrr value for a desired baud rate, consult the AVR datasheet for some pre determined ones
+    -specs - the specifications for the frame format for the serial port.  They are set by combining the definitions
+      ex) init_stdusart0( 51, DB8 | P_N | SB1 );  //enable the usart with a ubrr of 51 and a frame format of 8 data bits, no parity, and 1 stop bit
+      ex) init_stdusart0( 51, DB7 | P_E | SB1 );  //enable the usart with a ubrr of 51 and a frame format of 7 data bits, even parity, and 1 stop bit
+
+int txb0 ( char b ) -- transmits character b over usart0 and returns 0
+
+int rxb0 ( void ) -- waits for and returns a byte from usart0
+
+
+    
+
+  

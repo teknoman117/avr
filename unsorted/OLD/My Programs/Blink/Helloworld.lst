@@ -1,0 +1,100 @@
+   1               		.file	"Helloworld.c"
+   2               		.arch atmega644
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB6:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 8FEF      		ldi r24,lo8(-1)
+  27 0002 87B9      		out 39-0x20,r24
+  28 0004 87B1      		in r24,39-0x20
+  29 0006 8AB9      		out 42-0x20,r24
+  30               	.LM3:
+  31 0008 18B8      		out 40-0x20,__zero_reg__
+  32 000a A0E3      		ldi r26,lo8(30000)
+  33 000c B5E7      		ldi r27,hi8(30000)
+  34               	.LVL0:
+  35               	.L2:
+  36               	.LM4:
+  37 000e 8BB1      		in r24,43-0x20
+  38               	.LVL1:
+  39 0010 8058      		subi r24,lo8(-(-128))
+  40 0012 8BB9      		out 43-0x20,r24
+  41 0014 20E0      		ldi r18,lo8(0)
+  42 0016 30E0      		ldi r19,hi8(0)
+  43               	.LVL2:
+  44               	.L3:
+  45               	.LBB6:
+  46               	.LBB7:
+  47               	.LM5:
+  48 0018 CD01      		movw r24,r26
+  49               	.LVL3:
+  50               	/* #APP */
+  51 001a 0197      		1: sbiw r24,1
+  52 001c 01F4      		brne 1b
+  53               	/* #NOAPP */
+  54               	.LBE7:
+  55               	.LBE6:
+  56               	.LM6:
+  57 001e 2F5F      		subi r18,lo8(-(1))
+  58 0020 3F4F      		sbci r19,hi8(-(1))
+  59 0022 2431      		cpi r18,20
+  60 0024 3105      		cpc r19,__zero_reg__
+  61 0026 01F4      		brne .L3
+  62               	.LM7:
+  63 0028 8BB1      		in r24,43-0x20
+  64               	.LVL4:
+  65 002a 8058      		subi r24,lo8(-(-128))
+  66 002c 8BB9      		out 43-0x20,r24
+  67 002e 20E0      		ldi r18,lo8(0)
+  68 0030 30E0      		ldi r19,hi8(0)
+  69               	.LVL5:
+  70 0032 E0E3      		ldi r30,lo8(30000)
+  71 0034 F5E7      		ldi r31,hi8(30000)
+  72               	.L5:
+  73               	.LBB8:
+  74               	.LBB9:
+  75               	.LM8:
+  76 0036 CF01      		movw r24,r30
+  77               	.LVL6:
+  78               	/* #APP */
+  79 0038 0197      		1: sbiw r24,1
+  80 003a 01F4      		brne 1b
+  81               	/* #NOAPP */
+  82               	.LBE9:
+  83               	.LBE8:
+  84               	.LM9:
+  85 003c 2F5F      		subi r18,lo8(-(1))
+  86 003e 3F4F      		sbci r19,hi8(-(1))
+  87 0040 2431      		cpi r18,20
+  88 0042 3105      		cpc r19,__zero_reg__
+  89 0044 01F4      		brne .L5
+  90 0046 00C0      		rjmp .L2
+  91               	/* epilogue: frame size=0 */
+  92               	/* epilogue: noreturn */
+  93               	/* epilogue end (size=0) */
+  94               	/* function main size 40 (40) */
+  95               	.LFE6:
+ 121               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Helloworld.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc3dXWFA.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc3dXWFA.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc3dXWFA.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc3dXWFA.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc3dXWFA.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc3dXWFA.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

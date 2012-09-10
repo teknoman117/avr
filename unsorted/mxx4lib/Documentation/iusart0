@@ -1,0 +1,63 @@
+Documentation for iusart0.h   (interrupt driven usart)
+
+Example is included under the iusart0 directory in the Examples directory
+
+---------------Information-------------------------
+
+iusart0.h controls the AVR usart0.  It creates a receive buffer by having an array and a write
+and read pointer.  An interrupt routine is triggered when the usart receives a byte, so that
+incoming bytes are stored automaticly, so that data has a lower chance of being lost.  
+
+---------------Definitions-------------------------
+
+RBUFFER_SIZE   -the size of the receive buffer, this defaults to 128 bytes, but that may not be enough for some applications
+               -to change, just define it as the bytes you wish, a macro cancels its definition if you do
+RBUFFER_MASK   -masks non used bits in two 16 bit variables that point to read and write locations (do not modify)
+
+DB8            -the bit combos for a 8 bit data frame
+DB7            -the bit combos for a 7 bit data frame
+DB6            -the bit combos for a 6 bit data frame
+DB5            -the bit combos for a 5 bit data frame
+
+SB1            -the bit combos for 1 stop bit
+SB2            -the bit combos for 2 stop bits
+
+P_N            -the bit combos for no parity
+P_E            -the bit combos for even parity
+P_O            -the bit combos for odd parity
+
+--------------Functions------------------------------
+
+void init_iusart0 ( uint16_t ubrr, uint8_t specs ) -- starts the usart with ubrr of ubrr and the settings defined by specs, also inits the receive buffer
+    -ubrr - the ubrr value for a desired baud rate, consult the AVR datasheet for some pre determined ones
+    -specs - the specifications for the frame format for the serial port.  They are set by combining the definitions
+      ex) init_iusart0( 51, DB8 | P_N | SB1 );  //enable the usart with a ubrr of 51 and a frame format of 8 data bits, no parity, and 1 stop bit
+      ex) init_iusart0( 51, DB7 | P_E | SB1 );  //enable the usart with a ubrr of 51 and a frame format of 7 data bits, even parity, and 1 stop bit
+
+void txbi0 ( uint8_t byte ) -- transmit a byte over the usart
+    -byte - the byte to send
+
+void writei0 ( uint8_t* bytes, uint16_t number ) -- transmits a string of bytes over the usart
+    -bytes - the array to send
+    -number - the number of bytes to send
+
+uint8_t rxbi0 ( void ) -- returns the next byte in the buffer, if there isn't one, it waits for one to come in
+
+void readi0 ( uint8_t* bytes, uint8_t n ) -- gets a string of bytes from the buffer, if there isn't as many as requested, it waits for them
+    -bytes - the array to put data in
+    -n - the amount of bytes to read
+
+void readi0e ( uint8_t* bytes, uint8_t e ) -- gets a string of bytes from the buffer, and keeps pulling them until a certain one is received
+    -bytes - the array to put data in
+    -e - the number to stop at
+
+void flush_buffer ( void ) -- blanks out the buffer by setting all the pointers to zero
+
+uint8_t bufferEmpty ( void ) -- returns a 1 if the buffer is empty, or a 0 if it has bytes in it
+
+uint8_t bufferFull ( void ) --returns a 1 if the buffer is full, or a 0 if it isn't
+
+uint16_t bytesInBuf ( void ) -- returns the number of bytes in the buffer
+    
+
+  

@@ -1,0 +1,964 @@
+GAS LISTING /tmp/cc0w1iW5.s 			page 1
+
+
+   1               		.file	"servo_ctl_t2.c"
+   2               		.arch atmega644
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Programs/AVR_Projects/servo_ctl_t2/",100,0,2,.Ltext0
+  11               		.stabs	"servo_ctl_t2.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,0,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,0,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,0,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,0,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,0,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,0,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,0,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,0,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,0,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,0,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,0,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,0,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,0,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,0,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,0,0
+  30               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/avr/io.h",130,0,0,0
+  31               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  32               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/inttypes.h",130,0,0,0
+  33               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/stdint.h",130,0,0,0
+  34               		.stabs	"int8_t:t(4,1)=(0,10)",128,0,121,0
+  35               		.stabs	"uint8_t:t(4,2)=(0,11)",128,0,122,0
+  36               		.stabs	"int16_t:t(4,3)=(0,1)",128,0,123,0
+  37               		.stabs	"uint16_t:t(4,4)=(0,4)",128,0,124,0
+  38               		.stabs	"int32_t:t(4,5)=(0,3)",128,0,125,0
+  39               		.stabs	"uint32_t:t(4,6)=(0,5)",128,0,126,0
+  40               		.stabs	"int64_t:t(4,7)=(0,6)",128,0,128,0
+  41               		.stabs	"uint64_t:t(4,8)=(0,7)",128,0,129,0
+  42               		.stabs	"intptr_t:t(4,9)=(4,3)",128,0,142,0
+  43               		.stabs	"uintptr_t:t(4,10)=(4,4)",128,0,147,0
+  44               		.stabs	"int_least8_t:t(4,11)=(4,1)",128,0,159,0
+  45               		.stabs	"uint_least8_t:t(4,12)=(4,2)",128,0,164,0
+  46               		.stabs	"int_least16_t:t(4,13)=(4,3)",128,0,169,0
+  47               		.stabs	"uint_least16_t:t(4,14)=(4,4)",128,0,174,0
+  48               		.stabs	"int_least32_t:t(4,15)=(4,5)",128,0,179,0
+  49               		.stabs	"uint_least32_t:t(4,16)=(4,6)",128,0,184,0
+  50               		.stabs	"int_least64_t:t(4,17)=(4,7)",128,0,192,0
+  51               		.stabs	"uint_least64_t:t(4,18)=(4,8)",128,0,199,0
+  52               		.stabs	"int_fast8_t:t(4,19)=(4,1)",128,0,213,0
+  53               		.stabs	"uint_fast8_t:t(4,20)=(4,2)",128,0,218,0
+  54               		.stabs	"int_fast16_t:t(4,21)=(4,3)",128,0,223,0
+  55               		.stabs	"uint_fast16_t:t(4,22)=(4,4)",128,0,228,0
+  56               		.stabs	"int_fast32_t:t(4,23)=(4,5)",128,0,233,0
+  57               		.stabs	"uint_fast32_t:t(4,24)=(4,6)",128,0,238,0
+GAS LISTING /tmp/cc0w1iW5.s 			page 2
+
+
+  58               		.stabs	"int_fast64_t:t(4,25)=(4,7)",128,0,246,0
+  59               		.stabs	"uint_fast64_t:t(4,26)=(4,8)",128,0,253,0
+  60               		.stabs	"intmax_t:t(4,27)=(4,7)",128,0,273,0
+  61               		.stabs	"uintmax_t:t(4,28)=(4,8)",128,0,278,0
+  62               		.stabn	162,0,0,0
+  63               		.stabs	"int_farptr_t:t(3,1)=(4,5)",128,0,77,0
+  64               		.stabs	"uint_farptr_t:t(3,2)=(4,6)",128,0,81,0
+  65               		.stabn	162,0,0,0
+  66               		.stabn	162,0,0,0
+  67               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/avr/fuse.h",130,0,0,0
+  68               		.stabs	"__fuse_t:t(5,1)=(5,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,186,0
+  69               		.stabn	162,0,0,0
+  70               		.stabn	162,0,0,0
+  71               		.stabs	"set8:F(0,15)",36,0,6,set8
+  72               		.stabs	"bit:P(4,2)",64,0,6,24
+  73               		.stabs	"reg:P(0,16)=*(4,2)",64,0,6,30
+  74               	.global	set8
+  75               		.type	set8, @function
+  76               	set8:
+  77               		.stabd	46,0,0
+  78               		.stabs	"/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h",132,0,0,.Ltext1
+  79               	.Ltext1:
+   1:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** #ifndef	_IOCTL8_H
+   2:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** #define _IOCTL8_H  1
+   3:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 
+   4:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** #include <stdint.h>
+   5:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 
+   6:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** void set8(uint8_t bit, uint8_t *reg) {
+  80               		.stabn	68,0,6,.LM0-set8
+  81               	.LM0:
+  82               	/* prologue: frame size=0 */
+  83               	/* prologue end (size=0) */
+  84 0000 FB01      		movw r30,r22
+   7:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 	*reg |= (1 << bit);
+  85               		.stabn	68,0,7,.LM1-set8
+  86               	.LM1:
+  87 0002 21E0      		ldi r18,lo8(1)
+  88 0004 30E0      		ldi r19,hi8(1)
+  89 0006 00C0      		rjmp 2f
+  90 0008 220F      	1:	lsl r18
+  91 000a 331F      		rol r19
+  92 000c 8A95      	2:	dec r24
+  93 000e 02F4      		brpl 1b
+  94 0010 8081      		ld r24,Z
+  95 0012 822B      		or r24,r18
+  96 0014 8083      		st Z,r24
+  97               	/* epilogue: frame size=0 */
+  98 0016 0895      		ret
+  99               	/* epilogue end (size=1) */
+ 100               	/* function set8 size 13 (12) */
+ 101               		.size	set8, .-set8
+ 102               	.Lscope0:
+ 103               		.stabs	"",36,0,0,.Lscope0-set8
+ 104               		.stabd	78,0,0
+ 105               		.stabs	"clear8:F(0,15)",36,0,9,clear8
+ 106               		.stabs	"bit:P(4,2)",64,0,9,24
+ 107               		.stabs	"reg:P(0,16)",64,0,9,30
+GAS LISTING /tmp/cc0w1iW5.s 			page 3
+
+
+ 108               	.global	clear8
+ 109               		.type	clear8, @function
+ 110               	clear8:
+ 111               		.stabd	46,0,0
+   8:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** }
+   9:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** void clear8(uint8_t bit, uint8_t *reg) {
+ 112               		.stabn	68,0,9,.LM2-clear8
+ 113               	.LM2:
+ 114               	/* prologue: frame size=0 */
+ 115               	/* prologue end (size=0) */
+ 116 0018 FB01      		movw r30,r22
+  10:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 	*reg &= ~(1 << bit);
+ 117               		.stabn	68,0,10,.LM3-clear8
+ 118               	.LM3:
+ 119 001a 21E0      		ldi r18,lo8(1)
+ 120 001c 30E0      		ldi r19,hi8(1)
+ 121 001e 00C0      		rjmp 2f
+ 122 0020 220F      	1:	lsl r18
+ 123 0022 331F      		rol r19
+ 124 0024 8A95      	2:	dec r24
+ 125 0026 02F4      		brpl 1b
+ 126 0028 2095      		com r18
+ 127 002a 8081      		ld r24,Z
+ 128 002c 8223      		and r24,r18
+ 129 002e 8083      		st Z,r24
+ 130               	/* epilogue: frame size=0 */
+ 131 0030 0895      		ret
+ 132               	/* epilogue end (size=1) */
+ 133               	/* function clear8 size 14 (13) */
+ 134               		.size	clear8, .-clear8
+ 135               	.Lscope1:
+ 136               		.stabs	"",36,0,0,.Lscope1-clear8
+ 137               		.stabd	78,0,0
+ 138               		.stabs	"get8:F(4,2)",36,0,12,get8
+ 139               		.stabs	"bit:P(4,2)",64,0,12,24
+ 140               		.stabs	"reg:P(0,16)",64,0,12,30
+ 141               	.global	get8
+ 142               		.type	get8, @function
+ 143               	get8:
+ 144               		.stabd	46,0,0
+  11:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** }
+  12:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** uint8_t get8(uint8_t bit, uint8_t *reg) {
+ 145               		.stabn	68,0,12,.LM4-get8
+ 146               	.LM4:
+ 147               	/* prologue: frame size=0 */
+ 148               	/* prologue end (size=0) */
+ 149 0032 FB01      		movw r30,r22
+ 150 0034 2081      		ld r18,Z
+ 151 0036 3327      		clr r19
+ 152 0038 00C0      		rjmp 2f
+ 153 003a 3595      	1:	asr r19
+ 154 003c 2795      		ror r18
+ 155 003e 8A95      	2:	dec r24
+ 156 0040 02F4      		brpl 1b
+  13:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 	return ((*reg >> bit) & 1);
+  14:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** }
+ 157               		.stabn	68,0,14,.LM5-get8
+GAS LISTING /tmp/cc0w1iW5.s 			page 4
+
+
+ 158               	.LM5:
+ 159 0042 C901      		movw r24,r18
+ 160 0044 8170      		andi r24,lo8(1)
+ 161 0046 9070      		andi r25,hi8(1)
+ 162               	/* epilogue: frame size=0 */
+ 163 0048 0895      		ret
+ 164               	/* epilogue end (size=1) */
+ 165               	/* function get8 size 13 (12) */
+ 166               		.size	get8, .-get8
+ 167               	.Lscope2:
+ 168               		.stabs	"",36,0,0,.Lscope2-get8
+ 169               		.stabd	78,0,0
+ 170               		.stabs	"enableServoT2A:F(0,15)",36,0,70,enableServoT2A
+ 171               		.stabs	"pin:P(4,2)",64,0,70,24
+ 172               		.stabs	"ddr:P(0,16)",64,0,70,30
+ 173               	.global	enableServoT2A
+ 174               		.type	enableServoT2A, @function
+ 175               	enableServoT2A:
+ 176               		.stabd	46,0,0
+ 177               		.stabs	"/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h",132,0,0,.Ltext2
+ 178               	.Ltext2:
+   1:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #ifndef _T2SERVO_H
+   2:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define _T2SERVO_H 1
+   3:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** 
+   4:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** //required includes
+   5:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #include <avr/io.h>
+   6:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #include <stdint.h>
+   7:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #include "ioctl8.h"
+   8:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** 
+   9:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** //checks for F_CPU (CPU Frequency), if not present, defines it
+  10:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #ifndef F_CPU
+  11:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #warning F_CPU not defined, setting to 8 Mhz
+  12:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define F_CPU 8000000UL
+  13:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #endif
+  14:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** 
+  15:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** //sets the proper prescaler for the clock frequency
+  16:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** //don't use a crystal frequency of over 20 MHz
+  17:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #if (F_CPU <= 1000000)
+  18:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define SERVO_PRESCALER_T2 (1 << CS22)
+  19:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define SERVO_PRESCALER_T2V 64
+  20:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #elif (F_CPU <= 2000000)
+  21:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define SERVO_PRESCALER_T2 ((1 << CS22) | (1 << CS20))
+  22:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define SERVO_PRESCALER_T2V 128
+  23:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #elif (F_CPU <= 4000000)
+  24:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define SERVO_PRESCALER_T2 ((1 << CS22) | (1 << CS21))
+  25:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define SERVO_PRESCALER_T2V 256
+  26:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #else
+  27:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define SERVO_PRESCALER_T2 ((1 << CS22) | (1 << CS21) | (1 << CS20))
+  28:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define SERVO_PRESCALER_T2V 1024
+  29:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #endif
+  30:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** 
+  31:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** //have to preprocessor do the work at computing this
+  32:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #define ticksperus ((F_CPU/SERVO_PRESCALER_T2V)/1000000.0)
+  33:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** 
+  34:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** double ticks;
+  35:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** uint8_t uval;
+  36:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** 
+GAS LISTING /tmp/cc0w1iW5.s 			page 5
+
+
+  37:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** //if only 1 timer 2 CTC pin exists
+  38:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #ifdef OCR2
+  39:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void enableServoT2(uint8_t pin, uint8_t *ddr) {
+  40:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     set8(pin, ddr);
+  41:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2 = (1 << WGM21) | (1 << WGM20) | (1 << COM21) | SERVO_PRESCALER_T2;
+  42:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  43:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void disableServoT2(void) {
+  44:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2 = 0;
+  45:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  46:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void setAngleT2(int8_t val) {
+  47:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     if ((val < -90) | (val > 90)) {
+  48:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val < -90) {uval = 0;}
+  49:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val > 90) {uval = 180;}
+  50:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     }
+  51:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     else {uval = val + 90;}
+  52:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks = ticksperus;
+  53:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks *= (750.0 + ((uval * 1500.0)/180.0));
+  54:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     OCR2 = (uint8_t) ticks;
+  55:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  56:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void setSpeedT2(int8_t val) {
+  57:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     if ((val < -100) | (val > 100)) {
+  58:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val < -100) uval = 0;
+  59:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val > 100) uval = 200;
+  60:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     }
+  61:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     else uval = val + 100;
+  62:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks = ticksperus;
+  63:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks *= (750.0 + ((uval * 1500.0)/200.0));
+  64:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     OCR2 = (uint8_t) ticks;
+  65:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  66:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #endif
+  67:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** 
+  68:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** //if two timer 2 CTC pins exist
+  69:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** #ifdef OCR2A
+  70:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void enableServoT2A(uint8_t pin, uint8_t *ddr) {
+ 179               		.stabn	68,0,70,.LM6-enableServoT2A
+ 180               	.LM6:
+ 181               	/* prologue: frame size=0 */
+ 182               	/* prologue end (size=0) */
+ 183 004a FB01      		movw r30,r22
+ 184               	.LBB6:
+ 185               	.LBB7:
+ 186               		.stabs	"/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h",132,0,0,.Ltext3
+ 187               	.Ltext3:
+ 188               		.stabn	68,0,7,.LM7-enableServoT2A
+ 189               	.LM7:
+ 190 004c 9081      		ld r25,Z
+ 191 004e 21E0      		ldi r18,lo8(1)
+ 192 0050 30E0      		ldi r19,hi8(1)
+ 193 0052 00C0      		rjmp 2f
+ 194 0054 220F      	1:	lsl r18
+ 195 0056 331F      		rol r19
+ 196 0058 8A95      	2:	dec r24
+ 197 005a 02F4      		brpl 1b
+ 198 005c 922B      		or r25,r18
+ 199 005e 9083      		st Z,r25
+ 200               	.LBE7:
+ 201               	.LBE6:
+GAS LISTING /tmp/cc0w1iW5.s 			page 6
+
+
+ 202               		.stabs	"/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h",132,0,0,.Ltext4
+ 203               	.Ltext4:
+  71:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     set8(pin, ddr);
+  72:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2A |= (1 << WGM21) | (1 << WGM20) | (1 << COM2A1);
+ 204               		.stabn	68,0,72,.LM8-enableServoT2A
+ 205               	.LM8:
+ 206 0060 E0EB      		ldi r30,lo8(176)
+ 207 0062 F0E0      		ldi r31,hi8(176)
+ 208 0064 8081      		ld r24,Z
+ 209 0066 8368      		ori r24,lo8(-125)
+ 210 0068 8083      		st Z,r24
+  73:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2B = SERVO_PRESCALER_T2;
+ 211               		.stabn	68,0,73,.LM9-enableServoT2A
+ 212               	.LM9:
+ 213 006a 87E0      		ldi r24,lo8(7)
+ 214 006c 8093 B100 		sts 177,r24
+ 215               	/* epilogue: frame size=0 */
+ 216 0070 0895      		ret
+ 217               	/* epilogue end (size=1) */
+ 218               	/* function enableServoT2A size 21 (20) */
+ 219               		.size	enableServoT2A, .-enableServoT2A
+ 220               	.Lscope3:
+ 221               		.stabs	"",36,0,0,.Lscope3-enableServoT2A
+ 222               		.stabd	78,0,0
+ 223               		.stabs	"enableServoT2B:F(0,15)",36,0,75,enableServoT2B
+ 224               		.stabs	"pin:P(4,2)",64,0,75,24
+ 225               		.stabs	"ddr:P(0,16)",64,0,75,30
+ 226               	.global	enableServoT2B
+ 227               		.type	enableServoT2B, @function
+ 228               	enableServoT2B:
+ 229               		.stabd	46,0,0
+  74:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  75:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void enableServoT2B(uint8_t pin, uint8_t *ddr) {
+ 230               		.stabn	68,0,75,.LM10-enableServoT2B
+ 231               	.LM10:
+ 232               	/* prologue: frame size=0 */
+ 233               	/* prologue end (size=0) */
+ 234 0072 FB01      		movw r30,r22
+ 235               	.LBB8:
+ 236               	.LBB9:
+ 237               		.stabs	"/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h",132,0,0,.Ltext5
+ 238               	.Ltext5:
+ 239               		.stabn	68,0,7,.LM11-enableServoT2B
+ 240               	.LM11:
+ 241 0074 9081      		ld r25,Z
+ 242 0076 21E0      		ldi r18,lo8(1)
+ 243 0078 30E0      		ldi r19,hi8(1)
+ 244 007a 00C0      		rjmp 2f
+ 245 007c 220F      	1:	lsl r18
+ 246 007e 331F      		rol r19
+ 247 0080 8A95      	2:	dec r24
+ 248 0082 02F4      		brpl 1b
+ 249 0084 922B      		or r25,r18
+ 250 0086 9083      		st Z,r25
+ 251               	.LBE9:
+ 252               	.LBE8:
+ 253               		.stabs	"/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h",132,0,0,.Ltext6
+GAS LISTING /tmp/cc0w1iW5.s 			page 7
+
+
+ 254               	.Ltext6:
+  76:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     set8(pin, ddr);
+  77:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2A |= (1 << WGM21) | (1 << WGM20) | (1 << COM2B1);
+ 255               		.stabn	68,0,77,.LM12-enableServoT2B
+ 256               	.LM12:
+ 257 0088 E0EB      		ldi r30,lo8(176)
+ 258 008a F0E0      		ldi r31,hi8(176)
+ 259 008c 8081      		ld r24,Z
+ 260 008e 8362      		ori r24,lo8(35)
+ 261 0090 8083      		st Z,r24
+  78:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2B = SERVO_PRESCALER_T2;
+ 262               		.stabn	68,0,78,.LM13-enableServoT2B
+ 263               	.LM13:
+ 264 0092 87E0      		ldi r24,lo8(7)
+ 265 0094 8093 B100 		sts 177,r24
+ 266               	/* epilogue: frame size=0 */
+ 267 0098 0895      		ret
+ 268               	/* epilogue end (size=1) */
+ 269               	/* function enableServoT2B size 21 (20) */
+ 270               		.size	enableServoT2B, .-enableServoT2B
+ 271               	.Lscope4:
+ 272               		.stabs	"",36,0,0,.Lscope4-enableServoT2B
+ 273               		.stabd	78,0,0
+ 274               		.stabs	"enableServosT2:F(0,15)",36,0,80,enableServosT2
+ 275               		.stabs	"pin1:P(4,2)",64,0,80,24
+ 276               		.stabs	"pin2:P(4,2)",64,0,80,17
+ 277               		.stabs	"ddr1:P(0,16)",64,0,80,20
+ 278               		.stabs	"ddr2:P(0,16)",64,0,80,14
+ 279               	.global	enableServosT2
+ 280               		.type	enableServosT2, @function
+ 281               	enableServosT2:
+ 282               		.stabd	46,0,0
+  79:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  80:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void enableServosT2(uint8_t pin1, uint8_t pin2, uint8_t *ddr1, uint8_t *ddr2) {
+ 283               		.stabn	68,0,80,.LM14-enableServosT2
+ 284               	.LM14:
+ 285               	/* prologue: frame size=0 */
+ 286 009a EF92      		push r14
+ 287 009c FF92      		push r15
+ 288 009e 1F93      		push r17
+ 289               	/* prologue end (size=3) */
+ 290 00a0 162F      		mov r17,r22
+ 291 00a2 7901      		movw r14,r18
+  81:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     enableServoT2A(pin1, ddr1);
+ 292               		.stabn	68,0,81,.LM15-enableServosT2
+ 293               	.LM15:
+ 294 00a4 BA01      		movw r22,r20
+ 295 00a6 0E94 0000 		call enableServoT2A
+  82:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     enableServoT2B(pin2, ddr2);
+ 296               		.stabn	68,0,82,.LM16-enableServosT2
+ 297               	.LM16:
+ 298 00aa B701      		movw r22,r14
+ 299 00ac 812F      		mov r24,r17
+ 300 00ae 0E94 0000 		call enableServoT2B
+ 301               	/* epilogue: frame size=0 */
+ 302 00b2 1F91      		pop r17
+ 303 00b4 FF90      		pop r15
+GAS LISTING /tmp/cc0w1iW5.s 			page 8
+
+
+ 304 00b6 EF90      		pop r14
+ 305 00b8 0895      		ret
+ 306               	/* epilogue end (size=4) */
+ 307               	/* function enableServosT2 size 16 (9) */
+ 308               		.size	enableServosT2, .-enableServosT2
+ 309               	.Lscope5:
+ 310               		.stabs	"",36,0,0,.Lscope5-enableServosT2
+ 311               		.stabd	78,0,0
+ 312               		.stabs	"disableServoT2A:F(0,15)",36,0,84,disableServoT2A
+ 313               	.global	disableServoT2A
+ 314               		.type	disableServoT2A, @function
+ 315               	disableServoT2A:
+ 316               		.stabd	46,0,0
+  83:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  84:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void disableServoT2A(void) {
+ 317               		.stabn	68,0,84,.LM17-disableServoT2A
+ 318               	.LM17:
+ 319               	/* prologue: frame size=0 */
+ 320               	/* prologue end (size=0) */
+  85:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2A &= ~(1 << COM1A1);
+ 321               		.stabn	68,0,85,.LM18-disableServoT2A
+ 322               	.LM18:
+ 323 00ba E0EB      		ldi r30,lo8(176)
+ 324 00bc F0E0      		ldi r31,hi8(176)
+ 325 00be 8081      		ld r24,Z
+ 326 00c0 8F77      		andi r24,lo8(127)
+ 327 00c2 8083      		st Z,r24
+  86:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2A &= ~(1 << COM1A0); 
+ 328               		.stabn	68,0,86,.LM19-disableServoT2A
+ 329               	.LM19:
+ 330 00c4 8081      		ld r24,Z
+ 331 00c6 8F7B      		andi r24,lo8(-65)
+ 332 00c8 8083      		st Z,r24
+ 333               	/* epilogue: frame size=0 */
+ 334 00ca 0895      		ret
+ 335               	/* epilogue end (size=1) */
+ 336               	/* function disableServoT2A size 9 (8) */
+ 337               		.size	disableServoT2A, .-disableServoT2A
+ 338               	.Lscope6:
+ 339               		.stabs	"",36,0,0,.Lscope6-disableServoT2A
+ 340               		.stabd	78,0,0
+ 341               		.stabs	"disableServoT2B:F(0,15)",36,0,88,disableServoT2B
+ 342               	.global	disableServoT2B
+ 343               		.type	disableServoT2B, @function
+ 344               	disableServoT2B:
+ 345               		.stabd	46,0,0
+  87:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  88:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void disableServoT2B(void) {
+ 346               		.stabn	68,0,88,.LM20-disableServoT2B
+ 347               	.LM20:
+ 348               	/* prologue: frame size=0 */
+ 349               	/* prologue end (size=0) */
+  89:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2A &= ~(1 << COM1B1);
+ 350               		.stabn	68,0,89,.LM21-disableServoT2B
+ 351               	.LM21:
+ 352 00cc E0EB      		ldi r30,lo8(176)
+ 353 00ce F0E0      		ldi r31,hi8(176)
+GAS LISTING /tmp/cc0w1iW5.s 			page 9
+
+
+ 354 00d0 8081      		ld r24,Z
+ 355 00d2 8F7D      		andi r24,lo8(-33)
+ 356 00d4 8083      		st Z,r24
+  90:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     TCCR2A &= ~(1 << COM1B0); 
+ 357               		.stabn	68,0,90,.LM22-disableServoT2B
+ 358               	.LM22:
+ 359 00d6 8081      		ld r24,Z
+ 360 00d8 8F7E      		andi r24,lo8(-17)
+ 361 00da 8083      		st Z,r24
+ 362               	/* epilogue: frame size=0 */
+ 363 00dc 0895      		ret
+ 364               	/* epilogue end (size=1) */
+ 365               	/* function disableServoT2B size 9 (8) */
+ 366               		.size	disableServoT2B, .-disableServoT2B
+ 367               	.Lscope7:
+ 368               		.stabs	"",36,0,0,.Lscope7-disableServoT2B
+ 369               		.stabd	78,0,0
+ 370               		.stabs	"setAngleT2A:F(0,15)",36,0,92,setAngleT2A
+ 371               		.stabs	"val:P(4,1)",64,0,92,24
+ 372               	.global	setAngleT2A
+ 373               		.type	setAngleT2A, @function
+ 374               	setAngleT2A:
+ 375               		.stabd	46,0,0
+  91:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+  92:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void setAngleT2A(int8_t val) {
+ 376               		.stabn	68,0,92,.LM23-setAngleT2A
+ 377               	.LM23:
+ 378               	/* prologue: frame size=0 */
+ 379               	/* prologue end (size=0) */
+  93:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     if ((val < -90) | (val > 90)) {
+ 380               		.stabn	68,0,93,.LM24-setAngleT2A
+ 381               	.LM24:
+ 382 00de 982F      		mov r25,r24
+ 383 00e0 965A      		subi r25,lo8(-(90))
+ 384 00e2 953B      		cpi r25,lo8(-75)
+ 385 00e4 00F0      		brlo .L18
+  94:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val < -90) {uval = 0;}
+ 386               		.stabn	68,0,94,.LM25-setAngleT2A
+ 387               	.LM25:
+ 388 00e6 863A      		cpi r24,lo8(-90)
+ 389 00e8 04F4      		brge .L20
+ 390 00ea 1092 0000 		sts uval,__zero_reg__
+ 391 00ee 00C0      		rjmp .L22
+ 392               	.L20:
+  95:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val > 90) {uval = 180;}
+ 393               		.stabn	68,0,95,.LM26-setAngleT2A
+ 394               	.LM26:
+ 395 00f0 8B35      		cpi r24,lo8(91)
+ 396 00f2 04F0      		brlt .L22
+ 397 00f4 84EB      		ldi r24,lo8(-76)
+ 398 00f6 8093 0000 		sts uval,r24
+ 399 00fa 00C0      		rjmp .L22
+ 400               	.L18:
+  96:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     }
+  97:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     else {uval = val + 90;}
+ 401               		.stabn	68,0,97,.LM27-setAngleT2A
+ 402               	.LM27:
+GAS LISTING /tmp/cc0w1iW5.s 			page 10
+
+
+ 403 00fc 9093 0000 		sts uval,r25
+ 404               	.L22:
+  98:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks = ticksperus;
+  99:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks *= (750.0 + ((uval * 1500.0)/180.0));
+ 405               		.stabn	68,0,99,.LM28-setAngleT2A
+ 406               	.LM28:
+ 407 0100 6091 0000 		lds r22,uval
+ 408 0104 7727      		clr r23
+ 409 0106 8827      		clr r24
+ 410 0108 77FD      		sbrc r23,7
+ 411 010a 8095      		com r24
+ 412 010c 982F      		mov r25,r24
+ 413 010e 0E94 0000 		call __floatsisf
+ 414 0112 20E0      		ldi r18,lo8(0x44bb8000)
+ 415 0114 30E8      		ldi r19,hi8(0x44bb8000)
+ 416 0116 4BEB      		ldi r20,hlo8(0x44bb8000)
+ 417 0118 54E4      		ldi r21,hhi8(0x44bb8000)
+ 418 011a 0E94 0000 		call __mulsf3
+ 419 011e 20E0      		ldi r18,lo8(0x43340000)
+ 420 0120 30E0      		ldi r19,hi8(0x43340000)
+ 421 0122 44E3      		ldi r20,hlo8(0x43340000)
+ 422 0124 53E4      		ldi r21,hhi8(0x43340000)
+ 423 0126 0E94 0000 		call __divsf3
+ 424 012a 20E0      		ldi r18,lo8(0x443b8000)
+ 425 012c 30E8      		ldi r19,hi8(0x443b8000)
+ 426 012e 4BE3      		ldi r20,hlo8(0x443b8000)
+ 427 0130 54E4      		ldi r21,hhi8(0x443b8000)
+ 428 0132 0E94 0000 		call __addsf3
+ 429 0136 2CE7      		ldi r18,lo8(0x3c30f27c)
+ 430 0138 32EF      		ldi r19,hi8(0x3c30f27c)
+ 431 013a 40E3      		ldi r20,hlo8(0x3c30f27c)
+ 432 013c 5CE3      		ldi r21,hhi8(0x3c30f27c)
+ 433 013e 0E94 0000 		call __mulsf3
+ 434 0142 6093 0000 		sts ticks,r22
+ 435 0146 7093 0000 		sts (ticks)+1,r23
+ 436 014a 8093 0000 		sts (ticks)+2,r24
+ 437 014e 9093 0000 		sts (ticks)+3,r25
+ 100:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     OCR2A = (uint8_t) ticks;
+ 438               		.stabn	68,0,100,.LM29-setAngleT2A
+ 439               	.LM29:
+ 440 0152 0E94 0000 		call __fixunssfsi
+ 441 0156 6093 B300 		sts 179,r22
+ 442               	/* epilogue: frame size=0 */
+ 443 015a 0895      		ret
+ 444               	/* epilogue end (size=1) */
+ 445               	/* function setAngleT2A size 63 (62) */
+ 446               		.size	setAngleT2A, .-setAngleT2A
+ 447               	.Lscope8:
+ 448               		.stabs	"",36,0,0,.Lscope8-setAngleT2A
+ 449               		.stabd	78,0,0
+ 450               		.stabs	"setSpeedT2A:F(0,15)",36,0,102,setSpeedT2A
+ 451               		.stabs	"val:P(4,1)",64,0,102,24
+ 452               	.global	setSpeedT2A
+ 453               		.type	setSpeedT2A, @function
+ 454               	setSpeedT2A:
+ 455               		.stabd	46,0,0
+ 101:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+GAS LISTING /tmp/cc0w1iW5.s 			page 11
+
+
+ 102:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void setSpeedT2A(int8_t val) {
+ 456               		.stabn	68,0,102,.LM30-setSpeedT2A
+ 457               	.LM30:
+ 458               	/* prologue: frame size=0 */
+ 459               	/* prologue end (size=0) */
+ 103:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     if ((val < -100) | (val > 100)) {
+ 460               		.stabn	68,0,103,.LM31-setSpeedT2A
+ 461               	.LM31:
+ 462 015c 982F      		mov r25,r24
+ 463 015e 9C59      		subi r25,lo8(-(100))
+ 464 0160 993C      		cpi r25,lo8(-55)
+ 465 0162 00F0      		brlo .L26
+ 104:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val < -100) uval = 0;
+ 466               		.stabn	68,0,104,.LM32-setSpeedT2A
+ 467               	.LM32:
+ 468 0164 8C39      		cpi r24,lo8(-100)
+ 469 0166 04F4      		brge .L28
+ 470 0168 1092 0000 		sts uval,__zero_reg__
+ 471 016c 00C0      		rjmp .L30
+ 472               	.L28:
+ 105:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val > 100) uval = 200;
+ 473               		.stabn	68,0,105,.LM33-setSpeedT2A
+ 474               	.LM33:
+ 475 016e 8536      		cpi r24,lo8(101)
+ 476 0170 04F0      		brlt .L30
+ 477 0172 88EC      		ldi r24,lo8(-56)
+ 478 0174 8093 0000 		sts uval,r24
+ 479 0178 00C0      		rjmp .L30
+ 480               	.L26:
+ 106:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     }
+ 107:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     else uval = val + 100;
+ 481               		.stabn	68,0,107,.LM34-setSpeedT2A
+ 482               	.LM34:
+ 483 017a 9093 0000 		sts uval,r25
+ 484               	.L30:
+ 108:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks = ticksperus;
+ 109:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks *= (750.0 + ((uval * 1500.0)/200.0));
+ 485               		.stabn	68,0,109,.LM35-setSpeedT2A
+ 486               	.LM35:
+ 487 017e 6091 0000 		lds r22,uval
+ 488 0182 7727      		clr r23
+ 489 0184 8827      		clr r24
+ 490 0186 77FD      		sbrc r23,7
+ 491 0188 8095      		com r24
+ 492 018a 982F      		mov r25,r24
+ 493 018c 0E94 0000 		call __floatsisf
+ 494 0190 20E0      		ldi r18,lo8(0x44bb8000)
+ 495 0192 30E8      		ldi r19,hi8(0x44bb8000)
+ 496 0194 4BEB      		ldi r20,hlo8(0x44bb8000)
+ 497 0196 54E4      		ldi r21,hhi8(0x44bb8000)
+ 498 0198 0E94 0000 		call __mulsf3
+ 499 019c 20E0      		ldi r18,lo8(0x43480000)
+ 500 019e 30E0      		ldi r19,hi8(0x43480000)
+ 501 01a0 48E4      		ldi r20,hlo8(0x43480000)
+ 502 01a2 53E4      		ldi r21,hhi8(0x43480000)
+ 503 01a4 0E94 0000 		call __divsf3
+ 504 01a8 20E0      		ldi r18,lo8(0x443b8000)
+GAS LISTING /tmp/cc0w1iW5.s 			page 12
+
+
+ 505 01aa 30E8      		ldi r19,hi8(0x443b8000)
+ 506 01ac 4BE3      		ldi r20,hlo8(0x443b8000)
+ 507 01ae 54E4      		ldi r21,hhi8(0x443b8000)
+ 508 01b0 0E94 0000 		call __addsf3
+ 509 01b4 2CE7      		ldi r18,lo8(0x3c30f27c)
+ 510 01b6 32EF      		ldi r19,hi8(0x3c30f27c)
+ 511 01b8 40E3      		ldi r20,hlo8(0x3c30f27c)
+ 512 01ba 5CE3      		ldi r21,hhi8(0x3c30f27c)
+ 513 01bc 0E94 0000 		call __mulsf3
+ 514 01c0 6093 0000 		sts ticks,r22
+ 515 01c4 7093 0000 		sts (ticks)+1,r23
+ 516 01c8 8093 0000 		sts (ticks)+2,r24
+ 517 01cc 9093 0000 		sts (ticks)+3,r25
+ 110:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     OCR2A = (uint8_t) ticks;
+ 518               		.stabn	68,0,110,.LM36-setSpeedT2A
+ 519               	.LM36:
+ 520 01d0 0E94 0000 		call __fixunssfsi
+ 521 01d4 6093 B300 		sts 179,r22
+ 522               	/* epilogue: frame size=0 */
+ 523 01d8 0895      		ret
+ 524               	/* epilogue end (size=1) */
+ 525               	/* function setSpeedT2A size 63 (62) */
+ 526               		.size	setSpeedT2A, .-setSpeedT2A
+ 527               	.Lscope9:
+ 528               		.stabs	"",36,0,0,.Lscope9-setSpeedT2A
+ 529               		.stabd	78,0,0
+ 530               		.stabs	"setAngleT2B:F(0,15)",36,0,112,setAngleT2B
+ 531               		.stabs	"val:P(4,1)",64,0,112,24
+ 532               	.global	setAngleT2B
+ 533               		.type	setAngleT2B, @function
+ 534               	setAngleT2B:
+ 535               		.stabd	46,0,0
+ 111:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+ 112:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void setAngleT2B(int8_t val) {
+ 536               		.stabn	68,0,112,.LM37-setAngleT2B
+ 537               	.LM37:
+ 538               	/* prologue: frame size=0 */
+ 539               	/* prologue end (size=0) */
+ 113:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     if ((val < -90) | (val > 90)) {
+ 540               		.stabn	68,0,113,.LM38-setAngleT2B
+ 541               	.LM38:
+ 542 01da 982F      		mov r25,r24
+ 543 01dc 965A      		subi r25,lo8(-(90))
+ 544 01de 953B      		cpi r25,lo8(-75)
+ 545 01e0 00F0      		brlo .L34
+ 114:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val < -90) {uval = 0;}
+ 546               		.stabn	68,0,114,.LM39-setAngleT2B
+ 547               	.LM39:
+ 548 01e2 863A      		cpi r24,lo8(-90)
+ 549 01e4 04F4      		brge .L36
+ 550 01e6 1092 0000 		sts uval,__zero_reg__
+ 551 01ea 00C0      		rjmp .L38
+ 552               	.L36:
+ 115:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val > 90) {uval = 180;}
+ 553               		.stabn	68,0,115,.LM40-setAngleT2B
+ 554               	.LM40:
+ 555 01ec 8B35      		cpi r24,lo8(91)
+GAS LISTING /tmp/cc0w1iW5.s 			page 13
+
+
+ 556 01ee 04F0      		brlt .L38
+ 557 01f0 84EB      		ldi r24,lo8(-76)
+ 558 01f2 8093 0000 		sts uval,r24
+ 559 01f6 00C0      		rjmp .L38
+ 560               	.L34:
+ 116:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     }
+ 117:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     else {uval = val + 90;}
+ 561               		.stabn	68,0,117,.LM41-setAngleT2B
+ 562               	.LM41:
+ 563 01f8 9093 0000 		sts uval,r25
+ 564               	.L38:
+ 118:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks = ticksperus;
+ 119:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks *= (750.0 + ((uval * 1500.0)/180.0));
+ 565               		.stabn	68,0,119,.LM42-setAngleT2B
+ 566               	.LM42:
+ 567 01fc 6091 0000 		lds r22,uval
+ 568 0200 7727      		clr r23
+ 569 0202 8827      		clr r24
+ 570 0204 77FD      		sbrc r23,7
+ 571 0206 8095      		com r24
+ 572 0208 982F      		mov r25,r24
+ 573 020a 0E94 0000 		call __floatsisf
+ 574 020e 20E0      		ldi r18,lo8(0x44bb8000)
+ 575 0210 30E8      		ldi r19,hi8(0x44bb8000)
+ 576 0212 4BEB      		ldi r20,hlo8(0x44bb8000)
+ 577 0214 54E4      		ldi r21,hhi8(0x44bb8000)
+ 578 0216 0E94 0000 		call __mulsf3
+ 579 021a 20E0      		ldi r18,lo8(0x43340000)
+ 580 021c 30E0      		ldi r19,hi8(0x43340000)
+ 581 021e 44E3      		ldi r20,hlo8(0x43340000)
+ 582 0220 53E4      		ldi r21,hhi8(0x43340000)
+ 583 0222 0E94 0000 		call __divsf3
+ 584 0226 20E0      		ldi r18,lo8(0x443b8000)
+ 585 0228 30E8      		ldi r19,hi8(0x443b8000)
+ 586 022a 4BE3      		ldi r20,hlo8(0x443b8000)
+ 587 022c 54E4      		ldi r21,hhi8(0x443b8000)
+ 588 022e 0E94 0000 		call __addsf3
+ 589 0232 2CE7      		ldi r18,lo8(0x3c30f27c)
+ 590 0234 32EF      		ldi r19,hi8(0x3c30f27c)
+ 591 0236 40E3      		ldi r20,hlo8(0x3c30f27c)
+ 592 0238 5CE3      		ldi r21,hhi8(0x3c30f27c)
+ 593 023a 0E94 0000 		call __mulsf3
+ 594 023e 6093 0000 		sts ticks,r22
+ 595 0242 7093 0000 		sts (ticks)+1,r23
+ 596 0246 8093 0000 		sts (ticks)+2,r24
+ 597 024a 9093 0000 		sts (ticks)+3,r25
+ 120:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     OCR2B = (uint8_t) ticks;
+ 598               		.stabn	68,0,120,.LM43-setAngleT2B
+ 599               	.LM43:
+ 600 024e 0E94 0000 		call __fixunssfsi
+ 601 0252 6093 B400 		sts 180,r22
+ 602               	/* epilogue: frame size=0 */
+ 603 0256 0895      		ret
+ 604               	/* epilogue end (size=1) */
+ 605               	/* function setAngleT2B size 63 (62) */
+ 606               		.size	setAngleT2B, .-setAngleT2B
+ 607               	.Lscope10:
+GAS LISTING /tmp/cc0w1iW5.s 			page 14
+
+
+ 608               		.stabs	"",36,0,0,.Lscope10-setAngleT2B
+ 609               		.stabd	78,0,0
+ 610               		.stabs	"setSpeedT2B:F(0,15)",36,0,122,setSpeedT2B
+ 611               		.stabs	"val:P(4,1)",64,0,122,24
+ 612               	.global	setSpeedT2B
+ 613               		.type	setSpeedT2B, @function
+ 614               	setSpeedT2B:
+ 615               		.stabd	46,0,0
+ 121:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** }
+ 122:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h **** void setSpeedT2B(int8_t val) {
+ 616               		.stabn	68,0,122,.LM44-setSpeedT2B
+ 617               	.LM44:
+ 618               	/* prologue: frame size=0 */
+ 619               	/* prologue end (size=0) */
+ 123:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     if ((val < -100) | (val > 100)) {
+ 620               		.stabn	68,0,123,.LM45-setSpeedT2B
+ 621               	.LM45:
+ 622 0258 982F      		mov r25,r24
+ 623 025a 9C59      		subi r25,lo8(-(100))
+ 624 025c 993C      		cpi r25,lo8(-55)
+ 625 025e 00F0      		brlo .L42
+ 124:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val < -100) uval = 0;
+ 626               		.stabn	68,0,124,.LM46-setSpeedT2B
+ 627               	.LM46:
+ 628 0260 8C39      		cpi r24,lo8(-100)
+ 629 0262 04F4      		brge .L44
+ 630 0264 1092 0000 		sts uval,__zero_reg__
+ 631 0268 00C0      		rjmp .L46
+ 632               	.L44:
+ 125:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****         if(val > 100) uval = 200;
+ 633               		.stabn	68,0,125,.LM47-setSpeedT2B
+ 634               	.LM47:
+ 635 026a 8536      		cpi r24,lo8(101)
+ 636 026c 04F0      		brlt .L46
+ 637 026e 88EC      		ldi r24,lo8(-56)
+ 638 0270 8093 0000 		sts uval,r24
+ 639 0274 00C0      		rjmp .L46
+ 640               	.L42:
+ 126:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     }
+ 127:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     else uval = val + 100;
+ 641               		.stabn	68,0,127,.LM48-setSpeedT2B
+ 642               	.LM48:
+ 643 0276 9093 0000 		sts uval,r25
+ 644               	.L46:
+ 128:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks = ticksperus;
+ 129:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     ticks *= (750.0 + ((uval * 1500.0)/200.0));
+ 645               		.stabn	68,0,129,.LM49-setSpeedT2B
+ 646               	.LM49:
+ 647 027a 6091 0000 		lds r22,uval
+ 648 027e 7727      		clr r23
+ 649 0280 8827      		clr r24
+ 650 0282 77FD      		sbrc r23,7
+ 651 0284 8095      		com r24
+ 652 0286 982F      		mov r25,r24
+ 653 0288 0E94 0000 		call __floatsisf
+ 654 028c 20E0      		ldi r18,lo8(0x44bb8000)
+ 655 028e 30E8      		ldi r19,hi8(0x44bb8000)
+GAS LISTING /tmp/cc0w1iW5.s 			page 15
+
+
+ 656 0290 4BEB      		ldi r20,hlo8(0x44bb8000)
+ 657 0292 54E4      		ldi r21,hhi8(0x44bb8000)
+ 658 0294 0E94 0000 		call __mulsf3
+ 659 0298 20E0      		ldi r18,lo8(0x43480000)
+ 660 029a 30E0      		ldi r19,hi8(0x43480000)
+ 661 029c 48E4      		ldi r20,hlo8(0x43480000)
+ 662 029e 53E4      		ldi r21,hhi8(0x43480000)
+ 663 02a0 0E94 0000 		call __divsf3
+ 664 02a4 20E0      		ldi r18,lo8(0x443b8000)
+ 665 02a6 30E8      		ldi r19,hi8(0x443b8000)
+ 666 02a8 4BE3      		ldi r20,hlo8(0x443b8000)
+ 667 02aa 54E4      		ldi r21,hhi8(0x443b8000)
+ 668 02ac 0E94 0000 		call __addsf3
+ 669 02b0 2CE7      		ldi r18,lo8(0x3c30f27c)
+ 670 02b2 32EF      		ldi r19,hi8(0x3c30f27c)
+ 671 02b4 40E3      		ldi r20,hlo8(0x3c30f27c)
+ 672 02b6 5CE3      		ldi r21,hhi8(0x3c30f27c)
+ 673 02b8 0E94 0000 		call __mulsf3
+ 674 02bc 6093 0000 		sts ticks,r22
+ 675 02c0 7093 0000 		sts (ticks)+1,r23
+ 676 02c4 8093 0000 		sts (ticks)+2,r24
+ 677 02c8 9093 0000 		sts (ticks)+3,r25
+ 130:/home/robotdude/Programs/AVR_Projects/avrlib/t2servo.h ****     OCR2B = (uint8_t) ticks;
+ 678               		.stabn	68,0,130,.LM50-setSpeedT2B
+ 679               	.LM50:
+ 680 02cc 0E94 0000 		call __fixunssfsi
+ 681 02d0 6093 B400 		sts 180,r22
+ 682               	/* epilogue: frame size=0 */
+ 683 02d4 0895      		ret
+ 684               	/* epilogue end (size=1) */
+ 685               	/* function setSpeedT2B size 63 (62) */
+ 686               		.size	setSpeedT2B, .-setSpeedT2B
+ 687               	.Lscope11:
+ 688               		.stabs	"",36,0,0,.Lscope11-setSpeedT2B
+ 689               		.stabd	78,0,0
+ 690               		.stabs	"main:F(0,1)",36,0,7,main
+ 691               	.global	main
+ 692               		.type	main, @function
+ 693               	main:
+ 694               		.stabd	46,0,0
+ 695               		.stabs	"servo_ctl_t2.c",132,0,0,.Ltext7
+ 696               	.Ltext7:
+   1:servo_ctl_t2.c **** #define F_CPU 11059200UL
+   2:servo_ctl_t2.c **** #include <avr/io.h>
+   3:servo_ctl_t2.c **** #include <util/delay.h>
+   4:servo_ctl_t2.c **** #include <stdint.h>
+   5:servo_ctl_t2.c **** #include <t2servo.h>
+   6:servo_ctl_t2.c **** 
+   7:servo_ctl_t2.c **** int main (void) {
+ 697               		.stabn	68,0,7,.LM51-main
+ 698               	.LM51:
+ 699               	/* prologue: frame size=0 */
+ 700               	/* prologue end (size=0) */
+   8:servo_ctl_t2.c ****     enableServoT2B(PORTD6, &DDRD);
+ 701               		.stabn	68,0,8,.LM52-main
+ 702               	.LM52:
+ 703 02d6 6AE2      		ldi r22,lo8(42)
+GAS LISTING /tmp/cc0w1iW5.s 			page 16
+
+
+ 704 02d8 70E0      		ldi r23,hi8(42)
+ 705 02da 86E0      		ldi r24,lo8(6)
+ 706 02dc 0E94 0000 		call enableServoT2B
+   9:servo_ctl_t2.c ****     int8_t cnt=0;
+  10:servo_ctl_t2.c ****     //setAngleT2B(0);
+  11:servo_ctl_t2.c ****     setAngleT2B(90);
+ 707               		.stabn	68,0,11,.LM53-main
+ 708               	.LM53:
+ 709 02e0 8AE5      		ldi r24,lo8(90)
+ 710 02e2 0E94 0000 		call setAngleT2B
+ 711               	.L50:
+ 712 02e6 00C0      		rjmp .L50
+ 713               	/* epilogue: frame size=0 */
+ 714               	/* epilogue: noreturn */
+ 715               	/* epilogue end (size=0) */
+ 716               	/* function main size 9 (9) */
+ 717               		.size	main, .-main
+ 718               	.Lscope12:
+ 719               		.stabs	"",36,0,0,.Lscope12-main
+ 720               		.stabd	78,0,0
+ 721               		.comm ticks,4,1
+ 722               		.comm uval,1,1
+ 723               		.stabs	"ticks:G(0,13)",32,0,34,0
+ 724               		.stabs	"uval:G(4,2)",32,0,35,0
+ 725               		.stabs	"",100,0,0,.Letext0
+ 726               	.Letext0:
+ 727               	/* File "servo_ctl_t2.c": code  377 = 0x0179 ( 359), prologues   3, epilogues  15 */
+GAS LISTING /tmp/cc0w1iW5.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 servo_ctl_t2.c
+     /tmp/cc0w1iW5.s:3      *ABS*:000000000000003f __SREG__
+     /tmp/cc0w1iW5.s:4      *ABS*:000000000000003e __SP_H__
+     /tmp/cc0w1iW5.s:5      *ABS*:000000000000003d __SP_L__
+     /tmp/cc0w1iW5.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc0w1iW5.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc0w1iW5.s:76     .text:0000000000000000 set8
+     /tmp/cc0w1iW5.s:110    .text:0000000000000018 clear8
+     /tmp/cc0w1iW5.s:143    .text:0000000000000032 get8
+     /tmp/cc0w1iW5.s:175    .text:000000000000004a enableServoT2A
+     /tmp/cc0w1iW5.s:228    .text:0000000000000072 enableServoT2B
+     /tmp/cc0w1iW5.s:281    .text:000000000000009a enableServosT2
+     /tmp/cc0w1iW5.s:315    .text:00000000000000ba disableServoT2A
+     /tmp/cc0w1iW5.s:344    .text:00000000000000cc disableServoT2B
+     /tmp/cc0w1iW5.s:374    .text:00000000000000de setAngleT2A
+                            *COM*:0000000000000001 uval
+                            *COM*:0000000000000004 ticks
+     /tmp/cc0w1iW5.s:454    .text:000000000000015c setSpeedT2A
+     /tmp/cc0w1iW5.s:534    .text:00000000000001da setAngleT2B
+     /tmp/cc0w1iW5.s:614    .text:0000000000000258 setSpeedT2B
+     /tmp/cc0w1iW5.s:693    .text:00000000000002d6 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__floatsisf
+__mulsf3
+__divsf3
+__addsf3
+__fixunssfsi

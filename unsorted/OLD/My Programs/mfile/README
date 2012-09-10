@@ -1,0 +1,174 @@
+Mfile -  a simple Makefile generator for AVR-GCC
+================================================
+
+[See below for installation instructions]
+
+General
+-------
+
+The main purpose of this small application is to provide people an
+easy way to setup their project's Makefiles for »relatively standard«
+projects, so one could start using AVR-GCC without first studying the
+AVR's datasheet, plus the avr-libc documentation (really
+recommended!), /plus/ the »GNU make« user manual.
+
+It cannot really release the potential programmer from eventually
+studying the »GNU make« manual, but it can help to delay this part a
+few months.
+
+This generator works by using a Makefile template (the one that
+currently ships with WinAVR), load it into an editor buffer so the
+user can view the file and the changes, and then use a menu-driven
+approach to customize that buffer.  Eventually, at the user's
+discretion, this editor buffer can be saved into a Makefile.
+(Optionally, the user can also edit the buffer directly, so it acts as
+a simple text editor.)
+
+While the Programmer's Notepad 2 (PN2) editor that ships with WinAVR
+intends to eventually implement this functionality some day, there are
+two reasons for this little project:
+
+. Act as a stop-gap measure so users will get something they can use
+  right now, without waiting any longer.
+
+. Since this tool is written in Tcl/Tk, it is also portable to Unix
+  systems, so Unix users (who'd never benefit from PN2) might use it.
+
+I do explicitly /not/ intend to make this tool the all-singing
+all-dancing scriptable Makefile generator that can emit any Makefile
+for any processor and compiler on earth.  I really do not want to
+spend that many more hours into it, it was intented to be a quick and
+(hopefully not so) dirty tool that gets finished within a couple of
+evenings, and won't cost me another dozen of hours per months for
+supporting it, adding new features etc.  If you feel this is worth
+porting somewhere else (like for the MSP430-GCC that is probably
+fairly close to AVR-GCC in terms of typical use), please pick it up,
+extend it, and maintain it separately.  As always, I appreciate
+feedback, but reserve the right to ignore anything that tries to
+extend this tool above the outlined original purpose.
+
+Note that the Makefile template as shipped requires GNU make for
+various things (automagic dependency generation, some inference rules
+are written in gmake syntax as well).  However, as Mfile only relies
+on a few macro names in the template, it should be relatively easy to
+modify the template for other »make« dialects.  The template (or input
+file upon »File -> Open«) will be parsed when reading it, and only
+those features actually present will be displayed in the »Makefile«
+menu.  So if e. g. people don't want to include AVRdude features, they
+can delete all related lines from the template.  Also if someone (like
+Unix users, in particular those not using GNU make) want to modify the
+way the dependencies are generated (e. g. by using the traditional
+»make depend« approach), this should be completely unrelated.
+
+
+Prerequisites
+-------------
+
+Requires the Tcl and Tk toolkits in recent versions (no exact version
+known, probably any 8.x version is OK).  Current WinAVR (20030913)
+contains these tools.
+
+As an alternative to the standard Tk wish interpreter, the tix
+toolkit's tixwish interpreter can be used.  Under Unix systems, the
+look & feel is then closer to what Tk wish looks like under Windows.
+
+
+Installation on Windows
+-----------------------
+
+[Users of WinAVR 20040404 and beyond do get Mfile pre-installed.  See
+below for upgrade instructions.]
+
+Extract the archive into a subdirectory of its own, e. g.
+
+c:\WinAVR\mfile
+
+Double-click on the icon for »mfile.tcl« in your file browser
+(explorer), and tell it to use c:\WinAVR\bin\wish84.exe to run this
+file.  (Adjust appropriately if you installed WinAVR in another
+directory.)
+
+Since Windows always changes to the directory of the application
+before starting it, all template and auxiliary files should be found
+easily there without editing mfile.tcl.  Note however that this
+directory will also become the default directory where »Makefile« will
+be stored, unless you change a different location with »Save As...«
+
+As another option, the following has been contributed by Eric Weddington
+on how to properly create a shortcut on the desktop:
+
+1. Extract the mfile.zip archive into your WinAVR
+installation directory. This will automatically create a
+subdirectory \mfile with all the needed files in this
+subdirectory.
+
+2. Create a Shortcut on your Desktop.
+
+3. For the location of the item, select the program
+wish84.exe which is located in \bin subdirectory of your
+WinAVR installation directory. Add a space and then type
+the absolute pathname of the program, mfile.tcl, which is
+located in the mfile subdirectory of your WinAVR
+installation directory.
+
+For example, if your WinAVR installation directory is at
+C:\WinAVR, then the item will look like:
+C:\WinAVR\bin\wish84.exe C:\WinAVR\mfile\mfile.tcl
+
+4. The name of the Shortcut should be: MFile
+
+5. When finished, you will have to go back and properly
+select the Start Directory. Right-click the shortcut icon
+on your Deskopt and select Properties. In the Start In edit
+box, put in the mfile subdirectory of your WinAVR
+installation directory. NOTE! This is essential if MFile is
+to execute correctly as there are additional files that it
+needs to find.
+
+For example, if your WinAVR installation directory is at
+C:\WinAVR, then the Start directory will be:
+C:\WinAVR\mfile
+
+Installation on Unix
+--------------------
+
+Extract the archive into an arbitrary subdirectory, like
+
+/usr/local/share/mfile
+
+If a different directory is chosen, edit the setting of »prefix« on
+top of mfile.tcl to match the installation directory, or alternatively
+use the environment variable MFILE_HOME to override the default
+setting.
+
+If you'd like to use a different interpreter than
+/usr/local/bin/tixwish, edit the #! setting in the first line.  The
+standard Tk wish interpreter is supported as well as the tix toolkit
+one.
+
+If you prefer, create a symbolic link for convenience (so the
+application can be found along your default $PATH setting), like
+
+ln -s /usr/local/share/mfile/mfile.tcl /usr/local/bin/mfile
+
+Remember to edit the file makefile_template to suite your needs (e. g.
+default settings, adaptation to non-GNU make utilities).
+
+
+Upgrading an Mfile installation on WinAVR
+-----------------------------------------
+
+Starting with WinAVR 20040404, the WinAVR collection is shipping Mfile
+pre-installed.  (After all, the WinAVR users have once been the
+primary reason to develop Mfile at all.)
+
+In order to upgrade the Mfile files supplied with WinAVR, extract the
+archive into some directory, and copy all the files into
+
+<winavr directory>\mfile
+
+That ought to be all that is to be done.
+
+----------------------------------------------------------------------
+Dresden, F. R. Germany, $Date: 2004/07/15 20:51:08 $
+Joerg Wunsch <j.gnu@uriah.heep.sax.de>

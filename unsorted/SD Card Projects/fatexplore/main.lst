@@ -1,0 +1,879 @@
+GAS LISTING /tmp/cc5CruDe.s 			page 1
+
+
+   1               		.file	"main.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Projects/AVR_Projects/fatexplore/",100,0,2,.Ltext0
+  11               		.stabs	"main.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdio.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  33               		.stabs	"int8_t:t(3,1)=(0,10)",128,0,121,0
+  34               		.stabs	"uint8_t:t(3,2)=(0,11)",128,0,122,0
+  35               		.stabs	"int16_t:t(3,3)=(0,1)",128,0,123,0
+  36               		.stabs	"uint16_t:t(3,4)=(0,4)",128,0,124,0
+  37               		.stabs	"int32_t:t(3,5)=(0,3)",128,0,125,0
+  38               		.stabs	"uint32_t:t(3,6)=(0,5)",128,0,126,0
+  39               		.stabs	"int64_t:t(3,7)=(0,6)",128,0,128,0
+  40               		.stabs	"uint64_t:t(3,8)=(0,7)",128,0,129,0
+  41               		.stabs	"intptr_t:t(3,9)=(3,3)",128,0,142,0
+  42               		.stabs	"uintptr_t:t(3,10)=(3,4)",128,0,147,0
+  43               		.stabs	"int_least8_t:t(3,11)=(3,1)",128,0,159,0
+  44               		.stabs	"uint_least8_t:t(3,12)=(3,2)",128,0,164,0
+  45               		.stabs	"int_least16_t:t(3,13)=(3,3)",128,0,169,0
+  46               		.stabs	"uint_least16_t:t(3,14)=(3,4)",128,0,174,0
+  47               		.stabs	"int_least32_t:t(3,15)=(3,5)",128,0,179,0
+  48               		.stabs	"uint_least32_t:t(3,16)=(3,6)",128,0,184,0
+  49               		.stabs	"int_least64_t:t(3,17)=(3,7)",128,0,192,0
+  50               		.stabs	"uint_least64_t:t(3,18)=(3,8)",128,0,199,0
+  51               		.stabs	"int_fast8_t:t(3,19)=(3,1)",128,0,213,0
+  52               		.stabs	"uint_fast8_t:t(3,20)=(3,2)",128,0,218,0
+  53               		.stabs	"int_fast16_t:t(3,21)=(3,3)",128,0,223,0
+  54               		.stabs	"uint_fast16_t:t(3,22)=(3,4)",128,0,228,0
+  55               		.stabs	"int_fast32_t:t(3,23)=(3,5)",128,0,233,0
+  56               		.stabs	"uint_fast32_t:t(3,24)=(3,6)",128,0,238,0
+  57               		.stabs	"int_fast64_t:t(3,25)=(3,7)",128,0,246,0
+GAS LISTING /tmp/cc5CruDe.s 			page 2
+
+
+  58               		.stabs	"uint_fast64_t:t(3,26)=(3,8)",128,0,253,0
+  59               		.stabs	"intmax_t:t(3,27)=(3,7)",128,0,273,0
+  60               		.stabs	"uintmax_t:t(3,28)=(3,8)",128,0,278,0
+  61               		.stabn	162,0,0,0
+  62               		.stabs	"int_farptr_t:t(2,1)=(3,5)",128,0,77,0
+  63               		.stabs	"uint_farptr_t:t(2,2)=(3,6)",128,0,81,0
+  64               		.stabn	162,0,0,0
+  65               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stdarg.h",130,0,0,0
+  66               		.stabs	"__gnuc_va_list:t(4,1)=(4,2)=*(0,15)",128,0,43,0
+  67               		.stabs	"va_list:t(4,3)=(4,1)",128,0,105,0
+  68               		.stabn	162,0,0,0
+  69               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stddef.h",130,0,0,0
+  70               		.stabs	"size_t:t(5,1)=(0,4)",128,0,214,0
+  71               		.stabn	162,0,0,0
+  72               		.stabs	"__file:T(1,1)=s14buf:(1,2)=*(0,2),0,16;unget:(0,11),16,8;flags:(3,2),24,8;size:(0,1),32,16
+  73               		.stabn	162,0,0,0
+  74               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  75               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  76               		.stabs	"__fuse_t:t(7,1)=(7,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219,0
+  77               		.stabn	162,0,0,0
+  78               		.stabn	162,0,0,0
+  79               		.stabs	"ff.h",130,0,0,0
+  80               		.stabs	"integer.h",130,0,0,0
+  81               		.stabs	"INT:t(9,1)=(0,1)",128,0,12,0
+  82               		.stabs	"UINT:t(9,2)=(0,4)",128,0,13,0
+  83               		.stabs	"CHAR:t(9,3)=(0,10)",128,0,16,0
+  84               		.stabs	"UCHAR:t(9,4)=(0,11)",128,0,17,0
+  85               		.stabs	"BYTE:t(9,5)=(0,11)",128,0,18,0
+  86               		.stabs	"SHORT:t(9,6)=(0,8)",128,0,21,0
+  87               		.stabs	"USHORT:t(9,7)=(0,9)",128,0,22,0
+  88               		.stabs	"WORD:t(9,8)=(0,9)",128,0,23,0
+  89               		.stabs	"WCHAR:t(9,9)=(0,9)",128,0,24,0
+  90               		.stabs	"LONG:t(9,10)=(0,3)",128,0,27,0
+  91               		.stabs	"ULONG:t(9,11)=(0,5)",128,0,28,0
+  92               		.stabs	"DWORD:t(9,12)=(0,5)",128,0,29,0
+  93               		.stabs	" :T(9,13)=@s8;eFALSE:0,TRUE:1,;",128,0,0,0
+  94               		.stabs	"BOOL:t(9,14)=(9,13)",128,0,32,0
+  95               		.stabn	162,0,0,0
+  96               		.stabs	"XCHAR:t(8,1)=(0,2)",128,0,293,0
+  97               		.stabs	"_FATFS_:T(8,2)=s558fs_type:(9,5),0,8;drive:(9,5),8,8;csize:(9,5),16,8;n_fats:(9,5),24,8;wf
+  98               		.stabs	"FATFS:t(8,5)=(8,2)",128,0,330,0
+  99               		.stabs	"_DIR_:T(8,6)=s22fs:(8,7)=*(8,5),0,16;id:(9,8),16,16;index:(9,8),32,16;sclust:(9,12),48,32;
+ 100               		.stabs	"DIR:t(8,9)=(8,6)",128,0,349,0
+ 101               		.stabs	"_FIL_:T(8,10)=s32fs:(8,7),0,16;id:(9,8),16,16;flag:(9,5),32,8;csect:(9,5),40,8;fptr:(9,12)
+ 102               		.stabs	"FIL:t(8,11)=(8,10)",128,0,372,0
+ 103               		.stabs	"_FILINFO_:T(8,12)=s22fsize:(9,12),0,32;fdate:(9,8),32,16;ftime:(9,8),48,16;fattrib:(9,5),6
+ 104               		.stabs	"FILINFO:t(8,14)=(8,12)",128,0,388,0
+ 105               		.stabs	" :T(8,15)=@s8;eFR_OK:0,FR_DISK_ERR:1,FR_INT_ERR:2,FR_NOT_READY:3,FR_NO_FILE:4,FR_NO_PATH:5
+ 106               		.stabs	"FRESULT:t(8,16)=(8,15)",128,0,411,0
+ 107               		.stabn	162,0,0,0
+ 108               		.stabs	"diskio.h",130,0,0,0
+ 109               		.stabs	"DSTATUS:t(10,1)=(9,5)",128,0,14,0
+ 110               		.stabs	" :T(10,2)=@s8;eRES_OK:0,RES_ERROR:1,RES_WRPRT:2,RES_NOTRDY:3,RES_PARERR:4,;",128,0,0,0
+ 111               		.stabs	"DRESULT:t(10,3)=(10,2)",128,0,23,0
+ 112               		.stabn	162,0,0,0
+ 113               		.stabs	"get_fattime:F(9,12)",36,0,18,get_fattime
+ 114               	.global	get_fattime
+GAS LISTING /tmp/cc5CruDe.s 			page 3
+
+
+ 115               		.type	get_fattime, @function
+ 116               	get_fattime:
+ 117               		.stabd	46,0,0
+   1:main.c        **** /* Explore the filesystem on an SD card */
+   2:main.c        **** 
+   3:main.c        **** #include <stdio.h>
+   4:main.c        **** #include <string.h>
+   5:main.c        **** #include <avr/io.h>
+   6:main.c        **** #include <avr/interrupt.h>
+   7:main.c        **** #include "ff.h"
+   8:main.c        **** #include "diskio.h"
+   9:main.c        **** #include "timer0ctc.h"
+  10:main.c        **** #include "stdusart0.h"
+  11:main.c        **** 
+  12:main.c        **** #define BAUD 5
+  13:main.c        **** 
+  14:main.c        **** ISR( TIMER0_COMPA_vect ) { // runs every 10ms
+  15:main.c        **** 	disk_timerproc();      // clock fat driver timer variables
+  16:main.c        **** }
+  17:main.c        **** 
+  18:main.c        **** DWORD get_fattime () { return 0; }
+ 118               		.stabn	68,0,18,.LM0-.LFBB1
+ 119               	.LM0:
+ 120               	.LFBB1:
+ 121               	/* prologue: function */
+ 122               	/* frame size = 0 */
+ 123               		.stabn	68,0,18,.LM1-.LFBB1
+ 124               	.LM1:
+ 125 0000 60E0      		ldi r22,lo8(0)
+ 126 0002 70E0      		ldi r23,hi8(0)
+ 127 0004 80E0      		ldi r24,hlo8(0)
+ 128 0006 90E0      		ldi r25,hhi8(0)
+ 129               	/* epilogue start */
+ 130 0008 0895      		ret
+ 131               		.size	get_fattime, .-get_fattime
+ 132               	.Lscope1:
+ 133               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 134               		.stabd	78,0,0
+ 135               		.stabs	"__vector_16:F(0,15)",36,0,14,__vector_16
+ 136               	.global	__vector_16
+ 137               		.type	__vector_16, @function
+ 138               	__vector_16:
+ 139               		.stabd	46,0,0
+ 140               		.stabn	68,0,14,.LM2-.LFBB2
+ 141               	.LM2:
+ 142               	.LFBB2:
+ 143 000a 1F92      		push __zero_reg__
+ 144 000c 0F92      		push r0
+ 145 000e 0FB6      		in r0,__SREG__
+ 146 0010 0F92      		push r0
+ 147 0012 1124      		clr __zero_reg__
+ 148 0014 2F93      		push r18
+ 149 0016 3F93      		push r19
+ 150 0018 4F93      		push r20
+ 151 001a 5F93      		push r21
+ 152 001c 6F93      		push r22
+ 153 001e 7F93      		push r23
+GAS LISTING /tmp/cc5CruDe.s 			page 4
+
+
+ 154 0020 8F93      		push r24
+ 155 0022 9F93      		push r25
+ 156 0024 AF93      		push r26
+ 157 0026 BF93      		push r27
+ 158 0028 EF93      		push r30
+ 159 002a FF93      		push r31
+ 160               	/* prologue: Signal */
+ 161               	/* frame size = 0 */
+ 162               		.stabn	68,0,15,.LM3-.LFBB2
+ 163               	.LM3:
+ 164 002c 0E94 0000 		call disk_timerproc
+ 165               	/* epilogue start */
+ 166               		.stabn	68,0,16,.LM4-.LFBB2
+ 167               	.LM4:
+ 168 0030 FF91      		pop r31
+ 169 0032 EF91      		pop r30
+ 170 0034 BF91      		pop r27
+ 171 0036 AF91      		pop r26
+ 172 0038 9F91      		pop r25
+ 173 003a 8F91      		pop r24
+ 174 003c 7F91      		pop r23
+ 175 003e 6F91      		pop r22
+ 176 0040 5F91      		pop r21
+ 177 0042 4F91      		pop r20
+ 178 0044 3F91      		pop r19
+ 179 0046 2F91      		pop r18
+ 180 0048 0F90      		pop r0
+ 181 004a 0FBE      		out __SREG__,r0
+ 182 004c 0F90      		pop r0
+ 183 004e 1F90      		pop __zero_reg__
+ 184 0050 1895      		reti
+ 185               		.size	__vector_16, .-__vector_16
+ 186               	.Lscope2:
+ 187               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 188               		.stabd	78,0,0
+ 189               		.data
+ 190               	.LC0:
+ 191 0000 2573 0D0A 		.string	"%s\r\n"
+ 191      00
+ 192               	.LC1:
+ 193 0005 5379 7374 		.string	"System Error\n\r"
+ 193      656D 2045 
+ 193      7272 6F72 
+ 193      0A0D 00
+ 194               	.LC2:
+ 195 0014 2573 2F25 		.string	"%s/%s"
+ 195      7300 
+ 196 001a 00        		.string	""
+ 197               	.LC3:
+ 198 001b 2F25 7300 		.string	"/%s"
+ 199 001f 00        		.string	""
+ 200               	.LC4:
+ 201 0020 5061 7468 		.string	"Path \"%s\" too deep\r\n"
+ 201      2022 2573 
+ 201      2220 746F 
+ 201      6F20 6465 
+ 201      6570 0D0A 
+GAS LISTING /tmp/cc5CruDe.s 			page 5
+
+
+ 202               	.LC5:
+ 203 0035 2573 2F25 		.string	"%s/%s\r\n"
+ 203      730D 0A00 
+ 204               		.text
+ 205               		.stabs	"scandir:F(0,15)",36,0,22,scandir
+ 206               	.global	scandir
+ 207               		.type	scandir, @function
+ 208               	scandir:
+ 209               		.stabd	46,0,0
+  19:main.c        **** char ch = 0;
+  20:main.c        **** int deepness = 0;
+  21:main.c        **** 
+  22:main.c        **** void scandir( char* path ) {
+ 210               		.stabn	68,0,22,.LM5-.LFBB3
+ 211               	.LM5:
+ 212               	.LFBB3:
+ 213 0052 2F92      		push r2
+ 214 0054 3F92      		push r3
+ 215 0056 5F92      		push r5
+ 216 0058 6F92      		push r6
+ 217 005a 7F92      		push r7
+ 218 005c 8F92      		push r8
+ 219 005e 9F92      		push r9
+ 220 0060 AF92      		push r10
+ 221 0062 BF92      		push r11
+ 222 0064 CF92      		push r12
+ 223 0066 DF92      		push r13
+ 224 0068 EF92      		push r14
+ 225 006a FF92      		push r15
+ 226 006c 0F93      		push r16
+ 227 006e 1F93      		push r17
+ 228 0070 DF93      		push r29
+ 229 0072 CF93      		push r28
+ 230 0074 CDB7      		in r28,__SP_L__
+ 231 0076 DEB7      		in r29,__SP_H__
+ 232 0078 CC52      		subi r28,lo8(-(-300))
+ 233 007a D140      		sbci r29,hi8(-(-300))
+ 234 007c 0FB6      		in __tmp_reg__,__SREG__
+ 235 007e F894      		cli
+ 236 0080 DEBF      		out __SP_H__,r29
+ 237 0082 0FBE      		out __SREG__,__tmp_reg__
+ 238 0084 CDBF      		out __SP_L__,r28
+ 239               	/* prologue: function */
+ 240               	/* frame size = 300 */
+ 241 0086 5C01      		movw r10,r24
+  23:main.c        **** 	printf( "%s\r\n", path );
+ 242               		.stabn	68,0,23,.LM6-.LFBB3
+ 243               	.LM6:
+ 244 0088 00D0      		rcall .
+ 245 008a 00D0      		rcall .
+ 246 008c EDB7      		in r30,__SP_L__
+ 247 008e FEB7      		in r31,__SP_H__
+ 248 0090 3196      		adiw r30,1
+ 249 0092 80E0      		ldi r24,lo8(.LC0)
+ 250 0094 90E0      		ldi r25,hi8(.LC0)
+ 251 0096 ADB7      		in r26,__SP_L__
+ 252 0098 BEB7      		in r27,__SP_H__
+GAS LISTING /tmp/cc5CruDe.s 			page 6
+
+
+ 253 009a 1296      		adiw r26,1+1
+ 254 009c 9C93      		st X,r25
+ 255 009e 8E93      		st -X,r24
+ 256 00a0 1197      		sbiw r26,1
+ 257 00a2 A282      		std Z+2,r10
+ 258 00a4 B382      		std Z+3,r11
+ 259 00a6 0E94 0000 		call printf
+  24:main.c        **** 	char npath[256];
+  25:main.c        **** 	FILINFO fileinfo;
+  26:main.c        **** 	DIR dir;
+  27:main.c        **** 	if(f_opendir( &dir, path ) != FR_OK) {
+ 260               		.stabn	68,0,27,.LM7-.LFBB3
+ 261               	.LM7:
+ 262 00aa 0F90      		pop __tmp_reg__
+ 263 00ac 0F90      		pop __tmp_reg__
+ 264 00ae 0F90      		pop __tmp_reg__
+ 265 00b0 0F90      		pop __tmp_reg__
+ 266 00b2 47E1      		ldi r20,lo8(23)
+ 267 00b4 E42E      		mov r14,r20
+ 268 00b6 F12C      		mov r15,__zero_reg__
+ 269 00b8 EC0E      		add r14,r28
+ 270 00ba FD1E      		adc r15,r29
+ 271 00bc C701      		movw r24,r14
+ 272 00be B501      		movw r22,r10
+ 273 00c0 0E94 0000 		call f_opendir
+ 274 00c4 8823      		tst r24
+ 275 00c6 01F0      		breq .L6
+  28:main.c        **** 		printf( "System Error\n\r" );
+ 276               		.stabn	68,0,28,.LM8-.LFBB3
+ 277               	.LM8:
+ 278 00c8 00D0      		rcall .
+ 279 00ca 80E0      		ldi r24,lo8(.LC1)
+ 280 00cc 90E0      		ldi r25,hi8(.LC1)
+ 281 00ce EDB7      		in r30,__SP_L__
+ 282 00d0 FEB7      		in r31,__SP_H__
+ 283 00d2 9283      		std Z+2,r25
+ 284 00d4 8183      		std Z+1,r24
+ 285 00d6 0E94 0000 		call printf
+  29:main.c        **** 		PORTD |= (1 << PORTD4);                        //Set LED to Error
+ 286               		.stabn	68,0,29,.LM9-.LFBB3
+ 287               	.LM9:
+ 288 00da 5C9A      		sbi 43-32,4
+  30:main.c        **** 		PORTD &= ~(1 << PORTD5);
+ 289               		.stabn	68,0,30,.LM10-.LFBB3
+ 290               	.LM10:
+ 291 00dc 5D98      		cbi 43-32,5
+ 292 00de 0F90      		pop __tmp_reg__
+ 293 00e0 0F90      		pop __tmp_reg__
+ 294 00e2 00C0      		rjmp .L16
+ 295               	.L6:
+  31:main.c        **** 	} else {
+  32:main.c        **** 		deepness++;
+ 296               		.stabn	68,0,32,.LM11-.LFBB3
+ 297               	.LM11:
+ 298 00e4 8091 0000 		lds r24,deepness
+ 299 00e8 9091 0000 		lds r25,(deepness)+1
+ 300 00ec 0196      		adiw r24,1
+GAS LISTING /tmp/cc5CruDe.s 			page 7
+
+
+ 301 00ee 9093 0000 		sts (deepness)+1,r25
+ 302 00f2 8093 0000 		sts deepness,r24
+  33:main.c        **** 		f_readdir( &dir, &fileinfo );
+ 303               		.stabn	68,0,33,.LM12-.LFBB3
+ 304               	.LM12:
+ 305 00f6 C701      		movw r24,r14
+ 306 00f8 8E01      		movw r16,r28
+ 307 00fa 0F5F      		subi r16,lo8(-(1))
+ 308 00fc 1F4F      		sbci r17,hi8(-(1))
+ 309 00fe B801      		movw r22,r16
+ 310 0100 0E94 0000 		call f_readdir
+ 311 0104 3AE0      		ldi r19,lo8(10)
+ 312 0106 832E      		mov r8,r19
+ 313 0108 912C      		mov r9,__zero_reg__
+ 314 010a 8C0E      		add r8,r28
+ 315 010c 9D1E      		adc r9,r29
+  34:main.c        ****         while( fileinfo.fname[0] != '\0' ) {
+  35:main.c        **** 			if( fileinfo.fattrib & AM_DIR ) {
+  36:main.c        **** 				if(strlen(path) > 1) sprintf( npath, "%s/%s\0", path, fileinfo.fname );
+  37:main.c        **** 				else {
+  38:main.c        **** 					sprintf( npath, "/%s\0", fileinfo.fname );
+  39:main.c        **** 				}
+  40:main.c        **** 				if( deepness < 8 ) scandir( npath );
+  41:main.c        **** 				else {
+  42:main.c        **** 					printf( "Path \"%s\" too deep\r\n", npath );
+  43:main.c        **** 				}
+  44:main.c        ****             } else {
+  45:main.c        **** 				if(strlen(path) > 1) printf( "%s/%s\r\n", path, fileinfo.fname );
+  46:main.c        **** 				else {
+  47:main.c        **** 					printf( npath, "/%s\0", fileinfo.fname );
+ 316               		.stabn	68,0,47,.LM13-.LFBB3
+ 317               	.LM13:
+ 318 010e 2DE2      		ldi r18,lo8(45)
+ 319 0110 C22E      		mov r12,r18
+ 320 0112 D12C      		mov r13,__zero_reg__
+ 321 0114 CC0E      		add r12,r28
+ 322 0116 DD1E      		adc r13,r29
+ 323 0118 90E0      		ldi r25,lo8(.LC3)
+ 324 011a 692E      		mov r6,r25
+ 325 011c 90E0      		ldi r25,hi8(.LC3)
+ 326 011e 792E      		mov r7,r25
+ 327               		.stabn	68,0,36,.LM14-.LFBB3
+ 328               	.LM14:
+ 329 0120 80E0      		ldi r24,lo8(.LC2)
+ 330 0122 282E      		mov r2,r24
+ 331 0124 80E0      		ldi r24,hi8(.LC2)
+ 332 0126 382E      		mov r3,r24
+  48:main.c        **** 				}				
+  49:main.c        ****             }
+  50:main.c        ****             f_readdir( &dir, &fileinfo );
+ 333               		.stabn	68,0,50,.LM15-.LFBB3
+ 334               	.LM15:
+ 335 0128 C701      		movw r24,r14
+ 336 012a 5E2C      		mov r5,r14
+ 337 012c E92E      		mov r14,r25
+ 338 012e F02E      		mov r15,r16
+ 339 0130 012F      		mov r16,r17
+GAS LISTING /tmp/cc5CruDe.s 			page 8
+
+
+ 340 0132 00C0      		rjmp .L8
+ 341               	.L15:
+ 342               		.stabn	68,0,35,.LM16-.LFBB3
+ 343               	.LM16:
+ 344 0134 8985      		ldd r24,Y+9
+ 345 0136 84FF      		sbrs r24,4
+ 346 0138 00C0      		rjmp .L9
+ 347               		.stabn	68,0,36,.LM17-.LFBB3
+ 348               	.LM17:
+ 349 013a F501      		movw r30,r10
+ 350 013c 0190      		ld __tmp_reg__,Z+
+ 351 013e 0020      		tst __tmp_reg__
+ 352 0140 01F4      		brne .-6
+ 353 0142 3197      		sbiw r30,1
+ 354 0144 EA19      		sub r30,r10
+ 355 0146 FB09      		sbc r31,r11
+ 356 0148 3297      		sbiw r30,2
+ 357 014a 00F0      		brlo .L10
+ 358 014c 8DB7      		in r24,__SP_L__
+ 359 014e 9EB7      		in r25,__SP_H__
+ 360 0150 0897      		sbiw r24,8
+ 361 0152 0FB6      		in __tmp_reg__,__SREG__
+ 362 0154 F894      		cli
+ 363 0156 9EBF      		out __SP_H__,r25
+ 364 0158 0FBE      		out __SREG__,__tmp_reg__
+ 365 015a 8DBF      		out __SP_L__,r24
+ 366 015c EDB7      		in r30,__SP_L__
+ 367 015e FEB7      		in r31,__SP_H__
+ 368 0160 3196      		adiw r30,1
+ 369 0162 ADB7      		in r26,__SP_L__
+ 370 0164 BEB7      		in r27,__SP_H__
+ 371 0166 1296      		adiw r26,1+1
+ 372 0168 DC92      		st X,r13
+ 373 016a CE92      		st -X,r12
+ 374 016c 1197      		sbiw r26,1
+ 375 016e 3382      		std Z+3,r3
+ 376 0170 2282      		std Z+2,r2
+ 377 0172 A482      		std Z+4,r10
+ 378 0174 B582      		std Z+5,r11
+ 379 0176 9782      		std Z+7,r9
+ 380 0178 8682      		std Z+6,r8
+ 381 017a 0E94 0000 		call sprintf
+ 382 017e EDB7      		in r30,__SP_L__
+ 383 0180 FEB7      		in r31,__SP_H__
+ 384 0182 3896      		adiw r30,8
+ 385 0184 00C0      		rjmp .L17
+ 386               	.L10:
+ 387               		.stabn	68,0,38,.LM18-.LFBB3
+ 388               	.LM18:
+ 389 0186 00D0      		rcall .
+ 390 0188 00D0      		rcall .
+ 391 018a 00D0      		rcall .
+ 392 018c EDB7      		in r30,__SP_L__
+ 393 018e FEB7      		in r31,__SP_H__
+ 394 0190 3196      		adiw r30,1
+ 395 0192 ADB7      		in r26,__SP_L__
+ 396 0194 BEB7      		in r27,__SP_H__
+GAS LISTING /tmp/cc5CruDe.s 			page 9
+
+
+ 397 0196 1296      		adiw r26,1+1
+ 398 0198 DC92      		st X,r13
+ 399 019a CE92      		st -X,r12
+ 400 019c 1197      		sbiw r26,1
+ 401 019e 7382      		std Z+3,r7
+ 402 01a0 6282      		std Z+2,r6
+ 403 01a2 9582      		std Z+5,r9
+ 404 01a4 8482      		std Z+4,r8
+ 405 01a6 0E94 0000 		call sprintf
+ 406 01aa EDB7      		in r30,__SP_L__
+ 407 01ac FEB7      		in r31,__SP_H__
+ 408 01ae 3696      		adiw r30,6
+ 409               	.L17:
+ 410 01b0 0FB6      		in __tmp_reg__,__SREG__
+ 411 01b2 F894      		cli
+ 412 01b4 FEBF      		out __SP_H__,r31
+ 413 01b6 0FBE      		out __SREG__,__tmp_reg__
+ 414 01b8 EDBF      		out __SP_L__,r30
+ 415               		.stabn	68,0,40,.LM19-.LFBB3
+ 416               	.LM19:
+ 417 01ba 8091 0000 		lds r24,deepness
+ 418 01be 9091 0000 		lds r25,(deepness)+1
+ 419 01c2 0897      		sbiw r24,8
+ 420 01c4 04F4      		brge .L12
+ 421 01c6 C601      		movw r24,r12
+ 422 01c8 0E94 0000 		call scandir
+ 423 01cc 00C0      		rjmp .L13
+ 424               	.L12:
+ 425               		.stabn	68,0,42,.LM20-.LFBB3
+ 426               	.LM20:
+ 427 01ce 00D0      		rcall .
+ 428 01d0 00D0      		rcall .
+ 429 01d2 E0E0      		ldi r30,lo8(.LC4)
+ 430 01d4 F0E0      		ldi r31,hi8(.LC4)
+ 431 01d6 ADB7      		in r26,__SP_L__
+ 432 01d8 BEB7      		in r27,__SP_H__
+ 433 01da 1296      		adiw r26,1+1
+ 434 01dc FC93      		st X,r31
+ 435 01de EE93      		st -X,r30
+ 436 01e0 1197      		sbiw r26,1
+ 437 01e2 1496      		adiw r26,3+1
+ 438 01e4 DC92      		st X,r13
+ 439 01e6 CE92      		st -X,r12
+ 440 01e8 1397      		sbiw r26,3
+ 441 01ea 0E94 0000 		call printf
+ 442 01ee 0F90      		pop __tmp_reg__
+ 443 01f0 0F90      		pop __tmp_reg__
+ 444 01f2 0F90      		pop __tmp_reg__
+ 445 01f4 0F90      		pop __tmp_reg__
+ 446 01f6 00C0      		rjmp .L13
+ 447               	.L9:
+ 448               		.stabn	68,0,45,.LM21-.LFBB3
+ 449               	.LM21:
+ 450 01f8 F501      		movw r30,r10
+ 451 01fa 0190      		ld __tmp_reg__,Z+
+ 452 01fc 0020      		tst __tmp_reg__
+ 453 01fe 01F4      		brne .-6
+GAS LISTING /tmp/cc5CruDe.s 			page 10
+
+
+ 454 0200 3197      		sbiw r30,1
+ 455 0202 EA19      		sub r30,r10
+ 456 0204 FB09      		sbc r31,r11
+ 457 0206 3297      		sbiw r30,2
+ 458 0208 00F0      		brlo .L14
+ 459 020a 00D0      		rcall .
+ 460 020c 00D0      		rcall .
+ 461 020e 00D0      		rcall .
+ 462 0210 EDB7      		in r30,__SP_L__
+ 463 0212 FEB7      		in r31,__SP_H__
+ 464 0214 3196      		adiw r30,1
+ 465 0216 80E0      		ldi r24,lo8(.LC5)
+ 466 0218 90E0      		ldi r25,hi8(.LC5)
+ 467 021a ADB7      		in r26,__SP_L__
+ 468 021c BEB7      		in r27,__SP_H__
+ 469 021e 1296      		adiw r26,1+1
+ 470 0220 9C93      		st X,r25
+ 471 0222 8E93      		st -X,r24
+ 472 0224 1197      		sbiw r26,1
+ 473 0226 A282      		std Z+2,r10
+ 474 0228 B382      		std Z+3,r11
+ 475 022a 9582      		std Z+5,r9
+ 476 022c 8482      		std Z+4,r8
+ 477 022e 0E94 0000 		call printf
+ 478 0232 ADB7      		in r26,__SP_L__
+ 479 0234 BEB7      		in r27,__SP_H__
+ 480 0236 1696      		adiw r26,6
+ 481 0238 0FB6      		in __tmp_reg__,__SREG__
+ 482 023a F894      		cli
+ 483 023c BEBF      		out __SP_H__,r27
+ 484 023e 0FBE      		out __SREG__,__tmp_reg__
+ 485 0240 ADBF      		out __SP_L__,r26
+ 486 0242 00C0      		rjmp .L13
+ 487               	.L14:
+ 488               		.stabn	68,0,47,.LM22-.LFBB3
+ 489               	.LM22:
+ 490 0244 00D0      		rcall .
+ 491 0246 00D0      		rcall .
+ 492 0248 00D0      		rcall .
+ 493 024a EDB7      		in r30,__SP_L__
+ 494 024c FEB7      		in r31,__SP_H__
+ 495 024e 3196      		adiw r30,1
+ 496 0250 ADB7      		in r26,__SP_L__
+ 497 0252 BEB7      		in r27,__SP_H__
+ 498 0254 1296      		adiw r26,1+1
+ 499 0256 DC92      		st X,r13
+ 500 0258 CE92      		st -X,r12
+ 501 025a 1197      		sbiw r26,1
+ 502 025c 7382      		std Z+3,r7
+ 503 025e 6282      		std Z+2,r6
+ 504 0260 9582      		std Z+5,r9
+ 505 0262 8482      		std Z+4,r8
+ 506 0264 0E94 0000 		call printf
+ 507 0268 EDB7      		in r30,__SP_L__
+ 508 026a FEB7      		in r31,__SP_H__
+ 509 026c 3696      		adiw r30,6
+ 510 026e 0FB6      		in __tmp_reg__,__SREG__
+GAS LISTING /tmp/cc5CruDe.s 			page 11
+
+
+ 511 0270 F894      		cli
+ 512 0272 FEBF      		out __SP_H__,r31
+ 513 0274 0FBE      		out __SREG__,__tmp_reg__
+ 514 0276 EDBF      		out __SP_L__,r30
+ 515               	.L13:
+ 516               		.stabn	68,0,50,.LM23-.LFBB3
+ 517               	.LM23:
+ 518 0278 852D      		mov r24,r5
+ 519 027a 9E2D      		mov r25,r14
+ 520 027c 6F2D      		mov r22,r15
+ 521 027e 702F      		mov r23,r16
+ 522 0280 0E94 0000 		call f_readdir
+ 523               	.L8:
+ 524               		.stabn	68,0,34,.LM24-.LFBB3
+ 525               	.LM24:
+ 526 0284 8A85      		ldd r24,Y+10
+ 527 0286 8823      		tst r24
+ 528 0288 01F0      		breq .+2
+ 529 028a 00C0      		rjmp .L15
+  51:main.c        **** 		}
+  52:main.c        **** 		deepness--;
+ 530               		.stabn	68,0,52,.LM25-.LFBB3
+ 531               	.LM25:
+ 532 028c 8091 0000 		lds r24,deepness
+ 533 0290 9091 0000 		lds r25,(deepness)+1
+ 534 0294 0197      		sbiw r24,1
+ 535 0296 9093 0000 		sts (deepness)+1,r25
+ 536 029a 8093 0000 		sts deepness,r24
+ 537               	.L16:
+ 538               	/* epilogue start */
+  53:main.c        **** 	}
+  54:main.c        **** }
+ 539               		.stabn	68,0,54,.LM26-.LFBB3
+ 540               	.LM26:
+ 541 029e C45D      		subi r28,lo8(-(300))
+ 542 02a0 DE4F      		sbci r29,hi8(-(300))
+ 543 02a2 0FB6      		in __tmp_reg__,__SREG__
+ 544 02a4 F894      		cli
+ 545 02a6 DEBF      		out __SP_H__,r29
+ 546 02a8 0FBE      		out __SREG__,__tmp_reg__
+ 547 02aa CDBF      		out __SP_L__,r28
+ 548 02ac CF91      		pop r28
+ 549 02ae DF91      		pop r29
+ 550 02b0 1F91      		pop r17
+ 551 02b2 0F91      		pop r16
+ 552 02b4 FF90      		pop r15
+ 553 02b6 EF90      		pop r14
+ 554 02b8 DF90      		pop r13
+ 555 02ba CF90      		pop r12
+ 556 02bc BF90      		pop r11
+ 557 02be AF90      		pop r10
+ 558 02c0 9F90      		pop r9
+ 559 02c2 8F90      		pop r8
+ 560 02c4 7F90      		pop r7
+ 561 02c6 6F90      		pop r6
+ 562 02c8 5F90      		pop r5
+ 563 02ca 3F90      		pop r3
+GAS LISTING /tmp/cc5CruDe.s 			page 12
+
+
+ 564 02cc 2F90      		pop r2
+ 565 02ce 0895      		ret
+ 566               		.size	scandir, .-scandir
+ 567               		.stabs	"npath:(0,16)=ar(8,4);0;255;(0,2)",128,0,24,45
+ 568               		.stabs	"fileinfo:(8,14)",128,0,25,1
+ 569               		.stabs	"dir:(8,9)",128,0,26,23
+ 570               		.stabn	192,0,0,.LFBB3-.LFBB3
+ 571               		.stabn	224,0,0,.Lscope3-.LFBB3
+ 572               	.Lscope3:
+ 573               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 574               		.stabd	78,0,0
+ 575               		.data
+ 576               	.LC6:
+ 577 003d 4469 736B 		.string	"Disk Error\n\r"
+ 577      2045 7272 
+ 577      6F72 0A0D 
+ 577      00
+ 578               	.LC7:
+ 579 004a 4578 706C 		.string	"Exploring filesystem\r"
+ 579      6F72 696E 
+ 579      6720 6669 
+ 579      6C65 7379 
+ 579      7374 656D 
+ 580               	.LC8:
+ 581 0060 2F00      		.string	"/"
+ 582               	.LC9:
+ 583 0062 446F 6E65 		.string	"Done\r"
+ 583      0D00 
+ 584               		.text
+ 585               		.stabs	"main:F(0,1)",36,0,56,main
+ 586               	.global	main
+ 587               		.type	main, @function
+ 588               	main:
+ 589               		.stabd	46,0,0
+  55:main.c        **** 
+  56:main.c        **** int main ( void ) {
+ 590               		.stabn	68,0,56,.LM27-.LFBB4
+ 591               	.LM27:
+ 592               	.LFBB4:
+ 593               	/* prologue: function */
+ 594               	/* frame size = 0 */
+  57:main.c        **** 	init_stdusart0( BAUD, DB8 | P_N | SB1 );
+ 595               		.stabn	68,0,57,.LM28-.LFBB4
+ 596               	.LM28:
+ 597 02d0 85E0      		ldi r24,lo8(5)
+ 598 02d2 90E0      		ldi r25,hi8(5)
+ 599 02d4 66E0      		ldi r22,lo8(6)
+ 600 02d6 0E94 0000 		call init_stdusart0
+  58:main.c        **** 	init_timer0_ctc( T0_PRESCALER_1024, PIN_DISCONNECT, PIN_DISCONNECT );// initalize timer 0 in ctc m
+ 601               		.stabn	68,0,58,.LM29-.LFBB4
+ 602               	.LM29:
+ 603 02da 85E0      		ldi r24,lo8(5)
+ 604 02dc 60E0      		ldi r22,lo8(0)
+ 605 02de 40E0      		ldi r20,lo8(0)
+ 606 02e0 0E94 0000 		call init_timer0_ctc
+  59:main.c        **** 	DDRD |= (1 << PORTD4) | (1 << PORTD5);                              //set status LED pins to outpu
+ 607               		.stabn	68,0,59,.LM30-.LFBB4
+GAS LISTING /tmp/cc5CruDe.s 			page 13
+
+
+ 608               	.LM30:
+ 609 02e4 8AB1      		in r24,42-32
+ 610 02e6 8063      		ori r24,lo8(48)
+ 611 02e8 8AB9      		out 42-32,r24
+  60:main.c        **** 	set_ocr0a( 108 );                                                    // compare match every 156 ti
+ 612               		.stabn	68,0,60,.LM31-.LFBB4
+ 613               	.LM31:
+ 614 02ea 8CE6      		ldi r24,lo8(108)
+ 615 02ec 0E94 0000 		call set_ocr0a
+  61:main.c        **** 	enable_interrupt_t0a();                                             //enable interrupt on timer0 c
+ 616               		.stabn	68,0,61,.LM32-.LFBB4
+ 617               	.LM32:
+ 618 02f0 0E94 0000 		call enable_interrupt_t0a
+  62:main.c        **** 	static FATFS FATFS_Obj;                                             //file system descriptor
+  63:main.c        **** 	disk_timerproc();                                                   //produce a base timer clock
+ 619               		.stabn	68,0,63,.LM33-.LFBB4
+ 620               	.LM33:
+ 621 02f4 0E94 0000 		call disk_timerproc
+  64:main.c        **** 	DSTATUS status = disk_initialize(0);                                //initalize the SD card
+ 622               		.stabn	68,0,64,.LM34-.LFBB4
+ 623               	.LM34:
+ 624 02f8 80E0      		ldi r24,lo8(0)
+ 625 02fa 0E94 0000 		call disk_initialize
+  65:main.c        **** 	if( status & STA_NOINIT ) {
+ 626               		.stabn	68,0,65,.LM35-.LFBB4
+ 627               	.LM35:
+ 628 02fe 80FF      		sbrs r24,0
+ 629 0300 00C0      		rjmp .L19
+  66:main.c        **** 		printf( "Disk Error\n\r" );
+ 630               		.stabn	68,0,66,.LM36-.LFBB4
+ 631               	.LM36:
+ 632 0302 00D0      		rcall .
+ 633 0304 80E0      		ldi r24,lo8(.LC6)
+ 634 0306 90E0      		ldi r25,hi8(.LC6)
+ 635 0308 EDB7      		in r30,__SP_L__
+ 636 030a FEB7      		in r31,__SP_H__
+ 637 030c 9283      		std Z+2,r25
+ 638 030e 8183      		std Z+1,r24
+ 639 0310 0E94 0000 		call printf
+  67:main.c        **** 		PORTD |= (1 << PORTD4);                        //Set LED to Error
+ 640               		.stabn	68,0,67,.LM37-.LFBB4
+ 641               	.LM37:
+ 642 0314 5C9A      		sbi 43-32,4
+  68:main.c        **** 		PORTD &= ~(1 << PORTD5);
+ 643               		.stabn	68,0,68,.LM38-.LFBB4
+ 644               	.LM38:
+ 645 0316 5D98      		cbi 43-32,5
+ 646 0318 0F90      		pop __tmp_reg__
+ 647 031a 0F90      		pop __tmp_reg__
+ 648               	.L20:
+ 649 031c 00C0      		rjmp .L20
+ 650               	.L19:
+  69:main.c        **** 		while (1);
+  70:main.c        **** 	}
+  71:main.c        **** 	PORTD |= (1 << PORTD5);                                             //set LED to Success
+ 651               		.stabn	68,0,71,.LM39-.LFBB4
+ 652               	.LM39:
+GAS LISTING /tmp/cc5CruDe.s 			page 14
+
+
+ 653 031e 5D9A      		sbi 43-32,5
+  72:main.c        **** 	PORTD &= ~(1 << PORTD4);
+ 654               		.stabn	68,0,72,.LM40-.LFBB4
+ 655               	.LM40:
+ 656 0320 5C98      		cbi 43-32,4
+  73:main.c        **** 	f_mount(0, &FATFS_Obj);                                             //mount the filesystem
+ 657               		.stabn	68,0,73,.LM41-.LFBB4
+ 658               	.LM41:
+ 659 0322 80E0      		ldi r24,lo8(0)
+ 660 0324 60E0      		ldi r22,lo8(FATFS_Obj.1753)
+ 661 0326 70E0      		ldi r23,hi8(FATFS_Obj.1753)
+ 662 0328 0E94 0000 		call f_mount
+  74:main.c        **** 	printf( "Exploring filesystem\r\n" );
+ 663               		.stabn	68,0,74,.LM42-.LFBB4
+ 664               	.LM42:
+ 665 032c 80E0      		ldi r24,lo8(.LC7)
+ 666 032e 90E0      		ldi r25,hi8(.LC7)
+ 667 0330 0E94 0000 		call puts
+  75:main.c        **** 	scandir( "/" );
+ 668               		.stabn	68,0,75,.LM43-.LFBB4
+ 669               	.LM43:
+ 670 0334 80E0      		ldi r24,lo8(.LC8)
+ 671 0336 90E0      		ldi r25,hi8(.LC8)
+ 672 0338 0E94 0000 		call scandir
+  76:main.c        **** 	printf( "Done\r\n" );
+ 673               		.stabn	68,0,76,.LM44-.LFBB4
+ 674               	.LM44:
+ 675 033c 80E0      		ldi r24,lo8(.LC9)
+ 676 033e 90E0      		ldi r25,hi8(.LC9)
+ 677 0340 0E94 0000 		call puts
+ 678               	.L21:
+ 679 0344 00C0      		rjmp .L21
+ 680               		.size	main, .-main
+ 681               		.stabs	"FATFS_Obj:V(8,5)",40,0,62,FATFS_Obj.1753
+ 682               		.stabn	192,0,0,.LFBB4-.LFBB4
+ 683               		.stabn	224,0,0,.Lscope4-.LFBB4
+ 684               	.Lscope4:
+ 685               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 686               		.stabd	78,0,0
+ 687               	.global	ch
+ 688               	.global	ch
+ 689               		.section .bss
+ 690               		.type	ch, @object
+ 691               		.size	ch, 1
+ 692               	ch:
+ 693 0000 00        		.skip 1,0
+ 694               	.global	deepness
+ 695               	.global	deepness
+ 696               		.type	deepness, @object
+ 697               		.size	deepness, 2
+ 698               	deepness:
+ 699 0001 0000      		.skip 2,0
+ 700               		.lcomm FATFS_Obj.1753,558
+ 701               		.stabs	"FATFS_Obj:V(8,5)",40,0,62,FATFS_Obj.1753
+ 702               		.stabs	"ch:G(0,2)",32,0,19,0
+ 703               		.stabs	"deepness:G(0,1)",32,0,20,0
+ 704               		.text
+GAS LISTING /tmp/cc5CruDe.s 			page 15
+
+
+ 705               		.stabs	"",100,0,0,.Letext0
+ 706               	.Letext0:
+GAS LISTING /tmp/cc5CruDe.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/cc5CruDe.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cc5CruDe.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cc5CruDe.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cc5CruDe.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/cc5CruDe.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc5CruDe.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc5CruDe.s:116    .text:0000000000000000 get_fattime
+     /tmp/cc5CruDe.s:138    .text:000000000000000a __vector_16
+     /tmp/cc5CruDe.s:208    .text:0000000000000052 scandir
+     /tmp/cc5CruDe.s:698    .bss:0000000000000001 deepness
+     /tmp/cc5CruDe.s:588    .text:00000000000002d0 main
+                             .bss:0000000000000003 FATFS_Obj.1753
+     /tmp/cc5CruDe.s:692    .bss:0000000000000000 ch
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+disk_timerproc
+printf
+f_opendir
+f_readdir
+sprintf
+init_stdusart0
+init_timer0_ctc
+set_ocr0a
+enable_interrupt_t0a
+disk_initialize
+f_mount
+puts

@@ -1,0 +1,46 @@
+Documentation for eeprom.h
+
+Example is included under the eeprom directory in the Examples directory
+
+---------------Information-------------------------
+
+eeprom.h controls the internal AVR EEPROM.  You can write and read single bytes or
+read and write arrays.
+
+ex)
+eeprom_write(2034, 32);  //write 32 to location 2034
+
+ex)
+uint8_t b = eeprom_read(342);  //read location 342 into b
+
+ex)
+uint8_t *bytes = (uint8_t*) alloca ( sizeof(uint8_t) * 4 ); //create an array with 4 bytes in it
+bytes[0] = 1;                                          //fill the array with some data
+bytes[1] = 2;
+bytes[2] = 3;
+bytes[3] = 4;
+eeprom_write_page(1024, 4, bytes);  //write that array to the eeprom starting at location 1024
+
+---------------Definitions-------------------------
+
+No Definitions
+
+--------------Functions------------------------------
+
+void eeprom_write ( uint16_t address, uint8_t data ) -- this function writes a byte to a location in the AVR EEPROM
+    -address - the address to write the data to
+    -data - the data to write
+
+uint8_t eeprom_read ( uint16_t address ) -- this function returns the byte at a location in the AVR EEPROM
+    -address - the address to fetch the byte from
+
+void eeprom_write_page ( uint16_t saddress, uint8_t n, uint8_t* bytes ) -- writes an array of bytes to the eeprom starting at saddress
+    -saddress - the address at which to start writing bytes to
+    -n - the number of bytes to write
+    -bytes - the array of bytes to write
+
+void eeprom_read_page ( uint16_t saddress, uint8_t n, uint8_t* bytes ) -- reads an array of bytes from the eeprom
+    -saddress - the address at which to start fetching bytes
+    -n - the number of bytes to read
+    -bytes - the array to store the bytes
+  

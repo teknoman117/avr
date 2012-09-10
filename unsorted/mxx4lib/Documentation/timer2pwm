@@ -1,0 +1,33 @@
+Documentation for timer2pwm.h
+
+Example is included under the timer2pwm directory in the Examples directory
+
+---------------Information-------------------------
+
+timer2pwm.h configures timer2 to act as an 8 bit pwm controller. 
+
+---------------Definitions-------------------------
+
+T2_PRESCALER_1                   -timer2 clock = SystemCLK
+T2_PRESCALER_8                   -timer2 clock = SystemCLK / 8
+T2_PRESCALER_32                  -timer2 clock = SystemCLK / 32
+T2_PRESCALER_64                  -timer2 clock = SystemCLK / 64
+T2_PRESCALER_128                 -timer2 clock = SystemCLK / 128
+T2_PRESCALER_256                 -timer2 clock = SystemCLK / 256
+T2_PRESCALER_1024                -timer2 clock = SystemCLK / 1024
+
+--------------Functions------------------------------
+
+void init_timer2_pwm ( uint8_t prescaler, uint8_t invert ) -- initalizes timer2 for pwm
+    -prescaler - one of the T2_PRESCALER definitions to define the prescaler
+    -invert - set to 1 to invert the PWM waveform, 0 for normal
+
+void set_pwm_2a ( uint8_t v ) -- set the PWM Channel 2 A
+    -v - the value to set the ocr0a register to
+
+void set_pwm_2b ( uint8_t v ) -- set the PWM Channel 2 B
+    -v - the value to set the ocr0a register to
+
+    
+
+  

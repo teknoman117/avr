@@ -1,0 +1,118 @@
+   1               		.file	"Main.c"
+   2               		.arch atmega644
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.data
+  19               	.LC0:
+  20 0000 6869 2070 		.string	"hi person!"
+  20      6572 736F 
+  20      6E21 00
+  21               	.LC1:
+  22 000b 796F 7520 		.string	"you *****!"
+  22      2A2A 2A2A 
+  22      2A21 00
+  23               		.text
+  24               	.global	main
+  26               	main:
+  27               	.LFB6:
+  28               	.LM1:
+  29               	/* prologue: frame size=0 */
+  30               	/* prologue end (size=0) */
+  31               	.LM2:
+  32 0000 8FEF      		ldi r24,lo8(-1)
+  33 0002 84B9      		out 36-0x20,r24
+  34               	.LM3:
+  35 0004 0E94 0000 		call enable_uart
+  36               	.LVL0:
+  37               	.L2:
+  38               	.LM4:
+  39 0008 80E0      		ldi r24,lo8(.LC0)
+  40 000a 90E0      		ldi r25,hi8(.LC0)
+  41               	.LVL1:
+  42 000c 0E94 0000 		call uprintf
+  43               	.LVL2:
+  44 0010 20E0      		ldi r18,lo8(0)
+  45 0012 30E0      		ldi r19,hi8(0)
+  46               	.LVL3:
+  47 0014 E8EE      		ldi r30,lo8(-536)
+  48 0016 FDEF      		ldi r31,hi8(-536)
+  49               	.L3:
+  50               	.LBB6:
+  51               	.LBB7:
+  52               	.LM5:
+  53 0018 CF01      		movw r24,r30
+  54               	.LVL4:
+  55               	/* #APP */
+  56 001a 0197      		1: sbiw r24,1
+  57 001c 01F4      		brne 1b
+  58               	/* #NOAPP */
+  59               	.LBE7:
+  60               	.LBE6:
+  61               	.LM6:
+  62 001e 2F5F      		subi r18,lo8(-(1))
+  63 0020 3F4F      		sbci r19,hi8(-(1))
+  64 0022 2A30      		cpi r18,10
+  65 0024 3105      		cpc r19,__zero_reg__
+  66 0026 01F4      		brne .L3
+  67               	.LM7:
+  68 0028 80E0      		ldi r24,lo8(.LC1)
+  69 002a 90E0      		ldi r25,hi8(.LC1)
+  70               	.LVL5:
+  71 002c 0E94 0000 		call uprintf
+  72               	.LVL6:
+  73 0030 20E0      		ldi r18,lo8(0)
+  74 0032 30E0      		ldi r19,hi8(0)
+  75               	.LVL7:
+  76 0034 E8EE      		ldi r30,lo8(-536)
+  77 0036 FDEF      		ldi r31,hi8(-536)
+  78               	.L5:
+  79               	.LBB8:
+  80               	.LBB9:
+  81               	.LM8:
+  82 0038 CF01      		movw r24,r30
+  83               	.LVL8:
+  84               	/* #APP */
+  85 003a 0197      		1: sbiw r24,1
+  86 003c 01F4      		brne 1b
+  87               	/* #NOAPP */
+  88               	.LBE9:
+  89               	.LBE8:
+  90               	.LM9:
+  91 003e 2F5F      		subi r18,lo8(-(1))
+  92 0040 3F4F      		sbci r19,hi8(-(1))
+  93 0042 2A30      		cpi r18,10
+  94 0044 3105      		cpc r19,__zero_reg__
+  95 0046 01F4      		brne .L5
+  96 0048 00C0      		rjmp .L2
+  97               	/* epilogue: frame size=0 */
+  98               	/* epilogue: noreturn */
+  99               	/* epilogue end (size=0) */
+ 100               	/* function main size 41 (41) */
+ 101               	.LFE6:
+ 103               		.comm x,8,1
+ 104               		.comm s,1,1
+ 105               		.comm str,50,1
+ 130               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cch4nV8q.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cch4nV8q.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cch4nV8q.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cch4nV8q.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cch4nV8q.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cch4nV8q.s:26     .text:00000000 main
+                            *COM*:00000008 x
+                            *COM*:00000001 s
+                            *COM*:00000032 str
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+enable_uart
+uprintf

@@ -1,0 +1,574 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000035a  00000000  00000000  00000094  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  0000035a  000003ee  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000006  00800060  00800060  000003ee  2**0
+                  ALLOC
+  3 .noinit       00000000  00800066  00800066  000003ee  2**0
+                  CONTENTS
+  4 .eeprom       00000000  00810000  00810000  000003ee  2**0
+                  CONTENTS
+  5 .debug_aranges 0000003c  00000000  00000000  000003ee  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 0000016c  00000000  00000000  0000042a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000462  00000000  00000000  00000596  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000001d9  00000000  00000000  000009f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000003fa  00000000  00000000  00000bd1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000016f  00000000  00000000  00000fcb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54
+   4:	0c 94 45 00 	jmp	0x8a
+   8:	0c 94 45 00 	jmp	0x8a
+   c:	0c 94 45 00 	jmp	0x8a
+  10:	0c 94 45 00 	jmp	0x8a
+  14:	0c 94 45 00 	jmp	0x8a
+  18:	0c 94 45 00 	jmp	0x8a
+  1c:	0c 94 45 00 	jmp	0x8a
+  20:	0c 94 45 00 	jmp	0x8a
+  24:	0c 94 45 00 	jmp	0x8a
+  28:	0c 94 45 00 	jmp	0x8a
+  2c:	0c 94 45 00 	jmp	0x8a
+  30:	0c 94 45 00 	jmp	0x8a
+  34:	0c 94 45 00 	jmp	0x8a
+  38:	0c 94 45 00 	jmp	0x8a
+  3c:	0c 94 45 00 	jmp	0x8a
+  40:	0c 94 45 00 	jmp	0x8a
+  44:	0c 94 45 00 	jmp	0x8a
+  48:	0c 94 45 00 	jmp	0x8a
+  4c:	0c 94 45 00 	jmp	0x8a
+  50:	0c 94 45 00 	jmp	0x8a
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ea e5       	ldi	r30, 0x5A	; 90
+  68:	f3 e0       	ldi	r31, 0x03	; 3
+  6a:	02 c0       	rjmp	.+4      	; 0x70
+
+0000006c <.do_copy_data_loop>:
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+
+00000070 <.do_copy_data_start>:
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a6 36       	cpi	r26, 0x66	; 102
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e
+  86:	0c 94 8a 00 	jmp	0x114
+
+0000008a <__bad_interrupt>:
+  8a:	0c 94 00 00 	jmp	0x0
+
+0000008e <DELAY_MS>:
+	}   
+}
+
+void DELAY_MS( uint16_t milliseconds )
+{
+  8e:	cf 93       	push	r28
+  90:	df 93       	push	r29
+    uint16_t i;
+
+    for ( i = 0; i < milliseconds; ++i )
+  92:	00 97       	sbiw	r24, 0x00	; 0
+  94:	39 f0       	breq	.+14     	; 0xa4
+  96:	ec 01       	movw	r28, r24
+    {
+        DELAY_US( 1000 );
+  98:	88 ee       	ldi	r24, 0xE8	; 232
+  9a:	93 e0       	ldi	r25, 0x03	; 3
+  9c:	0e 94 a2 00 	call	0x144
+  a0:	21 97       	sbiw	r28, 0x01	; 1
+  a2:	d1 f7       	brne	.-12     	; 0x98
+  a4:	df 91       	pop	r29
+  a6:	cf 91       	pop	r28
+  a8:	08 95       	ret
+
+000000aa <MAIN_PRG>:
+  aa:	81 e0       	ldi	r24, 0x01	; 1
+  ac:	88 bb       	out	0x18, r24	; 24
+  ae:	82 e3       	ldi	r24, 0x32	; 50
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	0e 94 47 00 	call	0x8e
+  b6:	80 e0       	ldi	r24, 0x00	; 0
+  b8:	0e 94 b1 00 	call	0x162
+  bc:	84 36       	cpi	r24, 0x64	; 100
+  be:	91 05       	cpc	r25, r1
+  c0:	20 f4       	brcc	.+8      	; 0xca
+  c2:	8f ef       	ldi	r24, 0xFF	; 255
+  c4:	90 e0       	ldi	r25, 0x00	; 0
+  c6:	0e 94 f5 00 	call	0x1ea
+  ca:	80 e0       	ldi	r24, 0x00	; 0
+  cc:	0e 94 b1 00 	call	0x162
+  d0:	84 36       	cpi	r24, 0x64	; 100
+  d2:	91 05       	cpc	r25, r1
+  d4:	20 f0       	brcs	.+8      	; 0xde
+  d6:	80 e0       	ldi	r24, 0x00	; 0
+  d8:	90 e0       	ldi	r25, 0x00	; 0
+  da:	0e 94 f5 00 	call	0x1ea
+  de:	82 e0       	ldi	r24, 0x02	; 2
+  e0:	88 bb       	out	0x18, r24	; 24
+  e2:	82 e3       	ldi	r24, 0x32	; 50
+  e4:	90 e0       	ldi	r25, 0x00	; 0
+  e6:	0e 94 47 00 	call	0x8e
+  ea:	80 e0       	ldi	r24, 0x00	; 0
+  ec:	0e 94 b1 00 	call	0x162
+  f0:	84 36       	cpi	r24, 0x64	; 100
+  f2:	91 05       	cpc	r25, r1
+  f4:	20 f4       	brcc	.+8      	; 0xfe
+  f6:	8f ef       	ldi	r24, 0xFF	; 255
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+  fa:	0e 94 ef 00 	call	0x1de
+  fe:	80 e0       	ldi	r24, 0x00	; 0
+ 100:	0e 94 b1 00 	call	0x162
+ 104:	84 36       	cpi	r24, 0x64	; 100
+ 106:	91 05       	cpc	r25, r1
+ 108:	80 f2       	brcs	.-96     	; 0xaa
+ 10a:	80 e0       	ldi	r24, 0x00	; 0
+ 10c:	90 e0       	ldi	r25, 0x00	; 0
+ 10e:	0e 94 ef 00 	call	0x1de
+ 112:	cb cf       	rjmp	.-106    	; 0xaa
+
+00000114 <main>:
+ 114:	cf e5       	ldi	r28, 0x5F	; 95
+ 116:	d8 e0       	ldi	r29, 0x08	; 8
+ 118:	de bf       	out	0x3e, r29	; 62
+ 11a:	cd bf       	out	0x3d, r28	; 61
+ 11c:	8f ef       	ldi	r24, 0xFF	; 255
+ 11e:	81 bb       	out	0x11, r24	; 17
+ 120:	87 bb       	out	0x17, r24	; 23
+ 122:	f8 94       	cli
+ 124:	19 be       	out	0x39, r1	; 57
+ 126:	0e 94 df 00 	call	0x1be
+ 12a:	0e 94 9d 00 	call	0x13a
+ 12e:	0e 94 55 00 	call	0xaa
+ 132:	80 e0       	ldi	r24, 0x00	; 0
+ 134:	90 e0       	ldi	r25, 0x00	; 0
+ 136:	0c 94 ac 01 	jmp	0x358
+
+0000013a <initADC>:
+#include <avr/interrupt.h>
+#include "adc.h"
+void initADC( void )
+{
+  ADCSRA = ( 1 << ADEN  ) | ( 1 << ADSC  )
+ 13a:	86 ec       	ldi	r24, 0xC6	; 198
+ 13c:	86 b9       	out	0x06, r24	; 6
+        | ( 1 << ADPS2 ) | ( 1 << ADPS1 );
+  while ( ADCSRA & ( 1 << ADSC ) );
+ 13e:	36 99       	sbic	0x06, 6	; 6
+ 140:	fe cf       	rjmp	.-4      	; 0x13e
+ 142:	08 95       	ret
+
+00000144 <DELAY_US>:
+}
+
+uint16_t ADC08bit( uint8_t channel )
+{
+    /* set for 8-bit results for the desired channel number then start the
+       conversion; pause for the hardware to catch up */
+    
+    ADMUX  = ( 1 << ADLAR ) | ( 1 << REFS0 ) | channel;
+    ADCSRA = ( 1 << ADEN  ) | ( 1 << ADSC  );
+    DELAY_US( 64 );
+
+    /* wait for complete conversion and return the result */
+
+    while ( ADCSRA & ( 1 << ADSC ) );
+    
+    return ADCH;
+}
+
+uint16_t ADC10bit( uint8_t channel )
+{
+    ADMUX  = ( 1 << ADLAR ) | ( 1 << REFS0 ) | channel;
+    ADCSRA = ( 1 << ADEN  ) | ( 1 << ADSC  );
+    DELAY_US( 64 );
+    while ( ADCSRA & ( 1 << ADSC ) );
+	convert = ADCH;
+	convert <<= 2;
+	convert += (ADCL >> 6);
+	return convert;
+}
+
+void DELAY_US( uint16_t microseconds )
+{
+
+#if MCU_FREQ == 8000000UL
+
+    /* 8mhz clock, 4 instructions per loop_count  */
+    loop_count = microseconds * 2;
+
+#elif MCU_FREQ == 1000000UL
+
+    /* 1mhz clock, 4 instructions per loop_count */
+    loop_count = microseconds / 4;
+
+#elif MCU_FREQ == 16000000UL
+
+    /* 1mhz clock, 4 instructions per loop_count */
+    loop_count = microseconds / 4;
+ 144:	96 95       	lsr	r25
+ 146:	87 95       	ror	r24
+ 148:	96 95       	lsr	r25
+ 14a:	87 95       	ror	r24
+ 14c:	90 93 61 00 	sts	0x0061, r25
+ 150:	80 93 60 00 	sts	0x0060, r24
+
+#else
+#error MCU_FREQ undefined or set to an unknown value!
+    loop_count = 0; /* don't really know what to do */
+#endif
+
+    __asm__ volatile (
+ 154:	01 97       	sbiw	r24, 0x01	; 1
+ 156:	f1 f7       	brne	.-4      	; 0x154
+ 158:	90 93 61 00 	sts	0x0061, r25
+ 15c:	80 93 60 00 	sts	0x0060, r24
+ 160:	08 95       	ret
+
+00000162 <ADC08bit>:
+ 162:	80 66       	ori	r24, 0x60	; 96
+ 164:	87 b9       	out	0x07, r24	; 7
+ 166:	80 ec       	ldi	r24, 0xC0	; 192
+ 168:	86 b9       	out	0x06, r24	; 6
+ 16a:	80 e4       	ldi	r24, 0x40	; 64
+ 16c:	90 e0       	ldi	r25, 0x00	; 0
+ 16e:	0e 94 a2 00 	call	0x144
+ 172:	36 99       	sbic	0x06, 6	; 6
+ 174:	fe cf       	rjmp	.-4      	; 0x172
+ 176:	85 b1       	in	r24, 0x05	; 5
+ 178:	99 27       	eor	r25, r25
+ 17a:	08 95       	ret
+
+0000017c <ADC10bit>:
+ 17c:	80 66       	ori	r24, 0x60	; 96
+ 17e:	87 b9       	out	0x07, r24	; 7
+ 180:	80 ec       	ldi	r24, 0xC0	; 192
+ 182:	86 b9       	out	0x06, r24	; 6
+ 184:	80 e4       	ldi	r24, 0x40	; 64
+ 186:	90 e0       	ldi	r25, 0x00	; 0
+ 188:	0e 94 a2 00 	call	0x144
+ 18c:	36 99       	sbic	0x06, 6	; 6
+ 18e:	fe cf       	rjmp	.-4      	; 0x18c
+ 190:	85 b1       	in	r24, 0x05	; 5
+ 192:	99 27       	eor	r25, r25
+ 194:	88 0f       	add	r24, r24
+ 196:	99 1f       	adc	r25, r25
+ 198:	88 0f       	add	r24, r24
+ 19a:	99 1f       	adc	r25, r25
+ 19c:	24 b1       	in	r18, 0x04	; 4
+ 19e:	22 95       	swap	r18
+ 1a0:	26 95       	lsr	r18
+ 1a2:	26 95       	lsr	r18
+ 1a4:	23 70       	andi	r18, 0x03	; 3
+ 1a6:	82 0f       	add	r24, r18
+ 1a8:	91 1d       	adc	r25, r1
+ 1aa:	90 93 65 00 	sts	0x0065, r25
+ 1ae:	80 93 64 00 	sts	0x0064, r24
+ 1b2:	08 95       	ret
+
+000001b4 <initPWM08>:
+void initPWM( void ) {
+  initPWM08();
+}
+void initPWM08( void ) {
+  TCCR1A = ( 1 << WGM10 ) | ( 1 << COM1A1 ) | ( 1 << COM1B1 );
+ 1b4:	81 ea       	ldi	r24, 0xA1	; 161
+ 1b6:	8f bd       	out	0x2f, r24	; 47
+  TCCR1B = ( 1 << CS10  ) | ( 1 << WGM12  );
+ 1b8:	89 e0       	ldi	r24, 0x09	; 9
+ 1ba:	8e bd       	out	0x2e, r24	; 46
+ 1bc:	08 95       	ret
+
+000001be <initPWM>:
+ 1be:	0e 94 da 00 	call	0x1b4
+ 1c2:	08 95       	ret
+
+000001c4 <initPWM09>:
+}
+void initPWM09( void ) {
+  TCCR1A = ( 1 << WGM11 ) | ( 1 << COM1A1 ) | ( 1 << COM1B1 );
+ 1c4:	82 ea       	ldi	r24, 0xA2	; 162
+ 1c6:	8f bd       	out	0x2f, r24	; 47
+  TCCR1B = ( 1 << CS10  ) | ( 1 << WGM12  );
+ 1c8:	89 e0       	ldi	r24, 0x09	; 9
+ 1ca:	8e bd       	out	0x2e, r24	; 46
+ 1cc:	08 95       	ret
+
+000001ce <initPWM10>:
+}
+void initPWM10( void ) {
+  TCCR1A = ( 1 << WGM10 ) | ( 1 << WGM11 ) | ( 1 << COM1A1 ) | ( 1 << COM1B1 );
+ 1ce:	83 ea       	ldi	r24, 0xA3	; 163
+ 1d0:	8f bd       	out	0x2f, r24	; 47
+  TCCR1B = ( 1 << CS10  ) | ( 1 << WGM12  );
+ 1d2:	89 e0       	ldi	r24, 0x09	; 9
+ 1d4:	8e bd       	out	0x2e, r24	; 46
+ 1d6:	08 95       	ret
+
+000001d8 <setCHA08>:
+}
+void setCHA( uint16_t valueA )
+{
+  setCHA08(valueA);
+}
+
+void setCHB( uint16_t valueB )
+{
+  setCHB08(valueB);
+}
+void setCHA08( uint16_t valueA ) {
+  OCR1A = valueA;
+ 1d8:	9b bd       	out	0x2b, r25	; 43
+ 1da:	8a bd       	out	0x2a, r24	; 42
+ 1dc:	08 95       	ret
+
+000001de <setCHA>:
+ 1de:	0e 94 ec 00 	call	0x1d8
+ 1e2:	08 95       	ret
+
+000001e4 <setCHB08>:
+}
+void setCHB08( uint16_t valueB ) {
+  OCR1B = valueB;
+ 1e4:	99 bd       	out	0x29, r25	; 41
+ 1e6:	88 bd       	out	0x28, r24	; 40
+ 1e8:	08 95       	ret
+
+000001ea <setCHB>:
+ 1ea:	0e 94 f2 00 	call	0x1e4
+ 1ee:	08 95       	ret
+
+000001f0 <setCHA09>:
+}
+void setCHA09( uint16_t valueA) {
+ 1f0:	bc 01       	movw	r22, r24
+  OCR1AL = 0;
+ 1f2:	1a bc       	out	0x2a, r1	; 42
+  OCR1AH = 0;
+ 1f4:	1b bc       	out	0x2b, r1	; 43
+  for(cnt=0;cnt!=8;cnt++){OCR1AL += (((valueA >> cnt) & 0x01) << cnt);}
+ 1f6:	10 92 63 00 	sts	0x0063, r1
+ 1fa:	10 92 62 00 	sts	0x0062, r1
+ 1fe:	40 e0       	ldi	r20, 0x00	; 0
+ 200:	50 e0       	ldi	r21, 0x00	; 0
+ 202:	cb 01       	movw	r24, r22
+ 204:	04 2e       	mov	r0, r20
+ 206:	02 c0       	rjmp	.+4      	; 0x20c
+ 208:	96 95       	lsr	r25
+ 20a:	87 95       	ror	r24
+ 20c:	0a 94       	dec	r0
+ 20e:	e2 f7       	brpl	.-8      	; 0x208
+ 210:	81 70       	andi	r24, 0x01	; 1
+ 212:	90 70       	andi	r25, 0x00	; 0
+ 214:	04 2e       	mov	r0, r20
+ 216:	02 c0       	rjmp	.+4      	; 0x21c
+ 218:	88 0f       	add	r24, r24
+ 21a:	99 1f       	adc	r25, r25
+ 21c:	0a 94       	dec	r0
+ 21e:	e2 f7       	brpl	.-8      	; 0x218
+ 220:	2a b5       	in	r18, 0x2a	; 42
+ 222:	28 0f       	add	r18, r24
+ 224:	2a bd       	out	0x2a, r18	; 42
+ 226:	4f 5f       	subi	r20, 0xFF	; 255
+ 228:	5f 4f       	sbci	r21, 0xFF	; 255
+ 22a:	48 30       	cpi	r20, 0x08	; 8
+ 22c:	51 05       	cpc	r21, r1
+ 22e:	49 f7       	brne	.-46     	; 0x202
+ 230:	50 93 63 00 	sts	0x0063, r21
+ 234:	40 93 62 00 	sts	0x0062, r20
+  OCR1AH = ((valueA >> 8) & 0x01);
+ 238:	87 2f       	mov	r24, r23
+ 23a:	99 27       	eor	r25, r25
+ 23c:	81 70       	andi	r24, 0x01	; 1
+ 23e:	8b bd       	out	0x2b, r24	; 43
+ 240:	08 95       	ret
+
+00000242 <setCHB09>:
+}
+void setCHB09( uint16_t valueB) {
+ 242:	bc 01       	movw	r22, r24
+  OCR1BL = 0;
+ 244:	18 bc       	out	0x28, r1	; 40
+  OCR1BH = 0;
+ 246:	19 bc       	out	0x29, r1	; 41
+  for(cnt=0;cnt!=8;cnt++){OCR1BL += (((valueB >> cnt) & 0x01) << cnt);}
+ 248:	10 92 63 00 	sts	0x0063, r1
+ 24c:	10 92 62 00 	sts	0x0062, r1
+ 250:	40 e0       	ldi	r20, 0x00	; 0
+ 252:	50 e0       	ldi	r21, 0x00	; 0
+ 254:	cb 01       	movw	r24, r22
+ 256:	04 2e       	mov	r0, r20
+ 258:	02 c0       	rjmp	.+4      	; 0x25e
+ 25a:	96 95       	lsr	r25
+ 25c:	87 95       	ror	r24
+ 25e:	0a 94       	dec	r0
+ 260:	e2 f7       	brpl	.-8      	; 0x25a
+ 262:	81 70       	andi	r24, 0x01	; 1
+ 264:	90 70       	andi	r25, 0x00	; 0
+ 266:	04 2e       	mov	r0, r20
+ 268:	02 c0       	rjmp	.+4      	; 0x26e
+ 26a:	88 0f       	add	r24, r24
+ 26c:	99 1f       	adc	r25, r25
+ 26e:	0a 94       	dec	r0
+ 270:	e2 f7       	brpl	.-8      	; 0x26a
+ 272:	28 b5       	in	r18, 0x28	; 40
+ 274:	28 0f       	add	r18, r24
+ 276:	28 bd       	out	0x28, r18	; 40
+ 278:	4f 5f       	subi	r20, 0xFF	; 255
+ 27a:	5f 4f       	sbci	r21, 0xFF	; 255
+ 27c:	48 30       	cpi	r20, 0x08	; 8
+ 27e:	51 05       	cpc	r21, r1
+ 280:	49 f7       	brne	.-46     	; 0x254
+ 282:	50 93 63 00 	sts	0x0063, r21
+ 286:	40 93 62 00 	sts	0x0062, r20
+  OCR1BH = ((valueB >> 8) & 0x01);
+ 28a:	87 2f       	mov	r24, r23
+ 28c:	99 27       	eor	r25, r25
+ 28e:	81 70       	andi	r24, 0x01	; 1
+ 290:	89 bd       	out	0x29, r24	; 41
+ 292:	08 95       	ret
+
+00000294 <setCHA10>:
+}
+void setCHA10( uint16_t valueA) {
+ 294:	ac 01       	movw	r20, r24
+  OCR1AL = 0;
+ 296:	1a bc       	out	0x2a, r1	; 42
+  OCR1AH = 0;
+ 298:	1b bc       	out	0x2b, r1	; 43
+  for(cnt=0;cnt!=8;cnt++){OCR1AL += (((valueA >> cnt) & 0x01) << cnt);}
+ 29a:	10 92 63 00 	sts	0x0063, r1
+ 29e:	10 92 62 00 	sts	0x0062, r1
+ 2a2:	60 e0       	ldi	r22, 0x00	; 0
+ 2a4:	70 e0       	ldi	r23, 0x00	; 0
+ 2a6:	ca 01       	movw	r24, r20
+ 2a8:	06 2e       	mov	r0, r22
+ 2aa:	02 c0       	rjmp	.+4      	; 0x2b0
+ 2ac:	96 95       	lsr	r25
+ 2ae:	87 95       	ror	r24
+ 2b0:	0a 94       	dec	r0
+ 2b2:	e2 f7       	brpl	.-8      	; 0x2ac
+ 2b4:	81 70       	andi	r24, 0x01	; 1
+ 2b6:	90 70       	andi	r25, 0x00	; 0
+ 2b8:	06 2e       	mov	r0, r22
+ 2ba:	02 c0       	rjmp	.+4      	; 0x2c0
+ 2bc:	88 0f       	add	r24, r24
+ 2be:	99 1f       	adc	r25, r25
+ 2c0:	0a 94       	dec	r0
+ 2c2:	e2 f7       	brpl	.-8      	; 0x2bc
+ 2c4:	2a b5       	in	r18, 0x2a	; 42
+ 2c6:	28 0f       	add	r18, r24
+ 2c8:	2a bd       	out	0x2a, r18	; 42
+ 2ca:	6f 5f       	subi	r22, 0xFF	; 255
+ 2cc:	7f 4f       	sbci	r23, 0xFF	; 255
+ 2ce:	68 30       	cpi	r22, 0x08	; 8
+ 2d0:	71 05       	cpc	r23, r1
+ 2d2:	49 f7       	brne	.-46     	; 0x2a6
+ 2d4:	70 93 63 00 	sts	0x0063, r23
+ 2d8:	60 93 62 00 	sts	0x0062, r22
+  OCR1AH = (((valueA >> 8) & 0x01) << 0) | (((valueA >> 9) & 0x01) << 1);
+ 2dc:	85 2f       	mov	r24, r21
+ 2de:	99 27       	eor	r25, r25
+ 2e0:	98 2f       	mov	r25, r24
+ 2e2:	91 70       	andi	r25, 0x01	; 1
+ 2e4:	45 2f       	mov	r20, r21
+ 2e6:	55 27       	eor	r21, r21
+ 2e8:	46 95       	lsr	r20
+ 2ea:	84 2f       	mov	r24, r20
+ 2ec:	81 70       	andi	r24, 0x01	; 1
+ 2ee:	88 0f       	add	r24, r24
+ 2f0:	98 2b       	or	r25, r24
+ 2f2:	9b bd       	out	0x2b, r25	; 43
+ 2f4:	08 95       	ret
+
+000002f6 <setCHB10>:
+}
+void setCHB10( uint16_t valueB) {
+ 2f6:	ac 01       	movw	r20, r24
+  OCR1BL = 0;
+ 2f8:	18 bc       	out	0x28, r1	; 40
+  OCR1BH = 0;
+ 2fa:	19 bc       	out	0x29, r1	; 41
+  for(cnt=0;cnt!=8;cnt++){OCR1BL += (((valueB >> cnt) & 0x01) << cnt);}
+ 2fc:	10 92 63 00 	sts	0x0063, r1
+ 300:	10 92 62 00 	sts	0x0062, r1
+ 304:	60 e0       	ldi	r22, 0x00	; 0
+ 306:	70 e0       	ldi	r23, 0x00	; 0
+ 308:	ca 01       	movw	r24, r20
+ 30a:	06 2e       	mov	r0, r22
+ 30c:	02 c0       	rjmp	.+4      	; 0x312
+ 30e:	96 95       	lsr	r25
+ 310:	87 95       	ror	r24
+ 312:	0a 94       	dec	r0
+ 314:	e2 f7       	brpl	.-8      	; 0x30e
+ 316:	81 70       	andi	r24, 0x01	; 1
+ 318:	90 70       	andi	r25, 0x00	; 0
+ 31a:	06 2e       	mov	r0, r22
+ 31c:	02 c0       	rjmp	.+4      	; 0x322
+ 31e:	88 0f       	add	r24, r24
+ 320:	99 1f       	adc	r25, r25
+ 322:	0a 94       	dec	r0
+ 324:	e2 f7       	brpl	.-8      	; 0x31e
+ 326:	28 b5       	in	r18, 0x28	; 40
+ 328:	28 0f       	add	r18, r24
+ 32a:	28 bd       	out	0x28, r18	; 40
+ 32c:	6f 5f       	subi	r22, 0xFF	; 255
+ 32e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 330:	68 30       	cpi	r22, 0x08	; 8
+ 332:	71 05       	cpc	r23, r1
+ 334:	49 f7       	brne	.-46     	; 0x308
+ 336:	70 93 63 00 	sts	0x0063, r23
+ 33a:	60 93 62 00 	sts	0x0062, r22
+  OCR1BH = (((valueB >> 8) & 0x01) << 0) | (((valueB >> 9) & 0x01) << 1);
+ 33e:	85 2f       	mov	r24, r21
+ 340:	99 27       	eor	r25, r25
+ 342:	98 2f       	mov	r25, r24
+ 344:	91 70       	andi	r25, 0x01	; 1
+ 346:	45 2f       	mov	r20, r21
+ 348:	55 27       	eor	r21, r21
+ 34a:	46 95       	lsr	r20
+ 34c:	84 2f       	mov	r24, r20
+ 34e:	81 70       	andi	r24, 0x01	; 1
+ 350:	88 0f       	add	r24, r24
+ 352:	98 2b       	or	r25, r24
+ 354:	99 bd       	out	0x29, r25	; 41
+ 356:	08 95       	ret
+
+00000358 <_exit>:
+ 358:	ff cf       	rjmp	.-2      	; 0x358

@@ -1,0 +1,151 @@
+   1               		.file	"Main.c"
+   2               		.arch atmega644
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.data
+  19               	.LC0:
+  20 0000 4F4E 4C49 		.string	"ONLINE\r"
+  20      4E45 0D00 
+  21               	.LC1:
+  22 0008 3E3E 302C 		.string	">>0,1:PING;FART;\r"
+  22      313A 5049 
+  22      4E47 3B46 
+  22      4152 543B 
+  22      0D00 
+  23               	.LC2:
+  24 001a 3E3E 302C 		.string	">>0,1:SHUTDOWN;GOAWAY;\r"
+  24      313A 5348 
+  24      5554 444F 
+  24      574E 3B47 
+  24      4F41 5741 
+  25               		.text
+  26               	.global	main
+  28               	main:
+  29               	.LFB6:
+  30               	.LM1:
+  31               	/* prologue: frame size=0 */
+  32               	/* prologue end (size=0) */
+  33               	.LM2:
+  34 0000 14B8      		out 36-0x20,__zero_reg__
+  35               	.LM3:
+  36 0002 0E94 0000 		call enable_uart
+  37               	.LM4:
+  38 0006 80E0      		ldi r24,lo8(.LC0)
+  39 0008 90E0      		ldi r25,hi8(.LC0)
+  40 000a 0E94 0000 		call uprintf
+  41 000e 20E0      		ldi r18,lo8(0)
+  42 0010 30E0      		ldi r19,hi8(0)
+  43               	.LVL0:
+  44 0012 E8EE      		ldi r30,lo8(-536)
+  45 0014 FDEF      		ldi r31,hi8(-536)
+  46               	.L2:
+  47               	.LBB8:
+  48               	.LBB9:
+  49               	.LM5:
+  50 0016 CF01      		movw r24,r30
+  51               	.LVL1:
+  52               	/* #APP */
+  53 0018 0197      		1: sbiw r24,1
+  54 001a 01F4      		brne 1b
+  55               	/* #NOAPP */
+  56               	.LBE9:
+  57               	.LBE8:
+  58               	.LM6:
+  59 001c 2F5F      		subi r18,lo8(-(1))
+  60 001e 3F4F      		sbci r19,hi8(-(1))
+  61 0020 2436      		cpi r18,100
+  62 0022 3105      		cpc r19,__zero_reg__
+  63 0024 01F4      		brne .L2
+  64               	.LVL2:
+  65               	.L13:
+  66               	.LM7:
+  67 0026 80E0      		ldi r24,lo8(.LC1)
+  68 0028 90E0      		ldi r25,hi8(.LC1)
+  69               	.LVL3:
+  70 002a 0E94 0000 		call uprintf
+  71               	.LVL4:
+  72 002e 20E0      		ldi r18,lo8(0)
+  73 0030 30E0      		ldi r19,hi8(0)
+  74               	.LVL5:
+  75 0032 E8EE      		ldi r30,lo8(-536)
+  76 0034 FDEF      		ldi r31,hi8(-536)
+  77               	.L4:
+  78               	.LBB10:
+  79               	.LBB11:
+  80               	.LM8:
+  81 0036 CF01      		movw r24,r30
+  82               	.LVL6:
+  83               	/* #APP */
+  84 0038 0197      		1: sbiw r24,1
+  85 003a 01F4      		brne 1b
+  86               	/* #NOAPP */
+  87               	.LBE11:
+  88               	.LBE10:
+  89               	.LM9:
+  90 003c 2F5F      		subi r18,lo8(-(1))
+  91 003e 3F4F      		sbci r19,hi8(-(1))
+  92 0040 2431      		cpi r18,20
+  93 0042 3105      		cpc r19,__zero_reg__
+  94 0044 01F4      		brne .L4
+  95               	.LM10:
+  96 0046 80E0      		ldi r24,lo8(.LC2)
+  97 0048 90E0      		ldi r25,hi8(.LC2)
+  98               	.LVL7:
+  99 004a 0E94 0000 		call uprintf
+ 100               	.LVL8:
+ 101 004e 20E0      		ldi r18,lo8(0)
+ 102 0050 30E0      		ldi r19,hi8(0)
+ 103               	.LVL9:
+ 104 0052 E8EE      		ldi r30,lo8(-536)
+ 105 0054 FDEF      		ldi r31,hi8(-536)
+ 106               	.L6:
+ 107               	.LBB12:
+ 108               	.LBB13:
+ 109               	.LM11:
+ 110 0056 CF01      		movw r24,r30
+ 111               	.LVL10:
+ 112               	/* #APP */
+ 113 0058 0197      		1: sbiw r24,1
+ 114 005a 01F4      		brne 1b
+ 115               	/* #NOAPP */
+ 116               	.LBE13:
+ 117               	.LBE12:
+ 118               	.LM12:
+ 119 005c 2F5F      		subi r18,lo8(-(1))
+ 120 005e 3F4F      		sbci r19,hi8(-(1))
+ 121 0060 2431      		cpi r18,20
+ 122 0062 3105      		cpc r19,__zero_reg__
+ 123 0064 01F4      		brne .L6
+ 124 0066 00C0      		rjmp .L13
+ 125               	/* epilogue: frame size=0 */
+ 126               	/* epilogue: noreturn */
+ 127               	/* epilogue end (size=0) */
+ 128               	/* function main size 58 (58) */
+ 129               	.LFE6:
+ 131               		.comm x,8,1
+ 132               		.comm s,1,1
+ 133               		.comm str,50,1
+ 158               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cciMLldT.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cciMLldT.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cciMLldT.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cciMLldT.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cciMLldT.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cciMLldT.s:28     .text:00000000 main
+                            *COM*:00000008 x
+                            *COM*:00000001 s
+                            *COM*:00000032 str
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+enable_uart
+uprintf

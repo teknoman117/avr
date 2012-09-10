@@ -1,0 +1,30 @@
+Documentation for i2c_slave.h
+
+Example is included under the i2c_slave directory in the Examples directory
+
+---------------Information-------------------------
+
+This header controls the I2C controller inside the AVR as a slave device.  
+It has a buffer array that serves as a buffer that appears as the "registers"
+The entire operation is interrupt driven and appears like a 24Cxx type i2c 
+eeprom.  To access the data or write the data to have communication all one has to do is to read or write from the i2c_buffer[] array, using the element number as the register
+
+---------------Definitions-------------------------
+
+I2C_PRESCALER_1       -prescaler of 1
+I2C_PRESCALER_4       -prescaler of 4
+I2C_PRESCALER_16      -prescaler of 16
+I2C_PRESCALER_64      -prescaler of 64
+
+I2C_BUFFER_SIZE       -if not redefined, the register number will default 
+                       to 32 registers (32 bytes)
+					   
+I2C_REG_MODE_16BIT    -YOU need to define this if you want the i2c controller
+                      -to operate using 16 bit register addresses
+
+--------------Functions------------------------------
+
+void init_i2c_slave ( uint8_t sla, uint8_t bitrate, uint8_t prescaler ) - initalizes the controller
+    -sla - the slave address of the AVR, last bit (bit 0 or LSB) is ignored
+    -bitrate - the i2c bitrate
+    -prescaler - one of the I2C_PRESCALER definitions for the controller's prescaler

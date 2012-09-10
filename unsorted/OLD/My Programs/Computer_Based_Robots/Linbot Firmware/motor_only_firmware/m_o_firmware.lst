@@ -1,0 +1,213 @@
+   1               		.file	"m_o_firmware.c"
+   2               		.arch atmega644
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               		.data
+  19               	.LC0:
+  20 0000 6677 6400 		.string	"fwd"
+  21               	.LC1:
+  22 0004 6277 6400 		.string	"bwd"
+  23               	.LC2:
+  24 0008 6C66 7400 		.string	"lft"
+  25               	.LC3:
+  26 000c 7267 6800 		.string	"rgh"
+  27               	.LC4:
+  28 0010 736C 6674 		.string	"slft"
+  28      00
+  29               	.LC5:
+  30 0015 7372 6768 		.string	"srgh"
+  30      00
+  31               	.LC6:
+  32 001a 626C 6674 		.string	"blft"
+  32      00
+  33               	.LC7:
+  34 001f 6272 6768 		.string	"brgh"
+  34      00
+  35               	.LC8:
+  36 0024 7374 6F70 		.string	"stop"
+  36      00
+  37               		.text
+  38               	.global	main
+  40               	main:
+  41               	.LFB6:
+  42               	.LM1:
+  43               	/* prologue: frame size=50 */
+  44 0000 0F93      		push r16
+  45 0002 1F93      		push r17
+  46 0004 CF93      		push r28
+  47 0006 DF93      		push r29
+  48 0008 CDB7      		in r28,__SP_L__
+  49 000a DEB7      		in r29,__SP_H__
+  50 000c E297      		sbiw r28,50
+  51 000e 0FB6      		in __tmp_reg__,__SREG__
+  52 0010 F894      		cli
+  53 0012 DEBF      		out __SP_H__,r29
+  54 0014 0FBE      		out __SREG__,__tmp_reg__
+  55 0016 CDBF      		out __SP_L__,r28
+  56               	/* prologue end (size=12) */
+  57               	.LM2:
+  58 0018 0E94 0000 		call initMotors
+  59               	.LM3:
+  60 001c 85E0      		ldi r24,lo8(5)
+  61 001e 90E0      		ldi r25,hi8(5)
+  62 0020 0E94 0000 		call open
+  63               	.L26:
+  64               	.LM4:
+  65 0024 8E01      		movw r16,r28
+  66 0026 0F5F      		subi r16,lo8(-(1))
+  67 0028 1F4F      		sbci r17,hi8(-(1))
+  68 002a 40E0      		ldi r20,lo8(0)
+  69 002c 6AE0      		ldi r22,lo8(10)
+  70 002e C801      		movw r24,r16
+  71 0030 0E94 0000 		call read
+  72               	.LM5:
+  73 0034 43E0      		ldi r20,lo8(3)
+  74 0036 50E0      		ldi r21,hi8(3)
+  75 0038 60E0      		ldi r22,lo8(.LC0)
+  76 003a 70E0      		ldi r23,hi8(.LC0)
+  77 003c C801      		movw r24,r16
+  78 003e 0E94 0000 		call strncmp
+  79 0042 892B      		or r24,r25
+  80 0044 01F4      		brne .L3
+  81 0046 8D81      		ldd r24,Y+5
+  82 0048 0E94 0000 		call fwd
+  83               	.L3:
+  84               	.LM6:
+  85 004c 43E0      		ldi r20,lo8(3)
+  86 004e 50E0      		ldi r21,hi8(3)
+  87 0050 60E0      		ldi r22,lo8(.LC1)
+  88 0052 70E0      		ldi r23,hi8(.LC1)
+  89 0054 C801      		movw r24,r16
+  90 0056 0E94 0000 		call strncmp
+  91 005a 892B      		or r24,r25
+  92 005c 01F4      		brne .L5
+  93 005e 8D81      		ldd r24,Y+5
+  94 0060 0E94 0000 		call bwd
+  95               	.L5:
+  96               	.LM7:
+  97 0064 43E0      		ldi r20,lo8(3)
+  98 0066 50E0      		ldi r21,hi8(3)
+  99 0068 60E0      		ldi r22,lo8(.LC2)
+ 100 006a 70E0      		ldi r23,hi8(.LC2)
+ 101 006c C801      		movw r24,r16
+ 102 006e 0E94 0000 		call strncmp
+ 103 0072 892B      		or r24,r25
+ 104 0074 01F4      		brne .L7
+ 105 0076 8D81      		ldd r24,Y+5
+ 106 0078 0E94 0000 		call lft
+ 107               	.L7:
+ 108               	.LM8:
+ 109 007c 43E0      		ldi r20,lo8(3)
+ 110 007e 50E0      		ldi r21,hi8(3)
+ 111 0080 60E0      		ldi r22,lo8(.LC3)
+ 112 0082 70E0      		ldi r23,hi8(.LC3)
+ 113 0084 C801      		movw r24,r16
+ 114 0086 0E94 0000 		call strncmp
+ 115 008a 892B      		or r24,r25
+ 116 008c 01F4      		brne .L9
+ 117 008e 8D81      		ldd r24,Y+5
+ 118 0090 0E94 0000 		call rgh
+ 119               	.L9:
+ 120               	.LM9:
+ 121 0094 44E0      		ldi r20,lo8(4)
+ 122 0096 50E0      		ldi r21,hi8(4)
+ 123 0098 60E0      		ldi r22,lo8(.LC4)
+ 124 009a 70E0      		ldi r23,hi8(.LC4)
+ 125 009c C801      		movw r24,r16
+ 126 009e 0E94 0000 		call strncmp
+ 127 00a2 892B      		or r24,r25
+ 128 00a4 01F4      		brne .L11
+ 129 00a6 8D81      		ldd r24,Y+5
+ 130 00a8 0E94 0000 		call slft
+ 131               	.L11:
+ 132               	.LM10:
+ 133 00ac 44E0      		ldi r20,lo8(4)
+ 134 00ae 50E0      		ldi r21,hi8(4)
+ 135 00b0 60E0      		ldi r22,lo8(.LC5)
+ 136 00b2 70E0      		ldi r23,hi8(.LC5)
+ 137 00b4 C801      		movw r24,r16
+ 138 00b6 0E94 0000 		call strncmp
+ 139 00ba 892B      		or r24,r25
+ 140 00bc 01F4      		brne .L13
+ 141 00be 8D81      		ldd r24,Y+5
+ 142 00c0 0E94 0000 		call srgh
+ 143               	.L13:
+ 144               	.LM11:
+ 145 00c4 44E0      		ldi r20,lo8(4)
+ 146 00c6 50E0      		ldi r21,hi8(4)
+ 147 00c8 60E0      		ldi r22,lo8(.LC6)
+ 148 00ca 70E0      		ldi r23,hi8(.LC6)
+ 149 00cc C801      		movw r24,r16
+ 150 00ce 0E94 0000 		call strncmp
+ 151 00d2 892B      		or r24,r25
+ 152 00d4 01F4      		brne .L15
+ 153 00d6 8D81      		ldd r24,Y+5
+ 154 00d8 0E94 0000 		call blft
+ 155               	.L15:
+ 156               	.LM12:
+ 157 00dc 44E0      		ldi r20,lo8(4)
+ 158 00de 50E0      		ldi r21,hi8(4)
+ 159 00e0 60E0      		ldi r22,lo8(.LC7)
+ 160 00e2 70E0      		ldi r23,hi8(.LC7)
+ 161 00e4 C801      		movw r24,r16
+ 162 00e6 0E94 0000 		call strncmp
+ 163 00ea 892B      		or r24,r25
+ 164 00ec 01F4      		brne .L17
+ 165 00ee 8D81      		ldd r24,Y+5
+ 166 00f0 0E94 0000 		call brgh
+ 167               	.L17:
+ 168               	.LM13:
+ 169 00f4 44E0      		ldi r20,lo8(4)
+ 170 00f6 50E0      		ldi r21,hi8(4)
+ 171 00f8 60E0      		ldi r22,lo8(.LC8)
+ 172 00fa 70E0      		ldi r23,hi8(.LC8)
+ 173 00fc C801      		movw r24,r16
+ 174 00fe 0E94 0000 		call strncmp
+ 175 0102 892B      		or r24,r25
+ 176 0104 01F0      		breq .+2
+ 177 0106 00C0      		rjmp .L26
+ 178 0108 0E94 0000 		call stop
+ 179 010c 00C0      		rjmp .L26
+ 180               	/* epilogue: frame size=50 */
+ 181               	/* epilogue: noreturn */
+ 182               	/* epilogue end (size=0) */
+ 183               	/* function main size 135 (123) */
+ 184               	.LFE6:
+ 186               		.comm x,8,1
+ 187               		.comm s,1,1
+ 188               		.comm str,50,1
+ 213               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 m_o_firmware.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccdGZWbB.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccdGZWbB.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccdGZWbB.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccdGZWbB.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccdGZWbB.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccdGZWbB.s:40     .text:00000000 main
+                            *COM*:00000008 x
+                            *COM*:00000001 s
+                            *COM*:00000032 str
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+initMotors
+open
+read
+strncmp
+fwd
+bwd
+lft
+rgh
+slft
+srgh
+blft
+brgh
+stop

@@ -1,0 +1,90 @@
+   1               		.file	"blinker.c"
+   2               		.arch atmega48
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 81E0      		ldi r24,lo8(1)
+  27 0002 84B9      		out 36-0x20,r24
+  28 0004 41E0      		ldi r20,lo8(1)
+  29 0006 A0E3      		ldi r26,lo8(30000)
+  30 0008 B5E7      		ldi r27,hi8(30000)
+  31               	.LVL0:
+  32               	.L2:
+  33               	.LM3:
+  34 000a 45B9      		out 37-0x20,r20
+  35 000c 20E0      		ldi r18,lo8(0)
+  36 000e 30E0      		ldi r19,hi8(0)
+  37               	.LVL1:
+  38               	.L3:
+  39               	.LBB6:
+  40               	.LBB7:
+  41               	.LM4:
+  42 0010 CD01      		movw r24,r26
+  43               	.LVL2:
+  44               	/* #APP */
+  45 0012 0197      		1: sbiw r24,1
+  46 0014 01F4      		brne 1b
+  47               	/* #NOAPP */
+  48 0016 2F5F      		subi r18,lo8(-(1))
+  49 0018 3F4F      		sbci r19,hi8(-(1))
+  50               	.LBE7:
+  51               	.LBE6:
+  52               	.LM5:
+  53 001a 2A30      		cpi r18,10
+  54 001c 3105      		cpc r19,__zero_reg__
+  55 001e 01F4      		brne .L3
+  56               	.LM6:
+  57 0020 15B8      		out 37-0x20,__zero_reg__
+  58 0022 20E0      		ldi r18,lo8(0)
+  59 0024 30E0      		ldi r19,hi8(0)
+  60 0026 E0E3      		ldi r30,lo8(30000)
+  61 0028 F5E7      		ldi r31,hi8(30000)
+  62               	.L5:
+  63               	.LBB8:
+  64               	.LBB9:
+  65               	.LM7:
+  66 002a CF01      		movw r24,r30
+  67               	.LVL3:
+  68               	/* #APP */
+  69 002c 0197      		1: sbiw r24,1
+  70 002e 01F4      		brne 1b
+  71               	/* #NOAPP */
+  72 0030 2F5F      		subi r18,lo8(-(1))
+  73 0032 3F4F      		sbci r19,hi8(-(1))
+  74               	.LBE9:
+  75               	.LBE8:
+  76               	.LM8:
+  77 0034 2A30      		cpi r18,10
+  78 0036 3105      		cpc r19,__zero_reg__
+  79 0038 01F4      		brne .L5
+  80 003a 00C0      		rjmp .L2
+  81               	/* epilogue: frame size=0 */
+  82               	/* epilogue: noreturn */
+  83               	/* epilogue end (size=0) */
+  84               	/* function main size 34 (34) */
+  85               	.LFE4:
+ 109               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 blinker.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2naaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2naaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2naaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2naaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2naaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cc2naaaa.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

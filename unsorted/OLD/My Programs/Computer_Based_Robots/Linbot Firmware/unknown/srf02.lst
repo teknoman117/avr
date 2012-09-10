@@ -1,0 +1,247 @@
+   1               		.file	"srf02.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	changeAddress
+  20               	changeAddress:
+  21               	.LFB6:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24 0000 0F93      		push r16
+  25 0002 1F93      		push r17
+  26               	/* prologue end (size=2) */
+  27               	.LVL0:
+  28 0004 182F      		mov r17,r24
+  29 0006 062F      		mov r16,r22
+  30               	.LM2:
+  31 0008 40EA      		ldi r20,lo8(-96)
+  32 000a 60E0      		ldi r22,lo8(0)
+  33               	.LVL1:
+  34 000c 0E94 0000 		call i2cwritereg
+  35               	.LVL2:
+  36               	.LM3:
+  37 0010 45EA      		ldi r20,lo8(-91)
+  38 0012 60E0      		ldi r22,lo8(0)
+  39 0014 812F      		mov r24,r17
+  40 0016 0E94 0000 		call i2cwritereg
+  41               	.LM4:
+  42 001a 4AEA      		ldi r20,lo8(-86)
+  43 001c 60E0      		ldi r22,lo8(0)
+  44 001e 812F      		mov r24,r17
+  45 0020 0E94 0000 		call i2cwritereg
+  46               	.LM5:
+  47 0024 402F      		mov r20,r16
+  48 0026 60E0      		ldi r22,lo8(0)
+  49 0028 812F      		mov r24,r17
+  50 002a 0E94 0000 		call i2cwritereg
+  51               	/* epilogue: frame size=0 */
+  52 002e 1F91      		pop r17
+  53 0030 0F91      		pop r16
+  54 0032 0895      		ret
+  55               	/* epilogue end (size=3) */
+  56               	/* function changeAddress size 26 (21) */
+  57               	.LFE6:
+  59               	.global	getUS
+  61               	getUS:
+  62               	.LFB9:
+  63               	.LM6:
+  64               	/* prologue: frame size=0 */
+  65 0034 EF92      		push r14
+  66 0036 FF92      		push r15
+  67 0038 1F93      		push r17
+  68               	/* prologue end (size=3) */
+  69               	.LVL3:
+  70 003a 182F      		mov r17,r24
+  71               	.LM7:
+  72 003c 42E5      		ldi r20,lo8(82)
+  73 003e 60E0      		ldi r22,lo8(0)
+  74 0040 0E94 0000 		call i2cwritereg
+  75               	.LVL4:
+  76 0044 88EE      		ldi r24,lo8(1000)
+  77 0046 93E0      		ldi r25,hi8(1000)
+  78 0048 A0E0      		ldi r26,hlo8(1000)
+  79 004a B0E0      		ldi r27,hhi8(1000)
+  80 004c 8093 0000 		sts wit,r24
+  81 0050 9093 0000 		sts (wit)+1,r25
+  82 0054 A093 0000 		sts (wit)+2,r26
+  83 0058 B093 0000 		sts (wit)+3,r27
+  84               	.LM8:
+  85 005c 62E0      		ldi r22,lo8(2)
+  86 005e 812F      		mov r24,r17
+  87 0060 0E94 0000 		call i2creadreg
+  88               	.LM9:
+  89 0064 E82E      		mov r14,r24
+  90 0066 FF24      		clr r15
+  91 0068 FE2C      		mov r15,r14
+  92 006a EE24      		clr r14
+  93 006c F092 0000 		sts (dis)+1,r15
+  94 0070 E092 0000 		sts dis,r14
+  95               	.LM10:
+  96 0074 63E0      		ldi r22,lo8(3)
+  97 0076 812F      		mov r24,r17
+  98 0078 0E94 0000 		call i2creadreg
+  99 007c E80E      		add r14,r24
+ 100 007e F11C      		adc r15,__zero_reg__
+ 101 0080 F092 0000 		sts (dis)+1,r15
+ 102 0084 E092 0000 		sts dis,r14
+ 103               	.LM11:
+ 104 0088 C701      		movw r24,r14
+ 105               	/* epilogue: frame size=0 */
+ 106 008a 1F91      		pop r17
+ 107 008c FF90      		pop r15
+ 108 008e EF90      		pop r14
+ 109 0090 0895      		ret
+ 110               	/* epilogue end (size=4) */
+ 111               	/* function getUS size 47 (40) */
+ 112               	.LFE9:
+ 114               	.global	getIN
+ 116               	getIN:
+ 117               	.LFB8:
+ 118               	.LM12:
+ 119               	/* prologue: frame size=0 */
+ 120 0092 EF92      		push r14
+ 121 0094 FF92      		push r15
+ 122 0096 1F93      		push r17
+ 123               	/* prologue end (size=3) */
+ 124               	.LVL5:
+ 125 0098 182F      		mov r17,r24
+ 126               	.LM13:
+ 127 009a 40E5      		ldi r20,lo8(80)
+ 128 009c 60E0      		ldi r22,lo8(0)
+ 129 009e 0E94 0000 		call i2cwritereg
+ 130               	.LVL6:
+ 131 00a2 88EE      		ldi r24,lo8(1000)
+ 132 00a4 93E0      		ldi r25,hi8(1000)
+ 133 00a6 A0E0      		ldi r26,hlo8(1000)
+ 134 00a8 B0E0      		ldi r27,hhi8(1000)
+ 135 00aa 8093 0000 		sts wit,r24
+ 136 00ae 9093 0000 		sts (wit)+1,r25
+ 137 00b2 A093 0000 		sts (wit)+2,r26
+ 138 00b6 B093 0000 		sts (wit)+3,r27
+ 139               	.LM14:
+ 140 00ba 62E0      		ldi r22,lo8(2)
+ 141 00bc 812F      		mov r24,r17
+ 142 00be 0E94 0000 		call i2creadreg
+ 143               	.LM15:
+ 144 00c2 E82E      		mov r14,r24
+ 145 00c4 FF24      		clr r15
+ 146 00c6 FE2C      		mov r15,r14
+ 147 00c8 EE24      		clr r14
+ 148 00ca F092 0000 		sts (dis)+1,r15
+ 149 00ce E092 0000 		sts dis,r14
+ 150               	.LM16:
+ 151 00d2 63E0      		ldi r22,lo8(3)
+ 152 00d4 812F      		mov r24,r17
+ 153 00d6 0E94 0000 		call i2creadreg
+ 154 00da E80E      		add r14,r24
+ 155 00dc F11C      		adc r15,__zero_reg__
+ 156 00de F092 0000 		sts (dis)+1,r15
+ 157 00e2 E092 0000 		sts dis,r14
+ 158               	.LM17:
+ 159 00e6 C701      		movw r24,r14
+ 160               	/* epilogue: frame size=0 */
+ 161 00e8 1F91      		pop r17
+ 162 00ea FF90      		pop r15
+ 163 00ec EF90      		pop r14
+ 164 00ee 0895      		ret
+ 165               	/* epilogue end (size=4) */
+ 166               	/* function getIN size 47 (40) */
+ 167               	.LFE8:
+ 169               	.global	getCM
+ 171               	getCM:
+ 172               	.LFB7:
+ 173               	.LM18:
+ 174               	/* prologue: frame size=0 */
+ 175 00f0 EF92      		push r14
+ 176 00f2 FF92      		push r15
+ 177 00f4 1F93      		push r17
+ 178               	/* prologue end (size=3) */
+ 179               	.LVL7:
+ 180 00f6 182F      		mov r17,r24
+ 181               	.LM19:
+ 182 00f8 41E5      		ldi r20,lo8(81)
+ 183 00fa 60E0      		ldi r22,lo8(0)
+ 184 00fc 0E94 0000 		call i2cwritereg
+ 185               	.LVL8:
+ 186 0100 88EE      		ldi r24,lo8(1000)
+ 187 0102 93E0      		ldi r25,hi8(1000)
+ 188 0104 A0E0      		ldi r26,hlo8(1000)
+ 189 0106 B0E0      		ldi r27,hhi8(1000)
+ 190 0108 8093 0000 		sts wit,r24
+ 191 010c 9093 0000 		sts (wit)+1,r25
+ 192 0110 A093 0000 		sts (wit)+2,r26
+ 193 0114 B093 0000 		sts (wit)+3,r27
+ 194               	.LM20:
+ 195 0118 62E0      		ldi r22,lo8(2)
+ 196 011a 812F      		mov r24,r17
+ 197 011c 0E94 0000 		call i2creadreg
+ 198               	.LM21:
+ 199 0120 E82E      		mov r14,r24
+ 200 0122 FF24      		clr r15
+ 201 0124 FE2C      		mov r15,r14
+ 202 0126 EE24      		clr r14
+ 203 0128 F092 0000 		sts (dis)+1,r15
+ 204 012c E092 0000 		sts dis,r14
+ 205               	.LM22:
+ 206 0130 63E0      		ldi r22,lo8(3)
+ 207 0132 812F      		mov r24,r17
+ 208 0134 0E94 0000 		call i2creadreg
+ 209 0138 E80E      		add r14,r24
+ 210 013a F11C      		adc r15,__zero_reg__
+ 211 013c F092 0000 		sts (dis)+1,r15
+ 212 0140 E092 0000 		sts dis,r14
+ 213               	.LM23:
+ 214 0144 C701      		movw r24,r14
+ 215               	/* epilogue: frame size=0 */
+ 216 0146 1F91      		pop r17
+ 217 0148 FF90      		pop r15
+ 218 014a EF90      		pop r14
+ 219 014c 0895      		ret
+ 220               	/* epilogue end (size=4) */
+ 221               	/* function getCM size 47 (40) */
+ 222               	.LFE7:
+ 224               	.global	initcommsunit
+ 226               	initcommsunit:
+ 227               	.LFB5:
+ 228               	.LM24:
+ 229               	/* prologue: frame size=0 */
+ 230               	/* prologue end (size=0) */
+ 231               	.LM25:
+ 232 014e 60E0      		ldi r22,lo8(0)
+ 233 0150 88E0      		ldi r24,lo8(8)
+ 234 0152 0E94 0000 		call i2cinit
+ 235               	/* epilogue: frame size=0 */
+ 236 0156 0895      		ret
+ 237               	/* epilogue end (size=1) */
+ 238               	/* function initcommsunit size 5 (4) */
+ 239               	.LFE5:
+ 241               		.comm dis,2,1
+ 242               		.comm wit,4,1
+ 293               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 srf02.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:20     .text:00000000 changeAddress
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:61     .text:00000034 getUS
+                            *COM*:00000004 wit
+                            *COM*:00000002 dis
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:116    .text:00000092 getIN
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:171    .text:000000f0 getCM
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccM3aaaa.s:226    .text:0000014e initcommsunit
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+i2cwritereg
+i2creadreg
+i2cinit

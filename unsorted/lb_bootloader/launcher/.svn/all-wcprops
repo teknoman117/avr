@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/foodloader/!svn/ver/33/releases/0.21/launcher
+END
+launch-bootloader.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/foodloader/!svn/ver/33/releases/0.21/launcher/launch-bootloader.c
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/foodloader/!svn/ver/33/releases/0.21/launcher/Makefile
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/foodloader/!svn/ver/33/releases/0.21/launcher/README
+END

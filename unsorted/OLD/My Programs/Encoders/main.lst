@@ -1,0 +1,231 @@
+   1               		.file	"main.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB2:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24 0000 C0E0      		ldi r28,lo8(__stack - 0)
+  25 0002 D0E0      		ldi r29,hi8(__stack - 0)
+  26 0004 DEBF      		out __SP_H__,r29
+  27 0006 CDBF      		out __SP_L__,r28
+  28               	/* prologue end (size=4) */
+  29               	.LM2:
+  30 0008 00D0      		rcall initPWM
+  31               	.LM3:
+  32 000a 00D0      		rcall initIO
+  33               	.LM4:
+  34 000c 61E0      		ldi r22,lo8(1)
+  35 000e 862F      		mov r24,r22
+  36 0010 00D0      		rcall setIOB
+  37               	.LM5:
+  38 0012 61E0      		ldi r22,lo8(1)
+  39 0014 82E0      		ldi r24,lo8(2)
+  40 0016 00D0      		rcall setIOB
+  41               	.LM6:
+  42 0018 85B7      		in r24,85-0x20
+  43 001a 865F      		subi r24,lo8(-(10))
+  44 001c 85BF      		out 85-0x20,r24
+  45               	.LM7:
+  46 001e 8BB7      		in r24,91-0x20
+  47 0020 8054      		subi r24,lo8(-(-64))
+  48 0022 8BBF      		out 91-0x20,r24
+  49               	.LM8:
+  50               	/* #APP */
+  51 0024 7894      		sei
+  52               	/* #NOAPP */
+  53               	.L2:
+  54               	.LM9:
+  55 0026 8091 0000 		lds r24,Lcnt
+  56 002a 9091 0000 		lds r25,(Lcnt)+1
+  57 002e 00D0      		rcall setCHA
+  58               	.LM10:
+  59 0030 8091 0000 		lds r24,Rcnt
+  60 0034 9091 0000 		lds r25,(Rcnt)+1
+  61 0038 00D0      		rcall setCHB
+  62 003a F5CF      		rjmp .L2
+  63               	/* epilogue: frame size=0 */
+  64               	/* epilogue: noreturn */
+  65               	/* epilogue end (size=0) */
+  66               	/* function main size 31 (27) */
+  67               	.LFE2:
+  69               	.global	__vector_1
+  71               	__vector_1:
+  72               	.LFB3:
+  73               	.LM11:
+  74               	/* prologue: frame size=0 */
+  75 003c 1F92      		push __zero_reg__
+  76 003e 0F92      		push __tmp_reg__
+  77 0040 0FB6      		in __tmp_reg__,__SREG__
+  78 0042 0F92      		push __tmp_reg__
+  79 0044 1124      		clr __zero_reg__
+  80 0046 2F93      		push r18
+  81 0048 3F93      		push r19
+  82 004a 4F93      		push r20
+  83 004c 5F93      		push r21
+  84 004e 6F93      		push r22
+  85 0050 7F93      		push r23
+  86 0052 8F93      		push r24
+  87 0054 9F93      		push r25
+  88 0056 AF93      		push r26
+  89 0058 BF93      		push r27
+  90 005a EF93      		push r30
+  91 005c FF93      		push r31
+  92               	/* prologue end (size=17) */
+  93               	.LM12:
+  94 005e 80E0      		ldi r24,lo8(0)
+  95 0060 00D0      		rcall getStateB
+  96 0062 8130      		cpi r24,lo8(1)
+  97 0064 49F4      		brne .L5
+  98               	.LM13:
+  99 0066 8091 0000 		lds r24,Lcnt
+ 100 006a 9091 0000 		lds r25,(Lcnt)+1
+ 101 006e 0196      		adiw r24,1
+ 102 0070 9093 0000 		sts (Lcnt)+1,r25
+ 103 0074 8093 0000 		sts Lcnt,r24
+ 104               	.L5:
+ 105               	.LM14:
+ 106 0078 80E0      		ldi r24,lo8(0)
+ 107 007a 00D0      		rcall getStateB
+ 108 007c 8823      		tst r24
+ 109 007e 49F4      		brne .L4
+ 110 0080 8091 0000 		lds r24,Lcnt
+ 111 0084 9091 0000 		lds r25,(Lcnt)+1
+ 112 0088 0197      		sbiw r24,1
+ 113 008a 9093 0000 		sts (Lcnt)+1,r25
+ 114 008e 8093 0000 		sts Lcnt,r24
+ 115               	.L4:
+ 116               	/* epilogue: frame size=0 */
+ 117 0092 FF91      		pop r31
+ 118 0094 EF91      		pop r30
+ 119 0096 BF91      		pop r27
+ 120 0098 AF91      		pop r26
+ 121 009a 9F91      		pop r25
+ 122 009c 8F91      		pop r24
+ 123 009e 7F91      		pop r23
+ 124 00a0 6F91      		pop r22
+ 125 00a2 5F91      		pop r21
+ 126 00a4 4F91      		pop r20
+ 127 00a6 3F91      		pop r19
+ 128 00a8 2F91      		pop r18
+ 129 00aa 0F90      		pop __tmp_reg__
+ 130 00ac 0FBE      		out __SREG__,__tmp_reg__
+ 131 00ae 0F90      		pop __tmp_reg__
+ 132 00b0 1F90      		pop __zero_reg__
+ 133 00b2 1895      		reti
+ 134               	/* epilogue end (size=17) */
+ 135               	/* function __vector_1 size 60 (26) */
+ 136               	.LFE3:
+ 138               	.global	__vector_2
+ 140               	__vector_2:
+ 141               	.LFB4:
+ 142               	.LM15:
+ 143               	/* prologue: frame size=0 */
+ 144 00b4 1F92      		push __zero_reg__
+ 145 00b6 0F92      		push __tmp_reg__
+ 146 00b8 0FB6      		in __tmp_reg__,__SREG__
+ 147 00ba 0F92      		push __tmp_reg__
+ 148 00bc 1124      		clr __zero_reg__
+ 149 00be 2F93      		push r18
+ 150 00c0 3F93      		push r19
+ 151 00c2 4F93      		push r20
+ 152 00c4 5F93      		push r21
+ 153 00c6 6F93      		push r22
+ 154 00c8 7F93      		push r23
+ 155 00ca 8F93      		push r24
+ 156 00cc 9F93      		push r25
+ 157 00ce AF93      		push r26
+ 158 00d0 BF93      		push r27
+ 159 00d2 EF93      		push r30
+ 160 00d4 FF93      		push r31
+ 161               	/* prologue end (size=17) */
+ 162               	.LM16:
+ 163 00d6 85E0      		ldi r24,lo8(5)
+ 164 00d8 00D0      		rcall getStateB
+ 165 00da 8130      		cpi r24,lo8(1)
+ 166 00dc 49F4      		brne .L8
+ 167               	.LM17:
+ 168 00de 8091 0000 		lds r24,Rcnt
+ 169 00e2 9091 0000 		lds r25,(Rcnt)+1
+ 170 00e6 0196      		adiw r24,1
+ 171 00e8 9093 0000 		sts (Rcnt)+1,r25
+ 172 00ec 8093 0000 		sts Rcnt,r24
+ 173               	.L8:
+ 174               	.LM18:
+ 175 00f0 85E0      		ldi r24,lo8(5)
+ 176 00f2 00D0      		rcall getStateB
+ 177 00f4 8823      		tst r24
+ 178 00f6 49F4      		brne .L7
+ 179 00f8 8091 0000 		lds r24,Rcnt
+ 180 00fc 9091 0000 		lds r25,(Rcnt)+1
+ 181 0100 0197      		sbiw r24,1
+ 182 0102 9093 0000 		sts (Rcnt)+1,r25
+ 183 0106 8093 0000 		sts Rcnt,r24
+ 184               	.L7:
+ 185               	/* epilogue: frame size=0 */
+ 186 010a FF91      		pop r31
+ 187 010c EF91      		pop r30
+ 188 010e BF91      		pop r27
+ 189 0110 AF91      		pop r26
+ 190 0112 9F91      		pop r25
+ 191 0114 8F91      		pop r24
+ 192 0116 7F91      		pop r23
+ 193 0118 6F91      		pop r22
+ 194 011a 5F91      		pop r21
+ 195 011c 4F91      		pop r20
+ 196 011e 3F91      		pop r19
+ 197 0120 2F91      		pop r18
+ 198 0122 0F90      		pop __tmp_reg__
+ 199 0124 0FBE      		out __SREG__,__tmp_reg__
+ 200 0126 0F90      		pop __tmp_reg__
+ 201 0128 1F90      		pop __zero_reg__
+ 202 012a 1895      		reti
+ 203               	/* epilogue end (size=17) */
+ 204               	/* function __vector_2 size 60 (26) */
+ 205               	.LFE4:
+ 207               		.comm prtb,1,1
+ 208               		.comm prtc,1,1
+ 209               		.comm prtd,1,1
+ 210               		.comm dirb,1,1
+ 211               		.comm dirc,1,1
+ 212               		.comm dird,1,1
+ 213               		.comm Lcnt,2,1
+ 214               		.comm Rcnt,2,1
+ 215               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccOWaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccOWaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccOWaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccOWaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccOWaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccOWaaaa.s:20     .text:00000000 main
+                            *COM*:00000002 Lcnt
+                            *COM*:00000002 Rcnt
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccOWaaaa.s:71     .text:0000003c __vector_1
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccOWaaaa.s:140    .text:000000b4 __vector_2
+                            *COM*:00000001 prtb
+                            *COM*:00000001 prtc
+                            *COM*:00000001 prtd
+                            *COM*:00000001 dirb
+                            *COM*:00000001 dirc
+                            *COM*:00000001 dird
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack
+initPWM
+initIO
+setIOB
+setCHA
+setCHB
+getStateB

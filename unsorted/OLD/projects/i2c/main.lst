@@ -1,0 +1,684 @@
+GAS LISTING /tmp/ccDsVhrQ.s 			page 1
+
+
+   1               		.file	"main.cpp"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.stabs	"/home/nathaniel/programming/AVR_code/projects/i2c/",100,0,4,.Ltext0
+  10               		.stabs	"main.cpp",100,0,4,.Ltext0
+  11               		.text
+  12               	.Ltext0:
+  13               		.stabs	"gcc2_compiled.",60,0,0,0
+  14               		.stabs	"__builtin_va_list:t(0,1)=*(0,2)=(0,2)",128,0,0,0
+  15               		.stabs	"complex long double:t(0,3)=R3;8;0;",128,0,0,0
+  16               		.stabs	"complex double:t(0,4)=R3;8;0;",128,0,0,0
+  17               		.stabs	"complex float:t(0,5)=R3;8;0;",128,0,0,0
+  18               		.stabs	"complex int:t(0,6)=s4real:(0,7)=r(0,7);-32768;32767;,0,16;imag:(0,7),16,16;;",128,0,0,0
+  19               		.stabs	"long long unsigned int:t(0,8)=@s64;r(0,8);0;01777777777777777777777;",128,0,0,0
+  20               		.stabs	"long unsigned int:t(0,9)=@s32;r(0,9);0;037777777777;",128,0,0,0
+  21               		.stabs	"unsigned int:t(0,10)=r(0,10);0;0177777;",128,0,0,0
+  22               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,0,0
+  23               		.stabs	"long long int:t(0,12)=@s64;r(0,12);01000000000000000000000;0777777777777777777777;",128,0,
+  24               		.stabs	"long int:t(0,13)=@s32;r(0,13);020000000000;017777777777;",128,0,0,0
+  25               		.stabs	"int:t(0,7)",128,0,0,0
+  26               		.stabs	"signed char:t(0,14)=@s8;r(0,14);-128;127;",128,0,0,0
+  27               		.stabs	"char:t(0,15)=@s8;r(0,15);0;255;",128,0,0,0
+  28               		.stabs	"signed:t(0,7)",128,0,0,0
+  29               		.stabs	"unsigned long:t(0,9)",128,0,0,0
+  30               		.stabs	"long long unsigned:t(0,8)",128,0,0,0
+  31               		.stabs	"short int:t(0,16)=r(0,16);-32768;32767;",128,0,0,0
+  32               		.stabs	"short unsigned int:t(0,17)=r(0,17);0;0177777;",128,0,0,0
+  33               		.stabs	"unsigned short:t(0,17)",128,0,0,0
+  34               		.stabs	"float:t(0,18)=r(0,7);4;0;",128,0,0,0
+  35               		.stabs	"double:t(0,19)=r(0,7);4;0;",128,0,0,0
+  36               		.stabs	"long double:t(0,20)=r(0,7);4;0;",128,0,0,0
+  37               		.stabs	"void:t(0,2)",128,0,0,0
+  38               		.stabs	"wchar_t:t(0,21)=r(0,21);-32768;32767;",128,0,0,0
+  39               		.stabs	"bool:t(0,22)=@s8;-16;",128,0,0,0
+  40               		.stabs	"__vtbl_ptr_type:t(0,23)=*(0,24)=f(0,7)",128,0,0,0
+  41               		.stabs	"int8_t:t(0,25)=(0,14)",128,0,121,0
+  42               		.stabs	"uint8_t:t(0,26)=(0,11)",128,0,122,0
+  43               		.stabs	"int16_t:t(0,27)=(0,7)",128,0,123,0
+  44               		.stabs	"uint16_t:t(0,28)=(0,10)",128,0,124,0
+  45               		.stabs	"int32_t:t(0,29)=(0,13)",128,0,125,0
+  46               		.stabs	"uint32_t:t(0,30)=(0,9)",128,0,126,0
+  47               		.stabs	"int64_t:t(0,31)=(0,12)",128,0,128,0
+  48               		.stabs	"uint64_t:t(0,32)=(0,8)",128,0,129,0
+  49               		.stabs	"intptr_t:t(0,33)=(0,27)",128,0,142,0
+  50               		.stabs	"uintptr_t:t(0,34)=(0,28)",128,0,147,0
+  51               		.stabs	"int_least8_t:t(0,35)=(0,25)",128,0,159,0
+  52               		.stabs	"uint_least8_t:t(0,36)=(0,26)",128,0,164,0
+  53               		.stabs	"int_least16_t:t(0,37)=(0,27)",128,0,169,0
+  54               		.stabs	"uint_least16_t:t(0,38)=(0,28)",128,0,174,0
+  55               		.stabs	"int_least32_t:t(0,39)=(0,29)",128,0,179,0
+  56               		.stabs	"uint_least32_t:t(0,40)=(0,30)",128,0,184,0
+  57               		.stabs	"int_least64_t:t(0,41)=(0,31)",128,0,192,0
+GAS LISTING /tmp/ccDsVhrQ.s 			page 2
+
+
+  58               		.stabs	"uint_least64_t:t(0,42)=(0,32)",128,0,199,0
+  59               		.stabs	"int_fast8_t:t(0,43)=(0,25)",128,0,213,0
+  60               		.stabs	"uint_fast8_t:t(0,44)=(0,26)",128,0,218,0
+  61               		.stabs	"int_fast16_t:t(0,45)=(0,27)",128,0,223,0
+  62               		.stabs	"uint_fast16_t:t(0,46)=(0,28)",128,0,228,0
+  63               		.stabs	"int_fast32_t:t(0,47)=(0,29)",128,0,233,0
+  64               		.stabs	"uint_fast32_t:t(0,48)=(0,30)",128,0,238,0
+  65               		.stabs	"int_fast64_t:t(0,49)=(0,31)",128,0,246,0
+  66               		.stabs	"uint_fast64_t:t(0,50)=(0,32)",128,0,253,0
+  67               		.stabs	"intmax_t:t(0,51)=(0,31)",128,0,273,0
+  68               		.stabs	"uintmax_t:t(0,52)=(0,32)",128,0,278,0
+  69               		.stabs	"int_farptr_t:t(0,53)=(0,29)",128,0,77,0
+  70               		.stabs	"uint_farptr_t:t(0,54)=(0,30)",128,0,81,0
+  71               		.stabs	"_Z8i2c_initv:F(0,2)",36,0,10,_Z8i2c_initv
+  72               	.global	_Z8i2c_initv
+  73               		.type	_Z8i2c_initv, @function
+  74               	_Z8i2c_initv:
+  75               		.stabd	46,0,0
+  76               		.stabs	"i2c.h",132,0,0,.Ltext1
+  77               	.Ltext1:
+   1:i2c.h         **** #include <avr/io.h>
+   2:i2c.h         **** #include <util/twi.h>
+   3:i2c.h         **** #define I2C_READ    1
+   4:i2c.h         **** #define I2C_WRITE   0
+   5:i2c.h         **** #ifndef F_CPU
+   6:i2c.h         ****   #define F_CPU 11059200UL
+   7:i2c.h         **** #endif
+   8:i2c.h         **** #define SCL_CLOCK  100000L
+   9:i2c.h         **** 
+  10:i2c.h         **** void i2c_init(void) {
+  78               		.stabn	68,0,10,.LM0-.LFBB1
+  79               	.LM0:
+  80               	.LFBB1:
+  81               	/* prologue: frame size=0 */
+  82               	/* prologue end (size=0) */
+  11:i2c.h         ****   TWSR = 0;
+  83               		.stabn	68,0,11,.LM1-.LFBB1
+  84               	.LM1:
+  85 0000 1092 B900 		sts 185,__zero_reg__
+  12:i2c.h         ****   TWBR = ((F_CPU/SCL_CLOCK)-16)/2;
+  86               		.stabn	68,0,12,.LM2-.LFBB1
+  87               	.LM2:
+  88 0004 8FE2      		ldi r24,lo8(47)
+  89 0006 8093 B800 		sts 184,r24
+  90               	/* epilogue: frame size=0 */
+  91 000a 0895      		ret
+  92               	/* epilogue end (size=1) */
+  93               	/* function void i2c_init() size 6 (5) */
+  94               		.size	_Z8i2c_initv, .-_Z8i2c_initv
+  95               	.Lscope1:
+  96               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+  97               		.stabd	78,0,0
+  98               		.stabs	"_Z9i2c_starth:F(0,11)",36,0,15,_Z9i2c_starth
+  99               		.stabs	"address:P(0,11)",64,0,15,25
+ 100               	.global	_Z9i2c_starth
+ 101               		.type	_Z9i2c_starth, @function
+ 102               	_Z9i2c_starth:
+GAS LISTING /tmp/ccDsVhrQ.s 			page 3
+
+
+ 103               		.stabd	46,0,0
+  13:i2c.h         **** }
+  14:i2c.h         **** 
+  15:i2c.h         **** unsigned char i2c_start(unsigned char address) {
+ 104               		.stabn	68,0,15,.LM3-.LFBB2
+ 105               	.LM3:
+ 106               	.LFBB2:
+ 107               	/* prologue: frame size=0 */
+ 108               	/* prologue end (size=0) */
+ 109 000c 982F      		mov r25,r24
+ 110               	.LBB2:
+  16:i2c.h         ****     uint8_t   twst;
+  17:i2c.h         **** 	TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
+ 111               		.stabn	68,0,17,.LM4-.LFBB2
+ 112               	.LM4:
+ 113 000e 84EA      		ldi r24,lo8(-92)
+ 114 0010 8093 BC00 		sts 188,r24
+ 115               	.L4:
+  18:i2c.h         **** 	while(!(TWCR & (1<<TWINT)));
+ 116               		.stabn	68,0,18,.LM5-.LFBB2
+ 117               	.LM5:
+ 118 0014 8091 BC00 		lds r24,188
+ 119 0018 87FF      		sbrs r24,7
+ 120 001a 00C0      		rjmp .L4
+  19:i2c.h         **** 	twst = TW_STATUS & 0xF8;
+ 121               		.stabn	68,0,19,.LM6-.LFBB2
+ 122               	.LM6:
+ 123 001c 8091 B900 		lds r24,185
+ 124 0020 887F      		andi r24,lo8(-8)
+  20:i2c.h         **** 	if ( (twst != TW_START) && (twst != TW_REP_START)) return 1;
+ 125               		.stabn	68,0,20,.LM7-.LFBB2
+ 126               	.LM7:
+ 127 0022 8830      		cpi r24,lo8(8)
+ 128 0024 01F0      		breq .L6
+ 129 0026 8031      		cpi r24,lo8(16)
+ 130 0028 01F0      		breq .L6
+ 131 002a 81E0      		ldi r24,lo8(1)
+ 132 002c 90E0      		ldi r25,hi8(1)
+ 133 002e 0895      		ret
+ 134               	.L6:
+  21:i2c.h         **** 	TWDR = address;
+ 135               		.stabn	68,0,21,.LM8-.LFBB2
+ 136               	.LM8:
+ 137 0030 9093 BB00 		sts 187,r25
+  22:i2c.h         **** 	TWCR = (1<<TWINT) | (1<<TWEN);
+ 138               		.stabn	68,0,22,.LM9-.LFBB2
+ 139               	.LM9:
+ 140 0034 84E8      		ldi r24,lo8(-124)
+ 141 0036 8093 BC00 		sts 188,r24
+ 142               	.L10:
+  23:i2c.h         **** 	while(!(TWCR & (1<<TWINT)));
+ 143               		.stabn	68,0,23,.LM10-.LFBB2
+ 144               	.LM10:
+ 145 003a 8091 BC00 		lds r24,188
+ 146 003e 87FF      		sbrs r24,7
+ 147 0040 00C0      		rjmp .L10
+  24:i2c.h         **** 	twst = TW_STATUS & 0xF8;
+GAS LISTING /tmp/ccDsVhrQ.s 			page 4
+
+
+ 148               		.stabn	68,0,24,.LM11-.LFBB2
+ 149               	.LM11:
+ 150 0042 2091 B900 		lds r18,185
+ 151 0046 287F      		andi r18,lo8(-8)
+  25:i2c.h         **** 	if ( (twst != TW_MT_SLA_ACK) && (twst != TW_MR_SLA_ACK) ) return 1;
+ 152               		.stabn	68,0,25,.LM12-.LFBB2
+ 153               	.LM12:
+ 154 0048 2831      		cpi r18,lo8(24)
+ 155 004a 01F4      		brne .L12
+ 156 004c 80E0      		ldi r24,lo8(0)
+ 157 004e 90E0      		ldi r25,hi8(0)
+ 158 0050 0895      		ret
+ 159               	.L12:
+ 160 0052 80E0      		ldi r24,lo8(0)
+ 161 0054 90E0      		ldi r25,hi8(0)
+ 162 0056 2034      		cpi r18,lo8(64)
+ 163 0058 01F0      		breq .L9
+ 164 005a 81E0      		ldi r24,lo8(1)
+ 165 005c 90E0      		ldi r25,hi8(1)
+ 166               	.L9:
+ 167               	.LBE2:
+  26:i2c.h         **** 
+  27:i2c.h         **** 	return 0;
+  28:i2c.h         **** 
+  29:i2c.h         **** }
+ 168               		.stabn	68,0,29,.LM13-.LFBB2
+ 169               	.LM13:
+ 170 005e 0895      		ret
+ 171               	/* epilogue: frame size=0 */
+ 172               	/* epilogue: noreturn */
+ 173               	/* epilogue end (size=0) */
+ 174               	/* function unsigned char i2c_start(unsigned char) size 42 (42) */
+ 175               		.size	_Z9i2c_starth, .-_Z9i2c_starth
+ 176               		.stabs	"twst:r(0,26)",64,0,16,24
+ 177               		.stabn	192,0,0,.LBB2-.LFBB2
+ 178               		.stabn	224,0,0,.LBE2-.LFBB2
+ 179               	.Lscope2:
+ 180               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 181               		.stabd	78,0,0
+ 182               		.stabs	"_Z14i2c_start_waith:F(0,2)",36,0,31,_Z14i2c_start_waith
+ 183               		.stabs	"address:P(0,11)",64,0,31,25
+ 184               	.global	_Z14i2c_start_waith
+ 185               		.type	_Z14i2c_start_waith, @function
+ 186               	_Z14i2c_start_waith:
+ 187               		.stabd	46,0,0
+  30:i2c.h         **** 
+  31:i2c.h         **** void i2c_start_wait(unsigned char address)
+ 188               		.stabn	68,0,31,.LM14-.LFBB3
+ 189               	.LM14:
+ 190               	.LFBB3:
+ 191               	/* prologue: frame size=0 */
+ 192               	/* prologue end (size=0) */
+ 193 0060 982F      		mov r25,r24
+ 194               	.L42:
+ 195               	.LBB3:
+  32:i2c.h         **** {
+  33:i2c.h         ****     uint8_t   twst;
+GAS LISTING /tmp/ccDsVhrQ.s 			page 5
+
+
+  34:i2c.h         ****     while ( 1 ) {
+  35:i2c.h         **** 	    TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
+ 196               		.stabn	68,0,35,.LM15-.LFBB3
+ 197               	.LM15:
+ 198 0062 84EA      		ldi r24,lo8(-92)
+ 199 0064 8093 BC00 		sts 188,r24
+ 200               	.L23:
+  36:i2c.h         ****     	while(!(TWCR & (1<<TWINT)));
+ 201               		.stabn	68,0,36,.LM16-.LFBB3
+ 202               	.LM16:
+ 203 0068 8091 BC00 		lds r24,188
+ 204 006c 87FF      		sbrs r24,7
+ 205 006e 00C0      		rjmp .L23
+  37:i2c.h         ****     	twst = TW_STATUS & 0xF8;
+ 206               		.stabn	68,0,37,.LM17-.LFBB3
+ 207               	.LM17:
+ 208 0070 8091 B900 		lds r24,185
+ 209 0074 887F      		andi r24,lo8(-8)
+  38:i2c.h         ****     	if ( (twst != TW_START) && (twst != TW_REP_START)) continue;
+ 210               		.stabn	68,0,38,.LM18-.LFBB3
+ 211               	.LM18:
+ 212 0076 8830      		cpi r24,lo8(8)
+ 213 0078 01F0      		breq .L25
+ 214 007a 8031      		cpi r24,lo8(16)
+ 215 007c 01F4      		brne .L42
+ 216               	.L25:
+  39:i2c.h         ****     	TWDR = address;
+ 217               		.stabn	68,0,39,.LM19-.LFBB3
+ 218               	.LM19:
+ 219 007e 9093 BB00 		sts 187,r25
+  40:i2c.h         ****     	TWCR = (1<<TWINT) | (1<<TWEN);
+ 220               		.stabn	68,0,40,.LM20-.LFBB3
+ 221               	.LM20:
+ 222 0082 84E8      		ldi r24,lo8(-124)
+ 223 0084 8093 BC00 		sts 188,r24
+ 224               	.L27:
+  41:i2c.h         ****     	while(!(TWCR & (1<<TWINT)));
+ 225               		.stabn	68,0,41,.LM21-.LFBB3
+ 226               	.LM21:
+ 227 0088 8091 BC00 		lds r24,188
+ 228 008c 87FF      		sbrs r24,7
+ 229 008e 00C0      		rjmp .L27
+  42:i2c.h         ****     	twst = TW_STATUS & 0xF8;
+ 230               		.stabn	68,0,42,.LM22-.LFBB3
+ 231               	.LM22:
+ 232 0090 8091 B900 		lds r24,185
+ 233 0094 887F      		andi r24,lo8(-8)
+  43:i2c.h         ****     	if ( (twst == TW_MT_SLA_NACK )||(twst ==TW_MR_DATA_NACK) ) 
+ 234               		.stabn	68,0,43,.LM23-.LFBB3
+ 235               	.LM23:
+ 236 0096 8032      		cpi r24,lo8(32)
+ 237 0098 01F0      		breq .L29
+ 238 009a 8835      		cpi r24,lo8(88)
+ 239 009c 01F4      		brne .L33
+ 240               	.L29:
+  44:i2c.h         ****     	{    	    
+  45:i2c.h         **** 	        TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+GAS LISTING /tmp/ccDsVhrQ.s 			page 6
+
+
+ 241               		.stabn	68,0,45,.LM24-.LFBB3
+ 242               	.LM24:
+ 243 009e 84E9      		ldi r24,lo8(-108)
+ 244 00a0 8093 BC00 		sts 188,r24
+ 245               	.L32:
+  46:i2c.h         **** 	        while(TWCR & (1<<TWSTO));
+ 246               		.stabn	68,0,46,.LM25-.LFBB3
+ 247               	.LM25:
+ 248 00a4 8091 BC00 		lds r24,188
+ 249 00a8 84FF      		sbrs r24,4
+ 250 00aa 00C0      		rjmp .L42
+ 251 00ac 00C0      		rjmp .L32
+ 252               	.L33:
+ 253 00ae 0895      		ret
+ 254               	.LBE3:
+ 255               	/* epilogue: frame size=0 */
+ 256               	/* epilogue: noreturn */
+ 257               	/* epilogue end (size=0) */
+ 258               	/* function void i2c_start_wait(unsigned char) size 40 (40) */
+ 259               		.size	_Z14i2c_start_waith, .-_Z14i2c_start_waith
+ 260               		.stabs	"twst:r(0,26)",64,0,33,24
+ 261               		.stabn	192,0,0,.LBB3-.LFBB3
+ 262               		.stabn	224,0,0,.LBE3-.LFBB3
+ 263               	.Lscope3:
+ 264               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 265               		.stabd	78,0,0
+ 266               		.stabs	"_Z13i2c_rep_starth:F(0,11)",36,0,53,_Z13i2c_rep_starth
+ 267               		.stabs	"address:P(0,11)",64,0,53,24
+ 268               	.global	_Z13i2c_rep_starth
+ 269               		.type	_Z13i2c_rep_starth, @function
+ 270               	_Z13i2c_rep_starth:
+ 271               		.stabd	46,0,0
+  47:i2c.h         ****     	    continue;
+  48:i2c.h         ****     	}
+  49:i2c.h         ****     	break;
+  50:i2c.h         ****      }
+  51:i2c.h         **** }
+  52:i2c.h         **** 
+  53:i2c.h         **** unsigned char i2c_rep_start(unsigned char address) {
+ 272               		.stabn	68,0,53,.LM26-.LFBB4
+ 273               	.LM26:
+ 274               	.LFBB4:
+ 275               	/* prologue: frame size=0 */
+ 276               	/* prologue end (size=0) */
+  54:i2c.h         ****     return i2c_start( address );
+ 277               		.stabn	68,0,54,.LM27-.LFBB4
+ 278               	.LM27:
+ 279 00b0 0E94 0000 		call _Z9i2c_starth
+  55:i2c.h         **** }
+ 280               		.stabn	68,0,55,.LM28-.LFBB4
+ 281               	.LM28:
+ 282 00b4 9927      		clr r25
+ 283               	/* epilogue: frame size=0 */
+ 284 00b6 0895      		ret
+ 285               	/* epilogue end (size=1) */
+ 286               	/* function unsigned char i2c_rep_start(unsigned char) size 4 (3) */
+ 287               		.size	_Z13i2c_rep_starth, .-_Z13i2c_rep_starth
+GAS LISTING /tmp/ccDsVhrQ.s 			page 7
+
+
+ 288               	.Lscope4:
+ 289               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 290               		.stabd	78,0,0
+ 291               		.stabs	"_Z8i2c_stopv:F(0,2)",36,0,57,_Z8i2c_stopv
+ 292               	.global	_Z8i2c_stopv
+ 293               		.type	_Z8i2c_stopv, @function
+ 294               	_Z8i2c_stopv:
+ 295               		.stabd	46,0,0
+  56:i2c.h         **** 
+  57:i2c.h         **** void i2c_stop(void) {
+ 296               		.stabn	68,0,57,.LM29-.LFBB5
+ 297               	.LM29:
+ 298               	.LFBB5:
+ 299               	/* prologue: frame size=0 */
+ 300               	/* prologue end (size=0) */
+  58:i2c.h         **** 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+ 301               		.stabn	68,0,58,.LM30-.LFBB5
+ 302               	.LM30:
+ 303 00b8 84E9      		ldi r24,lo8(-108)
+ 304 00ba 8093 BC00 		sts 188,r24
+ 305               	.L46:
+  59:i2c.h         **** 	while(TWCR & (1<<TWSTO));
+ 306               		.stabn	68,0,59,.LM31-.LFBB5
+ 307               	.LM31:
+ 308 00be 8091 BC00 		lds r24,188
+ 309 00c2 84FD      		sbrc r24,4
+ 310 00c4 00C0      		rjmp .L46
+ 311               	/* epilogue: frame size=0 */
+ 312 00c6 0895      		ret
+ 313               	/* epilogue end (size=1) */
+ 314               	/* function void i2c_stop() size 8 (7) */
+ 315               		.size	_Z8i2c_stopv, .-_Z8i2c_stopv
+ 316               	.Lscope5:
+ 317               		.stabs	"",36,0,0,.Lscope5-.LFBB5
+ 318               		.stabd	78,0,0
+ 319               		.stabs	"_Z9i2c_writeh:F(0,11)",36,0,63,_Z9i2c_writeh
+ 320               		.stabs	"data:P(0,11)",64,0,63,24
+ 321               	.global	_Z9i2c_writeh
+ 322               		.type	_Z9i2c_writeh, @function
+ 323               	_Z9i2c_writeh:
+ 324               		.stabd	46,0,0
+  60:i2c.h         **** 
+  61:i2c.h         **** }
+  62:i2c.h         **** 
+  63:i2c.h         **** unsigned char i2c_write( unsigned char data ) {	
+ 325               		.stabn	68,0,63,.LM32-.LFBB6
+ 326               	.LM32:
+ 327               	.LFBB6:
+ 328               	/* prologue: frame size=0 */
+ 329               	/* prologue end (size=0) */
+ 330               	.LBB4:
+  64:i2c.h         ****     uint8_t   twst;
+  65:i2c.h         **** 	TWDR = data;
+ 331               		.stabn	68,0,65,.LM33-.LFBB6
+ 332               	.LM33:
+ 333 00c8 8093 BB00 		sts 187,r24
+  66:i2c.h         **** 	TWCR = (1<<TWINT) | (1<<TWEN);
+GAS LISTING /tmp/ccDsVhrQ.s 			page 8
+
+
+ 334               		.stabn	68,0,66,.LM34-.LFBB6
+ 335               	.LM34:
+ 336 00cc 84E8      		ldi r24,lo8(-124)
+ 337 00ce 8093 BC00 		sts 188,r24
+ 338               	.L52:
+  67:i2c.h         **** 	while(!(TWCR & (1<<TWINT)));
+ 339               		.stabn	68,0,67,.LM35-.LFBB6
+ 340               	.LM35:
+ 341 00d2 8091 BC00 		lds r24,188
+ 342 00d6 87FF      		sbrs r24,7
+ 343 00d8 00C0      		rjmp .L52
+  68:i2c.h         **** 	twst = TW_STATUS & 0xF8;
+ 344               		.stabn	68,0,68,.LM36-.LFBB6
+ 345               	.LM36:
+ 346 00da 8091 B900 		lds r24,185
+ 347 00de 20E0      		ldi r18,lo8(0)
+ 348 00e0 30E0      		ldi r19,hi8(0)
+ 349 00e2 887F      		andi r24,lo8(-8)
+ 350 00e4 8832      		cpi r24,lo8(40)
+ 351 00e6 01F0      		breq .L54
+ 352 00e8 21E0      		ldi r18,lo8(1)
+ 353 00ea 30E0      		ldi r19,hi8(1)
+ 354               	.L54:
+ 355               	.LBE4:
+  69:i2c.h         **** 	if( twst != TW_MT_DATA_ACK) return 1;
+  70:i2c.h         **** 	return 0;
+  71:i2c.h         **** }
+ 356               		.stabn	68,0,71,.LM37-.LFBB6
+ 357               	.LM37:
+ 358 00ec C901      		movw r24,r18
+ 359               	/* epilogue: frame size=0 */
+ 360 00ee 0895      		ret
+ 361               	/* epilogue end (size=1) */
+ 362               	/* function unsigned char i2c_write(unsigned char) size 20 (19) */
+ 363               		.size	_Z9i2c_writeh, .-_Z9i2c_writeh
+ 364               	.Lscope6:
+ 365               		.stabs	"",36,0,0,.Lscope6-.LFBB6
+ 366               		.stabd	78,0,0
+ 367               		.stabs	"_Z11i2c_readAckv:F(0,11)",36,0,73,_Z11i2c_readAckv
+ 368               	.global	_Z11i2c_readAckv
+ 369               		.type	_Z11i2c_readAckv, @function
+ 370               	_Z11i2c_readAckv:
+ 371               		.stabd	46,0,0
+  72:i2c.h         **** 
+  73:i2c.h         **** unsigned char i2c_readAck(void) {
+ 372               		.stabn	68,0,73,.LM38-.LFBB7
+ 373               	.LM38:
+ 374               	.LFBB7:
+ 375               	/* prologue: frame size=0 */
+ 376               	/* prologue end (size=0) */
+  74:i2c.h         **** 	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWEA);
+ 377               		.stabn	68,0,74,.LM39-.LFBB7
+ 378               	.LM39:
+ 379 00f0 84EC      		ldi r24,lo8(-60)
+ 380 00f2 8093 BC00 		sts 188,r24
+ 381               	.L59:
+  75:i2c.h         **** 	while(!(TWCR & (1<<TWINT)));    
+GAS LISTING /tmp/ccDsVhrQ.s 			page 9
+
+
+ 382               		.stabn	68,0,75,.LM40-.LFBB7
+ 383               	.LM40:
+ 384 00f6 8091 BC00 		lds r24,188
+ 385 00fa 87FF      		sbrs r24,7
+ 386 00fc 00C0      		rjmp .L59
+  76:i2c.h         ****     return TWDR;
+ 387               		.stabn	68,0,76,.LM41-.LFBB7
+ 388               	.LM41:
+ 389 00fe 8091 BB00 		lds r24,187
+  77:i2c.h         **** }
+ 390               		.stabn	68,0,77,.LM42-.LFBB7
+ 391               	.LM42:
+ 392 0102 9927      		clr r25
+ 393               	/* epilogue: frame size=0 */
+ 394 0104 0895      		ret
+ 395               	/* epilogue end (size=1) */
+ 396               	/* function unsigned char i2c_readAck() size 11 (10) */
+ 397               		.size	_Z11i2c_readAckv, .-_Z11i2c_readAckv
+ 398               	.Lscope7:
+ 399               		.stabs	"",36,0,0,.Lscope7-.LFBB7
+ 400               		.stabd	78,0,0
+ 401               		.stabs	"_Z11i2c_readNakv:F(0,11)",36,0,79,_Z11i2c_readNakv
+ 402               	.global	_Z11i2c_readNakv
+ 403               		.type	_Z11i2c_readNakv, @function
+ 404               	_Z11i2c_readNakv:
+ 405               		.stabd	46,0,0
+  78:i2c.h         **** 
+  79:i2c.h         **** unsigned char i2c_readNak(void) {
+ 406               		.stabn	68,0,79,.LM43-.LFBB8
+ 407               	.LM43:
+ 408               	.LFBB8:
+ 409               	/* prologue: frame size=0 */
+ 410               	/* prologue end (size=0) */
+  80:i2c.h         **** 	TWCR = (1<<TWINT) | (1<<TWEN);
+ 411               		.stabn	68,0,80,.LM44-.LFBB8
+ 412               	.LM44:
+ 413 0106 84E8      		ldi r24,lo8(-124)
+ 414 0108 8093 BC00 		sts 188,r24
+ 415               	.L65:
+  81:i2c.h         **** 	while(!(TWCR & (1<<TWINT)));
+ 416               		.stabn	68,0,81,.LM45-.LFBB8
+ 417               	.LM45:
+ 418 010c 8091 BC00 		lds r24,188
+ 419 0110 87FF      		sbrs r24,7
+ 420 0112 00C0      		rjmp .L65
+  82:i2c.h         ****     return TWDR;
+ 421               		.stabn	68,0,82,.LM46-.LFBB8
+ 422               	.LM46:
+ 423 0114 8091 BB00 		lds r24,187
+  83:i2c.h         **** }
+ 424               		.stabn	68,0,83,.LM47-.LFBB8
+ 425               	.LM47:
+ 426 0118 9927      		clr r25
+ 427               	/* epilogue: frame size=0 */
+ 428 011a 0895      		ret
+ 429               	/* epilogue end (size=1) */
+ 430               	/* function unsigned char i2c_readNak() size 11 (10) */
+GAS LISTING /tmp/ccDsVhrQ.s 			page 10
+
+
+ 431               		.size	_Z11i2c_readNakv, .-_Z11i2c_readNakv
+ 432               	.Lscope8:
+ 433               		.stabs	"",36,0,0,.Lscope8-.LFBB8
+ 434               		.stabd	78,0,0
+ 435               		.stabs	"main:F(0,7)",36,0,5,main
+ 436               	.global	main
+ 437               		.type	main, @function
+ 438               	main:
+ 439               		.stabd	46,0,0
+ 440               		.stabs	"main.cpp",132,0,0,.Ltext2
+ 441               	.Ltext2:
+   1:main.cpp      **** #define F_CPU 11059200UL
+   2:main.cpp      **** #include <util/delay.h>
+   3:main.cpp      **** #include "i2c.h"
+   4:main.cpp      **** 
+   5:main.cpp      **** int main () {
+ 442               		.stabn	68,0,5,.LM48-.LFBB9
+ 443               	.LM48:
+ 444               	.LFBB9:
+ 445               	/* prologue: frame size=0 */
+ 446 011c C0E0      		ldi r28,lo8(__stack - 0)
+ 447 011e D0E0      		ldi r29,hi8(__stack - 0)
+ 448 0120 DEBF      		out __SP_H__,r29
+ 449 0122 CDBF      		out __SP_L__,r28
+ 450               	/* prologue end (size=4) */
+ 451               	.LBB12:
+ 452               	.LBB13:
+ 453               	.LBB14:
+ 454               		.stabs	"i2c.h",132,0,0,.Ltext3
+ 455               	.Ltext3:
+ 456               		.stabn	68,0,11,.LM49-.LFBB9
+ 457               	.LM49:
+ 458 0124 1092 B900 		sts 185,__zero_reg__
+ 459               		.stabn	68,0,12,.LM50-.LFBB9
+ 460               	.LM50:
+ 461 0128 8FE2      		ldi r24,lo8(47)
+ 462 012a 8093 B800 		sts 184,r24
+ 463               	.LBE14:
+ 464               	.LBE13:
+ 465               		.stabs	"main.cpp",132,0,0,.Ltext4
+ 466               	.Ltext4:
+   6:main.cpp      **** 	uint8_t reg0_value;
+   7:main.cpp      **** 	i2c_init();
+   8:main.cpp      **** 	i2c_start(0xE0);
+ 467               		.stabn	68,0,8,.LM51-.LFBB9
+ 468               	.LM51:
+ 469 012e 80EE      		ldi r24,lo8(-32)
+ 470 0130 0E94 0000 		call _Z9i2c_starth
+   9:main.cpp      **** 	i2c_write(0x00);
+ 471               		.stabn	68,0,9,.LM52-.LFBB9
+ 472               	.LM52:
+ 473 0134 80E0      		ldi r24,lo8(0)
+ 474 0136 0E94 0000 		call _Z9i2c_writeh
+  10:main.cpp      **** 	i2c_rep_start(0xE0);
+ 475               		.stabn	68,0,10,.LM53-.LFBB9
+ 476               	.LM53:
+ 477 013a 80EE      		ldi r24,lo8(-32)
+GAS LISTING /tmp/ccDsVhrQ.s 			page 11
+
+
+ 478 013c 0E94 0000 		call _Z13i2c_rep_starth
+ 479               	.LBB15:
+ 480               	.LBB16:
+ 481               		.stabs	"i2c.h",132,0,0,.Ltext5
+ 482               	.Ltext5:
+ 483               		.stabn	68,0,80,.LM54-.LFBB9
+ 484               	.LM54:
+ 485 0140 84E8      		ldi r24,lo8(-124)
+ 486 0142 8093 BC00 		sts 188,r24
+ 487               	.L71:
+ 488               		.stabn	68,0,81,.LM55-.LFBB9
+ 489               	.LM55:
+ 490 0146 8091 BC00 		lds r24,188
+ 491 014a 87FF      		sbrs r24,7
+ 492 014c 00C0      		rjmp .L71
+ 493               		.stabn	68,0,82,.LM56-.LFBB9
+ 494               	.LM56:
+ 495 014e 8091 BB00 		lds r24,187
+ 496               	.LBE16:
+ 497               	.LBE15:
+ 498               	.LBB17:
+ 499               	.LBB18:
+ 500               		.stabn	68,0,58,.LM57-.LFBB9
+ 501               	.LM57:
+ 502 0152 84E9      		ldi r24,lo8(-108)
+ 503 0154 8093 BC00 		sts 188,r24
+ 504               	.L73:
+ 505               		.stabn	68,0,59,.LM58-.LFBB9
+ 506               	.LM58:
+ 507 0158 8091 BC00 		lds r24,188
+ 508 015c 84FD      		sbrc r24,4
+ 509 015e 00C0      		rjmp .L73
+ 510               	.LBE18:
+ 511               	.LBE17:
+ 512               	.LBE12:
+ 513               		.stabs	"main.cpp",132,0,0,.Ltext6
+ 514               	.Ltext6:
+  11:main.cpp      **** 	reg0_value = i2c_readNak();
+  12:main.cpp      **** 	i2c_stop();
+  13:main.cpp      ****     return 0;
+  14:main.cpp      **** }
+ 515               		.stabn	68,0,14,.LM59-.LFBB9
+ 516               	.LM59:
+ 517 0160 80E0      		ldi r24,lo8(0)
+ 518 0162 90E0      		ldi r25,hi8(0)
+ 519               	/* epilogue: frame size=0 */
+ 520 0164 0C94 0000 		jmp exit
+ 521               	/* epilogue end (size=2) */
+ 522               	/* function int main() size 38 (32) */
+ 523               		.size	main, .-main
+ 524               	.Lscope9:
+ 525               		.stabs	"",36,0,0,.Lscope9-.LFBB9
+ 526               		.stabd	78,0,0
+ 527               		.stabs	"",100,0,0,.Letext0
+ 528               	.Letext0:
+ 529               	/* File "main.cpp": code  180 = 0x00b4 ( 168), prologues   4, epilogues   8 */
+GAS LISTING /tmp/ccDsVhrQ.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.cpp
+     /tmp/ccDsVhrQ.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccDsVhrQ.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccDsVhrQ.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccDsVhrQ.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccDsVhrQ.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccDsVhrQ.s:74     .text:00000000 _Z8i2c_initv
+     /tmp/ccDsVhrQ.s:102    .text:0000000c _Z9i2c_starth
+     /tmp/ccDsVhrQ.s:186    .text:00000060 _Z14i2c_start_waith
+     /tmp/ccDsVhrQ.s:270    .text:000000b0 _Z13i2c_rep_starth
+     /tmp/ccDsVhrQ.s:294    .text:000000b8 _Z8i2c_stopv
+     /tmp/ccDsVhrQ.s:323    .text:000000c8 _Z9i2c_writeh
+     /tmp/ccDsVhrQ.s:370    .text:000000f0 _Z11i2c_readAckv
+     /tmp/ccDsVhrQ.s:404    .text:00000106 _Z11i2c_readNakv
+     /tmp/ccDsVhrQ.s:438    .text:0000011c main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack
+exit

@@ -1,0 +1,389 @@
+GAS LISTING /tmp/cccAzBhw.s 			page 1
+
+
+   1               		.file	"timer0ctc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Projects/AVR_Projects/fatexplore/",100,0,2,.Ltext0
+  11               		.stabs	"timer0ctc.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"timer0ctc.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  34               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  35               		.stabs	"int8_t:t(5,1)=(0,10)",128,0,121,0
+  36               		.stabs	"uint8_t:t(5,2)=(0,11)",128,0,122,0
+  37               		.stabs	"int16_t:t(5,3)=(0,1)",128,0,123,0
+  38               		.stabs	"uint16_t:t(5,4)=(0,4)",128,0,124,0
+  39               		.stabs	"int32_t:t(5,5)=(0,3)",128,0,125,0
+  40               		.stabs	"uint32_t:t(5,6)=(0,5)",128,0,126,0
+  41               		.stabs	"int64_t:t(5,7)=(0,6)",128,0,128,0
+  42               		.stabs	"uint64_t:t(5,8)=(0,7)",128,0,129,0
+  43               		.stabs	"intptr_t:t(5,9)=(5,3)",128,0,142,0
+  44               		.stabs	"uintptr_t:t(5,10)=(5,4)",128,0,147,0
+  45               		.stabs	"int_least8_t:t(5,11)=(5,1)",128,0,159,0
+  46               		.stabs	"uint_least8_t:t(5,12)=(5,2)",128,0,164,0
+  47               		.stabs	"int_least16_t:t(5,13)=(5,3)",128,0,169,0
+  48               		.stabs	"uint_least16_t:t(5,14)=(5,4)",128,0,174,0
+  49               		.stabs	"int_least32_t:t(5,15)=(5,5)",128,0,179,0
+  50               		.stabs	"uint_least32_t:t(5,16)=(5,6)",128,0,184,0
+  51               		.stabs	"int_least64_t:t(5,17)=(5,7)",128,0,192,0
+  52               		.stabs	"uint_least64_t:t(5,18)=(5,8)",128,0,199,0
+  53               		.stabs	"int_fast8_t:t(5,19)=(5,1)",128,0,213,0
+  54               		.stabs	"uint_fast8_t:t(5,20)=(5,2)",128,0,218,0
+  55               		.stabs	"int_fast16_t:t(5,21)=(5,3)",128,0,223,0
+  56               		.stabs	"uint_fast16_t:t(5,22)=(5,4)",128,0,228,0
+  57               		.stabs	"int_fast32_t:t(5,23)=(5,5)",128,0,233,0
+GAS LISTING /tmp/cccAzBhw.s 			page 2
+
+
+  58               		.stabs	"uint_fast32_t:t(5,24)=(5,6)",128,0,238,0
+  59               		.stabs	"int_fast64_t:t(5,25)=(5,7)",128,0,246,0
+  60               		.stabs	"uint_fast64_t:t(5,26)=(5,8)",128,0,253,0
+  61               		.stabs	"intmax_t:t(5,27)=(5,7)",128,0,273,0
+  62               		.stabs	"uintmax_t:t(5,28)=(5,8)",128,0,278,0
+  63               		.stabn	162,0,0,0
+  64               		.stabs	"int_farptr_t:t(4,1)=(5,5)",128,0,77,0
+  65               		.stabs	"uint_farptr_t:t(4,2)=(5,6)",128,0,81,0
+  66               		.stabn	162,0,0,0
+  67               		.stabn	162,0,0,0
+  68               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  69               		.stabs	"__fuse_t:t(6,1)=(6,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219,0
+  70               		.stabn	162,0,0,0
+  71               		.stabn	162,0,0,0
+  72               		.stabn	162,0,0,0
+  73               		.stabs	"init_timer0_ctc:F(0,15)",36,0,28,init_timer0_ctc
+  74               		.stabs	"prescaler:P(5,2)",64,0,28,24
+  75               		.stabs	"pinfunca:P(5,2)",64,0,28,22
+  76               		.stabs	"pinfuncb:P(5,2)",64,0,28,20
+  77               	.global	init_timer0_ctc
+  78               		.type	init_timer0_ctc, @function
+  79               	init_timer0_ctc:
+  80               		.stabd	46,0,0
+   1:timer0ctc.c   **** /*
+   2:timer0ctc.c   ****  *      timer0ctc.c
+   3:timer0ctc.c   ****  *      
+   4:timer0ctc.c   ****  *      Copyright 2009 Nathaniel Robert Lewis <linux.robotdude@gmail.com>
+   5:timer0ctc.c   ****  *      
+   6:timer0ctc.c   ****  *      This program is free software; you can redistribute it and/or modify
+   7:timer0ctc.c   ****  *      it under the terms of the GNU General Public License as published by
+   8:timer0ctc.c   ****  *      the Free Software Foundation; either version 2 of the License, or
+   9:timer0ctc.c   ****  *      (at your option) any later version.
+  10:timer0ctc.c   ****  *      
+  11:timer0ctc.c   ****  *      This program is distributed in the hope that it will be useful,
+  12:timer0ctc.c   ****  *      but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:timer0ctc.c   ****  *      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:timer0ctc.c   ****  *      GNU General Public License for more details.
+  15:timer0ctc.c   ****  *      
+  16:timer0ctc.c   ****  *      You should have received a copy of the GNU General Public License
+  17:timer0ctc.c   ****  *      along with this program; if not, write to the Free Software
+  18:timer0ctc.c   ****  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+  19:timer0ctc.c   ****  *      MA 02110-1301, USA.
+  20:timer0ctc.c   ****  * 
+  21:timer0ctc.c   ****  *      This header controls timer0 for ctc
+  22:timer0ctc.c   ****  * 
+  23:timer0ctc.c   ****  */
+  24:timer0ctc.c   **** 
+  25:timer0ctc.c   **** #include "timer0ctc.h"
+  26:timer0ctc.c   **** #include <avr/interrupt.h>                                  
+  27:timer0ctc.c   **** 
+  28:timer0ctc.c   **** void init_timer0_ctc ( uint8_t prescaler, uint8_t pinfunca, uint8_t pinfuncb ) {
+  81               		.stabn	68,0,28,.LM0-.LFBB1
+  82               	.LM0:
+  83               	.LFBB1:
+  84               	/* prologue: function */
+  85               	/* frame size = 0 */
+  29:timer0ctc.c   **** 	if(pinfunca > 0) {DDRB |= (1 << PORTB3);} //id ocr0a is used, set pin as ouput
+GAS LISTING /tmp/cccAzBhw.s 			page 3
+
+
+  86               		.stabn	68,0,29,.LM1-.LFBB1
+  87               	.LM1:
+  88 0000 6111      		cpse r22,__zero_reg__
+  89 0002 239A      		sbi 36-32,3
+  90               	.L2:
+  30:timer0ctc.c   **** 	if(pinfuncb > 0) {DDRB |= (1 << PORTB4);} //if ocr0b is used, set pin as output
+  91               		.stabn	68,0,30,.LM2-.LFBB1
+  92               	.LM2:
+  93 0004 4111      		cpse r20,__zero_reg__
+  94 0006 249A      		sbi 36-32,4
+  95               	.L3:
+  31:timer0ctc.c   **** 	if(prescaler > 5) {DDRB &= ~(1 << PORTB0);} //if an external clock source is used, set T0 pin as i
+  96               		.stabn	68,0,31,.LM3-.LFBB1
+  97               	.LM3:
+  98 0008 8630      		cpi r24,lo8(6)
+  99 000a 00F0      		brlo .L4
+ 100 000c 2098      		cbi 36-32,0
+ 101               	.L4:
+  32:timer0ctc.c   **** 	OCR0A = 0;                        //clear the ocr0a and ocr0b registers
+ 102               		.stabn	68,0,32,.LM4-.LFBB1
+ 103               	.LM4:
+ 104 000e 17BC      		out 71-32,__zero_reg__
+  33:timer0ctc.c   **** 	OCR0B = 0;
+ 105               		.stabn	68,0,33,.LM5-.LFBB1
+ 106               	.LM5:
+ 107 0010 18BC      		out 72-32,__zero_reg__
+  34:timer0ctc.c   **** 	TCCR0A = ((pinfunca << 6) & 0xC0) | ((pinfuncb << 4) & 0x30) | (1 << WGM01);//set the mode of the 
+ 108               		.stabn	68,0,34,.LM6-.LFBB1
+ 109               	.LM6:
+ 110 0012 6295      		swap r22
+ 111 0014 660F      		lsl r22
+ 112 0016 660F      		lsl r22
+ 113 0018 607C      		andi r22,lo8(-64)
+ 114 001a 6260      		ori r22,lo8(2)
+ 115 001c 4295      		swap r20
+ 116 001e 4073      		andi r20,lo8(48)
+ 117 0020 642B      		or r22,r20
+ 118 0022 64BD      		out 68-32,r22
+  35:timer0ctc.c   **** 	TCCR0B = prescaler & 0x07;        //set the prescaler and mask bits that aren't the prescaler
+ 119               		.stabn	68,0,35,.LM7-.LFBB1
+ 120               	.LM7:
+ 121 0024 8770      		andi r24,lo8(7)
+ 122 0026 85BD      		out 69-32,r24
+ 123               	/* epilogue start */
+  36:timer0ctc.c   **** }
+ 124               		.stabn	68,0,36,.LM8-.LFBB1
+ 125               	.LM8:
+ 126 0028 0895      		ret
+ 127               		.size	init_timer0_ctc, .-init_timer0_ctc
+ 128               	.Lscope1:
+ 129               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 130               		.stabd	78,0,0
+ 131               		.stabs	"set_ocr0a:F(0,15)",36,0,38,set_ocr0a
+ 132               		.stabs	"v:P(5,2)",64,0,38,24
+ 133               	.global	set_ocr0a
+ 134               		.type	set_ocr0a, @function
+ 135               	set_ocr0a:
+GAS LISTING /tmp/cccAzBhw.s 			page 4
+
+
+ 136               		.stabd	46,0,0
+  37:timer0ctc.c   **** 
+  38:timer0ctc.c   **** void set_ocr0a ( uint8_t v ) {
+ 137               		.stabn	68,0,38,.LM9-.LFBB2
+ 138               	.LM9:
+ 139               	.LFBB2:
+ 140               	/* prologue: function */
+ 141               	/* frame size = 0 */
+  39:timer0ctc.c   **** 	OCR0A = v;                       //set the output compare register 0a
+ 142               		.stabn	68,0,39,.LM10-.LFBB2
+ 143               	.LM10:
+ 144 002a 87BD      		out 71-32,r24
+ 145               	/* epilogue start */
+  40:timer0ctc.c   **** }
+ 146               		.stabn	68,0,40,.LM11-.LFBB2
+ 147               	.LM11:
+ 148 002c 0895      		ret
+ 149               		.size	set_ocr0a, .-set_ocr0a
+ 150               	.Lscope2:
+ 151               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 152               		.stabd	78,0,0
+ 153               		.stabs	"set_ocr0b:F(0,15)",36,0,42,set_ocr0b
+ 154               		.stabs	"v:P(5,2)",64,0,42,24
+ 155               	.global	set_ocr0b
+ 156               		.type	set_ocr0b, @function
+ 157               	set_ocr0b:
+ 158               		.stabd	46,0,0
+  41:timer0ctc.c   **** 
+  42:timer0ctc.c   **** void set_ocr0b ( uint8_t v ) {
+ 159               		.stabn	68,0,42,.LM12-.LFBB3
+ 160               	.LM12:
+ 161               	.LFBB3:
+ 162               	/* prologue: function */
+ 163               	/* frame size = 0 */
+  43:timer0ctc.c   **** 	OCR0B = v;                       //set the output compare register 0b
+ 164               		.stabn	68,0,43,.LM13-.LFBB3
+ 165               	.LM13:
+ 166 002e 88BD      		out 72-32,r24
+ 167               	/* epilogue start */
+  44:timer0ctc.c   **** }
+ 168               		.stabn	68,0,44,.LM14-.LFBB3
+ 169               	.LM14:
+ 170 0030 0895      		ret
+ 171               		.size	set_ocr0b, .-set_ocr0b
+ 172               	.Lscope3:
+ 173               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 174               		.stabd	78,0,0
+ 175               		.stabs	"enable_interrupt_t0a:F(0,15)",36,0,46,enable_interrupt_t0a
+ 176               	.global	enable_interrupt_t0a
+ 177               		.type	enable_interrupt_t0a, @function
+ 178               	enable_interrupt_t0a:
+ 179               		.stabd	46,0,0
+  45:timer0ctc.c   **** 
+  46:timer0ctc.c   **** void enable_interrupt_t0a ( void ) {
+ 180               		.stabn	68,0,46,.LM15-.LFBB4
+ 181               	.LM15:
+ 182               	.LFBB4:
+GAS LISTING /tmp/cccAzBhw.s 			page 5
+
+
+ 183               	/* prologue: function */
+ 184               	/* frame size = 0 */
+  47:timer0ctc.c   **** 	TIMSK0 = (1 << OCIE0A);            //set the timer output compare interrupt enable 0a bit
+ 185               		.stabn	68,0,47,.LM16-.LFBB4
+ 186               	.LM16:
+ 187 0032 82E0      		ldi r24,lo8(2)
+ 188 0034 8093 6E00 		sts 110,r24
+  48:timer0ctc.c   **** 	sei();                            //set the global interrupt flag
+ 189               		.stabn	68,0,48,.LM17-.LFBB4
+ 190               	.LM17:
+ 191               	/* #APP */
+ 192               	 ;  48 "timer0ctc.c" 1
+ 193 0038 7894      		sei
+ 194               	 ;  0 "" 2
+ 195               	/* epilogue start */
+  49:timer0ctc.c   **** }
+ 196               		.stabn	68,0,49,.LM18-.LFBB4
+ 197               	.LM18:
+ 198               	/* #NOAPP */
+ 199 003a 0895      		ret
+ 200               		.size	enable_interrupt_t0a, .-enable_interrupt_t0a
+ 201               	.Lscope4:
+ 202               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 203               		.stabd	78,0,0
+ 204               		.stabs	"enable_interrupt_t0b:F(0,15)",36,0,51,enable_interrupt_t0b
+ 205               	.global	enable_interrupt_t0b
+ 206               		.type	enable_interrupt_t0b, @function
+ 207               	enable_interrupt_t0b:
+ 208               		.stabd	46,0,0
+  50:timer0ctc.c   **** 
+  51:timer0ctc.c   **** void enable_interrupt_t0b ( void ) {
+ 209               		.stabn	68,0,51,.LM19-.LFBB5
+ 210               	.LM19:
+ 211               	.LFBB5:
+ 212               	/* prologue: function */
+ 213               	/* frame size = 0 */
+  52:timer0ctc.c   **** 	TIMSK0 = (1 << OCIE0B);            //set the timer output compare interrupt enable 0b bit
+ 214               		.stabn	68,0,52,.LM20-.LFBB5
+ 215               	.LM20:
+ 216 003c 84E0      		ldi r24,lo8(4)
+ 217 003e 8093 6E00 		sts 110,r24
+  53:timer0ctc.c   **** 	sei();                            //set the global interrupt flag
+ 218               		.stabn	68,0,53,.LM21-.LFBB5
+ 219               	.LM21:
+ 220               	/* #APP */
+ 221               	 ;  53 "timer0ctc.c" 1
+ 222 0042 7894      		sei
+ 223               	 ;  0 "" 2
+ 224               	/* epilogue start */
+  54:timer0ctc.c   **** }
+ 225               		.stabn	68,0,54,.LM22-.LFBB5
+ 226               	.LM22:
+ 227               	/* #NOAPP */
+ 228 0044 0895      		ret
+ 229               		.size	enable_interrupt_t0b, .-enable_interrupt_t0b
+ 230               	.Lscope5:
+ 231               		.stabs	"",36,0,0,.Lscope5-.LFBB5
+GAS LISTING /tmp/cccAzBhw.s 			page 6
+
+
+ 232               		.stabd	78,0,0
+ 233               		.stabs	"disable_interrupt_t0a:F(0,15)",36,0,56,disable_interrupt_t0a
+ 234               	.global	disable_interrupt_t0a
+ 235               		.type	disable_interrupt_t0a, @function
+ 236               	disable_interrupt_t0a:
+ 237               		.stabd	46,0,0
+  55:timer0ctc.c   **** 
+  56:timer0ctc.c   **** void disable_interrupt_t0a ( void ) {
+ 238               		.stabn	68,0,56,.LM23-.LFBB6
+ 239               	.LM23:
+ 240               	.LFBB6:
+ 241               	/* prologue: function */
+ 242               	/* frame size = 0 */
+  57:timer0ctc.c   **** 	TIMSK0 &= ~(1 << OCIE0A);           //clear the timer output compare interrupt enable 0a bit
+ 243               		.stabn	68,0,57,.LM24-.LFBB6
+ 244               	.LM24:
+ 245 0046 EEE6      		ldi r30,lo8(110)
+ 246 0048 F0E0      		ldi r31,hi8(110)
+ 247 004a 8081      		ld r24,Z
+ 248 004c 8D7F      		andi r24,lo8(-3)
+ 249 004e 8083      		st Z,r24
+ 250               	/* epilogue start */
+  58:timer0ctc.c   **** }
+ 251               		.stabn	68,0,58,.LM25-.LFBB6
+ 252               	.LM25:
+ 253 0050 0895      		ret
+ 254               		.size	disable_interrupt_t0a, .-disable_interrupt_t0a
+ 255               	.Lscope6:
+ 256               		.stabs	"",36,0,0,.Lscope6-.LFBB6
+ 257               		.stabd	78,0,0
+ 258               		.stabs	"disable_interrupt_t0b:F(0,15)",36,0,60,disable_interrupt_t0b
+ 259               	.global	disable_interrupt_t0b
+ 260               		.type	disable_interrupt_t0b, @function
+ 261               	disable_interrupt_t0b:
+ 262               		.stabd	46,0,0
+  59:timer0ctc.c   **** 
+  60:timer0ctc.c   **** void disable_interrupt_t0b ( void ) {
+ 263               		.stabn	68,0,60,.LM26-.LFBB7
+ 264               	.LM26:
+ 265               	.LFBB7:
+ 266               	/* prologue: function */
+ 267               	/* frame size = 0 */
+  61:timer0ctc.c   **** 	TIMSK0 &= ~(1 << OCIE0B);           //clear the timer output compare interrupt enable 0b bit
+ 268               		.stabn	68,0,61,.LM27-.LFBB7
+ 269               	.LM27:
+ 270 0052 EEE6      		ldi r30,lo8(110)
+ 271 0054 F0E0      		ldi r31,hi8(110)
+ 272 0056 8081      		ld r24,Z
+ 273 0058 8B7F      		andi r24,lo8(-5)
+ 274 005a 8083      		st Z,r24
+ 275               	/* epilogue start */
+  62:timer0ctc.c   **** }
+ 276               		.stabn	68,0,62,.LM28-.LFBB7
+ 277               	.LM28:
+ 278 005c 0895      		ret
+ 279               		.size	disable_interrupt_t0b, .-disable_interrupt_t0b
+ 280               	.Lscope7:
+GAS LISTING /tmp/cccAzBhw.s 			page 7
+
+
+ 281               		.stabs	"",36,0,0,.Lscope7-.LFBB7
+ 282               		.stabd	78,0,0
+ 283               		.stabs	"",100,0,0,.Letext0
+ 284               	.Letext0:
+GAS LISTING /tmp/cccAzBhw.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 timer0ctc.c
+     /tmp/cccAzBhw.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cccAzBhw.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cccAzBhw.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cccAzBhw.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/cccAzBhw.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cccAzBhw.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cccAzBhw.s:79     .text:0000000000000000 init_timer0_ctc
+     /tmp/cccAzBhw.s:135    .text:000000000000002a set_ocr0a
+     /tmp/cccAzBhw.s:157    .text:000000000000002e set_ocr0b
+     /tmp/cccAzBhw.s:178    .text:0000000000000032 enable_interrupt_t0a
+     /tmp/cccAzBhw.s:207    .text:000000000000003c enable_interrupt_t0b
+     /tmp/cccAzBhw.s:236    .text:0000000000000046 disable_interrupt_t0a
+     /tmp/cccAzBhw.s:261    .text:0000000000000052 disable_interrupt_t0b
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

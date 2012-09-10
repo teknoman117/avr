@@ -1,0 +1,29 @@
+Documentation for timer1servo.h
+
+Example is included under the timer1servo directory in the Examples directory
+
+---------------Information-------------------------
+
+timer1servo.h controls up to 2 servos using timer 1 to generate the required
+pulse train.  You set the servo position and the timer takes care of the rest,
+without loading the AVR CPU
+
+ex)
+set_servo_1a( 1500 * ticksperus )
+
+---------------Definitions-------------------------
+
+ticksperus - calculated by the preprocessor, it contains how many times the 
+            timer will tick in 1 microsecond
+
+Note:  when setting servo positions, make the operand pulselen * ticksperus
+       where pulselen is the desired position
+
+--------------Functions------------------------------
+
+void init_timer1_servos ( void ) - sets up the timer and I/O pins for servo control
+
+void set_servo_1a ( uint16_t position ) - sets the position of servo on channel a
+
+void set_servo_1b ( uint16_t position ) - sets the position of servo on channel b
+

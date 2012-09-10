@@ -1,0 +1,254 @@
+   1               		.file	"timer1PWM.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	initPWM08
+  20               	initPWM08:
+  21               	.LFB3:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 81EA      		ldi r24,lo8(-95)
+  27 0002 8FBD      		out 79-0x20,r24
+  28               	.LM3:
+  29 0004 89E0      		ldi r24,lo8(9)
+  30 0006 8EBD      		out 78-0x20,r24
+  31               	/* epilogue: frame size=0 */
+  32 0008 0895      		ret
+  33               	/* epilogue end (size=1) */
+  34               	/* function initPWM08 size 5 (4) */
+  35               	.LFE3:
+  37               	.global	initPWM09
+  39               	initPWM09:
+  40               	.LFB4:
+  41               	.LM4:
+  42               	/* prologue: frame size=0 */
+  43               	/* prologue end (size=0) */
+  44               	.LM5:
+  45 000a 82EA      		ldi r24,lo8(-94)
+  46 000c 8FBD      		out 79-0x20,r24
+  47               	.LM6:
+  48 000e 89E0      		ldi r24,lo8(9)
+  49 0010 8EBD      		out 78-0x20,r24
+  50               	/* epilogue: frame size=0 */
+  51 0012 0895      		ret
+  52               	/* epilogue end (size=1) */
+  53               	/* function initPWM09 size 5 (4) */
+  54               	.LFE4:
+  56               	.global	initPWM10
+  58               	initPWM10:
+  59               	.LFB5:
+  60               	.LM7:
+  61               	/* prologue: frame size=0 */
+  62               	/* prologue end (size=0) */
+  63               	.LM8:
+  64 0014 83EA      		ldi r24,lo8(-93)
+  65 0016 8FBD      		out 79-0x20,r24
+  66               	.LM9:
+  67 0018 89E0      		ldi r24,lo8(9)
+  68 001a 8EBD      		out 78-0x20,r24
+  69               	/* epilogue: frame size=0 */
+  70 001c 0895      		ret
+  71               	/* epilogue end (size=1) */
+  72               	/* function initPWM10 size 5 (4) */
+  73               	.LFE5:
+  75               	.global	setCHA08
+  77               	setCHA08:
+  78               	.LFB8:
+  79               	.LM10:
+  80               	/* prologue: frame size=0 */
+  81               	/* prologue end (size=0) */
+  82               	.LVL0:
+  83               	.LM11:
+  84 001e 9BBD      		out (74)+1-0x20,r25
+  85 0020 8ABD      		out 74-0x20,r24
+  86               	/* epilogue: frame size=0 */
+  87 0022 0895      		ret
+  88               	/* epilogue end (size=1) */
+  89               	/* function setCHA08 size 3 (2) */
+  90               	.LFE8:
+  92               	.global	setCHB08
+  94               	setCHB08:
+  95               	.LFB9:
+  96               	.LM12:
+  97               	/* prologue: frame size=0 */
+  98               	/* prologue end (size=0) */
+  99               	.LVL1:
+ 100               	.LM13:
+ 101 0024 99BD      		out (72)+1-0x20,r25
+ 102 0026 88BD      		out 72-0x20,r24
+ 103               	/* epilogue: frame size=0 */
+ 104 0028 0895      		ret
+ 105               	/* epilogue end (size=1) */
+ 106               	/* function setCHB08 size 3 (2) */
+ 107               	.LFE9:
+ 109               	.global	setCHA09
+ 111               	setCHA09:
+ 112               	.LFB10:
+ 113               	.LM14:
+ 114               	/* prologue: frame size=0 */
+ 115               	/* prologue end (size=0) */
+ 116               	.LVL2:
+ 117               	.LM15:
+ 118 002a 8ABD      		out 74-0x20,r24
+ 119               	.LM16:
+ 120 002c 892F      		mov r24,r25
+ 121 002e 9927      		clr r25
+ 122               	.LVL3:
+ 123 0030 8170      		andi r24,lo8(1)
+ 124 0032 8BBD      		out 75-0x20,r24
+ 125               	/* epilogue: frame size=0 */
+ 126 0034 0895      		ret
+ 127               	/* epilogue end (size=1) */
+ 128               	/* function setCHA09 size 6 (5) */
+ 129               	.LFE10:
+ 131               	.global	setCHB09
+ 133               	setCHB09:
+ 134               	.LFB11:
+ 135               	.LM17:
+ 136               	/* prologue: frame size=0 */
+ 137               	/* prologue end (size=0) */
+ 138               	.LVL4:
+ 139               	.LM18:
+ 140 0036 88BD      		out 72-0x20,r24
+ 141               	.LM19:
+ 142 0038 892F      		mov r24,r25
+ 143 003a 9927      		clr r25
+ 144               	.LVL5:
+ 145 003c 8170      		andi r24,lo8(1)
+ 146 003e 89BD      		out 73-0x20,r24
+ 147               	/* epilogue: frame size=0 */
+ 148 0040 0895      		ret
+ 149               	/* epilogue end (size=1) */
+ 150               	/* function setCHB09 size 6 (5) */
+ 151               	.LFE11:
+ 153               	.global	setCHA10
+ 155               	setCHA10:
+ 156               	.LFB12:
+ 157               	.LM20:
+ 158               	/* prologue: frame size=0 */
+ 159               	/* prologue end (size=0) */
+ 160               	.LVL6:
+ 161               	.LM21:
+ 162 0042 8ABD      		out 74-0x20,r24
+ 163               	.LM22:
+ 164 0044 892F      		mov r24,r25
+ 165 0046 9927      		clr r25
+ 166               	.LVL7:
+ 167 0048 8370      		andi r24,lo8(3)
+ 168 004a 8BBD      		out 75-0x20,r24
+ 169               	/* epilogue: frame size=0 */
+ 170 004c 0895      		ret
+ 171               	/* epilogue end (size=1) */
+ 172               	/* function setCHA10 size 6 (5) */
+ 173               	.LFE12:
+ 175               	.global	setCHB10
+ 177               	setCHB10:
+ 178               	.LFB13:
+ 179               	.LM23:
+ 180               	/* prologue: frame size=0 */
+ 181               	/* prologue end (size=0) */
+ 182               	.LVL8:
+ 183               	.LM24:
+ 184 004e 8ABD      		out 74-0x20,r24
+ 185               	.LM25:
+ 186 0050 892F      		mov r24,r25
+ 187 0052 9927      		clr r25
+ 188               	.LVL9:
+ 189 0054 8370      		andi r24,lo8(3)
+ 190 0056 89BD      		out 73-0x20,r24
+ 191               	/* epilogue: frame size=0 */
+ 192 0058 0895      		ret
+ 193               	/* epilogue end (size=1) */
+ 194               	/* function setCHB10 size 6 (5) */
+ 195               	.LFE13:
+ 197               	.global	setCHB
+ 199               	setCHB:
+ 200               	.LFB7:
+ 201               	.LM26:
+ 202               	/* prologue: frame size=0 */
+ 203               	/* prologue end (size=0) */
+ 204               	.LVL10:
+ 205               	.LBB4:
+ 206               	.LBB5:
+ 207               	.LM27:
+ 208 005a 99BD      		out (72)+1-0x20,r25
+ 209 005c 88BD      		out 72-0x20,r24
+ 210               	.LBE5:
+ 211               	.LBE4:
+ 212               	/* epilogue: frame size=0 */
+ 213 005e 0895      		ret
+ 214               	/* epilogue end (size=1) */
+ 215               	/* function setCHB size 3 (2) */
+ 216               	.LFE7:
+ 218               	.global	setCHA
+ 220               	setCHA:
+ 221               	.LFB6:
+ 222               	.LM28:
+ 223               	/* prologue: frame size=0 */
+ 224               	/* prologue end (size=0) */
+ 225               	.LVL11:
+ 226               	.LBB8:
+ 227               	.LBB9:
+ 228               	.LM29:
+ 229 0060 9BBD      		out (74)+1-0x20,r25
+ 230 0062 8ABD      		out 74-0x20,r24
+ 231               	.LBE9:
+ 232               	.LBE8:
+ 233               	/* epilogue: frame size=0 */
+ 234 0064 0895      		ret
+ 235               	/* epilogue end (size=1) */
+ 236               	/* function setCHA size 3 (2) */
+ 237               	.LFE6:
+ 239               	.global	initPWM
+ 241               	initPWM:
+ 242               	.LFB2:
+ 243               	.LM30:
+ 244               	/* prologue: frame size=0 */
+ 245               	/* prologue end (size=0) */
+ 246               	.LBB12:
+ 247               	.LBB13:
+ 248               	.LM31:
+ 249 0066 81EA      		ldi r24,lo8(-95)
+ 250 0068 8FBD      		out 79-0x20,r24
+ 251               	.LM32:
+ 252 006a 89E0      		ldi r24,lo8(9)
+ 253 006c 8EBD      		out 78-0x20,r24
+ 254               	.LBE13:
+ 255               	.LBE12:
+ 256               	/* epilogue: frame size=0 */
+ 257 006e 0895      		ret
+ 258               	/* epilogue end (size=1) */
+ 259               	/* function initPWM size 5 (4) */
+ 260               	.LFE2:
+ 361               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer1PWM.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:20     .text:00000000 initPWM08
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:39     .text:0000000a initPWM09
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:58     .text:00000014 initPWM10
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:77     .text:0000001e setCHA08
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:94     .text:00000024 setCHB08
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:111    .text:0000002a setCHA09
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:133    .text:00000036 setCHB09
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:155    .text:00000042 setCHA10
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:177    .text:0000004e setCHB10
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:199    .text:0000005a setCHB
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:220    .text:00000060 setCHA
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccukaaaa.s:241    .text:00000066 initPWM
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

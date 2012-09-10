@@ -1,0 +1,227 @@
+
+motor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000116  00000000  00000000  00000094  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000116  000001aa  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000000  00800060  00000116  000001aa  2**0
+                  ALLOC
+  3 .noinit       00000000  00800060  00800060  000001aa  2**0
+                  CONTENTS
+  4 .eeprom       00000000  00810000  00810000  000001aa  2**0
+                  CONTENTS
+  5 .debug_aranges 00000014  00000000  00000000  000001aa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 0000001b  00000000  00000000  000001be  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   0000010b  00000000  00000000  000001d9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 0000009a  00000000  00000000  000002e4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000151  00000000  00000000  0000037e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000008f  00000000  00000000  000004cf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54
+   4:	0c 94 45 00 	jmp	0x8a
+   8:	0c 94 45 00 	jmp	0x8a
+   c:	0c 94 45 00 	jmp	0x8a
+  10:	0c 94 45 00 	jmp	0x8a
+  14:	0c 94 45 00 	jmp	0x8a
+  18:	0c 94 45 00 	jmp	0x8a
+  1c:	0c 94 45 00 	jmp	0x8a
+  20:	0c 94 45 00 	jmp	0x8a
+  24:	0c 94 45 00 	jmp	0x8a
+  28:	0c 94 45 00 	jmp	0x8a
+  2c:	0c 94 45 00 	jmp	0x8a
+  30:	0c 94 45 00 	jmp	0x8a
+  34:	0c 94 45 00 	jmp	0x8a
+  38:	0c 94 45 00 	jmp	0x8a
+  3c:	0c 94 45 00 	jmp	0x8a
+  40:	0c 94 45 00 	jmp	0x8a
+  44:	0c 94 45 00 	jmp	0x8a
+  48:	0c 94 45 00 	jmp	0x8a
+  4c:	0c 94 45 00 	jmp	0x8a
+  50:	0c 94 45 00 	jmp	0x8a
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 e1       	ldi	r30, 0x16	; 22
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70
+
+0000006c <.do_copy_data_loop>:
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+
+00000070 <.do_copy_data_start>:
+  70:	a0 36       	cpi	r26, 0x60	; 96
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c
+
+00000076 <__do_clear_bss>:
+  76:	10 e0       	ldi	r17, 0x00	; 0
+  78:	a0 e6       	ldi	r26, 0x60	; 96
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a0 36       	cpi	r26, 0x60	; 96
+  82:	b1 07       	cpc	r27, r17
+  84:	e1 f7       	brne	.-8      	; 0x7e
+  86:	0c 94 47 00 	jmp	0x8e
+
+0000008a <__bad_interrupt>:
+  8a:	0c 94 00 00 	jmp	0x0
+
+0000008e <main>:
+#include <avr/signal.h>
+#include <avr/delay.h>
+
+void main (void)
+{
+  8e:	cf e5       	ldi	r28, 0x5F	; 95
+  90:	d8 e0       	ldi	r29, 0x08	; 8
+  92:	de bf       	out	0x3e, r29	; 62
+  94:	cd bf       	out	0x3d, r28	; 61
+  unsigned int counter;
+  DDRD = 255;
+  96:	8f ef       	ldi	r24, 0xFF	; 255
+  98:	81 bb       	out	0x11, r24	; 17
+  PORTD += 32;
+  9a:	82 b3       	in	r24, 0x12	; 18
+  9c:	80 5e       	subi	r24, 0xE0	; 224
+  9e:	82 bb       	out	0x12, r24	; 18
+  while (1)
+  {
+	  counter = 0;
+  a0:	20 e0       	ldi	r18, 0x00	; 0
+  a2:	30 e0       	ldi	r19, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  a4:	80 e3       	ldi	r24, 0x30	; 48
+  a6:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+  a8:	01 97       	sbiw	r24, 0x01	; 1
+  aa:	f1 f7       	brne	.-4      	; 0xa8
+	  while (counter != 30)
+	  {
+      _delay_loop_2(30000);
+	  counter++;
+  ac:	2f 5f       	subi	r18, 0xFF	; 255
+  ae:	3f 4f       	sbci	r19, 0xFF	; 255
+  b0:	2e 31       	cpi	r18, 0x1E	; 30
+  b2:	31 05       	cpc	r19, r1
+  b4:	b9 f7       	brne	.-18     	; 0xa4
+	  }
+      PORTD = PORTD + 64;
+  b6:	82 b3       	in	r24, 0x12	; 18
+  b8:	80 5c       	subi	r24, 0xC0	; 192
+  ba:	82 bb       	out	0x12, r24	; 18
+	  counter = 0;
+  bc:	20 e0       	ldi	r18, 0x00	; 0
+  be:	30 e0       	ldi	r19, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  c0:	80 e3       	ldi	r24, 0x30	; 48
+  c2:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+  c4:	01 97       	sbiw	r24, 0x01	; 1
+  c6:	f1 f7       	brne	.-4      	; 0xc4
+	  while (counter != 30)
+	  {
+      _delay_loop_2(30000);
+	  counter++;
+  c8:	2f 5f       	subi	r18, 0xFF	; 255
+  ca:	3f 4f       	sbci	r19, 0xFF	; 255
+  cc:	2e 31       	cpi	r18, 0x1E	; 30
+  ce:	31 05       	cpc	r19, r1
+  d0:	b9 f7       	brne	.-18     	; 0xc0
+	  }
+	  PORTD = PORTD - 64;
+  d2:	82 b3       	in	r24, 0x12	; 18
+  d4:	80 54       	subi	r24, 0x40	; 64
+  d6:	82 bb       	out	0x12, r24	; 18
+	  PORTD = PORTD + 8;
+  d8:	82 b3       	in	r24, 0x12	; 18
+  da:	88 5f       	subi	r24, 0xF8	; 248
+  dc:	82 bb       	out	0x12, r24	; 18
+	  counter = 0;
+  de:	20 e0       	ldi	r18, 0x00	; 0
+  e0:	30 e0       	ldi	r19, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  e2:	80 e3       	ldi	r24, 0x30	; 48
+  e4:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+  e6:	01 97       	sbiw	r24, 0x01	; 1
+  e8:	f1 f7       	brne	.-4      	; 0xe6
+	  while (counter != 30)
+	  {
+      _delay_loop_2(30000);
+	  counter++;
+  ea:	2f 5f       	subi	r18, 0xFF	; 255
+  ec:	3f 4f       	sbci	r19, 0xFF	; 255
+  ee:	2e 31       	cpi	r18, 0x1E	; 30
+  f0:	31 05       	cpc	r19, r1
+  f2:	b9 f7       	brne	.-18     	; 0xe2
+	  }
+      PORTD = PORTD + 64;
+  f4:	82 b3       	in	r24, 0x12	; 18
+  f6:	80 5c       	subi	r24, 0xC0	; 192
+  f8:	82 bb       	out	0x12, r24	; 18
+	  counter = 0;
+  fa:	20 e0       	ldi	r18, 0x00	; 0
+  fc:	30 e0       	ldi	r19, 0x00	; 0
+    milliseconds can be achieved.
+ */
+static __inline__ void
+_delay_loop_2(uint16_t __count)
+{
+  fe:	80 e3       	ldi	r24, 0x30	; 48
+ 100:	95 e7       	ldi	r25, 0x75	; 117
+	__asm__ volatile (
+ 102:	01 97       	sbiw	r24, 0x01	; 1
+ 104:	f1 f7       	brne	.-4      	; 0x102
+	  while (counter != 30)
+	  {
+      _delay_loop_2(30000);
+	  counter++;
+ 106:	2f 5f       	subi	r18, 0xFF	; 255
+ 108:	3f 4f       	sbci	r19, 0xFF	; 255
+ 10a:	2e 31       	cpi	r18, 0x1E	; 30
+ 10c:	31 05       	cpc	r19, r1
+ 10e:	b9 f7       	brne	.-18     	; 0xfe
+	  }
+      PORTD = PORTD - 72;  	
+ 110:	82 b3       	in	r24, 0x12	; 18
+ 112:	88 54       	subi	r24, 0x48	; 72
+ 114:	c4 cf       	rjmp	.-120    	; 0x9e

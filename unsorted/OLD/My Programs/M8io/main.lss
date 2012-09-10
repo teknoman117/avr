@@ -1,0 +1,736 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000440  00000000  00000000  00000094  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000440  000004d4  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000006  00800060  00800060  000004d4  2**0
+                  ALLOC
+  3 .noinit       00000000  00800066  00800066  000004d4  2**0
+                  CONTENTS
+  4 .eeprom       00000000  00810000  00810000  000004d4  2**0
+                  CONTENTS
+  5 .debug_aranges 00000028  00000000  00000000  000004d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 00000140  00000000  00000000  000004fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000419  00000000  00000000  0000063c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 00000163  00000000  00000000  00000a55  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000002e6  00000000  00000000  00000bb8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000144  00000000  00000000  00000e9e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26
+   2:	2b c0       	rjmp	.+86     	; 0x5a
+   4:	2a c0       	rjmp	.+84     	; 0x5a
+   6:	29 c0       	rjmp	.+82     	; 0x5a
+   8:	28 c0       	rjmp	.+80     	; 0x5a
+   a:	27 c0       	rjmp	.+78     	; 0x5a
+   c:	26 c0       	rjmp	.+76     	; 0x5a
+   e:	25 c0       	rjmp	.+74     	; 0x5a
+  10:	24 c0       	rjmp	.+72     	; 0x5a
+  12:	23 c0       	rjmp	.+70     	; 0x5a
+  14:	22 c0       	rjmp	.+68     	; 0x5a
+  16:	21 c0       	rjmp	.+66     	; 0x5a
+  18:	20 c0       	rjmp	.+64     	; 0x5a
+  1a:	1f c0       	rjmp	.+62     	; 0x5a
+  1c:	1e c0       	rjmp	.+60     	; 0x5a
+  1e:	1d c0       	rjmp	.+58     	; 0x5a
+  20:	1c c0       	rjmp	.+56     	; 0x5a
+  22:	1b c0       	rjmp	.+54     	; 0x5a
+  24:	1a c0       	rjmp	.+52     	; 0x5a
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e0 e4       	ldi	r30, 0x40	; 64
+  3a:	f4 e0       	ldi	r31, 0x04	; 4
+  3c:	02 c0       	rjmp	.+4      	; 0x42
+
+0000003e <.do_copy_data_loop>:
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+
+00000042 <.do_copy_data_start>:
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a6 36       	cpi	r26, 0x66	; 102
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50
+  58:	23 c0       	rjmp	.+70     	; 0xa0
+
+0000005a <__bad_interrupt>:
+  5a:	d2 cf       	rjmp	.-92     	; 0x0
+
+0000005c <DELAY_US>:
+
+#if MCU_FREQ == 8000000UL
+
+    /* 8mhz clock, 4 instructions per loop_count  */
+    loop_count = microseconds * 2;
+  5c:	88 0f       	add	r24, r24
+  5e:	99 1f       	adc	r25, r25
+
+#elif MCU_FREQ == 1000000UL
+
+    /* 1mhz clock, 4 instructions per loop_count */
+    loop_count = microseconds / 4;
+
+#elif MCU_FREQ == 16000000UL
+
+    /* 1mhz clock, 4 instructions per loop_count */
+    loop_count = microseconds / 4;
+
+#else
+#error MCU_FREQ undefined or set to an unknown value!
+    loop_count = 0; /* don't really know what to do */
+#endif
+
+    __asm__ volatile (
+  60:	01 97       	sbiw	r24, 0x01	; 1
+  62:	f1 f7       	brne	.-4      	; 0x60
+  64:	08 95       	ret
+
+00000066 <DELAY_MS>:
+        "1: sbiw %0,1" "\n\t"
+        "brne 1b"
+        : "=w" ( loop_count )
+        : "0"  ( loop_count )
+    );
+}
+
+void DELAY_MS( uint16_t milliseconds )
+{
+  66:	cf 93       	push	r28
+  68:	df 93       	push	r29
+    uint16_t i;
+
+    for ( i = 0; i < milliseconds; ++i )
+  6a:	00 97       	sbiw	r24, 0x00	; 0
+  6c:	31 f0       	breq	.+12     	; 0x7a
+  6e:	ec 01       	movw	r28, r24
+    {
+        DELAY_US( 1000 );
+  70:	88 ee       	ldi	r24, 0xE8	; 232
+  72:	93 e0       	ldi	r25, 0x03	; 3
+  74:	f3 df       	rcall	.-26     	; 0x5c
+  76:	21 97       	sbiw	r28, 0x01	; 1
+  78:	d9 f7       	brne	.-10     	; 0x70
+  7a:	df 91       	pop	r29
+  7c:	cf 91       	pop	r28
+  7e:	08 95       	ret
+
+00000080 <main_prg>:
+  80:	60 e0       	ldi	r22, 0x00	; 0
+  82:	84 e0       	ldi	r24, 0x04	; 4
+  84:	73 d1       	rcall	.+742    	; 0x36c
+  86:	61 e0       	ldi	r22, 0x01	; 1
+  88:	83 e0       	ldi	r24, 0x03	; 3
+  8a:	70 d1       	rcall	.+736    	; 0x36c
+  8c:	80 e9       	ldi	r24, 0x90	; 144
+  8e:	91 e0       	ldi	r25, 0x01	; 1
+  90:	ea df       	rcall	.-44     	; 0x66
+  92:	60 e0       	ldi	r22, 0x00	; 0
+  94:	83 e0       	ldi	r24, 0x03	; 3
+  96:	6a d1       	rcall	.+724    	; 0x36c
+  98:	88 e5       	ldi	r24, 0x58	; 88
+  9a:	92 e0       	ldi	r25, 0x02	; 2
+  9c:	e4 df       	rcall	.-56     	; 0x66
+  9e:	f3 cf       	rjmp	.-26     	; 0x86
+
+000000a0 <main>:
+  a0:	cf e5       	ldi	r28, 0x5F	; 95
+  a2:	d4 e0       	ldi	r29, 0x04	; 4
+  a4:	de bf       	out	0x3e, r29	; 62
+  a6:	cd bf       	out	0x3d, r28	; 61
+  a8:	0a d0       	rcall	.+20     	; 0xbe
+  aa:	61 e0       	ldi	r22, 0x01	; 1
+  ac:	83 e0       	ldi	r24, 0x03	; 3
+  ae:	98 d0       	rcall	.+304    	; 0x1e0
+  b0:	61 e0       	ldi	r22, 0x01	; 1
+  b2:	84 e0       	ldi	r24, 0x04	; 4
+  b4:	95 d0       	rcall	.+298    	; 0x1e0
+  b6:	e4 df       	rcall	.-56     	; 0x80
+  b8:	81 e0       	ldi	r24, 0x01	; 1
+  ba:	90 e0       	ldi	r25, 0x00	; 0
+  bc:	c0 c1       	rjmp	.+896    	; 0x43e
+
+000000be <initIO>:
+#include "M8io.h"
+
+void  initIO ( void )
+{
+  prtb = 0;
+  be:	10 92 64 00 	sts	0x0064, r1
+  prtc = 0;
+  c2:	10 92 60 00 	sts	0x0060, r1
+  prtd = 0;
+  c6:	10 92 61 00 	sts	0x0061, r1
+  dirb = 0;
+  ca:	10 92 63 00 	sts	0x0063, r1
+  dirc = 0;
+  ce:	10 92 65 00 	sts	0x0065, r1
+  dird = 0;
+  d2:	10 92 62 00 	sts	0x0062, r1
+  d6:	08 95       	ret
+
+000000d8 <setIOB>:
+}
+
+void  setIOB(uint8_t pin , uint8_t direction)
+{
+  d8:	58 2f       	mov	r21, r24
+  switch (direction)
+  da:	26 2f       	mov	r18, r22
+  dc:	33 27       	eor	r19, r19
+  de:	21 15       	cp	r18, r1
+  e0:	31 05       	cpc	r19, r1
+  e2:	f9 f0       	breq	.+62     	; 0x122
+  e4:	21 30       	cpi	r18, 0x01	; 1
+  e6:	31 05       	cpc	r19, r1
+  e8:	b9 f5       	brne	.+110    	; 0x158
+  {
+    case O:
+	if(((dirb >> pin) & 0x01) == 0){DDRB = DDRB + (1 << pin);dirb = dirb + (1 << pin);}
+  ea:	60 91 63 00 	lds	r22, 0x0063
+  ee:	86 2f       	mov	r24, r22
+  f0:	99 27       	eor	r25, r25
+  f2:	45 2f       	mov	r20, r21
+  f4:	55 27       	eor	r21, r21
+  f6:	04 2e       	mov	r0, r20
+  f8:	02 c0       	rjmp	.+4      	; 0xfe
+  fa:	95 95       	asr	r25
+  fc:	87 95       	ror	r24
+  fe:	0a 94       	dec	r0
+ 100:	e2 f7       	brpl	.-8      	; 0xfa
+ 102:	82 27       	eor	r24, r18
+ 104:	93 27       	eor	r25, r19
+ 106:	80 ff       	sbrs	r24, 0
+ 108:	27 c0       	rjmp	.+78     	; 0x158
+ 10a:	02 c0       	rjmp	.+4      	; 0x110
+ 10c:	22 0f       	add	r18, r18
+ 10e:	33 1f       	adc	r19, r19
+ 110:	4a 95       	dec	r20
+ 112:	e2 f7       	brpl	.-8      	; 0x10c
+ 114:	87 b3       	in	r24, 0x17	; 23
+ 116:	82 0f       	add	r24, r18
+ 118:	87 bb       	out	0x17, r24	; 23
+ 11a:	62 0f       	add	r22, r18
+ 11c:	60 93 63 00 	sts	0x0063, r22
+	break;
+ 120:	08 95       	ret
+	
+	case I:
+	if(((dirb >> pin) & 0x01) == 1){DDRB = DDRB - (1 << pin);dirb = dirb - (1 << pin);}
+ 122:	40 91 63 00 	lds	r20, 0x0063
+ 126:	84 2f       	mov	r24, r20
+ 128:	99 27       	eor	r25, r25
+ 12a:	25 2f       	mov	r18, r21
+ 12c:	33 27       	eor	r19, r19
+ 12e:	02 2e       	mov	r0, r18
+ 130:	02 c0       	rjmp	.+4      	; 0x136
+ 132:	95 95       	asr	r25
+ 134:	87 95       	ror	r24
+ 136:	0a 94       	dec	r0
+ 138:	e2 f7       	brpl	.-8      	; 0x132
+ 13a:	80 ff       	sbrs	r24, 0
+ 13c:	0d c0       	rjmp	.+26     	; 0x158
+ 13e:	81 e0       	ldi	r24, 0x01	; 1
+ 140:	90 e0       	ldi	r25, 0x00	; 0
+ 142:	02 c0       	rjmp	.+4      	; 0x148
+ 144:	88 0f       	add	r24, r24
+ 146:	99 1f       	adc	r25, r25
+ 148:	2a 95       	dec	r18
+ 14a:	e2 f7       	brpl	.-8      	; 0x144
+ 14c:	27 b3       	in	r18, 0x17	; 23
+ 14e:	28 1b       	sub	r18, r24
+ 150:	27 bb       	out	0x17, r18	; 23
+ 152:	48 1b       	sub	r20, r24
+ 154:	40 93 63 00 	sts	0x0063, r20
+ 158:	08 95       	ret
+ 15a:	08 95       	ret
+
+0000015c <setIOC>:
+	break;
+  }
+}
+
+void  setIOC(uint8_t pin , uint8_t direction)
+{
+ 15c:	58 2f       	mov	r21, r24
+  switch (direction)
+ 15e:	26 2f       	mov	r18, r22
+ 160:	33 27       	eor	r19, r19
+ 162:	21 15       	cp	r18, r1
+ 164:	31 05       	cpc	r19, r1
+ 166:	f9 f0       	breq	.+62     	; 0x1a6
+ 168:	21 30       	cpi	r18, 0x01	; 1
+ 16a:	31 05       	cpc	r19, r1
+ 16c:	b9 f5       	brne	.+110    	; 0x1dc
+  {
+    case O:
+	if(((dirc >> pin) & 0x01) == 0){DDRC = DDRC + (1 << pin);dirc = dirc + (1 << pin);}
+ 16e:	60 91 65 00 	lds	r22, 0x0065
+ 172:	86 2f       	mov	r24, r22
+ 174:	99 27       	eor	r25, r25
+ 176:	45 2f       	mov	r20, r21
+ 178:	55 27       	eor	r21, r21
+ 17a:	04 2e       	mov	r0, r20
+ 17c:	02 c0       	rjmp	.+4      	; 0x182
+ 17e:	95 95       	asr	r25
+ 180:	87 95       	ror	r24
+ 182:	0a 94       	dec	r0
+ 184:	e2 f7       	brpl	.-8      	; 0x17e
+ 186:	82 27       	eor	r24, r18
+ 188:	93 27       	eor	r25, r19
+ 18a:	80 ff       	sbrs	r24, 0
+ 18c:	27 c0       	rjmp	.+78     	; 0x1dc
+ 18e:	02 c0       	rjmp	.+4      	; 0x194
+ 190:	22 0f       	add	r18, r18
+ 192:	33 1f       	adc	r19, r19
+ 194:	4a 95       	dec	r20
+ 196:	e2 f7       	brpl	.-8      	; 0x190
+ 198:	84 b3       	in	r24, 0x14	; 20
+ 19a:	82 0f       	add	r24, r18
+ 19c:	84 bb       	out	0x14, r24	; 20
+ 19e:	62 0f       	add	r22, r18
+ 1a0:	60 93 65 00 	sts	0x0065, r22
+	break;
+ 1a4:	08 95       	ret
+	
+	case I:
+	if(((dirc >> pin) & 0x01) == 1){DDRC = DDRC - (1 << pin);dirc = dirc - (1 << pin);}
+ 1a6:	40 91 65 00 	lds	r20, 0x0065
+ 1aa:	84 2f       	mov	r24, r20
+ 1ac:	99 27       	eor	r25, r25
+ 1ae:	25 2f       	mov	r18, r21
+ 1b0:	33 27       	eor	r19, r19
+ 1b2:	02 2e       	mov	r0, r18
+ 1b4:	02 c0       	rjmp	.+4      	; 0x1ba
+ 1b6:	95 95       	asr	r25
+ 1b8:	87 95       	ror	r24
+ 1ba:	0a 94       	dec	r0
+ 1bc:	e2 f7       	brpl	.-8      	; 0x1b6
+ 1be:	80 ff       	sbrs	r24, 0
+ 1c0:	0d c0       	rjmp	.+26     	; 0x1dc
+ 1c2:	81 e0       	ldi	r24, 0x01	; 1
+ 1c4:	90 e0       	ldi	r25, 0x00	; 0
+ 1c6:	02 c0       	rjmp	.+4      	; 0x1cc
+ 1c8:	88 0f       	add	r24, r24
+ 1ca:	99 1f       	adc	r25, r25
+ 1cc:	2a 95       	dec	r18
+ 1ce:	e2 f7       	brpl	.-8      	; 0x1c8
+ 1d0:	24 b3       	in	r18, 0x14	; 20
+ 1d2:	28 1b       	sub	r18, r24
+ 1d4:	24 bb       	out	0x14, r18	; 20
+ 1d6:	48 1b       	sub	r20, r24
+ 1d8:	40 93 65 00 	sts	0x0065, r20
+ 1dc:	08 95       	ret
+ 1de:	08 95       	ret
+
+000001e0 <setIOD>:
+	break;
+  }
+}
+
+void  setIOD(uint8_t pin , uint8_t direction)
+{
+ 1e0:	58 2f       	mov	r21, r24
+  switch (direction)
+ 1e2:	26 2f       	mov	r18, r22
+ 1e4:	33 27       	eor	r19, r19
+ 1e6:	21 15       	cp	r18, r1
+ 1e8:	31 05       	cpc	r19, r1
+ 1ea:	f9 f0       	breq	.+62     	; 0x22a
+ 1ec:	21 30       	cpi	r18, 0x01	; 1
+ 1ee:	31 05       	cpc	r19, r1
+ 1f0:	b9 f5       	brne	.+110    	; 0x260
+  {
+    case O:
+	if(((dird >> pin) & 0x01) == 0){DDRD = DDRD + (1 << pin);dird = dird + (1 << pin);}
+ 1f2:	60 91 62 00 	lds	r22, 0x0062
+ 1f6:	86 2f       	mov	r24, r22
+ 1f8:	99 27       	eor	r25, r25
+ 1fa:	45 2f       	mov	r20, r21
+ 1fc:	55 27       	eor	r21, r21
+ 1fe:	04 2e       	mov	r0, r20
+ 200:	02 c0       	rjmp	.+4      	; 0x206
+ 202:	95 95       	asr	r25
+ 204:	87 95       	ror	r24
+ 206:	0a 94       	dec	r0
+ 208:	e2 f7       	brpl	.-8      	; 0x202
+ 20a:	82 27       	eor	r24, r18
+ 20c:	93 27       	eor	r25, r19
+ 20e:	80 ff       	sbrs	r24, 0
+ 210:	27 c0       	rjmp	.+78     	; 0x260
+ 212:	02 c0       	rjmp	.+4      	; 0x218
+ 214:	22 0f       	add	r18, r18
+ 216:	33 1f       	adc	r19, r19
+ 218:	4a 95       	dec	r20
+ 21a:	e2 f7       	brpl	.-8      	; 0x214
+ 21c:	81 b3       	in	r24, 0x11	; 17
+ 21e:	82 0f       	add	r24, r18
+ 220:	81 bb       	out	0x11, r24	; 17
+ 222:	62 0f       	add	r22, r18
+ 224:	60 93 62 00 	sts	0x0062, r22
+	break;
+ 228:	08 95       	ret
+	
+	case I:
+	if(((dird >> pin) & 0x01) == 1){DDRD = DDRD - (1 << pin);dird = dird - (1 << pin);}
+ 22a:	40 91 62 00 	lds	r20, 0x0062
+ 22e:	84 2f       	mov	r24, r20
+ 230:	99 27       	eor	r25, r25
+ 232:	25 2f       	mov	r18, r21
+ 234:	33 27       	eor	r19, r19
+ 236:	02 2e       	mov	r0, r18
+ 238:	02 c0       	rjmp	.+4      	; 0x23e
+ 23a:	95 95       	asr	r25
+ 23c:	87 95       	ror	r24
+ 23e:	0a 94       	dec	r0
+ 240:	e2 f7       	brpl	.-8      	; 0x23a
+ 242:	80 ff       	sbrs	r24, 0
+ 244:	0d c0       	rjmp	.+26     	; 0x260
+ 246:	81 e0       	ldi	r24, 0x01	; 1
+ 248:	90 e0       	ldi	r25, 0x00	; 0
+ 24a:	02 c0       	rjmp	.+4      	; 0x250
+ 24c:	88 0f       	add	r24, r24
+ 24e:	99 1f       	adc	r25, r25
+ 250:	2a 95       	dec	r18
+ 252:	e2 f7       	brpl	.-8      	; 0x24c
+ 254:	21 b3       	in	r18, 0x11	; 17
+ 256:	28 1b       	sub	r18, r24
+ 258:	21 bb       	out	0x11, r18	; 17
+ 25a:	48 1b       	sub	r20, r24
+ 25c:	40 93 62 00 	sts	0x0062, r20
+ 260:	08 95       	ret
+ 262:	08 95       	ret
+
+00000264 <setStateB>:
+	break;
+  }
+}
+
+void  setStateB(uint8_t pin , uint8_t state)
+{
+ 264:	58 2f       	mov	r21, r24
+  switch (state)
+ 266:	26 2f       	mov	r18, r22
+ 268:	33 27       	eor	r19, r19
+ 26a:	21 15       	cp	r18, r1
+ 26c:	31 05       	cpc	r19, r1
+ 26e:	f9 f0       	breq	.+62     	; 0x2ae
+ 270:	21 30       	cpi	r18, 0x01	; 1
+ 272:	31 05       	cpc	r19, r1
+ 274:	b9 f5       	brne	.+110    	; 0x2e4
+  {
+    case 1:
+	if(((prtb >> pin) & 0x01) == 0){PORTB = PORTB + (1 << pin);prtb = prtb + (1 << pin);}
+ 276:	60 91 64 00 	lds	r22, 0x0064
+ 27a:	86 2f       	mov	r24, r22
+ 27c:	99 27       	eor	r25, r25
+ 27e:	45 2f       	mov	r20, r21
+ 280:	55 27       	eor	r21, r21
+ 282:	04 2e       	mov	r0, r20
+ 284:	02 c0       	rjmp	.+4      	; 0x28a
+ 286:	95 95       	asr	r25
+ 288:	87 95       	ror	r24
+ 28a:	0a 94       	dec	r0
+ 28c:	e2 f7       	brpl	.-8      	; 0x286
+ 28e:	82 27       	eor	r24, r18
+ 290:	93 27       	eor	r25, r19
+ 292:	80 ff       	sbrs	r24, 0
+ 294:	27 c0       	rjmp	.+78     	; 0x2e4
+ 296:	02 c0       	rjmp	.+4      	; 0x29c
+ 298:	22 0f       	add	r18, r18
+ 29a:	33 1f       	adc	r19, r19
+ 29c:	4a 95       	dec	r20
+ 29e:	e2 f7       	brpl	.-8      	; 0x298
+ 2a0:	88 b3       	in	r24, 0x18	; 24
+ 2a2:	82 0f       	add	r24, r18
+ 2a4:	88 bb       	out	0x18, r24	; 24
+ 2a6:	62 0f       	add	r22, r18
+ 2a8:	60 93 64 00 	sts	0x0064, r22
+	break;
+ 2ac:	08 95       	ret
+	
+	case 0:
+	if(((prtb >> pin) & 0x01) == 1){PORTB = PORTB - (1 << pin);prtb = prtb - (1 << pin);}
+ 2ae:	40 91 64 00 	lds	r20, 0x0064
+ 2b2:	84 2f       	mov	r24, r20
+ 2b4:	99 27       	eor	r25, r25
+ 2b6:	25 2f       	mov	r18, r21
+ 2b8:	33 27       	eor	r19, r19
+ 2ba:	02 2e       	mov	r0, r18
+ 2bc:	02 c0       	rjmp	.+4      	; 0x2c2
+ 2be:	95 95       	asr	r25
+ 2c0:	87 95       	ror	r24
+ 2c2:	0a 94       	dec	r0
+ 2c4:	e2 f7       	brpl	.-8      	; 0x2be
+ 2c6:	80 ff       	sbrs	r24, 0
+ 2c8:	0d c0       	rjmp	.+26     	; 0x2e4
+ 2ca:	81 e0       	ldi	r24, 0x01	; 1
+ 2cc:	90 e0       	ldi	r25, 0x00	; 0
+ 2ce:	02 c0       	rjmp	.+4      	; 0x2d4
+ 2d0:	88 0f       	add	r24, r24
+ 2d2:	99 1f       	adc	r25, r25
+ 2d4:	2a 95       	dec	r18
+ 2d6:	e2 f7       	brpl	.-8      	; 0x2d0
+ 2d8:	28 b3       	in	r18, 0x18	; 24
+ 2da:	28 1b       	sub	r18, r24
+ 2dc:	28 bb       	out	0x18, r18	; 24
+ 2de:	48 1b       	sub	r20, r24
+ 2e0:	40 93 64 00 	sts	0x0064, r20
+ 2e4:	08 95       	ret
+ 2e6:	08 95       	ret
+
+000002e8 <setStateC>:
+	break;
+  }
+}
+
+void  setStateC(uint8_t pin , uint8_t state)
+{
+ 2e8:	58 2f       	mov	r21, r24
+  switch (state)
+ 2ea:	26 2f       	mov	r18, r22
+ 2ec:	33 27       	eor	r19, r19
+ 2ee:	21 15       	cp	r18, r1
+ 2f0:	31 05       	cpc	r19, r1
+ 2f2:	f9 f0       	breq	.+62     	; 0x332
+ 2f4:	21 30       	cpi	r18, 0x01	; 1
+ 2f6:	31 05       	cpc	r19, r1
+ 2f8:	b9 f5       	brne	.+110    	; 0x368
+  {
+    case 1:
+	if(((prtc >> pin) & 0x01) == 0){PORTC = PORTC + (1 << pin);prtc = prtc + (1 << pin);}
+ 2fa:	60 91 60 00 	lds	r22, 0x0060
+ 2fe:	86 2f       	mov	r24, r22
+ 300:	99 27       	eor	r25, r25
+ 302:	45 2f       	mov	r20, r21
+ 304:	55 27       	eor	r21, r21
+ 306:	04 2e       	mov	r0, r20
+ 308:	02 c0       	rjmp	.+4      	; 0x30e
+ 30a:	95 95       	asr	r25
+ 30c:	87 95       	ror	r24
+ 30e:	0a 94       	dec	r0
+ 310:	e2 f7       	brpl	.-8      	; 0x30a
+ 312:	82 27       	eor	r24, r18
+ 314:	93 27       	eor	r25, r19
+ 316:	80 ff       	sbrs	r24, 0
+ 318:	27 c0       	rjmp	.+78     	; 0x368
+ 31a:	02 c0       	rjmp	.+4      	; 0x320
+ 31c:	22 0f       	add	r18, r18
+ 31e:	33 1f       	adc	r19, r19
+ 320:	4a 95       	dec	r20
+ 322:	e2 f7       	brpl	.-8      	; 0x31c
+ 324:	85 b3       	in	r24, 0x15	; 21
+ 326:	82 0f       	add	r24, r18
+ 328:	85 bb       	out	0x15, r24	; 21
+ 32a:	62 0f       	add	r22, r18
+ 32c:	60 93 60 00 	sts	0x0060, r22
+	break;
+ 330:	08 95       	ret
+	
+	case 0:
+	if(((prtc >> pin) & 0x01) == 1){PORTC = PORTC - (1 << pin);prtc = prtc - (1 << pin);}
+ 332:	40 91 60 00 	lds	r20, 0x0060
+ 336:	84 2f       	mov	r24, r20
+ 338:	99 27       	eor	r25, r25
+ 33a:	25 2f       	mov	r18, r21
+ 33c:	33 27       	eor	r19, r19
+ 33e:	02 2e       	mov	r0, r18
+ 340:	02 c0       	rjmp	.+4      	; 0x346
+ 342:	95 95       	asr	r25
+ 344:	87 95       	ror	r24
+ 346:	0a 94       	dec	r0
+ 348:	e2 f7       	brpl	.-8      	; 0x342
+ 34a:	80 ff       	sbrs	r24, 0
+ 34c:	0d c0       	rjmp	.+26     	; 0x368
+ 34e:	81 e0       	ldi	r24, 0x01	; 1
+ 350:	90 e0       	ldi	r25, 0x00	; 0
+ 352:	02 c0       	rjmp	.+4      	; 0x358
+ 354:	88 0f       	add	r24, r24
+ 356:	99 1f       	adc	r25, r25
+ 358:	2a 95       	dec	r18
+ 35a:	e2 f7       	brpl	.-8      	; 0x354
+ 35c:	25 b3       	in	r18, 0x15	; 21
+ 35e:	28 1b       	sub	r18, r24
+ 360:	25 bb       	out	0x15, r18	; 21
+ 362:	48 1b       	sub	r20, r24
+ 364:	40 93 60 00 	sts	0x0060, r20
+ 368:	08 95       	ret
+ 36a:	08 95       	ret
+
+0000036c <setStateD>:
+	break;
+  }
+}
+
+void  setStateD(uint8_t pin , uint8_t state)
+{
+ 36c:	58 2f       	mov	r21, r24
+  switch (state)
+ 36e:	26 2f       	mov	r18, r22
+ 370:	33 27       	eor	r19, r19
+ 372:	21 15       	cp	r18, r1
+ 374:	31 05       	cpc	r19, r1
+ 376:	f9 f0       	breq	.+62     	; 0x3b6
+ 378:	21 30       	cpi	r18, 0x01	; 1
+ 37a:	31 05       	cpc	r19, r1
+ 37c:	b9 f5       	brne	.+110    	; 0x3ec
+  {
+    case 1:
+	if(((prtd >> pin) & 0x01) == 0){PORTD = PORTD + (1 << pin);prtd = prtd + (1 << pin);}
+ 37e:	60 91 61 00 	lds	r22, 0x0061
+ 382:	86 2f       	mov	r24, r22
+ 384:	99 27       	eor	r25, r25
+ 386:	45 2f       	mov	r20, r21
+ 388:	55 27       	eor	r21, r21
+ 38a:	04 2e       	mov	r0, r20
+ 38c:	02 c0       	rjmp	.+4      	; 0x392
+ 38e:	95 95       	asr	r25
+ 390:	87 95       	ror	r24
+ 392:	0a 94       	dec	r0
+ 394:	e2 f7       	brpl	.-8      	; 0x38e
+ 396:	82 27       	eor	r24, r18
+ 398:	93 27       	eor	r25, r19
+ 39a:	80 ff       	sbrs	r24, 0
+ 39c:	27 c0       	rjmp	.+78     	; 0x3ec
+ 39e:	02 c0       	rjmp	.+4      	; 0x3a4
+ 3a0:	22 0f       	add	r18, r18
+ 3a2:	33 1f       	adc	r19, r19
+ 3a4:	4a 95       	dec	r20
+ 3a6:	e2 f7       	brpl	.-8      	; 0x3a0
+ 3a8:	82 b3       	in	r24, 0x12	; 18
+ 3aa:	82 0f       	add	r24, r18
+ 3ac:	82 bb       	out	0x12, r24	; 18
+ 3ae:	62 0f       	add	r22, r18
+ 3b0:	60 93 61 00 	sts	0x0061, r22
+	break;
+ 3b4:	08 95       	ret
+	
+	case 0:
+	if(((prtd >> pin) & 0x01) == 1){PORTD = PORTD - (1 << pin);prtd = prtd - (1 << pin);}
+ 3b6:	40 91 61 00 	lds	r20, 0x0061
+ 3ba:	84 2f       	mov	r24, r20
+ 3bc:	99 27       	eor	r25, r25
+ 3be:	25 2f       	mov	r18, r21
+ 3c0:	33 27       	eor	r19, r19
+ 3c2:	02 2e       	mov	r0, r18
+ 3c4:	02 c0       	rjmp	.+4      	; 0x3ca
+ 3c6:	95 95       	asr	r25
+ 3c8:	87 95       	ror	r24
+ 3ca:	0a 94       	dec	r0
+ 3cc:	e2 f7       	brpl	.-8      	; 0x3c6
+ 3ce:	80 ff       	sbrs	r24, 0
+ 3d0:	0d c0       	rjmp	.+26     	; 0x3ec
+ 3d2:	81 e0       	ldi	r24, 0x01	; 1
+ 3d4:	90 e0       	ldi	r25, 0x00	; 0
+ 3d6:	02 c0       	rjmp	.+4      	; 0x3dc
+ 3d8:	88 0f       	add	r24, r24
+ 3da:	99 1f       	adc	r25, r25
+ 3dc:	2a 95       	dec	r18
+ 3de:	e2 f7       	brpl	.-8      	; 0x3d8
+ 3e0:	22 b3       	in	r18, 0x12	; 18
+ 3e2:	28 1b       	sub	r18, r24
+ 3e4:	22 bb       	out	0x12, r18	; 18
+ 3e6:	48 1b       	sub	r20, r24
+ 3e8:	40 93 61 00 	sts	0x0061, r20
+ 3ec:	08 95       	ret
+ 3ee:	08 95       	ret
+
+000003f0 <getStateB>:
+	break;
+  }
+}
+
+uint8_t  getStateB(uint8_t pin)
+{
+  return ((PINB >> pin) & 0x01);
+ 3f0:	96 b3       	in	r25, 0x16	; 22
+ 3f2:	29 2f       	mov	r18, r25
+ 3f4:	33 27       	eor	r19, r19
+ 3f6:	02 c0       	rjmp	.+4      	; 0x3fc
+ 3f8:	35 95       	asr	r19
+ 3fa:	27 95       	ror	r18
+ 3fc:	8a 95       	dec	r24
+ 3fe:	e2 f7       	brpl	.-8      	; 0x3f8
+ 400:	82 2f       	mov	r24, r18
+ 402:	99 27       	eor	r25, r25
+}
+ 404:	81 70       	andi	r24, 0x01	; 1
+ 406:	90 70       	andi	r25, 0x00	; 0
+ 408:	08 95       	ret
+
+0000040a <getStateC>:
+
+uint8_t  getStateC(uint8_t pin)
+{
+  return ((PINC >> pin) & 0x01);
+ 40a:	93 b3       	in	r25, 0x13	; 19
+ 40c:	29 2f       	mov	r18, r25
+ 40e:	33 27       	eor	r19, r19
+ 410:	02 c0       	rjmp	.+4      	; 0x416
+ 412:	35 95       	asr	r19
+ 414:	27 95       	ror	r18
+ 416:	8a 95       	dec	r24
+ 418:	e2 f7       	brpl	.-8      	; 0x412
+ 41a:	82 2f       	mov	r24, r18
+ 41c:	99 27       	eor	r25, r25
+}
+ 41e:	81 70       	andi	r24, 0x01	; 1
+ 420:	90 70       	andi	r25, 0x00	; 0
+ 422:	08 95       	ret
+
+00000424 <getStateD>:
+
+uint8_t  getStateD(uint8_t pin)
+{
+  return ((PIND >> pin) & 0x01);
+ 424:	90 b3       	in	r25, 0x10	; 16
+ 426:	29 2f       	mov	r18, r25
+ 428:	33 27       	eor	r19, r19
+ 42a:	02 c0       	rjmp	.+4      	; 0x430
+ 42c:	35 95       	asr	r19
+ 42e:	27 95       	ror	r18
+ 430:	8a 95       	dec	r24
+ 432:	e2 f7       	brpl	.-8      	; 0x42c
+ 434:	82 2f       	mov	r24, r18
+ 436:	99 27       	eor	r25, r25
+}
+ 438:	81 70       	andi	r24, 0x01	; 1
+ 43a:	90 70       	andi	r25, 0x00	; 0
+ 43c:	08 95       	ret
+
+0000043e <_exit>:
+ 43e:	ff cf       	rjmp	.-2      	; 0x43e

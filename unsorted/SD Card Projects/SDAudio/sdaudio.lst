@@ -1,0 +1,828 @@
+GAS LISTING /tmp/ccf1HLLf.s 			page 1
+
+
+   1               		.file	"sdaudio.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Projects/AVR_Projects/SDAudio/",100,0,2,.Ltext0
+  11               		.stabs	"sdaudio.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdio.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  33               		.stabs	"int8_t:t(3,1)=(0,10)",128,0,121,0
+  34               		.stabs	"uint8_t:t(3,2)=(0,11)",128,0,122,0
+  35               		.stabs	"int16_t:t(3,3)=(0,1)",128,0,123,0
+  36               		.stabs	"uint16_t:t(3,4)=(0,4)",128,0,124,0
+  37               		.stabs	"int32_t:t(3,5)=(0,3)",128,0,125,0
+  38               		.stabs	"uint32_t:t(3,6)=(0,5)",128,0,126,0
+  39               		.stabs	"int64_t:t(3,7)=(0,6)",128,0,128,0
+  40               		.stabs	"uint64_t:t(3,8)=(0,7)",128,0,129,0
+  41               		.stabs	"intptr_t:t(3,9)=(3,3)",128,0,142,0
+  42               		.stabs	"uintptr_t:t(3,10)=(3,4)",128,0,147,0
+  43               		.stabs	"int_least8_t:t(3,11)=(3,1)",128,0,159,0
+  44               		.stabs	"uint_least8_t:t(3,12)=(3,2)",128,0,164,0
+  45               		.stabs	"int_least16_t:t(3,13)=(3,3)",128,0,169,0
+  46               		.stabs	"uint_least16_t:t(3,14)=(3,4)",128,0,174,0
+  47               		.stabs	"int_least32_t:t(3,15)=(3,5)",128,0,179,0
+  48               		.stabs	"uint_least32_t:t(3,16)=(3,6)",128,0,184,0
+  49               		.stabs	"int_least64_t:t(3,17)=(3,7)",128,0,192,0
+  50               		.stabs	"uint_least64_t:t(3,18)=(3,8)",128,0,199,0
+  51               		.stabs	"int_fast8_t:t(3,19)=(3,1)",128,0,213,0
+  52               		.stabs	"uint_fast8_t:t(3,20)=(3,2)",128,0,218,0
+  53               		.stabs	"int_fast16_t:t(3,21)=(3,3)",128,0,223,0
+  54               		.stabs	"uint_fast16_t:t(3,22)=(3,4)",128,0,228,0
+  55               		.stabs	"int_fast32_t:t(3,23)=(3,5)",128,0,233,0
+  56               		.stabs	"uint_fast32_t:t(3,24)=(3,6)",128,0,238,0
+  57               		.stabs	"int_fast64_t:t(3,25)=(3,7)",128,0,246,0
+GAS LISTING /tmp/ccf1HLLf.s 			page 2
+
+
+  58               		.stabs	"uint_fast64_t:t(3,26)=(3,8)",128,0,253,0
+  59               		.stabs	"intmax_t:t(3,27)=(3,7)",128,0,273,0
+  60               		.stabs	"uintmax_t:t(3,28)=(3,8)",128,0,278,0
+  61               		.stabn	162,0,0,0
+  62               		.stabs	"int_farptr_t:t(2,1)=(3,5)",128,0,77,0
+  63               		.stabs	"uint_farptr_t:t(2,2)=(3,6)",128,0,81,0
+  64               		.stabn	162,0,0,0
+  65               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stdarg.h",130,0,0,0
+  66               		.stabs	"__gnuc_va_list:t(4,1)=(4,2)=*(0,15)",128,0,43,0
+  67               		.stabs	"va_list:t(4,3)=(4,1)",128,0,105,0
+  68               		.stabn	162,0,0,0
+  69               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stddef.h",130,0,0,0
+  70               		.stabs	"size_t:t(5,1)=(0,4)",128,0,214,0
+  71               		.stabn	162,0,0,0
+  72               		.stabs	"__file:T(1,1)=s14buf:(1,2)=*(0,2),0,16;unget:(0,11),16,8;flags:(3,2),24,8;size:(0,1),32,16
+  73               		.stabn	162,0,0,0
+  74               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  75               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  76               		.stabs	"__fuse_t:t(7,1)=(7,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219,0
+  77               		.stabn	162,0,0,0
+  78               		.stabn	162,0,0,0
+  79               		.stabs	"sendDAC:F(0,15)",36,0,13,sendDAC
+  80               		.stabs	"header:P(3,2)",64,0,13,24
+  81               		.stabs	"data:P(3,2)",64,0,13,22
+  82               	.global	sendDAC
+  83               		.type	sendDAC, @function
+  84               	sendDAC:
+  85               		.stabd	46,0,0
+   1:sdaudio.c     **** #include <stdio.h>
+   2:sdaudio.c     **** #include <avr/io.h>
+   3:sdaudio.c     **** #include <util/delay.h>
+   4:sdaudio.c     **** /* My custom headers */
+   5:sdaudio.c     **** #include "spi.h"
+   6:sdaudio.c     **** #include "mmc.h"
+   7:sdaudio.c     **** #include "stdusart0.h"
+   8:sdaudio.c     **** 
+   9:sdaudio.c     **** unsigned char waveheader[44];
+  10:sdaudio.c     **** unsigned char audiobuffer[512];
+  11:sdaudio.c     **** char ch = 0;
+  12:sdaudio.c     **** 
+  13:sdaudio.c     **** void sendDAC( uint8_t header, uint8_t data ) {
+  86               		.stabn	68,0,13,.LM0-.LFBB1
+  87               	.LM0:
+  88               	.LFBB1:
+  89               	/* prologue: function */
+  90               	/* frame size = 0 */
+  14:sdaudio.c     **** 	PORTC &= ~(1 << PORTC2);
+  91               		.stabn	68,0,14,.LM1-.LFBB1
+  92               	.LM1:
+  93 0000 4298      		cbi 40-32,2
+  94               	.LBB84:
+  95               	.LBB85:
+  96               	.LBB86:
+  97               	.LBB87:
+  98               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext1
+  99               	.Ltext1:
+   1:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+GAS LISTING /tmp/ccf1HLLf.s 			page 3
+
+
+   2:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    Copyright (c) 2007 Joerg Wunsch
+   3:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    All rights reserved.
+   4:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+   5:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    Redistribution and use in source and binary forms, with or without
+   6:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    modification, are permitted provided that the following conditions are met:
+   7:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+   8:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    * Redistributions of source code must retain the above copyright
+   9:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      notice, this list of conditions and the following disclaimer.
+  10:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  11:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    * Redistributions in binary form must reproduce the above copyright
+  12:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      notice, this list of conditions and the following disclaimer in
+  13:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      the documentation and/or other materials provided with the
+  14:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      distribution.
+  15:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  16:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    * Neither the name of the copyright holders nor the names of
+  17:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      contributors may be used to endorse or promote products derived
+  18:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      from this software without specific prior written permission.
+  19:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  20:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  23:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  24:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  25:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  26:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  27:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  28:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  29:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  30:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  31:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  32:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /* $Id: delay_basic.h,v 1.1 2007/05/13 21:23:20 joerg_wunsch Exp $ */
+  33:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  34:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #ifndef _UTIL_DELAY_BASIC_H_
+  35:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #define _UTIL_DELAY_BASIC_H_ 1
+  36:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  37:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #include <inttypes.h>
+  38:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  39:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /** \file */
+  40:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /** \defgroup util_delay_basic <util/delay_basic.h>: Basic busy-wait delay loops
+  41:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     \code
+  42:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     #include <util/delay_basic.h>
+  43:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     \endcode
+  44:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  45:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     The functions in this header file implement simple delay loops
+  46:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     that perform a busy-waiting.  They are typically used to
+  47:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     facilitate short delays in the program execution.  They are
+  48:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     implemented as count-down loops with a well-known CPU cycle
+  49:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     count per loop iteration.  As such, no other processing can
+  50:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     occur simultaneously.  It should be kept in mind that the
+  51:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     functions described here do not disable interrupts.
+  52:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  53:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     In general, for long delays, the use of hardware timers is
+  54:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     much preferrable, as they free the CPU, and allow for
+  55:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     concurrent processing of other events while the timer is
+  56:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     running.  However, in particular for very short delays, the
+  57:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     overhead of setting up a hardware timer is too much compared
+  58:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     to the overall delay time.
+GAS LISTING /tmp/ccf1HLLf.s 			page 4
+
+
+  59:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  60:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     Two inline functions are provided for the actual delay algorithms.
+  61:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  62:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** */
+  63:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  64:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #if !defined(__DOXYGEN__)
+  65:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
+  66:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
+  67:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #endif
+  68:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  69:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /** \ingroup util_delay_basic
+  70:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  71:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     Delay loop using an 8-bit counter \c __count, so up to 256
+  72:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     iterations are possible.  (The value 256 would have to be passed
+  73:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     as 0.)  The loop executes three CPU cycles per iteration, not
+  74:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     including the overhead the compiler needs to setup the counter
+  75:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     register.
+  76:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  77:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     Thus, at a CPU speed of 1 MHz, delays of up to 768 microseconds
+  78:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     can be achieved.
+  79:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** */
+  80:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** void
+  81:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** _delay_loop_1(uint8_t __count)
+  82:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** {
+  83:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 	__asm__ volatile (
+ 100               		.stabn	68,0,83,.LM2-.LFBB1
+ 101               	.LM2:
+ 102 0002 23E0      		ldi r18,lo8(3)
+ 103               	/* #APP */
+ 104               	 ;  83 "/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h" 1
+ 105 0004 2A95      		1: dec r18
+ 106 0006 01F4      		brne 1b
+ 107               	 ;  0 "" 2
+ 108               	/* #NOAPP */
+ 109 0008 27E0      		ldi r18,lo8(7)
+ 110 000a 30E0      		ldi r19,hi8(7)
+ 111               	.LBE87:
+ 112               	.LBE86:
+ 113               	.LBE85:
+ 114               	.LBE84:
+ 115               		.stabs	"sdaudio.c",132,0,0,.Ltext2
+ 116               	.Ltext2:
+  15:sdaudio.c     **** 	_delay_us(1);
+  16:sdaudio.c     **** 	uint8_t c;
+  17:sdaudio.c     **** 	for(c=0;c<8;c++) {
+  18:sdaudio.c     **** 		if(header & (1 << (7-c))) {PORTC |= (1 << PORTC0);}
+ 117               		.stabn	68,0,18,.LM3-.LFBB1
+ 118               	.LM3:
+ 119 000c 482F      		mov r20,r24
+ 120 000e 50E0      		ldi r21,lo8(0)
+ 121               	.LBB88:
+ 122               	.LBB89:
+ 123               	.LBB90:
+ 124               	.LBB91:
+ 125               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext3
+ 126               	.Ltext3:
+ 127               		.stabn	68,0,83,.LM4-.LFBB1
+GAS LISTING /tmp/ccf1HLLf.s 			page 5
+
+
+ 128               	.LM4:
+ 129 0010 73E0      		ldi r23,lo8(3)
+ 130               	.L4:
+ 131               	.LBE91:
+ 132               	.LBE90:
+ 133               	.LBE89:
+ 134               	.LBE88:
+ 135               		.stabs	"sdaudio.c",132,0,0,.Ltext4
+ 136               	.Ltext4:
+ 137               		.stabn	68,0,18,.LM5-.LFBB1
+ 138               	.LM5:
+ 139 0012 CA01      		movw r24,r20
+ 140 0014 022E      		mov r0,r18
+ 141 0016 00C0      		rjmp 2f
+ 142 0018 9595      	1:	asr r25
+ 143 001a 8795      		ror r24
+ 144 001c 0A94      	2:	dec r0
+ 145 001e 02F4      		brpl 1b
+ 146 0020 80FF      		sbrs r24,0
+ 147 0022 00C0      		rjmp .L2
+ 148 0024 409A      		sbi 40-32,0
+ 149 0026 00C0      		rjmp .L3
+ 150               	.L2:
+  19:sdaudio.c     **** 		else {PORTC &= ~(1 << PORTC0);}
+ 151               		.stabn	68,0,19,.LM6-.LFBB1
+ 152               	.LM6:
+ 153 0028 4098      		cbi 40-32,0
+ 154               	.L3:
+  20:sdaudio.c     **** 		PORTC |= (1 << PORTC1);
+ 155               		.stabn	68,0,20,.LM7-.LFBB1
+ 156               	.LM7:
+ 157 002a 419A      		sbi 40-32,1
+ 158               	.LBB95:
+ 159               	.LBB94:
+ 160               	.LBB93:
+ 161               	.LBB92:
+ 162               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext5
+ 163               	.Ltext5:
+ 164               		.stabn	68,0,83,.LM8-.LFBB1
+ 165               	.LM8:
+ 166 002c 872F      		mov r24,r23
+ 167               	/* #APP */
+ 168               	 ;  83 "/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h" 1
+ 169 002e 8A95      		1: dec r24
+ 170 0030 01F4      		brne 1b
+ 171               	 ;  0 "" 2
+ 172               	/* #NOAPP */
+ 173               	.LBE92:
+ 174               	.LBE93:
+ 175               	.LBE94:
+ 176               	.LBE95:
+ 177               		.stabs	"sdaudio.c",132,0,0,.Ltext6
+ 178               	.Ltext6:
+  21:sdaudio.c     **** 		_delay_us(1);
+  22:sdaudio.c     **** 		PORTC &= ~(1 << PORTC1);
+ 179               		.stabn	68,0,22,.LM9-.LFBB1
+ 180               	.LM9:
+GAS LISTING /tmp/ccf1HLLf.s 			page 6
+
+
+ 181 0032 4198      		cbi 40-32,1
+ 182               	.LBB96:
+ 183               	.LBB97:
+ 184               	.LBB98:
+ 185               	.LBB99:
+ 186               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext7
+ 187               	.Ltext7:
+ 188               		.stabn	68,0,83,.LM10-.LFBB1
+ 189               	.LM10:
+ 190 0034 872F      		mov r24,r23
+ 191               	/* #APP */
+ 192               	 ;  83 "/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h" 1
+ 193 0036 8A95      		1: dec r24
+ 194 0038 01F4      		brne 1b
+ 195               	 ;  0 "" 2
+ 196               	/* #NOAPP */
+ 197 003a 2150      		subi r18,lo8(-(-1))
+ 198 003c 3040      		sbci r19,hi8(-(-1))
+ 199               	.LBE99:
+ 200               	.LBE98:
+ 201               	.LBE97:
+ 202               	.LBE96:
+ 203               		.stabs	"sdaudio.c",132,0,0,.Ltext8
+ 204               	.Ltext8:
+ 205               		.stabn	68,0,17,.LM11-.LFBB1
+ 206               	.LM11:
+ 207 003e 8FEF      		ldi r24,hi8(-1)
+ 208 0040 2F3F      		cpi r18,lo8(-1)
+ 209 0042 3807      		cpc r19,r24
+ 210 0044 01F4      		brne .L4
+ 211 0046 27E0      		ldi r18,lo8(7)
+ 212 0048 30E0      		ldi r19,hi8(7)
+  23:sdaudio.c     **** 		_delay_us(1);
+  24:sdaudio.c     **** 	}
+  25:sdaudio.c     **** 	for(c=0;c<8;c++) {
+  26:sdaudio.c     **** 		if(data & (1 << (7-c))) {PORTC |= (1 << PORTC0);}
+ 213               		.stabn	68,0,26,.LM12-.LFBB1
+ 214               	.LM12:
+ 215 004a 70E0      		ldi r23,lo8(0)
+ 216               	.LBB100:
+ 217               	.LBB101:
+ 218               	.LBB102:
+ 219               	.LBB103:
+ 220               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext9
+ 221               	.Ltext9:
+ 222               		.stabn	68,0,83,.LM13-.LFBB1
+ 223               	.LM13:
+ 224 004c 43E0      		ldi r20,lo8(3)
+ 225               	.L7:
+ 226               	.LBE103:
+ 227               	.LBE102:
+ 228               	.LBE101:
+ 229               	.LBE100:
+ 230               		.stabs	"sdaudio.c",132,0,0,.Ltext10
+ 231               	.Ltext10:
+ 232               		.stabn	68,0,26,.LM14-.LFBB1
+ 233               	.LM14:
+GAS LISTING /tmp/ccf1HLLf.s 			page 7
+
+
+ 234 004e CB01      		movw r24,r22
+ 235 0050 022E      		mov r0,r18
+ 236 0052 00C0      		rjmp 2f
+ 237 0054 9595      	1:	asr r25
+ 238 0056 8795      		ror r24
+ 239 0058 0A94      	2:	dec r0
+ 240 005a 02F4      		brpl 1b
+ 241 005c 80FF      		sbrs r24,0
+ 242 005e 00C0      		rjmp .L5
+ 243 0060 409A      		sbi 40-32,0
+ 244 0062 00C0      		rjmp .L6
+ 245               	.L5:
+  27:sdaudio.c     **** 		else {PORTC &= ~(1 << PORTC0);}
+ 246               		.stabn	68,0,27,.LM15-.LFBB1
+ 247               	.LM15:
+ 248 0064 4098      		cbi 40-32,0
+ 249               	.L6:
+  28:sdaudio.c     **** 		PORTC |= (1 << PORTC1);
+ 250               		.stabn	68,0,28,.LM16-.LFBB1
+ 251               	.LM16:
+ 252 0066 419A      		sbi 40-32,1
+ 253               	.LBB107:
+ 254               	.LBB106:
+ 255               	.LBB105:
+ 256               	.LBB104:
+ 257               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext11
+ 258               	.Ltext11:
+ 259               		.stabn	68,0,83,.LM17-.LFBB1
+ 260               	.LM17:
+ 261 0068 842F      		mov r24,r20
+ 262               	/* #APP */
+ 263               	 ;  83 "/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h" 1
+ 264 006a 8A95      		1: dec r24
+ 265 006c 01F4      		brne 1b
+ 266               	 ;  0 "" 2
+ 267               	/* #NOAPP */
+ 268               	.LBE104:
+ 269               	.LBE105:
+ 270               	.LBE106:
+ 271               	.LBE107:
+ 272               		.stabs	"sdaudio.c",132,0,0,.Ltext12
+ 273               	.Ltext12:
+  29:sdaudio.c     **** 		_delay_us(1);
+  30:sdaudio.c     **** 		PORTC &= ~(1 << PORTC1);
+ 274               		.stabn	68,0,30,.LM18-.LFBB1
+ 275               	.LM18:
+ 276 006e 4198      		cbi 40-32,1
+ 277               	.LBB108:
+ 278               	.LBB109:
+ 279               	.LBB110:
+ 280               	.LBB111:
+ 281               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext13
+ 282               	.Ltext13:
+ 283               		.stabn	68,0,83,.LM19-.LFBB1
+ 284               	.LM19:
+ 285 0070 842F      		mov r24,r20
+ 286               	/* #APP */
+GAS LISTING /tmp/ccf1HLLf.s 			page 8
+
+
+ 287               	 ;  83 "/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h" 1
+ 288 0072 8A95      		1: dec r24
+ 289 0074 01F4      		brne 1b
+ 290               	 ;  0 "" 2
+ 291               	/* #NOAPP */
+ 292 0076 2150      		subi r18,lo8(-(-1))
+ 293 0078 3040      		sbci r19,hi8(-(-1))
+ 294               	.LBE111:
+ 295               	.LBE110:
+ 296               	.LBE109:
+ 297               	.LBE108:
+ 298               		.stabs	"sdaudio.c",132,0,0,.Ltext14
+ 299               	.Ltext14:
+ 300               		.stabn	68,0,25,.LM20-.LFBB1
+ 301               	.LM20:
+ 302 007a 8FEF      		ldi r24,hi8(-1)
+ 303 007c 2F3F      		cpi r18,lo8(-1)
+ 304 007e 3807      		cpc r19,r24
+ 305 0080 01F4      		brne .L7
+  31:sdaudio.c     **** 		_delay_us(1);
+  32:sdaudio.c     **** 	}
+  33:sdaudio.c     **** 	PORTC |= (1 << PORTC2);
+ 306               		.stabn	68,0,33,.LM21-.LFBB1
+ 307               	.LM21:
+ 308 0082 429A      		sbi 40-32,2
+ 309               	/* epilogue start */
+  34:sdaudio.c     **** }
+ 310               		.stabn	68,0,34,.LM22-.LFBB1
+ 311               	.LM22:
+ 312 0084 0895      		ret
+ 313               		.size	sendDAC, .-sendDAC
+ 314               	.Lscope1:
+ 315               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 316               		.stabd	78,0,0
+ 317               		.data
+ 318               	.LC0:
+ 319 0000 4175 6469 		.string	"Audio Test Program\n\r"
+ 319      6F20 5465 
+ 319      7374 2050 
+ 319      726F 6772 
+ 319      616D 0A0D 
+ 320               	.LC1:
+ 321 0015 4469 736B 		.string	"Disk Error\n\r"
+ 321      2045 7272 
+ 321      6F72 0A0D 
+ 321      00
+ 322               	.LC2:
+ 323 0022 506C 6179 		.string	"Playing\n\r"
+ 323      696E 670A 
+ 323      0D00 
+ 324               		.text
+ 325               		.stabs	"main:F(0,1)",36,0,37,main
+ 326               	.global	main
+ 327               		.type	main, @function
+ 328               	main:
+ 329               		.stabd	46,0,0
+  35:sdaudio.c     **** 
+GAS LISTING /tmp/ccf1HLLf.s 			page 9
+
+
+  36:sdaudio.c     **** 
+  37:sdaudio.c     **** int main ( void ) {
+ 330               		.stabn	68,0,37,.LM23-.LFBB2
+ 331               	.LM23:
+ 332               	.LFBB2:
+ 333 0086 DF92      		push r13
+ 334 0088 EF92      		push r14
+ 335 008a FF92      		push r15
+ 336 008c 0F93      		push r16
+ 337 008e 1F93      		push r17
+ 338 0090 CF93      		push r28
+ 339 0092 DF93      		push r29
+ 340               	/* prologue: function */
+ 341               	/* frame size = 0 */
+  38:sdaudio.c     **** 	// Variables
+  39:sdaudio.c     **** 	unsigned int bc = 0;
+  40:sdaudio.c     **** 	uint32_t cntr = 0;
+  41:sdaudio.c     **** 	// code
+  42:sdaudio.c     **** 	init_stdusart0( 5, DB8 | P_N | SB1 );                            // initalize my stdin/stdout driv
+ 342               		.stabn	68,0,42,.LM24-.LFBB2
+ 343               	.LM24:
+ 344 0094 85E0      		ldi r24,lo8(5)
+ 345 0096 90E0      		ldi r25,hi8(5)
+ 346 0098 66E0      		ldi r22,lo8(6)
+ 347 009a 0E94 0000 		call init_stdusart0
+  43:sdaudio.c     **** 	init_spi( FOSC_2, MODE0, MSBFIRST );
+ 348               		.stabn	68,0,43,.LM25-.LFBB2
+ 349               	.LM25:
+ 350 009e 84E0      		ldi r24,lo8(4)
+ 351 00a0 60E0      		ldi r22,lo8(0)
+ 352 00a2 40E0      		ldi r20,lo8(0)
+ 353 00a4 0E94 0000 		call init_spi
+  44:sdaudio.c     **** 	DDRC |= 0xFF;
+ 354               		.stabn	68,0,44,.LM26-.LFBB2
+ 355               	.LM26:
+ 356 00a8 87B1      		in r24,39-32
+ 357 00aa 8FEF      		ldi r24,lo8(-1)
+ 358 00ac 87B9      		out 39-32,r24
+  45:sdaudio.c     **** 	PORTC |= (1 << PORTC2);
+ 359               		.stabn	68,0,45,.LM27-.LFBB2
+ 360               	.LM27:
+ 361 00ae 429A      		sbi 40-32,2
+  46:sdaudio.c     **** 	sendDAC( 0x0B, 0xFF );
+ 362               		.stabn	68,0,46,.LM28-.LFBB2
+ 363               	.LM28:
+ 364 00b0 8BE0      		ldi r24,lo8(11)
+ 365 00b2 6FEF      		ldi r22,lo8(-1)
+ 366 00b4 0E94 0000 		call sendDAC
+  47:sdaudio.c     **** 	DDRD |= 0xF0;                         //set status LED pins to outputs along with DAC controls
+ 367               		.stabn	68,0,47,.LM29-.LFBB2
+ 368               	.LM29:
+ 369 00b8 8AB1      		in r24,42-32
+ 370 00ba 806F      		ori r24,lo8(-16)
+ 371 00bc 8AB9      		out 42-32,r24
+  48:sdaudio.c     **** 	DDRB |= (1 << PORTB4);
+ 372               		.stabn	68,0,48,.LM30-.LFBB2
+ 373               	.LM30:
+GAS LISTING /tmp/ccf1HLLf.s 			page 10
+
+
+ 374 00be 249A      		sbi 36-32,4
+  49:sdaudio.c     **** 	PORTB &= ~(1 << PORTB4);	// set chip select to low (MMC is selected)
+ 375               		.stabn	68,0,49,.LM31-.LFBB2
+ 376               	.LM31:
+ 377 00c0 2C98      		cbi 37-32,4
+  50:sdaudio.c     **** 	printf( "Audio Test Program\n\r" );
+ 378               		.stabn	68,0,50,.LM32-.LFBB2
+ 379               	.LM32:
+ 380 00c2 00D0      		rcall .
+ 381 00c4 80E0      		ldi r24,lo8(.LC0)
+ 382 00c6 90E0      		ldi r25,hi8(.LC0)
+ 383 00c8 ADB7      		in r26,__SP_L__
+ 384 00ca BEB7      		in r27,__SP_H__
+ 385 00cc 1296      		adiw r26,1+1
+ 386 00ce 9C93      		st X,r25
+ 387 00d0 8E93      		st -X,r24
+ 388 00d2 1197      		sbiw r26,1
+ 389 00d4 0E94 0000 		call printf
+  51:sdaudio.c     **** 	// Rest of Program                             
+  52:sdaudio.c     **** 	if( !init_mmc() ) {
+ 390               		.stabn	68,0,52,.LM33-.LFBB2
+ 391               	.LM33:
+ 392 00d8 0F90      		pop __tmp_reg__
+ 393 00da 0F90      		pop __tmp_reg__
+ 394 00dc 0E94 0000 		call init_mmc
+ 395 00e0 8823      		tst r24
+ 396 00e2 01F4      		brne .L12
+  53:sdaudio.c     **** 		printf( "Disk Error\n\r" );
+ 397               		.stabn	68,0,53,.LM34-.LFBB2
+ 398               	.LM34:
+ 399 00e4 00D0      		rcall .
+ 400 00e6 80E0      		ldi r24,lo8(.LC1)
+ 401 00e8 90E0      		ldi r25,hi8(.LC1)
+ 402 00ea EDB7      		in r30,__SP_L__
+ 403 00ec FEB7      		in r31,__SP_H__
+ 404 00ee 9283      		std Z+2,r25
+ 405 00f0 8183      		std Z+1,r24
+ 406 00f2 0E94 0000 		call printf
+  54:sdaudio.c     **** 		PORTD |= (1 << PORTD4);                                         //Set LED to Error
+ 407               		.stabn	68,0,54,.LM35-.LFBB2
+ 408               	.LM35:
+ 409 00f6 5C9A      		sbi 43-32,4
+  55:sdaudio.c     **** 		PORTD &= ~(1 << PORTD5);
+ 410               		.stabn	68,0,55,.LM36-.LFBB2
+ 411               	.LM36:
+ 412 00f8 5D98      		cbi 43-32,5
+ 413 00fa 0F90      		pop __tmp_reg__
+ 414 00fc 0F90      		pop __tmp_reg__
+ 415               	.L13:
+ 416 00fe 00C0      		rjmp .L13
+ 417               	.L12:
+  56:sdaudio.c     **** 		while (1);
+  57:sdaudio.c     **** 	}
+  58:sdaudio.c     **** 	PORTD |= (1 << PORTD5);                                             //set LED to Success
+ 418               		.stabn	68,0,58,.LM37-.LFBB2
+ 419               	.LM37:
+ 420 0100 5D9A      		sbi 43-32,5
+GAS LISTING /tmp/ccf1HLLf.s 			page 11
+
+
+  59:sdaudio.c     **** 	PORTD &= ~(1 << PORTD4);
+ 421               		.stabn	68,0,59,.LM38-.LFBB2
+ 422               	.LM38:
+ 423 0102 5C98      		cbi 43-32,4
+  60:sdaudio.c     **** 	printf( "Playing\n\r" );
+ 424               		.stabn	68,0,60,.LM39-.LFBB2
+ 425               	.LM39:
+ 426 0104 00D0      		rcall .
+ 427 0106 80E0      		ldi r24,lo8(.LC2)
+ 428 0108 90E0      		ldi r25,hi8(.LC2)
+ 429 010a ADB7      		in r26,__SP_L__
+ 430 010c BEB7      		in r27,__SP_H__
+ 431 010e 1296      		adiw r26,1+1
+ 432 0110 9C93      		st X,r25
+ 433 0112 8E93      		st -X,r24
+ 434 0114 1197      		sbiw r26,1
+ 435 0116 0E94 0000 		call printf
+  61:sdaudio.c     **** 	mmc_readblock( 0, audiobuffer );
+ 436               		.stabn	68,0,61,.LM40-.LFBB2
+ 437               	.LM40:
+ 438 011a 0F90      		pop __tmp_reg__
+ 439 011c 0F90      		pop __tmp_reg__
+ 440 011e 60E0      		ldi r22,lo8(0)
+ 441 0120 70E0      		ldi r23,hi8(0)
+ 442 0122 80E0      		ldi r24,hlo8(0)
+ 443 0124 90E0      		ldi r25,hhi8(0)
+ 444 0126 40E0      		ldi r20,lo8(audiobuffer)
+ 445 0128 50E0      		ldi r21,hi8(audiobuffer)
+ 446 012a 0E94 0000 		call mmc_readblock
+ 447 012e C0E0      		ldi r28,lo8(audiobuffer+45)
+ 448 0130 D0E0      		ldi r29,hi8(audiobuffer+45)
+ 449               	.LBB112:
+ 450               	.LBB113:
+ 451               	.LBB114:
+ 452               	.LBB115:
+ 453               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext15
+ 454               	.Ltext15:
+ 455               		.stabn	68,0,83,.LM41-.LFBB2
+ 456               	.LM41:
+ 457 0132 1EE6      		ldi r17,lo8(110)
+ 458               	.L14:
+ 459               	.LBE115:
+ 460               	.LBE114:
+ 461               	.LBE113:
+ 462               	.LBE112:
+ 463               		.stabs	"sdaudio.c",132,0,0,.Ltext16
+ 464               	.Ltext16:
+  62:sdaudio.c     **** 	for( bc = 44; bc < 512; bc+=2 ) {
+  63:sdaudio.c     **** 		sendDAC( 0x0B, audiobuffer[bc+1] );
+ 465               		.stabn	68,0,63,.LM42-.LFBB2
+ 466               	.LM42:
+ 467 0134 8BE0      		ldi r24,lo8(11)
+ 468 0136 6881      		ld r22,Y
+ 469 0138 0E94 0000 		call sendDAC
+ 470               	.LBB119:
+ 471               	.LBB118:
+ 472               	.LBB117:
+GAS LISTING /tmp/ccf1HLLf.s 			page 12
+
+
+ 473               	.LBB116:
+ 474               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext17
+ 475               	.Ltext17:
+ 476               		.stabn	68,0,83,.LM43-.LFBB2
+ 477               	.LM43:
+ 478 013c 812F      		mov r24,r17
+ 479               	/* #APP */
+ 480               	 ;  83 "/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h" 1
+ 481 013e 8A95      		1: dec r24
+ 482 0140 01F4      		brne 1b
+ 483               	 ;  0 "" 2
+ 484               	/* #NOAPP */
+ 485 0142 2296      		adiw r28,2
+ 486               	.LBE116:
+ 487               	.LBE117:
+ 488               	.LBE118:
+ 489               	.LBE119:
+ 490               		.stabs	"sdaudio.c",132,0,0,.Ltext18
+ 491               	.Ltext18:
+ 492               		.stabn	68,0,62,.LM44-.LFBB2
+ 493               	.LM44:
+ 494 0144 B0E0      		ldi r27,hi8(audiobuffer+513)
+ 495 0146 C030      		cpi r28,lo8(audiobuffer+513)
+ 496 0148 DB07      		cpc r29,r27
+ 497 014a 01F4      		brne .L14
+ 498 014c E12C      		mov r14,__zero_reg__
+ 499 014e 92E0      		ldi r25,hi8(512)
+ 500 0150 F92E      		mov r15,r25
+ 501 0152 012D      		mov r16,__zero_reg__
+ 502 0154 112D      		mov r17,__zero_reg__
+ 503               	.LBB120:
+ 504               	.LBB121:
+ 505               	.LBB122:
+ 506               	.LBB123:
+ 507               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext19
+ 508               	.Ltext19:
+ 509               		.stabn	68,0,83,.LM45-.LFBB2
+ 510               	.LM45:
+ 511 0156 8EE6      		ldi r24,lo8(110)
+ 512 0158 D82E      		mov r13,r24
+ 513               	.L16:
+ 514               	.LBE123:
+ 515               	.LBE122:
+ 516               	.LBE121:
+ 517               	.LBE120:
+ 518               		.stabs	"sdaudio.c",132,0,0,.Ltext20
+ 519               	.Ltext20:
+  64:sdaudio.c     **** 		_delay_us(30);
+  65:sdaudio.c     **** 	}
+  66:sdaudio.c     **** 	cntr = 512;
+  67:sdaudio.c     **** 	while( 1 ) {
+  68:sdaudio.c     **** 		mmc_readblock( cntr, audiobuffer );
+ 520               		.stabn	68,0,68,.LM46-.LFBB2
+ 521               	.LM46:
+ 522 015a C801      		movw r24,r16
+ 523 015c B701      		movw r22,r14
+ 524 015e 40E0      		ldi r20,lo8(audiobuffer)
+GAS LISTING /tmp/ccf1HLLf.s 			page 13
+
+
+ 525 0160 50E0      		ldi r21,hi8(audiobuffer)
+ 526 0162 0E94 0000 		call mmc_readblock
+ 527 0166 C0E0      		ldi r28,lo8(audiobuffer+1)
+ 528 0168 D0E0      		ldi r29,hi8(audiobuffer+1)
+ 529               	.L15:
+  69:sdaudio.c     **** 		for( bc = 0; bc < 512; bc+=2 ) {
+  70:sdaudio.c     **** 			//printf("%u\r\n", audiobuffer[bc+1] );
+  71:sdaudio.c     **** 			sendDAC( 0x0B, audiobuffer[bc+1] );
+ 530               		.stabn	68,0,71,.LM47-.LFBB2
+ 531               	.LM47:
+ 532 016a 8BE0      		ldi r24,lo8(11)
+ 533 016c 6881      		ld r22,Y
+ 534 016e 0E94 0000 		call sendDAC
+ 535               	.LBB127:
+ 536               	.LBB126:
+ 537               	.LBB125:
+ 538               	.LBB124:
+ 539               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h",132,0,0,.Ltext21
+ 540               	.Ltext21:
+ 541               		.stabn	68,0,83,.LM48-.LFBB2
+ 542               	.LM48:
+ 543 0172 8D2D      		mov r24,r13
+ 544               	/* #APP */
+ 545               	 ;  83 "/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h" 1
+ 546 0174 8A95      		1: dec r24
+ 547 0176 01F4      		brne 1b
+ 548               	 ;  0 "" 2
+ 549               	/* #NOAPP */
+ 550 0178 2296      		adiw r28,2
+ 551               	.LBE124:
+ 552               	.LBE125:
+ 553               	.LBE126:
+ 554               	.LBE127:
+ 555               		.stabs	"sdaudio.c",132,0,0,.Ltext22
+ 556               	.Ltext22:
+ 557               		.stabn	68,0,69,.LM49-.LFBB2
+ 558               	.LM49:
+ 559 017a E0E0      		ldi r30,hi8(audiobuffer+513)
+ 560 017c C030      		cpi r28,lo8(audiobuffer+513)
+ 561 017e DE07      		cpc r29,r30
+ 562 0180 01F4      		brne .L15
+  72:sdaudio.c     **** 			_delay_us(30);
+  73:sdaudio.c     **** 		}
+  74:sdaudio.c     **** 		cntr+=512;
+ 563               		.stabn	68,0,74,.LM50-.LFBB2
+ 564               	.LM50:
+ 565 0182 80E0      		ldi r24,lo8(512)
+ 566 0184 92E0      		ldi r25,hi8(512)
+ 567 0186 A0E0      		ldi r26,hlo8(512)
+ 568 0188 B0E0      		ldi r27,hhi8(512)
+ 569 018a E80E      		add r14,r24
+ 570 018c F91E      		adc r15,r25
+ 571 018e 0A1F      		adc r16,r26
+ 572 0190 1B1F      		adc r17,r27
+ 573 0192 00C0      		rjmp .L16
+ 574               		.size	main, .-main
+ 575               		.stabs	"cntr:r(3,6)",64,0,40,14
+GAS LISTING /tmp/ccf1HLLf.s 			page 14
+
+
+ 576               		.stabn	192,0,0,.LFBB2-.LFBB2
+ 577               		.stabn	224,0,0,.Lscope2-.LFBB2
+ 578               	.Lscope2:
+ 579               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 580               		.stabd	78,0,0
+ 581               	.global	ch
+ 582               	.global	ch
+ 583               		.section .bss
+ 584               		.type	ch, @object
+ 585               		.size	ch, 1
+ 586               	ch:
+ 587 0000 00        		.skip 1,0
+ 588               		.comm waveheader,44,1
+ 589               		.comm audiobuffer,512,1
+ 590               		.stabs	"waveheader:G(0,16)=ar(0,17)=r(0,17);0;0177777;;0;43;(0,11)",32,0,9,0
+ 591               		.stabs	"audiobuffer:G(0,18)=ar(0,17);0;511;(0,11)",32,0,10,0
+ 592               		.stabs	"ch:G(0,2)",32,0,11,0
+ 593               		.text
+ 594               		.stabs	"",100,0,0,.Letext0
+ 595               	.Letext0:
+GAS LISTING /tmp/ccf1HLLf.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 sdaudio.c
+     /tmp/ccf1HLLf.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccf1HLLf.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccf1HLLf.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccf1HLLf.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccf1HLLf.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccf1HLLf.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccf1HLLf.s:84     .text:0000000000000000 sendDAC
+     /tmp/ccf1HLLf.s:328    .text:0000000000000086 main
+                            *COM*:0000000000000200 audiobuffer
+     /tmp/ccf1HLLf.s:586    .bss:0000000000000000 ch
+                            *COM*:000000000000002c waveheader
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+init_stdusart0
+init_spi
+printf
+init_mmc
+mmc_readblock

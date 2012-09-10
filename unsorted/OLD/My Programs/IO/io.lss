@@ -1,0 +1,478 @@
+
+io.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000282  00000000  00000000  00000094  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000282  00000316  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000000c  00800060  00800060  00000316  2**0
+                  ALLOC
+  3 .noinit       00000000  0080006c  0080006c  00000316  2**0
+                  CONTENTS
+  4 .eeprom       00000000  00810000  00810000  00000316  2**0
+                  CONTENTS
+  5 .debug_aranges 00000028  00000000  00000000  00000316  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 000000f4  00000000  00000000  0000033e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   0000033d  00000000  00000000  00000432  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 0000014a  00000000  00000000  0000076f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   000002cf  00000000  00000000  000008b9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000135  00000000  00000000  00000b88  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26
+   2:	2b c0       	rjmp	.+86     	; 0x5a
+   4:	2a c0       	rjmp	.+84     	; 0x5a
+   6:	29 c0       	rjmp	.+82     	; 0x5a
+   8:	28 c0       	rjmp	.+80     	; 0x5a
+   a:	27 c0       	rjmp	.+78     	; 0x5a
+   c:	26 c0       	rjmp	.+76     	; 0x5a
+   e:	25 c0       	rjmp	.+74     	; 0x5a
+  10:	24 c0       	rjmp	.+72     	; 0x5a
+  12:	a4 c0       	rjmp	.+328    	; 0x15c
+  14:	22 c0       	rjmp	.+68     	; 0x5a
+  16:	21 c0       	rjmp	.+66     	; 0x5a
+  18:	20 c0       	rjmp	.+64     	; 0x5a
+  1a:	1f c0       	rjmp	.+62     	; 0x5a
+  1c:	1e c0       	rjmp	.+60     	; 0x5a
+  1e:	1d c0       	rjmp	.+58     	; 0x5a
+  20:	1c c0       	rjmp	.+56     	; 0x5a
+  22:	1b c0       	rjmp	.+54     	; 0x5a
+  24:	1a c0       	rjmp	.+52     	; 0x5a
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 e8       	ldi	r30, 0x82	; 130
+  3a:	f2 e0       	ldi	r31, 0x02	; 2
+  3c:	02 c0       	rjmp	.+4      	; 0x42
+
+0000003e <.do_copy_data_loop>:
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+
+00000042 <.do_copy_data_start>:
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	ac 36       	cpi	r26, 0x6C	; 108
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50
+  58:	2b c0       	rjmp	.+86     	; 0xb0
+
+0000005a <__bad_interrupt>:
+  5a:	d2 cf       	rjmp	.-92     	; 0x0
+
+0000005c <MAIN_PRG>:
+    return 0;
+}
+
+void MAIN_PRG( void )
+{ 
+  5c:	0f 93       	push	r16
+  5e:	1f 93       	push	r17
+  60:	cf 93       	push	r28
+    uint8_t ack;
+	uint8_t count;
+	uint8_t dir;
+	count = 28;
+  62:	cc e1       	ldi	r28, 0x1C	; 28
+	dir = 0;
+  64:	10 e0       	ldi	r17, 0x00	; 0
+	ack = 0;
+  66:	01 2f       	mov	r16, r17
+	for (;;)
+	{
+	  if(count == 28){dir = 1;}
+  68:	cc 31       	cpi	r28, 0x1C	; 28
+  6a:	11 f4       	brne	.+4      	; 0x70
+  6c:	01 e0       	ldi	r16, 0x01	; 1
+  6e:	03 c0       	rjmp	.+6      	; 0x76
+	  if(count == 74){dir = 0;}
+  70:	ca 34       	cpi	r28, 0x4A	; 74
+  72:	09 f4       	brne	.+2      	; 0x76
+  74:	00 e0       	ldi	r16, 0x00	; 0
+      if(((PIND >> PD0) & 0x01) == 1)
+  76:	80 9b       	sbis	0x10, 0	; 16
+  78:	12 c0       	rjmp	.+36     	; 0x9e
+	  { 
+	    if(ack == 0){PORTB = PORTB + (1 << PB2);ack = 1;}
+  7a:	11 23       	and	r17, r17
+  7c:	21 f4       	brne	.+8      	; 0x86
+  7e:	88 b3       	in	r24, 0x18	; 24
+  80:	8c 5f       	subi	r24, 0xFC	; 252
+  82:	88 bb       	out	0x18, r24	; 24
+  84:	11 e0       	ldi	r17, 0x01	; 1
+		if(dir == 1){count++;}
+  86:	01 30       	cpi	r16, 0x01	; 1
+  88:	11 f4       	brne	.+4      	; 0x8e
+  8a:	cf 5f       	subi	r28, 0xFF	; 255
+  8c:	03 c0       	rjmp	.+6      	; 0x94
+		if(dir == 0){count--;}
+  8e:	00 23       	and	r16, r16
+  90:	09 f4       	brne	.+2      	; 0x94
+  92:	c1 50       	subi	r28, 0x01	; 1
+		setservo1(count);
+  94:	8c 2f       	mov	r24, r28
+  96:	99 27       	eor	r25, r25
+  98:	4f d0       	rcall	.+158    	; 0x138
+	    while(((PIND >> PD0) & 0x01) == 1);
+  9a:	80 99       	sbic	0x10, 0	; 16
+  9c:	fe cf       	rjmp	.-4      	; 0x9a
+	  }
+	  if(((PIND >> PD0) & 0x01) == 0)
+  9e:	80 99       	sbic	0x10, 0	; 16
+  a0:	e3 cf       	rjmp	.-58     	; 0x68
+	  {
+	    if(ack == 1){PORTB = PORTB - (1 << PB2);ack = 0;}
+  a2:	11 30       	cpi	r17, 0x01	; 1
+  a4:	09 f7       	brne	.-62     	; 0x68
+  a6:	88 b3       	in	r24, 0x18	; 24
+  a8:	84 50       	subi	r24, 0x04	; 4
+  aa:	88 bb       	out	0x18, r24	; 24
+  ac:	10 e0       	ldi	r17, 0x00	; 0
+  ae:	dc cf       	rjmp	.-72     	; 0x68
+
+000000b0 <main>:
+  b0:	cf e5       	ldi	r28, 0x5F	; 95
+  b2:	d4 e0       	ldi	r29, 0x04	; 4
+  b4:	de bf       	out	0x3e, r29	; 62
+  b6:	cd bf       	out	0x3d, r28	; 61
+  b8:	41 e0       	ldi	r20, 0x01	; 1
+  ba:	60 e0       	ldi	r22, 0x00	; 0
+  bc:	81 e7       	ldi	r24, 0x71	; 113
+  be:	92 e0       	ldi	r25, 0x02	; 2
+  c0:	1a d0       	rcall	.+52     	; 0xf6
+  c2:	11 ba       	out	0x11, r1	; 17
+  c4:	87 b3       	in	r24, 0x17	; 23
+  c6:	8c 5f       	subi	r24, 0xFC	; 252
+  c8:	87 bb       	out	0x17, r24	; 23
+  ca:	c8 df       	rcall	.-112    	; 0x5c
+  cc:	80 e0       	ldi	r24, 0x00	; 0
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+  d0:	d7 c0       	rjmp	.+430    	; 0x280
+
+000000d2 <DELAY_US>:
+	  }
+    }    
+}
+
+void DELAY_US( uint16_t microseconds )
+{
+    register uint16_t loop_count;
+
+#if MCU_FREQ == 8000000UL
+
+    /* 8mhz clock, 4 instructions per loop_count  */
+    loop_count = microseconds * 2;
+  d2:	88 0f       	add	r24, r24
+  d4:	99 1f       	adc	r25, r25
+
+#elif MCU_FREQ == 1000000UL
+
+    /* 1mhz clock, 4 instructions per loop_count */
+    loop_count = microseconds / 4;
+
+#elif MCU_FREQ == 16000000UL
+
+    /* 1mhz clock, 4 instructions per loop_count */
+    loop_count = microseconds / 4;
+
+#else
+#error MCU_FREQ undefined or set to an unknown value!
+    loop_count = 0; /* don't really know what to do */
+#endif
+
+    __asm__ volatile (
+  d6:	01 97       	sbiw	r24, 0x01	; 1
+  d8:	f1 f7       	brne	.-4      	; 0xd6
+  da:	08 95       	ret
+
+000000dc <DELAY_MS>:
+        "1: sbiw %0,1" "\n\t"
+        "brne 1b"
+        : "=w" ( loop_count )
+        : "0"  ( loop_count )
+    );
+}
+
+void DELAY_MS( uint16_t milliseconds )
+{
+  dc:	cf 93       	push	r28
+  de:	df 93       	push	r29
+    uint16_t i;
+
+    for ( i = 0; i < milliseconds; ++i )
+  e0:	00 97       	sbiw	r24, 0x00	; 0
+  e2:	31 f0       	breq	.+12     	; 0xf0
+  e4:	ec 01       	movw	r28, r24
+    {
+        DELAY_US( 1000 );
+  e6:	88 ee       	ldi	r24, 0xE8	; 232
+  e8:	93 e0       	ldi	r25, 0x03	; 3
+  ea:	f3 df       	rcall	.-26     	; 0xd2
+  ec:	21 97       	sbiw	r28, 0x01	; 1
+  ee:	d9 f7       	brne	.-10     	; 0xe6
+  f0:	df 91       	pop	r29
+  f2:	cf 91       	pop	r28
+  f4:	08 95       	ret
+
+000000f6 <initservos>:
+#include "servo.h"
+
+void initservos( uint16_t reloadtime, uint8_t servo1en, uint8_t servo2en )
+{
+  reload = reloadtime;
+  f6:	90 93 65 00 	sts	0x0065, r25
+  fa:	80 93 64 00 	sts	0x0064, r24
+  if(servo1en == ON){DDRB = DDRB + 2;plsref[0] = ON;}
+  fe:	66 23       	and	r22, r22
+ 100:	31 f4       	brne	.+12     	; 0x10e
+ 102:	87 b3       	in	r24, 0x17	; 23
+ 104:	8e 5f       	subi	r24, 0xFE	; 254
+ 106:	87 bb       	out	0x17, r24	; 23
+ 108:	60 93 6a 00 	sts	0x006A, r22
+ 10c:	03 c0       	rjmp	.+6      	; 0x114
+  else{plsref[0] = NULL;}
+ 10e:	82 e0       	ldi	r24, 0x02	; 2
+ 110:	80 93 6a 00 	sts	0x006A, r24
+  if(servo2en == ON){DDRD = DDRD + 32;plsref[1] = ON;}
+ 114:	44 23       	and	r20, r20
+ 116:	31 f4       	brne	.+12     	; 0x124
+ 118:	81 b3       	in	r24, 0x11	; 17
+ 11a:	80 5e       	subi	r24, 0xE0	; 224
+ 11c:	81 bb       	out	0x11, r24	; 17
+ 11e:	40 93 6b 00 	sts	0x006B, r20
+ 122:	03 c0       	rjmp	.+6      	; 0x12a
+  else{plsref[1] = NULL;}
+ 124:	82 e0       	ldi	r24, 0x02	; 2
+ 126:	80 93 6b 00 	sts	0x006B, r24
+  TCCR0 = 1;
+ 12a:	81 e0       	ldi	r24, 0x01	; 1
+ 12c:	83 bf       	out	0x33, r24	; 51
+  TIMSK = TIMSK + 1;
+ 12e:	89 b7       	in	r24, 0x39	; 57
+ 130:	8f 5f       	subi	r24, 0xFF	; 255
+ 132:	89 bf       	out	0x39, r24	; 57
+  sei();
+ 134:	78 94       	sei
+ 136:	08 95       	ret
+
+00000138 <setservo1>:
+}
+
+void setservo1( uint16_t cycles1 )
+{
+  counttopulse[0] = cycles1;
+ 138:	90 93 61 00 	sts	0x0061, r25
+ 13c:	80 93 60 00 	sts	0x0060, r24
+  counter[0] = 0;
+ 140:	10 92 67 00 	sts	0x0067, r1
+ 144:	10 92 66 00 	sts	0x0066, r1
+ 148:	08 95       	ret
+
+0000014a <setservo2>:
+}
+
+void setservo2( uint16_t cycles2 )
+{
+  counttopulse[1] = cycles2;
+ 14a:	90 93 63 00 	sts	0x0063, r25
+ 14e:	80 93 62 00 	sts	0x0062, r24
+  counter[1] = 0;
+ 152:	10 92 69 00 	sts	0x0069, r1
+ 156:	10 92 68 00 	sts	0x0068, r1
+ 15a:	08 95       	ret
+
+0000015c <__vector_9>:
+}
+
+SIGNAL (SIG_OVERFLOW0)
+{
+ 15c:	1f 92       	push	r1
+ 15e:	0f 92       	push	r0
+ 160:	0f b6       	in	r0, 0x3f	; 63
+ 162:	0f 92       	push	r0
+ 164:	11 24       	eor	r1, r1
+ 166:	2f 93       	push	r18
+ 168:	3f 93       	push	r19
+ 16a:	4f 93       	push	r20
+ 16c:	5f 93       	push	r21
+ 16e:	8f 93       	push	r24
+ 170:	9f 93       	push	r25
+  switch (plsref[0])
+ 172:	80 91 6a 00 	lds	r24, 0x006A
+ 176:	48 2f       	mov	r20, r24
+ 178:	55 27       	eor	r21, r21
+ 17a:	41 15       	cp	r20, r1
+ 17c:	51 05       	cpc	r21, r1
+ 17e:	21 f0       	breq	.+8      	; 0x188
+ 180:	41 30       	cpi	r20, 0x01	; 1
+ 182:	51 05       	cpc	r21, r1
+ 184:	b9 f0       	breq	.+46     	; 0x1b4
+ 186:	2a c0       	rjmp	.+84     	; 0x1dc
+  {
+    case ON:
+	  if(counter[0] == reload)
+ 188:	20 91 66 00 	lds	r18, 0x0066
+ 18c:	30 91 67 00 	lds	r19, 0x0067
+ 190:	80 91 64 00 	lds	r24, 0x0064
+ 194:	90 91 65 00 	lds	r25, 0x0065
+ 198:	28 17       	cp	r18, r24
+ 19a:	39 07       	cpc	r19, r25
+ 19c:	f9 f4       	brne	.+62     	; 0x1dc
+	  {
+	    plsref[0] = OFF;
+ 19e:	81 e0       	ldi	r24, 0x01	; 1
+ 1a0:	80 93 6a 00 	sts	0x006A, r24
+		PORTB = PORTB + 2;
+ 1a4:	88 b3       	in	r24, 0x18	; 24
+ 1a6:	8e 5f       	subi	r24, 0xFE	; 254
+ 1a8:	88 bb       	out	0x18, r24	; 24
+		counter[0] = 0;
+ 1aa:	50 93 67 00 	sts	0x0067, r21
+ 1ae:	40 93 66 00 	sts	0x0066, r20
+	  }
+	  break;
+ 1b2:	14 c0       	rjmp	.+40     	; 0x1dc
+	
+	case OFF:
+	  if(counter[0] == counttopulse[0])
+ 1b4:	20 91 66 00 	lds	r18, 0x0066
+ 1b8:	30 91 67 00 	lds	r19, 0x0067
+ 1bc:	80 91 60 00 	lds	r24, 0x0060
+ 1c0:	90 91 61 00 	lds	r25, 0x0061
+ 1c4:	28 17       	cp	r18, r24
+ 1c6:	39 07       	cpc	r19, r25
+ 1c8:	49 f4       	brne	.+18     	; 0x1dc
+	  {
+	    plsref[0] = ON;
+ 1ca:	10 92 6a 00 	sts	0x006A, r1
+		PORTB = PORTB - 2;
+ 1ce:	88 b3       	in	r24, 0x18	; 24
+ 1d0:	82 50       	subi	r24, 0x02	; 2
+ 1d2:	88 bb       	out	0x18, r24	; 24
+		counter[0] = 0;
+ 1d4:	10 92 67 00 	sts	0x0067, r1
+ 1d8:	10 92 66 00 	sts	0x0066, r1
+	  }
+	  break;
+	  
+	case NULL:
+	  break;
+  }
+  switch (plsref[1])
+ 1dc:	80 91 6b 00 	lds	r24, 0x006B
+ 1e0:	48 2f       	mov	r20, r24
+ 1e2:	55 27       	eor	r21, r21
+ 1e4:	41 15       	cp	r20, r1
+ 1e6:	51 05       	cpc	r21, r1
+ 1e8:	21 f0       	breq	.+8      	; 0x1f2
+ 1ea:	41 30       	cpi	r20, 0x01	; 1
+ 1ec:	51 05       	cpc	r21, r1
+ 1ee:	b9 f0       	breq	.+46     	; 0x21e
+ 1f0:	2a c0       	rjmp	.+84     	; 0x246
+  {
+    case ON:
+	  if(counter[1] == reload)
+ 1f2:	20 91 68 00 	lds	r18, 0x0068
+ 1f6:	30 91 69 00 	lds	r19, 0x0069
+ 1fa:	80 91 64 00 	lds	r24, 0x0064
+ 1fe:	90 91 65 00 	lds	r25, 0x0065
+ 202:	28 17       	cp	r18, r24
+ 204:	39 07       	cpc	r19, r25
+ 206:	f9 f4       	brne	.+62     	; 0x246
+	  {
+	    plsref[1] = OFF;
+ 208:	81 e0       	ldi	r24, 0x01	; 1
+ 20a:	80 93 6b 00 	sts	0x006B, r24
+		PORTD = PORTD + 32;
+ 20e:	82 b3       	in	r24, 0x12	; 18
+ 210:	80 5e       	subi	r24, 0xE0	; 224
+ 212:	82 bb       	out	0x12, r24	; 18
+		counter[1] = 0;
+ 214:	50 93 69 00 	sts	0x0069, r21
+ 218:	40 93 68 00 	sts	0x0068, r20
+	  }
+	  break;
+ 21c:	14 c0       	rjmp	.+40     	; 0x246
+	
+	case OFF:
+	  if(counter[1] == counttopulse[1])
+ 21e:	20 91 68 00 	lds	r18, 0x0068
+ 222:	30 91 69 00 	lds	r19, 0x0069
+ 226:	80 91 62 00 	lds	r24, 0x0062
+ 22a:	90 91 63 00 	lds	r25, 0x0063
+ 22e:	28 17       	cp	r18, r24
+ 230:	39 07       	cpc	r19, r25
+ 232:	49 f4       	brne	.+18     	; 0x246
+	  {
+	    plsref[1] = ON;
+ 234:	10 92 6b 00 	sts	0x006B, r1
+		PORTD = PORTD - 32;
+ 238:	82 b3       	in	r24, 0x12	; 18
+ 23a:	80 52       	subi	r24, 0x20	; 32
+ 23c:	82 bb       	out	0x12, r24	; 18
+		counter[1] = 0;
+ 23e:	10 92 69 00 	sts	0x0069, r1
+ 242:	10 92 68 00 	sts	0x0068, r1
+	  }
+	  break;
+	  
+	case NULL:
+	  break;
+  }
+  counter[0]++;
+ 246:	80 91 66 00 	lds	r24, 0x0066
+ 24a:	90 91 67 00 	lds	r25, 0x0067
+ 24e:	01 96       	adiw	r24, 0x01	; 1
+ 250:	90 93 67 00 	sts	0x0067, r25
+ 254:	80 93 66 00 	sts	0x0066, r24
+  counter[1]++;
+ 258:	80 91 68 00 	lds	r24, 0x0068
+ 25c:	90 91 69 00 	lds	r25, 0x0069
+ 260:	01 96       	adiw	r24, 0x01	; 1
+ 262:	90 93 69 00 	sts	0x0069, r25
+ 266:	80 93 68 00 	sts	0x0068, r24
+ 26a:	9f 91       	pop	r25
+ 26c:	8f 91       	pop	r24
+ 26e:	5f 91       	pop	r21
+ 270:	4f 91       	pop	r20
+ 272:	3f 91       	pop	r19
+ 274:	2f 91       	pop	r18
+ 276:	0f 90       	pop	r0
+ 278:	0f be       	out	0x3f, r0	; 63
+ 27a:	0f 90       	pop	r0
+ 27c:	1f 90       	pop	r1
+ 27e:	18 95       	reti
+
+00000280 <_exit>:
+ 280:	ff cf       	rjmp	.-2      	; 0x280

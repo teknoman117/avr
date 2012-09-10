@@ -1,0 +1,90 @@
+   1               		.file	"Main.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB6:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24 0000 C0E0      		ldi r28,lo8(__stack - 0)
+  25 0002 D0E0      		ldi r29,hi8(__stack - 0)
+  26 0004 DEBF      		out __SP_H__,r29
+  27 0006 CDBF      		out __SP_L__,r28
+  28               	/* prologue end (size=4) */
+  29               	.LM2:
+  30 0008 8FEF      		ldi r24,lo8(-1)
+  31 000a 84BB      		out 52-0x20,r24
+  32 000c 51E0      		ldi r21,lo8(1)
+  33 000e 42E0      		ldi r20,lo8(2)
+  34               	.L2:
+  35               	.LM3:
+  36 0010 55BB      		out 53-0x20,r21
+  37 0012 27EC      		ldi r18,lo8(199)
+  38 0014 30E0      		ldi r19,hi8(199)
+  39               	.L8:
+  40               	.LBB2:
+  41               	.LM4:
+  42 0016 80E3      		ldi r24,lo8(30000)
+  43 0018 95E7      		ldi r25,hi8(30000)
+  44               	.LBB3:
+  45               	.LM5:
+  46               	/* #APP */
+  47 001a 0197      		1: sbiw r24,1
+  48 001c F1F7      		brne 1b
+  49               	/* #NOAPP */
+  50               	.LBE3:
+  51               	.LBE2:
+  52               	.LM6:
+  53 001e 2150      		subi r18,lo8(-(-1))
+  54 0020 3040      		sbci r19,hi8(-(-1))
+  55 0022 37FF      		sbrs r19,7
+  56 0024 F8CF      		rjmp .L8
+  57               	.LM7:
+  58 0026 45BB      		out 53-0x20,r20
+  59 0028 27EC      		ldi r18,lo8(199)
+  60 002a 30E0      		ldi r19,hi8(199)
+  61               	.L13:
+  62               	.LBB4:
+  63               	.LM8:
+  64 002c 80E3      		ldi r24,lo8(30000)
+  65 002e 95E7      		ldi r25,hi8(30000)
+  66               	.LBB5:
+  67               	.LM9:
+  68               	/* #APP */
+  69 0030 0197      		1: sbiw r24,1
+  70 0032 F1F7      		brne 1b
+  71               	/* #NOAPP */
+  72               	.LBE5:
+  73               	.LBE4:
+  74               	.LM10:
+  75 0034 2150      		subi r18,lo8(-(-1))
+  76 0036 3040      		sbci r19,hi8(-(-1))
+  77 0038 37FF      		sbrs r19,7
+  78 003a F8CF      		rjmp .L13
+  79 003c E9CF      		rjmp .L2
+  80               	/* epilogue: frame size=0 */
+  81               	/* epilogue: noreturn */
+  82               	/* epilogue end (size=0) */
+  83               	/* function main size 35 (31) */
+  84               	.LFE6:
+  86               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 Main.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccE7aaaa.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack

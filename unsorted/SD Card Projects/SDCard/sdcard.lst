@@ -1,0 +1,427 @@
+GAS LISTING /tmp/ccxqF4HS.s 			page 1
+
+
+   1               		.file	"sdcard.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Projects/AVR_Projects/SDCard/",100,0,2,.Ltext0
+  11               		.stabs	"sdcard.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  34               		.stabs	"int8_t:t(4,1)=(0,10)",128,0,121,0
+  35               		.stabs	"uint8_t:t(4,2)=(0,11)",128,0,122,0
+  36               		.stabs	"int16_t:t(4,3)=(0,1)",128,0,123,0
+  37               		.stabs	"uint16_t:t(4,4)=(0,4)",128,0,124,0
+  38               		.stabs	"int32_t:t(4,5)=(0,3)",128,0,125,0
+  39               		.stabs	"uint32_t:t(4,6)=(0,5)",128,0,126,0
+  40               		.stabs	"int64_t:t(4,7)=(0,6)",128,0,128,0
+  41               		.stabs	"uint64_t:t(4,8)=(0,7)",128,0,129,0
+  42               		.stabs	"intptr_t:t(4,9)=(4,3)",128,0,142,0
+  43               		.stabs	"uintptr_t:t(4,10)=(4,4)",128,0,147,0
+  44               		.stabs	"int_least8_t:t(4,11)=(4,1)",128,0,159,0
+  45               		.stabs	"uint_least8_t:t(4,12)=(4,2)",128,0,164,0
+  46               		.stabs	"int_least16_t:t(4,13)=(4,3)",128,0,169,0
+  47               		.stabs	"uint_least16_t:t(4,14)=(4,4)",128,0,174,0
+  48               		.stabs	"int_least32_t:t(4,15)=(4,5)",128,0,179,0
+  49               		.stabs	"uint_least32_t:t(4,16)=(4,6)",128,0,184,0
+  50               		.stabs	"int_least64_t:t(4,17)=(4,7)",128,0,192,0
+  51               		.stabs	"uint_least64_t:t(4,18)=(4,8)",128,0,199,0
+  52               		.stabs	"int_fast8_t:t(4,19)=(4,1)",128,0,213,0
+  53               		.stabs	"uint_fast8_t:t(4,20)=(4,2)",128,0,218,0
+  54               		.stabs	"int_fast16_t:t(4,21)=(4,3)",128,0,223,0
+  55               		.stabs	"uint_fast16_t:t(4,22)=(4,4)",128,0,228,0
+  56               		.stabs	"int_fast32_t:t(4,23)=(4,5)",128,0,233,0
+  57               		.stabs	"uint_fast32_t:t(4,24)=(4,6)",128,0,238,0
+GAS LISTING /tmp/ccxqF4HS.s 			page 2
+
+
+  58               		.stabs	"int_fast64_t:t(4,25)=(4,7)",128,0,246,0
+  59               		.stabs	"uint_fast64_t:t(4,26)=(4,8)",128,0,253,0
+  60               		.stabs	"intmax_t:t(4,27)=(4,7)",128,0,273,0
+  61               		.stabs	"uintmax_t:t(4,28)=(4,8)",128,0,278,0
+  62               		.stabn	162,0,0,0
+  63               		.stabs	"int_farptr_t:t(3,1)=(4,5)",128,0,77,0
+  64               		.stabs	"uint_farptr_t:t(3,2)=(4,6)",128,0,81,0
+  65               		.stabn	162,0,0,0
+  66               		.stabn	162,0,0,0
+  67               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  68               		.stabs	"__fuse_t:t(5,1)=(5,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219,0
+  69               		.stabn	162,0,0,0
+  70               		.stabn	162,0,0,0
+  71               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdio.h",130,0,0,0
+  72               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stdarg.h",130,0,0,0
+  73               		.stabs	"__gnuc_va_list:t(7,1)=(7,2)=*(0,15)",128,0,43,0
+  74               		.stabs	"va_list:t(7,3)=(7,1)",128,0,105,0
+  75               		.stabn	162,0,0,0
+  76               		.stabs	"/usr/lib/gcc/avr/4.3.3/include/stddef.h",130,0,0,0
+  77               		.stabs	"size_t:t(8,1)=(0,4)",128,0,214,0
+  78               		.stabn	162,0,0,0
+  79               		.stabs	"__file:T(6,1)=s14buf:(6,2)=*(0,2),0,16;unget:(0,11),16,8;flags:(4,2),24,8;size:(0,1),32,16
+  80               		.stabn	162,0,0,0
+  81               		.data
+  82               	.LC0:
+  83 0000 4154 6D65 		.string	"ATmega644 CPU Initalized\r"
+  83      6761 3634 
+  83      3420 4350 
+  83      5520 496E 
+  83      6974 616C 
+  84               	.LC1:
+  85 001a 5344 2043 		.string	"SD Card Error!\r"
+  85      6172 6420 
+  85      4572 726F 
+  85      7221 0D00 
+  86               	.LC2:
+  87 002a 5344 2043 		.string	"SD Card Initalized\r"
+  87      6172 6420 
+  87      496E 6974 
+  87      616C 697A 
+  87      6564 0D00 
+  88               	.LC3:
+  89 003e 4669 6C6C 		.string	"Filling Ram...\r"
+  89      696E 6720 
+  89      5261 6D2E 
+  89      2E2E 0D00 
+  90               	.LC4:
+  91 004e 5772 6974 		.string	"Writing to SD Card...\r"
+  91      696E 6720 
+  91      746F 2053 
+  91      4420 4361 
+  91      7264 2E2E 
+  92               	.LC5:
+  93 0065 5265 6164 		.string	"Reading from SD Card...\r"
+  93      696E 6720 
+  93      6672 6F6D 
+  93      2053 4420 
+GAS LISTING /tmp/ccxqF4HS.s 			page 3
+
+
+  93      4361 7264 
+  94               	.LC6:
+  95 007e 2564 0D00 		.string	"%d\r"
+  96               	.LC7:
+  97 0082 0D53 7563 		.string	"\rSuccess at last!!!!\r"
+  97      6365 7373 
+  97      2061 7420 
+  97      6C61 7374 
+  97      2121 2121 
+  98               		.text
+  99               		.stabs	"main:F(0,1)",36,0,15,main
+ 100               	.global	main
+ 101               		.type	main, @function
+ 102               	main:
+ 103               		.stabd	46,0,0
+   1:sdcard.c      **** #include <avr/io.h>
+   2:sdcard.c      **** #include <util/delay.h>
+   3:sdcard.c      **** 
+   4:sdcard.c      **** #include <stdio.h>
+   5:sdcard.c      **** 
+   6:sdcard.c      **** #include "spi.h"
+   7:sdcard.c      **** #include "mmc.h"
+   8:sdcard.c      **** #include "stdusart0.h"
+   9:sdcard.c      **** 
+  10:sdcard.c      **** #define BAUD 5     //9600 Baud
+  11:sdcard.c      **** 
+  12:sdcard.c      **** uint8_t sector[512];
+  13:sdcard.c      **** uint8_t *sect = (uint8_t*) sector;
+  14:sdcard.c      **** 
+  15:sdcard.c      **** int main ( void ) {
+ 104               		.stabn	68,0,15,.LM0-.LFBB1
+ 105               	.LM0:
+ 106               	.LFBB1:
+ 107 0000 0F93      		push r16
+ 108 0002 1F93      		push r17
+ 109 0004 CF93      		push r28
+ 110 0006 DF93      		push r29
+ 111               	/* prologue: function */
+ 112               	/* frame size = 0 */
+  16:sdcard.c      **** 	DDRB |= (1 << PORTB4);	    // set port B SPI chip select to output
+ 113               		.stabn	68,0,16,.LM1-.LFBB1
+ 114               	.LM1:
+ 115 0008 249A      		sbi 36-32,4
+  17:sdcard.c      **** 	PORTB &= ~(1 << PORTB4);	// set chip select to low (MMC is selected)
+ 116               		.stabn	68,0,17,.LM2-.LFBB1
+ 117               	.LM2:
+ 118 000a 2C98      		cbi 37-32,4
+  18:sdcard.c      **** 	uint16_t i;
+  19:sdcard.c      **** 	uint8_t v = 0;
+  20:sdcard.c      **** 	init_stdusart0( BAUD, DB8 | P_N | SB1 );
+ 119               		.stabn	68,0,20,.LM3-.LFBB1
+ 120               	.LM3:
+ 121 000c 85E0      		ldi r24,lo8(5)
+ 122 000e 90E0      		ldi r25,hi8(5)
+ 123 0010 66E0      		ldi r22,lo8(6)
+ 124 0012 0E94 0000 		call init_stdusart0
+  21:sdcard.c      **** 	init_spi( FOSC_64, MODE0, MSBFIRST );
+GAS LISTING /tmp/ccxqF4HS.s 			page 4
+
+
+ 125               		.stabn	68,0,21,.LM4-.LFBB1
+ 126               	.LM4:
+ 127 0016 82E0      		ldi r24,lo8(2)
+ 128 0018 60E0      		ldi r22,lo8(0)
+ 129 001a 40E0      		ldi r20,lo8(0)
+ 130 001c 0E94 0000 		call init_spi
+  22:sdcard.c      **** 	printf("ATmega644 CPU Initalized\r");
+ 131               		.stabn	68,0,22,.LM5-.LFBB1
+ 132               	.LM5:
+ 133 0020 00D0      		rcall .
+ 134 0022 80E0      		ldi r24,lo8(.LC0)
+ 135 0024 90E0      		ldi r25,hi8(.LC0)
+ 136 0026 ADB7      		in r26,__SP_L__
+ 137 0028 BEB7      		in r27,__SP_H__
+ 138 002a 1296      		adiw r26,1+1
+ 139 002c 9C93      		st X,r25
+ 140 002e 8E93      		st -X,r24
+ 141 0030 1197      		sbiw r26,1
+ 142 0032 0E94 0000 		call printf
+  23:sdcard.c      **** 	if( !init_mmc() ) {
+ 143               		.stabn	68,0,23,.LM6-.LFBB1
+ 144               	.LM6:
+ 145 0036 0F90      		pop __tmp_reg__
+ 146 0038 0F90      		pop __tmp_reg__
+ 147 003a 0E94 0000 		call init_mmc
+ 148 003e 8823      		tst r24
+ 149 0040 01F4      		brne .L2
+  24:sdcard.c      **** 		printf("SD Card Error!\r");
+ 150               		.stabn	68,0,24,.LM7-.LFBB1
+ 151               	.LM7:
+ 152 0042 00D0      		rcall .
+ 153 0044 80E0      		ldi r24,lo8(.LC1)
+ 154 0046 90E0      		ldi r25,hi8(.LC1)
+ 155 0048 EDB7      		in r30,__SP_L__
+ 156 004a FEB7      		in r31,__SP_H__
+ 157 004c 9283      		std Z+2,r25
+ 158 004e 8183      		std Z+1,r24
+ 159 0050 0E94 0000 		call printf
+ 160 0054 0F90      		pop __tmp_reg__
+ 161 0056 0F90      		pop __tmp_reg__
+ 162               	.L3:
+ 163 0058 00C0      		rjmp .L3
+ 164               	.L2:
+  25:sdcard.c      **** 		while(1);
+  26:sdcard.c      **** 	}
+  27:sdcard.c      **** 	printf("SD Card Initalized\r");
+ 165               		.stabn	68,0,27,.LM8-.LFBB1
+ 166               	.LM8:
+ 167 005a 00D0      		rcall .
+ 168 005c 80E0      		ldi r24,lo8(.LC2)
+ 169 005e 90E0      		ldi r25,hi8(.LC2)
+ 170 0060 ADB7      		in r26,__SP_L__
+ 171 0062 BEB7      		in r27,__SP_H__
+ 172 0064 1296      		adiw r26,1+1
+ 173 0066 9C93      		st X,r25
+ 174 0068 8E93      		st -X,r24
+ 175 006a 1197      		sbiw r26,1
+GAS LISTING /tmp/ccxqF4HS.s 			page 5
+
+
+ 176 006c 0E94 0000 		call printf
+  28:sdcard.c      **** 	printf("Filling Ram...\r");
+ 177               		.stabn	68,0,28,.LM9-.LFBB1
+ 178               	.LM9:
+ 179 0070 80E0      		ldi r24,lo8(.LC3)
+ 180 0072 90E0      		ldi r25,hi8(.LC3)
+ 181 0074 EDB7      		in r30,__SP_L__
+ 182 0076 FEB7      		in r31,__SP_H__
+ 183 0078 9283      		std Z+2,r25
+ 184 007a 8183      		std Z+1,r24
+ 185 007c 0E94 0000 		call printf
+ 186 0080 C0E0      		ldi r28,lo8(sector)
+ 187 0082 D0E0      		ldi r29,hi8(sector)
+ 188 0084 FE01      		movw r30,r28
+ 189 0086 80E0      		ldi r24,lo8(0)
+ 190 0088 0F90      		pop __tmp_reg__
+ 191 008a 0F90      		pop __tmp_reg__
+ 192               	.L5:
+  29:sdcard.c      **** 	for (i=0;i<512;i++) {
+  30:sdcard.c      **** 		sector[i] = v++;
+ 193               		.stabn	68,0,30,.LM10-.LFBB1
+ 194               	.LM10:
+ 195 008c 8083      		st Z,r24
+ 196 008e 8F5F      		subi r24,lo8(-(1))
+  31:sdcard.c      **** 		if (v == 255) v = 0;
+ 197               		.stabn	68,0,31,.LM11-.LFBB1
+ 198               	.LM11:
+ 199 0090 8F3F      		cpi r24,lo8(-1)
+ 200 0092 01F4      		brne .L4
+ 201 0094 80E0      		ldi r24,lo8(0)
+ 202               	.L4:
+ 203 0096 3196      		adiw r30,1
+ 204               		.stabn	68,0,29,.LM12-.LFBB1
+ 205               	.LM12:
+ 206 0098 90E0      		ldi r25,hi8(sector+512)
+ 207 009a E030      		cpi r30,lo8(sector+512)
+ 208 009c F907      		cpc r31,r25
+ 209 009e 01F4      		brne .L5
+  32:sdcard.c      **** 	}
+  33:sdcard.c      **** 	printf("Writing to SD Card...\r");
+ 210               		.stabn	68,0,33,.LM13-.LFBB1
+ 211               	.LM13:
+ 212 00a0 00D0      		rcall .
+ 213 00a2 80E0      		ldi r24,lo8(.LC4)
+ 214 00a4 90E0      		ldi r25,hi8(.LC4)
+ 215 00a6 ADB7      		in r26,__SP_L__
+ 216 00a8 BEB7      		in r27,__SP_H__
+ 217 00aa 1296      		adiw r26,1+1
+ 218 00ac 9C93      		st X,r25
+ 219 00ae 8E93      		st -X,r24
+ 220 00b0 1197      		sbiw r26,1
+ 221 00b2 0E94 0000 		call printf
+  34:sdcard.c      **** 	if( mmc_writeblock( 512, sect ) ) while(1);;
+ 222               		.stabn	68,0,34,.LM14-.LFBB1
+ 223               	.LM14:
+ 224 00b6 0F90      		pop __tmp_reg__
+ 225 00b8 0F90      		pop __tmp_reg__
+GAS LISTING /tmp/ccxqF4HS.s 			page 6
+
+
+ 226 00ba 4091 0000 		lds r20,sect
+ 227 00be 5091 0000 		lds r21,(sect)+1
+ 228 00c2 60E0      		ldi r22,lo8(512)
+ 229 00c4 72E0      		ldi r23,hi8(512)
+ 230 00c6 80E0      		ldi r24,hlo8(512)
+ 231 00c8 90E0      		ldi r25,hhi8(512)
+ 232 00ca 0E94 0000 		call mmc_writeblock
+ 233 00ce 8111      		cpse r24,__zero_reg__
+ 234               	.L13:
+ 235 00d0 00C0      		rjmp .L13
+ 236               	.L6:
+  35:sdcard.c      **** 	printf("Reading from SD Card...\r");
+ 237               		.stabn	68,0,35,.LM15-.LFBB1
+ 238               	.LM15:
+ 239 00d2 00D0      		rcall .
+ 240 00d4 80E0      		ldi r24,lo8(.LC5)
+ 241 00d6 90E0      		ldi r25,hi8(.LC5)
+ 242 00d8 EDB7      		in r30,__SP_L__
+ 243 00da FEB7      		in r31,__SP_H__
+ 244 00dc 9283      		std Z+2,r25
+ 245 00de 8183      		std Z+1,r24
+ 246 00e0 0E94 0000 		call printf
+  36:sdcard.c      **** 	mmc_readblock( 512, sect );
+ 247               		.stabn	68,0,36,.LM16-.LFBB1
+ 248               	.LM16:
+ 249 00e4 0F90      		pop __tmp_reg__
+ 250 00e6 0F90      		pop __tmp_reg__
+ 251 00e8 4091 0000 		lds r20,sect
+ 252 00ec 5091 0000 		lds r21,(sect)+1
+ 253 00f0 60E0      		ldi r22,lo8(512)
+ 254 00f2 72E0      		ldi r23,hi8(512)
+ 255 00f4 80E0      		ldi r24,hlo8(512)
+ 256 00f6 90E0      		ldi r25,hhi8(512)
+ 257 00f8 0E94 0000 		call mmc_readblock
+  37:sdcard.c      **** 	for( i = 0; i < 512; i++ ) printf( "%d\r", sector[i]);
+ 258               		.stabn	68,0,37,.LM17-.LFBB1
+ 259               	.LM17:
+ 260 00fc 00E0      		ldi r16,lo8(.LC6)
+ 261 00fe 10E0      		ldi r17,hi8(.LC6)
+ 262               	.L8:
+ 263 0100 00D0      		rcall .
+ 264 0102 00D0      		rcall .
+ 265 0104 EDB7      		in r30,__SP_L__
+ 266 0106 FEB7      		in r31,__SP_H__
+ 267 0108 3196      		adiw r30,1
+ 268 010a ADB7      		in r26,__SP_L__
+ 269 010c BEB7      		in r27,__SP_H__
+ 270 010e 1296      		adiw r26,1+1
+ 271 0110 1C93      		st X,r17
+ 272 0112 0E93      		st -X,r16
+ 273 0114 1197      		sbiw r26,1
+ 274 0116 8991      		ld r24,Y+
+ 275 0118 8283      		std Z+2,r24
+ 276 011a 1382      		std Z+3,__zero_reg__
+ 277 011c 0E94 0000 		call printf
+ 278 0120 0F90      		pop __tmp_reg__
+ 279 0122 0F90      		pop __tmp_reg__
+GAS LISTING /tmp/ccxqF4HS.s 			page 7
+
+
+ 280 0124 0F90      		pop __tmp_reg__
+ 281 0126 0F90      		pop __tmp_reg__
+ 282 0128 B0E0      		ldi r27,hi8(sector+512)
+ 283 012a C030      		cpi r28,lo8(sector+512)
+ 284 012c DB07      		cpc r29,r27
+ 285 012e 01F4      		brne .L8
+  38:sdcard.c      **** 	printf("\rSuccess at last!!!!\r");
+ 286               		.stabn	68,0,38,.LM18-.LFBB1
+ 287               	.LM18:
+ 288 0130 00D0      		rcall .
+ 289 0132 80E0      		ldi r24,lo8(.LC7)
+ 290 0134 90E0      		ldi r25,hi8(.LC7)
+ 291 0136 EDB7      		in r30,__SP_L__
+ 292 0138 FEB7      		in r31,__SP_H__
+ 293 013a 9283      		std Z+2,r25
+ 294 013c 8183      		std Z+1,r24
+ 295 013e 0E94 0000 		call printf
+ 296 0142 0F90      		pop __tmp_reg__
+ 297 0144 0F90      		pop __tmp_reg__
+ 298               	.L9:
+ 299 0146 00C0      		rjmp .L9
+ 300               		.size	main, .-main
+ 301               		.stabs	"v:r(4,2)",64,0,19,24
+ 302               		.stabn	192,0,0,.LFBB1-.LFBB1
+ 303               		.stabn	224,0,0,.Lscope1-.LFBB1
+ 304               	.Lscope1:
+ 305               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 306               		.stabd	78,0,0
+ 307               	.global	sect
+ 308               		.data
+ 309               		.type	sect, @object
+ 310               		.size	sect, 2
+ 311               	sect:
+ 312 0098 0000      		.word	sector
+ 313               		.comm sector,512,1
+ 314               		.stabs	"sector:G(0,16)=ar(0,17)=r(0,17);0;0177777;;0;511;(4,2)",32,0,12,0
+ 315               		.stabs	"sect:G(0,18)=*(4,2)",32,0,13,0
+ 316               		.text
+ 317               		.stabs	"",100,0,0,.Letext0
+ 318               	.Letext0:
+GAS LISTING /tmp/ccxqF4HS.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 sdcard.c
+     /tmp/ccxqF4HS.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/ccxqF4HS.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/ccxqF4HS.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/ccxqF4HS.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/ccxqF4HS.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccxqF4HS.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccxqF4HS.s:102    .text:0000000000000000 main
+                            *COM*:0000000000000200 sector
+     /tmp/ccxqF4HS.s:311    .data:0000000000000098 sect
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+init_stdusart0
+init_spi
+printf
+init_mmc
+mmc_writeblock
+mmc_readblock

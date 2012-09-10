@@ -1,0 +1,282 @@
+
+bitbang.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000168  00000000  00000000  00000094  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000010  00800060  00000168  000001fc  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000003  00800070  00800070  0000020c  2**0
+                  ALLOC
+  3 .noinit       00000000  00800073  00800073  0000020c  2**0
+                  CONTENTS
+  4 .eeprom       00000000  00810000  00810000  0000020c  2**0
+                  CONTENTS
+  5 .debug_aranges 00000014  00000000  00000000  0000020c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 00000064  00000000  00000000  00000220  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00000172  00000000  00000000  00000284  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000000db  00000000  00000000  000003f6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00000132  00000000  00000000  000004d1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000000c8  00000000  00000000  00000603  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26
+   2:	2b c0       	rjmp	.+86     	; 0x5a
+   4:	2a c0       	rjmp	.+84     	; 0x5a
+   6:	29 c0       	rjmp	.+82     	; 0x5a
+   8:	28 c0       	rjmp	.+80     	; 0x5a
+   a:	27 c0       	rjmp	.+78     	; 0x5a
+   c:	26 c0       	rjmp	.+76     	; 0x5a
+   e:	25 c0       	rjmp	.+74     	; 0x5a
+  10:	24 c0       	rjmp	.+72     	; 0x5a
+  12:	24 c0       	rjmp	.+72     	; 0x5c
+  14:	22 c0       	rjmp	.+68     	; 0x5a
+  16:	21 c0       	rjmp	.+66     	; 0x5a
+  18:	20 c0       	rjmp	.+64     	; 0x5a
+  1a:	1f c0       	rjmp	.+62     	; 0x5a
+  1c:	1e c0       	rjmp	.+60     	; 0x5a
+  1e:	1d c0       	rjmp	.+58     	; 0x5a
+  20:	1c c0       	rjmp	.+56     	; 0x5a
+  22:	1b c0       	rjmp	.+54     	; 0x5a
+  24:	1a c0       	rjmp	.+52     	; 0x5a
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e8 e6       	ldi	r30, 0x68	; 104
+  3a:	f1 e0       	ldi	r31, 0x01	; 1
+  3c:	02 c0       	rjmp	.+4      	; 0x42
+
+0000003e <.do_copy_data_loop>:
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+
+00000042 <.do_copy_data_start>:
+  42:	a0 37       	cpi	r26, 0x70	; 112
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e7       	ldi	r26, 0x70	; 112
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a3 37       	cpi	r26, 0x73	; 115
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50
+  58:	76 c0       	rjmp	.+236    	; 0x146
+
+0000005a <__bad_interrupt>:
+  5a:	d2 cf       	rjmp	.-92     	; 0x0
+
+0000005c <__vector_9>:
+void     bitbang( char banged );
+uint16_t counter;
+uint8_t ack;
+SIGNAL (SIG_OVERFLOW0)
+{
+  5c:	1f 92       	push	r1
+  5e:	0f 92       	push	r0
+  60:	0f b6       	in	r0, 0x3f	; 63
+  62:	0f 92       	push	r0
+  64:	11 24       	eor	r1, r1
+  66:	8f 93       	push	r24
+  68:	9f 93       	push	r25
+  counter++;
+  6a:	80 91 71 00 	lds	r24, 0x0071
+  6e:	90 91 72 00 	lds	r25, 0x0072
+  72:	01 96       	adiw	r24, 0x01	; 1
+  74:	90 93 72 00 	sts	0x0072, r25
+  78:	80 93 71 00 	sts	0x0071, r24
+  7c:	9f 91       	pop	r25
+  7e:	8f 91       	pop	r24
+  80:	0f 90       	pop	r0
+  82:	0f be       	out	0x3f, r0	; 63
+  84:	0f 90       	pop	r0
+  86:	1f 90       	pop	r1
+  88:	18 95       	reti
+
+0000008a <timerdly>:
+}
+
+int main( void )
+{
+  TCCR0 = 1;
+  sei();
+  DDRB = DDRB + (1 << PB0);
+  ack = 0;
+  main_prg();
+  return 0;
+}
+
+void main_prg( void ) 
+{
+  char string[] = "Hello World!\r\n";
+  uint8_t index;
+  while (1)
+  {
+    for(index=0;index<15;index++)
+	{
+	  bitbang(string[index]);
+	}
+  }
+}
+
+void timerdly( uint16_t cycles )
+{
+  TIMSK = TIMSK + (1 << TOIE0);
+  8a:	29 b7       	in	r18, 0x39	; 57
+  8c:	2f 5f       	subi	r18, 0xFF	; 255
+  8e:	29 bf       	out	0x39, r18	; 57
+  counter = 0;
+  90:	10 92 72 00 	sts	0x0072, r1
+  94:	10 92 71 00 	sts	0x0071, r1
+  98:	01 96       	adiw	r24, 0x01	; 1
+  9a:	20 e0       	ldi	r18, 0x00	; 0
+  9c:	30 e0       	ldi	r19, 0x00	; 0
+  while(counter < (cycles + 1));
+  9e:	28 17       	cp	r18, r24
+  a0:	39 07       	cpc	r19, r25
+  a2:	e8 f3       	brcs	.-6      	; 0x9e
+  TIMSK = TIMSK - (1 << TOIE0);
+  a4:	89 b7       	in	r24, 0x39	; 57
+  a6:	81 50       	subi	r24, 0x01	; 1
+  a8:	89 bf       	out	0x39, r24	; 57
+  aa:	08 95       	ret
+
+000000ac <bitbang>:
+}
+
+void bitbang( char banged )
+{
+  ac:	0f 93       	push	r16
+  ae:	1f 93       	push	r17
+  b0:	cf 93       	push	r28
+  b2:	df 93       	push	r29
+  b4:	08 2f       	mov	r16, r24
+  uint8_t i;
+  PORTB = 0;
+  b6:	18 ba       	out	0x18, r1	; 24
+  timerdly(26);
+  b8:	8a e1       	ldi	r24, 0x1A	; 26
+  ba:	90 e0       	ldi	r25, 0x00	; 0
+  bc:	e6 df       	rcall	.-52     	; 0x8a
+  be:	c0 e0       	ldi	r28, 0x00	; 0
+  c0:	d0 e0       	ldi	r29, 0x00	; 0
+  c2:	17 e0       	ldi	r17, 0x07	; 7
+  for(i=0; i<8 ; i++)
+  {
+    PORTB = (banged >> i) & 0x01;
+  c4:	80 2f       	mov	r24, r16
+  c6:	99 27       	eor	r25, r25
+  c8:	0c 2e       	mov	r0, r28
+  ca:	02 c0       	rjmp	.+4      	; 0xd0
+  cc:	95 95       	asr	r25
+  ce:	87 95       	ror	r24
+  d0:	0a 94       	dec	r0
+  d2:	e2 f7       	brpl	.-8      	; 0xcc
+  d4:	81 70       	andi	r24, 0x01	; 1
+  d6:	88 bb       	out	0x18, r24	; 24
+	timerdly(26);
+  d8:	8a e1       	ldi	r24, 0x1A	; 26
+  da:	90 e0       	ldi	r25, 0x00	; 0
+  dc:	d6 df       	rcall	.-84     	; 0x8a
+  de:	11 50       	subi	r17, 0x01	; 1
+  e0:	21 96       	adiw	r28, 0x01	; 1
+  e2:	17 ff       	sbrs	r17, 7
+  e4:	ef cf       	rjmp	.-34     	; 0xc4
+  }
+  PORTB = 1;
+  e6:	81 e0       	ldi	r24, 0x01	; 1
+  e8:	88 bb       	out	0x18, r24	; 24
+  timerdly(26);
+  ea:	8a e1       	ldi	r24, 0x1A	; 26
+  ec:	90 e0       	ldi	r25, 0x00	; 0
+  ee:	cd df       	rcall	.-102    	; 0x8a
+  f0:	df 91       	pop	r29
+  f2:	cf 91       	pop	r28
+  f4:	1f 91       	pop	r17
+  f6:	0f 91       	pop	r16
+  f8:	08 95       	ret
+
+000000fa <main_prg>:
+  fa:	cf 92       	push	r12
+  fc:	df 92       	push	r13
+  fe:	ff 92       	push	r15
+ 100:	0f 93       	push	r16
+ 102:	1f 93       	push	r17
+ 104:	cf 93       	push	r28
+ 106:	df 93       	push	r29
+ 108:	cd b7       	in	r28, 0x3d	; 61
+ 10a:	de b7       	in	r29, 0x3e	; 62
+ 10c:	2f 97       	sbiw	r28, 0x0f	; 15
+ 10e:	0f b6       	in	r0, 0x3f	; 63
+ 110:	f8 94       	cli
+ 112:	de bf       	out	0x3e, r29	; 62
+ 114:	0f be       	out	0x3f, r0	; 63
+ 116:	cd bf       	out	0x3d, r28	; 61
+ 118:	6e 01       	movw	r12, r28
+ 11a:	08 94       	sec
+ 11c:	c1 1c       	adc	r12, r1
+ 11e:	d1 1c       	adc	r13, r1
+ 120:	8f e0       	ldi	r24, 0x0F	; 15
+ 122:	e0 e6       	ldi	r30, 0x60	; 96
+ 124:	f0 e0       	ldi	r31, 0x00	; 0
+ 126:	d6 01       	movw	r26, r12
+ 128:	01 90       	ld	r0, Z+
+ 12a:	0d 92       	st	X+, r0
+ 12c:	8a 95       	dec	r24
+ 12e:	e1 f7       	brne	.-8      	; 0x128
+ 130:	86 01       	movw	r16, r12
+ 132:	8e e0       	ldi	r24, 0x0E	; 14
+ 134:	f8 2e       	mov	r15, r24
+ 136:	f8 01       	movw	r30, r16
+ 138:	81 91       	ld	r24, Z+
+ 13a:	8f 01       	movw	r16, r30
+ 13c:	b7 df       	rcall	.-146    	; 0xac
+ 13e:	fa 94       	dec	r15
+ 140:	f7 fe       	sbrs	r15, 7
+ 142:	f9 cf       	rjmp	.-14     	; 0x136
+ 144:	f5 cf       	rjmp	.-22     	; 0x130
+
+00000146 <main>:
+ 146:	cf e5       	ldi	r28, 0x5F	; 95
+ 148:	d4 e0       	ldi	r29, 0x04	; 4
+ 14a:	de bf       	out	0x3e, r29	; 62
+ 14c:	cd bf       	out	0x3d, r28	; 61
+ 14e:	81 e0       	ldi	r24, 0x01	; 1
+ 150:	83 bf       	out	0x33, r24	; 51
+ 152:	78 94       	sei
+ 154:	87 b3       	in	r24, 0x17	; 23
+ 156:	8f 5f       	subi	r24, 0xFF	; 255
+ 158:	87 bb       	out	0x17, r24	; 23
+ 15a:	10 92 70 00 	sts	0x0070, r1
+ 15e:	cd df       	rcall	.-102    	; 0xfa
+ 160:	80 e0       	ldi	r24, 0x00	; 0
+ 162:	90 e0       	ldi	r25, 0x00	; 0
+ 164:	00 c0       	rjmp	.+0      	; 0x166
+
+00000166 <_exit>:
+ 166:	ff cf       	rjmp	.-2      	; 0x166

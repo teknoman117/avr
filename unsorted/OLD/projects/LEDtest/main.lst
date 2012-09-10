@@ -1,0 +1,2692 @@
+GAS LISTING /tmp/ccFBjnyX.s 			page 1
+
+
+   1               		.file	"main.cpp"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.stabs	"/home/nathaniel/programming/AVR_code/projects/LEDtest/",100,0,4,.Ltext0
+  10               		.stabs	"main.cpp",100,0,4,.Ltext0
+  11               		.text
+  12               	.Ltext0:
+  13               		.stabs	"gcc2_compiled.",60,0,0,0
+  14               		.stabs	"__builtin_va_list:t(0,1)=*(0,2)=(0,2)",128,0,0,0
+  15               		.stabs	"complex long double:t(0,3)=R3;8;0;",128,0,0,0
+  16               		.stabs	"complex double:t(0,4)=R3;8;0;",128,0,0,0
+  17               		.stabs	"complex float:t(0,5)=R3;8;0;",128,0,0,0
+  18               		.stabs	"complex int:t(0,6)=s4real:(0,7)=r(0,7);-32768;32767;,0,16;imag:(0,7),16,16;;",128,0,0,0
+  19               		.stabs	"long long unsigned int:t(0,8)=@s64;r(0,8);0;01777777777777777777777;",128,0,0,0
+  20               		.stabs	"long unsigned int:t(0,9)=@s32;r(0,9);0;037777777777;",128,0,0,0
+  21               		.stabs	"unsigned int:t(0,10)=r(0,10);0;0177777;",128,0,0,0
+  22               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,0,0
+  23               		.stabs	"long long int:t(0,12)=@s64;r(0,12);01000000000000000000000;0777777777777777777777;",128,0,
+  24               		.stabs	"long int:t(0,13)=@s32;r(0,13);020000000000;017777777777;",128,0,0,0
+  25               		.stabs	"int:t(0,7)",128,0,0,0
+  26               		.stabs	"signed char:t(0,14)=@s8;r(0,14);-128;127;",128,0,0,0
+  27               		.stabs	"char:t(0,15)=@s8;r(0,15);0;255;",128,0,0,0
+  28               		.stabs	"signed:t(0,7)",128,0,0,0
+  29               		.stabs	"unsigned long:t(0,9)",128,0,0,0
+  30               		.stabs	"long long unsigned:t(0,8)",128,0,0,0
+  31               		.stabs	"short int:t(0,16)=r(0,16);-32768;32767;",128,0,0,0
+  32               		.stabs	"short unsigned int:t(0,17)=r(0,17);0;0177777;",128,0,0,0
+  33               		.stabs	"unsigned short:t(0,17)",128,0,0,0
+  34               		.stabs	"float:t(0,18)=r(0,7);4;0;",128,0,0,0
+  35               		.stabs	"double:t(0,19)=r(0,7);4;0;",128,0,0,0
+  36               		.stabs	"long double:t(0,20)=r(0,7);4;0;",128,0,0,0
+  37               		.stabs	"void:t(0,2)",128,0,0,0
+  38               		.stabs	"wchar_t:t(0,21)=r(0,21);-32768;32767;",128,0,0,0
+  39               		.stabs	"bool:t(0,22)=@s8;-16;",128,0,0,0
+  40               		.stabs	"__vtbl_ptr_type:t(0,23)=*(0,24)=f(0,7)",128,0,0,0
+  41               		.stabs	"int8_t:t(0,25)=(0,14)",128,0,121,0
+  42               		.stabs	"uint8_t:t(0,26)=(0,11)",128,0,122,0
+  43               		.stabs	"int16_t:t(0,27)=(0,7)",128,0,123,0
+  44               		.stabs	"uint16_t:t(0,28)=(0,10)",128,0,124,0
+  45               		.stabs	"int32_t:t(0,29)=(0,13)",128,0,125,0
+  46               		.stabs	"uint32_t:t(0,30)=(0,9)",128,0,126,0
+  47               		.stabs	"int64_t:t(0,31)=(0,12)",128,0,128,0
+  48               		.stabs	"uint64_t:t(0,32)=(0,8)",128,0,129,0
+  49               		.stabs	"intptr_t:t(0,33)=(0,27)",128,0,142,0
+  50               		.stabs	"uintptr_t:t(0,34)=(0,28)",128,0,147,0
+  51               		.stabs	"int_least8_t:t(0,35)=(0,25)",128,0,159,0
+  52               		.stabs	"uint_least8_t:t(0,36)=(0,26)",128,0,164,0
+  53               		.stabs	"int_least16_t:t(0,37)=(0,27)",128,0,169,0
+  54               		.stabs	"uint_least16_t:t(0,38)=(0,28)",128,0,174,0
+  55               		.stabs	"int_least32_t:t(0,39)=(0,29)",128,0,179,0
+  56               		.stabs	"uint_least32_t:t(0,40)=(0,30)",128,0,184,0
+  57               		.stabs	"int_least64_t:t(0,41)=(0,31)",128,0,192,0
+GAS LISTING /tmp/ccFBjnyX.s 			page 2
+
+
+  58               		.stabs	"uint_least64_t:t(0,42)=(0,32)",128,0,199,0
+  59               		.stabs	"int_fast8_t:t(0,43)=(0,25)",128,0,213,0
+  60               		.stabs	"uint_fast8_t:t(0,44)=(0,26)",128,0,218,0
+  61               		.stabs	"int_fast16_t:t(0,45)=(0,27)",128,0,223,0
+  62               		.stabs	"uint_fast16_t:t(0,46)=(0,28)",128,0,228,0
+  63               		.stabs	"int_fast32_t:t(0,47)=(0,29)",128,0,233,0
+  64               		.stabs	"uint_fast32_t:t(0,48)=(0,30)",128,0,238,0
+  65               		.stabs	"int_fast64_t:t(0,49)=(0,31)",128,0,246,0
+  66               		.stabs	"uint_fast64_t:t(0,50)=(0,32)",128,0,253,0
+  67               		.stabs	"intmax_t:t(0,51)=(0,31)",128,0,273,0
+  68               		.stabs	"uintmax_t:t(0,52)=(0,32)",128,0,278,0
+  69               		.stabs	"int_farptr_t:t(0,53)=(0,29)",128,0,77,0
+  70               		.stabs	"uint_farptr_t:t(0,54)=(0,30)",128,0,81,0
+  71               		.stabs	"oDio1:Tt(0,55)=s5state:/0(0,26),0,8;dir:/0(0,26),8,8;pn:/0(0,26),16,8;prt:/0(0,26),24,8;pp
+  72               		.stabs	"oLED2:Tt(0,61)=s13state:/0(0,26),0,8;IOLine1:/0(0,26),8,8;IOLine2:/0(0,26),16,8;line1:/0(0
+  73               		.stabs	"_ZN5oDio1C2Ev:F(0,2)",36,0,32,_ZN5oDio1C2Ev
+  74               		.stabs	"this:P(0,65)=k(0,57)",64,0,32,30
+  75               	.global	_ZN5oDio1C2Ev
+  76               		.type	_ZN5oDio1C2Ev, @function
+  77               	_ZN5oDio1C2Ev:
+  78               		.stabd	46,0,0
+  79               		.stabs	"oDio1.h",132,0,0,.Ltext1
+  80               	.Ltext1:
+   1:oDio1.h       **** #include <avr/io.h>
+   2:oDio1.h       **** #include <stdint.h>
+   3:oDio1.h       **** //targeted for 40 pin AVRs
+   4:oDio1.h       **** 
+   5:oDio1.h       **** /**List of pins
+   6:oDio1.h       **** --porta-----portb-----portc-----portd---
+   7:oDio1.h       **** pa0: 0   |pb0: 8   |pc0: 16  |pd0: 24  |
+   8:oDio1.h       **** pa1: 1   |pb1: 9   |pc0: 17  |pd0: 25  | 
+   9:oDio1.h       **** pa2: 2   |pb2: 10  |pc0: 18  |pd0: 26  |
+  10:oDio1.h       **** pa3: 3   |pb3: 11  |pc0: 19  |pd0: 27  |
+  11:oDio1.h       **** pa4: 4   |pb4: 12  |pc0: 20  |pd0: 28  |
+  12:oDio1.h       **** pa5: 5   |pb5: 13  |pc0: 21  |pd0: 29  |
+  13:oDio1.h       **** pa6: 6   |pb6: 14  |pc0: 22  |pd0: 30  |
+  14:oDio1.h       **** pa7: 7   |pb7: 15  |pc0: 23  |pd0: 31  |
+  15:oDio1.h       **** ----------------------------------------
+  16:oDio1.h       **** **/
+  17:oDio1.h       **** 
+  18:oDio1.h       **** class oDio1 {
+  19:oDio1.h       ****     uint8_t state;
+  20:oDio1.h       ****     uint8_t dir;  //direction 1=output, 0=input
+  21:oDio1.h       ****     uint8_t pn;
+  22:oDio1.h       ****     uint8_t prt;
+  23:oDio1.h       ****     uint8_t ppn;
+  24:oDio1.h       **** public:
+  25:oDio1.h       ****     oDio1();
+  26:oDio1.h       ****     oDio1(uint8_t pin, uint8_t direction);   
+  27:oDio1.h       ****     void setPD(uint8_t pin, uint8_t direction);
+  28:oDio1.h       ****     void set(uint8_t ste);
+  29:oDio1.h       ****     uint8_t get();
+  30:oDio1.h       **** };
+  31:oDio1.h       **** 
+  32:oDio1.h       **** oDio1::oDio1 () {
+  81               		.stabn	68,0,32,.LM0-.LFBB1
+  82               	.LM0:
+GAS LISTING /tmp/ccFBjnyX.s 			page 3
+
+
+  83               	.LFBB1:
+  84               	/* prologue: frame size=0 */
+  85               	/* prologue end (size=0) */
+  86 0000 FC01      		movw r30,r24
+  87               	.LBB7:
+  33:oDio1.h       **** 	state = 0;
+  88               		.stabn	68,0,33,.LM1-.LFBB1
+  89               	.LM1:
+  90 0002 1082      		st Z,__zero_reg__
+  34:oDio1.h       **** 	dir = 0;
+  91               		.stabn	68,0,34,.LM2-.LFBB1
+  92               	.LM2:
+  93 0004 1182      		std Z+1,__zero_reg__
+  35:oDio1.h       **** 	pn = 0;
+  94               		.stabn	68,0,35,.LM3-.LFBB1
+  95               	.LM3:
+  96 0006 1282      		std Z+2,__zero_reg__
+  36:oDio1.h       **** 	prt = 0;
+  97               		.stabn	68,0,36,.LM4-.LFBB1
+  98               	.LM4:
+  99 0008 1382      		std Z+3,__zero_reg__
+  37:oDio1.h       **** 	ppn = 0;
+ 100               		.stabn	68,0,37,.LM5-.LFBB1
+ 101               	.LM5:
+ 102 000a 1482      		std Z+4,__zero_reg__
+ 103               	.LBE7:
+ 104               	/* epilogue: frame size=0 */
+ 105 000c 0895      		ret
+ 106               	/* epilogue end (size=1) */
+ 107               	/* function oDio1::oDio1() size 7 (6) */
+ 108               		.size	_ZN5oDio1C2Ev, .-_ZN5oDio1C2Ev
+ 109               	.Lscope1:
+ 110               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 111               		.stabd	78,0,0
+ 112               		.stabs	"_ZN5oDio1C1Ev:F(0,2)",36,0,32,_ZN5oDio1C1Ev
+ 113               		.stabs	"this:P(0,65)",64,0,32,30
+ 114               	.global	_ZN5oDio1C1Ev
+ 115               		.type	_ZN5oDio1C1Ev, @function
+ 116               	_ZN5oDio1C1Ev:
+ 117               		.stabd	46,0,0
+ 118               		.stabn	68,0,32,.LM6-.LFBB2
+ 119               	.LM6:
+ 120               	.LFBB2:
+ 121               	/* prologue: frame size=0 */
+ 122               	/* prologue end (size=0) */
+ 123 000e FC01      		movw r30,r24
+ 124               	.LBB8:
+ 125               		.stabn	68,0,33,.LM7-.LFBB2
+ 126               	.LM7:
+ 127 0010 1082      		st Z,__zero_reg__
+ 128               		.stabn	68,0,34,.LM8-.LFBB2
+ 129               	.LM8:
+ 130 0012 1182      		std Z+1,__zero_reg__
+ 131               		.stabn	68,0,35,.LM9-.LFBB2
+ 132               	.LM9:
+ 133 0014 1282      		std Z+2,__zero_reg__
+ 134               		.stabn	68,0,36,.LM10-.LFBB2
+GAS LISTING /tmp/ccFBjnyX.s 			page 4
+
+
+ 135               	.LM10:
+ 136 0016 1382      		std Z+3,__zero_reg__
+ 137               		.stabn	68,0,37,.LM11-.LFBB2
+ 138               	.LM11:
+ 139 0018 1482      		std Z+4,__zero_reg__
+ 140               	.LBE8:
+ 141               	/* epilogue: frame size=0 */
+ 142 001a 0895      		ret
+ 143               	/* epilogue end (size=1) */
+ 144               	/* function oDio1::oDio1() size 7 (6) */
+ 145               		.size	_ZN5oDio1C1Ev, .-_ZN5oDio1C1Ev
+ 146               	.Lscope2:
+ 147               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 148               		.stabd	78,0,0
+ 149               		.stabs	"_ZN5oDio1C2Ehh:F(0,2)",36,0,40,_ZN5oDio1C2Ehh
+ 150               		.stabs	"this:P(0,65)",64,0,40,30
+ 151               		.stabs	"pin:P(0,26)",64,0,40,22
+ 152               		.stabs	"direction:P(0,26)",64,0,40,20
+ 153               	.global	_ZN5oDio1C2Ehh
+ 154               		.type	_ZN5oDio1C2Ehh, @function
+ 155               	_ZN5oDio1C2Ehh:
+ 156               		.stabd	46,0,0
+  38:oDio1.h       **** }
+  39:oDio1.h       **** 
+  40:oDio1.h       **** oDio1::oDio1 (uint8_t pin, uint8_t direction) {
+ 157               		.stabn	68,0,40,.LM12-.LFBB3
+ 158               	.LM12:
+ 159               	.LFBB3:
+ 160               	/* prologue: frame size=0 */
+ 161               	/* prologue end (size=0) */
+ 162 001c FC01      		movw r30,r24
+ 163               	.LBB9:
+  41:oDio1.h       **** 	pn = pin;
+ 164               		.stabn	68,0,41,.LM13-.LFBB3
+ 165               	.LM13:
+ 166 001e 6283      		std Z+2,r22
+  42:oDio1.h       **** 	dir = direction;
+ 167               		.stabn	68,0,42,.LM14-.LFBB3
+ 168               	.LM14:
+ 169 0020 4183      		std Z+1,r20
+  43:oDio1.h       **** 	if(pin < 8) {
+ 170               		.stabn	68,0,43,.LM15-.LFBB3
+ 171               	.LM15:
+ 172 0022 6830      		cpi r22,lo8(8)
+ 173 0024 00F4      		brsh .L6
+  44:oDio1.h       **** 		prt=0;
+ 174               		.stabn	68,0,44,.LM16-.LFBB3
+ 175               	.LM16:
+ 176 0026 1382      		std Z+3,__zero_reg__
+  45:oDio1.h       **** 		ppn = pin;
+ 177               		.stabn	68,0,45,.LM17-.LFBB3
+ 178               	.LM17:
+ 179 0028 6483      		std Z+4,r22
+ 180               	.L6:
+  46:oDio1.h       **** 	}
+  47:oDio1.h       **** 	if((pin > 7) && (pin < 16)) {
+ 181               		.stabn	68,0,47,.LM18-.LFBB3
+GAS LISTING /tmp/ccFBjnyX.s 			page 5
+
+
+ 182               	.LM18:
+ 183 002a 962F      		mov r25,r22
+ 184 002c 9850      		subi r25,lo8(-(-8))
+ 185 002e 9830      		cpi r25,lo8(8)
+ 186 0030 00F4      		brsh .L8
+  48:oDio1.h       **** 		prt = 1;
+ 187               		.stabn	68,0,48,.LM19-.LFBB3
+ 188               	.LM19:
+ 189 0032 81E0      		ldi r24,lo8(1)
+ 190 0034 8383      		std Z+3,r24
+  49:oDio1.h       **** 		ppn = pin - 8;
+ 191               		.stabn	68,0,49,.LM20-.LFBB3
+ 192               	.LM20:
+ 193 0036 9483      		std Z+4,r25
+ 194               	.L8:
+  50:oDio1.h       **** 	}
+  51:oDio1.h       **** 	if((pin > 15) && (pin < 24)) {
+ 195               		.stabn	68,0,51,.LM21-.LFBB3
+ 196               	.LM21:
+ 197 0038 962F      		mov r25,r22
+ 198 003a 9051      		subi r25,lo8(-(-16))
+ 199 003c 9830      		cpi r25,lo8(8)
+ 200 003e 00F4      		brsh .L10
+  52:oDio1.h       **** 		prt = 2;
+ 201               		.stabn	68,0,52,.LM22-.LFBB3
+ 202               	.LM22:
+ 203 0040 82E0      		ldi r24,lo8(2)
+ 204 0042 8383      		std Z+3,r24
+  53:oDio1.h       ****         ppn = pin - 16;
+ 205               		.stabn	68,0,53,.LM23-.LFBB3
+ 206               	.LM23:
+ 207 0044 9483      		std Z+4,r25
+ 208               	.L10:
+  54:oDio1.h       **** 	}
+  55:oDio1.h       **** 	if(pin > 23) {
+ 209               		.stabn	68,0,55,.LM24-.LFBB3
+ 210               	.LM24:
+ 211 0046 6831      		cpi r22,lo8(24)
+ 212 0048 00F0      		brlo .L12
+  56:oDio1.h       **** 		prt = 3;
+ 213               		.stabn	68,0,56,.LM25-.LFBB3
+ 214               	.LM25:
+ 215 004a 83E0      		ldi r24,lo8(3)
+ 216 004c 8383      		std Z+3,r24
+  57:oDio1.h       **** 		ppn = pin - 24;
+ 217               		.stabn	68,0,57,.LM26-.LFBB3
+ 218               	.LM26:
+ 219 004e 6851      		subi r22,lo8(-(-24))
+ 220 0050 6483      		std Z+4,r22
+ 221               	.L12:
+  58:oDio1.h       **** 	}
+  59:oDio1.h       ****     if(dir) {
+ 222               		.stabn	68,0,59,.LM27-.LFBB3
+ 223               	.LM27:
+ 224 0052 8181      		ldd r24,Z+1
+ 225 0054 8823      		tst r24
+ 226 0056 01F4      		brne .+2
+GAS LISTING /tmp/ccFBjnyX.s 			page 6
+
+
+ 227 0058 00C0      		rjmp .L34
+  60:oDio1.h       ****     	switch (prt) {
+ 228               		.stabn	68,0,60,.LM28-.LFBB3
+ 229               	.LM28:
+ 230 005a 3381      		ldd r19,Z+3
+ 231 005c 3130      		cpi r19,lo8(1)
+ 232 005e 01F0      		breq .L18
+ 233 0060 3130      		cpi r19,lo8(1)
+ 234 0062 00F0      		brlo .L17
+ 235 0064 3230      		cpi r19,lo8(2)
+ 236 0066 01F0      		breq .L19
+ 237 0068 3330      		cpi r19,lo8(3)
+ 238 006a 01F0      		breq .+2
+ 239 006c 00C0      		rjmp .L16
+ 240 006e 00C0      		rjmp .L20
+ 241               	.L17:
+  61:oDio1.h       ****       		case 0:if(!((DDRA >> ppn) & 1)) {DDRA += (1 << ppn);} break;
+ 242               		.stabn	68,0,61,.LM29-.LFBB3
+ 243               	.LM29:
+ 244 0070 81B1      		in r24,33-0x20
+ 245 0072 2481      		ldd r18,Z+4
+ 246 0074 422F      		mov r20,r18
+ 247 0076 5527      		clr r21
+ 248 0078 9927      		clr r25
+ 249 007a 042E      		mov r0,r20
+ 250 007c 00C0      		rjmp 2f
+ 251 007e 9595      	1:	asr r25
+ 252 0080 8795      		ror r24
+ 253 0082 0A94      	2:	dec r0
+ 254 0084 02F4      		brpl 1b
+ 255 0086 80FD      		sbrc r24,0
+ 256 0088 00C0      		rjmp .L16
+ 257 008a 21B1      		in r18,33-0x20
+ 258 008c 81E0      		ldi r24,lo8(1)
+ 259 008e 90E0      		ldi r25,hi8(1)
+ 260 0090 00C0      		rjmp 2f
+ 261 0092 880F      	1:	lsl r24
+ 262 0094 991F      		rol r25
+ 263 0096 4A95      	2:	dec r20
+ 264 0098 02F4      		brpl 1b
+ 265 009a 280F      		add r18,r24
+ 266 009c 21B9      		out 33-0x20,r18
+ 267 009e 00C0      		rjmp .L22
+ 268               	.L18:
+  62:oDio1.h       ****       		case 1:if(!((DDRB >> ppn) & 1)) {DDRB += (1 << ppn);} break;
+ 269               		.stabn	68,0,62,.LM30-.LFBB3
+ 270               	.LM30:
+ 271 00a0 84B1      		in r24,36-0x20
+ 272 00a2 2481      		ldd r18,Z+4
+ 273 00a4 422F      		mov r20,r18
+ 274 00a6 5527      		clr r21
+ 275 00a8 9927      		clr r25
+ 276 00aa 042E      		mov r0,r20
+ 277 00ac 00C0      		rjmp 2f
+ 278 00ae 9595      	1:	asr r25
+ 279 00b0 8795      		ror r24
+ 280 00b2 0A94      	2:	dec r0
+GAS LISTING /tmp/ccFBjnyX.s 			page 7
+
+
+ 281 00b4 02F4      		brpl 1b
+ 282 00b6 80FD      		sbrc r24,0
+ 283 00b8 00C0      		rjmp .L24
+ 284 00ba 24B1      		in r18,36-0x20
+ 285 00bc 81E0      		ldi r24,lo8(1)
+ 286 00be 90E0      		ldi r25,hi8(1)
+ 287 00c0 00C0      		rjmp 2f
+ 288 00c2 880F      	1:	lsl r24
+ 289 00c4 991F      		rol r25
+ 290 00c6 4A95      	2:	dec r20
+ 291 00c8 02F4      		brpl 1b
+ 292 00ca 280F      		add r18,r24
+ 293 00cc 24B9      		out 36-0x20,r18
+ 294 00ce 00C0      		rjmp .L24
+ 295               	.L19:
+  63:oDio1.h       ****       		case 2:if(!((DDRC >> ppn) & 1)) {DDRC += (1 << ppn);} break;
+ 296               		.stabn	68,0,63,.LM31-.LFBB3
+ 297               	.LM31:
+ 298 00d0 87B1      		in r24,39-0x20
+ 299 00d2 2481      		ldd r18,Z+4
+ 300 00d4 422F      		mov r20,r18
+ 301 00d6 5527      		clr r21
+ 302 00d8 9927      		clr r25
+ 303 00da 042E      		mov r0,r20
+ 304 00dc 00C0      		rjmp 2f
+ 305 00de 9595      	1:	asr r25
+ 306 00e0 8795      		ror r24
+ 307 00e2 0A94      	2:	dec r0
+ 308 00e4 02F4      		brpl 1b
+ 309 00e6 80FD      		sbrc r24,0
+ 310 00e8 00C0      		rjmp .L26
+ 311 00ea 27B1      		in r18,39-0x20
+ 312 00ec 81E0      		ldi r24,lo8(1)
+ 313 00ee 90E0      		ldi r25,hi8(1)
+ 314 00f0 00C0      		rjmp 2f
+ 315 00f2 880F      	1:	lsl r24
+ 316 00f4 991F      		rol r25
+ 317 00f6 4A95      	2:	dec r20
+ 318 00f8 02F4      		brpl 1b
+ 319 00fa 280F      		add r18,r24
+ 320 00fc 27B9      		out 39-0x20,r18
+ 321 00fe 00C0      		rjmp .L26
+ 322               	.L20:
+  64:oDio1.h       ****       		case 3:if(!((DDRD >> ppn) & 1)) {DDRD += (1 << ppn);} break;
+ 323               		.stabn	68,0,64,.LM32-.LFBB3
+ 324               	.LM32:
+ 325 0100 8AB1      		in r24,42-0x20
+ 326 0102 2481      		ldd r18,Z+4
+ 327 0104 422F      		mov r20,r18
+ 328 0106 5527      		clr r21
+ 329 0108 9927      		clr r25
+ 330 010a 042E      		mov r0,r20
+ 331 010c 00C0      		rjmp 2f
+ 332 010e 9595      	1:	asr r25
+ 333 0110 8795      		ror r24
+ 334 0112 0A94      	2:	dec r0
+ 335 0114 02F4      		brpl 1b
+GAS LISTING /tmp/ccFBjnyX.s 			page 8
+
+
+ 336 0116 80FD      		sbrc r24,0
+ 337 0118 00C0      		rjmp .L28
+ 338 011a 2AB1      		in r18,42-0x20
+ 339 011c 81E0      		ldi r24,lo8(1)
+ 340 011e 90E0      		ldi r25,hi8(1)
+ 341 0120 00C0      		rjmp 2f
+ 342 0122 880F      	1:	lsl r24
+ 343 0124 991F      		rol r25
+ 344 0126 4A95      	2:	dec r20
+ 345 0128 02F4      		brpl 1b
+ 346 012a 280F      		add r18,r24
+ 347 012c 2AB9      		out 42-0x20,r18
+ 348 012e 00C0      		rjmp .L28
+ 349               	.L16:
+  65:oDio1.h       ****     	}
+  66:oDio1.h       ****     	switch (prt) {
+ 350               		.stabn	68,0,66,.LM33-.LFBB3
+ 351               	.LM33:
+ 352 0130 3130      		cpi r19,lo8(1)
+ 353 0132 01F0      		breq .L24
+ 354 0134 3130      		cpi r19,lo8(1)
+ 355 0136 00F0      		brlo .L22
+ 356 0138 3230      		cpi r19,lo8(2)
+ 357 013a 01F0      		breq .L26
+ 358 013c 3330      		cpi r19,lo8(3)
+ 359 013e 01F0      		breq .+2
+ 360 0140 00C0      		rjmp .L29
+ 361 0142 00C0      		rjmp .L28
+ 362               	.L22:
+  67:oDio1.h       ****       		case 0:if((PORTA >> ppn) & 1) {PORTA -= (1 << ppn);} break;
+ 363               		.stabn	68,0,67,.LM34-.LFBB3
+ 364               	.LM34:
+ 365 0144 82B1      		in r24,34-0x20
+ 366 0146 2481      		ldd r18,Z+4
+ 367 0148 422F      		mov r20,r18
+ 368 014a 5527      		clr r21
+ 369 014c 9927      		clr r25
+ 370 014e 042E      		mov r0,r20
+ 371 0150 00C0      		rjmp 2f
+ 372 0152 9595      	1:	asr r25
+ 373 0154 8795      		ror r24
+ 374 0156 0A94      	2:	dec r0
+ 375 0158 02F4      		brpl 1b
+ 376 015a 80FF      		sbrs r24,0
+ 377 015c 00C0      		rjmp .L29
+ 378 015e 22B1      		in r18,34-0x20
+ 379 0160 81E0      		ldi r24,lo8(1)
+ 380 0162 90E0      		ldi r25,hi8(1)
+ 381 0164 00C0      		rjmp 2f
+ 382 0166 880F      	1:	lsl r24
+ 383 0168 991F      		rol r25
+ 384 016a 4A95      	2:	dec r20
+ 385 016c 02F4      		brpl 1b
+ 386 016e 281B      		sub r18,r24
+ 387 0170 22B9      		out 34-0x20,r18
+ 388 0172 00C0      		rjmp .L29
+ 389               	.L24:
+GAS LISTING /tmp/ccFBjnyX.s 			page 9
+
+
+  68:oDio1.h       ****       		case 1:if((PORTB >> ppn) & 1) {PORTB -= (1 << ppn);} break;
+ 390               		.stabn	68,0,68,.LM35-.LFBB3
+ 391               	.LM35:
+ 392 0174 85B1      		in r24,37-0x20
+ 393 0176 2481      		ldd r18,Z+4
+ 394 0178 422F      		mov r20,r18
+ 395 017a 5527      		clr r21
+ 396 017c 9927      		clr r25
+ 397 017e 042E      		mov r0,r20
+ 398 0180 00C0      		rjmp 2f
+ 399 0182 9595      	1:	asr r25
+ 400 0184 8795      		ror r24
+ 401 0186 0A94      	2:	dec r0
+ 402 0188 02F4      		brpl 1b
+ 403 018a 80FF      		sbrs r24,0
+ 404 018c 00C0      		rjmp .L29
+ 405 018e 25B1      		in r18,37-0x20
+ 406 0190 81E0      		ldi r24,lo8(1)
+ 407 0192 90E0      		ldi r25,hi8(1)
+ 408 0194 00C0      		rjmp 2f
+ 409 0196 880F      	1:	lsl r24
+ 410 0198 991F      		rol r25
+ 411 019a 4A95      	2:	dec r20
+ 412 019c 02F4      		brpl 1b
+ 413 019e 281B      		sub r18,r24
+ 414 01a0 25B9      		out 37-0x20,r18
+ 415 01a2 00C0      		rjmp .L29
+ 416               	.L26:
+  69:oDio1.h       ****       		case 2:if((PORTC >> ppn) & 1) {PORTC -= (1 << ppn);} break;
+ 417               		.stabn	68,0,69,.LM36-.LFBB3
+ 418               	.LM36:
+ 419 01a4 88B1      		in r24,40-0x20
+ 420 01a6 2481      		ldd r18,Z+4
+ 421 01a8 422F      		mov r20,r18
+ 422 01aa 5527      		clr r21
+ 423 01ac 9927      		clr r25
+ 424 01ae 042E      		mov r0,r20
+ 425 01b0 00C0      		rjmp 2f
+ 426 01b2 9595      	1:	asr r25
+ 427 01b4 8795      		ror r24
+ 428 01b6 0A94      	2:	dec r0
+ 429 01b8 02F4      		brpl 1b
+ 430 01ba 80FF      		sbrs r24,0
+ 431 01bc 00C0      		rjmp .L29
+ 432 01be 28B1      		in r18,40-0x20
+ 433 01c0 81E0      		ldi r24,lo8(1)
+ 434 01c2 90E0      		ldi r25,hi8(1)
+ 435 01c4 00C0      		rjmp 2f
+ 436 01c6 880F      	1:	lsl r24
+ 437 01c8 991F      		rol r25
+ 438 01ca 4A95      	2:	dec r20
+ 439 01cc 02F4      		brpl 1b
+ 440 01ce 281B      		sub r18,r24
+ 441 01d0 28B9      		out 40-0x20,r18
+ 442 01d2 00C0      		rjmp .L29
+ 443               	.L28:
+  70:oDio1.h       ****       		case 3:if((PORTD >> ppn) & 1) {PORTD -= (1 << ppn);} break;
+GAS LISTING /tmp/ccFBjnyX.s 			page 10
+
+
+ 444               		.stabn	68,0,70,.LM37-.LFBB3
+ 445               	.LM37:
+ 446 01d4 8BB1      		in r24,43-0x20
+ 447 01d6 2481      		ldd r18,Z+4
+ 448 01d8 422F      		mov r20,r18
+ 449 01da 5527      		clr r21
+ 450 01dc 9927      		clr r25
+ 451 01de 042E      		mov r0,r20
+ 452 01e0 00C0      		rjmp 2f
+ 453 01e2 9595      	1:	asr r25
+ 454 01e4 8795      		ror r24
+ 455 01e6 0A94      	2:	dec r0
+ 456 01e8 02F4      		brpl 1b
+ 457 01ea 80FF      		sbrs r24,0
+ 458 01ec 00C0      		rjmp .L29
+ 459 01ee 2BB1      		in r18,43-0x20
+ 460 01f0 81E0      		ldi r24,lo8(1)
+ 461 01f2 90E0      		ldi r25,hi8(1)
+ 462 01f4 00C0      		rjmp 2f
+ 463 01f6 880F      	1:	lsl r24
+ 464 01f8 991F      		rol r25
+ 465 01fa 4A95      	2:	dec r20
+ 466 01fc 02F4      		brpl 1b
+ 467 01fe 281B      		sub r18,r24
+ 468 0200 2BB9      		out 43-0x20,r18
+ 469               	.L29:
+  71:oDio1.h       ****     	}
+  72:oDio1.h       ****     	state = 0;
+ 470               		.stabn	68,0,72,.LM38-.LFBB3
+ 471               	.LM38:
+ 472 0202 1082      		st Z,__zero_reg__
+ 473               	.L34:
+ 474 0204 0895      		ret
+ 475               	.LBE9:
+ 476               	/* epilogue: frame size=0 */
+ 477               	/* epilogue: noreturn */
+ 478               	/* epilogue end (size=0) */
+ 479               	/* function oDio1::oDio1(uint8_t, uint8_t) size 253 (253) */
+ 480               		.size	_ZN5oDio1C2Ehh, .-_ZN5oDio1C2Ehh
+ 481               	.Lscope3:
+ 482               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 483               		.stabd	78,0,0
+ 484               		.stabs	"_ZN5oDio1C1Ehh:F(0,2)",36,0,40,_ZN5oDio1C1Ehh
+ 485               		.stabs	"this:P(0,65)",64,0,40,30
+ 486               		.stabs	"pin:P(0,26)",64,0,40,22
+ 487               		.stabs	"direction:P(0,26)",64,0,40,20
+ 488               	.global	_ZN5oDio1C1Ehh
+ 489               		.type	_ZN5oDio1C1Ehh, @function
+ 490               	_ZN5oDio1C1Ehh:
+ 491               		.stabd	46,0,0
+ 492               		.stabn	68,0,40,.LM39-.LFBB4
+ 493               	.LM39:
+ 494               	.LFBB4:
+ 495               	/* prologue: frame size=0 */
+ 496               	/* prologue end (size=0) */
+ 497 0206 FC01      		movw r30,r24
+ 498               	.LBB10:
+GAS LISTING /tmp/ccFBjnyX.s 			page 11
+
+
+ 499               		.stabn	68,0,41,.LM40-.LFBB4
+ 500               	.LM40:
+ 501 0208 6283      		std Z+2,r22
+ 502               		.stabn	68,0,42,.LM41-.LFBB4
+ 503               	.LM41:
+ 504 020a 4183      		std Z+1,r20
+ 505               		.stabn	68,0,43,.LM42-.LFBB4
+ 506               	.LM42:
+ 507 020c 6830      		cpi r22,lo8(8)
+ 508 020e 00F4      		brsh .L39
+ 509               		.stabn	68,0,44,.LM43-.LFBB4
+ 510               	.LM43:
+ 511 0210 1382      		std Z+3,__zero_reg__
+ 512               		.stabn	68,0,45,.LM44-.LFBB4
+ 513               	.LM44:
+ 514 0212 6483      		std Z+4,r22
+ 515               	.L39:
+ 516               		.stabn	68,0,47,.LM45-.LFBB4
+ 517               	.LM45:
+ 518 0214 962F      		mov r25,r22
+ 519 0216 9850      		subi r25,lo8(-(-8))
+ 520 0218 9830      		cpi r25,lo8(8)
+ 521 021a 00F4      		brsh .L41
+ 522               		.stabn	68,0,48,.LM46-.LFBB4
+ 523               	.LM46:
+ 524 021c 81E0      		ldi r24,lo8(1)
+ 525 021e 8383      		std Z+3,r24
+ 526               		.stabn	68,0,49,.LM47-.LFBB4
+ 527               	.LM47:
+ 528 0220 9483      		std Z+4,r25
+ 529               	.L41:
+ 530               		.stabn	68,0,51,.LM48-.LFBB4
+ 531               	.LM48:
+ 532 0222 962F      		mov r25,r22
+ 533 0224 9051      		subi r25,lo8(-(-16))
+ 534 0226 9830      		cpi r25,lo8(8)
+ 535 0228 00F4      		brsh .L43
+ 536               		.stabn	68,0,52,.LM49-.LFBB4
+ 537               	.LM49:
+ 538 022a 82E0      		ldi r24,lo8(2)
+ 539 022c 8383      		std Z+3,r24
+ 540               		.stabn	68,0,53,.LM50-.LFBB4
+ 541               	.LM50:
+ 542 022e 9483      		std Z+4,r25
+ 543               	.L43:
+ 544               		.stabn	68,0,55,.LM51-.LFBB4
+ 545               	.LM51:
+ 546 0230 6831      		cpi r22,lo8(24)
+ 547 0232 00F0      		brlo .L45
+ 548               		.stabn	68,0,56,.LM52-.LFBB4
+ 549               	.LM52:
+ 550 0234 83E0      		ldi r24,lo8(3)
+ 551 0236 8383      		std Z+3,r24
+ 552               		.stabn	68,0,57,.LM53-.LFBB4
+ 553               	.LM53:
+ 554 0238 6851      		subi r22,lo8(-(-24))
+ 555 023a 6483      		std Z+4,r22
+GAS LISTING /tmp/ccFBjnyX.s 			page 12
+
+
+ 556               	.L45:
+ 557               		.stabn	68,0,59,.LM54-.LFBB4
+ 558               	.LM54:
+ 559 023c 8181      		ldd r24,Z+1
+ 560 023e 8823      		tst r24
+ 561 0240 01F4      		brne .+2
+ 562 0242 00C0      		rjmp .L67
+ 563               		.stabn	68,0,60,.LM55-.LFBB4
+ 564               	.LM55:
+ 565 0244 3381      		ldd r19,Z+3
+ 566 0246 3130      		cpi r19,lo8(1)
+ 567 0248 01F0      		breq .L51
+ 568 024a 3130      		cpi r19,lo8(1)
+ 569 024c 00F0      		brlo .L50
+ 570 024e 3230      		cpi r19,lo8(2)
+ 571 0250 01F0      		breq .L52
+ 572 0252 3330      		cpi r19,lo8(3)
+ 573 0254 01F0      		breq .+2
+ 574 0256 00C0      		rjmp .L49
+ 575 0258 00C0      		rjmp .L53
+ 576               	.L50:
+ 577               		.stabn	68,0,61,.LM56-.LFBB4
+ 578               	.LM56:
+ 579 025a 81B1      		in r24,33-0x20
+ 580 025c 2481      		ldd r18,Z+4
+ 581 025e 422F      		mov r20,r18
+ 582 0260 5527      		clr r21
+ 583 0262 9927      		clr r25
+ 584 0264 042E      		mov r0,r20
+ 585 0266 00C0      		rjmp 2f
+ 586 0268 9595      	1:	asr r25
+ 587 026a 8795      		ror r24
+ 588 026c 0A94      	2:	dec r0
+ 589 026e 02F4      		brpl 1b
+ 590 0270 80FD      		sbrc r24,0
+ 591 0272 00C0      		rjmp .L49
+ 592 0274 21B1      		in r18,33-0x20
+ 593 0276 81E0      		ldi r24,lo8(1)
+ 594 0278 90E0      		ldi r25,hi8(1)
+ 595 027a 00C0      		rjmp 2f
+ 596 027c 880F      	1:	lsl r24
+ 597 027e 991F      		rol r25
+ 598 0280 4A95      	2:	dec r20
+ 599 0282 02F4      		brpl 1b
+ 600 0284 280F      		add r18,r24
+ 601 0286 21B9      		out 33-0x20,r18
+ 602 0288 00C0      		rjmp .L55
+ 603               	.L51:
+ 604               		.stabn	68,0,62,.LM57-.LFBB4
+ 605               	.LM57:
+ 606 028a 84B1      		in r24,36-0x20
+ 607 028c 2481      		ldd r18,Z+4
+ 608 028e 422F      		mov r20,r18
+ 609 0290 5527      		clr r21
+ 610 0292 9927      		clr r25
+ 611 0294 042E      		mov r0,r20
+ 612 0296 00C0      		rjmp 2f
+GAS LISTING /tmp/ccFBjnyX.s 			page 13
+
+
+ 613 0298 9595      	1:	asr r25
+ 614 029a 8795      		ror r24
+ 615 029c 0A94      	2:	dec r0
+ 616 029e 02F4      		brpl 1b
+ 617 02a0 80FD      		sbrc r24,0
+ 618 02a2 00C0      		rjmp .L57
+ 619 02a4 24B1      		in r18,36-0x20
+ 620 02a6 81E0      		ldi r24,lo8(1)
+ 621 02a8 90E0      		ldi r25,hi8(1)
+ 622 02aa 00C0      		rjmp 2f
+ 623 02ac 880F      	1:	lsl r24
+ 624 02ae 991F      		rol r25
+ 625 02b0 4A95      	2:	dec r20
+ 626 02b2 02F4      		brpl 1b
+ 627 02b4 280F      		add r18,r24
+ 628 02b6 24B9      		out 36-0x20,r18
+ 629 02b8 00C0      		rjmp .L57
+ 630               	.L52:
+ 631               		.stabn	68,0,63,.LM58-.LFBB4
+ 632               	.LM58:
+ 633 02ba 87B1      		in r24,39-0x20
+ 634 02bc 2481      		ldd r18,Z+4
+ 635 02be 422F      		mov r20,r18
+ 636 02c0 5527      		clr r21
+ 637 02c2 9927      		clr r25
+ 638 02c4 042E      		mov r0,r20
+ 639 02c6 00C0      		rjmp 2f
+ 640 02c8 9595      	1:	asr r25
+ 641 02ca 8795      		ror r24
+ 642 02cc 0A94      	2:	dec r0
+ 643 02ce 02F4      		brpl 1b
+ 644 02d0 80FD      		sbrc r24,0
+ 645 02d2 00C0      		rjmp .L59
+ 646 02d4 27B1      		in r18,39-0x20
+ 647 02d6 81E0      		ldi r24,lo8(1)
+ 648 02d8 90E0      		ldi r25,hi8(1)
+ 649 02da 00C0      		rjmp 2f
+ 650 02dc 880F      	1:	lsl r24
+ 651 02de 991F      		rol r25
+ 652 02e0 4A95      	2:	dec r20
+ 653 02e2 02F4      		brpl 1b
+ 654 02e4 280F      		add r18,r24
+ 655 02e6 27B9      		out 39-0x20,r18
+ 656 02e8 00C0      		rjmp .L59
+ 657               	.L53:
+ 658               		.stabn	68,0,64,.LM59-.LFBB4
+ 659               	.LM59:
+ 660 02ea 8AB1      		in r24,42-0x20
+ 661 02ec 2481      		ldd r18,Z+4
+ 662 02ee 422F      		mov r20,r18
+ 663 02f0 5527      		clr r21
+ 664 02f2 9927      		clr r25
+ 665 02f4 042E      		mov r0,r20
+ 666 02f6 00C0      		rjmp 2f
+ 667 02f8 9595      	1:	asr r25
+ 668 02fa 8795      		ror r24
+ 669 02fc 0A94      	2:	dec r0
+GAS LISTING /tmp/ccFBjnyX.s 			page 14
+
+
+ 670 02fe 02F4      		brpl 1b
+ 671 0300 80FD      		sbrc r24,0
+ 672 0302 00C0      		rjmp .L61
+ 673 0304 2AB1      		in r18,42-0x20
+ 674 0306 81E0      		ldi r24,lo8(1)
+ 675 0308 90E0      		ldi r25,hi8(1)
+ 676 030a 00C0      		rjmp 2f
+ 677 030c 880F      	1:	lsl r24
+ 678 030e 991F      		rol r25
+ 679 0310 4A95      	2:	dec r20
+ 680 0312 02F4      		brpl 1b
+ 681 0314 280F      		add r18,r24
+ 682 0316 2AB9      		out 42-0x20,r18
+ 683 0318 00C0      		rjmp .L61
+ 684               	.L49:
+ 685               		.stabn	68,0,66,.LM60-.LFBB4
+ 686               	.LM60:
+ 687 031a 3130      		cpi r19,lo8(1)
+ 688 031c 01F0      		breq .L57
+ 689 031e 3130      		cpi r19,lo8(1)
+ 690 0320 00F0      		brlo .L55
+ 691 0322 3230      		cpi r19,lo8(2)
+ 692 0324 01F0      		breq .L59
+ 693 0326 3330      		cpi r19,lo8(3)
+ 694 0328 01F0      		breq .+2
+ 695 032a 00C0      		rjmp .L62
+ 696 032c 00C0      		rjmp .L61
+ 697               	.L55:
+ 698               		.stabn	68,0,67,.LM61-.LFBB4
+ 699               	.LM61:
+ 700 032e 82B1      		in r24,34-0x20
+ 701 0330 2481      		ldd r18,Z+4
+ 702 0332 422F      		mov r20,r18
+ 703 0334 5527      		clr r21
+ 704 0336 9927      		clr r25
+ 705 0338 042E      		mov r0,r20
+ 706 033a 00C0      		rjmp 2f
+ 707 033c 9595      	1:	asr r25
+ 708 033e 8795      		ror r24
+ 709 0340 0A94      	2:	dec r0
+ 710 0342 02F4      		brpl 1b
+ 711 0344 80FF      		sbrs r24,0
+ 712 0346 00C0      		rjmp .L62
+ 713 0348 22B1      		in r18,34-0x20
+ 714 034a 81E0      		ldi r24,lo8(1)
+ 715 034c 90E0      		ldi r25,hi8(1)
+ 716 034e 00C0      		rjmp 2f
+ 717 0350 880F      	1:	lsl r24
+ 718 0352 991F      		rol r25
+ 719 0354 4A95      	2:	dec r20
+ 720 0356 02F4      		brpl 1b
+ 721 0358 281B      		sub r18,r24
+ 722 035a 22B9      		out 34-0x20,r18
+ 723 035c 00C0      		rjmp .L62
+ 724               	.L57:
+ 725               		.stabn	68,0,68,.LM62-.LFBB4
+ 726               	.LM62:
+GAS LISTING /tmp/ccFBjnyX.s 			page 15
+
+
+ 727 035e 85B1      		in r24,37-0x20
+ 728 0360 2481      		ldd r18,Z+4
+ 729 0362 422F      		mov r20,r18
+ 730 0364 5527      		clr r21
+ 731 0366 9927      		clr r25
+ 732 0368 042E      		mov r0,r20
+ 733 036a 00C0      		rjmp 2f
+ 734 036c 9595      	1:	asr r25
+ 735 036e 8795      		ror r24
+ 736 0370 0A94      	2:	dec r0
+ 737 0372 02F4      		brpl 1b
+ 738 0374 80FF      		sbrs r24,0
+ 739 0376 00C0      		rjmp .L62
+ 740 0378 25B1      		in r18,37-0x20
+ 741 037a 81E0      		ldi r24,lo8(1)
+ 742 037c 90E0      		ldi r25,hi8(1)
+ 743 037e 00C0      		rjmp 2f
+ 744 0380 880F      	1:	lsl r24
+ 745 0382 991F      		rol r25
+ 746 0384 4A95      	2:	dec r20
+ 747 0386 02F4      		brpl 1b
+ 748 0388 281B      		sub r18,r24
+ 749 038a 25B9      		out 37-0x20,r18
+ 750 038c 00C0      		rjmp .L62
+ 751               	.L59:
+ 752               		.stabn	68,0,69,.LM63-.LFBB4
+ 753               	.LM63:
+ 754 038e 88B1      		in r24,40-0x20
+ 755 0390 2481      		ldd r18,Z+4
+ 756 0392 422F      		mov r20,r18
+ 757 0394 5527      		clr r21
+ 758 0396 9927      		clr r25
+ 759 0398 042E      		mov r0,r20
+ 760 039a 00C0      		rjmp 2f
+ 761 039c 9595      	1:	asr r25
+ 762 039e 8795      		ror r24
+ 763 03a0 0A94      	2:	dec r0
+ 764 03a2 02F4      		brpl 1b
+ 765 03a4 80FF      		sbrs r24,0
+ 766 03a6 00C0      		rjmp .L62
+ 767 03a8 28B1      		in r18,40-0x20
+ 768 03aa 81E0      		ldi r24,lo8(1)
+ 769 03ac 90E0      		ldi r25,hi8(1)
+ 770 03ae 00C0      		rjmp 2f
+ 771 03b0 880F      	1:	lsl r24
+ 772 03b2 991F      		rol r25
+ 773 03b4 4A95      	2:	dec r20
+ 774 03b6 02F4      		brpl 1b
+ 775 03b8 281B      		sub r18,r24
+ 776 03ba 28B9      		out 40-0x20,r18
+ 777 03bc 00C0      		rjmp .L62
+ 778               	.L61:
+ 779               		.stabn	68,0,70,.LM64-.LFBB4
+ 780               	.LM64:
+ 781 03be 8BB1      		in r24,43-0x20
+ 782 03c0 2481      		ldd r18,Z+4
+ 783 03c2 422F      		mov r20,r18
+GAS LISTING /tmp/ccFBjnyX.s 			page 16
+
+
+ 784 03c4 5527      		clr r21
+ 785 03c6 9927      		clr r25
+ 786 03c8 042E      		mov r0,r20
+ 787 03ca 00C0      		rjmp 2f
+ 788 03cc 9595      	1:	asr r25
+ 789 03ce 8795      		ror r24
+ 790 03d0 0A94      	2:	dec r0
+ 791 03d2 02F4      		brpl 1b
+ 792 03d4 80FF      		sbrs r24,0
+ 793 03d6 00C0      		rjmp .L62
+ 794 03d8 2BB1      		in r18,43-0x20
+ 795 03da 81E0      		ldi r24,lo8(1)
+ 796 03dc 90E0      		ldi r25,hi8(1)
+ 797 03de 00C0      		rjmp 2f
+ 798 03e0 880F      	1:	lsl r24
+ 799 03e2 991F      		rol r25
+ 800 03e4 4A95      	2:	dec r20
+ 801 03e6 02F4      		brpl 1b
+ 802 03e8 281B      		sub r18,r24
+ 803 03ea 2BB9      		out 43-0x20,r18
+ 804               	.L62:
+ 805               		.stabn	68,0,72,.LM65-.LFBB4
+ 806               	.LM65:
+ 807 03ec 1082      		st Z,__zero_reg__
+ 808               	.L67:
+ 809 03ee 0895      		ret
+ 810               	.LBE10:
+ 811               	/* epilogue: frame size=0 */
+ 812               	/* epilogue: noreturn */
+ 813               	/* epilogue end (size=0) */
+ 814               	/* function oDio1::oDio1(uint8_t, uint8_t) size 253 (253) */
+ 815               		.size	_ZN5oDio1C1Ehh, .-_ZN5oDio1C1Ehh
+ 816               	.Lscope4:
+ 817               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 818               		.stabd	78,0,0
+ 819               		.stabs	"_ZN5oDio15setPDEhh:F(0,2)",36,0,76,_ZN5oDio15setPDEhh
+ 820               		.stabs	"this:P(0,65)",64,0,76,30
+ 821               		.stabs	"pin:P(0,26)",64,0,76,22
+ 822               		.stabs	"direction:P(0,26)",64,0,76,20
+ 823               	.global	_ZN5oDio15setPDEhh
+ 824               		.type	_ZN5oDio15setPDEhh, @function
+ 825               	_ZN5oDio15setPDEhh:
+ 826               		.stabd	46,0,0
+  73:oDio1.h       ****     }	
+  74:oDio1.h       **** }
+  75:oDio1.h       **** 
+  76:oDio1.h       **** void oDio1::setPD (uint8_t pin, uint8_t direction) {
+ 827               		.stabn	68,0,76,.LM66-.LFBB5
+ 828               	.LM66:
+ 829               	.LFBB5:
+ 830               	/* prologue: frame size=0 */
+ 831               	/* prologue end (size=0) */
+ 832 03f0 FC01      		movw r30,r24
+  77:oDio1.h       **** 	pn = pin;
+ 833               		.stabn	68,0,77,.LM67-.LFBB5
+ 834               	.LM67:
+ 835 03f2 6283      		std Z+2,r22
+GAS LISTING /tmp/ccFBjnyX.s 			page 17
+
+
+  78:oDio1.h       **** 	dir = direction;
+ 836               		.stabn	68,0,78,.LM68-.LFBB5
+ 837               	.LM68:
+ 838 03f4 4183      		std Z+1,r20
+  79:oDio1.h       **** 	if(pin < 8) {
+ 839               		.stabn	68,0,79,.LM69-.LFBB5
+ 840               	.LM69:
+ 841 03f6 6830      		cpi r22,lo8(8)
+ 842 03f8 00F4      		brsh .L72
+  80:oDio1.h       **** 		prt=0;
+ 843               		.stabn	68,0,80,.LM70-.LFBB5
+ 844               	.LM70:
+ 845 03fa 1382      		std Z+3,__zero_reg__
+  81:oDio1.h       **** 		ppn = pin;
+ 846               		.stabn	68,0,81,.LM71-.LFBB5
+ 847               	.LM71:
+ 848 03fc 6483      		std Z+4,r22
+ 849               	.L72:
+  82:oDio1.h       **** 	}
+  83:oDio1.h       **** 	if((pin > 7) && (pin < 16)) {
+ 850               		.stabn	68,0,83,.LM72-.LFBB5
+ 851               	.LM72:
+ 852 03fe 962F      		mov r25,r22
+ 853 0400 9850      		subi r25,lo8(-(-8))
+ 854 0402 9830      		cpi r25,lo8(8)
+ 855 0404 00F4      		brsh .L74
+  84:oDio1.h       **** 		prt = 1;
+ 856               		.stabn	68,0,84,.LM73-.LFBB5
+ 857               	.LM73:
+ 858 0406 81E0      		ldi r24,lo8(1)
+ 859 0408 8383      		std Z+3,r24
+  85:oDio1.h       **** 		ppn = pin - 8;
+ 860               		.stabn	68,0,85,.LM74-.LFBB5
+ 861               	.LM74:
+ 862 040a 9483      		std Z+4,r25
+ 863               	.L74:
+  86:oDio1.h       **** 	}
+  87:oDio1.h       **** 	if((pin > 15) && (pin < 24)) {
+ 864               		.stabn	68,0,87,.LM75-.LFBB5
+ 865               	.LM75:
+ 866 040c 962F      		mov r25,r22
+ 867 040e 9051      		subi r25,lo8(-(-16))
+ 868 0410 9830      		cpi r25,lo8(8)
+ 869 0412 00F4      		brsh .L76
+  88:oDio1.h       **** 		prt = 2;
+ 870               		.stabn	68,0,88,.LM76-.LFBB5
+ 871               	.LM76:
+ 872 0414 82E0      		ldi r24,lo8(2)
+ 873 0416 8383      		std Z+3,r24
+  89:oDio1.h       ****         ppn = pin - 16;
+ 874               		.stabn	68,0,89,.LM77-.LFBB5
+ 875               	.LM77:
+ 876 0418 9483      		std Z+4,r25
+ 877               	.L76:
+  90:oDio1.h       **** 	}
+  91:oDio1.h       **** 	if(pin > 23) {
+ 878               		.stabn	68,0,91,.LM78-.LFBB5
+GAS LISTING /tmp/ccFBjnyX.s 			page 18
+
+
+ 879               	.LM78:
+ 880 041a 6831      		cpi r22,lo8(24)
+ 881 041c 00F0      		brlo .L78
+  92:oDio1.h       **** 		prt = 3;
+ 882               		.stabn	68,0,92,.LM79-.LFBB5
+ 883               	.LM79:
+ 884 041e 83E0      		ldi r24,lo8(3)
+ 885 0420 8383      		std Z+3,r24
+  93:oDio1.h       **** 		ppn = pin - 24;
+ 886               		.stabn	68,0,93,.LM80-.LFBB5
+ 887               	.LM80:
+ 888 0422 6851      		subi r22,lo8(-(-24))
+ 889 0424 6483      		std Z+4,r22
+ 890               	.L78:
+  94:oDio1.h       **** 	}
+  95:oDio1.h       ****     if(dir) {
+ 891               		.stabn	68,0,95,.LM81-.LFBB5
+ 892               	.LM81:
+ 893 0426 8181      		ldd r24,Z+1
+ 894 0428 8823      		tst r24
+ 895 042a 01F4      		brne .+2
+ 896 042c 00C0      		rjmp .L100
+  96:oDio1.h       ****     	switch (prt) {
+ 897               		.stabn	68,0,96,.LM82-.LFBB5
+ 898               	.LM82:
+ 899 042e 3381      		ldd r19,Z+3
+ 900 0430 3130      		cpi r19,lo8(1)
+ 901 0432 01F0      		breq .L84
+ 902 0434 3130      		cpi r19,lo8(1)
+ 903 0436 00F0      		brlo .L83
+ 904 0438 3230      		cpi r19,lo8(2)
+ 905 043a 01F0      		breq .L85
+ 906 043c 3330      		cpi r19,lo8(3)
+ 907 043e 01F0      		breq .+2
+ 908 0440 00C0      		rjmp .L82
+ 909 0442 00C0      		rjmp .L86
+ 910               	.L83:
+  97:oDio1.h       ****       		case 0:if(!((DDRA >> ppn) & 1)) {DDRA += (1 << ppn);} break;
+ 911               		.stabn	68,0,97,.LM83-.LFBB5
+ 912               	.LM83:
+ 913 0444 81B1      		in r24,33-0x20
+ 914 0446 2481      		ldd r18,Z+4
+ 915 0448 422F      		mov r20,r18
+ 916 044a 5527      		clr r21
+ 917 044c 9927      		clr r25
+ 918 044e 042E      		mov r0,r20
+ 919 0450 00C0      		rjmp 2f
+ 920 0452 9595      	1:	asr r25
+ 921 0454 8795      		ror r24
+ 922 0456 0A94      	2:	dec r0
+ 923 0458 02F4      		brpl 1b
+ 924 045a 80FD      		sbrc r24,0
+ 925 045c 00C0      		rjmp .L82
+ 926 045e 21B1      		in r18,33-0x20
+ 927 0460 81E0      		ldi r24,lo8(1)
+ 928 0462 90E0      		ldi r25,hi8(1)
+ 929 0464 00C0      		rjmp 2f
+GAS LISTING /tmp/ccFBjnyX.s 			page 19
+
+
+ 930 0466 880F      	1:	lsl r24
+ 931 0468 991F      		rol r25
+ 932 046a 4A95      	2:	dec r20
+ 933 046c 02F4      		brpl 1b
+ 934 046e 280F      		add r18,r24
+ 935 0470 21B9      		out 33-0x20,r18
+ 936 0472 00C0      		rjmp .L88
+ 937               	.L84:
+  98:oDio1.h       ****       		case 1:if(!((DDRB >> ppn) & 1)) {DDRB += (1 << ppn);} break;
+ 938               		.stabn	68,0,98,.LM84-.LFBB5
+ 939               	.LM84:
+ 940 0474 84B1      		in r24,36-0x20
+ 941 0476 2481      		ldd r18,Z+4
+ 942 0478 422F      		mov r20,r18
+ 943 047a 5527      		clr r21
+ 944 047c 9927      		clr r25
+ 945 047e 042E      		mov r0,r20
+ 946 0480 00C0      		rjmp 2f
+ 947 0482 9595      	1:	asr r25
+ 948 0484 8795      		ror r24
+ 949 0486 0A94      	2:	dec r0
+ 950 0488 02F4      		brpl 1b
+ 951 048a 80FD      		sbrc r24,0
+ 952 048c 00C0      		rjmp .L90
+ 953 048e 24B1      		in r18,36-0x20
+ 954 0490 81E0      		ldi r24,lo8(1)
+ 955 0492 90E0      		ldi r25,hi8(1)
+ 956 0494 00C0      		rjmp 2f
+ 957 0496 880F      	1:	lsl r24
+ 958 0498 991F      		rol r25
+ 959 049a 4A95      	2:	dec r20
+ 960 049c 02F4      		brpl 1b
+ 961 049e 280F      		add r18,r24
+ 962 04a0 24B9      		out 36-0x20,r18
+ 963 04a2 00C0      		rjmp .L90
+ 964               	.L85:
+  99:oDio1.h       ****       		case 2:if(!((DDRC >> ppn) & 1)) {DDRC += (1 << ppn);} break;
+ 965               		.stabn	68,0,99,.LM85-.LFBB5
+ 966               	.LM85:
+ 967 04a4 87B1      		in r24,39-0x20
+ 968 04a6 2481      		ldd r18,Z+4
+ 969 04a8 422F      		mov r20,r18
+ 970 04aa 5527      		clr r21
+ 971 04ac 9927      		clr r25
+ 972 04ae 042E      		mov r0,r20
+ 973 04b0 00C0      		rjmp 2f
+ 974 04b2 9595      	1:	asr r25
+ 975 04b4 8795      		ror r24
+ 976 04b6 0A94      	2:	dec r0
+ 977 04b8 02F4      		brpl 1b
+ 978 04ba 80FD      		sbrc r24,0
+ 979 04bc 00C0      		rjmp .L92
+ 980 04be 27B1      		in r18,39-0x20
+ 981 04c0 81E0      		ldi r24,lo8(1)
+ 982 04c2 90E0      		ldi r25,hi8(1)
+ 983 04c4 00C0      		rjmp 2f
+ 984 04c6 880F      	1:	lsl r24
+GAS LISTING /tmp/ccFBjnyX.s 			page 20
+
+
+ 985 04c8 991F      		rol r25
+ 986 04ca 4A95      	2:	dec r20
+ 987 04cc 02F4      		brpl 1b
+ 988 04ce 280F      		add r18,r24
+ 989 04d0 27B9      		out 39-0x20,r18
+ 990 04d2 00C0      		rjmp .L92
+ 991               	.L86:
+ 100:oDio1.h       ****       		case 3:if(!((DDRD >> ppn) & 1)) {DDRD += (1 << ppn);} break;
+ 992               		.stabn	68,0,100,.LM86-.LFBB5
+ 993               	.LM86:
+ 994 04d4 8AB1      		in r24,42-0x20
+ 995 04d6 2481      		ldd r18,Z+4
+ 996 04d8 422F      		mov r20,r18
+ 997 04da 5527      		clr r21
+ 998 04dc 9927      		clr r25
+ 999 04de 042E      		mov r0,r20
+ 1000 04e0 00C0      		rjmp 2f
+ 1001 04e2 9595      	1:	asr r25
+ 1002 04e4 8795      		ror r24
+ 1003 04e6 0A94      	2:	dec r0
+ 1004 04e8 02F4      		brpl 1b
+ 1005 04ea 80FD      		sbrc r24,0
+ 1006 04ec 00C0      		rjmp .L94
+ 1007 04ee 2AB1      		in r18,42-0x20
+ 1008 04f0 81E0      		ldi r24,lo8(1)
+ 1009 04f2 90E0      		ldi r25,hi8(1)
+ 1010 04f4 00C0      		rjmp 2f
+ 1011 04f6 880F      	1:	lsl r24
+ 1012 04f8 991F      		rol r25
+ 1013 04fa 4A95      	2:	dec r20
+ 1014 04fc 02F4      		brpl 1b
+ 1015 04fe 280F      		add r18,r24
+ 1016 0500 2AB9      		out 42-0x20,r18
+ 1017 0502 00C0      		rjmp .L94
+ 1018               	.L82:
+ 101:oDio1.h       ****     	}
+ 102:oDio1.h       ****     	switch (prt) {
+ 1019               		.stabn	68,0,102,.LM87-.LFBB5
+ 1020               	.LM87:
+ 1021 0504 3130      		cpi r19,lo8(1)
+ 1022 0506 01F0      		breq .L90
+ 1023 0508 3130      		cpi r19,lo8(1)
+ 1024 050a 00F0      		brlo .L88
+ 1025 050c 3230      		cpi r19,lo8(2)
+ 1026 050e 01F0      		breq .L92
+ 1027 0510 3330      		cpi r19,lo8(3)
+ 1028 0512 01F0      		breq .+2
+ 1029 0514 00C0      		rjmp .L95
+ 1030 0516 00C0      		rjmp .L94
+ 1031               	.L88:
+ 103:oDio1.h       ****       		case 0:if((PORTA >> ppn) & 1) {PORTA -= (1 << ppn);} break;
+ 1032               		.stabn	68,0,103,.LM88-.LFBB5
+ 1033               	.LM88:
+ 1034 0518 82B1      		in r24,34-0x20
+ 1035 051a 2481      		ldd r18,Z+4
+ 1036 051c 422F      		mov r20,r18
+ 1037 051e 5527      		clr r21
+GAS LISTING /tmp/ccFBjnyX.s 			page 21
+
+
+ 1038 0520 9927      		clr r25
+ 1039 0522 042E      		mov r0,r20
+ 1040 0524 00C0      		rjmp 2f
+ 1041 0526 9595      	1:	asr r25
+ 1042 0528 8795      		ror r24
+ 1043 052a 0A94      	2:	dec r0
+ 1044 052c 02F4      		brpl 1b
+ 1045 052e 80FF      		sbrs r24,0
+ 1046 0530 00C0      		rjmp .L95
+ 1047 0532 22B1      		in r18,34-0x20
+ 1048 0534 81E0      		ldi r24,lo8(1)
+ 1049 0536 90E0      		ldi r25,hi8(1)
+ 1050 0538 00C0      		rjmp 2f
+ 1051 053a 880F      	1:	lsl r24
+ 1052 053c 991F      		rol r25
+ 1053 053e 4A95      	2:	dec r20
+ 1054 0540 02F4      		brpl 1b
+ 1055 0542 281B      		sub r18,r24
+ 1056 0544 22B9      		out 34-0x20,r18
+ 1057 0546 00C0      		rjmp .L95
+ 1058               	.L90:
+ 104:oDio1.h       ****       		case 1:if((PORTB >> ppn) & 1) {PORTB -= (1 << ppn);} break;
+ 1059               		.stabn	68,0,104,.LM89-.LFBB5
+ 1060               	.LM89:
+ 1061 0548 85B1      		in r24,37-0x20
+ 1062 054a 2481      		ldd r18,Z+4
+ 1063 054c 422F      		mov r20,r18
+ 1064 054e 5527      		clr r21
+ 1065 0550 9927      		clr r25
+ 1066 0552 042E      		mov r0,r20
+ 1067 0554 00C0      		rjmp 2f
+ 1068 0556 9595      	1:	asr r25
+ 1069 0558 8795      		ror r24
+ 1070 055a 0A94      	2:	dec r0
+ 1071 055c 02F4      		brpl 1b
+ 1072 055e 80FF      		sbrs r24,0
+ 1073 0560 00C0      		rjmp .L95
+ 1074 0562 25B1      		in r18,37-0x20
+ 1075 0564 81E0      		ldi r24,lo8(1)
+ 1076 0566 90E0      		ldi r25,hi8(1)
+ 1077 0568 00C0      		rjmp 2f
+ 1078 056a 880F      	1:	lsl r24
+ 1079 056c 991F      		rol r25
+ 1080 056e 4A95      	2:	dec r20
+ 1081 0570 02F4      		brpl 1b
+ 1082 0572 281B      		sub r18,r24
+ 1083 0574 25B9      		out 37-0x20,r18
+ 1084 0576 00C0      		rjmp .L95
+ 1085               	.L92:
+ 105:oDio1.h       ****       		case 2:if((PORTC >> ppn) & 1) {PORTC -= (1 << ppn);} break;
+ 1086               		.stabn	68,0,105,.LM90-.LFBB5
+ 1087               	.LM90:
+ 1088 0578 88B1      		in r24,40-0x20
+ 1089 057a 2481      		ldd r18,Z+4
+ 1090 057c 422F      		mov r20,r18
+ 1091 057e 5527      		clr r21
+ 1092 0580 9927      		clr r25
+GAS LISTING /tmp/ccFBjnyX.s 			page 22
+
+
+ 1093 0582 042E      		mov r0,r20
+ 1094 0584 00C0      		rjmp 2f
+ 1095 0586 9595      	1:	asr r25
+ 1096 0588 8795      		ror r24
+ 1097 058a 0A94      	2:	dec r0
+ 1098 058c 02F4      		brpl 1b
+ 1099 058e 80FF      		sbrs r24,0
+ 1100 0590 00C0      		rjmp .L95
+ 1101 0592 28B1      		in r18,40-0x20
+ 1102 0594 81E0      		ldi r24,lo8(1)
+ 1103 0596 90E0      		ldi r25,hi8(1)
+ 1104 0598 00C0      		rjmp 2f
+ 1105 059a 880F      	1:	lsl r24
+ 1106 059c 991F      		rol r25
+ 1107 059e 4A95      	2:	dec r20
+ 1108 05a0 02F4      		brpl 1b
+ 1109 05a2 281B      		sub r18,r24
+ 1110 05a4 28B9      		out 40-0x20,r18
+ 1111 05a6 00C0      		rjmp .L95
+ 1112               	.L94:
+ 106:oDio1.h       ****       		case 3:if((PORTD >> ppn) & 1) {PORTD -= (1 << ppn);} break;
+ 1113               		.stabn	68,0,106,.LM91-.LFBB5
+ 1114               	.LM91:
+ 1115 05a8 8BB1      		in r24,43-0x20
+ 1116 05aa 2481      		ldd r18,Z+4
+ 1117 05ac 422F      		mov r20,r18
+ 1118 05ae 5527      		clr r21
+ 1119 05b0 9927      		clr r25
+ 1120 05b2 042E      		mov r0,r20
+ 1121 05b4 00C0      		rjmp 2f
+ 1122 05b6 9595      	1:	asr r25
+ 1123 05b8 8795      		ror r24
+ 1124 05ba 0A94      	2:	dec r0
+ 1125 05bc 02F4      		brpl 1b
+ 1126 05be 80FF      		sbrs r24,0
+ 1127 05c0 00C0      		rjmp .L95
+ 1128 05c2 2BB1      		in r18,43-0x20
+ 1129 05c4 81E0      		ldi r24,lo8(1)
+ 1130 05c6 90E0      		ldi r25,hi8(1)
+ 1131 05c8 00C0      		rjmp 2f
+ 1132 05ca 880F      	1:	lsl r24
+ 1133 05cc 991F      		rol r25
+ 1134 05ce 4A95      	2:	dec r20
+ 1135 05d0 02F4      		brpl 1b
+ 1136 05d2 281B      		sub r18,r24
+ 1137 05d4 2BB9      		out 43-0x20,r18
+ 1138               	.L95:
+ 107:oDio1.h       ****     	}
+ 108:oDio1.h       ****     	state = 0;
+ 1139               		.stabn	68,0,108,.LM92-.LFBB5
+ 1140               	.LM92:
+ 1141 05d6 1082      		st Z,__zero_reg__
+ 1142               	.L100:
+ 1143 05d8 0895      		ret
+ 1144               	/* epilogue: frame size=0 */
+ 1145               	/* epilogue: noreturn */
+ 1146               	/* epilogue end (size=0) */
+GAS LISTING /tmp/ccFBjnyX.s 			page 23
+
+
+ 1147               	/* function void oDio1::setPD(uint8_t, uint8_t) size 253 (253) */
+ 1148               		.size	_ZN5oDio15setPDEhh, .-_ZN5oDio15setPDEhh
+ 1149               	.Lscope5:
+ 1150               		.stabs	"",36,0,0,.Lscope5-.LFBB5
+ 1151               		.stabd	78,0,0
+ 1152               		.stabs	"_ZN5oDio13setEh:F(0,2)",36,0,112,_ZN5oDio13setEh
+ 1153               		.stabs	"this:P(0,65)",64,0,112,30
+ 1154               		.stabs	"ste:P(0,26)",64,0,112,22
+ 1155               	.global	_ZN5oDio13setEh
+ 1156               		.type	_ZN5oDio13setEh, @function
+ 1157               	_ZN5oDio13setEh:
+ 1158               		.stabd	46,0,0
+ 109:oDio1.h       ****     }	
+ 110:oDio1.h       **** }
+ 111:oDio1.h       **** 
+ 112:oDio1.h       **** void oDio1::set (uint8_t ste) {
+ 1159               		.stabn	68,0,112,.LM93-.LFBB6
+ 1160               	.LM93:
+ 1161               	.LFBB6:
+ 1162               	/* prologue: frame size=0 */
+ 1163               	/* prologue end (size=0) */
+ 1164 05da FC01      		movw r30,r24
+ 113:oDio1.h       **** 	if (dir) {
+ 1165               		.stabn	68,0,113,.LM94-.LFBB6
+ 1166               	.LM94:
+ 1167 05dc 8181      		ldd r24,Z+1
+ 1168 05de 8823      		tst r24
+ 1169 05e0 01F4      		brne .+2
+ 1170 05e2 00C0      		rjmp .L125
+ 114:oDio1.h       **** 		state = ste;
+ 1171               		.stabn	68,0,114,.LM95-.LFBB6
+ 1172               	.LM95:
+ 1173 05e4 6083      		st Z,r22
+ 1174 05e6 8381      		ldd r24,Z+3
+ 115:oDio1.h       **** 		if(!(ste)) {
+ 1175               		.stabn	68,0,115,.LM96-.LFBB6
+ 1176               	.LM96:
+ 1177 05e8 6623      		tst r22
+ 1178 05ea 01F0      		breq .+2
+ 1179 05ec 00C0      		rjmp .L107
+ 116:oDio1.h       ****             switch (prt)
+ 1180               		.stabn	68,0,116,.LM97-.LFBB6
+ 1181               	.LM97:
+ 1182 05ee 8130      		cpi r24,lo8(1)
+ 1183 05f0 01F0      		breq .L110
+ 1184 05f2 8130      		cpi r24,lo8(1)
+ 1185 05f4 00F0      		brlo .L109
+ 1186 05f6 8230      		cpi r24,lo8(2)
+ 1187 05f8 01F0      		breq .L111
+ 1188 05fa 8330      		cpi r24,lo8(3)
+ 1189 05fc 01F0      		breq .+2
+ 1190 05fe 00C0      		rjmp .L125
+ 1191 0600 00C0      		rjmp .L112
+ 1192               	.L109:
+ 117:oDio1.h       ****             {
+ 118:oDio1.h       ****       		    case 0:if((PORTA >> ppn) & 1) {PORTA -= (1 << ppn);} break;
+ 1193               		.stabn	68,0,118,.LM98-.LFBB6
+GAS LISTING /tmp/ccFBjnyX.s 			page 24
+
+
+ 1194               	.LM98:
+ 1195 0602 82B1      		in r24,34-0x20
+ 1196 0604 2481      		ldd r18,Z+4
+ 1197 0606 422F      		mov r20,r18
+ 1198 0608 5527      		clr r21
+ 1199 060a 9927      		clr r25
+ 1200 060c 042E      		mov r0,r20
+ 1201 060e 00C0      		rjmp 2f
+ 1202 0610 9595      	1:	asr r25
+ 1203 0612 8795      		ror r24
+ 1204 0614 0A94      	2:	dec r0
+ 1205 0616 02F4      		brpl 1b
+ 1206 0618 80FF      		sbrs r24,0
+ 1207 061a 00C0      		rjmp .L125
+ 1208 061c 22B1      		in r18,34-0x20
+ 1209 061e 81E0      		ldi r24,lo8(1)
+ 1210 0620 90E0      		ldi r25,hi8(1)
+ 1211 0622 00C0      		rjmp 2f
+ 1212 0624 880F      	1:	lsl r24
+ 1213 0626 991F      		rol r25
+ 1214 0628 4A95      	2:	dec r20
+ 1215 062a 02F4      		brpl 1b
+ 1216 062c 281B      		sub r18,r24
+ 1217 062e 00C0      		rjmp .L126
+ 1218               	.L110:
+ 119:oDio1.h       ****       		    case 1:if((PORTB >> ppn) & 1) {PORTB -= (1 << ppn);} break;
+ 1219               		.stabn	68,0,119,.LM99-.LFBB6
+ 1220               	.LM99:
+ 1221 0630 85B1      		in r24,37-0x20
+ 1222 0632 2481      		ldd r18,Z+4
+ 1223 0634 422F      		mov r20,r18
+ 1224 0636 5527      		clr r21
+ 1225 0638 9927      		clr r25
+ 1226 063a 042E      		mov r0,r20
+ 1227 063c 00C0      		rjmp 2f
+ 1228 063e 9595      	1:	asr r25
+ 1229 0640 8795      		ror r24
+ 1230 0642 0A94      	2:	dec r0
+ 1231 0644 02F4      		brpl 1b
+ 1232 0646 80FF      		sbrs r24,0
+ 1233 0648 00C0      		rjmp .L125
+ 1234 064a 25B1      		in r18,37-0x20
+ 1235 064c 81E0      		ldi r24,lo8(1)
+ 1236 064e 90E0      		ldi r25,hi8(1)
+ 1237 0650 00C0      		rjmp 2f
+ 1238 0652 880F      	1:	lsl r24
+ 1239 0654 991F      		rol r25
+ 1240 0656 4A95      	2:	dec r20
+ 1241 0658 02F4      		brpl 1b
+ 1242 065a 281B      		sub r18,r24
+ 1243 065c 00C0      		rjmp .L127
+ 1244               	.L111:
+ 120:oDio1.h       ****       		    case 2:if((PORTC >> ppn) & 1) {PORTC -= (1 << ppn);} break;
+ 1245               		.stabn	68,0,120,.LM100-.LFBB6
+ 1246               	.LM100:
+ 1247 065e 88B1      		in r24,40-0x20
+ 1248 0660 2481      		ldd r18,Z+4
+GAS LISTING /tmp/ccFBjnyX.s 			page 25
+
+
+ 1249 0662 422F      		mov r20,r18
+ 1250 0664 5527      		clr r21
+ 1251 0666 9927      		clr r25
+ 1252 0668 042E      		mov r0,r20
+ 1253 066a 00C0      		rjmp 2f
+ 1254 066c 9595      	1:	asr r25
+ 1255 066e 8795      		ror r24
+ 1256 0670 0A94      	2:	dec r0
+ 1257 0672 02F4      		brpl 1b
+ 1258 0674 80FF      		sbrs r24,0
+ 1259 0676 00C0      		rjmp .L125
+ 1260 0678 28B1      		in r18,40-0x20
+ 1261 067a 81E0      		ldi r24,lo8(1)
+ 1262 067c 90E0      		ldi r25,hi8(1)
+ 1263 067e 00C0      		rjmp 2f
+ 1264 0680 880F      	1:	lsl r24
+ 1265 0682 991F      		rol r25
+ 1266 0684 4A95      	2:	dec r20
+ 1267 0686 02F4      		brpl 1b
+ 1268 0688 281B      		sub r18,r24
+ 1269 068a 00C0      		rjmp .L128
+ 1270               	.L112:
+ 121:oDio1.h       ****       		    case 3:if((PORTD >> ppn) & 1) {PORTD -= (1 << ppn);} break;         
+ 1271               		.stabn	68,0,121,.LM101-.LFBB6
+ 1272               	.LM101:
+ 1273 068c 8BB1      		in r24,43-0x20
+ 1274 068e 2481      		ldd r18,Z+4
+ 1275 0690 422F      		mov r20,r18
+ 1276 0692 5527      		clr r21
+ 1277 0694 9927      		clr r25
+ 1278 0696 042E      		mov r0,r20
+ 1279 0698 00C0      		rjmp 2f
+ 1280 069a 9595      	1:	asr r25
+ 1281 069c 8795      		ror r24
+ 1282 069e 0A94      	2:	dec r0
+ 1283 06a0 02F4      		brpl 1b
+ 1284 06a2 80FF      		sbrs r24,0
+ 1285 06a4 00C0      		rjmp .L125
+ 1286 06a6 2BB1      		in r18,43-0x20
+ 1287 06a8 81E0      		ldi r24,lo8(1)
+ 1288 06aa 90E0      		ldi r25,hi8(1)
+ 1289 06ac 00C0      		rjmp 2f
+ 1290 06ae 880F      	1:	lsl r24
+ 1291 06b0 991F      		rol r25
+ 1292 06b2 4A95      	2:	dec r20
+ 1293 06b4 02F4      		brpl 1b
+ 1294 06b6 281B      		sub r18,r24
+ 1295 06b8 2BB9      		out 43-0x20,r18
+ 1296 06ba 0895      		ret
+ 1297               	.L107:
+ 122:oDio1.h       ****             }
+ 123:oDio1.h       **** 		}
+ 124:oDio1.h       **** 		if(ste) {
+ 125:oDio1.h       ****             switch (prt)
+ 1298               		.stabn	68,0,125,.LM102-.LFBB6
+ 1299               	.LM102:
+ 1300 06bc 8130      		cpi r24,lo8(1)
+GAS LISTING /tmp/ccFBjnyX.s 			page 26
+
+
+ 1301 06be 01F0      		breq .L118
+ 1302 06c0 8130      		cpi r24,lo8(1)
+ 1303 06c2 00F0      		brlo .L117
+ 1304 06c4 8230      		cpi r24,lo8(2)
+ 1305 06c6 01F0      		breq .L119
+ 1306 06c8 8330      		cpi r24,lo8(3)
+ 1307 06ca 01F0      		breq .+2
+ 1308 06cc 00C0      		rjmp .L125
+ 1309 06ce 00C0      		rjmp .L120
+ 1310               	.L117:
+ 126:oDio1.h       ****             {
+ 127:oDio1.h       ****       		    case 0:if(!((PORTA >> ppn) & 1)) {PORTA += (1 << ppn);} break;
+ 1311               		.stabn	68,0,127,.LM103-.LFBB6
+ 1312               	.LM103:
+ 1313 06d0 82B1      		in r24,34-0x20
+ 1314 06d2 2481      		ldd r18,Z+4
+ 1315 06d4 422F      		mov r20,r18
+ 1316 06d6 5527      		clr r21
+ 1317 06d8 9927      		clr r25
+ 1318 06da 042E      		mov r0,r20
+ 1319 06dc 00C0      		rjmp 2f
+ 1320 06de 9595      	1:	asr r25
+ 1321 06e0 8795      		ror r24
+ 1322 06e2 0A94      	2:	dec r0
+ 1323 06e4 02F4      		brpl 1b
+ 1324 06e6 80FD      		sbrc r24,0
+ 1325 06e8 00C0      		rjmp .L125
+ 1326 06ea 22B1      		in r18,34-0x20
+ 1327 06ec 81E0      		ldi r24,lo8(1)
+ 1328 06ee 90E0      		ldi r25,hi8(1)
+ 1329 06f0 00C0      		rjmp 2f
+ 1330 06f2 880F      	1:	lsl r24
+ 1331 06f4 991F      		rol r25
+ 1332 06f6 4A95      	2:	dec r20
+ 1333 06f8 02F4      		brpl 1b
+ 1334 06fa 280F      		add r18,r24
+ 1335               	.L126:
+ 1336 06fc 22B9      		out 34-0x20,r18
+ 1337 06fe 0895      		ret
+ 1338               	.L118:
+ 128:oDio1.h       ****       		    case 1:if(!((PORTB >> ppn) & 1)) {PORTB += (1 << ppn);} break;
+ 1339               		.stabn	68,0,128,.LM104-.LFBB6
+ 1340               	.LM104:
+ 1341 0700 85B1      		in r24,37-0x20
+ 1342 0702 2481      		ldd r18,Z+4
+ 1343 0704 422F      		mov r20,r18
+ 1344 0706 5527      		clr r21
+ 1345 0708 9927      		clr r25
+ 1346 070a 042E      		mov r0,r20
+ 1347 070c 00C0      		rjmp 2f
+ 1348 070e 9595      	1:	asr r25
+ 1349 0710 8795      		ror r24
+ 1350 0712 0A94      	2:	dec r0
+ 1351 0714 02F4      		brpl 1b
+ 1352 0716 80FD      		sbrc r24,0
+ 1353 0718 00C0      		rjmp .L125
+ 1354 071a 25B1      		in r18,37-0x20
+GAS LISTING /tmp/ccFBjnyX.s 			page 27
+
+
+ 1355 071c 81E0      		ldi r24,lo8(1)
+ 1356 071e 90E0      		ldi r25,hi8(1)
+ 1357 0720 00C0      		rjmp 2f
+ 1358 0722 880F      	1:	lsl r24
+ 1359 0724 991F      		rol r25
+ 1360 0726 4A95      	2:	dec r20
+ 1361 0728 02F4      		brpl 1b
+ 1362 072a 280F      		add r18,r24
+ 1363               	.L127:
+ 1364 072c 25B9      		out 37-0x20,r18
+ 1365 072e 0895      		ret
+ 1366               	.L119:
+ 129:oDio1.h       ****       		    case 2:if(!((PORTC >> ppn) & 1)) {PORTC += (1 << ppn);} break;
+ 1367               		.stabn	68,0,129,.LM105-.LFBB6
+ 1368               	.LM105:
+ 1369 0730 88B1      		in r24,40-0x20
+ 1370 0732 2481      		ldd r18,Z+4
+ 1371 0734 422F      		mov r20,r18
+ 1372 0736 5527      		clr r21
+ 1373 0738 9927      		clr r25
+ 1374 073a 042E      		mov r0,r20
+ 1375 073c 00C0      		rjmp 2f
+ 1376 073e 9595      	1:	asr r25
+ 1377 0740 8795      		ror r24
+ 1378 0742 0A94      	2:	dec r0
+ 1379 0744 02F4      		brpl 1b
+ 1380 0746 80FD      		sbrc r24,0
+ 1381 0748 00C0      		rjmp .L125
+ 1382 074a 28B1      		in r18,40-0x20
+ 1383 074c 81E0      		ldi r24,lo8(1)
+ 1384 074e 90E0      		ldi r25,hi8(1)
+ 1385 0750 00C0      		rjmp 2f
+ 1386 0752 880F      	1:	lsl r24
+ 1387 0754 991F      		rol r25
+ 1388 0756 4A95      	2:	dec r20
+ 1389 0758 02F4      		brpl 1b
+ 1390 075a 280F      		add r18,r24
+ 1391               	.L128:
+ 1392 075c 28B9      		out 40-0x20,r18
+ 1393 075e 0895      		ret
+ 1394               	.L120:
+ 130:oDio1.h       ****       		    case 3:if(!((PORTD >> ppn) & 1)) {PORTD += (1 << ppn);} break;         
+ 1395               		.stabn	68,0,130,.LM106-.LFBB6
+ 1396               	.LM106:
+ 1397 0760 8BB1      		in r24,43-0x20
+ 1398 0762 2481      		ldd r18,Z+4
+ 1399 0764 422F      		mov r20,r18
+ 1400 0766 5527      		clr r21
+ 1401 0768 9927      		clr r25
+ 1402 076a 042E      		mov r0,r20
+ 1403 076c 00C0      		rjmp 2f
+ 1404 076e 9595      	1:	asr r25
+ 1405 0770 8795      		ror r24
+ 1406 0772 0A94      	2:	dec r0
+ 1407 0774 02F4      		brpl 1b
+ 1408 0776 80FD      		sbrc r24,0
+ 1409 0778 00C0      		rjmp .L125
+GAS LISTING /tmp/ccFBjnyX.s 			page 28
+
+
+ 1410 077a 2BB1      		in r18,43-0x20
+ 1411 077c 81E0      		ldi r24,lo8(1)
+ 1412 077e 90E0      		ldi r25,hi8(1)
+ 1413 0780 00C0      		rjmp 2f
+ 1414 0782 880F      	1:	lsl r24
+ 1415 0784 991F      		rol r25
+ 1416 0786 4A95      	2:	dec r20
+ 1417 0788 02F4      		brpl 1b
+ 1418 078a 280F      		add r18,r24
+ 1419 078c 2BB9      		out 43-0x20,r18
+ 1420               	.L125:
+ 1421 078e 0895      		ret
+ 1422               	/* epilogue: frame size=0 */
+ 1423               	/* epilogue: noreturn */
+ 1424               	/* epilogue end (size=0) */
+ 1425               	/* function void oDio1::set(uint8_t) size 227 (227) */
+ 1426               		.size	_ZN5oDio13setEh, .-_ZN5oDio13setEh
+ 1427               	.Lscope6:
+ 1428               		.stabs	"",36,0,0,.Lscope6-.LFBB6
+ 1429               		.stabd	78,0,0
+ 1430               		.stabs	"_ZN5oDio13getEv:F(0,26)",36,0,136,_ZN5oDio13getEv
+ 1431               		.stabs	"this:P(0,65)",64,0,136,30
+ 1432               	.global	_ZN5oDio13getEv
+ 1433               		.type	_ZN5oDio13getEv, @function
+ 1434               	_ZN5oDio13getEv:
+ 1435               		.stabd	46,0,0
+ 131:oDio1.h       ****             }
+ 132:oDio1.h       **** 		}
+ 133:oDio1.h       **** 	}
+ 134:oDio1.h       **** }
+ 135:oDio1.h       **** 
+ 136:oDio1.h       **** uint8_t oDio1::get () {
+ 1436               		.stabn	68,0,136,.LM107-.LFBB7
+ 1437               	.LM107:
+ 1438               	.LFBB7:
+ 1439               	/* prologue: frame size=0 */
+ 1440               	/* prologue end (size=0) */
+ 1441 0790 FC01      		movw r30,r24
+ 137:oDio1.h       **** 	switch (prt)
+ 1442               		.stabn	68,0,137,.LM108-.LFBB7
+ 1443               	.LM108:
+ 1444 0792 8381      		ldd r24,Z+3
+ 1445 0794 8130      		cpi r24,lo8(1)
+ 1446 0796 01F0      		breq .L132
+ 1447               		.stabn	68,0,137,.LM109-.LFBB7
+ 1448               	.LM109:
+ 1449 0798 8130      		cpi r24,lo8(1)
+ 1450 079a 00F0      		brlo .L131
+ 1451 079c 8230      		cpi r24,lo8(2)
+ 1452 079e 01F0      		breq .L133
+ 1453 07a0 8330      		cpi r24,lo8(3)
+ 1454 07a2 01F4      		brne .L137
+ 1455 07a4 00C0      		rjmp .L134
+ 1456               	.L131:
+ 138:oDio1.h       **** 	{
+ 139:oDio1.h       **** 		case 0 : return ((PINA >> ppn) & 1); break;
+ 1457               		.stabn	68,0,139,.LM110-.LFBB7
+GAS LISTING /tmp/ccFBjnyX.s 			page 29
+
+
+ 1458               	.LM110:
+ 1459 07a6 80B1      		in r24,32-0x20
+ 1460 07a8 00C0      		rjmp .L138
+ 1461               	.L132:
+ 140:oDio1.h       **** 		case 1 : return ((PINB >> ppn) & 1); break;
+ 1462               		.stabn	68,0,140,.LM111-.LFBB7
+ 1463               	.LM111:
+ 1464 07aa 83B1      		in r24,35-0x20
+ 1465 07ac 00C0      		rjmp .L138
+ 1466               	.L133:
+ 141:oDio1.h       **** 		case 2 : return ((PINC >> ppn) & 1); break;
+ 1467               		.stabn	68,0,141,.LM112-.LFBB7
+ 1468               	.LM112:
+ 1469 07ae 86B1      		in r24,38-0x20
+ 1470 07b0 00C0      		rjmp .L138
+ 1471               	.L134:
+ 142:oDio1.h       **** 		case 3 : return ((PIND >> ppn) & 1); break;
+ 1472               		.stabn	68,0,142,.LM113-.LFBB7
+ 1473               	.LM113:
+ 1474 07b2 89B1      		in r24,41-0x20
+ 1475               	.L138:
+ 1476 07b4 9927      		clr r25
+ 1477 07b6 0480      		ldd r0,Z+4
+ 1478 07b8 00C0      		rjmp 2f
+ 1479 07ba 9595      	1:	asr r25
+ 1480 07bc 8795      		ror r24
+ 1481 07be 0A94      	2:	dec r0
+ 1482 07c0 02F4      		brpl 1b
+ 1483 07c2 9927      		clr r25
+ 1484 07c4 8170      		andi r24,lo8(1)
+ 1485 07c6 9070      		andi r25,hi8(1)
+ 1486 07c8 0895      		ret
+ 1487               	.L137:
+ 143:oDio1.h       **** 	}
+ 144:oDio1.h       **** }
+ 1488               		.stabn	68,0,144,.LM114-.LFBB7
+ 1489               	.LM114:
+ 1490 07ca 0895      		ret
+ 1491               	/* epilogue: frame size=0 */
+ 1492               	/* epilogue: noreturn */
+ 1493               	/* epilogue end (size=0) */
+ 1494               	/* function uint8_t oDio1::get() size 30 (30) */
+ 1495               		.size	_ZN5oDio13getEv, .-_ZN5oDio13getEv
+ 1496               	.Lscope7:
+ 1497               		.stabs	"",36,0,0,.Lscope7-.LFBB7
+ 1498               		.stabd	78,0,0
+ 1499               		.stabs	"_ZN5oLED2C2Ev:F(0,2)",36,0,18,_ZN5oLED2C2Ev
+ 1500               		.stabs	"this:P(0,66)=k(0,63)",64,0,18,16
+ 1501               	.global	_ZN5oLED2C2Ev
+ 1502               		.type	_ZN5oLED2C2Ev, @function
+ 1503               	_ZN5oLED2C2Ev:
+ 1504               		.stabd	46,0,0
+ 1505               		.stabs	"oLED2.h",132,0,0,.Ltext2
+ 1506               	.Ltext2:
+   1:oLED2.h       **** #include "oDio1.h"
+   2:oLED2.h       **** #include <stdint.h>
+   3:oLED2.h       **** 
+GAS LISTING /tmp/ccFBjnyX.s 			page 30
+
+
+   4:oLED2.h       **** class oLED2 {
+   5:oLED2.h       **** 	uint8_t state;
+   6:oLED2.h       **** 	uint8_t IOLine1, IOLine2;
+   7:oLED2.h       **** 	oDio1 line1, line2;
+   8:oLED2.h       **** public:
+   9:oLED2.h       ****     oLED2();
+  10:oLED2.h       ****     oLED2(uint8_t cath1, uint8_t cath2);
+  11:oLED2.h       ****     void setIOLS(uint8_t cath1, uint8_t cath2);
+  12:oLED2.h       ****     void off();   //shuts it off
+  13:oLED2.h       ****     void on();    //turns both sides on
+  14:oLED2.h       ****     void on1();   //turns side 1 on
+  15:oLED2.h       ****     void on2();   //turns side 2 on
+  16:oLED2.h       **** };
+  17:oLED2.h       **** 
+  18:oLED2.h       **** oLED2::oLED2() {
+ 1507               		.stabn	68,0,18,.LM115-.LFBB8
+ 1508               	.LM115:
+ 1509               	.LFBB8:
+ 1510               	/* prologue: frame size=0 */
+ 1511 07cc 0F93      		push r16
+ 1512 07ce 1F93      		push r17
+ 1513               	/* prologue end (size=2) */
+ 1514 07d0 8C01      		movw r16,r24
+ 1515               	.LBB11:
+ 1516 07d2 0396      		adiw r24,3
+ 1517 07d4 0E94 0000 		call _ZN5oDio1C1Ev
+ 1518 07d8 C801      		movw r24,r16
+ 1519 07da 0896      		adiw r24,8
+ 1520 07dc 0E94 0000 		call _ZN5oDio1C1Ev
+  19:oLED2.h       **** 	IOLine1 = IOLine2 = state = 0;
+ 1521               		.stabn	68,0,19,.LM116-.LFBB8
+ 1522               	.LM116:
+ 1523 07e0 F801      		movw r30,r16
+ 1524 07e2 1082      		st Z,__zero_reg__
+ 1525 07e4 1282      		std Z+2,__zero_reg__
+ 1526 07e6 1182      		std Z+1,__zero_reg__
+ 1527               	.LBE11:
+ 1528               	/* epilogue: frame size=0 */
+ 1529 07e8 1F91      		pop r17
+ 1530 07ea 0F91      		pop r16
+ 1531 07ec 0895      		ret
+ 1532               	/* epilogue end (size=3) */
+ 1533               	/* function oLED2::oLED2() size 17 (12) */
+ 1534               		.size	_ZN5oLED2C2Ev, .-_ZN5oLED2C2Ev
+ 1535               	.Lscope8:
+ 1536               		.stabs	"",36,0,0,.Lscope8-.LFBB8
+ 1537               		.stabd	78,0,0
+ 1538               		.stabs	"_ZN5oLED2C1Ev:F(0,2)",36,0,18,_ZN5oLED2C1Ev
+ 1539               		.stabs	"this:P(0,66)",64,0,18,16
+ 1540               	.global	_ZN5oLED2C1Ev
+ 1541               		.type	_ZN5oLED2C1Ev, @function
+ 1542               	_ZN5oLED2C1Ev:
+ 1543               		.stabd	46,0,0
+ 1544               		.stabn	68,0,18,.LM117-.LFBB9
+ 1545               	.LM117:
+ 1546               	.LFBB9:
+ 1547               	/* prologue: frame size=0 */
+GAS LISTING /tmp/ccFBjnyX.s 			page 31
+
+
+ 1548 07ee 0F93      		push r16
+ 1549 07f0 1F93      		push r17
+ 1550               	/* prologue end (size=2) */
+ 1551 07f2 8C01      		movw r16,r24
+ 1552               	.LBB12:
+ 1553 07f4 0396      		adiw r24,3
+ 1554 07f6 0E94 0000 		call _ZN5oDio1C1Ev
+ 1555 07fa C801      		movw r24,r16
+ 1556 07fc 0896      		adiw r24,8
+ 1557 07fe 0E94 0000 		call _ZN5oDio1C1Ev
+ 1558               		.stabn	68,0,19,.LM118-.LFBB9
+ 1559               	.LM118:
+ 1560 0802 F801      		movw r30,r16
+ 1561 0804 1082      		st Z,__zero_reg__
+ 1562 0806 1282      		std Z+2,__zero_reg__
+ 1563 0808 1182      		std Z+1,__zero_reg__
+ 1564               	.LBE12:
+ 1565               	/* epilogue: frame size=0 */
+ 1566 080a 1F91      		pop r17
+ 1567 080c 0F91      		pop r16
+ 1568 080e 0895      		ret
+ 1569               	/* epilogue end (size=3) */
+ 1570               	/* function oLED2::oLED2() size 17 (12) */
+ 1571               		.size	_ZN5oLED2C1Ev, .-_ZN5oLED2C1Ev
+ 1572               	.Lscope9:
+ 1573               		.stabs	"",36,0,0,.Lscope9-.LFBB9
+ 1574               		.stabd	78,0,0
+ 1575               		.stabs	"_ZN5oLED2C2Ehh:F(0,2)",36,0,22,_ZN5oLED2C2Ehh
+ 1576               		.stabs	"this:P(0,66)",64,0,22,16
+ 1577               		.stabs	"cath1:P(0,26)",64,0,22,11
+ 1578               		.stabs	"cath2:P(0,26)",64,0,22,10
+ 1579               	.global	_ZN5oLED2C2Ehh
+ 1580               		.type	_ZN5oLED2C2Ehh, @function
+ 1581               	_ZN5oLED2C2Ehh:
+ 1582               		.stabd	46,0,0
+  20:oLED2.h       **** }
+  21:oLED2.h       **** 
+  22:oLED2.h       **** oLED2::oLED2(uint8_t cath1, uint8_t cath2) {
+ 1583               		.stabn	68,0,22,.LM119-.LFBB10
+ 1584               	.LM119:
+ 1585               	.LFBB10:
+ 1586               	/* prologue: frame size=0 */
+ 1587 0810 AF92      		push r10
+ 1588 0812 BF92      		push r11
+ 1589 0814 CF92      		push r12
+ 1590 0816 DF92      		push r13
+ 1591 0818 EF92      		push r14
+ 1592 081a FF92      		push r15
+ 1593 081c 0F93      		push r16
+ 1594 081e 1F93      		push r17
+ 1595               	/* prologue end (size=8) */
+ 1596 0820 8C01      		movw r16,r24
+ 1597 0822 B62E      		mov r11,r22
+ 1598 0824 A42E      		mov r10,r20
+ 1599               	.LBB13:
+ 1600 0826 93E0      		ldi r25,lo8(3)
+ 1601 0828 E92E      		mov r14,r25
+GAS LISTING /tmp/ccFBjnyX.s 			page 32
+
+
+ 1602 082a F12C      		mov r15,__zero_reg__
+ 1603 082c E00E      		add r14,r16
+ 1604 082e F11E      		adc r15,r17
+ 1605 0830 C701      		movw r24,r14
+ 1606 0832 0E94 0000 		call _ZN5oDio1C1Ev
+ 1607 0836 88E0      		ldi r24,lo8(8)
+ 1608 0838 C82E      		mov r12,r24
+ 1609 083a D12C      		mov r13,__zero_reg__
+ 1610 083c C00E      		add r12,r16
+ 1611 083e D11E      		adc r13,r17
+ 1612 0840 C601      		movw r24,r12
+ 1613 0842 0E94 0000 		call _ZN5oDio1C1Ev
+  23:oLED2.h       **** 	IOLine1 = cath1;
+ 1614               		.stabn	68,0,23,.LM120-.LFBB10
+ 1615               	.LM120:
+ 1616 0846 F801      		movw r30,r16
+ 1617 0848 B182      		std Z+1,r11
+  24:oLED2.h       **** 	IOLine2 = cath2;
+ 1618               		.stabn	68,0,24,.LM121-.LFBB10
+ 1619               	.LM121:
+ 1620 084a A282      		std Z+2,r10
+  25:oLED2.h       **** 	state = 0;
+ 1621               		.stabn	68,0,25,.LM122-.LFBB10
+ 1622               	.LM122:
+ 1623 084c 1082      		st Z,__zero_reg__
+  26:oLED2.h       **** 	line1.setPD(IOLine1, 1);
+ 1624               		.stabn	68,0,26,.LM123-.LFBB10
+ 1625               	.LM123:
+ 1626 084e 41E0      		ldi r20,lo8(1)
+ 1627 0850 6B2D      		mov r22,r11
+ 1628 0852 C701      		movw r24,r14
+ 1629 0854 0E94 0000 		call _ZN5oDio15setPDEhh
+  27:oLED2.h       **** 	line2.setPD(IOLine2, 1);
+ 1630               		.stabn	68,0,27,.LM124-.LFBB10
+ 1631               	.LM124:
+ 1632 0858 41E0      		ldi r20,lo8(1)
+ 1633 085a F801      		movw r30,r16
+ 1634 085c 6281      		ldd r22,Z+2
+ 1635 085e C601      		movw r24,r12
+ 1636 0860 0E94 0000 		call _ZN5oDio15setPDEhh
+ 1637               	.LBE13:
+ 1638               	/* epilogue: frame size=0 */
+ 1639 0864 1F91      		pop r17
+ 1640 0866 0F91      		pop r16
+ 1641 0868 FF90      		pop r15
+ 1642 086a EF90      		pop r14
+ 1643 086c DF90      		pop r13
+ 1644 086e CF90      		pop r12
+ 1645 0870 BF90      		pop r11
+ 1646 0872 AF90      		pop r10
+ 1647 0874 0895      		ret
+ 1648               	/* epilogue end (size=9) */
+ 1649               	/* function oLED2::oLED2(uint8_t, uint8_t) size 51 (34) */
+ 1650               		.size	_ZN5oLED2C2Ehh, .-_ZN5oLED2C2Ehh
+ 1651               	.Lscope10:
+ 1652               		.stabs	"",36,0,0,.Lscope10-.LFBB10
+ 1653               		.stabd	78,0,0
+GAS LISTING /tmp/ccFBjnyX.s 			page 33
+
+
+ 1654               		.stabs	"_ZN5oLED2C1Ehh:F(0,2)",36,0,22,_ZN5oLED2C1Ehh
+ 1655               		.stabs	"this:P(0,66)",64,0,22,16
+ 1656               		.stabs	"cath1:P(0,26)",64,0,22,11
+ 1657               		.stabs	"cath2:P(0,26)",64,0,22,10
+ 1658               	.global	_ZN5oLED2C1Ehh
+ 1659               		.type	_ZN5oLED2C1Ehh, @function
+ 1660               	_ZN5oLED2C1Ehh:
+ 1661               		.stabd	46,0,0
+ 1662               		.stabn	68,0,22,.LM125-.LFBB11
+ 1663               	.LM125:
+ 1664               	.LFBB11:
+ 1665               	/* prologue: frame size=0 */
+ 1666 0876 AF92      		push r10
+ 1667 0878 BF92      		push r11
+ 1668 087a CF92      		push r12
+ 1669 087c DF92      		push r13
+ 1670 087e EF92      		push r14
+ 1671 0880 FF92      		push r15
+ 1672 0882 0F93      		push r16
+ 1673 0884 1F93      		push r17
+ 1674               	/* prologue end (size=8) */
+ 1675 0886 8C01      		movw r16,r24
+ 1676 0888 B62E      		mov r11,r22
+ 1677 088a A42E      		mov r10,r20
+ 1678               	.LBB14:
+ 1679 088c 33E0      		ldi r19,lo8(3)
+ 1680 088e E32E      		mov r14,r19
+ 1681 0890 F12C      		mov r15,__zero_reg__
+ 1682 0892 E80E      		add r14,r24
+ 1683 0894 F91E      		adc r15,r25
+ 1684 0896 C701      		movw r24,r14
+ 1685 0898 0E94 0000 		call _ZN5oDio1C1Ev
+ 1686 089c 28E0      		ldi r18,lo8(8)
+ 1687 089e C22E      		mov r12,r18
+ 1688 08a0 D12C      		mov r13,__zero_reg__
+ 1689 08a2 C00E      		add r12,r16
+ 1690 08a4 D11E      		adc r13,r17
+ 1691 08a6 C601      		movw r24,r12
+ 1692 08a8 0E94 0000 		call _ZN5oDio1C1Ev
+ 1693               		.stabn	68,0,23,.LM126-.LFBB11
+ 1694               	.LM126:
+ 1695 08ac F801      		movw r30,r16
+ 1696 08ae B182      		std Z+1,r11
+ 1697               		.stabn	68,0,24,.LM127-.LFBB11
+ 1698               	.LM127:
+ 1699 08b0 A282      		std Z+2,r10
+ 1700               		.stabn	68,0,25,.LM128-.LFBB11
+ 1701               	.LM128:
+ 1702 08b2 1082      		st Z,__zero_reg__
+ 1703               		.stabn	68,0,26,.LM129-.LFBB11
+ 1704               	.LM129:
+ 1705 08b4 41E0      		ldi r20,lo8(1)
+ 1706 08b6 6B2D      		mov r22,r11
+ 1707 08b8 C701      		movw r24,r14
+ 1708 08ba 0E94 0000 		call _ZN5oDio15setPDEhh
+ 1709               		.stabn	68,0,27,.LM130-.LFBB11
+ 1710               	.LM130:
+GAS LISTING /tmp/ccFBjnyX.s 			page 34
+
+
+ 1711 08be 41E0      		ldi r20,lo8(1)
+ 1712 08c0 F801      		movw r30,r16
+ 1713 08c2 6281      		ldd r22,Z+2
+ 1714 08c4 C601      		movw r24,r12
+ 1715 08c6 0E94 0000 		call _ZN5oDio15setPDEhh
+ 1716               	.LBE14:
+ 1717               	/* epilogue: frame size=0 */
+ 1718 08ca 1F91      		pop r17
+ 1719 08cc 0F91      		pop r16
+ 1720 08ce FF90      		pop r15
+ 1721 08d0 EF90      		pop r14
+ 1722 08d2 DF90      		pop r13
+ 1723 08d4 CF90      		pop r12
+ 1724 08d6 BF90      		pop r11
+ 1725 08d8 AF90      		pop r10
+ 1726 08da 0895      		ret
+ 1727               	/* epilogue end (size=9) */
+ 1728               	/* function oLED2::oLED2(uint8_t, uint8_t) size 51 (34) */
+ 1729               		.size	_ZN5oLED2C1Ehh, .-_ZN5oLED2C1Ehh
+ 1730               	.Lscope11:
+ 1731               		.stabs	"",36,0,0,.Lscope11-.LFBB11
+ 1732               		.stabd	78,0,0
+ 1733               		.stabs	"_ZN5oLED27setIOLSEhh:F(0,2)",36,0,30,_ZN5oLED27setIOLSEhh
+ 1734               		.stabs	"this:P(0,66)",64,0,30,16
+ 1735               		.stabs	"cath1:P(0,26)",64,0,30,22
+ 1736               		.stabs	"cath2:P(0,26)",64,0,30,20
+ 1737               	.global	_ZN5oLED27setIOLSEhh
+ 1738               		.type	_ZN5oLED27setIOLSEhh, @function
+ 1739               	_ZN5oLED27setIOLSEhh:
+ 1740               		.stabd	46,0,0
+  28:oLED2.h       **** }
+  29:oLED2.h       **** 
+  30:oLED2.h       **** void oLED2::setIOLS(uint8_t cath1, uint8_t cath2) {
+ 1741               		.stabn	68,0,30,.LM131-.LFBB12
+ 1742               	.LM131:
+ 1743               	.LFBB12:
+ 1744               	/* prologue: frame size=0 */
+ 1745 08dc 0F93      		push r16
+ 1746 08de 1F93      		push r17
+ 1747               	/* prologue end (size=2) */
+ 1748 08e0 8C01      		movw r16,r24
+  31:oLED2.h       **** 	IOLine1 = cath1;
+ 1749               		.stabn	68,0,31,.LM132-.LFBB12
+ 1750               	.LM132:
+ 1751 08e2 FC01      		movw r30,r24
+ 1752 08e4 6183      		std Z+1,r22
+  32:oLED2.h       **** 	IOLine2 = cath2;
+ 1753               		.stabn	68,0,32,.LM133-.LFBB12
+ 1754               	.LM133:
+ 1755 08e6 4283      		std Z+2,r20
+  33:oLED2.h       **** 	state = 0;
+ 1756               		.stabn	68,0,33,.LM134-.LFBB12
+ 1757               	.LM134:
+ 1758 08e8 1082      		st Z,__zero_reg__
+  34:oLED2.h       **** 	line1.setPD(IOLine1, 1);
+ 1759               		.stabn	68,0,34,.LM135-.LFBB12
+ 1760               	.LM135:
+GAS LISTING /tmp/ccFBjnyX.s 			page 35
+
+
+ 1761 08ea 41E0      		ldi r20,lo8(1)
+ 1762 08ec 0396      		adiw r24,3
+ 1763 08ee 0E94 0000 		call _ZN5oDio15setPDEhh
+  35:oLED2.h       **** 	line2.setPD(IOLine2, 1);
+ 1764               		.stabn	68,0,35,.LM136-.LFBB12
+ 1765               	.LM136:
+ 1766 08f2 41E0      		ldi r20,lo8(1)
+ 1767 08f4 F801      		movw r30,r16
+ 1768 08f6 6281      		ldd r22,Z+2
+ 1769 08f8 C801      		movw r24,r16
+ 1770 08fa 0896      		adiw r24,8
+ 1771 08fc 0E94 0000 		call _ZN5oDio15setPDEhh
+ 1772               	/* epilogue: frame size=0 */
+ 1773 0900 1F91      		pop r17
+ 1774 0902 0F91      		pop r16
+ 1775 0904 0895      		ret
+ 1776               	/* epilogue end (size=3) */
+ 1777               	/* function void oLED2::setIOLS(uint8_t, uint8_t) size 21 (16) */
+ 1778               		.size	_ZN5oLED27setIOLSEhh, .-_ZN5oLED27setIOLSEhh
+ 1779               	.Lscope12:
+ 1780               		.stabs	"",36,0,0,.Lscope12-.LFBB12
+ 1781               		.stabd	78,0,0
+ 1782               		.stabs	"_ZN5oLED23offEv:F(0,2)",36,0,38,_ZN5oLED23offEv
+ 1783               		.stabs	"this:P(0,66)",64,0,38,16
+ 1784               	.global	_ZN5oLED23offEv
+ 1785               		.type	_ZN5oLED23offEv, @function
+ 1786               	_ZN5oLED23offEv:
+ 1787               		.stabd	46,0,0
+  36:oLED2.h       **** }
+  37:oLED2.h       **** 
+  38:oLED2.h       **** void oLED2::off() {
+ 1788               		.stabn	68,0,38,.LM137-.LFBB13
+ 1789               	.LM137:
+ 1790               	.LFBB13:
+ 1791               	/* prologue: frame size=0 */
+ 1792 0906 0F93      		push r16
+ 1793 0908 1F93      		push r17
+ 1794               	/* prologue end (size=2) */
+ 1795 090a 8C01      		movw r16,r24
+  39:oLED2.h       **** 	line1.set(0);
+ 1796               		.stabn	68,0,39,.LM138-.LFBB13
+ 1797               	.LM138:
+ 1798 090c 60E0      		ldi r22,lo8(0)
+ 1799 090e 0396      		adiw r24,3
+ 1800 0910 0E94 0000 		call _ZN5oDio13setEh
+  40:oLED2.h       **** 	line2.set(0);
+ 1801               		.stabn	68,0,40,.LM139-.LFBB13
+ 1802               	.LM139:
+ 1803 0914 60E0      		ldi r22,lo8(0)
+ 1804 0916 C801      		movw r24,r16
+ 1805 0918 0896      		adiw r24,8
+ 1806 091a 0E94 0000 		call _ZN5oDio13setEh
+ 1807               	/* epilogue: frame size=0 */
+ 1808 091e 1F91      		pop r17
+ 1809 0920 0F91      		pop r16
+ 1810 0922 0895      		ret
+ 1811               	/* epilogue end (size=3) */
+GAS LISTING /tmp/ccFBjnyX.s 			page 36
+
+
+ 1812               	/* function void oLED2::off() size 15 (10) */
+ 1813               		.size	_ZN5oLED23offEv, .-_ZN5oLED23offEv
+ 1814               	.Lscope13:
+ 1815               		.stabs	"",36,0,0,.Lscope13-.LFBB13
+ 1816               		.stabd	78,0,0
+ 1817               		.stabs	"_ZN5oLED22onEv:F(0,2)",36,0,43,_ZN5oLED22onEv
+ 1818               		.stabs	"this:P(0,66)",64,0,43,16
+ 1819               	.global	_ZN5oLED22onEv
+ 1820               		.type	_ZN5oLED22onEv, @function
+ 1821               	_ZN5oLED22onEv:
+ 1822               		.stabd	46,0,0
+  41:oLED2.h       **** }
+  42:oLED2.h       **** 
+  43:oLED2.h       **** void oLED2::on() {
+ 1823               		.stabn	68,0,43,.LM140-.LFBB14
+ 1824               	.LM140:
+ 1825               	.LFBB14:
+ 1826               	/* prologue: frame size=0 */
+ 1827 0924 0F93      		push r16
+ 1828 0926 1F93      		push r17
+ 1829               	/* prologue end (size=2) */
+ 1830 0928 8C01      		movw r16,r24
+  44:oLED2.h       **** 	line1.set(1);
+ 1831               		.stabn	68,0,44,.LM141-.LFBB14
+ 1832               	.LM141:
+ 1833 092a 61E0      		ldi r22,lo8(1)
+ 1834 092c 0396      		adiw r24,3
+ 1835 092e 0E94 0000 		call _ZN5oDio13setEh
+  45:oLED2.h       **** 	line2.set(1);
+ 1836               		.stabn	68,0,45,.LM142-.LFBB14
+ 1837               	.LM142:
+ 1838 0932 61E0      		ldi r22,lo8(1)
+ 1839 0934 C801      		movw r24,r16
+ 1840 0936 0896      		adiw r24,8
+ 1841 0938 0E94 0000 		call _ZN5oDio13setEh
+ 1842               	/* epilogue: frame size=0 */
+ 1843 093c 1F91      		pop r17
+ 1844 093e 0F91      		pop r16
+ 1845 0940 0895      		ret
+ 1846               	/* epilogue end (size=3) */
+ 1847               	/* function void oLED2::on() size 15 (10) */
+ 1848               		.size	_ZN5oLED22onEv, .-_ZN5oLED22onEv
+ 1849               	.Lscope14:
+ 1850               		.stabs	"",36,0,0,.Lscope14-.LFBB14
+ 1851               		.stabd	78,0,0
+ 1852               		.stabs	"_ZN5oLED23on1Ev:F(0,2)",36,0,48,_ZN5oLED23on1Ev
+ 1853               		.stabs	"this:P(0,66)",64,0,48,16
+ 1854               	.global	_ZN5oLED23on1Ev
+ 1855               		.type	_ZN5oLED23on1Ev, @function
+ 1856               	_ZN5oLED23on1Ev:
+ 1857               		.stabd	46,0,0
+  46:oLED2.h       **** }
+  47:oLED2.h       **** 
+  48:oLED2.h       **** void oLED2::on1() {
+ 1858               		.stabn	68,0,48,.LM143-.LFBB15
+ 1859               	.LM143:
+ 1860               	.LFBB15:
+GAS LISTING /tmp/ccFBjnyX.s 			page 37
+
+
+ 1861               	/* prologue: frame size=0 */
+ 1862 0942 0F93      		push r16
+ 1863 0944 1F93      		push r17
+ 1864               	/* prologue end (size=2) */
+ 1865 0946 8C01      		movw r16,r24
+  49:oLED2.h       **** 	line1.set(1);
+ 1866               		.stabn	68,0,49,.LM144-.LFBB15
+ 1867               	.LM144:
+ 1868 0948 61E0      		ldi r22,lo8(1)
+ 1869 094a 0396      		adiw r24,3
+ 1870 094c 0E94 0000 		call _ZN5oDio13setEh
+  50:oLED2.h       **** 	line2.set(0);
+ 1871               		.stabn	68,0,50,.LM145-.LFBB15
+ 1872               	.LM145:
+ 1873 0950 60E0      		ldi r22,lo8(0)
+ 1874 0952 C801      		movw r24,r16
+ 1875 0954 0896      		adiw r24,8
+ 1876 0956 0E94 0000 		call _ZN5oDio13setEh
+ 1877               	/* epilogue: frame size=0 */
+ 1878 095a 1F91      		pop r17
+ 1879 095c 0F91      		pop r16
+ 1880 095e 0895      		ret
+ 1881               	/* epilogue end (size=3) */
+ 1882               	/* function void oLED2::on1() size 15 (10) */
+ 1883               		.size	_ZN5oLED23on1Ev, .-_ZN5oLED23on1Ev
+ 1884               	.Lscope15:
+ 1885               		.stabs	"",36,0,0,.Lscope15-.LFBB15
+ 1886               		.stabd	78,0,0
+ 1887               		.stabs	"_ZN5oLED23on2Ev:F(0,2)",36,0,53,_ZN5oLED23on2Ev
+ 1888               		.stabs	"this:P(0,66)",64,0,53,16
+ 1889               	.global	_ZN5oLED23on2Ev
+ 1890               		.type	_ZN5oLED23on2Ev, @function
+ 1891               	_ZN5oLED23on2Ev:
+ 1892               		.stabd	46,0,0
+  51:oLED2.h       **** }
+  52:oLED2.h       **** 
+  53:oLED2.h       **** void oLED2::on2() {
+ 1893               		.stabn	68,0,53,.LM146-.LFBB16
+ 1894               	.LM146:
+ 1895               	.LFBB16:
+ 1896               	/* prologue: frame size=0 */
+ 1897 0960 0F93      		push r16
+ 1898 0962 1F93      		push r17
+ 1899               	/* prologue end (size=2) */
+ 1900 0964 8C01      		movw r16,r24
+  54:oLED2.h       **** 	line1.set(0);
+ 1901               		.stabn	68,0,54,.LM147-.LFBB16
+ 1902               	.LM147:
+ 1903 0966 60E0      		ldi r22,lo8(0)
+ 1904 0968 0396      		adiw r24,3
+ 1905 096a 0E94 0000 		call _ZN5oDio13setEh
+  55:oLED2.h       **** 	line2.set(1);
+ 1906               		.stabn	68,0,55,.LM148-.LFBB16
+ 1907               	.LM148:
+ 1908 096e 61E0      		ldi r22,lo8(1)
+ 1909 0970 C801      		movw r24,r16
+ 1910 0972 0896      		adiw r24,8
+GAS LISTING /tmp/ccFBjnyX.s 			page 38
+
+
+ 1911 0974 0E94 0000 		call _ZN5oDio13setEh
+ 1912               	/* epilogue: frame size=0 */
+ 1913 0978 1F91      		pop r17
+ 1914 097a 0F91      		pop r16
+ 1915 097c 0895      		ret
+ 1916               	/* epilogue end (size=3) */
+ 1917               	/* function void oLED2::on2() size 15 (10) */
+ 1918               		.size	_ZN5oLED23on2Ev, .-_ZN5oLED23on2Ev
+ 1919               	.Lscope16:
+ 1920               		.stabs	"",36,0,0,.Lscope16-.LFBB16
+ 1921               		.stabd	78,0,0
+ 1922               		.stabs	"main:F(0,7)",36,0,5,main
+ 1923               	.global	main
+ 1924               		.type	main, @function
+ 1925               	main:
+ 1926               		.stabd	46,0,0
+ 1927               		.stabs	"main.cpp",132,0,0,.Ltext3
+ 1928               	.Ltext3:
+   1:main.cpp      **** #define F_CPU 11059200UL
+   2:main.cpp      **** #include <util/delay.h>
+   3:main.cpp      **** #include "oLED2.h"
+   4:main.cpp      **** 
+   5:main.cpp      **** int main () {
+ 1929               		.stabn	68,0,5,.LM149-.LFBB17
+ 1930               	.LM149:
+ 1931               	.LFBB17:
+ 1932               	/* prologue: frame size=13 */
+ 1933 097e C0E0      		ldi r28,lo8(__stack - 13)
+ 1934 0980 D0E0      		ldi r29,hi8(__stack - 13)
+ 1935 0982 DEBF      		out __SP_H__,r29
+ 1936 0984 CDBF      		out __SP_L__,r28
+ 1937               	/* prologue end (size=4) */
+ 1938               	.LBB30:
+   6:main.cpp      **** 	oLED2 led(8, 9);
+ 1939               		.stabn	68,0,6,.LM150-.LFBB17
+ 1940               	.LM150:
+ 1941 0986 49E0      		ldi r20,lo8(9)
+ 1942 0988 68E0      		ldi r22,lo8(8)
+ 1943 098a 8E01      		movw r16,r28
+ 1944 098c 0F5F      		subi r16,lo8(-(1))
+ 1945 098e 1F4F      		sbci r17,hi8(-(1))
+ 1946 0990 C801      		movw r24,r16
+ 1947 0992 0E94 0000 		call _ZN5oLED2C1Ehh
+ 1948               	.L158:
+   7:main.cpp      **** 	while (1) {
+   8:main.cpp      **** 		led.on1();
+ 1949               		.stabn	68,0,8,.LM151-.LFBB17
+ 1950               	.LM151:
+ 1951 0996 C801      		movw r24,r16
+ 1952 0998 0E94 0000 		call _ZN5oLED23on1Ev
+ 1953 099c 20E1      		ldi r18,lo8(10000)
+ 1954 099e 37E2      		ldi r19,hi8(10000)
+ 1955               	.L159:
+ 1956               	.LBB31:
+ 1957               	.LBB32:
+ 1958               	.LBB33:
+ 1959               	.LBB34:
+GAS LISTING /tmp/ccFBjnyX.s 			page 39
+
+
+ 1960               	.LBB35:
+ 1961               		.stabs	"/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h",132,0,0,.Ltext4
+ 1962               	.Ltext4:
+   1:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****    Copyright (c) 2007 Joerg Wunsch
+   3:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****    All rights reserved.
+   4:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+   5:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****    Redistribution and use in source and binary forms, with or without
+   6:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****    modification, are permitted provided that the following conditions are met:
+   7:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+   8:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****    * Redistributions of source code must retain the above copyright
+   9:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****      notice, this list of conditions and the following disclaimer.
+  10:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  11:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****    * Redistributions in binary form must reproduce the above copyright
+  12:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****      notice, this list of conditions and the following disclaimer in
+  13:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****      the documentation and/or other materials provided with the
+  14:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****      distribution.
+  15:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  16:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****    * Neither the name of the copyright holders nor the names of
+  17:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****      contributors may be used to endorse or promote products derived
+  18:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****      from this software without specific prior written permission.
+  19:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  20:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  23:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  24:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  25:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  26:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  27:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  28:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  29:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  30:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  31:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  32:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** /* $Id: delay_basic.h,v 1.1 2007/05/13 21:23:20 joerg_wunsch Exp $ */
+  33:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  34:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** #ifndef _UTIL_DELAY_BASIC_H_
+  35:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** #define _UTIL_DELAY_BASIC_H_ 1
+  36:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  37:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** #include <inttypes.h>
+  38:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  39:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** /** \file */
+  40:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** /** \defgroup util_delay_basic <util/delay_basic.h>: Basic busy-wait delay loops
+  41:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     \code
+  42:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     #include <util/delay_basic.h>
+  43:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     \endcode
+  44:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  45:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     The functions in this header file implement simple delay loops
+  46:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     that perform a busy-waiting.  They are typically used to
+  47:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     facilitate short delays in the program execution.  They are
+  48:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     implemented as count-down loops with a well-known CPU cycle
+  49:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     count per loop iteration.  As such, no other processing can
+  50:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     occur simultaneously.  It should be kept in mind that the
+  51:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     functions described here do not disable interrupts.
+  52:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  53:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     In general, for long delays, the use of hardware timers is
+  54:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     much preferrable, as they free the CPU, and allow for
+GAS LISTING /tmp/ccFBjnyX.s 			page 40
+
+
+  55:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     concurrent processing of other events while the timer is
+  56:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     running.  However, in particular for very short delays, the
+  57:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     overhead of setting up a hardware timer is too much compared
+  58:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     to the overall delay time.
+  59:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  60:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     Two inline functions are provided for the actual delay algorithms.
+  61:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  62:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** */
+  63:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  64:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** #if !defined(__DOXYGEN__)
+  65:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
+  66:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
+  67:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** #endif
+  68:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  69:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** /** \ingroup util_delay_basic
+  70:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  71:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     Delay loop using an 8-bit counter \c __count, so up to 256
+  72:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     iterations are possible.  (The value 256 would have to be passed
+  73:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     as 0.)  The loop executes three CPU cycles per iteration, not
+  74:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     including the overhead the compiler needs to setup the counter
+  75:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     register.
+  76:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  77:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     Thus, at a CPU speed of 1 MHz, delays of up to 768 microseconds
+  78:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     can be achieved.
+  79:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** */
+  80:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** void
+  81:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** _delay_loop_1(uint8_t __count)
+  82:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** {
+  83:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 	__asm__ volatile (
+  84:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 		"1: dec %0" "\n\t"
+  85:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 		"brne 1b"
+  86:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 		: "=r" (__count)
+  87:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 		: "0" (__count)
+  88:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 	);
+  89:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** }
+  90:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  91:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** /** \ingroup util_delay_basic
+  92:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  93:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     Delay loop using a 16-bit counter \c __count, so up to 65536
+  94:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     iterations are possible.  (The value 65536 would have to be
+  95:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     passed as 0.)  The loop executes four CPU cycles per iteration,
+  96:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     not including the overhead the compiler requires to setup the
+  97:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     counter register pair.
+  98:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 
+  99:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     Thus, at a CPU speed of 1 MHz, delays of up to about 262.1
+ 100:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****     milliseconds can be achieved.
+ 101:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h ****  */
+ 102:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** void
+ 103:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** _delay_loop_2(uint16_t __count)
+ 104:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** {
+ 105:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 	__asm__ volatile (
+ 106:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 		"1: sbiw %0,1" "\n\t"
+ 107:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 		"brne 1b"
+ 108:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 		: "=w" (__count)
+ 109:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 		: "0" (__count)
+ 110:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h **** 	);
+ 1963               		.stabn	68,0,110,.LM152-.LFBB17
+GAS LISTING /tmp/ccFBjnyX.s 			page 41
+
+
+ 1964               	.LM152:
+ 1965 09a0 84E1      		ldi r24,lo8(276)
+ 1966 09a2 91E0      		ldi r25,hi8(276)
+ 1967               	/* #APP */
+ 1968 09a4 0197      		1: sbiw r24,1
+ 1969 09a6 01F4      		brne 1b
+ 1970               	/* #NOAPP */
+ 1971               	.LBE35:
+ 1972               	.LBE34:
+ 1973               		.stabs	"/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h",132,0,0,.Ltext5
+ 1974               	.Ltext5:
+   1:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
+   3:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
+   4:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    All rights reserved.
+   5:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+   6:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    Redistribution and use in source and binary forms, with or without
+   7:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    modification, are permitted provided that the following conditions are met:
+   8:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+   9:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    * Redistributions of source code must retain the above copyright
+  10:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer.
+  11:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  12:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    * Redistributions in binary form must reproduce the above copyright
+  13:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer in
+  14:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****      the documentation and/or other materials provided with the
+  15:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****      distribution.
+  16:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  17:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    * Neither the name of the copyright holders nor the names of
+  18:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****      contributors may be used to endorse or promote products derived
+  19:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****      from this software without specific prior written permission.
+  20:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  21:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  25:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  32:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  33:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** /* $Id: delay.h,v 1.5 2007/10/28 23:25:56 joerg_wunsch Exp $ */
+  34:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  35:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #ifndef _UTIL_DELAY_H_
+  36:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #define _UTIL_DELAY_H_ 1
+  37:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  38:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #include <inttypes.h>
+  39:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #include <util/delay_basic.h>
+  40:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  41:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** /** \file */
+  42:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** /** \defgroup util_delay <util/delay.h>: Convenience functions for busy-wait delay loops
+  43:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     \code
+  44:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     #define F_CPU 1000000UL  // 1 MHz
+  45:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     //#define F_CPU 14.7456E6
+  46:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     #include <util/delay.h>
+GAS LISTING /tmp/ccFBjnyX.s 			page 42
+
+
+  47:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     \endcode
+  48:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  49:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     \note As an alternative method, it is possible to pass the
+  50:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     F_CPU macro down to the compiler from the Makefile.
+  51:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     Obviously, in that case, no \c \#define statement should be
+  52:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     used.
+  53:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  54:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     The functions in this header file are wrappers around the basic
+  55:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     busy-wait functions from <util/delay_basic.h>.  They are meant as
+  56:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     convenience functions where actual time values can be specified
+  57:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     rather than a number of cycles to wait for.  The idea behind is
+  58:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     that compile-time constant expressions will be eliminated by
+  59:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     compiler optimization so floating-point expressions can be used
+  60:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     to calculate the number of delay cycles needed based on the CPU
+  61:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     frequency passed by the macro F_CPU.
+  62:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  63:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     \note In order for these functions to work as intended, compiler
+  64:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     optimizations <em>must</em> be enabled, and the delay time
+  65:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     <em>must</em> be an expression that is a known constant at
+  66:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     compile-time.  If these requirements are not met, the resulting
+  67:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     delay will be much longer (and basically unpredictable), and
+  68:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     applications that otherwise do not use floating-point calculations
+  69:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     will experience severe code bloat by the floating-point library
+  70:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     routines linked into the application.
+  71:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  72:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     The functions available allow the specification of microsecond, and
+  73:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     millisecond delays directly, using the application-supplied macro
+  74:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****     F_CPU as the CPU clock frequency (in Hertz).
+  75:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  76:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** */
+  77:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  78:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #if !defined(__DOXYGEN__)
+  79:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** static inline void _delay_us(double __us) __attribute__((always_inline));
+  80:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** static inline void _delay_ms(double __ms) __attribute__((always_inline));
+  81:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #endif
+  82:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  83:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #ifndef F_CPU
+  84:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** /* prevent compiler error by supplying a default */
+  85:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** # warning "F_CPU not defined for <util/delay.h>"
+  86:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** # define F_CPU 1000000UL
+  87:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #endif
+  88:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  89:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #ifndef __OPTIMIZE__
+  90:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** # warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+  91:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** #endif
+  92:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  93:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** /**
+  94:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    \ingroup util_delay
+  95:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  96:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    Perform a delay of \c __us microseconds, using _delay_loop_1().
+  97:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+  98:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+  99:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 100:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+ 101:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    The maximal possible delay is 768 us / F_CPU in MHz.
+ 102:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+ 103:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    If the user requests a delay greater than the maximal possible one,
+GAS LISTING /tmp/ccFBjnyX.s 			page 43
+
+
+ 104:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    _delay_us() will automatically call _delay_ms() instead.  The user
+ 105:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    will not be informed about this case.
+ 106:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****  */
+ 107:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** void
+ 108:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** _delay_us(double __us)
+ 109:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** {
+ 110:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	uint8_t __ticks;
+ 111:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	double __tmp = ((F_CPU) / 3e6) * __us;
+ 112:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	if (__tmp < 1.0)
+ 113:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		__ticks = 1;
+ 114:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	else if (__tmp > 255)
+ 115:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	{
+ 116:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		_delay_ms(__us / 1000.0);
+ 117:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		return;
+ 118:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	}
+ 119:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	else
+ 120:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		__ticks = (uint8_t)__tmp;
+ 121:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	_delay_loop_1(__ticks);
+ 122:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** }
+ 123:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+ 124:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+ 125:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** /**
+ 126:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    \ingroup util_delay
+ 127:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+ 128:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    Perform a delay of \c __ms milliseconds, using _delay_loop_2().
+ 129:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+ 130:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 131:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 132:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+ 133:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    The maximal possible delay is 262.14 ms / F_CPU in MHz.
+ 134:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 
+ 135:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    When the user request delay which exceed the maximum possible one,
+ 136:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    _delay_ms() provides a decreased resolution functionality. In this
+ 137:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    mode _delay_ms() will work with a resolution of 1/10 ms, providing
+ 138:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    delays up to 6.5535 seconds (independent from CPU frequency).  The
+ 139:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****    user will not be informed about decreased resolution.
+ 140:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h ****  */
+ 141:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** void
+ 142:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** _delay_ms(double __ms)
+ 143:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** {
+ 144:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	uint16_t __ticks;
+ 145:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	double __tmp = ((F_CPU) / 4e3) * __ms;
+ 146:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	if (__tmp < 1.0)
+ 147:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		__ticks = 1;
+ 148:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	else if (__tmp > 65535)
+ 149:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 	{
+ 150:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		//	__ticks = requested delay in 1/10 ms
+ 151:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		__ticks = (uint16_t) (__ms * 10.0);
+ 152:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		while(__ticks)
+ 153:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 		{
+ 154:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 			// wait 1/10 ms
+ 155:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 			_delay_loop_2(((F_CPU) / 4e3) / 10);
+ 156:/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h **** 			__ticks --;
+ 1975               		.stabn	68,0,156,.LM153-.LFBB17
+ 1976               	.LM153:
+ 1977 09a8 2150      		subi r18,lo8(-(-1))
+ 1978 09aa 3040      		sbci r19,hi8(-(-1))
+GAS LISTING /tmp/ccFBjnyX.s 			page 44
+
+
+ 1979               		.stabn	68,0,152,.LM154-.LFBB17
+ 1980               	.LM154:
+ 1981 09ac 01F4      		brne .L159
+ 1982               	.LBE33:
+ 1983               	.LBE32:
+ 1984               	.LBE31:
+ 1985               		.stabs	"main.cpp",132,0,0,.Ltext6
+ 1986               	.Ltext6:
+   9:main.cpp      **** 		_delay_ms(1000);
+  10:main.cpp      **** 		led.off();
+ 1987               		.stabn	68,0,10,.LM155-.LFBB17
+ 1988               	.LM155:
+ 1989 09ae C801      		movw r24,r16
+ 1990 09b0 0E94 0000 		call _ZN5oLED23offEv
+ 1991 09b4 20E1      		ldi r18,lo8(10000)
+ 1992 09b6 37E2      		ldi r19,hi8(10000)
+ 1993               	.L161:
+ 1994               	.LBB36:
+ 1995               	.LBB37:
+ 1996               	.LBB38:
+ 1997               	.LBB39:
+ 1998               	.LBB40:
+ 1999               		.stabs	"/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay_basic.h",132,0,0,.Ltext7
+ 2000               	.Ltext7:
+ 2001               		.stabn	68,0,110,.LM156-.LFBB17
+ 2002               	.LM156:
+ 2003 09b8 84E1      		ldi r24,lo8(276)
+ 2004 09ba 91E0      		ldi r25,hi8(276)
+ 2005               	/* #APP */
+ 2006 09bc 0197      		1: sbiw r24,1
+ 2007 09be 01F4      		brne 1b
+ 2008               	/* #NOAPP */
+ 2009               	.LBE40:
+ 2010               	.LBE39:
+ 2011               		.stabs	"/usr/local/lib/gcc/avr/4.2.0/../../../../avr/include/util/delay.h",132,0,0,.Ltext8
+ 2012               	.Ltext8:
+ 2013               		.stabn	68,0,156,.LM157-.LFBB17
+ 2014               	.LM157:
+ 2015 09c0 2150      		subi r18,lo8(-(-1))
+ 2016 09c2 3040      		sbci r19,hi8(-(-1))
+ 2017               		.stabn	68,0,152,.LM158-.LFBB17
+ 2018               	.LM158:
+ 2019 09c4 01F4      		brne .L161
+ 2020 09c6 00C0      		rjmp .L158
+ 2021               	.LBE38:
+ 2022               	.LBE37:
+ 2023               	.LBE36:
+ 2024               	.LBE30:
+ 2025               	/* epilogue: frame size=13 */
+ 2026               	/* epilogue: noreturn */
+ 2027               	/* epilogue end (size=0) */
+ 2028               	/* function int main() size 45 (41) */
+ 2029               		.size	main, .-main
+ 2030               		.stabs	"led:(0,61)",128,0,6,1
+ 2031               		.stabn	192,0,0,.LBB30-.LFBB17
+ 2032               		.stabs	"__ticks:r(0,28)",64,0,144,18
+ 2033               		.stabn	192,0,0,.LBB33-.LFBB17
+GAS LISTING /tmp/ccFBjnyX.s 			page 45
+
+
+ 2034               		.stabs	"__count:r(0,28)",64,0,155,24
+ 2035               		.stabn	192,0,0,.LBB34-.LFBB17
+ 2036               		.stabn	224,0,0,.LBE34-.LFBB17
+ 2037               		.stabn	224,0,0,.LBE33-.LFBB17
+ 2038               		.stabs	"__ticks:r(0,28)",64,0,144,18
+ 2039               		.stabn	192,0,0,.LBB38-.LFBB17
+ 2040               		.stabs	"__count:r(0,28)",64,0,155,24
+ 2041               		.stabn	192,0,0,.LBB39-.LFBB17
+ 2042               		.stabn	224,0,0,.LBE39-.LFBB17
+ 2043               		.stabn	224,0,0,.LBE38-.LFBB17
+ 2044               		.stabn	224,0,0,.LBE30-.LFBB17
+ 2045               	.Lscope17:
+ 2046               		.stabs	"",36,0,0,.Lscope17-.LFBB17
+ 2047               		.stabd	78,0,0
+ 2048               		.stabs	"",100,0,0,.Letext0
+ 2049               	.Letext0:
+ 2050               	/* File "main.cpp": code 1292 = 0x050c (1217), prologues  34, epilogues  41 */
+GAS LISTING /tmp/ccFBjnyX.s 			page 46
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.cpp
+     /tmp/ccFBjnyX.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccFBjnyX.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccFBjnyX.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccFBjnyX.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccFBjnyX.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccFBjnyX.s:77     .text:00000000 _ZN5oDio1C2Ev
+     /tmp/ccFBjnyX.s:116    .text:0000000e _ZN5oDio1C1Ev
+     /tmp/ccFBjnyX.s:155    .text:0000001c _ZN5oDio1C2Ehh
+     /tmp/ccFBjnyX.s:490    .text:00000206 _ZN5oDio1C1Ehh
+     /tmp/ccFBjnyX.s:825    .text:000003f0 _ZN5oDio15setPDEhh
+     /tmp/ccFBjnyX.s:1157   .text:000005da _ZN5oDio13setEh
+     /tmp/ccFBjnyX.s:1434   .text:00000790 _ZN5oDio13getEv
+     /tmp/ccFBjnyX.s:1503   .text:000007cc _ZN5oLED2C2Ev
+     /tmp/ccFBjnyX.s:1542   .text:000007ee _ZN5oLED2C1Ev
+     /tmp/ccFBjnyX.s:1581   .text:00000810 _ZN5oLED2C2Ehh
+     /tmp/ccFBjnyX.s:1660   .text:00000876 _ZN5oLED2C1Ehh
+     /tmp/ccFBjnyX.s:1739   .text:000008dc _ZN5oLED27setIOLSEhh
+     /tmp/ccFBjnyX.s:1786   .text:00000906 _ZN5oLED23offEv
+     /tmp/ccFBjnyX.s:1821   .text:00000924 _ZN5oLED22onEv
+     /tmp/ccFBjnyX.s:1856   .text:00000942 _ZN5oLED23on1Ev
+     /tmp/ccFBjnyX.s:1891   .text:00000960 _ZN5oLED23on2Ev
+     /tmp/ccFBjnyX.s:1925   .text:0000097e main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack

@@ -1,0 +1,189 @@
+   1               		.file	"main.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	DELAY_US
+  20               	DELAY_US:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 9695      		lsr r25
+  27 0002 8795      		ror r24
+  28 0004 9695      		lsr r25
+  29 0006 8795      		ror r24
+  30               	.LM3:
+  31               	/* #APP */
+  32 0008 0197      		1: sbiw r24,1
+  33 000a F1F7      		brne 1b
+  34               	/* #NOAPP */
+  35               	/* epilogue: frame size=0 */
+  36 000c 0895      		ret
+  37               	/* epilogue end (size=1) */
+  38               	/* function DELAY_US size 9 (8) */
+  39               	.LFE4:
+  41               	.global	DELAY_MS
+  43               	DELAY_MS:
+  44               	.LFB5:
+  45               	.LM4:
+  46               	/* prologue: frame size=0 */
+  47 000e 0F93      		push r16
+  48 0010 1F93      		push r17
+  49 0012 CF93      		push r28
+  50 0014 DF93      		push r29
+  51               	/* prologue end (size=4) */
+  52 0016 8C01      		movw r16,r24
+  53               	.LM5:
+  54 0018 C0E0      		ldi r28,lo8(0)
+  55 001a D0E0      		ldi r29,hi8(0)
+  56 001c C817      		cp r28,r24
+  57 001e D907      		cpc r29,r25
+  58 0020 38F4      		brsh .L8
+  59               	.L6:
+  60               	.LM6:
+  61 0022 88EE      		ldi r24,lo8(1000)
+  62 0024 93E0      		ldi r25,hi8(1000)
+  63 0026 ECDF      		rcall DELAY_US
+  64               	.LM7:
+  65 0028 2196      		adiw r28,1
+  66 002a C017      		cp r28,r16
+  67 002c D107      		cpc r29,r17
+  68 002e C8F3      		brlo .L6
+  69               	.L8:
+  70               	/* epilogue: frame size=0 */
+  71 0030 DF91      		pop r29
+  72 0032 CF91      		pop r28
+  73 0034 1F91      		pop r17
+  74 0036 0F91      		pop r16
+  75 0038 0895      		ret
+  76               	/* epilogue end (size=5) */
+  77               	/* function DELAY_MS size 22 (13) */
+  78               	.LFE5:
+  80               	.global	MAIN_PRG
+  82               	MAIN_PRG:
+  83               	.LFB3:
+  84               	.LM8:
+  85               	/* prologue: frame size=0 */
+  86               	/* prologue end (size=0) */
+  87               	.LM9:
+  88 003a 84E1      		ldi r24,lo8(20)
+  89 003c 8093 0000 		sts count,r24
+  90               	.LM10:
+  91 0040 84E1      		ldi r24,lo8(20)
+  92 0042 90E0      		ldi r25,hi8(20)
+  93 0044 00D0      		rcall setservo1
+  94               	.LM11:
+  95 0046 84E1      		ldi r24,lo8(20)
+  96 0048 90E0      		ldi r25,hi8(20)
+  97 004a 00D0      		rcall setservo2
+  98               	.L25:
+  99               	.LM12:
+ 100 004c 8091 0000 		lds r24,count
+ 101 0050 8A34      		cpi r24,lo8(74)
+ 102 0052 78F4      		brsh .L19
+ 103               	.LM13:
+ 104 0054 9927      		clr r25
+ 105 0056 00D0      		rcall setservo1
+ 106               	.LM14:
+ 107 0058 8091 0000 		lds r24,count
+ 108 005c 9927      		clr r25
+ 109 005e 00D0      		rcall setservo2
+ 110               	.LM15:
+ 111 0060 8091 0000 		lds r24,count
+ 112 0064 8F5F      		subi r24,lo8(-(1))
+ 113 0066 8093 0000 		sts count,r24
+ 114               	.LM16:
+ 115 006a 82E3      		ldi r24,lo8(50)
+ 116 006c 90E0      		ldi r25,hi8(50)
+ 117 006e CFDF      		rcall DELAY_MS
+ 118 0070 EDCF      		rjmp .L25
+ 119               	.L19:
+ 120               	.LM17:
+ 121 0072 8091 0000 		lds r24,count
+ 122 0076 8431      		cpi r24,lo8(20)
+ 123 0078 48F3      		brlo .L25
+ 124               	.LM18:
+ 125 007a 9927      		clr r25
+ 126 007c 00D0      		rcall setservo1
+ 127               	.LM19:
+ 128 007e 8091 0000 		lds r24,count
+ 129 0082 9927      		clr r25
+ 130 0084 00D0      		rcall setservo2
+ 131               	.LM20:
+ 132 0086 8091 0000 		lds r24,count
+ 133 008a 8150      		subi r24,lo8(-(-1))
+ 134 008c 8093 0000 		sts count,r24
+ 135               	.LM21:
+ 136 0090 82E3      		ldi r24,lo8(50)
+ 137 0092 90E0      		ldi r25,hi8(50)
+ 138 0094 BCDF      		rcall DELAY_MS
+ 139 0096 EDCF      		rjmp .L19
+ 140               	/* epilogue: frame size=0 */
+ 141               	/* epilogue: noreturn */
+ 142               	/* epilogue end (size=0) */
+ 143               	/* function MAIN_PRG size 47 (47) */
+ 144               	.LFE3:
+ 146               	.global	main
+ 148               	main:
+ 149               	.LFB2:
+ 150               	.LM22:
+ 151               	/* prologue: frame size=0 */
+ 152 0098 C0E0      		ldi r28,lo8(__stack - 0)
+ 153 009a D0E0      		ldi r29,hi8(__stack - 0)
+ 154 009c DEBF      		out __SP_H__,r29
+ 155 009e CDBF      		out __SP_L__,r28
+ 156               	/* prologue end (size=4) */
+ 157               	.LM23:
+ 158 00a0 40E0      		ldi r20,lo8(0)
+ 159 00a2 642F      		mov r22,r20
+ 160 00a4 81E7      		ldi r24,lo8(625)
+ 161 00a6 92E0      		ldi r25,hi8(625)
+ 162 00a8 00D0      		rcall initservos
+ 163               	.LM24:
+ 164 00aa C7DF      		rcall MAIN_PRG
+ 165               	.LM25:
+ 166 00ac 80E0      		ldi r24,lo8(0)
+ 167 00ae 90E0      		ldi r25,hi8(0)
+ 168               	/* epilogue: frame size=0 */
+ 169 00b0 00C0      		rjmp exit
+ 170               	/* epilogue end (size=1) */
+ 171               	/* function main size 13 (8) */
+ 172               	.LFE2:
+ 174               		.comm counttopulse,4,1
+ 175               		.comm reload,2,1
+ 176               		.comm counter,4,1
+ 177               		.comm plsref,2,1
+ 178               		.comm count,1,1
+ 179               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:20     .text:00000000 DELAY_US
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:43     .text:0000000e DELAY_MS
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:82     .text:0000003a MAIN_PRG
+                            *COM*:00000001 count
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccUHaaaa.s:148    .text:00000098 main
+                            *COM*:00000004 counttopulse
+                            *COM*:00000002 reload
+                            *COM*:00000004 counter
+                            *COM*:00000002 plsref
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+setservo1
+setservo2
+__stack
+initservos
+exit

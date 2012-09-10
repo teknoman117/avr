@@ -1,0 +1,40 @@
+Documentation for timer0.h
+
+Example is included under the timer0 directory in the Examples directory
+
+---------------Information-------------------------
+
+timer0.h controls timer0 as a timer with a clock source either
+internal with a prescaler or external via the T0 pin
+
+---------------Definitions-------------------------
+
+T0_PRESCALER_1                   -timer0 clock = SystemCLK
+T0_PRESCALER_8                   -timer0 clock = SystemCLK / 8
+T0_PRESCALER_64                  -timer0 clock = SystemCLK / 64
+T0_PRESCALER_256                 -timer0 clock = SystemCLK / 256
+T0_PRESCALER_1024                -timer0 clock = SystemCLK / 1024
+T0_PRESCALER_EXTERNAL_RISING     -timer0 clock = clock on rising edge of T0
+T0_PRESCALER_EXTERNAL_FALLING    -timer0 clock = clock on falling edge of T0
+
+--------------Functions------------------------------
+
+void init_timer0 ( uint8_t prescaler, uint8_t top ) -- initalizes timer0
+    -prescaler - one of the T0_PRESCALER definitions to define the prescaler or clock source
+    -top - the value at which the timer resets at
+
+uint8_t get_timer0 ( void ) -- returns the value of the TCNT0 register, the current value of the timer
+
+void set_timer0 ( uint8_t v ) -- set the value of the TCNT0 register
+   -v - the value to which to set the timer
+
+void reset_timer0 ( void ) -- clears the TCNT0 register, reseting the timer
+
+void enable_interrupt_t0 ( void ) -- enables the Timer 0 Overflow Interrupt and sets the global interrupt flag
+
+void disable_interrupt_t0 ( void ) -- disables the Timer 0 Overflow Interrupt, but does not clear the global interrupt flag
+
+
+    
+
+  

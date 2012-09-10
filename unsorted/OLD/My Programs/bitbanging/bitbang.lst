@@ -1,0 +1,244 @@
+   1               		.file	"bitbang.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	__vector_9
+  20               	__vector_9:
+  21               	.LFB3:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24 0000 1F92      		push __zero_reg__
+  25 0002 0F92      		push __tmp_reg__
+  26 0004 0FB6      		in __tmp_reg__,__SREG__
+  27 0006 0F92      		push __tmp_reg__
+  28 0008 1124      		clr __zero_reg__
+  29 000a 8F93      		push r24
+  30 000c 9F93      		push r25
+  31               	/* prologue end (size=7) */
+  32               	.LM2:
+  33 000e 8091 0000 		lds r24,counter
+  34 0012 9091 0000 		lds r25,(counter)+1
+  35 0016 0196      		adiw r24,1
+  36 0018 9093 0000 		sts (counter)+1,r25
+  37 001c 8093 0000 		sts counter,r24
+  38               	/* epilogue: frame size=0 */
+  39 0020 9F91      		pop r25
+  40 0022 8F91      		pop r24
+  41 0024 0F90      		pop __tmp_reg__
+  42 0026 0FBE      		out __SREG__,__tmp_reg__
+  43 0028 0F90      		pop __tmp_reg__
+  44 002a 1F90      		pop __zero_reg__
+  45 002c 1895      		reti
+  46               	/* epilogue end (size=7) */
+  47               	/* function __vector_9 size 23 (9) */
+  48               	.LFE3:
+  50               	.global	timerdly
+  52               	timerdly:
+  53               	.LFB6:
+  54               	.LM3:
+  55               	/* prologue: frame size=0 */
+  56               	/* prologue end (size=0) */
+  57               	.LM4:
+  58 002e 29B7      		in r18,89-0x20
+  59 0030 2F5F      		subi r18,lo8(-(1))
+  60 0032 29BF      		out 89-0x20,r18
+  61               	.LM5:
+  62 0034 1092 0000 		sts (counter)+1,__zero_reg__
+  63 0038 1092 0000 		sts counter,__zero_reg__
+  64 003c 0196      		adiw r24,1
+  65 003e 20E0      		ldi r18,lo8(0)
+  66 0040 30E0      		ldi r19,hi8(0)
+  67               	.L3:
+  68               	.LM6:
+  69 0042 2817      		cp r18,r24
+  70 0044 3907      		cpc r19,r25
+  71 0046 E8F3      		brlo .L3
+  72               	.LM7:
+  73 0048 89B7      		in r24,89-0x20
+  74 004a 8150      		subi r24,lo8(-(-1))
+  75 004c 89BF      		out 89-0x20,r24
+  76               	/* epilogue: frame size=0 */
+  77 004e 0895      		ret
+  78               	/* epilogue end (size=1) */
+  79               	/* function timerdly size 17 (16) */
+  80               	.LFE6:
+  82               	.global	bitbang
+  84               	bitbang:
+  85               	.LFB7:
+  86               	.LM8:
+  87               	/* prologue: frame size=0 */
+  88 0050 0F93      		push r16
+  89 0052 1F93      		push r17
+  90 0054 CF93      		push r28
+  91 0056 DF93      		push r29
+  92               	/* prologue end (size=4) */
+  93 0058 082F      		mov r16,r24
+  94               	.LM9:
+  95 005a 18BA      		out 56-0x20,__zero_reg__
+  96               	.LM10:
+  97 005c 8AE1      		ldi r24,lo8(26)
+  98 005e 90E0      		ldi r25,hi8(26)
+  99 0060 E6DF      		rcall timerdly
+ 100 0062 C0E0      		ldi r28,lo8(0)
+ 101 0064 D0E0      		ldi r29,hi8(0)
+ 102 0066 17E0      		ldi r17,lo8(7)
+ 103               	.L10:
+ 104               	.LM11:
+ 105 0068 802F      		mov r24,r16
+ 106 006a 9927      		clr r25
+ 107 006c 0C2E      		mov r0,r28
+ 108 006e 02C0      		rjmp 2f
+ 109 0070 9595      	1:	asr r25
+ 110 0072 8795      		ror r24
+ 111 0074 0A94      	2:	dec r0
+ 112 0076 E2F7      		brpl 1b
+ 113 0078 8170      		andi r24,lo8(1)
+ 114 007a 88BB      		out 56-0x20,r24
+ 115               	.LM12:
+ 116 007c 8AE1      		ldi r24,lo8(26)
+ 117 007e 90E0      		ldi r25,hi8(26)
+ 118 0080 D6DF      		rcall timerdly
+ 119               	.LM13:
+ 120 0082 1150      		subi r17,lo8(-(-1))
+ 121 0084 2196      		adiw r28,1
+ 122 0086 17FF      		sbrs r17,7
+ 123 0088 EFCF      		rjmp .L10
+ 124               	.LM14:
+ 125 008a 81E0      		ldi r24,lo8(1)
+ 126 008c 88BB      		out 56-0x20,r24
+ 127               	.LM15:
+ 128 008e 8AE1      		ldi r24,lo8(26)
+ 129 0090 90E0      		ldi r25,hi8(26)
+ 130 0092 CDDF      		rcall timerdly
+ 131               	/* epilogue: frame size=0 */
+ 132 0094 DF91      		pop r29
+ 133 0096 CF91      		pop r28
+ 134 0098 1F91      		pop r17
+ 135 009a 0F91      		pop r16
+ 136 009c 0895      		ret
+ 137               	/* epilogue end (size=5) */
+ 138               	/* function bitbang size 39 (30) */
+ 139               	.LFE7:
+ 141               		.data
+ 142               	.LC0:
+ 143 0000 4865 6C6C 		.string	"Hello World!\r\n"
+ 143      6F20 576F 
+ 143      726C 6421 
+ 143      0D0A 00
+ 144               		.text
+ 145               	.global	main_prg
+ 147               	main_prg:
+ 148               	.LFB5:
+ 149               	.LM16:
+ 150               	/* prologue: frame size=15 */
+ 151 009e CF92      		push r12
+ 152 00a0 DF92      		push r13
+ 153 00a2 FF92      		push r15
+ 154 00a4 0F93      		push r16
+ 155 00a6 1F93      		push r17
+ 156 00a8 CF93      		push r28
+ 157 00aa DF93      		push r29
+ 158 00ac CDB7      		in r28,__SP_L__
+ 159 00ae DEB7      		in r29,__SP_H__
+ 160 00b0 2F97      		sbiw r28,15
+ 161 00b2 0FB6      		in __tmp_reg__,__SREG__
+ 162 00b4 F894      		cli
+ 163 00b6 DEBF      		out __SP_H__,r29
+ 164 00b8 0FBE      		out __SREG__,__tmp_reg__
+ 165 00ba CDBF      		out __SP_L__,r28
+ 166               	/* prologue end (size=15) */
+ 167               	.LM17:
+ 168 00bc 6E01      		movw r12,r28
+ 169 00be 0894      		sec
+ 170 00c0 C11C      		adc r12,__zero_reg__
+ 171 00c2 D11C      		adc r13,__zero_reg__
+ 172 00c4 8FE0      		ldi r24,lo8(15)
+ 173 00c6 E0E0      		ldi r30,lo8(.LC0)
+ 174 00c8 F0E0      		ldi r31,hi8(.LC0)
+ 175 00ca D601      		movw r26,r12
+ 176 00cc 0190      		ld __tmp_reg__,Z+
+ 177 00ce 0D92      		st X+,__tmp_reg__
+ 178 00d0 8A95      		dec r24
+ 179 00d2 E1F7      		brne .-8
+ 180               	.L14:
+ 181 00d4 8601      		movw r16,r12
+ 182 00d6 8EE0      		ldi r24,lo8(14)
+ 183 00d8 F82E      		mov r15,r24
+ 184               	.L19:
+ 185               	.LM18:
+ 186 00da F801      		movw r30,r16
+ 187 00dc 8191      		ld r24,Z+
+ 188 00de 8F01      		movw r16,r30
+ 189 00e0 B7DF      		rcall bitbang
+ 190               	.LM19:
+ 191 00e2 FA94      		dec r15
+ 192 00e4 F7FE      		sbrs r15,7
+ 193 00e6 F9CF      		rjmp .L19
+ 194 00e8 F5CF      		rjmp .L14
+ 195               	/* epilogue: frame size=15 */
+ 196               	/* epilogue: noreturn */
+ 197               	/* epilogue end (size=0) */
+ 198               	/* function main_prg size 38 (23) */
+ 199               	.LFE5:
+ 201               	.global	main
+ 203               	main:
+ 204               	.LFB4:
+ 205               	.LM20:
+ 206               	/* prologue: frame size=0 */
+ 207 00ea C0E0      		ldi r28,lo8(__stack - 0)
+ 208 00ec D0E0      		ldi r29,hi8(__stack - 0)
+ 209 00ee DEBF      		out __SP_H__,r29
+ 210 00f0 CDBF      		out __SP_L__,r28
+ 211               	/* prologue end (size=4) */
+ 212               	.LM21:
+ 213 00f2 81E0      		ldi r24,lo8(1)
+ 214 00f4 83BF      		out 83-0x20,r24
+ 215               	.LM22:
+ 216               	/* #APP */
+ 217 00f6 7894      		sei
+ 218               	.LM23:
+ 219               	/* #NOAPP */
+ 220 00f8 87B3      		in r24,55-0x20
+ 221 00fa 8F5F      		subi r24,lo8(-(1))
+ 222 00fc 87BB      		out 55-0x20,r24
+ 223               	.LM24:
+ 224 00fe 1092 0000 		sts ack,__zero_reg__
+ 225               	.LM25:
+ 226 0102 CDDF      		rcall main_prg
+ 227               	.LM26:
+ 228 0104 80E0      		ldi r24,lo8(0)
+ 229 0106 90E0      		ldi r25,hi8(0)
+ 230               	/* epilogue: frame size=0 */
+ 231 0108 00C0      		rjmp exit
+ 232               	/* epilogue end (size=1) */
+ 233               	/* function main size 17 (12) */
+ 234               	.LFE4:
+ 236               		.comm counter,2,1
+ 237               		.comm ack,1,1
+ 238               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 bitbang.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccC0aaaa.s:20     .text:00000000 __vector_9
+                            *COM*:00000002 counter
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccC0aaaa.s:52     .text:0000002e timerdly
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccC0aaaa.s:84     .text:00000050 bitbang
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccC0aaaa.s:147    .text:0000009e main_prg
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccC0aaaa.s:203    .text:000000ea main
+                            *COM*:00000001 ack
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__stack
+exit

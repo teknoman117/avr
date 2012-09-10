@@ -1,0 +1,146 @@
+   1               		.file	"main.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	DELAY_MS
+  20               	DELAY_MS:
+  21               	.LFB3:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24 0000 CF93      		push r28
+  25 0002 DF93      		push r29
+  26               	/* prologue end (size=2) */
+  27               	.LM2:
+  28 0004 0097      		sbiw r24,0
+  29 0006 31F0      		breq .L7
+  30 0008 EC01      		movw r28,r24
+  31               	.L5:
+  32               	.LM3:
+  33 000a 88EE      		ldi r24,lo8(1000)
+  34 000c 93E0      		ldi r25,hi8(1000)
+  35 000e 00D0      		rcall DELAY_US
+  36               	.LM4:
+  37 0010 2197      		sbiw r28,1
+  38 0012 D9F7      		brne .L5
+  39               	.L7:
+  40               	/* epilogue: frame size=0 */
+  41 0014 DF91      		pop r29
+  42 0016 CF91      		pop r28
+  43 0018 0895      		ret
+  44               	/* epilogue end (size=3) */
+  45               	/* function DELAY_MS size 14 (9) */
+  46               	.LFE3:
+  48               	.global	main
+  50               	main:
+  51               	.LFB2:
+  52               	.LM5:
+  53               	/* prologue: frame size=0 */
+  54 001a C0E0      		ldi r28,lo8(__stack - 0)
+  55 001c D0E0      		ldi r29,hi8(__stack - 0)
+  56 001e DEBF      		out __SP_H__,r29
+  57 0020 CDBF      		out __SP_L__,r28
+  58               	/* prologue end (size=4) */
+  59               	.LM6:
+  60 0022 00D0      		rcall initPWM
+  61               	.LM7:
+  62 0024 00D0      		rcall initADC
+  63               	.LM8:
+  64 0026 61E0      		ldi r22,lo8(1)
+  65 0028 862F      		mov r24,r22
+  66 002a 00D0      		rcall setIOD
+  67               	.LM9:
+  68 002c 61E0      		ldi r22,lo8(1)
+  69 002e 82E0      		ldi r24,lo8(2)
+  70 0030 00D0      		rcall setIOD
+  71               	.L9:
+  72               	.LM10:
+  73 0032 61E0      		ldi r22,lo8(1)
+  74 0034 862F      		mov r24,r22
+  75 0036 00D0      		rcall setStateD
+  76               	.LM11:
+  77 0038 82E0      		ldi r24,lo8(2)
+  78 003a 90E0      		ldi r25,hi8(2)
+  79 003c E1DF      		rcall DELAY_MS
+  80               	.LM12:
+  81 003e 84E0      		ldi r24,lo8(4)
+  82 0040 00D0      		rcall ADC08bit
+  83 0042 00D0      		rcall setCHA
+  84               	.LM13:
+  85 0044 60E0      		ldi r22,lo8(0)
+  86 0046 81E0      		ldi r24,lo8(1)
+  87 0048 00D0      		rcall setStateD
+  88               	.LM14:
+  89 004a 88EC      		ldi r24,lo8(200)
+  90 004c 90E0      		ldi r25,hi8(200)
+  91 004e D8DF      		rcall DELAY_MS
+  92               	.LM15:
+  93 0050 61E0      		ldi r22,lo8(1)
+  94 0052 82E0      		ldi r24,lo8(2)
+  95 0054 00D0      		rcall setStateD
+  96               	.LM16:
+  97 0056 82E0      		ldi r24,lo8(2)
+  98 0058 90E0      		ldi r25,hi8(2)
+  99 005a D2DF      		rcall DELAY_MS
+ 100               	.LM17:
+ 101 005c 84E0      		ldi r24,lo8(4)
+ 102 005e 00D0      		rcall ADC08bit
+ 103 0060 00D0      		rcall setCHB
+ 104               	.LM18:
+ 105 0062 60E0      		ldi r22,lo8(0)
+ 106 0064 82E0      		ldi r24,lo8(2)
+ 107 0066 00D0      		rcall setStateD
+ 108               	.LM19:
+ 109 0068 88EC      		ldi r24,lo8(200)
+ 110 006a 90E0      		ldi r25,hi8(200)
+ 111 006c C9DF      		rcall DELAY_MS
+ 112 006e E1CF      		rjmp .L9
+ 113               	/* epilogue: frame size=0 */
+ 114               	/* epilogue: noreturn */
+ 115               	/* epilogue end (size=0) */
+ 116               	/* function main size 43 (39) */
+ 117               	.LFE2:
+ 119               		.comm prtb,1,1
+ 120               		.comm prtc,1,1
+ 121               		.comm prtd,1,1
+ 122               		.comm dirb,1,1
+ 123               		.comm dirc,1,1
+ 124               		.comm dird,1,1
+ 125               		.comm convert,2,1
+ 126               		.comm loop_count,2,1
+ 127               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccQRaaaa.s:20     .text:00000000 DELAY_MS
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccQRaaaa.s:50     .text:0000001a main
+                            *COM*:00000001 prtb
+                            *COM*:00000001 prtc
+                            *COM*:00000001 prtd
+                            *COM*:00000001 dirb
+                            *COM*:00000001 dirc
+                            *COM*:00000001 dird
+                            *COM*:00000002 convert
+                            *COM*:00000002 loop_count
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+DELAY_US
+__stack
+initPWM
+initADC
+setIOD
+setStateD
+ADC08bit
+setCHA
+setCHB

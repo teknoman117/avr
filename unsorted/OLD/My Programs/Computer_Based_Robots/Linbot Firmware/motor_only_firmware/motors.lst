@@ -1,0 +1,520 @@
+   1               		.file	"motors.c"
+   2               		.arch atmega644
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	isMoving
+  20               	isMoving:
+  21               	.LFB12:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 8091 0000 		lds r24,mv
+  27 0004 9091 0000 		lds r25,(mv)+1
+  28               	/* epilogue: frame size=0 */
+  29 0008 0895      		ret
+  30               	/* epilogue end (size=1) */
+  31               	/* function isMoving size 5 (4) */
+  32               	.LFE12:
+  34               	.global	stop
+  36               	stop:
+  37               	.LFB11:
+  38               	.LM3:
+  39               	/* prologue: frame size=0 */
+  40               	/* prologue end (size=0) */
+  41               	.LM4:
+  42 000a 60E0      		ldi r22,lo8(0)
+  43 000c 80E0      		ldi r24,lo8(0)
+  44 000e 0E94 0000 		call setIOB
+  45               	.LM5:
+  46 0012 60E0      		ldi r22,lo8(0)
+  47 0014 81E0      		ldi r24,lo8(1)
+  48 0016 0E94 0000 		call setIOB
+  49               	.LM6:
+  50 001a 60E0      		ldi r22,lo8(0)
+  51 001c 82E0      		ldi r24,lo8(2)
+  52 001e 0E94 0000 		call setIOB
+  53               	.LM7:
+  54 0022 60E0      		ldi r22,lo8(0)
+  55 0024 83E0      		ldi r24,lo8(3)
+  56 0026 0E94 0000 		call setIOB
+  57               	.LM8:
+  58 002a 80E0      		ldi r24,lo8(0)
+  59 002c 90E0      		ldi r25,hi8(0)
+  60 002e 0E94 0000 		call setCHA
+  61               	.LM9:
+  62 0032 80E0      		ldi r24,lo8(0)
+  63 0034 90E0      		ldi r25,hi8(0)
+  64 0036 0E94 0000 		call setCHB
+  65               	.LM10:
+  66 003a 1092 0000 		sts (mv)+1,__zero_reg__
+  67 003e 1092 0000 		sts mv,__zero_reg__
+  68               	/* epilogue: frame size=0 */
+  69 0042 0895      		ret
+  70               	/* epilogue end (size=1) */
+  71               	/* function stop size 29 (28) */
+  72               	.LFE11:
+  74               	.global	brgh
+  76               	brgh:
+  77               	.LFB10:
+  78               	.LM11:
+  79               	/* prologue: frame size=0 */
+  80 0044 0F93      		push r16
+  81 0046 1F93      		push r17
+  82               	/* prologue end (size=2) */
+  83               	.LVL0:
+  84 0048 082F      		mov r16,r24
+  85               	.LM12:
+  86 004a 60E0      		ldi r22,lo8(0)
+  87 004c 80E0      		ldi r24,lo8(0)
+  88               	.LVL1:
+  89 004e 0E94 0000 		call setIOB
+  90               	.LM13:
+  91 0052 61E0      		ldi r22,lo8(1)
+  92 0054 81E0      		ldi r24,lo8(1)
+  93 0056 0E94 0000 		call setIOB
+  94               	.LM14:
+  95 005a 60E0      		ldi r22,lo8(0)
+  96 005c 82E0      		ldi r24,lo8(2)
+  97 005e 0E94 0000 		call setIOB
+  98               	.LM15:
+  99 0062 60E0      		ldi r22,lo8(0)
+ 100 0064 83E0      		ldi r24,lo8(3)
+ 101 0066 0E94 0000 		call setIOB
+ 102               	.LM16:
+ 103 006a 1127      		clr r17
+ 104               	.LVL2:
+ 105 006c C801      		movw r24,r16
+ 106 006e 0E94 0000 		call setCHA
+ 107               	.LM17:
+ 108 0072 C801      		movw r24,r16
+ 109 0074 0E94 0000 		call setCHB
+ 110               	.LM18:
+ 111 0078 81E0      		ldi r24,lo8(1)
+ 112 007a 90E0      		ldi r25,hi8(1)
+ 113 007c 9093 0000 		sts (mv)+1,r25
+ 114 0080 8093 0000 		sts mv,r24
+ 115               	/* epilogue: frame size=0 */
+ 116 0084 1F91      		pop r17
+ 117 0086 0F91      		pop r16
+ 118 0088 0895      		ret
+ 119               	/* epilogue end (size=3) */
+ 120               	/* function brgh size 35 (30) */
+ 121               	.LFE10:
+ 123               	.global	blft
+ 125               	blft:
+ 126               	.LFB9:
+ 127               	.LM19:
+ 128               	/* prologue: frame size=0 */
+ 129 008a 0F93      		push r16
+ 130 008c 1F93      		push r17
+ 131               	/* prologue end (size=2) */
+ 132               	.LVL3:
+ 133 008e 082F      		mov r16,r24
+ 134               	.LM20:
+ 135 0090 60E0      		ldi r22,lo8(0)
+ 136 0092 80E0      		ldi r24,lo8(0)
+ 137               	.LVL4:
+ 138 0094 0E94 0000 		call setIOB
+ 139               	.LM21:
+ 140 0098 60E0      		ldi r22,lo8(0)
+ 141 009a 81E0      		ldi r24,lo8(1)
+ 142 009c 0E94 0000 		call setIOB
+ 143               	.LM22:
+ 144 00a0 60E0      		ldi r22,lo8(0)
+ 145 00a2 82E0      		ldi r24,lo8(2)
+ 146 00a4 0E94 0000 		call setIOB
+ 147               	.LM23:
+ 148 00a8 61E0      		ldi r22,lo8(1)
+ 149 00aa 83E0      		ldi r24,lo8(3)
+ 150 00ac 0E94 0000 		call setIOB
+ 151               	.LM24:
+ 152 00b0 1127      		clr r17
+ 153               	.LVL5:
+ 154 00b2 C801      		movw r24,r16
+ 155 00b4 0E94 0000 		call setCHA
+ 156               	.LM25:
+ 157 00b8 C801      		movw r24,r16
+ 158 00ba 0E94 0000 		call setCHB
+ 159               	.LM26:
+ 160 00be 81E0      		ldi r24,lo8(1)
+ 161 00c0 90E0      		ldi r25,hi8(1)
+ 162 00c2 9093 0000 		sts (mv)+1,r25
+ 163 00c6 8093 0000 		sts mv,r24
+ 164               	/* epilogue: frame size=0 */
+ 165 00ca 1F91      		pop r17
+ 166 00cc 0F91      		pop r16
+ 167 00ce 0895      		ret
+ 168               	/* epilogue end (size=3) */
+ 169               	/* function blft size 35 (30) */
+ 170               	.LFE9:
+ 172               	.global	srgh
+ 174               	srgh:
+ 175               	.LFB8:
+ 176               	.LM27:
+ 177               	/* prologue: frame size=0 */
+ 178 00d0 0F93      		push r16
+ 179 00d2 1F93      		push r17
+ 180               	/* prologue end (size=2) */
+ 181               	.LVL6:
+ 182 00d4 082F      		mov r16,r24
+ 183               	.LM28:
+ 184 00d6 61E0      		ldi r22,lo8(1)
+ 185 00d8 80E0      		ldi r24,lo8(0)
+ 186               	.LVL7:
+ 187 00da 0E94 0000 		call setIOB
+ 188               	.LM29:
+ 189 00de 60E0      		ldi r22,lo8(0)
+ 190 00e0 81E0      		ldi r24,lo8(1)
+ 191 00e2 0E94 0000 		call setIOB
+ 192               	.LM30:
+ 193 00e6 60E0      		ldi r22,lo8(0)
+ 194 00e8 82E0      		ldi r24,lo8(2)
+ 195 00ea 0E94 0000 		call setIOB
+ 196               	.LM31:
+ 197 00ee 61E0      		ldi r22,lo8(1)
+ 198 00f0 83E0      		ldi r24,lo8(3)
+ 199 00f2 0E94 0000 		call setIOB
+ 200               	.LM32:
+ 201 00f6 1127      		clr r17
+ 202               	.LVL8:
+ 203 00f8 C801      		movw r24,r16
+ 204 00fa 0E94 0000 		call setCHA
+ 205               	.LM33:
+ 206 00fe C801      		movw r24,r16
+ 207 0100 0E94 0000 		call setCHB
+ 208               	.LM34:
+ 209 0104 81E0      		ldi r24,lo8(1)
+ 210 0106 90E0      		ldi r25,hi8(1)
+ 211 0108 9093 0000 		sts (mv)+1,r25
+ 212 010c 8093 0000 		sts mv,r24
+ 213               	/* epilogue: frame size=0 */
+ 214 0110 1F91      		pop r17
+ 215 0112 0F91      		pop r16
+ 216 0114 0895      		ret
+ 217               	/* epilogue end (size=3) */
+ 218               	/* function srgh size 35 (30) */
+ 219               	.LFE8:
+ 221               	.global	slft
+ 223               	slft:
+ 224               	.LFB7:
+ 225               	.LM35:
+ 226               	/* prologue: frame size=0 */
+ 227 0116 0F93      		push r16
+ 228 0118 1F93      		push r17
+ 229               	/* prologue end (size=2) */
+ 230               	.LVL9:
+ 231 011a 082F      		mov r16,r24
+ 232               	.LM36:
+ 233 011c 60E0      		ldi r22,lo8(0)
+ 234 011e 80E0      		ldi r24,lo8(0)
+ 235               	.LVL10:
+ 236 0120 0E94 0000 		call setIOB
+ 237               	.LM37:
+ 238 0124 61E0      		ldi r22,lo8(1)
+ 239 0126 81E0      		ldi r24,lo8(1)
+ 240 0128 0E94 0000 		call setIOB
+ 241               	.LM38:
+ 242 012c 61E0      		ldi r22,lo8(1)
+ 243 012e 82E0      		ldi r24,lo8(2)
+ 244 0130 0E94 0000 		call setIOB
+ 245               	.LM39:
+ 246 0134 60E0      		ldi r22,lo8(0)
+ 247 0136 83E0      		ldi r24,lo8(3)
+ 248 0138 0E94 0000 		call setIOB
+ 249               	.LM40:
+ 250 013c 1127      		clr r17
+ 251               	.LVL11:
+ 252 013e C801      		movw r24,r16
+ 253 0140 0E94 0000 		call setCHA
+ 254               	.LM41:
+ 255 0144 C801      		movw r24,r16
+ 256 0146 0E94 0000 		call setCHB
+ 257               	.LM42:
+ 258 014a 81E0      		ldi r24,lo8(1)
+ 259 014c 90E0      		ldi r25,hi8(1)
+ 260 014e 9093 0000 		sts (mv)+1,r25
+ 261 0152 8093 0000 		sts mv,r24
+ 262               	/* epilogue: frame size=0 */
+ 263 0156 1F91      		pop r17
+ 264 0158 0F91      		pop r16
+ 265 015a 0895      		ret
+ 266               	/* epilogue end (size=3) */
+ 267               	/* function slft size 35 (30) */
+ 268               	.LFE7:
+ 270               	.global	rgh
+ 272               	rgh:
+ 273               	.LFB6:
+ 274               	.LM43:
+ 275               	/* prologue: frame size=0 */
+ 276 015c 0F93      		push r16
+ 277 015e 1F93      		push r17
+ 278               	/* prologue end (size=2) */
+ 279               	.LVL12:
+ 280 0160 082F      		mov r16,r24
+ 281               	.LM44:
+ 282 0162 61E0      		ldi r22,lo8(1)
+ 283 0164 80E0      		ldi r24,lo8(0)
+ 284               	.LVL13:
+ 285 0166 0E94 0000 		call setIOB
+ 286               	.LM45:
+ 287 016a 60E0      		ldi r22,lo8(0)
+ 288 016c 81E0      		ldi r24,lo8(1)
+ 289 016e 0E94 0000 		call setIOB
+ 290               	.LM46:
+ 291 0172 60E0      		ldi r22,lo8(0)
+ 292 0174 82E0      		ldi r24,lo8(2)
+ 293 0176 0E94 0000 		call setIOB
+ 294               	.LM47:
+ 295 017a 60E0      		ldi r22,lo8(0)
+ 296 017c 83E0      		ldi r24,lo8(3)
+ 297 017e 0E94 0000 		call setIOB
+ 298               	.LM48:
+ 299 0182 1127      		clr r17
+ 300               	.LVL14:
+ 301 0184 C801      		movw r24,r16
+ 302 0186 0E94 0000 		call setCHA
+ 303               	.LM49:
+ 304 018a C801      		movw r24,r16
+ 305 018c 0E94 0000 		call setCHB
+ 306               	.LM50:
+ 307 0190 81E0      		ldi r24,lo8(1)
+ 308 0192 90E0      		ldi r25,hi8(1)
+ 309 0194 9093 0000 		sts (mv)+1,r25
+ 310 0198 8093 0000 		sts mv,r24
+ 311               	/* epilogue: frame size=0 */
+ 312 019c 1F91      		pop r17
+ 313 019e 0F91      		pop r16
+ 314 01a0 0895      		ret
+ 315               	/* epilogue end (size=3) */
+ 316               	/* function rgh size 35 (30) */
+ 317               	.LFE6:
+ 319               	.global	lft
+ 321               	lft:
+ 322               	.LFB5:
+ 323               	.LM51:
+ 324               	/* prologue: frame size=0 */
+ 325 01a2 0F93      		push r16
+ 326 01a4 1F93      		push r17
+ 327               	/* prologue end (size=2) */
+ 328               	.LVL15:
+ 329 01a6 082F      		mov r16,r24
+ 330               	.LM52:
+ 331 01a8 60E0      		ldi r22,lo8(0)
+ 332 01aa 80E0      		ldi r24,lo8(0)
+ 333               	.LVL16:
+ 334 01ac 0E94 0000 		call setIOB
+ 335               	.LM53:
+ 336 01b0 60E0      		ldi r22,lo8(0)
+ 337 01b2 81E0      		ldi r24,lo8(1)
+ 338 01b4 0E94 0000 		call setIOB
+ 339               	.LM54:
+ 340 01b8 61E0      		ldi r22,lo8(1)
+ 341 01ba 82E0      		ldi r24,lo8(2)
+ 342 01bc 0E94 0000 		call setIOB
+ 343               	.LM55:
+ 344 01c0 60E0      		ldi r22,lo8(0)
+ 345 01c2 83E0      		ldi r24,lo8(3)
+ 346 01c4 0E94 0000 		call setIOB
+ 347               	.LM56:
+ 348 01c8 1127      		clr r17
+ 349               	.LVL17:
+ 350 01ca C801      		movw r24,r16
+ 351 01cc 0E94 0000 		call setCHA
+ 352               	.LM57:
+ 353 01d0 C801      		movw r24,r16
+ 354 01d2 0E94 0000 		call setCHB
+ 355               	.LM58:
+ 356 01d6 81E0      		ldi r24,lo8(1)
+ 357 01d8 90E0      		ldi r25,hi8(1)
+ 358 01da 9093 0000 		sts (mv)+1,r25
+ 359 01de 8093 0000 		sts mv,r24
+ 360               	/* epilogue: frame size=0 */
+ 361 01e2 1F91      		pop r17
+ 362 01e4 0F91      		pop r16
+ 363 01e6 0895      		ret
+ 364               	/* epilogue end (size=3) */
+ 365               	/* function lft size 35 (30) */
+ 366               	.LFE5:
+ 368               	.global	bwd
+ 370               	bwd:
+ 371               	.LFB4:
+ 372               	.LM59:
+ 373               	/* prologue: frame size=0 */
+ 374 01e8 0F93      		push r16
+ 375 01ea 1F93      		push r17
+ 376               	/* prologue end (size=2) */
+ 377               	.LVL18:
+ 378 01ec 082F      		mov r16,r24
+ 379               	.LM60:
+ 380 01ee 60E0      		ldi r22,lo8(0)
+ 381 01f0 80E0      		ldi r24,lo8(0)
+ 382               	.LVL19:
+ 383 01f2 0E94 0000 		call setIOB
+ 384               	.LM61:
+ 385 01f6 61E0      		ldi r22,lo8(1)
+ 386 01f8 81E0      		ldi r24,lo8(1)
+ 387 01fa 0E94 0000 		call setIOB
+ 388               	.LM62:
+ 389 01fe 60E0      		ldi r22,lo8(0)
+ 390 0200 82E0      		ldi r24,lo8(2)
+ 391 0202 0E94 0000 		call setIOB
+ 392               	.LM63:
+ 393 0206 61E0      		ldi r22,lo8(1)
+ 394 0208 83E0      		ldi r24,lo8(3)
+ 395 020a 0E94 0000 		call setIOB
+ 396               	.LM64:
+ 397 020e 1127      		clr r17
+ 398               	.LVL20:
+ 399 0210 C801      		movw r24,r16
+ 400 0212 0E94 0000 		call setCHA
+ 401               	.LM65:
+ 402 0216 C801      		movw r24,r16
+ 403 0218 0E94 0000 		call setCHB
+ 404               	.LM66:
+ 405 021c 81E0      		ldi r24,lo8(1)
+ 406 021e 90E0      		ldi r25,hi8(1)
+ 407 0220 9093 0000 		sts (mv)+1,r25
+ 408 0224 8093 0000 		sts mv,r24
+ 409               	/* epilogue: frame size=0 */
+ 410 0228 1F91      		pop r17
+ 411 022a 0F91      		pop r16
+ 412 022c 0895      		ret
+ 413               	/* epilogue end (size=3) */
+ 414               	/* function bwd size 35 (30) */
+ 415               	.LFE4:
+ 417               	.global	fwd
+ 419               	fwd:
+ 420               	.LFB3:
+ 421               	.LM67:
+ 422               	/* prologue: frame size=0 */
+ 423 022e 0F93      		push r16
+ 424 0230 1F93      		push r17
+ 425               	/* prologue end (size=2) */
+ 426               	.LVL21:
+ 427 0232 082F      		mov r16,r24
+ 428               	.LM68:
+ 429 0234 61E0      		ldi r22,lo8(1)
+ 430 0236 80E0      		ldi r24,lo8(0)
+ 431               	.LVL22:
+ 432 0238 0E94 0000 		call setIOB
+ 433               	.LM69:
+ 434 023c 60E0      		ldi r22,lo8(0)
+ 435 023e 81E0      		ldi r24,lo8(1)
+ 436 0240 0E94 0000 		call setIOB
+ 437               	.LM70:
+ 438 0244 61E0      		ldi r22,lo8(1)
+ 439 0246 82E0      		ldi r24,lo8(2)
+ 440 0248 0E94 0000 		call setIOB
+ 441               	.LM71:
+ 442 024c 60E0      		ldi r22,lo8(0)
+ 443 024e 83E0      		ldi r24,lo8(3)
+ 444 0250 0E94 0000 		call setIOB
+ 445               	.LM72:
+ 446 0254 1127      		clr r17
+ 447               	.LVL23:
+ 448 0256 C801      		movw r24,r16
+ 449 0258 0E94 0000 		call setCHA
+ 450               	.LM73:
+ 451 025c C801      		movw r24,r16
+ 452 025e 0E94 0000 		call setCHB
+ 453               	.LM74:
+ 454 0262 81E0      		ldi r24,lo8(1)
+ 455 0264 90E0      		ldi r25,hi8(1)
+ 456 0266 9093 0000 		sts (mv)+1,r25
+ 457 026a 8093 0000 		sts mv,r24
+ 458               	/* epilogue: frame size=0 */
+ 459 026e 1F91      		pop r17
+ 460 0270 0F91      		pop r16
+ 461 0272 0895      		ret
+ 462               	/* epilogue end (size=3) */
+ 463               	/* function fwd size 35 (30) */
+ 464               	.LFE3:
+ 466               	.global	initMotors
+ 468               	initMotors:
+ 469               	.LFB2:
+ 470               	.LM75:
+ 471               	/* prologue: frame size=0 */
+ 472               	/* prologue end (size=0) */
+ 473               	.LM76:
+ 474 0274 0E94 0000 		call initPWM
+ 475               	.LM77:
+ 476 0278 0E94 0000 		call initIO
+ 477               	.LM78:
+ 478 027c 61E0      		ldi r22,lo8(1)
+ 479 027e 80E0      		ldi r24,lo8(0)
+ 480 0280 0E94 0000 		call setDIRB
+ 481               	.LM79:
+ 482 0284 61E0      		ldi r22,lo8(1)
+ 483 0286 81E0      		ldi r24,lo8(1)
+ 484 0288 0E94 0000 		call setDIRB
+ 485               	.LM80:
+ 486 028c 61E0      		ldi r22,lo8(1)
+ 487 028e 82E0      		ldi r24,lo8(2)
+ 488 0290 0E94 0000 		call setDIRB
+ 489               	.LM81:
+ 490 0294 61E0      		ldi r22,lo8(1)
+ 491 0296 83E0      		ldi r24,lo8(3)
+ 492 0298 0E94 0000 		call setDIRB
+ 493               	/* epilogue: frame size=0 */
+ 494 029c 0895      		ret
+ 495               	/* epilogue end (size=1) */
+ 496               	/* function initMotors size 21 (20) */
+ 497               	.LFE2:
+ 499               	.global	mv
+ 500               	.global	mv
+ 501               		.section .bss
+ 504               	mv:
+ 505 0000 0000      		.skip 2,0
+ 506               		.comm prta,1,1
+ 507               		.comm prtb,1,1
+ 508               		.comm prtc,1,1
+ 509               		.comm prtd,1,1
+ 510               		.comm dira,1,1
+ 511               		.comm dirb,1,1
+ 512               		.comm dirc,1,1
+ 513               		.comm dird,1,1
+ 618               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 motors.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:20     .text:00000000 isMoving
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:504    .bss:00000000 mv
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:36     .text:0000000a stop
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:76     .text:00000044 brgh
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:125    .text:0000008a blft
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:174    .text:000000d0 srgh
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:223    .text:00000116 slft
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:272    .text:0000015c rgh
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:321    .text:000001a2 lft
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:370    .text:000001e8 bwd
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:419    .text:0000022e fwd
+C:\DOCUME~1\michael\LOCALS~1\Temp/cczDmk5R.s:468    .text:00000274 initMotors
+                            *COM*:00000001 prta
+                            *COM*:00000001 prtb
+                            *COM*:00000001 prtc
+                            *COM*:00000001 prtd
+                            *COM*:00000001 dira
+                            *COM*:00000001 dirb
+                            *COM*:00000001 dirc
+                            *COM*:00000001 dird
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+setIOB
+setCHA
+setCHB
+initPWM
+initIO
+setDIRB

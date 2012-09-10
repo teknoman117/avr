@@ -1,0 +1,174 @@
+   1               		.file	"main.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	DELAY_US
+  20               	DELAY_US:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 880F      		lsl r24
+  27 0002 991F      		rol r25
+  28               	.LM3:
+  29               	/* #APP */
+  30 0004 0197      		1: sbiw r24,1
+  31 0006 F1F7      		brne 1b
+  32               	/* #NOAPP */
+  33               	/* epilogue: frame size=0 */
+  34 0008 0895      		ret
+  35               	/* epilogue end (size=1) */
+  36               	/* function DELAY_US size 7 (6) */
+  37               	.LFE4:
+  39               	.global	DELAY_MS
+  41               	DELAY_MS:
+  42               	.LFB5:
+  43               	.LM4:
+  44               	/* prologue: frame size=0 */
+  45 000a 0F93      		push r16
+  46 000c 1F93      		push r17
+  47 000e CF93      		push r28
+  48 0010 DF93      		push r29
+  49               	/* prologue end (size=4) */
+  50 0012 8C01      		movw r16,r24
+  51               	.LM5:
+  52 0014 C0E0      		ldi r28,lo8(0)
+  53 0016 D0E0      		ldi r29,hi8(0)
+  54 0018 C817      		cp r28,r24
+  55 001a D907      		cpc r29,r25
+  56 001c 38F4      		brsh .L8
+  57               	.L6:
+  58               	.LM6:
+  59 001e 88EE      		ldi r24,lo8(1000)
+  60 0020 93E0      		ldi r25,hi8(1000)
+  61 0022 EEDF      		rcall DELAY_US
+  62               	.LM7:
+  63 0024 2196      		adiw r28,1
+  64 0026 C017      		cp r28,r16
+  65 0028 D107      		cpc r29,r17
+  66 002a C8F3      		brlo .L6
+  67               	.L8:
+  68               	/* epilogue: frame size=0 */
+  69 002c DF91      		pop r29
+  70 002e CF91      		pop r28
+  71 0030 1F91      		pop r17
+  72 0032 0F91      		pop r16
+  73 0034 0895      		ret
+  74               	/* epilogue end (size=5) */
+  75               	/* function DELAY_MS size 22 (13) */
+  76               	.LFE5:
+  78               	.global	MAIN_PRG
+  80               	MAIN_PRG:
+  81               	.LFB3:
+  82               	.LM8:
+  83               	/* prologue: frame size=0 */
+  84 0036 CF93      		push r28
+  85 0038 DF93      		push r29
+  86               	/* prologue end (size=2) */
+  87               	.LM9:
+  88 003a 80EC      		ldi r24,lo8(24000)
+  89 003c 9DE5      		ldi r25,hi8(24000)
+  90 003e 00D0      		rcall setONcycles
+  91               	.LM10:
+  92 0040 C4E1      		ldi r28,lo8(20)
+  93 0042 D0E0      		ldi r29,hi8(20)
+  94               	.LM11:
+  95 0044 80E8      		ldi r24,lo8(-17536)
+  96 0046 9BEB      		ldi r25,hi8(-17536)
+  97 0048 00D0      		rcall setOFFcycles
+  98               	.L25:
+  99               	.LM12:
+ 100 004a CA34      		cpi r28,74
+ 101 004c D105      		cpc r29,__zero_reg__
+ 102 004e 38F4      		brsh .L19
+ 103               	.LM13:
+ 104 0050 CE01      		movw r24,r28
+ 105 0052 00D0      		rcall setONcycles
+ 106               	.LM14:
+ 107 0054 2196      		adiw r28,1
+ 108               	.LM15:
+ 109 0056 82E3      		ldi r24,lo8(50)
+ 110 0058 90E0      		ldi r25,hi8(50)
+ 111 005a D7DF      		rcall DELAY_MS
+ 112 005c F6CF      		rjmp .L25
+ 113               	.L19:
+ 114               	.LM16:
+ 115 005e C231      		cpi r28,18
+ 116 0060 D105      		cpc r29,__zero_reg__
+ 117 0062 98F3      		brlo .L25
+ 118               	.LM17:
+ 119 0064 CE01      		movw r24,r28
+ 120 0066 00D0      		rcall setONcycles
+ 121               	.LM18:
+ 122 0068 2197      		sbiw r28,1
+ 123               	.LM19:
+ 124 006a 82E3      		ldi r24,lo8(50)
+ 125 006c 90E0      		ldi r25,hi8(50)
+ 126 006e CDDF      		rcall DELAY_MS
+ 127 0070 F6CF      		rjmp .L19
+ 128               	/* epilogue: frame size=0 */
+ 129               	/* epilogue: noreturn */
+ 130               	/* epilogue end (size=0) */
+ 131               	/* function MAIN_PRG size 30 (28) */
+ 132               	.LFE3:
+ 134               	.global	main
+ 136               	main:
+ 137               	.LFB2:
+ 138               	.LM20:
+ 139               	/* prologue: frame size=0 */
+ 140 0072 C0E0      		ldi r28,lo8(__stack - 0)
+ 141 0074 D0E0      		ldi r29,hi8(__stack - 0)
+ 142 0076 DEBF      		out __SP_H__,r29
+ 143 0078 CDBF      		out __SP_L__,r28
+ 144               	/* prologue end (size=4) */
+ 145               	.LM21:
+ 146 007a 8FEF      		ldi r24,lo8(-1)
+ 147 007c 87BB      		out 55-0x20,r24
+ 148               	.LM22:
+ 149 007e 00D0      		rcall start
+ 150               	.LM23:
+ 151 0080 DADF      		rcall MAIN_PRG
+ 152               	.LM24:
+ 153 0082 80E0      		ldi r24,lo8(0)
+ 154 0084 90E0      		ldi r25,hi8(0)
+ 155               	/* epilogue: frame size=0 */
+ 156 0086 00C0      		rjmp exit
+ 157               	/* epilogue end (size=1) */
+ 158               	/* function main size 11 (6) */
+ 159               	.LFE2:
+ 161               		.comm counttoON,2,1
+ 162               		.comm counttoOFF,2,1
+ 163               		.comm counter,8,1
+ 164               		.comm onoff,1,1
+ 165               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:20     .text:00000000 DELAY_US
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:41     .text:0000000a DELAY_MS
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:80     .text:00000036 MAIN_PRG
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/cccdbaaa.s:136    .text:00000072 main
+                            *COM*:00000002 counttoON
+                            *COM*:00000002 counttoOFF
+                            *COM*:00000008 counter
+                            *COM*:00000001 onoff
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+setONcycles
+setOFFcycles
+__stack
+start
+exit

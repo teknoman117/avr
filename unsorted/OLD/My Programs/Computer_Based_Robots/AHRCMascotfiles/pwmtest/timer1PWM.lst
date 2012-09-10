@@ -1,0 +1,254 @@
+   1               		.file	"timer1PWM.c"
+   2               		.arch atmega48
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	initPWM08
+  20               	initPWM08:
+  21               	.LFB3:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 81EA      		ldi r24,lo8(-95)
+  27 0002 8093 8000 		sts 128,r24
+  28               	.LM3:
+  29 0006 89E0      		ldi r24,lo8(9)
+  30 0008 8093 8100 		sts 129,r24
+  31               	/* epilogue: frame size=0 */
+  32 000c 0895      		ret
+  33               	/* epilogue end (size=1) */
+  34               	/* function initPWM08 size 7 (6) */
+  35               	.LFE3:
+  37               	.global	initPWM09
+  39               	initPWM09:
+  40               	.LFB4:
+  41               	.LM4:
+  42               	/* prologue: frame size=0 */
+  43               	/* prologue end (size=0) */
+  44               	.LM5:
+  45 000e 82EA      		ldi r24,lo8(-94)
+  46 0010 8093 8000 		sts 128,r24
+  47               	.LM6:
+  48 0014 89E0      		ldi r24,lo8(9)
+  49 0016 8093 8100 		sts 129,r24
+  50               	/* epilogue: frame size=0 */
+  51 001a 0895      		ret
+  52               	/* epilogue end (size=1) */
+  53               	/* function initPWM09 size 7 (6) */
+  54               	.LFE4:
+  56               	.global	initPWM10
+  58               	initPWM10:
+  59               	.LFB5:
+  60               	.LM7:
+  61               	/* prologue: frame size=0 */
+  62               	/* prologue end (size=0) */
+  63               	.LM8:
+  64 001c 83EA      		ldi r24,lo8(-93)
+  65 001e 8093 8000 		sts 128,r24
+  66               	.LM9:
+  67 0022 89E0      		ldi r24,lo8(9)
+  68 0024 8093 8100 		sts 129,r24
+  69               	/* epilogue: frame size=0 */
+  70 0028 0895      		ret
+  71               	/* epilogue end (size=1) */
+  72               	/* function initPWM10 size 7 (6) */
+  73               	.LFE5:
+  75               	.global	setCHA08
+  77               	setCHA08:
+  78               	.LFB8:
+  79               	.LM10:
+  80               	/* prologue: frame size=0 */
+  81               	/* prologue end (size=0) */
+  82               	.LVL0:
+  83               	.LM11:
+  84 002a 9093 8900 		sts (136)+1,r25
+  85 002e 8093 8800 		sts 136,r24
+  86               	/* epilogue: frame size=0 */
+  87 0032 0895      		ret
+  88               	/* epilogue end (size=1) */
+  89               	/* function setCHA08 size 5 (4) */
+  90               	.LFE8:
+  92               	.global	setCHB08
+  94               	setCHB08:
+  95               	.LFB9:
+  96               	.LM12:
+  97               	/* prologue: frame size=0 */
+  98               	/* prologue end (size=0) */
+  99               	.LVL1:
+ 100               	.LM13:
+ 101 0034 9093 8B00 		sts (138)+1,r25
+ 102 0038 8093 8A00 		sts 138,r24
+ 103               	/* epilogue: frame size=0 */
+ 104 003c 0895      		ret
+ 105               	/* epilogue end (size=1) */
+ 106               	/* function setCHB08 size 5 (4) */
+ 107               	.LFE9:
+ 109               	.global	setCHA09
+ 111               	setCHA09:
+ 112               	.LFB10:
+ 113               	.LM14:
+ 114               	/* prologue: frame size=0 */
+ 115               	/* prologue end (size=0) */
+ 116               	.LVL2:
+ 117               	.LM15:
+ 118 003e 8093 8800 		sts 136,r24
+ 119               	.LM16:
+ 120 0042 892F      		mov r24,r25
+ 121 0044 9927      		clr r25
+ 122               	.LVL3:
+ 123 0046 8170      		andi r24,lo8(1)
+ 124 0048 8093 8900 		sts 137,r24
+ 125               	/* epilogue: frame size=0 */
+ 126 004c 0895      		ret
+ 127               	/* epilogue end (size=1) */
+ 128               	/* function setCHA09 size 8 (7) */
+ 129               	.LFE10:
+ 131               	.global	setCHB09
+ 133               	setCHB09:
+ 134               	.LFB11:
+ 135               	.LM17:
+ 136               	/* prologue: frame size=0 */
+ 137               	/* prologue end (size=0) */
+ 138               	.LVL4:
+ 139               	.LM18:
+ 140 004e 8093 8A00 		sts 138,r24
+ 141               	.LM19:
+ 142 0052 892F      		mov r24,r25
+ 143 0054 9927      		clr r25
+ 144               	.LVL5:
+ 145 0056 8170      		andi r24,lo8(1)
+ 146 0058 8093 8B00 		sts 139,r24
+ 147               	/* epilogue: frame size=0 */
+ 148 005c 0895      		ret
+ 149               	/* epilogue end (size=1) */
+ 150               	/* function setCHB09 size 8 (7) */
+ 151               	.LFE11:
+ 153               	.global	setCHA10
+ 155               	setCHA10:
+ 156               	.LFB12:
+ 157               	.LM20:
+ 158               	/* prologue: frame size=0 */
+ 159               	/* prologue end (size=0) */
+ 160               	.LVL6:
+ 161               	.LM21:
+ 162 005e 8093 8800 		sts 136,r24
+ 163               	.LM22:
+ 164 0062 892F      		mov r24,r25
+ 165 0064 9927      		clr r25
+ 166               	.LVL7:
+ 167 0066 8370      		andi r24,lo8(3)
+ 168 0068 8093 8900 		sts 137,r24
+ 169               	/* epilogue: frame size=0 */
+ 170 006c 0895      		ret
+ 171               	/* epilogue end (size=1) */
+ 172               	/* function setCHA10 size 8 (7) */
+ 173               	.LFE12:
+ 175               	.global	setCHB10
+ 177               	setCHB10:
+ 178               	.LFB13:
+ 179               	.LM23:
+ 180               	/* prologue: frame size=0 */
+ 181               	/* prologue end (size=0) */
+ 182               	.LVL8:
+ 183               	.LM24:
+ 184 006e 8093 8800 		sts 136,r24
+ 185               	.LM25:
+ 186 0072 892F      		mov r24,r25
+ 187 0074 9927      		clr r25
+ 188               	.LVL9:
+ 189 0076 8370      		andi r24,lo8(3)
+ 190 0078 8093 8B00 		sts 139,r24
+ 191               	/* epilogue: frame size=0 */
+ 192 007c 0895      		ret
+ 193               	/* epilogue end (size=1) */
+ 194               	/* function setCHB10 size 8 (7) */
+ 195               	.LFE13:
+ 197               	.global	setCHB
+ 199               	setCHB:
+ 200               	.LFB7:
+ 201               	.LM26:
+ 202               	/* prologue: frame size=0 */
+ 203               	/* prologue end (size=0) */
+ 204               	.LVL10:
+ 205               	.LBB4:
+ 206               	.LBB5:
+ 207               	.LM27:
+ 208 007e 9093 8B00 		sts (138)+1,r25
+ 209 0082 8093 8A00 		sts 138,r24
+ 210               	.LBE5:
+ 211               	.LBE4:
+ 212               	/* epilogue: frame size=0 */
+ 213 0086 0895      		ret
+ 214               	/* epilogue end (size=1) */
+ 215               	/* function setCHB size 5 (4) */
+ 216               	.LFE7:
+ 218               	.global	setCHA
+ 220               	setCHA:
+ 221               	.LFB6:
+ 222               	.LM28:
+ 223               	/* prologue: frame size=0 */
+ 224               	/* prologue end (size=0) */
+ 225               	.LVL11:
+ 226               	.LBB8:
+ 227               	.LBB9:
+ 228               	.LM29:
+ 229 0088 9093 8900 		sts (136)+1,r25
+ 230 008c 8093 8800 		sts 136,r24
+ 231               	.LBE9:
+ 232               	.LBE8:
+ 233               	/* epilogue: frame size=0 */
+ 234 0090 0895      		ret
+ 235               	/* epilogue end (size=1) */
+ 236               	/* function setCHA size 5 (4) */
+ 237               	.LFE6:
+ 239               	.global	initPWM
+ 241               	initPWM:
+ 242               	.LFB2:
+ 243               	.LM30:
+ 244               	/* prologue: frame size=0 */
+ 245               	/* prologue end (size=0) */
+ 246               	.LBB12:
+ 247               	.LBB13:
+ 248               	.LM31:
+ 249 0092 81EA      		ldi r24,lo8(-95)
+ 250 0094 8093 8000 		sts 128,r24
+ 251               	.LM32:
+ 252 0098 89E0      		ldi r24,lo8(9)
+ 253 009a 8093 8100 		sts 129,r24
+ 254               	.LBE13:
+ 255               	.LBE12:
+ 256               	/* epilogue: frame size=0 */
+ 257 009e 0895      		ret
+ 258               	/* epilogue end (size=1) */
+ 259               	/* function initPWM size 7 (6) */
+ 260               	.LFE2:
+ 361               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer1PWM.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:20     .text:00000000 initPWM08
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:39     .text:0000000e initPWM09
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:58     .text:0000001c initPWM10
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:77     .text:0000002a setCHA08
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:94     .text:00000034 setCHB08
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:111    .text:0000003e setCHA09
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:133    .text:0000004e setCHB09
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:155    .text:0000005e setCHA10
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:177    .text:0000006e setCHB10
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:199    .text:0000007e setCHB
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:220    .text:00000088 setCHA
+C:\DOCUME~1\michael\LOCALS~1\Temp/cca6aaaa.s:241    .text:00000092 initPWM
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

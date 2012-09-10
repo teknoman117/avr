@@ -1,0 +1,331 @@
+
+PWM.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000015c  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .stab         0000036c  00000000  00000000  000001b0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  2 .stabstr      00000084  00000000  00000000  0000051c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_aranges 00000040  00000000  00000000  000005a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_pubnames 000000c7  00000000  00000000  000005e0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000383  00000000  00000000  000006a7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000001b3  00000000  00000000  00000a2a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002c6  00000000  00000000  00000bdd  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000f0  00000000  00000000  00000ea3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000011a  00000000  00000000  00000f93  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000000d0  00000000  00000000  000010ad  2**0
+                  CONTENTS, READONLY, DEBUGGING
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2b c0       	rjmp	.+86     	; 0x5a <__bad_interrupt>
+   4:	2a c0       	rjmp	.+84     	; 0x5a <__bad_interrupt>
+   6:	29 c0       	rjmp	.+82     	; 0x5a <__bad_interrupt>
+   8:	28 c0       	rjmp	.+80     	; 0x5a <__bad_interrupt>
+   a:	27 c0       	rjmp	.+78     	; 0x5a <__bad_interrupt>
+   c:	26 c0       	rjmp	.+76     	; 0x5a <__bad_interrupt>
+   e:	25 c0       	rjmp	.+74     	; 0x5a <__bad_interrupt>
+  10:	24 c0       	rjmp	.+72     	; 0x5a <__bad_interrupt>
+  12:	23 c0       	rjmp	.+70     	; 0x5a <__bad_interrupt>
+  14:	22 c0       	rjmp	.+68     	; 0x5a <__bad_interrupt>
+  16:	21 c0       	rjmp	.+66     	; 0x5a <__bad_interrupt>
+  18:	20 c0       	rjmp	.+64     	; 0x5a <__bad_interrupt>
+  1a:	1f c0       	rjmp	.+62     	; 0x5a <__bad_interrupt>
+  1c:	1e c0       	rjmp	.+60     	; 0x5a <__bad_interrupt>
+  1e:	1d c0       	rjmp	.+58     	; 0x5a <__bad_interrupt>
+  20:	1c c0       	rjmp	.+56     	; 0x5a <__bad_interrupt>
+  22:	1b c0       	rjmp	.+54     	; 0x5a <__bad_interrupt>
+  24:	1a c0       	rjmp	.+52     	; 0x5a <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	ec e5       	ldi	r30, 0x5C	; 92
+  3a:	f1 e0       	ldi	r31, 0x01	; 1
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <.do_copy_data_start>
+
+0000003e <.do_copy_data_loop>:
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+
+00000042 <.do_copy_data_start>:
+  42:	a0 36       	cpi	r26, 0x60	; 96
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <.do_copy_data_loop>
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 e6       	ldi	r26, 0x60	; 96
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a0 36       	cpi	r26, 0x60	; 96
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	01 c0       	rjmp	.+2      	; 0x5c <main>
+
+0000005a <__bad_interrupt>:
+  5a:	d2 cf       	rjmp	.-92     	; 0x0 <__vectors>
+
+0000005c <main>:
+#include <avr/io.h>
+#include <util/delay.h>
+#include "timer1PWM.h"
+
+int main () {
+  5c:	7a d0       	rcall	.+244    	; 0x152 <initPWM>
+  initPWM();
+  double x;
+  DDRB = DDRD = 255;
+  5e:	8f ef       	ldi	r24, 0xFF	; 255
+  60:	81 bb       	out	0x11, r24	; 17
+  62:	81 b3       	in	r24, 0x11	; 17
+  64:	87 bb       	out	0x17, r24	; 23
+  while (1) {
+    setCHA(255);
+  66:	8f ef       	ldi	r24, 0xFF	; 255
+  68:	90 e0       	ldi	r25, 0x00	; 0
+  6a:	70 d0       	rcall	.+224    	; 0x14c <setCHA>
+	setCHB(255);
+  6c:	8f ef       	ldi	r24, 0xFF	; 255
+  6e:	90 e0       	ldi	r25, 0x00	; 0
+  70:	6a d0       	rcall	.+212    	; 0x146 <setCHB>
+  72:	20 e0       	ldi	r18, 0x00	; 0
+  74:	30 e0       	ldi	r19, 0x00	; 0
+  76:	e0 e3       	ldi	r30, 0x30	; 48
+  78:	f5 e7       	ldi	r31, 0x75	; 117
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  7a:	cf 01       	movw	r24, r30
+  7c:	01 97       	sbiw	r24, 0x01	; 1
+  7e:	f1 f7       	brne	.-4      	; 0x7c <main+0x20>
+  80:	2f 5f       	subi	r18, 0xFF	; 255
+  82:	3f 4f       	sbci	r19, 0xFF	; 255
+	for(x=0;x<200;x++){_delay_loop_2(30000);}
+  84:	28 3c       	cpi	r18, 0xC8	; 200
+  86:	31 05       	cpc	r19, r1
+  88:	c1 f7       	brne	.-16     	; 0x7a <main+0x1e>
+	setCHB(128);
+  8a:	80 e8       	ldi	r24, 0x80	; 128
+  8c:	90 e0       	ldi	r25, 0x00	; 0
+  8e:	5b d0       	rcall	.+182    	; 0x146 <setCHB>
+  90:	20 e0       	ldi	r18, 0x00	; 0
+  92:	30 e0       	ldi	r19, 0x00	; 0
+  94:	e0 e3       	ldi	r30, 0x30	; 48
+  96:	f5 e7       	ldi	r31, 0x75	; 117
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  98:	cf 01       	movw	r24, r30
+  9a:	01 97       	sbiw	r24, 0x01	; 1
+  9c:	f1 f7       	brne	.-4      	; 0x9a <main+0x3e>
+  9e:	2f 5f       	subi	r18, 0xFF	; 255
+  a0:	3f 4f       	sbci	r19, 0xFF	; 255
+	for(x=0;x<200;x++){_delay_loop_2(30000);}
+  a2:	28 3c       	cpi	r18, 0xC8	; 200
+  a4:	31 05       	cpc	r19, r1
+  a6:	c1 f7       	brne	.-16     	; 0x98 <main+0x3c>
+    setCHA(0);
+  a8:	80 e0       	ldi	r24, 0x00	; 0
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	4f d0       	rcall	.+158    	; 0x14c <setCHA>
+    setCHB(0);
+  ae:	80 e0       	ldi	r24, 0x00	; 0
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+  b2:	49 d0       	rcall	.+146    	; 0x146 <setCHB>
+  b4:	20 e0       	ldi	r18, 0x00	; 0
+  b6:	30 e0       	ldi	r19, 0x00	; 0
+  b8:	e0 e3       	ldi	r30, 0x30	; 48
+  ba:	f5 e7       	ldi	r31, 0x75	; 117
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  bc:	cf 01       	movw	r24, r30
+  be:	01 97       	sbiw	r24, 0x01	; 1
+  c0:	f1 f7       	brne	.-4      	; 0xbe <main+0x62>
+  c2:	2f 5f       	subi	r18, 0xFF	; 255
+  c4:	3f 4f       	sbci	r19, 0xFF	; 255
+    for(x=0;x<200;x++){_delay_loop_2(30000);}	
+  c6:	28 3c       	cpi	r18, 0xC8	; 200
+  c8:	31 05       	cpc	r19, r1
+  ca:	c1 f7       	brne	.-16     	; 0xbc <main+0x60>
+	setCHA(255);
+  cc:	8f ef       	ldi	r24, 0xFF	; 255
+  ce:	90 e0       	ldi	r25, 0x00	; 0
+  d0:	3d d0       	rcall	.+122    	; 0x14c <setCHA>
+  d2:	20 e0       	ldi	r18, 0x00	; 0
+  d4:	30 e0       	ldi	r19, 0x00	; 0
+  d6:	e0 e3       	ldi	r30, 0x30	; 48
+  d8:	f5 e7       	ldi	r31, 0x75	; 117
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+  da:	cf 01       	movw	r24, r30
+  dc:	01 97       	sbiw	r24, 0x01	; 1
+  de:	f1 f7       	brne	.-4      	; 0xdc <main+0x80>
+  e0:	2f 5f       	subi	r18, 0xFF	; 255
+  e2:	3f 4f       	sbci	r19, 0xFF	; 255
+	for(x=0;x<200;x++){_delay_loop_2(30000);}
+  e4:	28 3c       	cpi	r18, 0xC8	; 200
+  e6:	31 05       	cpc	r19, r1
+  e8:	c1 f7       	brne	.-16     	; 0xda <main+0x7e>
+  ea:	bd cf       	rjmp	.-134    	; 0x66 <main+0xa>
+
+000000ec <initPWM08>:
+
+void initPWM( void ) {
+  initPWM08();
+}
+void initPWM08( void ) {
+  ec:	81 ea       	ldi	r24, 0xA1	; 161
+  ee:	8f bd       	out	0x2f, r24	; 47
+  TCCR1A = ( 1 << WGM10 ) | ( 1 << COM1A1 ) | ( 1 << COM1B1 );
+  TCCR1B = ( 1 << CS10  ) | ( 1 << WGM12  );
+  f0:	89 e0       	ldi	r24, 0x09	; 9
+  f2:	8e bd       	out	0x2e, r24	; 46
+  f4:	08 95       	ret
+
+000000f6 <initPWM09>:
+}
+void initPWM09( void ) {
+  f6:	82 ea       	ldi	r24, 0xA2	; 162
+  f8:	8f bd       	out	0x2f, r24	; 47
+  TCCR1A = ( 1 << WGM11 ) | ( 1 << COM1A1 ) | ( 1 << COM1B1 );
+  TCCR1B = ( 1 << CS10  ) | ( 1 << WGM12  );
+  fa:	89 e0       	ldi	r24, 0x09	; 9
+  fc:	8e bd       	out	0x2e, r24	; 46
+  fe:	08 95       	ret
+
+00000100 <initPWM10>:
+}
+void initPWM10( void ) {
+ 100:	83 ea       	ldi	r24, 0xA3	; 163
+ 102:	8f bd       	out	0x2f, r24	; 47
+  TCCR1A = ( 1 << WGM10 ) | ( 1 << WGM11 ) | ( 1 << COM1A1 ) | ( 1 << COM1B1 );
+  TCCR1B = ( 1 << CS10  ) | ( 1 << WGM12  );
+ 104:	89 e0       	ldi	r24, 0x09	; 9
+ 106:	8e bd       	out	0x2e, r24	; 46
+ 108:	08 95       	ret
+
+0000010a <setCHA08>:
+}
+void setCHA( uint16_t valueA )
+{
+  setCHA08(valueA);
+}
+
+void setCHB( uint16_t valueB )
+{
+  setCHB08(valueB);
+}
+void setCHA08( uint16_t valueA ) {
+ 10a:	9b bd       	out	0x2b, r25	; 43
+ 10c:	8a bd       	out	0x2a, r24	; 42
+ 10e:	08 95       	ret
+
+00000110 <setCHB08>:
+  OCR1A = valueA;
+}
+void setCHB08( uint16_t valueB ) {
+ 110:	99 bd       	out	0x29, r25	; 41
+ 112:	88 bd       	out	0x28, r24	; 40
+ 114:	08 95       	ret
+
+00000116 <setCHA09>:
+  OCR1B = valueB;
+}
+void setCHA09( uint16_t valueA) {
+ 116:	8a bd       	out	0x2a, r24	; 42
+  OCR1AL = valueA & 0xFF;
+  OCR1AH = ((valueA >> 8) & 0x01);
+ 118:	89 2f       	mov	r24, r25
+ 11a:	99 27       	eor	r25, r25
+ 11c:	81 70       	andi	r24, 0x01	; 1
+ 11e:	8b bd       	out	0x2b, r24	; 43
+ 120:	08 95       	ret
+
+00000122 <setCHB09>:
+}
+void setCHB09( uint16_t valueB) {
+ 122:	88 bd       	out	0x28, r24	; 40
+  OCR1BL = valueB & 0xFF;
+  OCR1BH = ((valueB >> 8) & 0x01);
+ 124:	89 2f       	mov	r24, r25
+ 126:	99 27       	eor	r25, r25
+ 128:	81 70       	andi	r24, 0x01	; 1
+ 12a:	89 bd       	out	0x29, r24	; 41
+ 12c:	08 95       	ret
+
+0000012e <setCHA10>:
+}
+void setCHA10( uint16_t valueA) {
+ 12e:	8a bd       	out	0x2a, r24	; 42
+  OCR1AL = valueA & 0xFF;
+  OCR1AH = ((valueA >> 8) & 0x03);
+ 130:	89 2f       	mov	r24, r25
+ 132:	99 27       	eor	r25, r25
+ 134:	83 70       	andi	r24, 0x03	; 3
+ 136:	8b bd       	out	0x2b, r24	; 43
+ 138:	08 95       	ret
+
+0000013a <setCHB10>:
+}
+void setCHB10( uint16_t valueB) {
+ 13a:	8a bd       	out	0x2a, r24	; 42
+  OCR1AL = valueB & 0xFF;
+  OCR1BH = ((valueB >> 8) & 0x03);
+ 13c:	89 2f       	mov	r24, r25
+ 13e:	99 27       	eor	r25, r25
+ 140:	83 70       	andi	r24, 0x03	; 3
+ 142:	89 bd       	out	0x29, r24	; 41
+ 144:	08 95       	ret
+
+00000146 <setCHB>:
+ 146:	99 bd       	out	0x29, r25	; 41
+ 148:	88 bd       	out	0x28, r24	; 40
+ 14a:	08 95       	ret
+
+0000014c <setCHA>:
+ 14c:	9b bd       	out	0x2b, r25	; 43
+ 14e:	8a bd       	out	0x2a, r24	; 42
+ 150:	08 95       	ret
+
+00000152 <initPWM>:
+ 152:	81 ea       	ldi	r24, 0xA1	; 161
+ 154:	8f bd       	out	0x2f, r24	; 47
+ 156:	89 e0       	ldi	r24, 0x09	; 9
+ 158:	8e bd       	out	0x2e, r24	; 46
+ 15a:	08 95       	ret

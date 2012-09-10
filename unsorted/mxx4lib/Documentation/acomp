@@ -1,0 +1,29 @@
+Documentation for acomp.h
+
+Example is included under the acomp directory in the Examples directory
+
+---------------Information-------------------------
+
+acomp.h controls the analog comparator in the AVR.  It supports redirecting the 
+negative input through an ADC pin.  
+ex)
+initACOMP(0, 0);  //setup the analog comparator as normal, no multiplexing. Positive=AIN0, Negative=AIN1
+ex)
+initACOMP(1, 2);  //setup the analog comparator with muliplexing to redirect negative input to ADC channel 2
+
+---------------Definitions-------------------------
+
+No Definitions
+
+--------------Functions------------------------------
+
+void initACOMP ( uint8_t multiplex, uint8_t channel ) -- this function initalizes that Analog Comparator
+    uint8_t multiplex - use 1 for on and 0 for off.  This variable declares if the negative input of the analog comparator is tied to
+                                                     an adc pin instead of AIN1
+    uint8_t channel - this variable specifies which adc channel to use as the negative input 
+
+uint8_t getACOMP ( void ) -- this function returns a 1 or a zero, depending on the output of the analog comparator
+
+
+void switchChannel ( uint8_t channel ) -- switches the adc channel the analog comparator uses ONLY IF muliplexing was enabled during configuration
+ 

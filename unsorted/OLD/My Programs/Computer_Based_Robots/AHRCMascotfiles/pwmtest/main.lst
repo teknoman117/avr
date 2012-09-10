@@ -1,0 +1,84 @@
+   1               		.file	"main.c"
+   2               		.arch atmega48
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 8FEF      		ldi r24,lo8(-1)
+  27 0002 84B9      		out 36-0x20,r24
+  28               	.LM3:
+  29 0004 00D0      		rcall initPWM
+  30               	.LM4:
+  31 0006 8FEF      		ldi r24,lo8(255)
+  32 0008 90E0      		ldi r25,hi8(255)
+  33 000a 00D0      		rcall setCHA
+  34               	.LM5:
+  35 000c 8FEF      		ldi r24,lo8(255)
+  36 000e 90E0      		ldi r25,hi8(255)
+  37 0010 00D0      		rcall setCHB
+  38 0012 20E0      		ldi r18,lo8(0)
+  39 0014 30E0      		ldi r19,hi8(0)
+  40 0016 E0E3      		ldi r30,lo8(30000)
+  41 0018 F5E7      		ldi r31,hi8(30000)
+  42               	.L2:
+  43               	.LBB4:
+  44               	.LBB5:
+  45               	.LM6:
+  46 001a CF01      		movw r24,r30
+  47               	.LVL0:
+  48               	/* #APP */
+  49 001c 0197      		1: sbiw r24,1
+  50 001e 01F4      		brne 1b
+  51               	/* #NOAPP */
+  52 0020 2F5F      		subi r18,lo8(-(1))
+  53 0022 3F4F      		sbci r19,hi8(-(1))
+  54               	.LBE5:
+  55               	.LBE4:
+  56               	.LM7:
+  57 0024 2436      		cpi r18,100
+  58 0026 3105      		cpc r19,__zero_reg__
+  59 0028 01F4      		brne .L2
+  60               	.LM8:
+  61 002a 80E8      		ldi r24,lo8(128)
+  62 002c 90E0      		ldi r25,hi8(128)
+  63               	.LVL1:
+  64 002e 00D0      		rcall setCHA
+  65               	.LM9:
+  66 0030 80E8      		ldi r24,lo8(128)
+  67 0032 90E0      		ldi r25,hi8(128)
+  68 0034 00D0      		rcall setCHB
+  69               	.LM10:
+  70 0036 80E0      		ldi r24,lo8(0)
+  71 0038 90E0      		ldi r25,hi8(0)
+  72               	/* epilogue: frame size=0 */
+  73 003a 0895      		ret
+  74               	/* epilogue end (size=1) */
+  75               	/* function main size 32 (31) */
+  76               	.LFE4:
+ 100               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccKQaaaa.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccKQaaaa.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccKQaaaa.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccKQaaaa.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccKQaaaa.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccKQaaaa.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+initPWM
+setCHA
+setCHB

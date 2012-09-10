@@ -1,0 +1,169 @@
+   1               		.file	"main.c"
+   2               		.arch atmega32
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	DELAY_MS
+  20               	DELAY_MS:
+  21               	.LFB5:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24 0000 CF93      		push r28
+  25 0002 DF93      		push r29
+  26               	/* prologue end (size=2) */
+  27               	.LM2:
+  28 0004 0097      		sbiw r24,0
+  29 0006 39F0      		breq .L7
+  30 0008 EC01      		movw r28,r24
+  31               	.L5:
+  32               	.LM3:
+  33 000a 88EE      		ldi r24,lo8(1000)
+  34 000c 93E0      		ldi r25,hi8(1000)
+  35 000e 0E94 0000 		call DELAY_US
+  36               	.LM4:
+  37 0012 2197      		sbiw r28,1
+  38 0014 D1F7      		brne .L5
+  39               	.L7:
+  40               	/* epilogue: frame size=0 */
+  41 0016 DF91      		pop r29
+  42 0018 CF91      		pop r28
+  43 001a 0895      		ret
+  44               	/* epilogue end (size=3) */
+  45               	/* function DELAY_MS size 15 (10) */
+  46               	.LFE5:
+  48               	.global	MAIN_PRG
+  50               	MAIN_PRG:
+  51               	.LFB4:
+  52               	.LM5:
+  53               	/* prologue: frame size=0 */
+  54               	/* prologue end (size=0) */
+  55               	.L18:
+  56               	.LM6:
+  57 001c 81E0      		ldi r24,lo8(1)
+  58 001e 88BB      		out 56-0x20,r24
+  59               	.LM7:
+  60 0020 82E3      		ldi r24,lo8(50)
+  61 0022 90E0      		ldi r25,hi8(50)
+  62 0024 0E94 0000 		call DELAY_MS
+  63               	.LM8:
+  64 0028 80E0      		ldi r24,lo8(0)
+  65 002a 0E94 0000 		call ADC08bit
+  66 002e 8436      		cpi r24,100
+  67 0030 9105      		cpc r25,__zero_reg__
+  68 0032 20F4      		brsh .L11
+  69               	.LM9:
+  70 0034 8FEF      		ldi r24,lo8(255)
+  71 0036 90E0      		ldi r25,hi8(255)
+  72 0038 0E94 0000 		call setCHB
+  73               	.L11:
+  74               	.LM10:
+  75 003c 80E0      		ldi r24,lo8(0)
+  76 003e 0E94 0000 		call ADC08bit
+  77 0042 8436      		cpi r24,100
+  78 0044 9105      		cpc r25,__zero_reg__
+  79 0046 20F0      		brlo .L12
+  80 0048 80E0      		ldi r24,lo8(0)
+  81 004a 90E0      		ldi r25,hi8(0)
+  82 004c 0E94 0000 		call setCHB
+  83               	.L12:
+  84               	.LM11:
+  85 0050 82E0      		ldi r24,lo8(2)
+  86 0052 88BB      		out 56-0x20,r24
+  87               	.LM12:
+  88 0054 82E3      		ldi r24,lo8(50)
+  89 0056 90E0      		ldi r25,hi8(50)
+  90 0058 0E94 0000 		call DELAY_MS
+  91               	.LM13:
+  92 005c 80E0      		ldi r24,lo8(0)
+  93 005e 0E94 0000 		call ADC08bit
+  94 0062 8436      		cpi r24,100
+  95 0064 9105      		cpc r25,__zero_reg__
+  96 0066 20F4      		brsh .L13
+  97 0068 8FEF      		ldi r24,lo8(255)
+  98 006a 90E0      		ldi r25,hi8(255)
+  99 006c 0E94 0000 		call setCHA
+ 100               	.L13:
+ 101               	.LM14:
+ 102 0070 80E0      		ldi r24,lo8(0)
+ 103 0072 0E94 0000 		call ADC08bit
+ 104 0076 8436      		cpi r24,100
+ 105 0078 9105      		cpc r25,__zero_reg__
+ 106 007a 80F2      		brlo .L18
+ 107 007c 80E0      		ldi r24,lo8(0)
+ 108 007e 90E0      		ldi r25,hi8(0)
+ 109 0080 0E94 0000 		call setCHA
+ 110 0084 CBCF      		rjmp .L18
+ 111               	/* epilogue: frame size=0 */
+ 112               	/* epilogue: noreturn */
+ 113               	/* epilogue end (size=0) */
+ 114               	/* function MAIN_PRG size 53 (53) */
+ 115               	.LFE4:
+ 117               	.global	main
+ 119               	main:
+ 120               	.LFB3:
+ 121               	.LM15:
+ 122               	/* prologue: frame size=0 */
+ 123 0086 C0E0      		ldi r28,lo8(__stack - 0)
+ 124 0088 D0E0      		ldi r29,hi8(__stack - 0)
+ 125 008a DEBF      		out __SP_H__,r29
+ 126 008c CDBF      		out __SP_L__,r28
+ 127               	/* prologue end (size=4) */
+ 128               	.LM16:
+ 129 008e 8FEF      		ldi r24,lo8(-1)
+ 130 0090 81BB      		out 49-0x20,r24
+ 131               	.LM17:
+ 132 0092 87BB      		out 55-0x20,r24
+ 133               	.LM18:
+ 134               	/* #APP */
+ 135 0094 F894      		cli
+ 136               	.LM19:
+ 137               	/* #NOAPP */
+ 138 0096 19BE      		out 89-0x20,__zero_reg__
+ 139               	.LM20:
+ 140 0098 0E94 0000 		call initPWM
+ 141               	.LM21:
+ 142 009c 0E94 0000 		call initADC
+ 143               	.LM22:
+ 144 00a0 0E94 0000 		call MAIN_PRG
+ 145               	.LM23:
+ 146 00a4 80E0      		ldi r24,lo8(0)
+ 147 00a6 90E0      		ldi r25,hi8(0)
+ 148               	/* epilogue: frame size=0 */
+ 149 00a8 0C94 0000 		jmp exit
+ 150               	/* epilogue end (size=2) */
+ 151               	/* function main size 20 (14) */
+ 152               	.LFE3:
+ 154               		.comm convert,2,1
+ 155               		.comm loop_count,2,1
+ 156               		.comm cnt,2,1
+ 157               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccktaaaa.s:20     .text:00000000 DELAY_MS
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccktaaaa.s:50     .text:0000001c MAIN_PRG
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccktaaaa.s:119    .text:00000086 main
+                            *COM*:00000002 convert
+                            *COM*:00000002 loop_count
+                            *COM*:00000002 cnt
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+DELAY_US
+ADC08bit
+setCHB
+setCHA
+__stack
+initPWM
+initADC
+exit

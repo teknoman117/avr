@@ -1,0 +1,267 @@
+   1               		.file	"servo.c"
+   2               		.arch atmega8
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	initservos
+  20               	initservos:
+  21               	.LFB3:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 9093 0000 		sts (reload)+1,r25
+  27 0004 8093 0000 		sts reload,r24
+  28               	.LM3:
+  29 0008 6623      		tst r22
+  30 000a 31F4      		brne .L2
+  31               	.LM4:
+  32 000c 87B3      		in r24,55-0x20
+  33 000e 8E5F      		subi r24,lo8(-(2))
+  34 0010 87BB      		out 55-0x20,r24
+  35 0012 6093 0000 		sts plsref,r22
+  36 0016 03C0      		rjmp .L3
+  37               	.L2:
+  38               	.LM5:
+  39 0018 82E0      		ldi r24,lo8(2)
+  40 001a 8093 0000 		sts plsref,r24
+  41               	.L3:
+  42               	.LM6:
+  43 001e 4423      		tst r20
+  44 0020 31F4      		brne .L4
+  45 0022 81B3      		in r24,49-0x20
+  46 0024 805E      		subi r24,lo8(-(32))
+  47 0026 81BB      		out 49-0x20,r24
+  48 0028 4093 0000 		sts plsref+1,r20
+  49 002c 03C0      		rjmp .L5
+  50               	.L4:
+  51               	.LM7:
+  52 002e 82E0      		ldi r24,lo8(2)
+  53 0030 8093 0000 		sts plsref+1,r24
+  54               	.L5:
+  55               	.LM8:
+  56 0034 81E0      		ldi r24,lo8(1)
+  57 0036 83BF      		out 83-0x20,r24
+  58               	.LM9:
+  59 0038 89B7      		in r24,89-0x20
+  60 003a 8F5F      		subi r24,lo8(-(1))
+  61 003c 89BF      		out 89-0x20,r24
+  62               	.LM10:
+  63               	/* #APP */
+  64 003e 7894      		sei
+  65               	/* #NOAPP */
+  66               	/* epilogue: frame size=0 */
+  67 0040 0895      		ret
+  68               	/* epilogue end (size=1) */
+  69               	/* function initservos size 34 (33) */
+  70               	.LFE3:
+  72               	.global	setservo1
+  74               	setservo1:
+  75               	.LFB4:
+  76               	.LM11:
+  77               	/* prologue: frame size=0 */
+  78               	/* prologue end (size=0) */
+  79               	.LM12:
+  80 0042 9093 0000 		sts (counttopulse)+1,r25
+  81 0046 8093 0000 		sts counttopulse,r24
+  82               	.LM13:
+  83 004a 1092 0000 		sts (counter)+1,__zero_reg__
+  84 004e 1092 0000 		sts counter,__zero_reg__
+  85               	/* epilogue: frame size=0 */
+  86 0052 0895      		ret
+  87               	/* epilogue end (size=1) */
+  88               	/* function setservo1 size 9 (8) */
+  89               	.LFE4:
+  91               	.global	setservo2
+  93               	setservo2:
+  94               	.LFB5:
+  95               	.LM14:
+  96               	/* prologue: frame size=0 */
+  97               	/* prologue end (size=0) */
+  98               	.LM15:
+  99 0054 9093 0000 		sts (counttopulse+2)+1,r25
+ 100 0058 8093 0000 		sts counttopulse+2,r24
+ 101               	.LM16:
+ 102 005c 1092 0000 		sts (counter+2)+1,__zero_reg__
+ 103 0060 1092 0000 		sts counter+2,__zero_reg__
+ 104               	/* epilogue: frame size=0 */
+ 105 0064 0895      		ret
+ 106               	/* epilogue end (size=1) */
+ 107               	/* function setservo2 size 9 (8) */
+ 108               	.LFE5:
+ 110               	.global	__vector_9
+ 112               	__vector_9:
+ 113               	.LFB6:
+ 114               	.LM17:
+ 115               	/* prologue: frame size=0 */
+ 116 0066 1F92      		push __zero_reg__
+ 117 0068 0F92      		push __tmp_reg__
+ 118 006a 0FB6      		in __tmp_reg__,__SREG__
+ 119 006c 0F92      		push __tmp_reg__
+ 120 006e 1124      		clr __zero_reg__
+ 121 0070 2F93      		push r18
+ 122 0072 3F93      		push r19
+ 123 0074 4F93      		push r20
+ 124 0076 5F93      		push r21
+ 125 0078 8F93      		push r24
+ 126 007a 9F93      		push r25
+ 127               	/* prologue end (size=11) */
+ 128               	.LM18:
+ 129 007c 8091 0000 		lds r24,plsref
+ 130 0080 482F      		mov r20,r24
+ 131 0082 5527      		clr r21
+ 132 0084 4115      		cp r20,__zero_reg__
+ 133 0086 5105      		cpc r21,__zero_reg__
+ 134 0088 21F0      		breq .L10
+ 135               	.LM19:
+ 136 008a 4130      		cpi r20,1
+ 137 008c 5105      		cpc r21,__zero_reg__
+ 138 008e B9F0      		breq .L12
+ 139 0090 2AC0      		rjmp .L9
+ 140               	.L10:
+ 141               	.LM20:
+ 142 0092 2091 0000 		lds r18,counter
+ 143 0096 3091 0000 		lds r19,(counter)+1
+ 144 009a 8091 0000 		lds r24,reload
+ 145 009e 9091 0000 		lds r25,(reload)+1
+ 146 00a2 2817      		cp r18,r24
+ 147 00a4 3907      		cpc r19,r25
+ 148 00a6 F9F4      		brne .L9
+ 149               	.LM21:
+ 150 00a8 81E0      		ldi r24,lo8(1)
+ 151 00aa 8093 0000 		sts plsref,r24
+ 152               	.LM22:
+ 153 00ae 88B3      		in r24,56-0x20
+ 154 00b0 8E5F      		subi r24,lo8(-(2))
+ 155 00b2 88BB      		out 56-0x20,r24
+ 156               	.LM23:
+ 157 00b4 5093 0000 		sts (counter)+1,r21
+ 158 00b8 4093 0000 		sts counter,r20
+ 159               	.LM24:
+ 160 00bc 14C0      		rjmp .L9
+ 161               	.L12:
+ 162               	.LM25:
+ 163 00be 2091 0000 		lds r18,counter
+ 164 00c2 3091 0000 		lds r19,(counter)+1
+ 165 00c6 8091 0000 		lds r24,counttopulse
+ 166 00ca 9091 0000 		lds r25,(counttopulse)+1
+ 167 00ce 2817      		cp r18,r24
+ 168 00d0 3907      		cpc r19,r25
+ 169 00d2 49F4      		brne .L9
+ 170               	.LM26:
+ 171 00d4 1092 0000 		sts plsref,__zero_reg__
+ 172               	.LM27:
+ 173 00d8 88B3      		in r24,56-0x20
+ 174 00da 8250      		subi r24,lo8(-(-2))
+ 175 00dc 88BB      		out 56-0x20,r24
+ 176               	.LM28:
+ 177 00de 1092 0000 		sts (counter)+1,__zero_reg__
+ 178 00e2 1092 0000 		sts counter,__zero_reg__
+ 179               	.L9:
+ 180               	.LM29:
+ 181 00e6 8091 0000 		lds r24,plsref+1
+ 182 00ea 482F      		mov r20,r24
+ 183 00ec 5527      		clr r21
+ 184 00ee 4115      		cp r20,__zero_reg__
+ 185 00f0 5105      		cpc r21,__zero_reg__
+ 186 00f2 21F0      		breq .L16
+ 187 00f4 4130      		cpi r20,1
+ 188 00f6 5105      		cpc r21,__zero_reg__
+ 189 00f8 B9F0      		breq .L18
+ 190 00fa 2AC0      		rjmp .L15
+ 191               	.L16:
+ 192               	.LM30:
+ 193 00fc 2091 0000 		lds r18,counter+2
+ 194 0100 3091 0000 		lds r19,(counter+2)+1
+ 195 0104 8091 0000 		lds r24,reload
+ 196 0108 9091 0000 		lds r25,(reload)+1
+ 197 010c 2817      		cp r18,r24
+ 198 010e 3907      		cpc r19,r25
+ 199 0110 F9F4      		brne .L15
+ 200               	.LM31:
+ 201 0112 81E0      		ldi r24,lo8(1)
+ 202 0114 8093 0000 		sts plsref+1,r24
+ 203               	.LM32:
+ 204 0118 82B3      		in r24,50-0x20
+ 205 011a 805E      		subi r24,lo8(-(32))
+ 206 011c 82BB      		out 50-0x20,r24
+ 207               	.LM33:
+ 208 011e 5093 0000 		sts (counter+2)+1,r21
+ 209 0122 4093 0000 		sts counter+2,r20
+ 210               	.LM34:
+ 211 0126 14C0      		rjmp .L15
+ 212               	.L18:
+ 213               	.LM35:
+ 214 0128 2091 0000 		lds r18,counter+2
+ 215 012c 3091 0000 		lds r19,(counter+2)+1
+ 216 0130 8091 0000 		lds r24,counttopulse+2
+ 217 0134 9091 0000 		lds r25,(counttopulse+2)+1
+ 218 0138 2817      		cp r18,r24
+ 219 013a 3907      		cpc r19,r25
+ 220 013c 49F4      		brne .L15
+ 221               	.LM36:
+ 222 013e 1092 0000 		sts plsref+1,__zero_reg__
+ 223               	.LM37:
+ 224 0142 82B3      		in r24,50-0x20
+ 225 0144 8052      		subi r24,lo8(-(-32))
+ 226 0146 82BB      		out 50-0x20,r24
+ 227               	.LM38:
+ 228 0148 1092 0000 		sts (counter+2)+1,__zero_reg__
+ 229 014c 1092 0000 		sts counter+2,__zero_reg__
+ 230               	.L15:
+ 231               	.LM39:
+ 232 0150 8091 0000 		lds r24,counter
+ 233 0154 9091 0000 		lds r25,(counter)+1
+ 234 0158 0196      		adiw r24,1
+ 235 015a 9093 0000 		sts (counter)+1,r25
+ 236 015e 8093 0000 		sts counter,r24
+ 237               	.LM40:
+ 238 0162 8091 0000 		lds r24,counter+2
+ 239 0166 9091 0000 		lds r25,(counter+2)+1
+ 240 016a 0196      		adiw r24,1
+ 241 016c 9093 0000 		sts (counter+2)+1,r25
+ 242 0170 8093 0000 		sts counter+2,r24
+ 243               	/* epilogue: frame size=0 */
+ 244 0174 9F91      		pop r25
+ 245 0176 8F91      		pop r24
+ 246 0178 5F91      		pop r21
+ 247 017a 4F91      		pop r20
+ 248 017c 3F91      		pop r19
+ 249 017e 2F91      		pop r18
+ 250 0180 0F90      		pop __tmp_reg__
+ 251 0182 0FBE      		out __SREG__,__tmp_reg__
+ 252 0184 0F90      		pop __tmp_reg__
+ 253 0186 1F90      		pop __zero_reg__
+ 254 0188 1895      		reti
+ 255               	/* epilogue end (size=11) */
+ 256               	/* function __vector_9 size 146 (124) */
+ 257               	.LFE6:
+ 259               		.comm counttopulse,4,1
+ 260               		.comm reload,2,1
+ 261               		.comm counter,4,1
+ 262               		.comm plsref,2,1
+ 263               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 servo.c
+                            *ABS*:0000003f __SREG__
+                            *ABS*:0000003e __SP_H__
+                            *ABS*:0000003d __SP_L__
+                            *ABS*:00000000 __tmp_reg__
+                            *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccwLaaaa.s:20     .text:00000000 initservos
+                            *COM*:00000002 reload
+                            *COM*:00000002 plsref
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccwLaaaa.s:74     .text:00000042 setservo1
+                            *COM*:00000004 counttopulse
+                            *COM*:00000004 counter
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccwLaaaa.s:93     .text:00000054 setservo2
+C:\DOCUME~1\NATHAN~1\LOCALS~1\Temp/ccwLaaaa.s:112    .text:00000066 __vector_9
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

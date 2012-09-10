@@ -1,0 +1,113 @@
+   1               		.file	"main.c"
+   2               		.arch atmega644
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB7:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 0E94 0000 		call init_nBus
+  27               	.LVL0:
+  28               	.L2:
+  29               	.LM3:
+  30 0004 8DEB      		ldi r24,lo8(-67)
+  31               	.LVL1:
+  32 0006 0E94 0000 		call tx_nbyte
+  33               	.LVL2:
+  34 000a 20E0      		ldi r18,lo8(0)
+  35               	.LVL3:
+  36 000c E0E3      		ldi r30,lo8(30000)
+  37 000e F5E7      		ldi r31,hi8(30000)
+  38               	.L3:
+  39               	.LBB6:
+  40               	.LBB7:
+  41               	.LM4:
+  42 0010 CF01      		movw r24,r30
+  43               	.LVL4:
+  44               	/* #APP */
+  45 0012 0197      		1: sbiw r24,1
+  46 0014 01F4      		brne 1b
+  47               	/* #NOAPP */
+  48               	.LBE7:
+  49               	.LBE6:
+  50               	.LM5:
+  51 0016 2F5F      		subi r18,lo8(-(1))
+  52 0018 2233      		cpi r18,lo8(50)
+  53 001a 01F4      		brne .L3
+  54               	.LM6:
+  55 001c 89EB      		ldi r24,lo8(-17479)
+  56 001e 9BEB      		ldi r25,hi8(-17479)
+  57               	.LVL5:
+  58 0020 0E94 0000 		call tx_nword
+  59               	.LVL6:
+  60 0024 20E0      		ldi r18,lo8(0)
+  61               	.LVL7:
+  62 0026 E0E3      		ldi r30,lo8(30000)
+  63 0028 F5E7      		ldi r31,hi8(30000)
+  64               	.L5:
+  65               	.LBB8:
+  66               	.LBB9:
+  67               	.LM7:
+  68 002a CF01      		movw r24,r30
+  69               	.LVL8:
+  70               	/* #APP */
+  71 002c 0197      		1: sbiw r24,1
+  72 002e 01F4      		brne 1b
+  73               	/* #NOAPP */
+  74               	.LBE9:
+  75               	.LBE8:
+  76               	.LM8:
+  77 0030 2F5F      		subi r18,lo8(-(1))
+  78 0032 2233      		cpi r18,lo8(50)
+  79 0034 01F4      		brne .L5
+  80 0036 00C0      		rjmp .L2
+  81               	/* epilogue: frame size=0 */
+  82               	/* epilogue: noreturn */
+  83               	/* epilogue end (size=0) */
+  84               	/* function main size 32 (32) */
+  85               	.LFE7:
+  87               		.comm prta,1,1
+  88               		.comm prtb,1,1
+  89               		.comm prtc,1,1
+  90               		.comm prtd,1,1
+  91               		.comm dira,1,1
+  92               		.comm dirb,1,1
+  93               		.comm dirc,1,1
+  94               		.comm dird,1,1
+  95               		.comm cnt,2,1
+  96               		.comm counter,4,1
+ 121               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccJaJxEh.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccJaJxEh.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccJaJxEh.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccJaJxEh.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccJaJxEh.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\michael\LOCALS~1\Temp/ccJaJxEh.s:20     .text:00000000 main
+                            *COM*:00000001 prta
+                            *COM*:00000001 prtb
+                            *COM*:00000001 prtc
+                            *COM*:00000001 prtd
+                            *COM*:00000001 dira
+                            *COM*:00000001 dirb
+                            *COM*:00000001 dirc
+                            *COM*:00000001 dird
+                            *COM*:00000002 cnt
+                            *COM*:00000004 counter
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+init_nBus
+tx_nbyte
+tx_nword

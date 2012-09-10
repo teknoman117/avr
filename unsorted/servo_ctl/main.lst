@@ -1,0 +1,728 @@
+GAS LISTING /tmp/ccOYdiS9.s 			page 1
+
+
+   1               		.file	"main.c"
+   2               		.arch atmega644
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/robotdude/Programs/AVR_Projects/servo_ctl/",100,0,2,.Ltext0
+  11               		.stabs	"main.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,0,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,0,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,0,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,0,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,0,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,0,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,0,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,0,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,0,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,0,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,0,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,0,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,0,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,0,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,0,0
+  30               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/avr/io.h",130,0,0,0
+  31               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  32               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/inttypes.h",130,0,0,0
+  33               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/stdint.h",130,0,0,0
+  34               		.stabs	"int8_t:t(4,1)=(0,10)",128,0,121,0
+  35               		.stabs	"uint8_t:t(4,2)=(0,11)",128,0,122,0
+  36               		.stabs	"int16_t:t(4,3)=(0,1)",128,0,123,0
+  37               		.stabs	"uint16_t:t(4,4)=(0,4)",128,0,124,0
+  38               		.stabs	"int32_t:t(4,5)=(0,3)",128,0,125,0
+  39               		.stabs	"uint32_t:t(4,6)=(0,5)",128,0,126,0
+  40               		.stabs	"int64_t:t(4,7)=(0,6)",128,0,128,0
+  41               		.stabs	"uint64_t:t(4,8)=(0,7)",128,0,129,0
+  42               		.stabs	"intptr_t:t(4,9)=(4,3)",128,0,142,0
+  43               		.stabs	"uintptr_t:t(4,10)=(4,4)",128,0,147,0
+  44               		.stabs	"int_least8_t:t(4,11)=(4,1)",128,0,159,0
+  45               		.stabs	"uint_least8_t:t(4,12)=(4,2)",128,0,164,0
+  46               		.stabs	"int_least16_t:t(4,13)=(4,3)",128,0,169,0
+  47               		.stabs	"uint_least16_t:t(4,14)=(4,4)",128,0,174,0
+  48               		.stabs	"int_least32_t:t(4,15)=(4,5)",128,0,179,0
+  49               		.stabs	"uint_least32_t:t(4,16)=(4,6)",128,0,184,0
+  50               		.stabs	"int_least64_t:t(4,17)=(4,7)",128,0,192,0
+  51               		.stabs	"uint_least64_t:t(4,18)=(4,8)",128,0,199,0
+  52               		.stabs	"int_fast8_t:t(4,19)=(4,1)",128,0,213,0
+  53               		.stabs	"uint_fast8_t:t(4,20)=(4,2)",128,0,218,0
+  54               		.stabs	"int_fast16_t:t(4,21)=(4,3)",128,0,223,0
+  55               		.stabs	"uint_fast16_t:t(4,22)=(4,4)",128,0,228,0
+  56               		.stabs	"int_fast32_t:t(4,23)=(4,5)",128,0,233,0
+  57               		.stabs	"uint_fast32_t:t(4,24)=(4,6)",128,0,238,0
+GAS LISTING /tmp/ccOYdiS9.s 			page 2
+
+
+  58               		.stabs	"int_fast64_t:t(4,25)=(4,7)",128,0,246,0
+  59               		.stabs	"uint_fast64_t:t(4,26)=(4,8)",128,0,253,0
+  60               		.stabs	"intmax_t:t(4,27)=(4,7)",128,0,273,0
+  61               		.stabs	"uintmax_t:t(4,28)=(4,8)",128,0,278,0
+  62               		.stabn	162,0,0,0
+  63               		.stabs	"int_farptr_t:t(3,1)=(4,5)",128,0,77,0
+  64               		.stabs	"uint_farptr_t:t(3,2)=(4,6)",128,0,81,0
+  65               		.stabn	162,0,0,0
+  66               		.stabn	162,0,0,0
+  67               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/avr/fuse.h",130,0,0,0
+  68               		.stabs	"__fuse_t:t(5,1)=(5,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,186,0
+  69               		.stabn	162,0,0,0
+  70               		.stabn	162,0,0,0
+  71               		.stabs	"set8:F(0,15)",36,0,6,set8
+  72               		.stabs	"bit:P(4,2)",64,0,6,24
+  73               		.stabs	"reg:P(0,16)=*(4,2)",64,0,6,30
+  74               	.global	set8
+  75               		.type	set8, @function
+  76               	set8:
+  77               		.stabd	46,0,0
+  78               		.stabs	"/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h",132,0,0,.Ltext1
+  79               	.Ltext1:
+   1:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** #ifndef	_IOCTL8_H
+   2:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** #define _IOCTL8_H  1
+   3:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 
+   4:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** #include <stdint.h>
+   5:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 
+   6:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** void set8(uint8_t bit, uint8_t *reg) {
+  80               		.stabn	68,0,6,.LM0-set8
+  81               	.LM0:
+  82               	/* prologue: frame size=0 */
+  83               	/* prologue end (size=0) */
+  84 0000 FB01      		movw r30,r22
+   7:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 	*reg |= (1 << bit);
+  85               		.stabn	68,0,7,.LM1-set8
+  86               	.LM1:
+  87 0002 21E0      		ldi r18,lo8(1)
+  88 0004 30E0      		ldi r19,hi8(1)
+  89 0006 00C0      		rjmp 2f
+  90 0008 220F      	1:	lsl r18
+  91 000a 331F      		rol r19
+  92 000c 8A95      	2:	dec r24
+  93 000e 02F4      		brpl 1b
+  94 0010 8081      		ld r24,Z
+  95 0012 822B      		or r24,r18
+  96 0014 8083      		st Z,r24
+  97               	/* epilogue: frame size=0 */
+  98 0016 0895      		ret
+  99               	/* epilogue end (size=1) */
+ 100               	/* function set8 size 13 (12) */
+ 101               		.size	set8, .-set8
+ 102               	.Lscope0:
+ 103               		.stabs	"",36,0,0,.Lscope0-set8
+ 104               		.stabd	78,0,0
+ 105               		.stabs	"clear8:F(0,15)",36,0,9,clear8
+ 106               		.stabs	"bit:P(4,2)",64,0,9,24
+ 107               		.stabs	"reg:P(0,16)",64,0,9,30
+GAS LISTING /tmp/ccOYdiS9.s 			page 3
+
+
+ 108               	.global	clear8
+ 109               		.type	clear8, @function
+ 110               	clear8:
+ 111               		.stabd	46,0,0
+   8:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** }
+   9:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** void clear8(uint8_t bit, uint8_t *reg) {
+ 112               		.stabn	68,0,9,.LM2-clear8
+ 113               	.LM2:
+ 114               	/* prologue: frame size=0 */
+ 115               	/* prologue end (size=0) */
+ 116 0018 FB01      		movw r30,r22
+  10:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 	*reg &= ~(1 << bit);
+ 117               		.stabn	68,0,10,.LM3-clear8
+ 118               	.LM3:
+ 119 001a 21E0      		ldi r18,lo8(1)
+ 120 001c 30E0      		ldi r19,hi8(1)
+ 121 001e 00C0      		rjmp 2f
+ 122 0020 220F      	1:	lsl r18
+ 123 0022 331F      		rol r19
+ 124 0024 8A95      	2:	dec r24
+ 125 0026 02F4      		brpl 1b
+ 126 0028 2095      		com r18
+ 127 002a 8081      		ld r24,Z
+ 128 002c 8223      		and r24,r18
+ 129 002e 8083      		st Z,r24
+ 130               	/* epilogue: frame size=0 */
+ 131 0030 0895      		ret
+ 132               	/* epilogue end (size=1) */
+ 133               	/* function clear8 size 14 (13) */
+ 134               		.size	clear8, .-clear8
+ 135               	.Lscope1:
+ 136               		.stabs	"",36,0,0,.Lscope1-clear8
+ 137               		.stabd	78,0,0
+ 138               		.stabs	"get8:F(4,2)",36,0,12,get8
+ 139               		.stabs	"bit:P(4,2)",64,0,12,24
+ 140               		.stabs	"reg:P(0,16)",64,0,12,30
+ 141               	.global	get8
+ 142               		.type	get8, @function
+ 143               	get8:
+ 144               		.stabd	46,0,0
+  11:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** }
+  12:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** uint8_t get8(uint8_t bit, uint8_t *reg) {
+ 145               		.stabn	68,0,12,.LM4-get8
+ 146               	.LM4:
+ 147               	/* prologue: frame size=0 */
+ 148               	/* prologue end (size=0) */
+ 149 0032 FB01      		movw r30,r22
+ 150 0034 2081      		ld r18,Z
+ 151 0036 3327      		clr r19
+ 152 0038 00C0      		rjmp 2f
+ 153 003a 3595      	1:	asr r19
+ 154 003c 2795      		ror r18
+ 155 003e 8A95      	2:	dec r24
+ 156 0040 02F4      		brpl 1b
+  13:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** 	return ((*reg >> bit) & 1);
+  14:/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h **** }
+ 157               		.stabn	68,0,14,.LM5-get8
+GAS LISTING /tmp/ccOYdiS9.s 			page 4
+
+
+ 158               	.LM5:
+ 159 0042 C901      		movw r24,r18
+ 160 0044 8170      		andi r24,lo8(1)
+ 161 0046 9070      		andi r25,hi8(1)
+ 162               	/* epilogue: frame size=0 */
+ 163 0048 0895      		ret
+ 164               	/* epilogue end (size=1) */
+ 165               	/* function get8 size 13 (12) */
+ 166               		.size	get8, .-get8
+ 167               	.Lscope2:
+ 168               		.stabs	"",36,0,0,.Lscope2-get8
+ 169               		.stabd	78,0,0
+ 170               		.stabs	"main:F(0,1)",36,0,12,main
+ 171               	.global	main
+ 172               		.type	main, @function
+ 173               	main:
+ 174               		.stabd	46,0,0
+ 175               		.stabs	"main.c",132,0,0,.Ltext2
+ 176               	.Ltext2:
+   1:main.c        **** #define F_CPU 11059200UL
+   2:main.c        **** #include <avr/io.h>
+   3:main.c        **** #include <avr/interrupt.h>
+   4:main.c        **** #include <stdint.h>
+   5:main.c        **** #include <util/delay.h>
+   6:main.c        **** #include <ioctl8.h>
+   7:main.c        **** 
+   8:main.c        **** //range 990=750us
+   9:main.c        **** //      2074=1500us
+  10:main.c        **** //      2970=2250us
+  11:main.c        **** //      magic number = 1us = 1.3204 timer clocks when divided by 8
+  12:main.c        **** int main (void) {
+ 177               		.stabn	68,0,12,.LM6-main
+ 178               	.LM6:
+ 179               	/* prologue: frame size=0 */
+ 180               	/* prologue end (size=0) */
+  13:main.c        ****     uint16_t cnt;
+  14:main.c        ****     TCCR1A = _BV(COM1A1)
+ 181               		.stabn	68,0,14,.LM7-main
+ 182               	.LM7:
+ 183 004a 82EA      		ldi r24,lo8(-94)
+ 184 004c 8093 8000 		sts 128,r24
+  15:main.c        ****       | _BV(COM1B1)
+  16:main.c        ****       | _BV(WGM11); 
+  17:main.c        ****     TCCR1B = _BV(WGM13)
+ 185               		.stabn	68,0,17,.LM8-main
+ 186               	.LM8:
+ 187 0050 8AE1      		ldi r24,lo8(26)
+ 188 0052 8093 8100 		sts 129,r24
+  18:main.c        ****       | _BV(WGM12)
+  19:main.c        ****       | _BV(CS11);
+  20:main.c        ****     //ICR1 = 20000;
+  21:main.c        ****     ICR1 = 27648;
+ 189               		.stabn	68,0,21,.LM9-main
+ 190               	.LM9:
+ 191 0056 80E0      		ldi r24,lo8(27648)
+ 192 0058 9CE6      		ldi r25,hi8(27648)
+ 193 005a 9093 8700 		sts (134)+1,r25
+GAS LISTING /tmp/ccOYdiS9.s 			page 5
+
+
+ 194 005e 8093 8600 		sts 134,r24
+  22:main.c        ****     //ICR1 = 13824;
+  23:main.c        ****     OCR1A = 2074;
+ 195               		.stabn	68,0,23,.LM10-main
+ 196               	.LM10:
+ 197 0062 8AE1      		ldi r24,lo8(2074)
+ 198 0064 98E0      		ldi r25,hi8(2074)
+ 199 0066 9093 8900 		sts (136)+1,r25
+ 200 006a 8093 8800 		sts 136,r24
+ 201               	.LBB26:
+ 202               	.LBB27:
+ 203               		.stabs	"/home/robotdude/Programs/AVR_Projects/avrlib/ioctl8.h",132,0,0,.Ltext3
+ 204               	.Ltext3:
+ 205               		.stabn	68,0,7,.LM11-main
+ 206               	.LM11:
+ 207 006e 8AB1      		in r24,42-0x20
+ 208               	.LBE27:
+ 209               	.LBE26:
+ 210               	.LBB28:
+ 211               	.LBB29:
+ 212 0070 8067      		ori r24,lo8(112)
+ 213 0072 8AB9      		out 42-0x20,r24
+ 214               	.L8:
+ 215               	.LBE29:
+ 216               	.LBE28:
+ 217               	.LBB30:
+ 218               	.LBB31:
+ 219               		.stabn	68,0,7,.LM12-main
+ 220               	.LM12:
+ 221 0074 5E9A      		sbi 43-0x20,6
+ 222 0076 4EED      		ldi r20,lo8(990)
+ 223 0078 53E0      		ldi r21,hi8(990)
+ 224 007a E4E1      		ldi r30,lo8(276)
+ 225 007c F1E0      		ldi r31,hi8(276)
+ 226               	.L9:
+ 227               	.LBE31:
+ 228               	.LBE30:
+ 229               		.stabs	"main.c",132,0,0,.Ltext4
+ 230               	.Ltext4:
+  24:main.c        ****     //OCR1B = 2074;
+  25:main.c        ****     set8(PORTD6, &DDRD); 
+  26:main.c        ****     set8(PORTD5, &DDRD);
+  27:main.c        ****     set8(PORTD4, &DDRD); 
+  28:main.c        ****     cnt = 0;
+  29:main.c        ****     while (1) {
+  30:main.c        ****         set8(PORTD6, &PORTD); 
+  31:main.c        ****         cnt = 990;
+  32:main.c        ****         while(cnt < 2970) {
+  33:main.c        ****             cnt += 31;
+ 231               		.stabn	68,0,33,.LM13-main
+ 232               	.LM13:
+ 233 007e 415E      		subi r20,lo8(-(31))
+ 234 0080 5F4F      		sbci r21,hi8(-(31))
+  34:main.c        ****             OCR1B = cnt;
+ 235               		.stabn	68,0,34,.LM14-main
+ 236               	.LM14:
+ 237 0082 5093 8B00 		sts (138)+1,r21
+GAS LISTING /tmp/ccOYdiS9.s 			page 6
+
+
+ 238 0086 4093 8A00 		sts 138,r20
+ 239 008a 2EEE      		ldi r18,lo8(750)
+ 240 008c 32E0      		ldi r19,hi8(750)
+ 241               	.L10:
+ 242               	.LBB32:
+ 243               	.LBB33:
+ 244               	.LBB34:
+ 245               	.LBB35:
+ 246               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h",132,0,0,.Ltext5
+ 247               	.Ltext5:
+   1:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****    Copyright (c) 2007 Joerg Wunsch
+   3:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****    All rights reserved.
+   4:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+   5:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****    Redistribution and use in source and binary forms, with or without
+   6:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****    modification, are permitted provided that the following conditions are met:
+   7:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+   8:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****    * Redistributions of source code must retain the above copyright
+   9:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****      notice, this list of conditions and the following disclaimer.
+  10:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  11:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****    * Redistributions in binary form must reproduce the above copyright
+  12:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****      notice, this list of conditions and the following disclaimer in
+  13:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****      the documentation and/or other materials provided with the
+  14:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****      distribution.
+  15:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  16:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****    * Neither the name of the copyright holders nor the names of
+  17:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****      contributors may be used to endorse or promote products derived
+  18:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****      from this software without specific prior written permission.
+  19:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  20:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  23:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  24:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  25:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  26:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  27:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  28:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  29:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  30:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  31:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  32:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** /* $Id: delay_basic.h,v 1.1 2007/05/13 21:23:20 joerg_wunsch Exp $ */
+  33:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  34:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** #ifndef _UTIL_DELAY_BASIC_H_
+  35:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** #define _UTIL_DELAY_BASIC_H_ 1
+  36:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  37:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** #include <inttypes.h>
+  38:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  39:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** /** \file */
+  40:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** /** \defgroup util_delay_basic <util/delay_basic.h>: Basic busy-wait delay loops
+  41:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     \code
+  42:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     #include <util/delay_basic.h>
+  43:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     \endcode
+  44:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  45:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     The functions in this header file implement simple delay loops
+  46:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     that perform a busy-waiting.  They are typically used to
+  47:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     facilitate short delays in the program execution.  They are
+GAS LISTING /tmp/ccOYdiS9.s 			page 7
+
+
+  48:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     implemented as count-down loops with a well-known CPU cycle
+  49:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     count per loop iteration.  As such, no other processing can
+  50:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     occur simultaneously.  It should be kept in mind that the
+  51:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     functions described here do not disable interrupts.
+  52:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  53:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     In general, for long delays, the use of hardware timers is
+  54:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     much preferrable, as they free the CPU, and allow for
+  55:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     concurrent processing of other events while the timer is
+  56:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     running.  However, in particular for very short delays, the
+  57:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     overhead of setting up a hardware timer is too much compared
+  58:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     to the overall delay time.
+  59:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  60:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     Two inline functions are provided for the actual delay algorithms.
+  61:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  62:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** */
+  63:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  64:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** #if !defined(__DOXYGEN__)
+  65:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
+  66:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
+  67:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** #endif
+  68:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  69:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** /** \ingroup util_delay_basic
+  70:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  71:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     Delay loop using an 8-bit counter \c __count, so up to 256
+  72:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     iterations are possible.  (The value 256 would have to be passed
+  73:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     as 0.)  The loop executes three CPU cycles per iteration, not
+  74:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     including the overhead the compiler needs to setup the counter
+  75:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     register.
+  76:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  77:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     Thus, at a CPU speed of 1 MHz, delays of up to 768 microseconds
+  78:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     can be achieved.
+  79:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** */
+  80:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** void
+  81:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** _delay_loop_1(uint8_t __count)
+  82:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** {
+  83:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 	__asm__ volatile (
+  84:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 		"1: dec %0" "\n\t"
+  85:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 		"brne 1b"
+  86:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 		: "=r" (__count)
+  87:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 		: "0" (__count)
+  88:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 	);
+  89:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** }
+  90:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  91:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** /** \ingroup util_delay_basic
+  92:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  93:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     Delay loop using a 16-bit counter \c __count, so up to 65536
+  94:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     iterations are possible.  (The value 65536 would have to be
+  95:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     passed as 0.)  The loop executes four CPU cycles per iteration,
+  96:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     not including the overhead the compiler requires to setup the
+  97:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     counter register pair.
+  98:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 
+  99:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     Thus, at a CPU speed of 1 MHz, delays of up to about 262.1
+ 100:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****     milliseconds can be achieved.
+ 101:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h ****  */
+ 102:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** void
+ 103:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** _delay_loop_2(uint16_t __count)
+ 104:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** {
+GAS LISTING /tmp/ccOYdiS9.s 			page 8
+
+
+ 105:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h **** 	__asm__ volatile (
+ 248               		.stabn	68,0,105,.LM15-main
+ 249               	.LM15:
+ 250 008e CF01      		movw r24,r30
+ 251               	/* #APP */
+ 252 0090 0197      		1: sbiw r24,1
+ 253 0092 01F4      		brne 1b
+ 254               	/* #NOAPP */
+ 255               	.LBE35:
+ 256               	.LBE34:
+ 257               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h",132,0,0,.Ltext6
+ 258               	.Ltext6:
+   1:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
+   3:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
+   4:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    All rights reserved.
+   5:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+   6:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    Redistribution and use in source and binary forms, with or without
+   7:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    modification, are permitted provided that the following conditions are met:
+   8:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+   9:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    * Redistributions of source code must retain the above copyright
+  10:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer.
+  11:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  12:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    * Redistributions in binary form must reproduce the above copyright
+  13:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****      notice, this list of conditions and the following disclaimer in
+  14:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****      the documentation and/or other materials provided with the
+  15:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****      distribution.
+  16:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  17:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    * Neither the name of the copyright holders nor the names of
+  18:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****      contributors may be used to endorse or promote products derived
+  19:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****      from this software without specific prior written permission.
+  20:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  21:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  25:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  32:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  33:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** /* $Id: delay.h,v 1.5 2007/10/28 23:25:56 joerg_wunsch Exp $ */
+  34:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  35:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #ifndef _UTIL_DELAY_H_
+  36:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #define _UTIL_DELAY_H_ 1
+  37:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  38:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #include <inttypes.h>
+  39:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #include <util/delay_basic.h>
+  40:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  41:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** /** \file */
+  42:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** /** \defgroup util_delay <util/delay.h>: Convenience functions for busy-wait delay loops
+  43:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     \code
+  44:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     #define F_CPU 1000000UL  // 1 MHz
+  45:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     //#define F_CPU 14.7456E6
+GAS LISTING /tmp/ccOYdiS9.s 			page 9
+
+
+  46:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     #include <util/delay.h>
+  47:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     \endcode
+  48:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  49:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     \note As an alternative method, it is possible to pass the
+  50:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     F_CPU macro down to the compiler from the Makefile.
+  51:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     Obviously, in that case, no \c \#define statement should be
+  52:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     used.
+  53:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  54:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     The functions in this header file are wrappers around the basic
+  55:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     busy-wait functions from <util/delay_basic.h>.  They are meant as
+  56:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     convenience functions where actual time values can be specified
+  57:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     rather than a number of cycles to wait for.  The idea behind is
+  58:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     that compile-time constant expressions will be eliminated by
+  59:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     compiler optimization so floating-point expressions can be used
+  60:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     to calculate the number of delay cycles needed based on the CPU
+  61:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     frequency passed by the macro F_CPU.
+  62:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  63:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     \note In order for these functions to work as intended, compiler
+  64:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     optimizations <em>must</em> be enabled, and the delay time
+  65:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     <em>must</em> be an expression that is a known constant at
+  66:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     compile-time.  If these requirements are not met, the resulting
+  67:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     delay will be much longer (and basically unpredictable), and
+  68:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     applications that otherwise do not use floating-point calculations
+  69:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     will experience severe code bloat by the floating-point library
+  70:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     routines linked into the application.
+  71:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  72:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     The functions available allow the specification of microsecond, and
+  73:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     millisecond delays directly, using the application-supplied macro
+  74:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****     F_CPU as the CPU clock frequency (in Hertz).
+  75:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  76:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** */
+  77:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  78:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #if !defined(__DOXYGEN__)
+  79:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** static inline void _delay_us(double __us) __attribute__((always_inline));
+  80:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** static inline void _delay_ms(double __ms) __attribute__((always_inline));
+  81:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #endif
+  82:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  83:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #ifndef F_CPU
+  84:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** /* prevent compiler error by supplying a default */
+  85:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** # warning "F_CPU not defined for <util/delay.h>"
+  86:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** # define F_CPU 1000000UL
+  87:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #endif
+  88:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  89:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #ifndef __OPTIMIZE__
+  90:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** # warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+  91:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** #endif
+  92:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  93:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** /**
+  94:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    \ingroup util_delay
+  95:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  96:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    Perform a delay of \c __us microseconds, using _delay_loop_1().
+  97:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+  98:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+  99:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 100:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+ 101:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    The maximal possible delay is 768 us / F_CPU in MHz.
+ 102:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+GAS LISTING /tmp/ccOYdiS9.s 			page 10
+
+
+ 103:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    If the user requests a delay greater than the maximal possible one,
+ 104:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    _delay_us() will automatically call _delay_ms() instead.  The user
+ 105:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    will not be informed about this case.
+ 106:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****  */
+ 107:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** void
+ 108:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** _delay_us(double __us)
+ 109:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** {
+ 110:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	uint8_t __ticks;
+ 111:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	double __tmp = ((F_CPU) / 3e6) * __us;
+ 112:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	if (__tmp < 1.0)
+ 113:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		__ticks = 1;
+ 114:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	else if (__tmp > 255)
+ 115:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	{
+ 116:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		_delay_ms(__us / 1000.0);
+ 117:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		return;
+ 118:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	}
+ 119:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	else
+ 120:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		__ticks = (uint8_t)__tmp;
+ 121:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	_delay_loop_1(__ticks);
+ 122:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** }
+ 123:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+ 124:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+ 125:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** /**
+ 126:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    \ingroup util_delay
+ 127:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+ 128:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    Perform a delay of \c __ms milliseconds, using _delay_loop_2().
+ 129:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+ 130:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    The macro F_CPU is supposed to be defined to a
+ 131:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    constant defining the CPU clock frequency (in Hertz).
+ 132:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+ 133:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    The maximal possible delay is 262.14 ms / F_CPU in MHz.
+ 134:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 
+ 135:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    When the user request delay which exceed the maximum possible one,
+ 136:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    _delay_ms() provides a decreased resolution functionality. In this
+ 137:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    mode _delay_ms() will work with a resolution of 1/10 ms, providing
+ 138:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    delays up to 6.5535 seconds (independent from CPU frequency).  The
+ 139:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****    user will not be informed about decreased resolution.
+ 140:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h ****  */
+ 141:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** void
+ 142:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** _delay_ms(double __ms)
+ 143:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** {
+ 144:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	uint16_t __ticks;
+ 145:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	double __tmp = ((F_CPU) / 4e3) * __ms;
+ 146:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	if (__tmp < 1.0)
+ 147:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		__ticks = 1;
+ 148:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	else if (__tmp > 65535)
+ 149:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 	{
+ 150:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		//	__ticks = requested delay in 1/10 ms
+ 151:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		__ticks = (uint16_t) (__ms * 10.0);
+ 152:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		while(__ticks)
+ 153:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 		{
+ 154:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 			// wait 1/10 ms
+ 155:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 			_delay_loop_2(((F_CPU) / 4e3) / 10);
+ 156:/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h **** 			__ticks --;
+ 259               		.stabn	68,0,156,.LM16-main
+ 260               	.LM16:
+ 261 0094 2150      		subi r18,lo8(-(-1))
+GAS LISTING /tmp/ccOYdiS9.s 			page 11
+
+
+ 262 0096 3040      		sbci r19,hi8(-(-1))
+ 263               		.stabn	68,0,152,.LM17-main
+ 264               	.LM17:
+ 265 0098 01F4      		brne .L10
+ 266               	.LBE33:
+ 267               	.LBE32:
+ 268               		.stabs	"main.c",132,0,0,.Ltext7
+ 269               	.Ltext7:
+ 270               		.stabn	68,0,32,.LM18-main
+ 271               	.LM18:
+ 272 009a 8BE0      		ldi r24,hi8(2974)
+ 273 009c 4E39      		cpi r20,lo8(2974)
+ 274 009e 5807      		cpc r21,r24
+ 275 00a0 01F4      		brne .L9
+  35:main.c        ****             _delay_ms(75);
+  36:main.c        ****         }
+  37:main.c        ****         clear8(PORTD6, &PORTD);
+ 276               		.stabn	68,0,37,.LM19-main
+ 277               	.LM19:
+ 278 00a2 6BE2      		ldi r22,lo8(43)
+ 279 00a4 70E0      		ldi r23,hi8(43)
+ 280 00a6 86E0      		ldi r24,lo8(6)
+ 281 00a8 0E94 0000 		call clear8
+ 282 00ac 4AE9      		ldi r20,lo8(2970)
+ 283 00ae 5BE0      		ldi r21,hi8(2970)
+ 284 00b0 E4E1      		ldi r30,lo8(276)
+ 285 00b2 F1E0      		ldi r31,hi8(276)
+ 286               	.L13:
+  38:main.c        ****         cnt = 2970;
+  39:main.c        ****         while(cnt > 990) {
+  40:main.c        ****             cnt -= 31;
+ 287               		.stabn	68,0,40,.LM20-main
+ 288               	.LM20:
+ 289 00b4 4F51      		subi r20,lo8(-(-31))
+ 290 00b6 5040      		sbci r21,hi8(-(-31))
+  41:main.c        ****             OCR1B = cnt;
+ 291               		.stabn	68,0,41,.LM21-main
+ 292               	.LM21:
+ 293 00b8 5093 8B00 		sts (138)+1,r21
+ 294 00bc 4093 8A00 		sts 138,r20
+ 295 00c0 2EEE      		ldi r18,lo8(750)
+ 296 00c2 32E0      		ldi r19,hi8(750)
+ 297               	.L14:
+ 298               	.LBB36:
+ 299               	.LBB37:
+ 300               	.LBB38:
+ 301               	.LBB39:
+ 302               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay_basic.h",132,0,0,.Ltext8
+ 303               	.Ltext8:
+ 304               		.stabn	68,0,105,.LM22-main
+ 305               	.LM22:
+ 306 00c4 CF01      		movw r24,r30
+ 307               	/* #APP */
+ 308 00c6 0197      		1: sbiw r24,1
+ 309 00c8 01F4      		brne 1b
+ 310               	/* #NOAPP */
+ 311               	.LBE39:
+GAS LISTING /tmp/ccOYdiS9.s 			page 12
+
+
+ 312               	.LBE38:
+ 313               		.stabs	"/opt/cross/lib64/gcc/avr/4.1.3/../../../../avr/include/util/delay.h",132,0,0,.Ltext9
+ 314               	.Ltext9:
+ 315               		.stabn	68,0,156,.LM23-main
+ 316               	.LM23:
+ 317 00ca 2150      		subi r18,lo8(-(-1))
+ 318 00cc 3040      		sbci r19,hi8(-(-1))
+ 319               		.stabn	68,0,152,.LM24-main
+ 320               	.LM24:
+ 321 00ce 01F4      		brne .L14
+ 322               	.LBE37:
+ 323               	.LBE36:
+ 324               		.stabs	"main.c",132,0,0,.Ltext10
+ 325               	.Ltext10:
+ 326               		.stabn	68,0,39,.LM25-main
+ 327               	.LM25:
+ 328 00d0 83E0      		ldi r24,hi8(986)
+ 329 00d2 4A3D      		cpi r20,lo8(986)
+ 330 00d4 5807      		cpc r21,r24
+ 331 00d6 01F4      		brne .L13
+ 332 00d8 00C0      		rjmp .L8
+ 333               	/* epilogue: frame size=0 */
+ 334               	/* epilogue: noreturn */
+ 335               	/* epilogue end (size=0) */
+ 336               	/* function main size 80 (80) */
+ 337               		.size	main, .-main
+ 338               		.stabs	"cnt:r(4,4)",64,0,13,20
+ 339               		.stabn	192,0,0,main-main
+ 340               		.stabs	"__ticks:r(4,4)",64,0,144,18
+ 341               		.stabn	192,0,0,.LBB33-main
+ 342               		.stabs	"__count:r(4,4)",64,0,155,24
+ 343               		.stabn	192,0,0,.LBB34-main
+ 344               		.stabn	224,0,0,.LBE34-main
+ 345               		.stabn	224,0,0,.LBE33-main
+ 346               		.stabs	"__ticks:r(4,4)",64,0,144,18
+ 347               		.stabn	192,0,0,.LBB37-main
+ 348               		.stabs	"__count:r(4,4)",64,0,155,24
+ 349               		.stabn	192,0,0,.LBB38-main
+ 350               		.stabn	224,0,0,.LBE38-main
+ 351               		.stabn	224,0,0,.LBE37-main
+ 352               		.stabn	224,0,0,.Lscope3-main
+ 353               	.Lscope3:
+ 354               		.stabs	"",36,0,0,.Lscope3-main
+ 355               		.stabd	78,0,0
+ 356               		.stabs	"",100,0,0,.Letext0
+ 357               	.Letext0:
+ 358               	/* File "main.c": code  120 = 0x0078 ( 117), prologues   0, epilogues   3 */
+GAS LISTING /tmp/ccOYdiS9.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+     /tmp/ccOYdiS9.s:3      *ABS*:000000000000003f __SREG__
+     /tmp/ccOYdiS9.s:4      *ABS*:000000000000003e __SP_H__
+     /tmp/ccOYdiS9.s:5      *ABS*:000000000000003d __SP_L__
+     /tmp/ccOYdiS9.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccOYdiS9.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccOYdiS9.s:76     .text:0000000000000000 set8
+     /tmp/ccOYdiS9.s:110    .text:0000000000000018 clear8
+     /tmp/ccOYdiS9.s:143    .text:0000000000000032 get8
+     /tmp/ccOYdiS9.s:173    .text:000000000000004a main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

@@ -1,0 +1,684 @@
+   1               		.file	"stinger_bootloader.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  12               		.text
+  13               	.Ltext0:
+  96               	uart_putc:
+  97               		.stabd	46,0,0
+   1:stinger_bootloader.c **** #include <avr/io.h>
+   2:stinger_bootloader.c **** #include <avr/boot.h>
+   3:stinger_bootloader.c **** #include <avr/interrupt.h>
+   4:stinger_bootloader.c **** #include <avr/eeprom.h>
+   5:stinger_bootloader.c **** #include <avr/pgmspace.h>
+   6:stinger_bootloader.c **** #include <util/delay.h>
+   7:stinger_bootloader.c **** #include "config.h"
+   8:stinger_bootloader.c **** 
+   9:stinger_bootloader.c **** uint16_t flash_address;             /* start flash (byte address, converted) write at this address 
+  10:stinger_bootloader.c **** 
+  11:stinger_bootloader.c **** void (*jump_to_application)(void) = (void *)0x0000;
+  12:stinger_bootloader.c **** 
+  13:stinger_bootloader.c **** /* defines */
+  14:stinger_bootloader.c **** #define HIGH(x) ( (uint8_t) (x >> 8) )
+  15:stinger_bootloader.c **** #define LOW(x)  ( (uint8_t) x )
+  16:stinger_bootloader.c **** 
+  17:stinger_bootloader.c **** #define noinline __attribute__((noinline))
+  18:stinger_bootloader.c **** 
+  19:stinger_bootloader.c **** 
+  20:stinger_bootloader.c **** /** output one character */
+  21:stinger_bootloader.c **** static noinline void uart_putc(uint8_t data) {
+  99               	.LM0:
+ 100               	.LFBB1:
+ 101               	/* prologue: function */
+ 102               	/* frame size = 0 */
+ 103               	.L2:
+  22:stinger_bootloader.c ****     /* loop until data has been transmitted */
+  23:stinger_bootloader.c ****     while (!(_UCSRA_UART0 & _BV(_UDRE_UART0)));
+ 105               	.LM1:
+ 106 0000 5D9B      		sbis 43-32,5
+ 107 0002 00C0      		rjmp .L2
+  24:stinger_bootloader.c ****     /* put data in buffer */
+  25:stinger_bootloader.c ****     _UDR_UART0 = data;
+ 109               	.LM2:
+ 110 0004 8CB9      		out 44-32,r24
+ 111               	/* epilogue start */
+  26:stinger_bootloader.c **** }
+ 113               	.LM3:
+ 114 0006 0895      		ret
+ 116               	.Lscope1:
+ 118               		.stabd	78,0,0
+ 121               	uart_getc:
+ 122               		.stabd	46,0,0
+  27:stinger_bootloader.c **** 
+  28:stinger_bootloader.c **** /** output a string */
+  29:stinger_bootloader.c **** static inline void uart_puts(uint8_t buffer[]) {
+  30:stinger_bootloader.c ****     /* send everything until end of string */
+  31:stinger_bootloader.c ****     while (*buffer != 0) {
+  32:stinger_bootloader.c ****         uart_putc(*buffer);
+  33:stinger_bootloader.c ****         buffer++;
+  34:stinger_bootloader.c ****     }
+  35:stinger_bootloader.c **** }
+  36:stinger_bootloader.c **** 
+  37:stinger_bootloader.c **** /** block until one character has been read */
+  38:stinger_bootloader.c **** static noinline uint8_t uart_getc(void) {
+ 124               	.LM4:
+ 125               	.LFBB2:
+ 126               	/* prologue: function */
+ 127               	/* frame size = 0 */
+ 128               	.L6:
+  39:stinger_bootloader.c ****     /* wait if a byte has been received */
+  40:stinger_bootloader.c ****     while (!(_UCSRA_UART0 & _BV(_RXC_UART0)));
+ 130               	.LM5:
+ 131 0008 5F9B      		sbis 43-32,7
+ 132 000a 00C0      		rjmp .L6
+  41:stinger_bootloader.c ****     /* return received byte */
+  42:stinger_bootloader.c ****     return _UDR_UART0;
+ 134               	.LM6:
+ 135 000c 8CB1      		in r24,44-32
+ 136               	/* epilogue start */
+  43:stinger_bootloader.c **** }
+ 138               	.LM7:
+ 139 000e 0895      		ret
+ 141               	.Lscope2:
+ 143               		.stabd	78,0,0
+ 146               	start_application:
+ 147               		.stabd	46,0,0
+  44:stinger_bootloader.c **** 
+  45:stinger_bootloader.c **** /* loop a few times, and see if the character is received */
+  46:stinger_bootloader.c **** static inline uint8_t wait_for_char(void) {
+  47:stinger_bootloader.c ****     uint16_t i;
+  48:stinger_bootloader.c ****     for(i = 0; i < 1000; i++) {
+  49:stinger_bootloader.c ****         _delay_loop_2(65535);
+  50:stinger_bootloader.c ****         if(_UCSRA_UART0 & _BV(_RXC_UART0)) {
+  51:stinger_bootloader.c ****             if(_UDR_UART0 == BOOTLOADER_ENTRY_CHAR) {
+  52:stinger_bootloader.c ****                     return 1;
+  53:stinger_bootloader.c ****             }
+  54:stinger_bootloader.c ****         }
+  55:stinger_bootloader.c ****     }
+  56:stinger_bootloader.c ****     /* never received the character */
+  57:stinger_bootloader.c ****     return 0;
+  58:stinger_bootloader.c **** }
+  59:stinger_bootloader.c **** 
+  60:stinger_bootloader.c **** /** init the hardware uart */
+  61:stinger_bootloader.c **** static inline void init_uart(void) {
+  62:stinger_bootloader.c ****     /* set baud rate */
+  63:stinger_bootloader.c ****     _UBRRL_UART0 = 71; /* low byte */
+  64:stinger_bootloader.c ****     /* set mode */
+  65:stinger_bootloader.c ****     _UCSRC_UART0 = UART_UCSRC;
+  66:stinger_bootloader.c ****     /* enable transmitter, receiver */
+  67:stinger_bootloader.c ****     _UCSRB_UART0 = _BV(_TXEN_UART0) | _BV(_RXEN_UART0);
+  68:stinger_bootloader.c **** }
+  69:stinger_bootloader.c **** 
+  70:stinger_bootloader.c **** /** move interrupt vectors to application section and jump to main program */
+  71:stinger_bootloader.c **** static noinline void start_application(void) {
+ 149               	.LM8:
+ 150               	.LFBB3:
+ 151               	/* prologue: function */
+ 152               	/* frame size = 0 */
+  72:stinger_bootloader.c ****     /* move interrupt vectors to application section and jump to main program */
+  73:stinger_bootloader.c ****     uart_putc('X');
+ 154               	.LM9:
+ 155 0010 88E5      		ldi r24,lo8(88)
+ 156 0012 0E94 0000 		call uart_putc
+  74:stinger_bootloader.c ****     _IVREG = _BV(IVCE);
+ 158               	.LM10:
+ 159 0016 81E0      		ldi r24,lo8(1)
+ 160 0018 85BF      		out 85-32,r24
+  75:stinger_bootloader.c ****     _IVREG = 0;
+ 162               	.LM11:
+ 163 001a 15BE      		out 85-32,__zero_reg__
+  76:stinger_bootloader.c ****     jump_to_application();
+ 165               	.LM12:
+ 166 001c E091 0000 		lds r30,jump_to_application
+ 167 0020 F091 0000 		lds r31,(jump_to_application)+1
+ 168 0024 0995      		icall
+ 169               	/* epilogue start */
+  77:stinger_bootloader.c **** }
+ 171               	.LM13:
+ 172 0026 0895      		ret
+ 174               	.Lscope3:
+ 176               		.stabd	78,0,0
+ 178               	.global	main
+ 180               	main:
+ 181               		.stabd	46,0,0
+  78:stinger_bootloader.c **** 
+  79:stinger_bootloader.c **** int main(void) {
+ 183               	.LM14:
+ 184               	.LFBB4:
+ 185 0028 4F92      		push r4
+ 186 002a 5F92      		push r5
+ 187 002c 6F92      		push r6
+ 188 002e 7F92      		push r7
+ 189 0030 8F92      		push r8
+ 190 0032 9F92      		push r9
+ 191 0034 AF92      		push r10
+ 192 0036 BF92      		push r11
+ 193 0038 CF92      		push r12
+ 194 003a DF92      		push r13
+ 195 003c EF92      		push r14
+ 196 003e FF92      		push r15
+ 197 0040 0F93      		push r16
+ 198 0042 1F93      		push r17
+ 199 0044 CF93      		push r28
+ 200 0046 DF93      		push r29
+ 201               	/* prologue: function */
+ 202               	/* frame size = 0 */
+ 203               	.LBB20:
+ 204               	.LBB21:
+ 206               	.LM15:
+ 207 0048 87E4      		ldi r24,lo8(71)
+ 208 004a 89B9      		out 41-32,r24
+ 210               	.LM16:
+ 211 004c 86E8      		ldi r24,lo8(-122)
+ 212 004e 80BD      		out 64-32,r24
+ 214               	.LM17:
+ 215 0050 88E1      		ldi r24,lo8(24)
+ 216 0052 8AB9      		out 42-32,r24
+ 217               	.LBE21:
+ 218               	.LBE20:
+  80:stinger_bootloader.c ****     /* BUF_T is defined in config.h, according the pagesize */
+  81:stinger_bootloader.c ****     BUF_T buffer_size;
+  82:stinger_bootloader.c ****     BUF_T i = 0;
+  83:stinger_bootloader.c ****     uint16_t temp_address = 0;
+  84:stinger_bootloader.c ****     uint16_t temp_word_buffer = 0;
+  85:stinger_bootloader.c ****     init_uart();
+  86:stinger_bootloader.c ****     uart_putc('b');
+ 220               	.LM18:
+ 221 0054 82E6      		ldi r24,lo8(98)
+ 222 0056 0E94 0000 		call uart_putc
+ 223 005a 20E0      		ldi r18,lo8(0)
+ 224 005c 30E0      		ldi r19,hi8(0)
+ 225               	.LBB22:
+ 226               	.LBB23:
+ 227               	.LBB24:
+ 228               	.LBB25:
+ 230               	.Ltext1:
+   1:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /* Copyright (c) 2002, Marek Michalkiewicz
+   2:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    Copyright (c) 2007 Joerg Wunsch
+   3:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    All rights reserved.
+   4:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+   5:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    Redistribution and use in source and binary forms, with or without
+   6:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    modification, are permitted provided that the following conditions are met:
+   7:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+   8:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    * Redistributions of source code must retain the above copyright
+   9:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      notice, this list of conditions and the following disclaimer.
+  10:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  11:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    * Redistributions in binary form must reproduce the above copyright
+  12:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      notice, this list of conditions and the following disclaimer in
+  13:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      the documentation and/or other materials provided with the
+  14:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      distribution.
+  15:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  16:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****    * Neither the name of the copyright holders nor the names of
+  17:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      contributors may be used to endorse or promote products derived
+  18:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****      from this software without specific prior written permission.
+  19:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  20:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  21:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  22:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  23:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  24:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  25:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  26:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  27:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  28:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  29:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  30:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****   POSSIBILITY OF SUCH DAMAGE. */
+  31:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  32:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /* $Id: delay_basic.h,v 1.1 2007/05/13 21:23:20 joerg_wunsch Exp $ */
+  33:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  34:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #ifndef _UTIL_DELAY_BASIC_H_
+  35:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #define _UTIL_DELAY_BASIC_H_ 1
+  36:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  37:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #include <inttypes.h>
+  38:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  39:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /** \file */
+  40:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /** \defgroup util_delay_basic <util/delay_basic.h>: Basic busy-wait delay loops
+  41:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     \code
+  42:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     #include <util/delay_basic.h>
+  43:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     \endcode
+  44:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  45:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     The functions in this header file implement simple delay loops
+  46:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     that perform a busy-waiting.  They are typically used to
+  47:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     facilitate short delays in the program execution.  They are
+  48:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     implemented as count-down loops with a well-known CPU cycle
+  49:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     count per loop iteration.  As such, no other processing can
+  50:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     occur simultaneously.  It should be kept in mind that the
+  51:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     functions described here do not disable interrupts.
+  52:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  53:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     In general, for long delays, the use of hardware timers is
+  54:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     much preferrable, as they free the CPU, and allow for
+  55:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     concurrent processing of other events while the timer is
+  56:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     running.  However, in particular for very short delays, the
+  57:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     overhead of setting up a hardware timer is too much compared
+  58:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     to the overall delay time.
+  59:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  60:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     Two inline functions are provided for the actual delay algorithms.
+  61:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  62:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** */
+  63:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  64:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #if !defined(__DOXYGEN__)
+  65:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** static inline void _delay_loop_1(uint8_t __count) __attribute__((always_inline));
+  66:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** static inline void _delay_loop_2(uint16_t __count) __attribute__((always_inline));
+  67:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** #endif
+  68:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  69:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /** \ingroup util_delay_basic
+  70:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  71:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     Delay loop using an 8-bit counter \c __count, so up to 256
+  72:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     iterations are possible.  (The value 256 would have to be passed
+  73:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     as 0.)  The loop executes three CPU cycles per iteration, not
+  74:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     including the overhead the compiler needs to setup the counter
+  75:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     register.
+  76:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  77:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     Thus, at a CPU speed of 1 MHz, delays of up to 768 microseconds
+  78:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     can be achieved.
+  79:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** */
+  80:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** void
+  81:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** _delay_loop_1(uint8_t __count)
+  82:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** {
+  83:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 	__asm__ volatile (
+  84:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 		"1: dec %0" "\n\t"
+  85:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 		"brne 1b"
+  86:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 		: "=r" (__count)
+  87:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 		: "0" (__count)
+  88:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 	);
+  89:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** }
+  90:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  91:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** /** \ingroup util_delay_basic
+  92:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  93:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     Delay loop using a 16-bit counter \c __count, so up to 65536
+  94:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     iterations are possible.  (The value 65536 would have to be
+  95:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     passed as 0.)  The loop executes four CPU cycles per iteration,
+  96:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     not including the overhead the compiler requires to setup the
+  97:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     counter register pair.
+  98:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 
+  99:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     Thus, at a CPU speed of 1 MHz, delays of up to about 262.1
+ 100:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****     milliseconds can be achieved.
+ 101:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h ****  */
+ 102:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** void
+ 103:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** _delay_loop_2(uint16_t __count)
+ 104:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** {
+ 105:/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h **** 	__asm__ volatile (
+ 232               	.LM19:
+ 233 005e 4FEF      		ldi r20,lo8(-1)
+ 234 0060 5FEF      		ldi r21,hi8(-1)
+ 235               	.L14:
+ 236 0062 CA01      		movw r24,r20
+ 237               	/* #APP */
+ 238               	 ;  105 "/usr/lib/gcc/avr/4.3.3/../../../avr/include/util/delay_basic.h" 1
+ 239 0064 0197      		1: sbiw r24,1
+ 240 0066 01F4      		brne 1b
+ 241               	 ;  0 "" 2
+ 242               	/* #NOAPP */
+ 243               	.LBE25:
+ 244               	.LBE24:
+ 246               	.Ltext2:
+ 248               	.LM20:
+ 249 0068 5F9B      		sbis 43-32,7
+ 250 006a 00C0      		rjmp .L12
+ 252               	.LM21:
+ 253 006c 8CB1      		in r24,44-32
+ 254 006e 8037      		cpi r24,lo8(112)
+ 255 0070 01F0      		breq .L13
+ 256               	.L12:
+ 258               	.LM22:
+ 259 0072 2F5F      		subi r18,lo8(-(1))
+ 260 0074 3F4F      		sbci r19,hi8(-(1))
+ 261 0076 83E0      		ldi r24,hi8(1000)
+ 262 0078 283E      		cpi r18,lo8(1000)
+ 263 007a 3807      		cpc r19,r24
+ 264 007c 01F4      		brne .L14
+ 265 007e 00C0      		rjmp .L54
+ 266               	.L13:
+ 267               	.LBE23:
+ 268               	.LBE22:
+  87:stinger_bootloader.c ****     /* bootloader activation methods */
+  88:stinger_bootloader.c ****     if (wait_for_char() == 0) start_application();
+  89:stinger_bootloader.c ****     uart_putc('p');
+ 270               	.LM23:
+ 271 0080 80E7      		ldi r24,lo8(112)
+ 272 0082 0E94 0000 		call uart_putc
+ 273               	.LBB26:
+  90:stinger_bootloader.c ****     while (1) {
+  91:stinger_bootloader.c ****         uint8_t command = uart_getc();
+  92:stinger_bootloader.c ****         switch (command) {
+  93:stinger_bootloader.c ****             case 'a':   /* set write address start (in words), read high and low byte and respond w
+  94:stinger_bootloader.c ****                 temp_address = (uart_getc() << 8) | uart_getc();
+  95:stinger_bootloader.c ****                 flash_address = temp_address << 1;
+  96:stinger_bootloader.c ****                 /* acknowledge */
+  97:stinger_bootloader.c ****                 uart_putc('\r');
+  98:stinger_bootloader.c ****                 break;
+  99:stinger_bootloader.c ****             case 'e':   /* do a chip-erase, respond with CR afterwards */
+ 100:stinger_bootloader.c ****                 for (flash_address = 0; flash_address < BOOT_SECTION_START; flash_address += SPM_PA
+ 101:stinger_bootloader.c ****                     boot_page_erase_safe(flash_address);
+ 102:stinger_bootloader.c ****                 }
+ 103:stinger_bootloader.c ****                 uart_putc('\r');
+ 104:stinger_bootloader.c ****                 break;
+ 105:stinger_bootloader.c ****             case 'x':   /* start application */
+ 106:stinger_bootloader.c ****                 start_application();
+ 107:stinger_bootloader.c ****                 break;
+ 108:stinger_bootloader.c ****             case 's':   /* check block size */
+ 109:stinger_bootloader.c ****                 uart_putc(HIGH(BLOCKSIZE));
+ 110:stinger_bootloader.c ****                 uart_putc(LOW(BLOCKSIZE));
+ 111:stinger_bootloader.c ****                 break;
+ 112:stinger_bootloader.c ****             case 'w':   /* start block flash or eeprom load (fill mcu internal page buffer) */
+ 113:stinger_bootloader.c ****                 /* first, read buffer size (in bytes) */
+ 114:stinger_bootloader.c ****                 buffer_size = (uart_getc() << 8) | uart_getc();
+ 115:stinger_bootloader.c ****                 /* check if our buffer can hold all this data */
+ 116:stinger_bootloader.c ****                 if (buffer_size > BLOCKSIZE) {
+ 117:stinger_bootloader.c ****                         uart_putc('?');
+ 118:stinger_bootloader.c ****                         break;
+ 119:stinger_bootloader.c ****                 }
+ 120:stinger_bootloader.c ****                 if (flash_address > BOOT_SECTION_START) {
+ 121:stinger_bootloader.c ****                     uart_putc(0);
+ 122:stinger_bootloader.c ****                 }
+ 123:stinger_bootloader.c ****                 temp_address = flash_address;
+ 124:stinger_bootloader.c ****                 boot_spm_busy_wait();
+ 125:stinger_bootloader.c ****                 /* read data, wordwise, low byte first */
+ 126:stinger_bootloader.c ****                 for (i = 0; i < buffer_size/2; i++) {
+ 127:stinger_bootloader.c ****                     temp_word_buffer = uart_getc() | (uart_getc() << 8);
+ 128:stinger_bootloader.c ****                     boot_page_fill(temp_address, temp_word_buffer);
+ 275               	.LM24:
+ 276 0086 4424      		clr r4
+ 277 0088 4394      		inc r4
+ 129:stinger_bootloader.c ****                     temp_address += 2;
+ 130:stinger_bootloader.c ****                 }
+ 131:stinger_bootloader.c ****                 boot_page_write_safe(flash_address);
+ 279               	.LM25:
+ 280 008a 55E0      		ldi r21,lo8(5)
+ 281 008c 552E      		mov r5,r21
+ 132:stinger_bootloader.c ****                 boot_spm_busy_wait();
+ 133:stinger_bootloader.c ****                 boot_rww_enable();
+ 283               	.LM26:
+ 284 008e 41E1      		ldi r20,lo8(17)
+ 285 0090 742E      		mov r7,r20
+ 287               	.LM27:
+ 288 0092 33E0      		ldi r19,lo8(3)
+ 289 0094 632E      		mov r6,r19
+ 290               	.L50:
+ 292               	.LM28:
+ 293 0096 0E94 0000 		call uart_getc
+ 295               	.LM29:
+ 296 009a 8237      		cpi r24,lo8(114)
+ 297 009c 01F4      		brne .+2
+ 298 009e 00C0      		rjmp .L19
+ 299 00a0 8337      		cpi r24,lo8(115)
+ 300 00a2 00F4      		brsh .L23
+ 301 00a4 8136      		cpi r24,lo8(97)
+ 302 00a6 01F0      		breq .L17
+ 303 00a8 8536      		cpi r24,lo8(101)
+ 304 00aa 01F0      		breq .+2
+ 305 00ac 00C0      		rjmp .L16
+ 306 00ae 00C0      		rjmp .L55
+ 307               	.L23:
+ 308 00b0 8737      		cpi r24,lo8(119)
+ 309 00b2 01F0      		breq .L21
+ 310 00b4 8837      		cpi r24,lo8(120)
+ 311 00b6 01F0      		breq .L22
+ 312 00b8 8337      		cpi r24,lo8(115)
+ 313 00ba 01F0      		breq .+2
+ 314 00bc 00C0      		rjmp .L16
+ 315 00be 00C0      		rjmp .L56
+ 316               	.L17:
+ 318               	.LM30:
+ 319 00c0 0E94 0000 		call uart_getc
+ 320 00c4 182F      		mov r17,r24
+ 321 00c6 0E94 0000 		call uart_getc
+ 323               	.LM31:
+ 324 00ca B12E      		mov r11,r17
+ 325 00cc AA24      		clr r10
+ 326 00ce 90E0      		ldi r25,lo8(0)
+ 327 00d0 8A29      		or r24,r10
+ 328 00d2 9B29      		or r25,r11
+ 329 00d4 880F      		lsl r24
+ 330 00d6 991F      		rol r25
+ 331 00d8 00C0      		rjmp .L53
+ 332               	.L55:
+ 334               	.LM32:
+ 335 00da 80E0      		ldi r24,lo8(0)
+ 336 00dc 90E0      		ldi r25,hi8(0)
+ 337 00de 00C0      		rjmp .L25
+ 338               	.L41:
+ 340               	.LM33:
+ 341 00e0 07B6      		in __tmp_reg__,87-32
+ 342 00e2 00FC      		sbrc __tmp_reg__,0
+ 343 00e4 00C0      		rjmp .L41
+ 344               	.L40:
+ 345 00e6 E199      		sbic 60-32,1
+ 346 00e8 00C0      		rjmp .L40
+ 347               	/* #APP */
+ 348               	 ;  101 "stinger_bootloader.c" 1
+ 349 00ea FC01      		movw r30, r24
+ 350 00ec 6092 5700 		sts 87, r6
+ 351 00f0 E895      		spm
+ 352               		
+ 353               	 ;  0 "" 2
+ 354               	/* #NOAPP */
+ 355 00f2 8058      		subi r24,lo8(-(128))
+ 356 00f4 9F4F      		sbci r25,hi8(-(128))
+ 357               	.L25:
+ 359               	.LM34:
+ 360 00f6 2CE7      		ldi r18,hi8(31744)
+ 361 00f8 8030      		cpi r24,lo8(31744)
+ 362 00fa 9207      		cpc r25,r18
+ 363 00fc 00F0      		brlo .L41
+ 364               	.L53:
+ 365 00fe 9093 0000 		sts (flash_address)+1,r25
+ 366 0102 8093 0000 		sts flash_address,r24
+ 367 0106 00C0      		rjmp .L52
+ 368               	.L22:
+ 370               	.LM35:
+ 371 0108 0E94 0000 		call start_application
+ 372 010c 00C0      		rjmp .L50
+ 373               	.L56:
+ 375               	.LM36:
+ 376 010e 80E0      		ldi r24,lo8(0)
+ 377 0110 0E94 0000 		call uart_putc
+ 379               	.LM37:
+ 380 0114 80E8      		ldi r24,lo8(-128)
+ 381 0116 00C0      		rjmp .L51
+ 382               	.L21:
+ 384               	.LM38:
+ 385 0118 0E94 0000 		call uart_getc
+ 386 011c 0E94 0000 		call uart_getc
+ 387 0120 182F      		mov r17,r24
+ 389               	.LM39:
+ 390 0122 8138      		cpi r24,lo8(-127)
+ 391 0124 00F0      		brlo .+2
+ 392 0126 00C0      		rjmp .L16
+ 393               	.L28:
+ 395               	.LM40:
+ 396 0128 8091 0000 		lds r24,flash_address
+ 397 012c 9091 0000 		lds r25,(flash_address)+1
+ 398 0130 8150      		subi r24,lo8(31745)
+ 399 0132 9C47      		sbci r25,hi8(31745)
+ 400 0134 00F0      		brlo .L29
+ 402               	.LM41:
+ 403 0136 80E0      		ldi r24,lo8(0)
+ 404 0138 0E94 0000 		call uart_putc
+ 405               	.L29:
+ 407               	.LM42:
+ 408 013c C090 0000 		lds r12,flash_address
+ 409 0140 D090 0000 		lds r13,(flash_address)+1
+ 410               	.L30:
+ 412               	.LM43:
+ 413 0144 07B6      		in __tmp_reg__,87-32
+ 414 0146 00FC      		sbrc __tmp_reg__,0
+ 415 0148 00C0      		rjmp .L30
+ 417               	.LM44:
+ 418 014a E12E      		mov r14,r17
+ 419 014c E694      		lsr r14
+ 420 014e E601      		movw r28,r12
+ 421 0150 FF24      		clr r15
+ 422 0152 00C0      		rjmp .L31
+ 423               	.L32:
+ 425               	.LM45:
+ 426 0154 0E94 0000 		call uart_getc
+ 427 0158 082F      		mov r16,r24
+ 428 015a 0E94 0000 		call uart_getc
+ 430               	.LM46:
+ 431 015e 982E      		mov r9,r24
+ 432 0160 8824      		clr r8
+ 433 0162 10E0      		ldi r17,lo8(0)
+ 434 0164 0829      		or r16,r8
+ 435 0166 1929      		or r17,r9
+ 436               	/* #APP */
+ 437               	 ;  128 "stinger_bootloader.c" 1
+ 438 0168 0801      		movw  r0, r16
+ 439 016a FE01      		movw r30, r28
+ 440 016c 4092 5700 		sts 87, r4
+ 441 0170 E895      		spm
+ 442 0172 1124      		clr  r1
+ 443               		
+ 444               	 ;  0 "" 2
+ 446               	.LM47:
+ 447               	/* #NOAPP */
+ 448 0174 2296      		adiw r28,2
+ 450               	.LM48:
+ 451 0176 F394      		inc r15
+ 452               	.L31:
+ 453 0178 FE14      		cp r15,r14
+ 454 017a 00F0      		brlo .L32
+ 455 017c 2E2D      		mov r18,r14
+ 456 017e 30E0      		ldi r19,lo8(0)
+ 457 0180 220F      		lsl r18
+ 458 0182 331F      		rol r19
+ 459 0184 2C0D      		add r18,r12
+ 460 0186 3D1D      		adc r19,r13
+ 461               	.L33:
+ 463               	.LM49:
+ 464 0188 07B6      		in __tmp_reg__,87-32
+ 465 018a 00FC      		sbrc __tmp_reg__,0
+ 466 018c 00C0      		rjmp .L33
+ 467               	.L39:
+ 468 018e E199      		sbic 60-32,1
+ 469 0190 00C0      		rjmp .L39
+ 470 0192 8091 0000 		lds r24,flash_address
+ 471 0196 9091 0000 		lds r25,(flash_address)+1
+ 472               	/* #APP */
+ 473               	 ;  131 "stinger_bootloader.c" 1
+ 474 019a FC01      		movw r30, r24
+ 475 019c 5092 5700 		sts 87, r5
+ 476 01a0 E895      		spm
+ 477               		
+ 478               	 ;  0 "" 2
+ 479               	/* #NOAPP */
+ 480               	.L35:
+ 482               	.LM50:
+ 483 01a2 07B6      		in __tmp_reg__,87-32
+ 484 01a4 00FC      		sbrc __tmp_reg__,0
+ 485 01a6 00C0      		rjmp .L35
+ 487               	.LM51:
+ 488               	/* #APP */
+ 489               	 ;  133 "stinger_bootloader.c" 1
+ 490 01a8 7092 5700 		sts 87, r7
+ 491 01ac E895      		spm
+ 492               		
+ 493               	 ;  0 "" 2
+ 134:stinger_bootloader.c ****                 flash_address = temp_address;
+ 495               	.LM52:
+ 496               	/* #NOAPP */
+ 497 01ae 3093 0000 		sts (flash_address)+1,r19
+ 498 01b2 2093 0000 		sts flash_address,r18
+ 499               	.L52:
+ 135:stinger_bootloader.c ****                 uart_putc('\r');
+ 501               	.LM53:
+ 502 01b6 8DE0      		ldi r24,lo8(13)
+ 503 01b8 00C0      		rjmp .L51
+ 504               	.L19:
+ 136:stinger_bootloader.c ****                 break;
+ 137:stinger_bootloader.c ****             case 'r':   /* start block flash or eeprom read */
+ 138:stinger_bootloader.c ****                 buffer_size = (uart_getc() << 8) | uart_getc();
+ 506               	.LM54:
+ 507 01ba 0E94 0000 		call uart_getc
+ 508 01be 0E94 0000 		call uart_getc
+ 509 01c2 E82E      		mov r14,r24
+ 510 01c4 FF24      		clr r15
+ 511 01c6 00C0      		rjmp .L36
+ 512               	.L37:
+ 513               	.LBB27:
+ 139:stinger_bootloader.c ****                 for (i = 0; i < buffer_size; i += 2) {
+ 140:stinger_bootloader.c ****                     /* read word */
+ 141:stinger_bootloader.c ****                     temp_word_buffer = pgm_read_word(flash_address);
+ 515               	.LM55:
+ 516 01c8 E091 0000 		lds r30,flash_address
+ 517 01cc F091 0000 		lds r31,(flash_address)+1
+ 518               	/* #APP */
+ 519               	 ;  141 "stinger_bootloader.c" 1
+ 520 01d0 0591      		lpm r16, Z+
+ 521 01d2 1491      		lpm r17, Z
+ 522               		
+ 523               	 ;  0 "" 2
+ 524               	/* #NOAPP */
+ 525               	.LBE27:
+ 142:stinger_bootloader.c ****                     /* send data */
+ 143:stinger_bootloader.c ****                     uart_putc(LOW(temp_word_buffer));
+ 527               	.LM56:
+ 528 01d4 802F      		mov r24,r16
+ 529 01d6 0E94 0000 		call uart_putc
+ 144:stinger_bootloader.c ****                     uart_putc(HIGH(temp_word_buffer));
+ 531               	.LM57:
+ 532 01da 812F      		mov r24,r17
+ 533 01dc 0E94 0000 		call uart_putc
+ 145:stinger_bootloader.c ****                     /* increment address by 2, since it's a byte address */
+ 146:stinger_bootloader.c ****                     flash_address += 2;
+ 535               	.LM58:
+ 536 01e0 8091 0000 		lds r24,flash_address
+ 537 01e4 9091 0000 		lds r25,(flash_address)+1
+ 538 01e8 0296      		adiw r24,2
+ 539 01ea 9093 0000 		sts (flash_address)+1,r25
+ 540 01ee 8093 0000 		sts flash_address,r24
+ 542               	.LM59:
+ 543 01f2 82E0      		ldi r24,lo8(2)
+ 544 01f4 F80E      		add r15,r24
+ 545               	.L36:
+ 546 01f6 FE14      		cp r15,r14
+ 547 01f8 00F0      		brlo .L37
+ 548 01fa 00C0      		rjmp .L50
+ 549               	.L16:
+ 147:stinger_bootloader.c ****                 }
+ 148:stinger_bootloader.c ****                 break;
+ 149:stinger_bootloader.c ****             default:    /* default: respond with '?' */
+ 150:stinger_bootloader.c ****                 uart_putc('?');
+ 551               	.LM60:
+ 552 01fc 8FE3      		ldi r24,lo8(63)
+ 553               	.L51:
+ 554 01fe 0E94 0000 		call uart_putc
+ 555 0202 00C0      		rjmp .L50
+ 556               	.L54:
+ 557               	.LBE26:
+ 559               	.LM61:
+ 560 0204 0E94 0000 		call start_application
+ 561 0208 00C0      		rjmp .L13
+ 580               	.Lscope4:
+ 582               		.stabd	78,0,0
+ 583               	.global	jump_to_application
+ 584               	.global	jump_to_application
+ 585               		.section .bss
+ 588               	jump_to_application:
+ 589 0000 0000      		.skip 2,0
+ 590               		.comm flash_address,2,1
+ 593               		.text
+ 595               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stinger_bootloader.c
+     /tmp/cc3cfJXw.s:2      *ABS*:000000000000003f __SREG__
+     /tmp/cc3cfJXw.s:3      *ABS*:000000000000003e __SP_H__
+     /tmp/cc3cfJXw.s:4      *ABS*:000000000000003d __SP_L__
+     /tmp/cc3cfJXw.s:5      *ABS*:0000000000000034 __CCP__
+     /tmp/cc3cfJXw.s:6      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc3cfJXw.s:7      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc3cfJXw.s:96     .text:0000000000000000 uart_putc
+     /tmp/cc3cfJXw.s:121    .text:0000000000000008 uart_getc
+     /tmp/cc3cfJXw.s:146    .text:0000000000000010 start_application
+     /tmp/cc3cfJXw.s:588    .bss:0000000000000000 jump_to_application
+     /tmp/cc3cfJXw.s:180    .text:0000000000000028 main
+                            *COM*:0000000000000002 flash_address
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

@@ -1,0 +1,1103 @@
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 1
+
+
+   1               	# 1 "CamInterfaceAsm.S"
+   2               	# 1 "<built-in>"
+   1               	;
+   0               	
+   0               	
+   2               	;    Copyright (C) 2004    John Orlando
+   3               	;    
+   4               	;   AVRcam: a small real-time image processing engine.
+   5               	
+   6               	;    This program is free software; you can redistribute it and/or
+   7               	;    modify it under the terms of the GNU General Public
+   8               	;    License as published by the Free Software Foundation; either
+   9               	;    version 2 of the License, or (at your option) any later version.
+  10               	
+  11               	;    This program is distributed in the hope that it will be useful,
+  12               	;    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13               	;    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  14               	;    General Public License for more details.
+  15               	
+  16               	;    You should have received a copy of the GNU General Public
+  17               	;    License along with this program; if not, write to the Free Software
+  18               	;    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  19               	
+  20               	;   For more information on the AVRcam, please contact:
+  21               	
+  22               	;   john@jrobot.net
+  23               	
+  24               	;   or go to www.jrobot.net for more details regarding the system.
+  25               	;**********************************************************************
+  26               	;       Module Name: CanInterfaceAsm.S
+  27               	;       Module Date: 04/14/2004
+  28               	;       Module Auth: John Orlando
+  29               	;
+  30               	;       Description: This module provides the low-level interface
+  31               	;       to the OV6620 camera hardware.  It is responsible for
+  32               	;   	acquiring each pixel block (R,G,B), performing the mapping
+  33               	;       into an actual color (orange, purple, etc), run-length
+  34               	;       encoding the data, and storing the info off to the appropriate
+  35               	;       line buffer.  This routine is synchronized with the pixel data
+  36               	;       so that no polling of the camera data needs to be done (the
+  37               	;       OV6620 is clocked off of the same crystal source as the mega8,
+  38               	;       thus providing inherent synchronization between the two).
+  39               	;
+  40               	;       Revision History:
+  41               	;       Date        Rel Ver.    Notes
+  42               	;       4/10/2004      0.1     Module created
+  43               	;       6/30/2004      1.0     Initial release for Circuit Cellar
+  44               	;                              contest.
+  45               	;       1/16/2005      1.4     Fixed issue with the TCCR1B register
+  46               	;                              where PCLK was getting routed to the
+  47               	;                              timer1 even when it wasn't needed.
+  48               	;                              This caused excessive counter overflow
+  49               	;                              interrupts, and caused problems.  Now,
+  50               	;                              the "PCLK" pipe feeds timer1 when needed,
+  51               	;                              and is turned off when it isn't needed.
+  52               	
+  53               	#include <avr/io.h>
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 2
+
+
+   1               	/* Copyright (c) 2002,2003 Marek Michalkiewicz, Joerg Wunsch
+   2               	   All rights reserved.
+   3               	
+   4               	   Redistribution and use in source and binary forms, with or without
+   5               	   modification, are permitted provided that the following conditions are met:
+   6               	
+   7               	   * Redistributions of source code must retain the above copyright
+   8               	     notice, this list of conditions and the following disclaimer.
+   9               	   * Redistributions in binary form must reproduce the above copyright
+  10               	     notice, this list of conditions and the following disclaimer in
+  11               	     the documentation and/or other materials provided with the
+  12               	     distribution.
+  13               	
+  14               	  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  15               	  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  16               	  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  17               	  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  18               	  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  19               	  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  20               	  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  21               	  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  22               	  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  23               	  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  24               	  POSSIBILITY OF SUCH DAMAGE. */
+  25               	
+  26               	/* $Id: io.h,v 1.10 2003/02/28 23:03:40 marekm Exp $ */
+  27               	
+  28               	/** \defgroup avr_io AVR device-specific IO definitions
+  29               	    \code #include <avr/io.h> \endcode
+  30               	
+  31               	    This header file includes the apropriate IO definitions for the
+  32               	    device that has been specified by the <tt>-mmcu=</tt> compiler
+  33               	    command-line switch.  This is done by diverting to the appropriate
+  34               	    file <tt>&lt;avr/io</tt><em>XXXX</em><tt>.h&gt;</tt> which should
+  35               	    never be included directly.  Some register names common to all
+  36               	    AVR devices are defined directly within <tt>&lt;avr/io.h&gt;</tt>,
+  37               	    but most of the details come from the respective include file.
+  38               	
+  39               	    Note that this file always includes
+  40               	    \code #include <avr/sfr_defs.h> \endcode
+  41               	    See \ref avr_sfr for the details.
+  42               	
+  43               	    Included are definitions of the IO register set and their
+  44               	    respective bit values as specified in the Atmel documentation.
+  45               	    Note that Atmel is not very consistent in its naming conventions,
+  46               	    so even identical functions sometimes get different names on
+  47               	    different devices.
+  48               	
+  49               	    Also included are the specific names useable for interrupt
+  50               	    function definitions as documented
+  51               	    \ref avr_signames "here".
+  52               	
+  53               	    Finally, the following macros are defined:
+  54               	
+  55               	    - \b RAMEND
+  56               	    <br>
+  57               	    A constant describing the last on-chip RAM location.
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 3
+
+
+  58               	    <br>
+  59               	    - \b XRAMEND
+  60               	    <br>
+  61               	    A constant describing the last possible location in RAM.
+  62               	    This is equal to RAMEND for devices that do not allow for
+  63               	    external RAM.
+  64               	    <br>
+  65               	    - \b E2END
+  66               	    <br>
+  67               	    A constant describing the address of the last EEPROM cell.
+  68               	    <br>
+  69               	    - \b FLASHEND
+  70               	    <br>
+  71               	    A constant describing the last byte address in flash ROM.
+  72               	    <br>
+  73               	    - \b SPM_PAGESIZE
+  74               	    <br>
+  75               	    For devices with bootloader support, the flash pagesize
+  76               	    (in bytes) to be used for the \c SPM instruction. */
+  77               	
+  78               	#ifndef _AVR_IO_H_
+  79               	#define _AVR_IO_H_
+  80               	
+  81               	#include <avr/sfr_defs.h>
+   1               	/* Copyright (c) 2002, Marek Michalkiewicz <marekm@amelek.gda.pl>
+   2               	   All rights reserved.
+   3               	
+   4               	   Redistribution and use in source and binary forms, with or without
+   5               	   modification, are permitted provided that the following conditions are met:
+   6               	
+   7               	   * Redistributions of source code must retain the above copyright
+   8               	     notice, this list of conditions and the following disclaimer.
+   9               	   * Redistributions in binary form must reproduce the above copyright
+  10               	     notice, this list of conditions and the following disclaimer in
+  11               	     the documentation and/or other materials provided with the
+  12               	     distribution.
+  13               	
+  14               	   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  15               	   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  16               	   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  17               	   ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  18               	   LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  19               	   CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  20               	   SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  21               	   INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  22               	   CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  23               	   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  24               	   POSSIBILITY OF SUCH DAMAGE.  */
+  25               	
+  26               	/* avr/sfr_defs.h - macros for accessing AVR special function registers */
+  27               	
+  28               	/* $Id: sfr_defs.h,v 1.10 2003/08/11 21:42:13 troth Exp $ */
+  29               	
+  30               	#ifndef _AVR_SFR_DEFS_H_
+  31               	#define _AVR_SFR_DEFS_H_ 1
+  32               	
+  33               	/** \defgroup avr_sfr_notes Additional notes from <avr/sfr_defs.h>
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 4
+
+
+  34               	    \ingroup avr_sfr
+  35               	
+  36               	   The \c <avr/sfr_defs.h> file is included by all of the \c <avr/ioXXXX.h>
+  37               	   files, which use macros defined here to make the special function register
+  38               	   definitions look like C variables or simple constants, depending on the
+  39               	   <tt>_SFR_ASM_COMPAT</tt> define.  Some examples from \c <avr/iom128.h> to
+  40               	   show how to define such macros:
+  41               	
+  42               	\code
+  43               	#define PORTA _SFR_IO8(0x1b)
+  44               	#define TCNT1 _SFR_IO16(0x2c)
+  45               	#define PORTF _SFR_MEM8(0x61)
+  46               	#define TCNT3 _SFR_MEM16(0x88)
+  47               	\endcode
+  48               	
+  49               	   If \c _SFR_ASM_COMPAT is not defined, C programs can use names like
+  50               	   <tt>PORTA</tt> directly in C expressions (also on the left side of
+  51               	   assignment operators) and GCC will do the right thing (use short I/O
+  52               	   instructions if possible).  The \c __SFR_OFFSET definition is not used in
+  53               	   any way in this case.
+  54               	
+  55               	   Define \c _SFR_ASM_COMPAT as 1 to make these names work as simple constants
+  56               	   (addresses of the I/O registers).  This is necessary when included in
+  57               	   preprocessed assembler (*.S) source files, so it is done automatically if
+  58               	   \c __ASSEMBLER__ is defined.  By default, all addresses are defined as if
+  59               	   they were memory addresses (used in \c lds/sts instructions).  To use these
+  60               	   addresses in \c in/out instructions, you must subtract 0x20 from them.
+  61               	
+  62               	   For more backwards compatibility, insert the following at the start of your
+  63               	   old assembler source file:
+  64               	
+  65               	\code
+  66               	#define __SFR_OFFSET 0
+  67               	\endcode
+  68               	
+  69               	   This automatically subtracts 0x20 from I/O space addresses, but it's a
+  70               	   hack, so it is recommended to change your source: wrap such addresses in
+  71               	   macros defined here, as shown below.  After this is done, the
+  72               	   <tt>__SFR_OFFSET</tt> definition is no longer necessary and can be removed.
+  73               	
+  74               	   Real example - this code could be used in a boot loader that is portable
+  75               	   between devices with \c SPMCR at different addresses.
+  76               	
+  77               	\verbatim
+  78               	<avr/iom163.h>: #define SPMCR _SFR_IO8(0x37)
+  79               	<avr/iom128.h>: #define SPMCR _SFR_MEM8(0x68)
+  80               	\endverbatim
+  81               	
+  82               	\code
+  82               	
+  83               	/*
+  84               	 * Registers common to all AVR devices.
+  85               	 */
+  86               	
+  87               	#if __AVR_ARCH__ != 1
+  88               	/*
+  89               	 * AVR architecture 1 has no RAM, thus no stack pointer.
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 5
+
+
+  90               	 *
+  91               	 * All other archs do have a stack pointer.  Some devices have only
+  92               	 * less than 256 bytes of possible RAM locations (128 Bytes of SRAM
+  93               	 * and no option for external RAM), thus SPH is officially "reserved"
+  94               	 * for them.  We catch this case below after including the
+  95               	 * device-specific ioXXXX.h file, by examining XRAMEND, and
+  96               	 * #undef-ining SP and SPH in that case.
+  97               	 */
+  98               	/* Stack Pointer */
+  99               	#define SP        _SFR_IO16(0x3D)
+ 100               	#define SPL       _SFR_IO8(0x3D)
+ 101               	#define SPH       _SFR_IO8(0x3E)
+ 102               	#endif /* #if __AVR_ARCH__ != 1 */
+ 103               	
+ 104               	/* Status REGister */
+ 105               	#define SREG      _SFR_IO8(0x3F)
+ 106               	
+ 107               	/* Status Register - SREG */
+ 108               	#define    SREG_I       7
+ 109               	#define    SREG_T       6
+ 110               	#define    SREG_H       5
+ 111               	#define    SREG_S       4
+ 112               	#define    SREG_V       3
+ 113               	#define    SREG_N       2
+ 114               	#define    SREG_Z       1
+ 115               	#define    SREG_C       0
+ 116               	
+ 117               	/* Pointer definition */
+ 118               	#if __AVR_ARCH__ != 1
+ 119               	/* avr1 has only the Z pointer */
+ 120               	#define    XL           r26
+ 121               	#define    XH           r27
+ 122               	#define    YL           r28
+ 123               	#define    YH           r29
+ 124               	#endif /* #if __AVR_ARCH__ != 1 */
+ 125               	#define    ZL           r30
+ 126               	#define    ZH           r31
+ 127               	
+ 128               	/*
+ 129               	 * Only few devices come without EEPROM.  In order to assemble the
+ 130               	 * EEPROM library components without defining a specific device, we
+ 131               	 * keep the EEPROM-related definitions here, and catch the devices
+ 132               	 * without EEPROM (E2END == 0) below.  Obviously, the EEPROM library
+ 133               	 * functions will not work for them. ;-)
+ 134               	 */
+ 135               	/* EEPROM Control Register */
+ 136               	#define EECR	_SFR_IO8(0x1C)
+ 137               	
+ 138               	/* EEPROM Data Register */
+ 139               	#define EEDR	_SFR_IO8(0x1D)
+ 140               	
+ 141               	/* EEPROM Address Register */
+ 142               	#define EEAR	_SFR_IO16(0x1E)
+ 143               	#define EEARL	_SFR_IO8(0x1E)
+ 144               	#define EEARH	_SFR_IO8(0x1F)
+ 145               	
+ 146               	/* EEPROM Control Register */
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 6
+
+
+ 147               	#define    EERIE        3
+ 148               	#define    EEMWE        2
+ 149               	#define    EEWE         1
+ 150               	#define    EERE         0
+ 151               	
+ 152               	#if defined (__AVR_AT94K__)
+ 153               	#  include <avr/ioat94k.h>
+ 154               	#elif defined (__AVR_AT43USB320__)
+ 155               	#  include <avr/io43u32x.h>
+ 156               	#elif defined (__AVR_AT43USB355__)
+ 157               	#  include <avr/io43u35x.h>
+ 158               	#elif defined (__AVR_AT76C711__)
+ 159               	#  include <avr/io76c711.h>
+ 160               	#elif defined (__AVR_AT86RF401__)
+ 161               	#  include <avr/io86r401.h>
+ 162               	#elif defined (__AVR_ATmega128__)
+ 163               	#  include <avr/iom128.h>
+ 164               	#elif defined (__AVR_ATmega64__)
+ 165               	#  include <avr/iom64.h>
+ 166               	#elif defined (__AVR_ATmega103__)
+ 167               	#  include <avr/iom103.h>
+ 168               	#elif defined (__AVR_ATmega32__)
+ 169               	#  include <avr/iom32.h>
+ 170               	#elif defined (__AVR_ATmega323__)
+ 171               	#  include <avr/iom323.h>
+ 172               	#elif defined (__AVR_ATmega16__)
+ 173               	#  include <avr/iom16.h>
+ 174               	#elif defined (__AVR_ATmega161__)
+ 175               	#  include <avr/iom161.h>
+ 176               	#elif defined (__AVR_ATmega162__)
+ 177               	#  include <avr/iom162.h>
+ 178               	#elif defined (__AVR_ATmega163__)
+ 179               	#  include <avr/iom163.h>
+ 180               	#elif defined (__AVR_ATmega169__)
+ 181               	#  include <avr/iom169.h>
+ 182               	#elif defined (__AVR_ATmega8__)
+ 183               	#  include <avr/iom8.h>
+   1               	/* Copyright (c) 2002, Marek Michalkiewicz
+   2               	   All rights reserved.
+   3               	
+   4               	   Redistribution and use in source and binary forms, with or without
+   5               	   modification, are permitted provided that the following conditions are met:
+   6               	
+   7               	   * Redistributions of source code must retain the above copyright
+   8               	     notice, this list of conditions and the following disclaimer.
+   9               	   * Redistributions in binary form must reproduce the above copyright
+  10               	     notice, this list of conditions and the following disclaimer in
+  11               	     the documentation and/or other materials provided with the
+  12               	     distribution.
+  13               	
+  14               	  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  15               	  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  16               	  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  17               	  ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+  18               	  LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  19               	  CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  20               	  SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 7
+
+
+  21               	  INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  22               	  CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  23               	  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  24               	  POSSIBILITY OF SUCH DAMAGE. */
+  25               	
+  26               	/* $Id: iom8.h,v 1.8 2003/02/17 09:57:28 marekm Exp $ */
+  27               	
+  28               	/* avr/iom8.h - definitions for ATmega8 */
+  29               	
+  30               	#ifndef _AVR_IOM8_H_
+  31               	#define _AVR_IOM8_H_ 1
+  32               	
+  33               	/* This file should only be included from <avr/io.h>, never directly. */
+  34               	
+  35               	#ifndef _AVR_IO_H_
+  36               	#  error "Include <avr/io.h> instead of this file."
+  37               	#endif
+  38               	
+  39               	#ifndef _AVR_IOXXX_H_
+  40               	#  define _AVR_IOXXX_H_ "iom8.h"
+  41               	#else
+  42               	#  error "Attempt to include more than one <avr/ioXXX.h> file."
+  43               	#endif 
+  44               	
+  45               	/* I/O registers */
+  46               	
+  47               	/* TWI stands for "Two Wire Interface" or "TWI Was I2C(tm)" */
+  48               	#define TWBR	_SFR_IO8(0x00)
+  49               	#define TWSR	_SFR_IO8(0x01)
+  50               	#define TWAR	_SFR_IO8(0x02)
+  51               	#define TWDR	_SFR_IO8(0x03)
+  52               	
+  53               	/* ADC */
+  54               	#define ADCW	_SFR_IO16(0x04)
+  55               	#ifndef __ASSEMBLER__
+  56               	#define ADC	_SFR_IO16(0x04)
+  57               	#endif
+  58               	#define ADCL	_SFR_IO8(0x04)
+  59               	#define ADCH	_SFR_IO8(0x05)
+  60               	#define ADCSR	_SFR_IO8(0x06)
+  61               	#define ADCSRA	_SFR_IO8(0x06)  /* Changed in 2486H-AVR-09/02 */
+  62               	#define ADMUX	_SFR_IO8(0x07)
+  63               	
+  64               	/* analog comparator */
+  65               	#define ACSR	_SFR_IO8(0x08)
+  66               	
+  67               	/* USART */
+  68               	#define UBRRL	_SFR_IO8(0x09)
+  69               	#define UCSRB	_SFR_IO8(0x0A)
+  70               	#define UCSRA	_SFR_IO8(0x0B)
+  71               	#define UDR	_SFR_IO8(0x0C)
+  72               	
+  73               	/* SPI */
+  74               	#define SPCR	_SFR_IO8(0x0D)
+  75               	#define SPSR	_SFR_IO8(0x0E)
+  76               	#define SPDR	_SFR_IO8(0x0F)
+  77               	
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 8
+
+
+  78               	/* Port D */
+  79               	#define PIND	_SFR_IO8(0x10)
+  80               	#define DDRD	_SFR_IO8(0x11)
+  81               	#define PORTD	_SFR_IO8(0x12)
+  82               	
+  83               	/* Port C */
+  84               	#define PINC	_SFR_IO8(0x13)
+  85               	#define DDRC	_SFR_IO8(0x14)
+  86               	#define PORTC	_SFR_IO8(0x15)
+  87               	
+  88               	/* Port B */
+  89               	#define PINB	_SFR_IO8(0x16)
+  90               	#define DDRB	_SFR_IO8(0x17)
+  91               	#define PORTB	_SFR_IO8(0x18)
+  92               	
+  93               	/* 0x1C..0x1F EEPROM */
+  94               	
+  95               	#define UCSRC	_SFR_IO8(0x20)
+  96               	#define UBRRH	_SFR_IO8(0x20)
+  97               	
+  98               	#define WDTCR	_SFR_IO8(0x21)
+  99               	#define ASSR	_SFR_IO8(0x22)
+ 100               	
+ 101               	/* Timer 2 */
+ 102               	#define OCR2	_SFR_IO8(0x23)
+ 103               	#define TCNT2	_SFR_IO8(0x24)
+ 104               	#define TCCR2	_SFR_IO8(0x25)
+ 105               	
+ 106               	/* Timer 1 */
+ 107               	#define ICR1	_SFR_IO16(0x26)
+ 108               	#define ICR1L	_SFR_IO8(0x26)
+ 109               	#define ICR1H	_SFR_IO8(0x27)
+ 110               	#define OCR1B	_SFR_IO16(0x28)
+ 111               	#define OCR1BL	_SFR_IO8(0x28)
+ 112               	#define OCR1BH	_SFR_IO8(0x29)
+ 113               	#define OCR1A	_SFR_IO16(0x2A)
+ 114               	#define OCR1AL	_SFR_IO8(0x2A)
+ 115               	#define OCR1AH	_SFR_IO8(0x2B)
+ 116               	#define TCNT1	_SFR_IO16(0x2C)
+ 117               	#define TCNT1L	_SFR_IO8(0x2C)
+ 118               	#define TCNT1H	_SFR_IO8(0x2D)
+ 119               	#define TCCR1B	_SFR_IO8(0x2E)
+ 120               	#define TCCR1A	_SFR_IO8(0x2F)
+ 121               	
+ 122               	#define SFIOR	_SFR_IO8(0x30)
+ 123               	
+ 124               	#define OSCCAL	_SFR_IO8(0x31)
+ 125               	
+ 126               	/* Timer 0 */
+ 127               	#define TCNT0	_SFR_IO8(0x32)
+ 128               	#define TCCR0	_SFR_IO8(0x33)
+ 129               	
+ 130               	#define MCUCSR	_SFR_IO8(0x34)
+ 131               	#define MCUCR	_SFR_IO8(0x35)
+ 132               	
+ 133               	#define TWCR	_SFR_IO8(0x36)
+ 134               	
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 9
+
+
+ 135               	#define SPMCR	_SFR_IO8(0x37)
+ 136               	
+ 137               	#define TIFR	_SFR_IO8(0x38)
+ 138               	#define TIMSK	_SFR_IO8(0x39)
+ 139               	
+ 140               	#define GIFR	_SFR_IO8(0x3A)
+ 141               	#define GIMSK	_SFR_IO8(0x3B)
+ 142               	#define GICR	_SFR_IO8(0x3B)   /* Changed in 2486H-AVR-09/02 */
+ 143               	
+ 144               	/* 0x3C reserved (OCR0?) */
+ 145               	
+ 146               	/* 0x3D..0x3E SP */
+ 147               	
+ 148               	/* 0x3F SREG */
+ 149               	
+ 150               	/* Interrupt vectors */
+ 151               	
+ 152               	#define SIG_INTERRUPT0		_VECTOR(1)
+ 153               	#define SIG_INTERRUPT1		_VECTOR(2)
+ 154               	#define SIG_OUTPUT_COMPARE2	_VECTOR(3)
+ 155               	#define SIG_OVERFLOW2		_VECTOR(4)
+ 156               	#define SIG_INPUT_CAPTURE1	_VECTOR(5)
+ 157               	#define SIG_OUTPUT_COMPARE1A	_VECTOR(6)
+ 158               	#define SIG_OUTPUT_COMPARE1B	_VECTOR(7)
+ 159               	#define SIG_OVERFLOW1		_VECTOR(8)
+ 160               	#define SIG_OVERFLOW0		_VECTOR(9)
+ 161               	#define SIG_SPI			_VECTOR(10)
+ 162               	#define SIG_UART_RECV		_VECTOR(11)
+ 163               	#define SIG_UART_DATA		_VECTOR(12)
+ 164               	#define SIG_UART_TRANS		_VECTOR(13)
+ 165               	#define SIG_ADC			_VECTOR(14)
+ 166               	#define SIG_EEPROM_READY	_VECTOR(15)
+ 167               	#define SIG_COMPARATOR		_VECTOR(16)
+ 168               	#define SIG_2WIRE_SERIAL	_VECTOR(17)
+ 169               	#define SIG_SPM_READY		_VECTOR(18)
+ 170               	
+ 171               	#define _VECTORS_SIZE 38
+ 172               	
+ 173               	/* Bit numbers */
+ 174               	
+ 175               	/* GIMSK / GICR */
+ 176               	#define INT1	7
+ 177               	#define INT0	6
+ 178               	#define IVSEL	1
+ 179               	#define IVCE	0
+ 180               	
+ 181               	/* GIFR */
+ 182               	#define INTF1	7
+ 183               	#define INTF0	6
+ 184               	
+ 184               	#elif defined (__AVR_ATmega8515__)
+  54               	#include "Events.h"
+   1               	#ifndef EVENTS_H
+   2               	#define EVENTS_H
+   3               	
+   4               	/*
+   5               	    Copyright (C) 2004    John Orlando
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 10
+
+
+   6               	    
+   7               	   AVRcam: a small real-time image processing engine.
+   8               	
+   9               	    This program is free software; you can redistribute it and/or
+  10               	    modify it under the terms of the GNU General Public
+  11               	    License as published by the Free Software Foundation; either
+  12               	    version 2 of the License, or (at your option) any later version.
+  13               	
+  14               	    This program is distributed in the hope that it will be useful,
+  15               	    but WITHOUT ANY WARRANTY; without even the implied warranty of
+  16               	    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  17               	    General Public License for more details.
+  18               	
+  19               	    You should have received a copy of the GNU General Public
+  20               	    License along with this program; if not, write to the Free Software
+  21               	    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  22               	
+  23               	   For more information on the AVRcam, please contact:
+  24               	
+  25               	   john@jrobot.net
+  26               	
+  27               	   or go to www.jrobot.net for more details regarding the system.
+  28               	*/
+  29               	/*********************************************************** 
+  30               		Module Name: Events.h
+  31               		Module Date: 05/23/2004
+  32               		Module Auth: John Orlando
+  33               		
+  34               		Description: This file provides the external interface
+  35               		to the events that can be published/processed in the
+  36               		system.  It is specifically by itself (and nothing
+  37               		else should be defined in here) so that both .c and
+  38               		.S (assembly) files can include this file without
+  39               		a problem.
+  40               	    
+  41               	    Revision History:
+  42               	    Date        Rel Ver.    Notes
+  43               	    4/10/2004      0.1     Module created
+  44               	    6/30/2004      1.0     Initial release for Circuit Cellar
+  45               	                           contest.
+  46               	    *******************************************************/
+  47               	
+  48               	/* Definitions */
+  49               	/* Originally, all events were passed in a bitmask...however,
+  50               	an event FIFO was finally used, but the coding of the event
+  51               	definitions were never translated back....doesn't make a
+  52               	difference, but looks a little weird */
+  53               	#define EV_SERIAL_DATA_RECEIVED		0x01
+  54               	#define EV_DUMP_FRAME				0x02
+  55               	#define EV_PROCESS_FRAME_COMPLETE	0x04
+  55               			
+  56               			.extern fastEventBitmask    ; This is the flag used to indicate to the rest
+  57               										; of the system that the line is complete
+  58               									
+  59               	#define HREF_INTERRUPT_ENABLE_MASK   0x80
+  60               	#define HREF_INTERRUPT_DISABLE_MASK  0x7F
+  61               	#define ENABLE_PCLK_TIMER1_OVERFLOW_BITMASK  0x04
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 11
+
+
+  62               	#define DISABLE_PCLK_TIMER1_OVERFLOW_BITMASK 0xFB
+  63               	#define G_PORT						_SFR_IO_ADDR(PINC)  
+  64               	#define RB_PORT						_SFR_IO_ADDR(PINB)  
+  65               	#define PIXEL_RUN_START_INITIAL     0x50     	; This value causes our pixel counter (TCNT1)
+  66               													; to overflow after 176 (horizontal) pixels
+  67               	
+  68               	#define RED_MEM_OFFSET				0x00
+  69               	#define GREEN_MEM_OFFSET			0x10
+  70               	#define BLUE_MEM_OFFSET				0x20
+  71               	
+  72               	; A pixelBlock is defined as a contiguous group of 4 pixels that are combined 
+  73               	; together to form a specific color.  Typically, this is formed by sampling a
+  74               	; a green value, followed by a red and blue value (since we are dealing
+  75               	; with Bayer color data).  We could optionally sample a second green with
+  76               	; the red and average the greens, because the eye is more sensitive to
+  77               	; green, but for speed we don't do this.  These three values (RGB) are then
+  78               	; used as indices into the color membership lookup table (memLookup) to
+  79               	; determine which color the pixelBlock maps into.  The memLookup table is
+  80               	; manually generated for now (though it will hopefully be modified over
+  81               	; the serial interface eventually).
+  82               	;
+  83               	; Here is a pixel block:
+  84               	; ...G  G  G  G...  (row x)
+  85               	; ...B  R  B  R...  (row x+1)
+  86               	;    |  |  |  |--this is skipped 
+  87               	;    |  |  |--this is skipped
+  88               	;    |  |--this is sampled
+  89               	;    |--this is sampled
+  90               	
+  91               	; As pixel blocks are sampled, the red, green, and blue values are
+  92               	; used to index into their respective color maps.  The color maps
+  93               	; return values that can be logically ANDed together so that a 
+  94               	; particular RGB triplet will result in a single bit being set
+  95               	; after the AND operation.  This single bit indicates which color
+  96               	; the RGB triplet represents.  It is also possible for no bits to
+  97               	; be set after the AND process, indicating that the RGB triplet
+  98               	; does not map to any of the colors configured in the color map.
+  99               	; This isn't quite as fast as a pure RGB lookup table, but
+ 100               	; it then again it doesn't require 2^12 (4-bits for each color
+ 101               	; channel) bytes to store the lookup table.  It takes just a few
+ 102               	; more cycles, and only requires 48 bytes of precious RAM (16
+ 103               	; per color channel, since our resolution on each color channel
+ 104               	; is only 4-bits).  Not bad....for more information, see:
+ 105               	; http://www.cs.cmu.edu/~trb/papers/wirevision00.pdf for more
+ 106               	; information on this color segmentation technique.
+ 107               	
+ 108               	; One other note: this code does depend on the colorMap residing
+ 109               	; at a well-defined position in memory; specifically, it mus
+ 110               	; start at a 256-byte boundary so that the lowest byte in the
+ 111               	; map is set to 0x00.  Currently, the colorMap is forced to
+ 112               	; start at RAM location 0x300.  This could potentially be changed
+ 113               	; by the developer if needed, but offsets would have to be added
+ 114               	; in to the colorMap look-up code below to make it work.
+ 115               	
+ 116               	
+ 117               	; These are the registers that will be used throughout this
+ 118               	; module for acquiring each line of pixel data
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 12
+
+
+ 119               	pixelCount			= 16
+ 120               	pixelRunStart		= 17
+ 121               	lastColor     		= 18
+ 122               	tmp1				= 19	; be sure to not use tmp1 and color simultaneously
+ 123               	tmp2				= 20
+ 124               	color           	= 19
+ 125               	greenData       	= 20
+ 126               	blueData        	= 21
+ 127               	colorMapLow	  		= 22
+ 128               	colorMapHigh		= 23
+ 129               	prevLineBuffLow  	= 22  	; overlaps with memLookupLow (but orthogonal)
+ 130               	prevLineBuffHigh	= 23	; overlaps with memLookupHigh (but orthogonal)
+ 131               	currLineBuffLow     = 24
+ 132               	currLineBuffHigh  	= 25
+ 133               	
+ 134               	        .section .text
+ 135               	
+ 136               	; These are the global assembly function names that are accessed via other
+ 137               	; C functions
+ 138               	        .global CamIntAsm_waitForNewTrackingFrame
+ 139               			.global CamIntAsm_waitForNewDumpFrame
+ 140               			.global CamIntAsm_acquireDumpLine
+ 141               			.global CamIntAsm_acquireTrackingLine
+ 142               			.global SIG_INTERRUPT0
+ 143               			.global SIG_INTERRUPT1
+ 144               			.global SIG_OVERFLOW0
+ 145               			.global SIG_OVERFLOW1
+ 146               			
+ 147               	;*****************************************************************		
+ 148               	;   	Function Name: CamIntAsm_waitForNewTrackingFrame
+ 149               	;       Function Description: This function is responsible for
+ 150               	;       going to sleep until a new frame begins (indicated by
+ 151               	;    	VSYNC transitioning from low to high.  This will wake
+ 152               	;       the "VSYNC sleep" up and allow it to continue with 
+ 153               	;       the acquireLine function, where the system waits for
+ 154               	;       an "HREF sleep" that we use to synchronize with the
+ 155               	;       data.  
+ 156               	;       Inputs:  r25 - MSB of currentLineBuffer
+ 157               	;                r24 - LSB of currentLineBuffer
+ 158               	;				 r23 - MSB of colorMap
+ 159               	; 				 r22 - LSB of colorMap
+ 160               	;       Outputs: none
+ 161               	;       NOTES: This function doesn't really return...it sorta just
+ 162               	;       floats into the acquireLine function after the "VSYNC sleep"
+ 163               	;       is awoken, then begins processing the line data.  Once
+ 164               	;		176 pixels are sampled (and the counter overflows), then
+ 165               	;		an interrupt will occur, the 'T' bit in the SREG will be
+ 166               	;		set, and the function will return.
+ 167               	;*****************************************************************
+ 168               			
+ 169               	CamIntAsm_waitForNewTrackingFrame:
+ 170:CamInterfaceAsm.S **** 		sbi		_SFR_IO_ADDR(PORTD),PD6  ; For testing...
+ 171:CamInterfaceAsm.S **** 		cbi		_SFR_IO_ADDR(PORTD),PD6		
+ 172:CamInterfaceAsm.S **** 		sleep
+ 173               	
+ 174               	;*****************************************************************
+ 175               	; REMEMBER...everything from here on out is critically timed to be
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 13
+
+
+ 176               	; synchronized with the flow of pixel data from the camera...
+ 177               	;*****************************************************************
+ 178               	
+ 179               	CamIntAsm_acquireTrackingLine:
+ 180:CamInterfaceAsm.S **** 		brts	_cleanUp
+ 181               			;sbi		_SFR_IO_ADDR(PORTD),PD6 ; For testing...
+ 182               			;cbi		_SFR_IO_ADDR(PORTD),PD6
+ 183               	        
+ 184:CamInterfaceAsm.S ****         in      tmp1,_SFR_IO_ADDR(TCCR1B) ; Enable the PCLK line to actually
+ 185:CamInterfaceAsm.S ****         ori     tmp1, 0x07                 ; feed Timer1
+ 186:CamInterfaceAsm.S ****         out     _SFR_IO_ADDR(TCCR1B),tmp1 
+ 187               											; The line is about to start...		
+ 188:CamInterfaceAsm.S **** 		ldi     pixelCount,0			; Initialize the RLE stats...
+ 189:CamInterfaceAsm.S **** 		ldi		pixelRunStart,PIXEL_RUN_START_INITIAL  	; Remember, we always calculate
+ 190               															; the pixel run length as
+ 191               															; TCNT1L - pixelRunStart
+ 192               			
+ 193:CamInterfaceAsm.S **** 		ldi		lastColor,0x00				; clear out the last color before we start
+ 194               			
+ 195:CamInterfaceAsm.S **** 		mov   	XH,currLineBuffHigh    	; Load the pointer to the current line
+ 196:CamInterfaceAsm.S **** 		mov		XL,currLineBuffLow		; buffer into the X pointer regs		 
+ 197               			
+ 198:CamInterfaceAsm.S **** 		mov   	ZH,colorMapHigh      	; Load the pointers to the membership
+ 199:CamInterfaceAsm.S **** 		mov		ZL,colorMapLow			; lookup tables (ZL and YL will be overwritten
+ 200:CamInterfaceAsm.S **** 		mov 	YH,colorMapHigh	 		; as soon as we start reading data) to Z and Y
+ 201               			
+ 202:CamInterfaceAsm.S **** 		in		tmp1, _SFR_IO_ADDR(TIMSK)			; enable TIMER1 to start counting
+ 203:CamInterfaceAsm.S **** 		ori		tmp1, ENABLE_PCLK_TIMER1_OVERFLOW_BITMASK 	; external PCLK pulses and interrupt on 
+ 204:CamInterfaceAsm.S **** 		out		_SFR_IO_ADDR(TIMSK),tmp1			; overflow
+ 205               			
+ 206:CamInterfaceAsm.S **** 		ldi 	tmp1,PIXEL_RUN_START_INITIAL	; set up the TCNT1 to overflow (and
+ 207:CamInterfaceAsm.S **** 		ldi 	tmp2,0xFF 						; interrupts) after 176 pixels		
+ 208:CamInterfaceAsm.S **** 		out 	_SFR_IO_ADDR(TCNT1H),tmp2		
+ 209:CamInterfaceAsm.S **** 		out 	_SFR_IO_ADDR(TCNT1L),tmp1				
+ 210               			
+ 211:CamInterfaceAsm.S **** 		mov		YL,colorMapLow		
+ 212               			
+ 213:CamInterfaceAsm.S **** 		in 		tmp1, _SFR_IO_ADDR(GICR)	; enable the HREF interrupt...remember, we
+ 214               												; only use this interrupt to synchronize
+ 215               												; the beginning of the line
+ 216:CamInterfaceAsm.S **** 		ori 	tmp1, HREF_INTERRUPT_ENABLE_MASK
+ 217:CamInterfaceAsm.S **** 		out		_SFR_IO_ADDR(GICR), tmp1
+ 218               			
+ 219               	;*******************************************************************************************
+ 220               	;   Track Frame handler 
+ 221               	;*******************************************************************************************		
+ 222               			
+ 223               	_trackFrame:		
+ 224:CamInterfaceAsm.S **** 		sbi		_SFR_IO_ADDR(PORTD),PD6
+ 225:CamInterfaceAsm.S **** 		sleep   ; ...And we wait...
+ 226               			
+ 227               		; Returning from the interrupt/sleep wakeup will consume
+ 228               		; 14 clock cycles (7 to wakeup from idle sleep, 3 to vector, and 4 to return)	
+ 229               	
+ 230               		; Disable the HREF interrupt
+ 231:CamInterfaceAsm.S **** 		cbi		_SFR_IO_ADDR(PORTD),PD6
+ 232:CamInterfaceAsm.S **** 		in 		tmp1, _SFR_IO_ADDR(GICR)
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 14
+
+
+ 233:CamInterfaceAsm.S **** 		andi 	tmp1, HREF_INTERRUPT_DISABLE_MASK
+ 234:CamInterfaceAsm.S **** 		out		_SFR_IO_ADDR(GICR), tmp1
+ 235               			
+ 236               		; A couple of NOPs are needed here to sync up the pixel data...the number (2)
+ 237               		; of NOPs was determined emperically by trial and error.
+ 238:CamInterfaceAsm.S **** 		nop
+ 239:CamInterfaceAsm.S **** 		nop
+ 240               	_acquirePixelBlock:							;							Clock Cycle Count
+ 241:CamInterfaceAsm.S **** 		in		ZL,RB_PORT         			; sample the red value (PINB)		(1)
+ 242:CamInterfaceAsm.S **** 		in		YL,G_PORT         			; sample the green value (PINC)		(1)
+ 243:CamInterfaceAsm.S **** 		andi	YL,0x0F            			; clear the high nibble				(1)
+ 244:CamInterfaceAsm.S **** 		ldd		color,Z+RED_MEM_OFFSET  	; lookup the red membership			(2)
+ 245:CamInterfaceAsm.S **** 		in		ZL,RB_PORT         			; sample the blue value (PINB)		(1)
+ 246:CamInterfaceAsm.S **** 		ldd		greenData,Y+GREEN_MEM_OFFSET; lookup the green membership		(2)
+ 247:CamInterfaceAsm.S **** 		ldd		blueData,Z+BLUE_MEM_OFFSET	; lookup the blue membership		(2)
+ 248:CamInterfaceAsm.S **** 		and		color,greenData 			; mask memberships together			(1)
+ 249:CamInterfaceAsm.S **** 		and		color,blueData  			; to produce the final color		(1)
+ 250:CamInterfaceAsm.S **** 		brts    _cleanUpTrackingLine		; if some interrupt routine has		(1...not set)
+ 251               												; come in and set our T flag in 
+ 252               												; SREG, then we need to hop out
+ 253               												; and blow away this frames data (common cleanup)									
+ 254:CamInterfaceAsm.S **** 		cp		color,lastColor     		; check to see if the run continues	(1)
+ 255:CamInterfaceAsm.S **** 		breq    _acquirePixelBlock  		;									(2...equal)
+ 256               												;									___________
+ 257               												;								16 clock cycles 		
+ 258               												; (16 clock cycles = 1 uS = 1 pixelBlock time)
+ 259               			
+ 260               			; Toggle the debug line to indicate a color change
+ 261:CamInterfaceAsm.S **** 		sbi     _SFR_IO_ADDR(PORTD),PD6
+ 262:CamInterfaceAsm.S **** 		nop
+ 263:CamInterfaceAsm.S **** 		cbi		_SFR_IO_ADDR(PORTD),PD6
+ 264               			
+ 265:CamInterfaceAsm.S **** 		mov		tmp2,pixelRunStart				; get the count value of the
+ 266               													; current pixel run
+ 267:CamInterfaceAsm.S **** 		in		pixelCount,_SFR_IO_ADDR(TCNT1L)	; get the current TCNT1 value 
+ 268:CamInterfaceAsm.S **** 		mov   	pixelRunStart,pixelCount		; reload pixelRunStart for the
+ 269               													; next run
+ 270:CamInterfaceAsm.S **** 		sub		pixelCount,tmp2     			; pixelCount = TCNT1L - pixelRunStart
+ 271               											
+ 272:CamInterfaceAsm.S **** 		st		X+,lastColor			; record the color run in the current line buffer
+ 273:CamInterfaceAsm.S **** 		st		X+,pixelCount			; with its length
+ 274:CamInterfaceAsm.S **** 		mov		lastColor,color			; set lastColor so we can figure out when it changes
+ 275               			
+ 276:CamInterfaceAsm.S **** 		nop								; waste one more cycle for a total of 16
+ 277:CamInterfaceAsm.S **** 		rjmp	_acquirePixelBlock	
+ 278               			
+ 279               	; _cleanUpTrackingLine is used to write the last run length block off to the currentLineBuffer so
+ 280               	; that all 176 pixels in the line are accounted for.
+ 281               	_cleanUpTrackingLine:		
+ 282:CamInterfaceAsm.S **** 		ldi		pixelCount,0xFF		; the length of the last run is ALWAYS 0xFF minus the last
+ 283:CamInterfaceAsm.S **** 		sub		pixelCount,pixelRunStart  	; pixelRunStart
+ 284               			
+ 285:CamInterfaceAsm.S **** 		inc		pixelCount				; increment pixelCount since we actually need to account
+ 286               											; for the overflow of TCNT1
+ 287               											
+ 288:CamInterfaceAsm.S **** 		st		X+,color				; record the color run in the current line buffer
+ 289:CamInterfaceAsm.S **** 		st		X,pixelCount		
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 15
+
+
+ 290:CamInterfaceAsm.S **** 		rjmp	_cleanUp
+ 291               			
+ 292               	_cleanUpDumpLine:		
+ 293               			; NOTE: If serial data is received, to interrupt the tracking of a line, we'll
+ 294               			; get a EV_SERIAL_DATA_RECEIVED event, and the T bit set so we will end the
+ 295               			; line's processing...however, the PCLK will keep on ticking for the rest of
+ 296               			; the frame/line, which will cause the TCNT to eventually overflow and
+ 297               			; interrupt us, generating a EV_ACQUIRE_LINE_COMPLETE event.  We don't want
+ 298               			; this, so we need to actually turn off the PCLK counting each time we exit
+ 299               			; this loop, and only turn it on when we begin acquiring lines....
+ 300               	        ; NOT NEEDED FOR NOW...
+ 301               			;in		tmp1, _SFR_IO_ADDR(TIMSK)			; disable TIMER1 to stop counting
+ 302               			;andi	tmp1, DISABLE_PCLK_TIMER1_OVERFLOW_BITMASK 	; external PCLK pulses
+ 303               			;out		_SFR_IO_ADDR(TIMSK),tmp1
+ 304               	
+ 305               	_cleanUp:
+ 306               	        ; Disable the external clocking of the Timer1 counter 
+ 307:CamInterfaceAsm.S ****         in      tmp1, _SFR_IO_ADDR(TCCR1B)
+ 308:CamInterfaceAsm.S ****         andi    tmp1, 0xF8
+ 309:CamInterfaceAsm.S ****         out     _SFR_IO_ADDR(TCCR1B),tmp1
+ 310               			
+ 311               			; Toggle the debug line to indicate the line is complete
+ 312:CamInterfaceAsm.S **** 		sbi     _SFR_IO_ADDR(PORTD),PD6
+ 313:CamInterfaceAsm.S **** 		cbi		_SFR_IO_ADDR(PORTD),PD6
+ 314:CamInterfaceAsm.S **** 		clt				; clear out the T bit since we have detected
+ 315               							; the interruption and are exiting to handle it
+ 316               	_exit:
+ 317:CamInterfaceAsm.S **** 		ret
+ 318               			
+ 319               	;*****************************************************************		
+ 320               	;   	Function Name: CamIntAsm_waitForNewDumpFrame
+ 321               	;       Function Description: This function is responsible for
+ 322               	;       going to sleep until a new frame begins (indicated by
+ 323               	;    	VSYNC transitioning from low to high.  This will wake
+ 324               	;       the "VSYNC sleep" up and allow it to continue with 
+ 325               	;       acquiring a line of pixel data to dump out to the UI.
+ 326               	;       Inputs:  r25 - MSB of currentLineBuffer
+ 327               	;                r24 - LSB of currentLineBuffer
+ 328               	;				 r23 - MSB of prevLineBuffer
+ 329               	;				 r22 - LSB of prevLineBuffer
+ 330               	;       Outputs: none
+ 331               	;       NOTES: This function doesn't really return...it sorta just
+ 332               	;       floats into the acquireDumpLine function after the "VSYNC sleep"
+ 333               	;       is awoken.
+ 334               	;*****************************************************************		
+ 335               	CamIntAsm_waitForNewDumpFrame:
+ 336:CamInterfaceAsm.S **** 		sbi		_SFR_IO_ADDR(PORTD),PD6  ; For testing...
+ 337:CamInterfaceAsm.S **** 		cbi		_SFR_IO_ADDR(PORTD),PD6
+ 338:CamInterfaceAsm.S **** 		sleep
+ 339               	
+ 340               	;*****************************************************************
+ 341               	; REMEMBER...everything from here on out is critically timed to be
+ 342               	; synchronized with the flow of pixel data from the camera...
+ 343               	;*****************************************************************
+ 344               	
+ 345               	CamIntAsm_acquireDumpLine:
+ 346:CamInterfaceAsm.S **** 		brts	_cleanUp
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 16
+
+
+ 347               			;sbi		_SFR_IO_ADDR(PORTD),PD6 ; For testing...
+ 348               			;cbi		_SFR_IO_ADDR(PORTD),PD6
+ 349               			
+ 350:CamInterfaceAsm.S **** 		mov   	XH,currLineBuffHigh    	; Load the pointer to the current line
+ 351:CamInterfaceAsm.S **** 		mov		XL,currLineBuffLow		; buffer into the X pointer regs
+ 352               	
+ 353:CamInterfaceAsm.S **** 		mov		YH,prevLineBuffHigh		; Load the pointer to the previous line
+ 354:CamInterfaceAsm.S **** 		mov		YL,prevLineBuffLow  	; buffer into the Y pointer regs
+ 355               			
+ 356:CamInterfaceAsm.S **** 		ldi 	tmp1,PIXEL_RUN_START_INITIAL	; set up the TCNT1 to overflow (and
+ 357:CamInterfaceAsm.S **** 		ldi 	tmp2,0xFF 						; interrupts) after 176 pixels		
+ 358:CamInterfaceAsm.S **** 		out 	_SFR_IO_ADDR(TCNT1H),tmp2		
+ 359:CamInterfaceAsm.S **** 		out 	_SFR_IO_ADDR(TCNT1L),tmp1		
+ 360               			
+ 361:CamInterfaceAsm.S ****         in      tmp1, _SFR_IO_ADDR(TCCR1B) ; Enable the PCLK line to actually
+ 362:CamInterfaceAsm.S ****         ori     tmp1, 0x07                 ; feed Timer1
+ 363:CamInterfaceAsm.S ****         out     _SFR_IO_ADDR(TCCR1B),tmp1
+ 364:CamInterfaceAsm.S ****         nop
+ 365               	        
+ 366:CamInterfaceAsm.S **** 		in		tmp1, _SFR_IO_ADDR(TIMSK)			; enable TIMER1 to start counting
+ 367:CamInterfaceAsm.S **** 		ori		tmp1, ENABLE_PCLK_TIMER1_OVERFLOW_BITMASK 	; external PCLK pulses and interrupt on 
+ 368:CamInterfaceAsm.S **** 		out		_SFR_IO_ADDR(TIMSK),tmp1			; overflow			
+ 369               			
+ 370:CamInterfaceAsm.S **** 		in 		tmp1, _SFR_IO_ADDR(GICR)	; enable the HREF interrupt...remember, we
+ 371               												; only use this interrupt to synchronize
+ 372               												; the beginning of the line
+ 373:CamInterfaceAsm.S **** 		ori 	tmp1, HREF_INTERRUPT_ENABLE_MASK
+ 374:CamInterfaceAsm.S **** 		out		_SFR_IO_ADDR(GICR), tmp1
+ 375               			
+ 376               	;*******************************************************************************************
+ 377               	;   Dump Frame handler 
+ 378               	;*******************************************************************************************		
+ 379               			
+ 380               	_dumpFrame:		
+ 381:CamInterfaceAsm.S **** 		sbi		_SFR_IO_ADDR(PORTD),PD6
+ 382:CamInterfaceAsm.S **** 		sleep   ; ...And we wait...
+ 383               	
+ 384:CamInterfaceAsm.S **** 		cbi		_SFR_IO_ADDR(PORTD),PD6
+ 385:CamInterfaceAsm.S **** 		in 		tmp1, _SFR_IO_ADDR(GICR)			; disable the HREF interrupt
+ 386:CamInterfaceAsm.S **** 		andi 	tmp1, HREF_INTERRUPT_DISABLE_MASK  	; so we don't get interrupted
+ 387:CamInterfaceAsm.S **** 		out		_SFR_IO_ADDR(GICR), tmp1			; while dumping the line
+ 388               		
+ 389:CamInterfaceAsm.S **** 		nop		; Remember...if we ever remove the "cbi" instruction above,
+ 390               					; we need to add two more NOPs to cover this
+ 391               	    
+ 392               	; Ok...the following loop needs to run in 8 clock cycles, so we can get every
+ 393               	; pixel in the line...this shouldn't be a problem, since the PCLK timing was
+ 394               	; reduced by a factor of 2 whenever we go to dump a line (this is to give us
+ 395               	; enough time to do the sampling and storing of the pixel data).  In addition,
+ 396               	; it is assumed that we will have to do some minor processing on the data right
+ 397               	; before we send it out, like mask off the top 4-bits of each, and then pack both
+ 398               	; low nibbles into a single byte for transmission...we just don't have time to
+ 399               	; do that here (only 8 instruction cycles :-)  )
+ 400               	_sampleDumpPixel:
+ 401:CamInterfaceAsm.S **** 		in		tmp1,G_PORT				; sample the G value					(1)
+ 402:CamInterfaceAsm.S **** 		in		tmp2,RB_PORT			; sample the R/B value					(1)
+ 403:CamInterfaceAsm.S **** 		st		X+,tmp1					; store to the currLineBuff and inc ptrs(2)
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 17
+
+
+ 404:CamInterfaceAsm.S **** 		st		Y+,tmp2					; store to the prevLineBuff and inc ptrs(2)
+ 405:CamInterfaceAsm.S **** 		brtc	_sampleDumpPixel		; loop back unless flag is set			(2...if not set)
+ 406               											;									___________
+ 407               											;									8 cycles normally
+ 408               																				
+ 409               			; if we make it here, it means the T flag is set, and we must have been interrupted
+ 410               			; so we need to exit (what if we were interrupted for serial? should we disable it?)
+ 411:CamInterfaceAsm.S **** 		rjmp	_cleanUpDumpLine
+ 412               	
+ 413               	;***********************************************************
+ 414               	;	Function Name: <interrupt handler for External Interrupt0> 
+ 415               	;	Function Description: This function is responsible
+ 416               	;	for handling a rising edge on the Ext Interrupt 0.  This
+ 417               	;	routine simply returns, since we just want to wake up
+ 418               	;	whenever the VSYNC transitions (meaning the start of a new
+ 419               	;	frame).
+ 420               	;	Inputs:  none
+ 421               	;	Outputs: none
+ 422               	;***********************************************************
+ 423               	SIG_INTERRUPT0:
+ 424               	; This will wake us up when VSYNC transitions high...we just want to return
+ 425:CamInterfaceAsm.S **** 		reti
+ 426               			
+ 427               	;***********************************************************
+ 428               	;	Function Name: <interrupt handler for External Interrupt1> 
+ 429               	;	Function Description: This function is responsible
+ 430               	;	for handling a falling edge on the Ext Interrupt 1.  This
+ 431               	;	routine simply returns, since we just want to wake up
+ 432               	;	whenever the HREF transitions (meaning the pixels 
+ 433               	;	are starting after VSYNC transitioned, and we need to
+ 434               	; 	start acquiring the pixel blocks
+ 435               	;	Inputs:  none
+ 436               	;	Outputs: none
+ 437               	;***********************************************************	
+ 438               	SIG_INTERRUPT1:
+ 439               	; This will wake us up when HREF transitions high...we just want to return
+ 440:CamInterfaceAsm.S **** 		reti
+ 441               			
+ 442               	;***********************************************************
+ 443               	;	Function Name: <interrupt handler for Timer0 overflow>
+ 444               	;	Function Description: This function is responsible
+ 445               	;	for handling the Timer0 overflow (hooked up to indicate
+ 446               	;	when we have reached the number of HREFs required in a
+ 447               	;	single frame).  We set the T flag in the SREG to
+ 448               	;	indicate to the _acquirePixelBlock routine that it needs
+ 449               	;	to exit, and then set the appropriate action to take in
+ 450               	;	the eventList of the Executive module.
+ 451               	;	Inputs:  none
+ 452               	;	Outputs: none
+ 453               	;   Note: Originally, the HREF pulses were also going to
+ 454               	;   be counted by a hardware counter, but it didn't end up
+ 455               	;   being necessary
+ 456               	;***********************************************************
+ 457               	;SIG_OVERFLOW0:
+ 458               	;		set				; set the T bit in SREG
+ 459               	;		lds		tmp1,eventBitmask
+ 460               	;		ori		tmp1,EV_ACQUIRE_FRAME_COMPLETE
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 18
+
+
+ 461               	;		sts		eventBitmask,tmp1
+ 462               	;		reti
+ 463               			
+ 464               	;***********************************************************
+ 465               	;	Function Name: <interrupt handler for Timer1 overflow>
+ 466               	;	Function Description: This function is responsible
+ 467               	;	for handling the Timer1 overflow (hooked up to indicate
+ 468               	;	when we have reached the end of a line of pixel data,
+ 469               	;	since PCLK is hooked up to overflow TCNT1 after 176 
+ 470               	;	pixels).  This routine generates an acquire line complete
+ 471               	;	event in the fastEventBitmask, which is streamlined for
+ 472               	;	efficiency reasons.
+ 473               	;***********************************************************
+ 474               	SIG_OVERFLOW1:				
+ 475:CamInterfaceAsm.S **** 		lds		tmp1,fastEventBitmask   		; set a flag indicating
+ 476:CamInterfaceAsm.S **** 		ori		tmp1,FEV_ACQUIRE_LINE_COMPLETE	; a line is complete
+ 477:CamInterfaceAsm.S **** 		sts		fastEventBitmask,tmp1
+ 478:CamInterfaceAsm.S **** 		set		; set the T bit in SREG 
+ 479               			;sbi		_SFR_IO_ADDR(PORTD),PD6 ; For testing...
+ 480               			;cbi		_SFR_IO_ADDR(PORTD),PD6 ; For testing...
+ 481               	
+ 482:CamInterfaceAsm.S **** 		reti
+ 483               	
+ 484               	; This is the default handler for all interrupts that don't
+ 485               	; have handler routines specified for them.
+ 486               	        .global __vector_default              
+ 487               	__vector_default:
+ 488:CamInterfaceAsm.S ****         reti
+ 489               	
+ 490               	        .end
+GAS LISTING C:\DOCUME~1\John\LOCALS~1\Temp/ccIlaaaa.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 CamInterfaceAsm.S
+                            *ABS*:00000000 Events.h
+                            *ABS*:00000000 CamInterfaceAsm.S
+                            *ABS*:00000000 C:/WinAVR/avr/include/avr/io.h
+                            *ABS*:00000000 C:/WinAVR/avr/include/avr/iom8.h
+                            *ABS*:00000000 C:/WinAVR/avr/include/avr/io.h
+                            *ABS*:00000000 C:/WinAVR/avr/include/avr/sfr_defs.h
+                            *ABS*:00000000 C:/WinAVR/avr/include/avr/io.h
+                            *ABS*:00000000 CamInterfaceAsm.S
+                            *ABS*:00000000 <command line>
+                            *ABS*:00000000 <built-in>
+                            *ABS*:00000000 CamInterfaceAsm.S
+                            *ABS*:00000010 pixelCount
+                            *ABS*:00000011 pixelRunStart
+                            *ABS*:00000012 lastColor
+                            *ABS*:00000013 tmp1
+                            *ABS*:00000014 tmp2
+                            *ABS*:00000013 color
+                            *ABS*:00000014 greenData
+                            *ABS*:00000015 blueData
+                            *ABS*:00000016 colorMapLow
+                            *ABS*:00000017 colorMapHigh
+                            *ABS*:00000016 prevLineBuffLow
+                            *ABS*:00000017 prevLineBuffHigh
+                            *ABS*:00000018 currLineBuffLow
+                            *ABS*:00000019 currLineBuffHigh
+   CamInterfaceAsm.S:169    .text:00000000 CamIntAsm_waitForNewTrackingFrame
+   CamInterfaceAsm.S:335    .text:0000008e CamIntAsm_waitForNewDumpFrame
+   CamInterfaceAsm.S:345    .text:00000094 CamIntAsm_acquireDumpLine
+   CamInterfaceAsm.S:179    .text:00000006 CamIntAsm_acquireTrackingLine
+   CamInterfaceAsm.S:423    .text:000000d4 __vector_1
+   CamInterfaceAsm.S:438    .text:000000d6 __vector_2
+   CamInterfaceAsm.S:474    .text:000000d8 __vector_8
+   CamInterfaceAsm.S:305    .text:00000080 _cleanUp
+   CamInterfaceAsm.S:223    .text:00000034 _trackFrame
+   CamInterfaceAsm.S:240    .text:00000044 _acquirePixelBlock
+   CamInterfaceAsm.S:281    .text:00000074 _cleanUpTrackingLine
+   CamInterfaceAsm.S:292    .text:00000080 _cleanUpDumpLine
+   CamInterfaceAsm.S:316    .text:0000008c _exit
+   CamInterfaceAsm.S:380    .text:000000ba _dumpFrame
+   CamInterfaceAsm.S:400    .text:000000c8 _sampleDumpPixel
+   CamInterfaceAsm.S:487    .text:000000e6 __vector_default
+
+UNDEFINED SYMBOLS
+__vector_9
+fastEventBitmask
