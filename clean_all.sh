@@ -1,7 +1,7 @@
 #!/bin/bash
 
 for dir in $(find . -type d); do
-echo "$dir/*.hex"
+echo "Cleaning $dir"
 rm -rvf "$dir/.DS_Store"
 rm -rvf "$dir/.dep"
 rm -rvf "$dir/*.o"
