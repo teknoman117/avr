@@ -8,7 +8,7 @@ SIZE= avr-size
 OBJCOPY= avr-objcopy
 
 # Project Info
-PROJECT=example_timer1pwm
+PROJECT=example_digitalio
 MAIN=main
 
 # CPU Info
