@@ -9,8 +9,8 @@ Building
 --------
 ```
 git clone --recurse-submodules https://github.com/teknoman117/avr
-cd avr
 # Switch into FreeRTOS examples
+cd avr/projects/freertos-examples
 cmake -GNinja -DCMAKE_BUILD_TYPE=MinSizeRel -B build .
 cmake --build build
 ```
