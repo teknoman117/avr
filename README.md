@@ -1,6 +1,10 @@
 # avr
 
-A collection of libraries, projects, utilities, etc. for using the Atmel AVR outside of the Arduino framework.
+A menagerie of things for developing for the Atmel AVR outside of the Arduino framework.
+
+## projects
+
+Example projects
 
 ## old
 
