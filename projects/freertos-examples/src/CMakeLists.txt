@@ -22,13 +22,5 @@ add_executable(streambuffer-test streambuffer-test.c)
 target_link_libraries(streambuffer-test PRIVATE FreeRTOS)
 avr_add_extra_outputs(streambuffer-test)
 
-# SRF02 Sonar Test
-add_executable(srf02-test
-    srf02-test.c
-    uart.c
-    i2c.c
-    console.c
-)
-target_link_libraries(srf02-test PRIVATE FreeRTOS)
-avr_add_extra_outputs(srf02-test)
-
+# SRF02 Test
+add_subdirectory(srf02-test)
