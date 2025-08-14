@@ -1,0 +1,4 @@
+AVR
+===
+
+This is all my work with the Atmel AVR, or at least what has survived over the years.  I am in the process of moving everything useful to dedicated folders.  The folder "unsorted" contains everything I have yet to go through.  I decided that I'd put all this folder up on GitHub because none of this is secret or anything, but in the effort of having an alternative to Arduino, I'm coming up with some libraries to help just straight C development with the AVR.  I don't even remember whats all in here.  It ranges from old projects to half finished attempts at libraries for different micro controllers, some of which aren't even sold anymore.  So enjoy, its really a grab bag and it will be in high flux, so i recommend not providing links to subdirectories in unsorted.
