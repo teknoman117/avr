@@ -2,7 +2,7 @@
 
 A menagerie of things for developing for the Atmel AVR outside of the Arduino framework.
 
-## projects
+## examples
 
 Example projects
 

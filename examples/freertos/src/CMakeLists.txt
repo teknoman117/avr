@@ -4,22 +4,22 @@ avr_add_extra_outputs(blink)
 
 # Basic Test
 add_executable(blink-test blink-test.c)
-target_link_libraries(blink-test PRIVATE FreeRTOS)
+target_link_libraries(blink-test PRIVATE freertos_kernel)
 avr_add_extra_outputs(blink-test)
 
 # Servo Test
 add_executable(servo-test servo-test.c)
-target_link_libraries(servo-test PRIVATE FreeRTOS)
+target_link_libraries(servo-test PRIVATE freertos_kernel)
 avr_add_extra_outputs(servo-test)
 
 # UART Test
 add_executable(uart-test uart-test.c)
-target_link_libraries(uart-test PRIVATE FreeRTOS)
+target_link_libraries(uart-test PRIVATE freertos_kernel)
 avr_add_extra_outputs(uart-test)
 
 # Stream Buffer Test
 add_executable(streambuffer-test streambuffer-test.c)
-target_link_libraries(streambuffer-test PRIVATE FreeRTOS)
+target_link_libraries(streambuffer-test PRIVATE freertos_kernel)
 avr_add_extra_outputs(streambuffer-test)
 
 # SRF02 Test

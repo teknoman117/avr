@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 
 include(cmake/avr.cmake)
 
-project(freertos-test VERSION 0.1 LANGUAGES C CXX)
+project(freertos-examples VERSION 0.1 LANGUAGES C CXX)
 
 set(CMAKE_SYSTEM_NAME "Generic")
 set(CMAKE_CXX_COMPILER avr-g++)
@@ -24,5 +24,14 @@ add_definitions(-DF_CPU=${F_CPU} -DBAUD=${BAUD} -DF_I2C=${F_I2C} -DRXBUFFER_SIZE
 add_compile_options(-mmcu=${MCU})
 add_link_options(-mmcu=${MCU})
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/../../dependencies/FreeRTOS FreeRTOS)
+# Add FreeRTOS
+add_library(freertos_config INTERFACE)
+target_include_directories(freertos_config SYSTEM INTERFACE include)
+target_compile_definitions(freertos_config INTERFACE projCOVERAGE_TEST=0)
+
+set(FREERTOS_HEAP "3" CACHE STRING "" FORCE)
+set(FREERTOS_PORT "GCC_ATMEGA" CACHE STRING "" FORCE)
+add_subdirectory(${PROJECT_SOURCE_DIR}/dependencies/FreeRTOS-Kernel)
+
+# Add project sources
 add_subdirectory(src)

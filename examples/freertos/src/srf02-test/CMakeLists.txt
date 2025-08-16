@@ -7,5 +7,5 @@ add_executable(srf02-test
     i2c.c
     console.c
 )
-target_link_libraries(srf02-test PRIVATE FreeRTOS)
+target_link_libraries(srf02-test PRIVATE freertos_kernel)
 avr_add_extra_outputs(srf02-test)
