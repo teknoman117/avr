@@ -1,0 +1,9 @@
+[build]
+target = "avr-none"
+rustflags = ["-C", "target-cpu=attiny85"]
+
+[unstable]
+build-std = ["core"]
+
+[env]
+AVR_CPU_FREQUENCY_HZ = "16_000_000"

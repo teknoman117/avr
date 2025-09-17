@@ -1,0 +1,26 @@
+[package]
+name = "attiny85-blink"
+version = "0.1.0"
+authors = ["Nathaniel R. Lewis <linux.robotdude@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+panic-halt = "0.2.0"
+avr-device = "0.5.0"
+
+[dependencies.attiny-hal]
+git = "https://github.com/Rahix/avr-hal"
+rev = "fb609ab0d14c5a0a44e2dff3e5e514cb612a529a"
+features = ["attiny85", "rt"]
+
+[profile.dev]
+panic = "abort"
+lto = true
+opt-level = "z"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+debug = true
+lto = true
+opt-level = "z"
